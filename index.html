@@ -3,266 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angie Bailey | Add Value, Not Noise</title>
-    
-    <!-- Typography: Libre Franklin -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Angie Q Bailey | Actionable Insights</title>
+    <!-- Libre Franklin Font -->
     <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS CDN (For structural layout) -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Marked.js (For Markdown parsing) -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
     <style>
-        /* 1. FAIL-SAFE BRAND VARIABLES */
+        /* BRAND BOOK - BRUTE FORCE CSS */
         :root {
             --deep-blue: #1D3557;
             --pale-teal: #A8DADC;
             --slate-gray: #4A5568;
             --bold-orange: #ED8936;
-            --white: #FFFFFF;
         }
 
-        /* 2. CORE TYPOGRAPHY & BODY */
         body { 
             font-family: 'Libre Franklin', sans-serif; 
             color: var(--slate-gray); 
-            background-color: var(--white);
+            background-color: #FFFFFF;
             line-height: 1.6;
         }
 
-        /* 3. HEADINGS & AUTHORITY (Deep Blue) */
-        h1, h2, h3, h4, .nav-item, .brand-logo { 
-            color: var(--deep-blue) !important; 
-            font-weight: 700;
-        }
-
-        /* 4. BRANDED CALLOUTS (Pale Teal) */
-        .takeaway-box {
-            background-color: var(--pale-teal) !important;
-            color: var(--deep-blue) !important;
-            border-left: 8px solid var(--deep-blue);
-        }
-
-        .section-divider {
-            border-top: 1px solid var(--pale-teal);
-        }
-
-        /* 5. PRIMARY CTA (Bold Orange) */
-        .cta-button {
-            background-color: var(--bold-orange) !important;
-            color: var(--white) !important;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: opacity 0.2s ease;
-        }
-        .cta-button:hover { opacity: 0.9; }
-
-        /* PHILOSOPHY: STRATEGIC CLARITY */
-        * { box-shadow: none !important; text-shadow: none !important; border-radius: 0 !important; }
-        .hidden { display: none; }
+        /* Forces the brand colors to override everything else */
+        .brand-heading { color: var(--deep-blue) !important; }
+        .brand-bg-teal { background-color: var(--pale-teal) !important; }
+        .brand-text-blue { color: var(--deep-blue) !important; }
+        .brand-button { background-color: var(--bold-orange) !important; color: white !important; }
         
-        /* Navigation Highlighting */
-        .active-nav { border-bottom: 2px solid var(--deep-blue); }
+        .actionable-box {
+            background-color: var(--pale-teal);
+            color: var(--deep-blue);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid var(--deep-blue);
+        }
+
+        nav a { color: var(--deep-blue); font-weight: 600; }
+        header { border-bottom: 2px solid var(--pale-teal); }
     </style>
 </head>
-<body class="flex flex-col min-h-screen antialiased">
+<body class="antialiased">
 
-    <!-- Navigation -->
-    <nav class="bg-white border-b border-gray-100 sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center">
-            <div class="brand-logo text-xl cursor-pointer" onclick="showSection('home')">
-                Angie Bailey
-            </div>
-            <div class="hidden md:flex space-x-10 text-xs font-bold uppercase tracking-widest">
-                <a href="#" onclick="showSection('home')" class="nav-item hover:opacity-70 transition">Home</a>
-                <a href="#" onclick="showSection('about')" class="nav-item hover:opacity-70 transition">About</a>
-                <a href="#" onclick="showSection('blog')" class="nav-item hover:opacity-70 transition">Blog</a>
-                <a href="#" onclick="showSection('resources')" class="nav-item hover:opacity-70 transition">Resources</a>
-                <a href="#" onclick="showSection('contact')" class="nav-item hover:opacity-70 transition">Contact</a>
+    <!-- NAVIGATION -->
+    <header class="p-6 max-w-6xl mx-auto flex justify-between items-center">
+        <div class="text-2xl font-bold brand-text-blue">ANGIE Q BAILEY</div>
+        <nav class="space-x-6">
+            <a href="#" class="hover:underline">Home</a>
+            <a href="#about" class="hover:underline">About</a>
+            <a href="#blog" class="hover:underline">Blog</a>
+            <a href="#resources" class="hover:underline">Resources</a>
+            <a href="#contact" class="hover:underline">Contact</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="max-w-4xl mx-auto py-24 px-6">
+        <h1 class="text-6xl font-bold brand-heading mb-6">Stuff you can actually use on a Tuesday.</h1>
+        <p class="text-2xl mb-8">Add value, not noise. Deconstructing complex systems into actionable frameworks for professionals who don't have time for fluff.</p>
+        <a href="#blog" class="brand-button px-8 py-4 rounded font-bold text-lg inline-block">Get Actionable Insights</a>
+    </section>
+
+    <!-- BLOG PREVIEW -->
+    <section id="blog" class="max-w-4xl mx-auto py-16 px-6">
+        <h2 class="text-3xl font-bold brand-heading mb-10">Tuesday's Insights</h2>
+        
+        <!-- Example Post -->
+        <div class="mb-12 border-b border-gray-100 pb-8">
+            <h3 class="text-2xl font-semibold brand-text-blue mb-2">How to build a personal authority site with AI</h3>
+            <p class="text-gray-500 mb-4">Reading time: 4 mins • Jan 2026</p>
+            <div class="actionable-box">
+                <p class="font-bold">Actionable Takeaway:</p>
+                <p>When using AI for development, use CSS variables for brand colors. It prevents "logic drift" and ensures visual consistency across all pages.</p>
             </div>
         </div>
-    </nav>
+    </section>
 
-    <main class="flex-grow max-w-6xl mx-auto px-6 w-full">
-        
-        <!-- Section: Home -->
-        <section id="home" class="content-section py-20 md:py-32">
-            <div class="max-w-3xl">
-                <h1 class="text-5xl md:text-7xl mb-8 leading-tight">Stuff you can actually use on a Tuesday.</h1>
-                <p class="text-xl md:text-2xl mb-12">
-                    Add value, not noise. Deconstructing complex systems into actionable frameworks.
-                </p>
-                <button onclick="showSection('blog')" class="cta-button px-10 py-5 text-sm">
-                    Read the frameworks
-                </button>
-            </div>
-        </section>
-
-        <!-- Section: About -->
-        <section id="about" class="content-section py-20 hidden">
-            <h2 class="text-4xl mb-12">AI forward, human always.</h2>
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="text-lg space-y-6">
-                    <p>I help organizations democratize AI adoption—making it accessible, actionable, and human-centered. My role is bridging the technical with the communicative so teams scale with clarity, not confusion.</p>
-                    <p>I operate as a strategic program lead, specializing in cross-functional coordination and high-stakes stakeholder alignment. My background spans e-commerce, technical translation, and education.</p>
-                </div>
-                <div class="takeaway-box p-10">
-                    <h3 class="text-xs uppercase tracking-widest mb-4">Core Identity</h3>
-                    <p class="text-xl font-medium leading-snug">The Omniscient Communicator: Transforming complexity into clarity across audiences and industries.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Blog -->
-        <section id="blog" class="content-section py-20 hidden">
-            <h2 class="text-4xl mb-16">Writing and deconstructions</h2>
-            <div id="blog-list" class="space-y-24">
-                <!-- Blog list rendered by JavaScript -->
-            </div>
-        </section>
-
-        <!-- Section: Blog Detail (SPA View) -->
-        <section id="blog-detail" class="content-section py-20 hidden">
-            <button onclick="showSection('blog')" class="text-xs font-bold uppercase tracking-widest mb-12 block" style="color: var(--deep-blue)">
-                ← Back to blog
-            </button>
-            <div id="post-content" class="max-w-3xl prose">
-                <!-- Markdown content rendered here -->
-            </div>
-        </section>
-
-        <!-- Section: Resources -->
-        <section id="resources" class="content-section py-20 hidden">
-            <h2 class="text-4xl mb-12">Resources</h2>
-            <div class="grid md:grid-cols-3 gap-0 border border-gray-100">
-                <div class="p-10 border-r border-b border-gray-100">
-                    <h3 class="text-xl mb-4">AI adoption framework</h3>
-                    <p class="text-sm mb-8">A scalable model for coordinating technical, process, and human layers of change.</p>
-                    <a href="#" class="text-xs font-bold uppercase tracking-widest border-b-2" style="color: var(--deep-blue); border-color: var(--deep-blue)">Access</a>
-                </div>
-                <div class="p-10 border-r border-b border-gray-100">
-                    <h3 class="text-xl mb-4">The Clarity Audit</h3>
-                    <p class="text-sm mb-8">A checklist to determine if your communication is adding value or noise.</p>
-                    <a href="#" class="text-xs font-bold uppercase tracking-widest border-b-2" style="color: var(--deep-blue); border-color: var(--deep-blue)">Access</a>
-                </div>
-                <div class="p-10 border-b border-gray-100">
-                    <h3 class="text-xl mb-4">Stakeholder Grid</h3>
-                    <p class="text-sm mb-8">A prioritization model for aligning 10+ functional domains into one roadmap.</p>
-                    <a href="#" class="text-xs font-bold uppercase tracking-widest border-b-2" style="color: var(--deep-blue); border-color: var(--deep-blue)">Access</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Contact -->
-        <section id="contact" class="content-section py-20 hidden">
-            <h2 class="text-4xl mb-12">Contact</h2>
-            <p class="text-2xl mb-12 max-w-2xl">Available for strategic advisory, program leadership, and bridge-building for AI initiatives.</p>
-            <a href="mailto:hello@angiebailey.com" class="text-3xl md:text-5xl font-bold underline transition" style="color: var(--deep-blue); text-decoration-color: var(--pale-teal)">
-                hello@angiebailey.com
-            </a>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="py-16 mt-20 section-divider">
-        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center text-xs font-bold uppercase tracking-widest">
-            <p>Add value, not noise. &copy; 2026</p>
-            <p style="color: var(--deep-blue)">Strategic Clarity // Human Always</p>
+    <!-- FOOTER -->
+    <footer class="bg-gray-50 py-12 mt-24">
+        <div class="max-w-6xl mx-auto px-6 text-center text-sm text-gray-400">
+            <p>&copy; 2026 Angie Q Bailey. Built with strategic clarity.</p>
         </div>
     </footer>
 
-    <script>
-        /**
-         * BLOG DATA
-         */
-        const posts = [
-            {
-                id: 1,
-                title: "Strategy without constraints is just creative writing",
-                date: "January 2025",
-                takeaway: "Set your budget and timeline constraints BEFORE you start dreaming. Strategy is the art of the 'No'.",
-                preview: "I've been in 47 strategic planning meetings in the last six months. Want to know the common thread? Nobody starts with constraints."
-            },
-            {
-                id: 2,
-                title: "The three layers of AI adoption",
-                date: "December 2024",
-                takeaway: "Technical is Layer 1. Process is Layer 2. Human is Layer 3. You cannot reach Layer 1 ROI without mastering Layer 3.",
-                preview: "Most AI implementations fail not from bad technology, but from bad change management. Here is how to fix the human layer."
-            }
-        ];
-
-        /**
-         * SECTION CONTROLLER
-         */
-        function showSection(sectionId) {
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.add('hidden');
-            });
-            document.getElementById(sectionId).classList.remove('hidden');
-            window.scrollTo(0, 0);
-        }
-
-        /**
-         * RENDER BLOG LIST
-         */
-        function renderBlogList() {
-            const listContainer = document.getElementById('blog-list');
-            listContainer.innerHTML = posts.map(post => `
-                <article class="max-w-4xl">
-                    <span class="text-xs font-bold uppercase tracking-widest" style="color: var(--slate-gray)">${post.date}</span>
-                    <h3 class="text-3xl md:text-4xl mt-4 mb-6 cursor-pointer hover:opacity-70 transition" onclick="loadPost(${post.id})">
-                        ${post.title}
-                    </h3>
-                    <p class="text-xl mb-10">${post.preview}</p>
-                    <div class="takeaway-box p-8 md:p-12">
-                        <h4 class="text-xs uppercase tracking-widest mb-3">Actionable Takeaway</h4>
-                        <p class="text-lg font-medium leading-relaxed italic">"${post.takeaway}"</p>
-                    </div>
-                </article>
-            `).join('');
-        }
-
-        /**
-         * LOAD BLOG CONTENT
-         */
-        async function loadPost(postId) {
-            const post = posts.find(p => p.id === postId);
-            const contentContainer = document.getElementById('post-content');
-            
-            showSection('blog-detail');
-            contentContainer.innerHTML = "<p class='uppercase font-bold tracking-widest text-xs'>Translating Complexity...</p>";
-
-            // Simulate Markdown Loading
-            setTimeout(() => {
-                const markdown = `
-# ${post.title}
-*Strategic Framework Series*
-
-This is a deconstruction of how we move from dreaming to doing. In the enterprise space, AI is often treated as a "magic wand." In reality, it is a tool that requires strict constraints.
-
-### The Problem
-Without constraints, scope expands to fill the available space. This leads to noise.
-
-### The Framework
-1. **Define the Problem** (Not the solution).
-2. **Apply Constraints** (Budget, time, personnel).
-3. **Execute and Iterate.**
-
-> "Clarity compounds. Noise distracts."
-                `;
-                contentContainer.innerHTML = marked.parse(markdown);
-            }, 300);
-        }
-
-        // Initialize on load
-        document.addEventListener('DOMContentLoaded', renderBlogList);
-    </script>
 </body>
 </html>
