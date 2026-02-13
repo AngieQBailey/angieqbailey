@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angie Bailey | Add Value, Not Noise</title>
+    
+    <!-- Google Fonts: Libre Franklin -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Marked.js for Markdown Parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-blue': '#1D3557',
+                        'pale-teal': '#A8DADC',
+                        'slate-gray': '#4A5568',
+                        'bold-orange': '#ED8936',
+                    },
+                    fontFamily: {
+                        sans: ['"Libre Franklin"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Libre Franklin', sans-serif; color: #4A5568; background-color: #FFFFFF; }
+        h1, h2, h3, h4 { color: #1D3557; font-weight: 700; }
+        .active-link { border-bottom: 2px solid #1D3557; }
+        /* Remove all default shadows/gradients as per spec */
+        * { box-shadow: none !important; text-shadow: none !important; }
+        .prose h1, .prose h2 { margin-top: 1.5rem; margin-bottom: 1rem; }
+        .prose p { margin-bottom: 1rem; line-height: 1.6; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="border-b border-gray-100 sticky top-0 bg-white z-50">
+        <div class="max-w-5xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="text-deep-blue font-bold text-xl tracking-tight cursor-pointer" onclick="showSection('home')">
+                Angie Bailey
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-widest">
+                <a href="#" onclick="showSection('home')" class="nav-link hover:text-deep-blue transition">Home</a>
+                <a href="#" onclick="showSection('about')" class="nav-link hover:text-deep-blue transition">About</a>
+                <a href="#" onclick="showSection('blog')" class="nav-link hover:text-deep-blue transition">Blog</a>
+                <a href="#" onclick="showSection('resources')" class="nav-link hover:text-deep-blue transition">Resources</a>
+                <a href="#" onclick="showSection('contact')" class="nav-link hover:text-deep-blue transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6">
+        
+        <!-- Section: Home/Hero -->
+        <section id="home" class="content-section py-20 md:py-32">
+            <div class="max-w-2xl">
+                <h1 class="text-5xl md:text-6xl mb-6 leading-tight">Stuff you can actually use on a Tuesday.</h1>
+                <p class="text-xl md:text-2xl text-slate-gray mb-10 leading-relaxed">
+                    Add value, not noise. Deconstructing complex systems into actionable frameworks.
+                </p>
+                <button onclick="showSection('blog')" class="bg-bold-orange text-white px-8 py-4 font-bold uppercase tracking-widest text-sm hover:opacity-90 transition">
+                    Read the latest
+                </button>
+            </div>
+        </section>
+
+        <!-- Section: About -->
+        <section id="about" class="content-section py-20 hidden">
+            <h2 class="text-3xl mb-8">Strategy forward, human always.</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-6 text-lg">
+                    <p>I transform complexity into clarity. Whether it's enterprise AI adoption or cross-functional program management, I build bridges between technical constraints and human needs.</p>
+                    <p>My work is results-driven, structured, and strategically sarcastic. I believe the quality of communication determines the quality of a relationship—and a product.</p>
+                </div>
+                <div class="bg-pale-teal p-8">
+                    <h3 class="text-deep-blue text-lg mb-4 uppercase tracking-widest">The Superpower</h3>
+                    <p class="text-deep-blue">The Omniscient Communicator: Transforming jargon-heavy chaos into scalable roadmaps that teams actually follow.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Blog -->
+        <section id="blog" class="content-section py-20 hidden">
+            <h2 class="text-3xl mb-12">Writing and frameworks</h2>
+            <div id="blog-list" class="space-y-16">
+                <!-- Posts injected here -->
+            </div>
+        </section>
+
+        <!-- Section: Blog Detail (Hidden by default) -->
+        <section id="blog-detail" class="content-section py-20 hidden">
+            <button onclick="showSection('blog')" class="text-deep-blue font-bold mb-8 flex items-center">
+                ← Back to all posts
+            </button>
+            <div id="post-content" class="prose max-w-none">
+                <!-- Markdown content injected here -->
+            </div>
+        </section>
+
+        <!-- Section: Resources -->
+        <section id="resources" class="content-section py-20 hidden">
+            <h2 class="text-3xl mb-4">Resources</h2>
+            <p class="mb-12 text-lg text-slate-gray">Toolkits and templates for scaling clarity.</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="border border-gray-200 p-8">
+                    <h3 class="mb-4 text-xl">AI adoption framework</h3>
+                    <p class="text-sm mb-6">A 3-tier model for coordinating technical and human layers of change.</p>
+                    <a href="#" class="text-deep-blue font-bold uppercase text-xs tracking-widest">Download PDF</a>
+                </div>
+                <div class="border border-gray-200 p-8">
+                    <h3 class="mb-4 text-xl">Stakeholder alignment grid</h3>
+                    <p class="text-sm mb-6">How to map 18 senior leaders to one roadmap in under 6 weeks.</p>
+                    <a href="#" class="text-deep-blue font-bold uppercase text-xs tracking-widest">View Template</a>
+                </div>
+                <div class="border border-gray-200 p-8">
+                    <h3 class="mb-4 text-xl">The Clarity Audit</h3>
+                    <p class="text-sm mb-6">A checklist to determine if your communication is adding value or noise.</p>
+                    <a href="#" class="text-deep-blue font-bold uppercase text-xs tracking-widest">Access Tool</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Contact -->
+        <section id="contact" class="content-section py-20 hidden">
+            <h2 class="text-3xl mb-8">Get in touch</h2>
+            <p class="text-xl mb-12 max-w-xl">I’m available for strategic advisory, program leadership, and talking about why most change management fails.</p>
+            <div class="space-y-4 text-deep-blue font-bold text-2xl">
+                <a href="mailto:hello@example.com" class="block hover:underline">hello@angiebailey.com</a>
+                <a href="#" class="block hover:underline">LinkedIn</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-gray-100 py-12 mt-20">
+        <div class="max-w-5xl mx-auto px-6 text-sm text-slate-gray flex justify-between">
+            <p>&copy; 2024 Angie Bailey. Add value, not noise.</p>
+            <p>Built with Clarity.</p>
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * BLOG DATA
+         * Add your posts here. 'path' should be a URL to a markdown file.
+         */
+        const posts = [
+            {
+                id: 1,
+                title: "Strategy without constraints is just creative writing",
+                date: "Oct 12, 2023",
+                takeaway: "Set your budget and timeline bottlenecks BEFORE you dream about AI transformation.",
+                path: "posts/constraints.md", 
+                preview: "Most AI adoption fails not because the tech is wrong, but because the rollout is. Here is how to fix it..."
+            },
+            {
+                id: 2,
+                title: "The three layers of AI adoption",
+                date: "Sep 28, 2023",
+                takeaway: "Focus on the Human Layer (3) as much as the Technical Layer (1).",
+                path: "posts/adoption-layers.md",
+                preview: "Most organizations obsess over the tools. But layers two and three are where adoption lives or dies."
+            }
+        ];
+
+        // NAVIGATION LOGIC
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            // Show target section
+            document.getElementById(sectionId).classList.remove('hidden');
+            // Scroll to top
+            window.scrollTo(0,0);
+        }
+
+        // BLOG RENDERING
+        function renderBlogList() {
+            const listContainer = document.getElementById('blog-list');
+            listContainer.innerHTML = posts.map(post => `
+                <article class="max-w-3xl">
+                    <span class="text-xs font-bold tracking-widest text-slate-gray uppercase">${post.date}</span>
+                    <h3 class="text-3xl mt-2 mb-4 cursor-pointer hover:text-bold-orange transition" onclick="loadPost(${post.id})">
+                        ${post.title}
+                    </h3>
+                    <p class="text-lg mb-6">${post.preview}</p>
+                    <div class="bg-pale-teal p-6 border-l-4 border-deep-blue">
+                        <p class="text-deep-blue font-bold text-sm uppercase tracking-wider mb-1">Actionable Takeaway</p>
+                        <p class="text-deep-blue">${post.takeaway}</p>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        // FETCH AND RENDER MARKDOWN
+        async function loadPost(postId) {
+            const post = posts.find(p => p.id === postId);
+            const contentContainer = document.getElementById('post-content');
+            
+            showSection('blog-detail');
+            contentContainer.innerHTML = "Loading...";
+
+            try {
+                // In a real environment, you'd fetch an actual .md file:
+                // const response = await fetch(post.path);
+                // const text = await response.text();
+                
+                // For this demo, we'll simulate the markdown content:
+                const mockMarkdown = `
+# ${post.title}
+*Published on ${post.date}*
+
+This is a simulated markdown fetch. In a production environment, this text would be pulled from your \`${post.path}\` file.
+
+### Why this matters
+Organizations don't lack tools; they lack **adoption frameworks**. 
+
+1. **First step**: Identify the friction.
+2. **Second step**: Apply the constraint.
+3. **Third step**: Execute.
+
+> "Clarity compounds. Noise distracts."
+
+Everything we do should be aimed at reducing the distance between an idea and its execution.
+                `;
+                
+                contentContainer.innerHTML = marked.parse(mockMarkdown);
+            } catch (err) {
+                contentContainer.innerHTML = "Error loading post.";
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderBlogList();
+            // Default to home or check URL hash if needed
+        });
+    </script>
+</body>
+</html>
