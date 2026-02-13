@@ -6,109 +6,132 @@
     <title>Angie Q Bailey | Actionable Insights</title>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Markdown Parser -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     
     <style>
-        :root { --deep-blue: #1D3557; --pale-teal: #A8DADC; --slate-gray: #4A5568; --bold-orange: #ED8936; }
+        :root {
+            --deep-blue: #1D3557;
+            --pale-teal: #A8DADC;
+            --slate-gray: #4A5568;
+            --bold-orange: #ED8936;
+        }
+
         html { scroll-behavior: smooth; }
         body { font-family: 'Libre Franklin', sans-serif; color: var(--slate-gray); background-color: #FFFFFF; line-height: 1.6; }
+        
+        /* Force Brand Colors */
         .brand-heading { color: var(--deep-blue) !important; }
-        .brand-bg-teal { background-color: var(--pale-teal) !important; }
         .brand-text-blue { color: var(--deep-blue) !important; }
+        .brand-bg-teal { background-color: var(--pale-teal) !important; }
         .brand-button { background-color: var(--bold-orange) !important; color: white !important; }
         
-        /* Actionable Takeaway Box Styling */
+        header { border-bottom: 2px solid var(--pale-teal); position: sticky; top: 0; background: white; z-index: 50; }
+        section { padding: 80px 24px; border-bottom: 1px solid #f0f4f8; }
+        
+        nav a { color: var(--deep-blue); font-weight: 600; }
+        
+        /* Blog Styling */
         .actionable-box {
-            background-color: var(--pale-teal);
-            color: var(--deep-blue);
+            background-color: var(--pale-teal) !important;
+            color: var(--deep-blue) !important;
             padding: 1.5rem;
             border-radius: 0.5rem;
             margin: 1.5rem 0;
             border-left: 5px solid var(--deep-blue);
-            font-weight: 500;
         }
-
-        header { border-bottom: 2px solid var(--pale-teal); position: sticky; top: 0; background: white; z-index: 50; }
-        section { padding: 80px 24px; border-bottom: 1px solid #f0f4f8; }
-        
-        /* Blog Content Styling */
-        #blog-content h1, #blog-content h2 { color: var(--deep-blue); font-weight: 700; margin-top: 2rem; }
-        #blog-content p { margin-bottom: 1rem; }
-        #blog-content blockquote { background: #f9fafb; padding: 1rem; border-left: 4px solid var(--pale-teal); font-style: italic; }
+        .blog-post h1, .blog-post h2 { color: var(--deep-blue); font-weight: 700; margin-top: 1.5rem; font-size: 1.875rem; }
     </style>
 </head>
 <body class="antialiased">
 
+    <!-- NAVIGATION -->
     <header class="p-4">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <div class="text-xl font-bold brand-text-blue">ANGIE Q BAILEY</div>
-            <nav class="space-x-8">
-                <a href="#" class="brand-text-blue font-semibold">Home</a>
-                <a href="#about" class="brand-text-blue font-semibold">About</a>
-                <a href="#blog" class="brand-text-blue font-semibold">Blog</a>
-                <a href="#resources" class="brand-text-blue font-semibold">Resources</a>
-                <a href="#contact" class="brand-text-blue font-semibold">Contact</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#blog">Blog</a>
+                <a href="#resources">Resources</a>
+                <a href="#contact">Contact</a>
             </nav>
         </div>
     </header>
 
+    <!-- HOME / HERO -->
     <section id="home" class="max-w-4xl mx-auto py-24">
         <h1 class="text-5xl md:text-6xl font-bold brand-heading mb-6">Stuff you can actually use on a Tuesday.</h1>
-        <p class="text-xl mb-8">Add value, not noise. Deconstructing complex systems into actionable frameworks.</p>
-        <a href="#blog" class="brand-button px-8 py-4 rounded font-bold inline-block">Read Insights</a>
+        <p class="text-xl md:text-2xl mb-8">Add value, not noise. Deconstructing complex systems into actionable frameworks.</p>
+        <a href="#blog" class="brand-button px-8 py-4 rounded font-bold text-lg inline-block">View Tuesday Insights</a>
     </section>
 
-    <!-- BLOG SECTION -->
+    <!-- ABOUT -->
+    <section id="about" class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold brand-heading mb-6 text-center md:text-left">About</h2>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <p class="text-lg">I specialize in strategic clarity. This site is a repository for professionals who need actionable takeaways from complex concepts, delivered without the fluff.</p>
+            <div class="brand-bg-teal p-8 rounded-lg">
+                <p class="brand-text-blue font-semibold italic text-center">"Practical strategies for the modern professional."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG -->
     <section id="blog" class="max-w-4xl mx-auto">
         <h2 class="text-3xl font-bold brand-heading mb-10">Tuesday's Insights</h2>
-        
-        <!-- This is where the blog posts will appear -->
         <div id="blog-container" class="space-y-16">
             <p>Loading insights...</p>
         </div>
     </section>
 
-    <!-- Other sections (About, Resources, Contact) would go here -->
+    <!-- RESOURCES -->
+    <section id="resources" class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold brand-heading mb-6">Resources</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="p-6 border border-gray-100 rounded-lg"><h4 class="font-bold brand-text-blue">Toolkit</h4><p class="text-sm">High-utility tools for rapid growth.</p></div>
+            <div class="p-6 border border-gray-100 rounded-lg"><h4 class="font-bold brand-text-blue">Frameworks</h4><p class="text-sm">Step-by-step deconstruction templates.</p></div>
+            <div class="p-6 border border-gray-100 rounded-lg"><h4 class="font-bold brand-text-blue">Guides</h4><p class="text-sm">Actionable PDFs for Tuesday mornings.</p></div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold brand-heading mb-6">Connect</h2>
+        <div class="flex justify-center space-x-12">
+            <a href="mailto:hello@angieqbailey.com" class="brand-text-blue font-bold border-b-2 border-[#A8DADC]">Email</a>
+            <a href="#" class="brand-text-blue font-bold border-b-2 border-[#A8DADC]">LinkedIn</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-50 py-12">
+        <div class="max-w-6xl mx-auto px-6 text-center text-sm text-gray-400">
+            <p>&copy; 2026 Angie Q Bailey. Built with strategic clarity.</p>
+        </div>
+    </footer>
 
     <script>
-        // BLOG CONFIGURATION
-        // To add a new post: 
-        // 1. Upload your .md file to the /posts folder
-        // 2. Add the filename to this list
-        const posts = [
-            'tuesday-one.md'
-        ];
-
-        const blogContainer = document.getElementById('blog-container');
+        // ADD YOUR FILENAMES HERE
+        const posts = ['my-first-post.md']; 
 
         async function loadPosts() {
-            blogContainer.innerHTML = ''; // Clear loading text
-            
+            const container = document.getElementById('blog-container');
+            container.innerHTML = '';
             for (const file of posts) {
                 try {
-                    const response = await fetch(`./posts/${file}`);
-                    const markdown = await response.text();
-                    
-                    // Create post wrapper
-                    const postElement = document.createElement('div');
-                    postElement.className = 'blog-post pb-12 border-b border-gray-100';
-                    
-                    // Convert Markdown to HTML
-                    let htmlContent = marked.parse(markdown);
-
-                    // Special Rule: Turn any blockquote into an "Actionable Takeaway" box
-                    htmlContent = htmlContent.replace(/<blockquote>/g, '<div class="actionable-box"><strong>Tuesday Takeaway:</strong>');
-                    htmlContent = htmlContent.replace(/<\/blockquote>/g, '</div>');
-
-                    postElement.innerHTML = htmlContent;
-                    blogContainer.appendChild(postElement);
-                } catch (error) {
-                    console.error("Error loading post:", file, error);
-                }
+                    const r = await fetch(`./posts/${file}`);
+                    const md = await r.text();
+                    const div = document.createElement('div');
+                    div.className = 'blog-post pb-12 border-b border-gray-100';
+                    let html = marked.parse(md);
+                    // Transform blockquotes to Actionable Boxes
+                    html = html.replace(/<blockquote>/g, '<div class="actionable-box"><strong>Tuesday Takeaway:</strong>');
+                    html = html.replace(/<\/blockquote>/g, '</div>');
+                    div.innerHTML = html;
+                    container.appendChild(div);
+                } catch (e) { console.error(e); }
             }
         }
-
         loadPosts();
     </script>
 </body>
