@@ -1,16 +1,18 @@
-## Hi there 👋
+# angieqbailey.com
 
-<!--
-**AngieQBailey/angieqbailey** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Personal site for Angie Bailey — The Warehouse.
 
-Here are some ideas to get you started:
+## Design System: The Warehouse
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+**Palette:** Nuit de Chine, Bitter Cacao, Quetzal Green, Ecru Wool, Valentino Rosso  
+**Typography:** Imbue (headlines) + IBM Plex Sans/Mono (body/code)  
+**Constraint:** No italics. No border-radius. Certainty over suggestion.
+
+## Stack
+
+Pure HTML/CSS/JS — no framework dependencies.  
+Hosted on GitHub Pages.
+
+## Deployment
+
+Push to `main` branch. GitHub Pages serves from root.
