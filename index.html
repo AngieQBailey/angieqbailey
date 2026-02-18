@@ -1,143 +1,905 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angie Bailey | Actionable Insights</title>
-    <link rel="icon" type="image/png" href="favicon.png?v=1">
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    
-    <style>
+    <meta name="description" content="Angie Bailey — Strategic operator bridging technical teams and executive clarity. AI implementation, change management, and cross-functional leadership.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+
+```
+<!-- Open Graph -->
+<meta property="og:title" content="Angie Bailey // The Warehouse">
+<meta property="og:description" content="Operator bridging teams and executive clarity.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://angieqbailey.com">
+
+<title>Angie Bailey // The Warehouse</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+    /* ===================================================
+       THE WAREHOUSE — Design System
+       Angie Bailey | angieqbailey.com
+       
+       Palette: Durable Births
+       Typography: The Historical Paradox
+       Constraint: No Italics. Certainty over Suggestion.
+       =================================================== */
+
+    :root {
+        --nuit:     #121A28;   /* Authority — unyielding logic        */
+        --cacao:    #2D1B14;   /* Nudge — discerning warmth           */
+        --quetzal:  #00685E;   /* Grid — 100-year patina              */
+        --ecru:     #F5F5DC;   /* Canvas — archival, meant to be kept */
+        --rosso:    #C41E3A;   /* Pivot — surgical strike             */
+        --ecru-dim: rgba(245, 245, 220, 0.6);
+        --ecru-ghost: rgba(245, 245, 220, 0.08);
+        --quetzal-line: rgba(0, 104, 94, 0.1);
+        --spine-left: 22%;
+    }
+
+    /* The Brutalist Reset */
+    *, *::before, *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-style: normal !important;
+        border-radius: 0 !important;
+    }
+
+    ::selection {
+        background: var(--rosso);
+        color: var(--ecru);
+    }
+
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 2rem;
+    }
+
+    body {
+        background-color: var(--nuit);
+        color: var(--ecru);
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-weight: 400;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+    }
+
+    /* ===================================================
+       THE ARCHITECTURAL GRID — Blueprint Overlay
+       =================================================== */
+    .blueprint-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1000;
+        background-image: 
+            linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+        background-size: 40px 40px;
+    }
+
+    /* ===================================================
+       THE STRUCTURAL SPINE — Bitter Cacao
+       =================================================== */
+    .spine {
+        position: fixed;
+        left: calc(var(--spine-left) - 40px);
+        top: 0;
+        width: 4px;
+        height: 100%;
+        background-color: var(--cacao);
+        z-index: 500;
+    }
+
+    /* ===================================================
+       NAVIGATION — Fixed, Minimal
+       =================================================== */
+    .nav-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 900;
+        padding: 1.5rem 2rem 1.5rem var(--spine-left);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+    }
+
+    .nav-mark {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--quetzal);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        padding-right: 2rem;
+    }
+
+    .nav-links a {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.75rem;
+        font-weight: 400;
+        color: var(--ecru-dim);
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        transition: color 0.2s ease;
+        position: relative;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--rosso);
+        transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+        color: var(--ecru);
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    /* ===================================================
+       MAIN CONTENT AREA
+       =================================================== */
+    main {
+        position: relative;
+        z-index: 10;
+    }
+
+    .section-content {
+        padding-left: var(--spine-left);
+        padding-right: 4rem;
+        max-width: 1200px;
+    }
+
+    /* ===================================================
+       HERO — The Verdict
+       =================================================== */
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 8rem;
+        padding-bottom: 4rem;
+    }
+
+    .hero-metadata {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.8rem;
+        color: var(--quetzal);
+        letter-spacing: 0.1em;
+        margin-bottom: 2rem;
+        display: block;
+    }
+
+    .hero h1 {
+        font-family: 'Imbue', serif;
+        font-size: clamp(3.5rem, 10vw, 9rem);
+        font-weight: 900;
+        line-height: 0.85;
+        color: var(--ecru);
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+        word-spacing: -0.05em;
+        margin-bottom: 3rem;
+    }
+
+    .hero h1 .accent-word {
+        color: var(--rosso);
+    }
+
+    .verdict-box {
+        border-left: 5px solid var(--rosso);
+        padding-left: 2rem;
+        max-width: 600px;
+    }
+
+    .verdict-box p {
+        font-size: 1.25rem;
+        font-weight: 300;
+        line-height: 1.7;
+        color: var(--ecru-dim);
+    }
+
+    .verdict-box strong {
+        color: var(--ecru);
+        font-weight: 500;
+    }
+
+    /* ===================================================
+       SECTION HEADERS
+       =================================================== */
+    .section-label {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: var(--quetzal);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .section-number {
+        font-family: 'Imbue', serif;
+        font-size: clamp(2rem, 5vw, 4rem);
+        font-weight: 900;
+        color: var(--cacao);
+        line-height: 1;
+        margin-bottom: 0.25rem;
+    }
+
+    h2 {
+        font-family: 'Imbue', serif;
+        font-size: clamp(2rem, 5vw, 4rem);
+        font-weight: 900;
+        color: var(--ecru);
+        text-transform: uppercase;
+        line-height: 0.9;
+        letter-spacing: -0.01em;
+        margin-bottom: 2rem;
+    }
+
+    /* ===================================================
+       THE INVESTIGATION — About
+       =================================================== */
+    .investigation {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+        border-top: 1px solid var(--ecru-ghost);
+    }
+
+    .investigation-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        margin-top: 3rem;
+    }
+
+    .investigation-text p {
+        font-size: 1.05rem;
+        font-weight: 300;
+        line-height: 1.8;
+        color: var(--ecru-dim);
+        margin-bottom: 1.5rem;
+    }
+
+    .investigation-text p strong {
+        color: var(--ecru);
+        font-weight: 500;
+    }
+
+    .dossier {
+        border-left: 3px solid var(--cacao);
+        padding-left: 1.5rem;
+    }
+
+    .dossier-item {
+        margin-bottom: 1.75rem;
+    }
+
+    .dossier-key {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: var(--quetzal);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 0.25rem;
+    }
+
+    .dossier-value {
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--ecru);
+        line-height: 1.5;
+    }
+
+    /* ===================================================
+       THE WAREHOUSE — Evidence Locker (Projects)
+       =================================================== */
+    .warehouse {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+        border-top: 1px solid var(--ecru-ghost);
+    }
+
+    .evidence-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2px;
+        margin-top: 3rem;
+    }
+
+    .evidence-card {
+        background: var(--ecru-ghost);
+        padding: 2.5rem 2rem;
+        position: relative;
+        transition: background 0.3s ease;
+        cursor: default;
+    }
+
+    .evidence-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: var(--rosso);
+        transition: width 0.4s ease;
+    }
+
+    .evidence-card:hover {
+        background: rgba(245, 245, 220, 0.12);
+    }
+
+    .evidence-card:hover::before {
+        width: 100%;
+    }
+
+    .card-tag {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.65rem;
+        font-weight: 700;
+        color: var(--rosso);
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        margin-bottom: 1rem;
+    }
+
+    .card-title {
+        font-family: 'Imbue', serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--ecru);
+        text-transform: uppercase;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: var(--ecru-dim);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .card-metric {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.75rem;
+        color: var(--quetzal);
+        letter-spacing: 0.05em;
+    }
+
+    .card-metric span {
+        color: var(--ecru);
+        font-weight: 700;
+    }
+
+    /* ===================================================
+       THE VERDICT — Principles
+       =================================================== */
+    .verdict-section {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+        border-top: 1px solid var(--ecru-ghost);
+    }
+
+    .principles-list {
+        margin-top: 3rem;
+        max-width: 650px;
+    }
+
+    .principle {
+        padding: 1.75rem 0;
+        border-bottom: 1px solid var(--ecru-ghost);
+    }
+
+    .principle:first-child {
+        border-top: 1px solid var(--ecru-ghost);
+    }
+
+    .principle-number {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.65rem;
+        font-weight: 700;
+        color: var(--rosso);
+        letter-spacing: 0.15em;
+        margin-bottom: 0.5rem;
+    }
+
+    .principle-text {
+        font-family: 'Imbue', serif;
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--ecru);
+        line-height: 1.2;
+        text-transform: uppercase;
+    }
+
+    .principle-sub {
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: var(--ecru-dim);
+        margin-top: 0.5rem;
+        line-height: 1.5;
+    }
+
+    /* ===================================================
+       CONTACT — The Signal
+       =================================================== */
+    .signal {
+        padding-top: 6rem;
+        padding-bottom: 8rem;
+        border-top: 1px solid var(--ecru-ghost);
+    }
+
+    .signal-content {
+        margin-top: 2rem;
+    }
+
+    .signal-content p {
+        font-size: 1.05rem;
+        font-weight: 300;
+        color: var(--ecru-dim);
+        margin-bottom: 2rem;
+        max-width: 500px;
+    }
+
+    .signal-links {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .signal-link {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--ecru);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        transition: color 0.2s ease;
+        width: fit-content;
+    }
+
+    .signal-link:hover {
+        color: var(--rosso);
+    }
+
+    .signal-link::before {
+        content: '';
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--quetzal);
+        transition: width 0.3s ease, background 0.3s ease;
+    }
+
+    .signal-link:hover::before {
+        width: 40px;
+        background: var(--rosso);
+    }
+
+    /* ===================================================
+       FOOTER
+       =================================================== */
+    footer {
+        padding: 2rem 2rem 2rem var(--spine-left);
+        border-top: 1px solid var(--ecru-ghost);
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+    }
+
+    .footer-content span {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.7rem;
+        color: var(--ecru-dim);
+        letter-spacing: 0.05em;
+    }
+
+    /* ===================================================
+       RESPONSIVE — Structural Adaptation
+       =================================================== */
+    @media (max-width: 900px) {
         :root {
-            --deep-blue: #1D3557;
-            --pale-teal: #A8DADC;
-            --slate-gray: #4A5568;
-            --bold-orange: #ED8936;
+            --spine-left: 5%;
         }
 
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Libre Franklin', sans-serif; color: var(--slate-gray); background-color: #FFFFFF; line-height: 1.6; }
-        
-        /* Force Brand Colors */
-        .brand-heading { color: var(--deep-blue) !important; }
-        .brand-text-blue { color: var(--deep-blue) !important; }
-        .brand-bg-teal { background-color: var(--pale-teal) !important; }
-        .brand-button { background-color: var(--bold-orange) !important; color: white !important; }
-        
-        header { border-bottom: 2px solid var(--pale-teal); position: sticky; top: 0; background: white; z-index: 50; }
-        section { padding: 80px 24px; border-bottom: 1px solid #f0f4f8; }
-        
-        nav a { color: var(--deep-blue); font-weight: 600; }
-        
-        /* Blog Styling */
-        .actionable-box {
-            background-color: var(--pale-teal) !important;
-            color: var(--deep-blue) !important;
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            margin: 1.5rem 0;
-            border-left: 5px solid var(--deep-blue);
+        .spine {
+            left: 12px;
+            width: 3px;
         }
-        .blog-post h1, .blog-post h2 { color: var(--deep-blue); font-weight: 700; margin-top: 1.5rem; font-size: 1.875rem; }
-    </style>
+
+        .section-content {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .nav-bar {
+            padding-left: 2rem;
+        }
+
+        .investigation-grid {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .evidence-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+            gap: 1.25rem;
+            padding-right: 1rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 12vw, 5rem);
+        }
+
+        footer {
+            padding-left: 2rem;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .nav-mark {
+            display: none;
+        }
+
+        .nav-bar {
+            justify-content: flex-end;
+        }
+
+        .blueprint-overlay {
+            background-size: 24px 24px;
+        }
+    }
+
+    /* ===================================================
+       ENTRANCE ANIMATIONS — Restrained, Structural
+       =================================================== */
+    @keyframes spine-draw {
+        from { height: 0; }
+        to { height: 100%; }
+    }
+
+    @keyframes fade-up {
+        from { 
+            opacity: 0; 
+            transform: translateY(20px); 
+        }
+        to { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+    }
+
+    @keyframes grid-fade {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .spine {
+        animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .blueprint-overlay {
+        animation: grid-fade 2s ease 0.5s both;
+    }
+
+    .hero-metadata {
+        animation: fade-up 0.8s ease 0.4s both;
+    }
+
+    .hero h1 {
+        animation: fade-up 0.8s ease 0.6s both;
+    }
+
+    .verdict-box {
+        animation: fade-up 0.8s ease 0.8s both;
+    }
+
+    /* Scroll-triggered reveal */
+    .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+```
+
 </head>
-<body class="antialiased">
+<body>
 
-    <!-- NAVIGATION -->
-    <header class="p-4">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <div class="text-xl font-bold brand-text-blue">ANGIE BAILEY</div>
-            <nav class="hidden md:flex space-x-8">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#blog">Blog</a>
-                <a href="#resources">Resources</a>
-                <a href="#contact">Contact</a>
-            </nav>
+```
+<!-- Architectural Grid -->
+<div class="blueprint-overlay" aria-hidden="true"></div>
+
+<!-- Structural Spine -->
+<div class="spine" aria-hidden="true"></div>
+
+<!-- Navigation -->
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <span class="nav-mark">AB</span>
+    <ul class="nav-links">
+        <li><a href="#investigation">Investigation</a></li>
+        <li><a href="#warehouse">Warehouse</a></li>
+        <li><a href="#verdict">Verdict</a></li>
+        <li><a href="#signal">Signal</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- ========================================
+         HERO
+         ======================================== -->
+    <section class="hero section-content" id="home">
+        <span class="hero-metadata">LOC: Columbia, MO // Status: Building what's next</span>
+        
+        <h1>Value,<br><span class="accent-word">Not</span><br>Noise.</h1>
+        
+        <div class="verdict-box">
+            <p>
+                I make <strong>technical teams legible to executives</strong> and 
+                <strong>executive strategy legible to the people building it</strong>. 
+                Seventeen years in journalism taught me to find the story. 
+                A decade in tech taught me to build the system.
+            </p>
         </div>
-    </header>
-
-    <!-- HOME / HERO -->
-    <section id="home" class="max-w-4xl mx-auto py-24">
-        <h1 class="text-5xl md:text-6xl font-bold brand-heading mb-6">Stuff you can actually use on a Tuesday.</h1>
-        <p class="text-xl md:text-2xl mb-8">Add value, not noise. Deconstructing complexity into actionable takeaways.</p>
-        <a href="#blog" class="brand-button px-8 py-4 rounded font-bold text-lg inline-block">View Tuesday Insights</a>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold brand-heading mb-6 text-center md:text-left">About</h2>
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <p class="text-lg">I specialize in strategic clarity. This site is a repository for people who need actionable takeaways for complex concepts delivered without the performative fluff.</p>
-            <div class="brand-bg-teal p-8 rounded-lg">
-                <p class="brand-text-blue font-semibold text-center">"Practical strategies for the modern professional."</p>
+    <!-- ========================================
+         THE INVESTIGATION — About
+         ======================================== -->
+    <section class="investigation section-content reveal" id="investigation">
+        <span class="section-label">Section 01</span>
+        <h2>The<br>Investigation</h2>
+        
+        <div class="investigation-grid">
+            <div class="investigation-text">
+                <p>
+                    Most organizations hire communicators or strategists. 
+                    They rarely find someone who is both — and who also 
+                    understands the <strong>technical architecture</strong> well enough 
+                    to know when the strategy is disconnected from reality.
+                </p>
+                <p>
+                    I sit at the intersection of systems thinking and human translation. 
+                    I build the <strong>connective tissue</strong> between what leadership wants, 
+                    what engineering can deliver, and what the organization actually needs 
+                    to hear to move forward.
+                </p>
+                <p>
+                    My work is invisible when it succeeds. Alignment happens. 
+                    Decisions get made. Teams stop talking past each other. 
+                    The infrastructure holds.
+                </p>
+            </div>
+            
+            <div class="dossier">
+                <div class="dossier-item">
+                    <div class="dossier-key">Discipline</div>
+                    <div class="dossier-value">Strategic Operations + Cross-Functional Leadership</div>
+                </div>
+                <div class="dossier-item">
+                    <div class="dossier-key">Prior Life</div>
+                    <div class="dossier-value">17 years in journalism — translating complexity for real people</div>
+                </div>
+                <div class="dossier-item">
+                    <div class="dossier-key">Current Terrain</div>
+                    <div class="dossier-value">AI implementation, change management, B2B product marketing</div>
+                </div>
+                <div class="dossier-item">
+                    <div class="dossier-key">Operating Principle</div>
+                    <div class="dossier-value">Reality before theory. Terrain before map.</div>
+                </div>
+                <div class="dossier-item">
+                    <div class="dossier-key">Signal</div>
+                    <div class="dossier-value">AI forward, human always.</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- BLOG -->
-    <section id="blog" class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold brand-heading mb-10">Tuesday's Insights</h2>
-        <div id="blog-container" class="space-y-16">
-            <p>Loading insights...</p>
+    <!-- ========================================
+         THE WAREHOUSE — Evidence Locker
+         ======================================== -->
+    <section class="warehouse section-content reveal" id="warehouse">
+        <span class="section-label">Section 02</span>
+        <h2>The<br>Warehouse</h2>
+
+        <div class="evidence-grid">
+            <div class="evidence-card">
+                <div class="card-tag">AI Implementation</div>
+                <div class="card-title">Workforce AI<br>Adoption</div>
+                <div class="card-text">
+                    Built an AI automation program from zero. Identified pain points first, 
+                    trained on one task at a time, and scaled only what stuck.
+                </div>
+                <div class="card-metric">Outcome: <span>42+ hrs/month recovered</span> // Adoption: <span>30% to near-100%</span></div>
+            </div>
+
+            <div class="evidence-card">
+                <div class="card-tag">Strategic Operations</div>
+                <div class="card-title">E-Commerce<br>Summit</div>
+                <div class="card-text">
+                    Coordinated 18+ stakeholders across 8 functional domains 
+                    to produce a 3-year strategic roadmap with clear ownership 
+                    and execution timelines.
+                </div>
+                <div class="card-metric">Scope: <span>18 stakeholders, 8 domains</span> // Output: <span>3-year roadmap</span></div>
+            </div>
+
+            <div class="evidence-card">
+                <div class="card-tag">Decision Infrastructure</div>
+                <div class="card-title">First Decision-Grade<br>E-Commerce P&L</div>
+                <div class="card-text">
+                    Built the organization's first P&L dashboard capable of 
+                    supporting actual executive decisions — not just reporting 
+                    what already happened.
+                </div>
+                <div class="card-metric">Impact: <span>First decision-grade financial visibility</span></div>
+            </div>
+
+            <div class="evidence-card">
+                <div class="card-tag">Change Management</div>
+                <div class="card-title">Post-Acquisition<br>Integration</div>
+                <div class="card-text">
+                    Led the operational integration of B&B Warehouse following acquisition. 
+                    Translated between legacy processes and new systems 
+                    without losing institutional knowledge.
+                </div>
+                <div class="card-metric">Type: <span>Full operational integration</span></div>
+            </div>
         </div>
     </section>
 
-    <!-- RESOURCES -->
-    <section id="resources" class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold brand-heading mb-6">Resources</h2>
-        <div class="grid md:grid-cols-3 gap-6">
-            <div class="p-6 border border-gray-100 rounded-lg"><h4 class="font-bold brand-text-blue">Toolkit</h4><p class="text-sm">High-utility tools for rapid learning.</p></div>
-            <div class="p-6 border border-gray-100 rounded-lg"><h4 class="font-bold brand-text-blue">Frameworks</h4><p class="text-sm">Step-by-step deconstruction templates.</p></div>
-            <div class="p-6 border border-gray-100 rounded-lg"><h4 class="font-bold brand-text-blue">Guides</h4><p class="text-sm">Actionable PDFs for Tuesday mornings.</p></div>
+    <!-- ========================================
+         THE VERDICT — Principles
+         ======================================== -->
+    <section class="verdict-section section-content reveal" id="verdict">
+        <span class="section-label">Section 03</span>
+        <h2>The<br>Verdict</h2>
+
+        <div class="principles-list">
+            <div class="principle">
+                <div class="principle-number">01</div>
+                <div class="principle-text">Add value, not noise.</div>
+                <div class="principle-sub">Every action either contributes or clutters. There is no neutral.</div>
+            </div>
+
+            <div class="principle">
+                <div class="principle-number">02</div>
+                <div class="principle-text">Vocabulary is the barrier.</div>
+                <div class="principle-sub">Most failures aren't technical. They're linguistic. Define the terms and the conflict dissolves.</div>
+            </div>
+
+            <div class="principle">
+                <div class="principle-number">03</div>
+                <div class="principle-text">Reality before theory.</div>
+                <div class="principle-sub">The map is not the terrain. Observe the system as it is, not as you wish it to be.</div>
+            </div>
+
+            <div class="principle">
+                <div class="principle-number">04</div>
+                <div class="principle-text">Structure is how you protect people.</div>
+                <div class="principle-sub">Good systems prevent harm. Clarity reduces suffering. Organization is care made operational.</div>
+            </div>
+
+            <div class="principle">
+                <div class="principle-number">05</div>
+                <div class="principle-text">AI forward, human always.</div>
+                <div class="principle-sub">Technology serves people. When it stops doing that, the implementation failed — not the people.</div>
+            </div>
         </div>
     </section>
 
-    <!-- CONTACT -->
-<section id="contact" class="max-w-4xl mx-auto text-center">
-    <h2 class="text-3xl font-bold brand-heading mb-6">Connect</h2>
-    <p class="text-xl mb-8">Ready to add value? Let’s talk.</p>
-    <div class="flex justify-center space-x-12">
-        <!-- EMAIL LINK -->
-        <a href="mailto:angie@angieqbailey.com" onclick="window.open(this.href, '_blank'); return false;" class="brand-text-blue font-bold border-b-2 border-[#A8DADC]">angie@angieqbailey.com</a>
-        
-        <!-- LINKEDIN LINK (Must have https://) -->
-        <a href="https://www.linkedin.com/in/angie-bailey/" target="_blank" class="brand-text-blue font-bold border-b-2 border-[#A8DADC]">LinkedIn</a>
+    <!-- ========================================
+         THE SIGNAL — Contact
+         ======================================== -->
+    <section class="signal section-content reveal" id="signal">
+        <span class="section-label">Section 04</span>
+        <h2>The<br>Signal</h2>
+
+        <div class="signal-content">
+            <p>
+                I'm building what comes next — at the intersection of 
+                AI implementation, strategic leadership, and the humans 
+                caught in the middle.
+            </p>
+
+            <div class="signal-links">
+                <a href="mailto:angie@angieqbailey.com" class="signal-link">angie@angieqbailey.com</a>
+                <a href="https://www.linkedin.com/in/angie-bailey/" class="signal-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <span>&copy; 2026 Angie Bailey</span>
+        <span>Built with structural clarity.</span>
     </div>
-</section>
+</footer>
 
-    <!-- FOOTER -->
-    <footer class="bg-gray-50 py-12">
-        <div class="max-w-6xl mx-auto px-6 text-center text-sm text-gray-400">
-            <p>&copy; 2026 Angie Q Bailey. Built with strategic clarity.</p>
-        </div>
-    </footer>
-
-    <script>
-        // ADD YOUR FILENAMES HERE
-        const posts = ['my-first-post.md']; 
-
-        async function loadPosts() {
-            const container = document.getElementById('blog-container');
-            container.innerHTML = '';
-            for (const file of posts) {
-                try {
-                    const r = await fetch(`./posts/${file}`);
-                    const md = await r.text();
-                    const div = document.createElement('div');
-                    div.className = 'blog-post pb-12 border-b border-gray-100';
-                    let html = marked.parse(md);
-                    // Transform blockquotes to Actionable Boxes
-                    html = html.replace(/<blockquote>/g, '<div class="actionable-box"><strong>Tuesday Takeaway:</strong>');
-                    html = html.replace(/<\/blockquote>/g, '</div>');
-                    div.innerHTML = html;
-                    container.appendChild(div);
-                } catch (e) { console.error(e); }
+<!-- ===================================================
+     MINIMAL JS — Scroll Reveal Only
+     =================================================== -->
+<script>
+    // Intersection Observer for scroll-triggered reveals
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
             }
-        }
-        loadPosts();
-    </script>
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Smooth scroll for nav links (fallback for older browsers)
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+```
+
 </body>
 </html>
