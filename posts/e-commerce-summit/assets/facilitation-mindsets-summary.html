@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="3-Day Facilitation Mindsets — A structural arc for cross-functional strategic alignment through pressure testing, prioritization, and commitment locking.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <title>3-Day Facilitation Mindsets // Angie Bailey</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --nuit: #121A28; --cacao: #2D1B14; --quetzal: #00685E;
+            --ecru: #F5F5DC; --rosso: #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; font-style: normal !important; border-radius: 0 !important; }
+        ::selection { background: var(--rosso); color: var(--ecru); }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--nuit); color: var(--ecru); font-family: 'IBM Plex Sans', sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+        .blueprint-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1000; background-image: linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px), linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px); background-size: 40px 40px; animation: grid-fade 2s ease 0.5s both; }
+        .spine { position: fixed; left: calc(var(--spine-left) - 40px); top: 0; width: 4px; height: 100%; background-color: var(--cacao); z-index: 500; animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        .nav-bar { position: fixed; top: 0; left: 0; width: 100%; z-index: 900; padding: 1.5rem 2rem 1.5rem var(--spine-left); display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, var(--nuit) 60%, transparent); }
+        .nav-mark { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--quetzal); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; font-weight: 400; color: var(--ecru-dim); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s ease; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--rosso); transition: width 0.3s ease; }
+        .nav-links a:hover { color: var(--ecru); }
+        .nav-links a:hover::after { width: 100%; }
+
+        main { position: relative; z-index: 10; }
+        .doc-content { padding-left: var(--spine-left); padding-right: 4rem; max-width: 1200px; }
+        .doc-header { padding-top: 10rem; padding-bottom: 3rem; }
+        .doc-type { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; font-weight: 700; color: var(--rosso); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 1.5rem; display: block; animation: fade-up 0.8s ease 0.4s both; }
+        .doc-header h1 { font-family: 'Imbue', serif; font-size: clamp(2rem, 5vw, 4.5rem); font-weight: 900; line-height: 0.9; color: var(--ecru); text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 1rem; max-width: 600px; animation: fade-up 0.8s ease 0.5s both; }
+        .doc-header h1 .accent-word { color: var(--rosso); }
+        .doc-subtitle { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--quetzal); letter-spacing: 0.05em; margin-bottom: 2rem; animation: fade-up 0.8s ease 0.6s both; }
+        .doc-lede { font-size: 1.15rem; font-weight: 300; line-height: 1.7; color: var(--ecru-dim); max-width: 600px; margin-bottom: 2rem; animation: fade-up 0.8s ease 0.7s both; }
+        .doc-lede strong { color: var(--ecru); font-weight: 500; }
+
+        .download-btn { display: inline-flex; align-items: center; gap: 1rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--nuit); background: var(--ecru); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; padding: 1rem 2rem; border: none; cursor: pointer; transition: background 0.2s ease, color 0.2s ease; animation: fade-up 0.8s ease 0.8s both; }
+        .download-btn:hover { background: var(--rosso); color: var(--ecru); }
+        .download-btn .arrow { font-size: 1.1rem; transition: transform 0.2s ease; }
+        .download-btn:hover .arrow { transform: translateY(2px); }
+
+        .doc-section { padding-top: 4rem; padding-bottom: 4rem; border-top: 1px solid var(--ecru-ghost); }
+        .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; font-weight: 700; color: var(--quetzal); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+        h2 { font-family: 'Imbue', serif; font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 900; color: var(--ecru); text-transform: uppercase; line-height: 0.95; margin-bottom: 2rem; }
+        .doc-body p { font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--ecru-dim); margin-bottom: 1.25rem; max-width: 650px; }
+        .doc-body p strong { color: var(--ecru); font-weight: 500; }
+
+        /* Day Cards */
+        .day-grid { display: grid; grid-template-columns: 1fr; gap: 2px; margin: 2rem 0; max-width: 750px; }
+
+        .day-card { background: var(--ecru-ghost); padding: 2.5rem 2rem; }
+
+        .day-num { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; font-weight: 700; color: var(--rosso); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 0.75rem; }
+
+        .day-title { font-family: 'Imbue', serif; font-size: 1.5rem; font-weight: 900; color: var(--ecru); text-transform: uppercase; line-height: 1.1; margin-bottom: 0.75rem; }
+
+        .day-goal { font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.7; margin-bottom: 1.25rem; }
+
+        .day-mantra { font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: var(--quetzal); line-height: 1.5; padding: 1rem; border-left: 3px solid var(--cacao); margin-top: 1rem; }
+
+        .day-comfort { font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.6; margin-top: 1rem; }
+        .day-comfort strong { color: var(--ecru); font-weight: 500; }
+
+        /* Philosophy */
+        .philosophy-list { margin: 2rem 0; max-width: 650px; }
+        .philosophy-item { padding: 1rem 1.5rem; background: var(--ecru-ghost); margin-bottom: 2px; display: flex; gap: 1rem; align-items: baseline; }
+        .philosophy-num { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; font-weight: 700; color: var(--rosso); letter-spacing: 0.15em; min-width: 24px; }
+        .philosophy-text { font-size: 0.9rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.6; }
+
+        .core-principle { border-left: 5px solid var(--rosso); padding: 2rem; margin: 2.5rem 0; max-width: 650px; background: var(--ecru-ghost); }
+        .core-principle p { font-family: 'Imbue', serif; font-size: 1.4rem; font-weight: 700; color: var(--ecru); line-height: 1.3; text-transform: uppercase; }
+        .core-principle .sub { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.6; text-transform: none; margin-top: 1rem; }
+
+        .back-link { display: inline-flex; align-items: center; gap: 0.75rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: var(--ecru-dim); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s ease; margin-top: 2rem; }
+        .back-link::before { content: ''; display: block; width: 24px; height: 2px; background: var(--quetzal); transition: width 0.3s ease, background 0.3s ease; }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        .attribution { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--ecru-dim); letter-spacing: 0.05em; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--ecru-ghost); }
+
+        footer { padding: 2rem 2rem 2rem var(--spine-left); border-top: 1px solid var(--ecru-ghost); }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; }
+        .footer-content span { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--ecru-dim); letter-spacing: 0.05em; }
+
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .doc-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+        }
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .blueprint-overlay { background-size: 24px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="blueprint-overlay" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true"></div>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="/" class="nav-mark">AB</a>
+    <ul class="nav-links">
+        <li><a href="/#warehouse">Warehouse</a></li>
+        <li><a href="/cases/e-commerce-summit.html">Case Study</a></li>
+        <li><a href="/#signal">Signal</a></li>
+    </ul>
+</nav>
+
+<main>
+    <section class="doc-header doc-content">
+        <span class="doc-type">Methodology</span>
+        <h1>3-Day Facilitation<br><span class="accent-word">Mindsets</span></h1>
+        <div class="doc-subtitle">A Structural Arc for Cross-Functional Strategic Alignment</div>
+        <p class="doc-lede">
+            The facilitation philosophy behind a three-day strategic summit that
+            aligned 18 stakeholders across 8 functional domains.
+            <strong>Built on one principle: surface reality before attempting
+            to plan against it.</strong>
+        </p>
+        <a href="templates/facilitation-mindsets-blank.html" download class="download-btn">
+            Download Blank Template <span class="arrow">&darr;</span>
+        </a>
+    </section>
+
+    <!-- The Arc -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">The Arc</span>
+        <h2>Three Days,<br>Three Modes</h2>
+
+        <div class="day-grid">
+            <div class="day-card">
+                <div class="day-num">Day 01</div>
+                <div class="day-title">Pressure Testing, Not Solving</div>
+                <div class="day-goal">
+                    Test assumptions, expose friction, and validate the feasibility of strategic objectives under real-world constraints. You are not there to get people to solve or build.
+                </div>
+                <div class="day-mantra">
+                    We are not building. We are poking.<br>
+                    We are not aligning. We are agitating.<br>
+                    We are not planning. We are pressure-testing.
+                </div>
+                <div class="day-comfort">
+                    <strong>Be comfortable with:</strong> Letting initiatives die if stakeholders cannot defend them. Leaving metrics unconfirmed if trust, ownership, or system readiness is weak. Documenting conflicts and ambiguities without forcing resolution. When friction surfaces, it is a win.
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-num">Day 02</div>
+                <div class="day-title">Prioritization and MVP Definition</div>
+                <div class="day-goal">
+                    Move from pressure testing to prioritization and MVP framing. Force tough prioritization decisions without jumping to full solutions.
+                </div>
+                <div class="day-mantra">
+                    We are not building. We are narrowing.<br>
+                    We are not aligning on everything. We are sequencing.<br>
+                    We are not solving. We are exposing tradeoffs.
+                </div>
+                <div class="day-comfort">
+                    <strong>Be comfortable with:</strong> Letting stakeholders feel uncomfortable when lower-priority gaps are deferred. Defining MVPs, not ideal-state solutions. Leaving complex issues parked for leadership escalation.
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-num">Day 03</div>
+                <div class="day-title">Locking Commitments</div>
+                <div class="day-goal">
+                    Finalize ownership, confirm executable initiatives, document dependency risks. Exit with real commitments and a clear path forward.
+                </div>
+                <div class="day-mantra">
+                    We are not ideating. We are finalizing.<br>
+                    We are not debating. We are locking.<br>
+                    We are not expanding. We are narrowing to committed actions.
+                </div>
+                <div class="day-comfort">
+                    <strong>Be comfortable with:</strong> Leaving some initiatives marked as "Needs Work" or "Deferred." Letting uncomfortable ownership conversations happen. Closing the summit even if not every stakeholder agrees perfectly. Clarity over consensus.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Philosophy -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Underlying Philosophy</span>
+        <h2>Why the Sequence<br>Matters</h2>
+
+        <div class="doc-body">
+            <p>
+                The summit was not a brainstorming session. Every session was
+                framed as a pressure test. The facilitation was designed to:
+            </p>
+        </div>
+
+        <div class="philosophy-list">
+            <div class="philosophy-item">
+                <span class="philosophy-num">01</span>
+                <span class="philosophy-text">Make it safe to say "we do not know" or "we cannot do this"</span>
+            </div>
+            <div class="philosophy-item">
+                <span class="philosophy-num">02</span>
+                <span class="philosophy-text">Document tension, not just consensus</span>
+            </div>
+            <div class="philosophy-item">
+                <span class="philosophy-num">03</span>
+                <span class="philosophy-text">Force tradeoff decisions rather than letting everything be "important"</span>
+            </div>
+            <div class="philosophy-item">
+                <span class="philosophy-num">04</span>
+                <span class="philosophy-text">Treat silence as a signal, not agreement</span>
+            </div>
+            <div class="philosophy-item">
+                <span class="philosophy-num">05</span>
+                <span class="philosophy-text">Accept that the right answer might be "not yet"</span>
+            </div>
+        </div>
+
+        <div class="core-principle">
+            <p>The output of Day 1 is not a plan. It is documented reality.</p>
+            <p class="sub">
+                Day 2 takes that reality and forces rank. Day 3 converts rank
+                into commitments with names attached. Attempt to lock commitments
+                on Day 1 and you get false consensus. Start with prioritization
+                without pressure testing and you plan against optimistic
+                assumptions. The arc creates the conditions for honest,
+                defensible planning.
+            </p>
+        </div>
+    </section>
+
+    <!-- Download -->
+    <section class="doc-section doc-content reveal">
+        <div class="attribution">
+            Methodology by Angie Bailey // <a href="/" style="color: var(--ecru-dim);">angieqbailey.com</a>
+        </div>
+
+        <a href="/cases/e-commerce-summit.html" class="back-link">Back to Case Study</a>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <span>&copy; 2026 Angie Bailey</span>
+    </div>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

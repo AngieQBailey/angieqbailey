@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pressure Points Register — 21 organizational constraints across 6 categories, surfaced through systematic diagnostic.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <title>Pressure Points Register // Angie Bailey</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --nuit: #121A28; --cacao: #2D1B14; --quetzal: #00685E;
+            --ecru: #F5F5DC; --rosso: #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; font-style: normal !important; border-radius: 0 !important; }
+        ::selection { background: var(--rosso); color: var(--ecru); }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--nuit); color: var(--ecru); font-family: 'IBM Plex Sans', sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+        .blueprint-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1000; background-image: linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px), linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px); background-size: 40px 40px; animation: grid-fade 2s ease 0.5s both; }
+        .spine { position: fixed; left: calc(var(--spine-left) - 40px); top: 0; width: 4px; height: 100%; background-color: var(--cacao); z-index: 500; animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        .nav-bar { position: fixed; top: 0; left: 0; width: 100%; z-index: 900; padding: 1.5rem 2rem 1.5rem var(--spine-left); display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, var(--nuit) 60%, transparent); }
+        .nav-mark { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--quetzal); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; font-weight: 400; color: var(--ecru-dim); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s ease; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--rosso); transition: width 0.3s ease; }
+        .nav-links a:hover { color: var(--ecru); }
+        .nav-links a:hover::after { width: 100%; }
+
+        main { position: relative; z-index: 10; }
+        .doc-content { padding-left: var(--spine-left); padding-right: 4rem; max-width: 1200px; }
+        .doc-header { padding-top: 10rem; padding-bottom: 3rem; }
+        .doc-type { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; font-weight: 700; color: var(--rosso); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 1.5rem; display: block; animation: fade-up 0.8s ease 0.4s both; }
+        .doc-header h1 { font-family: 'Imbue', serif; font-size: clamp(2rem, 5vw, 4.5rem); font-weight: 900; line-height: 0.9; color: var(--ecru); text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 1rem; max-width: 600px; animation: fade-up 0.8s ease 0.5s both; }
+        .doc-header h1 .accent-word { color: var(--rosso); }
+        .doc-subtitle { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--quetzal); letter-spacing: 0.05em; margin-bottom: 2rem; animation: fade-up 0.8s ease 0.6s both; }
+        .doc-lede { font-size: 1.15rem; font-weight: 300; line-height: 1.7; color: var(--ecru-dim); max-width: 600px; margin-bottom: 2rem; animation: fade-up 0.8s ease 0.7s both; }
+        .doc-lede strong { color: var(--ecru); font-weight: 500; }
+
+        .download-btn { display: inline-flex; align-items: center; gap: 1rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--nuit); background: var(--ecru); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; padding: 1rem 2rem; border: none; cursor: pointer; transition: background 0.2s ease, color 0.2s ease; animation: fade-up 0.8s ease 0.8s both; }
+        .download-btn:hover { background: var(--rosso); color: var(--ecru); }
+        .download-btn .arrow { font-size: 1.1rem; transition: transform 0.2s ease; }
+        .download-btn:hover .arrow { transform: translateY(2px); }
+
+        .doc-section { padding-top: 4rem; padding-bottom: 4rem; border-top: 1px solid var(--ecru-ghost); }
+        .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; font-weight: 700; color: var(--quetzal); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+        h2 { font-family: 'Imbue', serif; font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 900; color: var(--ecru); text-transform: uppercase; line-height: 0.95; margin-bottom: 2rem; }
+        .doc-body p { font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--ecru-dim); margin-bottom: 1.25rem; max-width: 650px; }
+        .doc-body p strong { color: var(--ecru); font-weight: 500; }
+
+        .branded-table { width: 100%; max-width: 950px; border-collapse: collapse; margin: 2rem 0; font-size: 0.85rem; }
+        .branded-table th { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; font-weight: 700; color: var(--quetzal); text-transform: uppercase; letter-spacing: 0.1em; text-align: left; padding: 0.75rem 1rem; border-bottom: 2px solid var(--cacao); }
+        .branded-table td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--ecru-ghost); color: var(--ecru-dim); font-weight: 300; line-height: 1.5; vertical-align: top; }
+        .branded-table td strong { color: var(--ecru); font-weight: 500; }
+        .branded-table tr:hover td { background: var(--ecru-ghost); }
+
+        .flag { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; padding: 0.15rem 0.4rem; text-transform: uppercase; display: inline-block; }
+        .flag.red { color: var(--rosso); border: 1px solid var(--rosso); }
+        .flag.yellow { color: var(--quetzal); border: 1px solid var(--quetzal); }
+
+        /* Stats row */
+        .stat-row { display: flex; gap: 2px; margin: 2rem 0; max-width: 500px; flex-wrap: wrap; }
+        .stat-box { background: var(--ecru-ghost); padding: 1.25rem; flex: 1; min-width: 100px; text-align: center; }
+        .stat-num { font-family: 'Imbue', serif; font-size: 2rem; font-weight: 900; color: var(--ecru); line-height: 1; }
+        .stat-num.highlight { color: var(--rosso); }
+        .stat-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; color: var(--quetzal); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.5rem; line-height: 1.4; }
+
+        /* Category grid */
+        .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 2px; margin: 2rem 0; max-width: 750px; }
+        .category-item { background: var(--ecru-ghost); padding: 1.25rem; }
+        .category-name { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; font-weight: 700; color: var(--quetzal); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.25rem; }
+        .category-count { font-family: 'Imbue', serif; font-size: 1.5rem; font-weight: 900; color: var(--ecru); }
+        .category-desc { font-size: 0.75rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.4; margin-top: 0.5rem; }
+
+        .back-link { display: inline-flex; align-items: center; gap: 0.75rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: var(--ecru-dim); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s ease; margin-top: 2rem; }
+        .back-link::before { content: ''; display: block; width: 24px; height: 2px; background: var(--quetzal); transition: width 0.3s ease, background 0.3s ease; }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        .attribution { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--ecru-dim); letter-spacing: 0.05em; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--ecru-ghost); }
+
+        footer { padding: 2rem 2rem 2rem var(--spine-left); border-top: 1px solid var(--ecru-ghost); }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; }
+        .footer-content span { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--ecru-dim); letter-spacing: 0.05em; }
+
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .doc-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+            .branded-table { font-size: 0.75rem; display: block; overflow-x: auto; }
+            .branded-table th, .branded-table td { padding: 0.5rem; min-width: 100px; }
+            .stat-row { flex-wrap: wrap; }
+            .category-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .blueprint-overlay { background-size: 24px 24px; }
+            .category-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="blueprint-overlay" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true"></div>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="/" class="nav-mark">AB</a>
+    <ul class="nav-links">
+        <li><a href="/#warehouse">Warehouse</a></li>
+        <li><a href="/cases/e-commerce-summit.html">Case Study</a></li>
+        <li><a href="/#signal">Signal</a></li>
+    </ul>
+</nav>
+
+<main>
+    <section class="doc-header doc-content">
+        <span class="doc-type">Diagnostic Tool</span>
+        <h1>Pressure Points<br><span class="accent-word">Register</span></h1>
+        <div class="doc-subtitle">Organizational Constraint Inventory</div>
+        <p class="doc-lede">
+            21 organizational pressure points across 6 categories, surfaced through
+            systematic diagnostic before strategic planning.
+            <strong>12 blockers. 9 high-risk friction points.</strong>
+        </p>
+        <a href="templates/pressure-points-register-blank.html" download class="download-btn">
+            Download Blank Template <span class="arrow">&darr;</span>
+        </a>
+    </section>
+
+    <!-- Stats -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Summary</span>
+
+        <div class="stat-row">
+            <div class="stat-box">
+                <div class="stat-num highlight">12</div>
+                <div class="stat-label">Red Flags<br>(Blockers)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">9</div>
+                <div class="stat-label">Yellow Flags<br>(High-Risk)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">21</div>
+                <div class="stat-label">Total Pressure<br>Points</div>
+            </div>
+        </div>
+
+        <div class="category-grid">
+            <div class="category-item">
+                <div class="category-name">Technical</div>
+                <div class="category-count">6</div>
+                <div class="category-desc">System fragility, integration ambiguity, platform uncertainty</div>
+            </div>
+            <div class="category-item">
+                <div class="category-name">Operational</div>
+                <div class="category-count">4</div>
+                <div class="category-desc">Workflow execution, broken handoffs, procedural gaps</div>
+            </div>
+            <div class="category-item">
+                <div class="category-name">Ownership</div>
+                <div class="category-count">4</div>
+                <div class="category-desc">No clear accountability, competing assumptions</div>
+            </div>
+            <div class="category-item">
+                <div class="category-name">Bandwidth</div>
+                <div class="category-count">2</div>
+                <div class="category-desc">Capacity issues, key personnel spread thin</div>
+            </div>
+            <div class="category-item">
+                <div class="category-name">Strategic</div>
+                <div class="category-count">2</div>
+                <div class="category-desc">Resource allocation philosophy, structural identity</div>
+            </div>
+            <div class="category-item">
+                <div class="category-name">Data / Vendor</div>
+                <div class="category-count">3</div>
+                <div class="category-desc">Insight access, coordination constraints</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Register -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Full Register</span>
+        <h2>21 Pressure<br>Points</h2>
+
+        <table class="branded-table">
+            <thead>
+                <tr>
+                    <th>Pressure Point</th>
+                    <th>Category</th>
+                    <th>Functions Affected</th>
+                    <th>Rationale</th>
+                    <th>Flag</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>ERP System Unknown Impact</strong></td><td>Technical</td><td>E-Commerce, IT, Operations</td><td>No visibility into ERP capabilities or timeline, creating planning uncertainty across entire tech stack</td><td><span class="flag red">Red</span></td></tr>
+                <tr><td><strong>Platform Continuity Uncertainty</strong></td><td>Technical</td><td>E-Commerce, IT</td><td>Unclear if ERP will replace current e-commerce platform functionality</td><td><span class="flag red">Red</span></td></tr>
+                <tr><td><strong>Shipping Integration Blind Spot</strong></td><td>Technical</td><td>E-Commerce, Fulfillment, Shipping</td><td>No understanding of how shipping integration connects to existing systems</td><td><span class="flag yellow">Yellow</span></td></tr>
+                <tr><td><strong>Automation Gaps</strong></td><td>Technical</td><td>E-Commerce, IT, Finance</td><td>Manual processes creating inefficiencies across multiple functions</td><td><span class="flag yellow">Yellow</span></td></tr>
+                <tr><td><strong>ERP Data Integration Gaps</strong></td><td>Technical</td><td>E-Commerce, IT, Procurement</td><td>Missing product information flow from vendors to e-commerce platform</td><td><span class="flag yellow">Yellow</span></td></tr>
+                <tr><td><strong>Vendor Data Access Limitations</strong></td><td>Technical</td><td>E-Commerce, Procurement</td><td>Limited access to product data, images, and pricing before physical receipt</td><td><span class="flag yellow">Yellow</span></td></tr>
+                <tr><td><strong>Inventory Management Breakdown</strong></td><td>Operational</td><td>E-Commerce, Warehouse, Procurement</td><td>No systematic reordering process, constant out-of-stock issues</td><td><span class="flag red">Red</span></td></tr>
+                <tr><td><strong>Communication Gaps with DC</strong></td><td>Operational</td><td>E-Commerce, Warehouse Operations</td><td>No proactive communication about warehouse changes affecting fulfillment</td><td><span class="flag red">Red</span></td></tr>
+                <tr><td><strong>Customer Experience Fragmentation</strong></td><td>Operational</td><td>E-Commerce, Marketing, Customer Service</td><td>No unified post-sale customer communication strategy</td><td><span class="flag yellow">Yellow</span></td></tr>
+                <tr><td><strong>Product Onboarding Process Gaps</strong></td><td>Operational</td><td>E-Commerce, Procurement, Warehouse</td><td>No systematic process for bringing new SKUs online with proper data</td><td><span class="flag yellow">Yellow</span></td></tr>
+                <tr><td><strong>Cross-Functional Pricing Rules</strong></td><td>Ownership</td><td>E-Commerce, Finance, Sales</td><td>No established margin guidelines or cross-functional coordination</td><td><span class="flag yellow">Yellow</span></td></tr>
+                <tr><td><strong>Digital Marketing Role Confusion</strong></td><td>Ownership</td><td>E-Commerce, Marketing</td><td>Unclear responsibilities during team transition</td><td><span class="flag yellow">Yellow</span></td></tr>
+                <tr><td><strong>Procurement Disconnection</strong></td><td>Ownership</td><td>E-Commerce, Procurement</td><td>No integration between e-commerce needs and vendor contract negotiations</td><td><span class="flag yellow">Yellow</span></td></tr>
+                <tr><td><strong>Resource Overextension</strong></td><td>Bandwidth</td><td>E-Commerce Team</td><td>Key personnel handling multiple specialized roles due to understaffing</td><td><span class="flag red">Red</span></td></tr>
+                <tr><td><strong>DC Understaffing</strong></td><td>Bandwidth</td><td>Fulfillment, E-Commerce, Warehouse Ops</td><td>Cannot scale fulfillment or meet SLAs</td><td><span class="flag red">Red</span></td></tr>
+                <tr><td><strong>E-Commerce Identity Crisis</strong></td><td>Strategic</td><td>E-Commerce, Leadership</td><td>Unclear positioning within company structure affects resource allocation</td><td><span class="flag red">Red</span></td></tr>
+                <tr><td><strong>Stakeholder Engagement Gaps</strong></td><td>Strategic</td><td>E-Commerce, Leadership</td><td>Inconsistent participation from critical decision-makers</td><td><span class="flag red">Red</span></td></tr>
+                <tr><td><strong>Missing SKU Marketing Assets</strong></td><td>Data / Vendor</td><td>Merchandising, Procurement, Vendor Mgmt</td><td>Blocks listings, stalls marketplace growth</td><td><span class="flag red">Red</span></td></tr>
+                <tr><td><strong>Delayed PO Execution</strong></td><td>Operational</td><td>Procurement, Supply Chain, DC</td><td>Delays inventory availability, causes out-of-stock</td><td><span class="flag red">Red</span></td></tr>
+                <tr><td><strong>Unclear SLA Accountability</strong></td><td>Ownership</td><td>DC, E-Commerce, Supply Chain</td><td>Increases escalations and customer dissatisfaction</td><td><span class="flag red">Red</span></td></tr>
+                <tr><td><strong>Manual OOS Forecasting</strong></td><td>Data / Vendor</td><td>Analytics, Planning, E-Commerce</td><td>Creates fragility and slow response to stockouts</td><td><span class="flag yellow">Yellow</span></td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="doc-section doc-content reveal">
+        <div class="attribution">
+            Diagnostic tool by Angie Bailey // <a href="/" style="color: var(--ecru-dim);">angieqbailey.com</a>
+        </div>
+
+        <a href="/cases/e-commerce-summit.html" class="back-link">Back to Case Study</a>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <span>&copy; 2026 Angie Bailey</span>
+    </div>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

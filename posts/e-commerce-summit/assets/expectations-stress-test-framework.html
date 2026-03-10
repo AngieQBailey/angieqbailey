@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Expectations Stress Test — An organizational alignment framework for identifying hidden expectation gaps across functions.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <title>Expectations Stress Test // Angie Bailey</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --nuit: #121A28;
+            --cacao: #2D1B14;
+            --quetzal: #00685E;
+            --ecru: #F5F5DC;
+            --rosso: #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        ::selection { background: var(--rosso); color: var(--ecru); }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--nuit);
+            color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .blueprint-overlay {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none; z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-fade 2s ease 0.5s both;
+        }
+
+        .spine {
+            position: fixed;
+            left: calc(var(--spine-left) - 40px);
+            top: 0; width: 4px; height: 100%;
+            background-color: var(--cacao);
+            z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem; font-weight: 700;
+            letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--quetzal); text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem; font-weight: 400;
+            color: var(--ecru-dim); text-decoration: none;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            transition: color 0.2s ease; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--rosso);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--ecru); }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* Content */
+        main { position: relative; z-index: 10; }
+
+        .doc-content {
+            padding-left: var(--spine-left);
+            padding-right: 4rem;
+            max-width: 1200px;
+        }
+
+        /* Document Header */
+        .doc-header {
+            padding-top: 10rem;
+            padding-bottom: 3rem;
+        }
+
+        .doc-type {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem; font-weight: 700;
+            color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 1.5rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.4s both;
+        }
+
+        .doc-header h1 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2rem, 5vw, 4.5rem);
+            font-weight: 900; line-height: 0.9;
+            color: var(--ecru); text-transform: uppercase;
+            letter-spacing: -0.02em; margin-bottom: 1rem;
+            max-width: 600px;
+            animation: fade-up 0.8s ease 0.5s both;
+        }
+
+        .doc-header h1 .accent-word { color: var(--rosso); }
+
+        .doc-subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem; color: var(--quetzal);
+            letter-spacing: 0.05em; margin-bottom: 2rem;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+
+        .doc-lede {
+            font-size: 1.15rem; font-weight: 300;
+            line-height: 1.7; color: var(--ecru-dim);
+            max-width: 600px; margin-bottom: 2rem;
+            animation: fade-up 0.8s ease 0.7s both;
+        }
+
+        .doc-lede strong { color: var(--ecru); font-weight: 500; }
+
+        /* Download Button */
+        .download-btn {
+            display: inline-flex; align-items: center; gap: 1rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem; font-weight: 700;
+            color: var(--nuit); background: var(--ecru);
+            text-decoration: none; text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 1rem 2rem;
+            border: none; cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+            animation: fade-up 0.8s ease 0.8s both;
+        }
+
+        .download-btn:hover {
+            background: var(--rosso);
+            color: var(--ecru);
+        }
+
+        .download-btn .arrow {
+            font-size: 1.1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .download-btn:hover .arrow {
+            transform: translateY(2px);
+        }
+
+        /* Document Sections */
+        .doc-section {
+            padding-top: 4rem; padding-bottom: 4rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem; font-weight: 700;
+            color: var(--quetzal); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        h2 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 900; color: var(--ecru);
+            text-transform: uppercase; line-height: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .doc-body p {
+            font-size: 1rem; font-weight: 300;
+            line-height: 1.8; color: var(--ecru-dim);
+            margin-bottom: 1.25rem; max-width: 650px;
+        }
+
+        .doc-body p strong { color: var(--ecru); font-weight: 500; }
+
+        /* Framework Column Display */
+        .framework-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2px; margin: 2rem 0; max-width: 750px;
+        }
+
+        .framework-col {
+            background: var(--ecru-ghost);
+            padding: 1.5rem;
+        }
+
+        .framework-col-num {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.6rem; font-weight: 700;
+            color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 0.5rem;
+        }
+
+        .framework-col-name {
+            font-family: 'Imbue', serif;
+            font-size: 1.1rem; font-weight: 700;
+            color: var(--ecru); text-transform: uppercase;
+            line-height: 1.15; margin-bottom: 0.5rem;
+        }
+
+        .framework-col-desc {
+            font-size: 0.8rem; font-weight: 300;
+            color: var(--ecru-dim); line-height: 1.5;
+        }
+
+        /* Tables */
+        .branded-table {
+            width: 100%; max-width: 850px;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.85rem;
+        }
+
+        .branded-table th {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem; font-weight: 700;
+            color: var(--quetzal); text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid var(--cacao);
+        }
+
+        .branded-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--ecru-ghost);
+            color: var(--ecru-dim);
+            font-weight: 300;
+            line-height: 1.5;
+            vertical-align: top;
+        }
+
+        .branded-table td strong {
+            color: var(--ecru);
+            font-weight: 500;
+        }
+
+        .branded-table tr:hover td {
+            background: var(--ecru-ghost);
+        }
+
+        /* Flag Badges */
+        .flag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.6rem; font-weight: 700;
+            letter-spacing: 0.1em; padding: 0.15rem 0.4rem;
+            text-transform: uppercase; display: inline-block;
+        }
+        .flag.red { color: var(--rosso); border: 1px solid var(--rosso); }
+        .flag.yellow { color: var(--quetzal); border: 1px solid var(--quetzal); }
+        .flag.green { color: var(--ecru-dim); border: 1px solid var(--ecru-dim); }
+
+        /* Comparison Table */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px; margin: 2rem 0; max-width: 750px;
+        }
+
+        .comparison-col {
+            background: var(--ecru-ghost);
+            padding: 1.5rem;
+        }
+
+        .comparison-col-header {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem; font-weight: 700;
+            color: var(--quetzal); text-transform: uppercase;
+            letter-spacing: 0.15em; margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--cacao);
+        }
+
+        .comparison-col-header.highlight {
+            color: var(--rosso);
+            border-bottom-color: var(--rosso);
+        }
+
+        .comparison-item {
+            font-size: 0.85rem; font-weight: 300;
+            color: var(--ecru-dim); line-height: 1.5;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(245, 245, 220, 0.04);
+        }
+
+        .comparison-item:last-child { border-bottom: none; }
+
+        /* Outcome Boxes */
+        .outcome-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px; margin: 2rem 0; max-width: 750px;
+        }
+
+        .outcome-box {
+            background: var(--ecru-ghost);
+            padding: 1.75rem;
+        }
+
+        .outcome-box-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.15em;
+            margin-bottom: 1rem; padding-bottom: 0.5rem;
+        }
+
+        .outcome-box-label.before {
+            color: var(--ecru-dim);
+            border-bottom: 1px solid var(--ecru-ghost);
+        }
+
+        .outcome-box-label.after {
+            color: var(--quetzal);
+            border-bottom: 1px solid var(--quetzal);
+        }
+
+        .outcome-item {
+            font-size: 0.85rem; font-weight: 300;
+            color: var(--ecru-dim); line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Callout / Core Principle */
+        .core-principle {
+            border-left: 5px solid var(--rosso);
+            padding: 2rem 2rem;
+            margin: 2.5rem 0;
+            max-width: 650px;
+            background: var(--ecru-ghost);
+        }
+
+        .core-principle p {
+            font-family: 'Imbue', serif;
+            font-size: 1.4rem; font-weight: 700;
+            color: var(--ecru); line-height: 1.3;
+            text-transform: uppercase;
+        }
+
+        .core-principle .sub {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 0.95rem; font-weight: 300;
+            color: var(--ecru-dim); line-height: 1.6;
+            text-transform: none; margin-top: 1rem;
+        }
+
+        /* Implementation Box */
+        .impl-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px; margin: 2rem 0; max-width: 750px;
+        }
+
+        .impl-item {
+            background: var(--ecru-ghost);
+            padding: 1.5rem;
+        }
+
+        .impl-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.6rem; font-weight: 700;
+            color: var(--quetzal); text-transform: uppercase;
+            letter-spacing: 0.15em; margin-bottom: 0.5rem;
+        }
+
+        .impl-value {
+            font-size: 0.9rem; font-weight: 300;
+            color: var(--ecru-dim); line-height: 1.5;
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem; color: var(--ecru-dim);
+            text-decoration: none; text-transform: uppercase;
+            letter-spacing: 0.1em; transition: color 0.2s ease;
+            margin-top: 2rem;
+        }
+        .back-link::before {
+            content: ''; display: block;
+            width: 24px; height: 2px;
+            background: var(--quetzal);
+            transition: width 0.3s ease, background 0.3s ease;
+        }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        /* Attribution */
+        .attribution {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem; color: var(--ecru-dim);
+            letter-spacing: 0.05em;
+            margin-top: 3rem; padding-top: 1.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .footer-content {
+            display: flex; justify-content: space-between;
+            align-items: center; max-width: 1200px;
+        }
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem; color: var(--ecru-dim);
+            letter-spacing: 0.05em;
+        }
+
+        /* Animations */
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+
+        .reveal {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .doc-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .framework-columns { grid-template-columns: 1fr 1fr; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .outcome-pair { grid-template-columns: 1fr; }
+            .impl-grid { grid-template-columns: 1fr; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+            .branded-table { font-size: 0.75rem; }
+            .branded-table th, .branded-table td { padding: 0.5rem; }
+        }
+
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .blueprint-overlay { background-size: 24px 24px; }
+            .framework-columns { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="blueprint-overlay" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true"></div>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="/" class="nav-mark">AB</a>
+    <ul class="nav-links">
+        <li><a href="/#warehouse">Warehouse</a></li>
+        <li><a href="/cases/e-commerce-summit.html">Case Study</a></li>
+        <li><a href="/#signal">Signal</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- Header -->
+    <section class="doc-header doc-content">
+        <span class="doc-type">Framework</span>
+        <h1>Expectations<br><span class="accent-word">Stress Test</span></h1>
+        <div class="doc-subtitle">An Organizational Alignment Framework</div>
+        <p class="doc-lede">
+            A systematic way to identify and resolve hidden expectation gaps
+            that cause coordination failures, strategic misalignment, and
+            execution breakdowns across organizational functions.
+            <strong>Most organizational dysfunction is not caused by
+            incompetence. It is caused by invisible expectation gaps.</strong>
+        </p>
+        <a href="templates/expectations-stress-test-blank.html" download class="download-btn">
+            Download Blank Template <span class="arrow">&darr;</span>
+        </a>
+    </section>
+
+    <!-- The Hidden Problem -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">The Hidden Problem</span>
+        <h2>Different Definitions<br>of "Good"</h2>
+        <div class="doc-body">
+            <p>
+                Different teams operate under conflicting definitions of what
+                "good service" means, creating coordination failures that
+                appear random but are actually systematic.
+            </p>
+            <p>
+                <strong>Example:</strong> Finance believes 3-day pricing approval
+                protects margins (good stewardship). Sales expects a 4-hour
+                turnaround to close urgent deals (good customer service).
+                Both are right by their own standards, but the business
+                suffers from the conflicting philosophies.
+            </p>
+        </div>
+    </section>
+
+    <!-- The Framework -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">The Framework</span>
+        <h2>Five-Column<br>Assessment</h2>
+
+        <div class="framework-columns">
+            <div class="framework-col">
+                <div class="framework-col-num">Column 01</div>
+                <div class="framework-col-name">Function<br>Owner</div>
+                <div class="framework-col-desc">Which team or role provides this service or makes these decisions?</div>
+            </div>
+            <div class="framework-col">
+                <div class="framework-col-num">Column 02</div>
+                <div class="framework-col-name">Provider<br>Philosophy</div>
+                <div class="framework-col-desc">What does "good" mean to the team providing the service? How do they define quality?</div>
+            </div>
+            <div class="framework-col">
+                <div class="framework-col-num">Column 03</div>
+                <div class="framework-col-name">User<br>Expectations</div>
+                <div class="framework-col-desc">What do other teams need or expect? What does "good service" mean from their perspective?</div>
+            </div>
+            <div class="framework-col">
+                <div class="framework-col-num">Column 04</div>
+                <div class="framework-col-name">The<br>Gap</div>
+                <div class="framework-col-desc">Where do provider philosophy and user expectations conflict? What is the specific misalignment?</div>
+            </div>
+            <div class="framework-col">
+                <div class="framework-col-num">Column 05</div>
+                <div class="framework-col-name">Risk<br>Flag</div>
+                <div class="framework-col-desc">What is the business impact of this expectation gap?</div>
+            </div>
+        </div>
+
+        <div class="doc-body" style="margin-top: 2rem;">
+            <p>
+                <span class="flag red">Red</span> Critical — Revenue loss, customer churn, strategic failure.
+                <span class="flag yellow">Yellow</span> Moderate — Inefficiency, frustration, costly workarounds.
+                <span class="flag green">Green</span> Minor — Manageable through current processes.
+            </p>
+        </div>
+    </section>
+
+    <!-- Example -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Example</span>
+        <h2>Applied<br>Assessment</h2>
+
+        <table class="branded-table">
+            <thead>
+                <tr>
+                    <th>Function Owner</th>
+                    <th>Provider Philosophy</th>
+                    <th>User Expectations</th>
+                    <th>The Gap</th>
+                    <th>Flag</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Finance Pricing Team</strong></td>
+                    <td>"Protect margins, thorough analysis"</td>
+                    <td>"Fast pricing approvals for urgent deals"</td>
+                    <td>3 days vs 4 hours = lost deals</td>
+                    <td><span class="flag red">Red</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- When to Use -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Application</span>
+        <h2>When to<br>Use It</h2>
+
+        <div class="framework-columns" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+            <div class="framework-col">
+                <div class="framework-col-num">Use Case 01</div>
+                <div class="framework-col-name">Pre-Strategic<br>Planning</div>
+                <div class="framework-col-desc">Identify expectation gaps before building strategic initiatives, preventing plans built on faulty cross-functional assumptions.</div>
+            </div>
+            <div class="framework-col">
+                <div class="framework-col-num">Use Case 02</div>
+                <div class="framework-col-name">Complex<br>Launches</div>
+                <div class="framework-col-desc">Surface coordination requirements across multiple teams before system implementations, product launches, or operational changes.</div>
+            </div>
+            <div class="framework-col">
+                <div class="framework-col-num">Use Case 03</div>
+                <div class="framework-col-name">M&amp;A<br>Integration</div>
+                <div class="framework-col-desc">Map where different organizational cultures have incompatible service philosophies that could derail integration.</div>
+            </div>
+            <div class="framework-col">
+                <div class="framework-col-num">Use Case 04</div>
+                <div class="framework-col-name">Org<br>Restructuring</div>
+                <div class="framework-col-desc">Ensure shared understanding of service expectations when roles, responsibilities, or reporting structures change.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Critical Difference -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Differentiation</span>
+        <h2>The Critical<br>Difference</h2>
+
+        <div class="comparison-grid">
+            <div class="comparison-col">
+                <div class="comparison-col-header">Traditional Problem ID</div>
+                <div class="comparison-item">"What problems are we having?"</div>
+                <div class="comparison-item">Results in blame assignment</div>
+                <div class="comparison-item">Focuses on past failures</div>
+                <div class="comparison-item">Creates adversarial dynamics</div>
+                <div class="comparison-item">Reactive crisis management</div>
+            </div>
+            <div class="comparison-col">
+                <div class="comparison-col-header highlight">Expectations Stress Test</div>
+                <div class="comparison-item">"Where do our success definitions conflict?"</div>
+                <div class="comparison-item">Results in neutral gap documentation</div>
+                <div class="comparison-item">Focuses on philosophical misalignment</div>
+                <div class="comparison-item">Creates collaborative problem-solving</div>
+                <div class="comparison-item">Proactive constraint identification</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outcomes -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Expected Results</span>
+        <h2>Before &amp;<br>After</h2>
+
+        <div class="outcome-pair">
+            <div class="outcome-box">
+                <div class="outcome-box-label before">Before Assessment</div>
+                <div class="outcome-item">Teams operate with invisible expectation gaps, causing seemingly random failures</div>
+                <div class="outcome-item">Strategic initiatives fail due to undocumented cross-functional constraints</div>
+                <div class="outcome-item">Finger-pointing replaces systematic problem-solving</div>
+                <div class="outcome-item">Coordination depends on individual relationships rather than organizational design</div>
+            </div>
+            <div class="outcome-box">
+                <div class="outcome-box-label after">After Assessment</div>
+                <div class="outcome-item">Expectation gaps are explicit and documented with specific examples</div>
+                <div class="outcome-item">Strategic planning incorporates cross-functional constraints systematically</div>
+                <div class="outcome-item">Solutions focus on aligning philosophies or designing appropriate workarounds</div>
+                <div class="outcome-item">Organizational coordination becomes systematic rather than personality-dependent</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Principle -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Core Principle</span>
+
+        <div class="core-principle">
+            <p>Most organizational dysfunction stems from good people operating under different definitions of what "good" means.</p>
+            <p class="sub">
+                By making those definitions explicit, organizations can choose to:
+                (1) align on shared service philosophies,
+                (2) accept the gaps and design effective workarounds, or
+                (3) restructure to eliminate conflicting responsibilities.
+                All three are valid. The critical insight: you cannot solve
+                expectation gaps you do not know exist.
+            </p>
+        </div>
+    </section>
+
+    <!-- Implementation -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Implementation</span>
+        <h2>Getting<br>Started</h2>
+
+        <div class="impl-grid">
+            <div class="impl-item">
+                <div class="impl-label">Time Investment</div>
+                <div class="impl-value">30-60 minutes per stakeholder, 2-3 hours cross-functional mapping</div>
+            </div>
+            <div class="impl-item">
+                <div class="impl-label">Required Inputs</div>
+                <div class="impl-value">Key functions mapped, stakeholder availability, willingness to document gaps</div>
+            </div>
+            <div class="impl-item">
+                <div class="impl-label">Success Criteria</div>
+                <div class="impl-value">Critical relationships mapped, gaps documented, risk priorities agreed</div>
+            </div>
+        </div>
+
+        <div class="attribution">
+            Framework by Angie Bailey // <a href="/" style="color: var(--ecru-dim);">angieqbailey.com</a>
+        </div>
+
+        <a href="/cases/e-commerce-summit.html" class="back-link">Back to Case Study</a>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <span>&copy; 2026 Angie Bailey</span>
+    </div>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Case Study: E-Commerce Strategic Summit — How cross-functional alignment produced a 3-year roadmap that couldn't exist before.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+
+    <meta property="og:title" content="E-Commerce Strategic Summit // Angie Bailey">
+    <meta property="og:description" content="The organization wanted a 3-year e-commerce strategy. The teams required to build it had never operated in the same reality.">
+    <meta property="og:type" content="article">
+
+    <title>E-Commerce Strategic Summit // Angie Bailey</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===================================================
+           THE WAREHOUSE — Case Study Template
+           Design System: Durable Births (Dark Variant)
+           =================================================== */
+
+        :root {
+            --nuit:     #121A28;
+            --cacao:    #2D1B14;
+            --quetzal:  #00685E;
+            --ecru:     #F5F5DC;
+            --rosso:    #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        ::selection {
+            background: var(--rosso);
+            color: var(--ecru);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 2rem;
+        }
+
+        body {
+            background-color: var(--nuit);
+            color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* Blueprint Overlay */
+        .blueprint-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* Structural Spine */
+        .spine {
+            position: fixed;
+            left: calc(var(--spine-left) - 40px);
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--cacao);
+            z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--quetzal);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            padding-right: 2rem;
+        }
+
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--ecru-dim);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: var(--rosso);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--ecru); }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* Main Content */
+        main {
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-content {
+            padding-left: var(--spine-left);
+            padding-right: 4rem;
+            max-width: 1200px;
+        }
+
+        /* Case Study Header */
+        .case-header {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 8rem;
+            padding-bottom: 4rem;
+        }
+
+        .case-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--quetzal);
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.4s both;
+        }
+
+        .case-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.5s both;
+        }
+
+        .case-header h1 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2.5rem, 7vw, 6rem);
+            font-weight: 900;
+            line-height: 0.9;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+
+        .case-header h1 .accent-word {
+            color: var(--rosso);
+        }
+
+        .case-lede {
+            border-left: 5px solid var(--rosso);
+            padding-left: 2rem;
+            max-width: 600px;
+            animation: fade-up 0.8s ease 0.8s both;
+        }
+
+        .case-lede p {
+            font-size: 1.15rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+        }
+
+        .case-lede strong {
+            color: var(--ecru);
+            font-weight: 500;
+        }
+
+        /* Case Study Sections */
+        .case-section {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--quetzal);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        h2 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 900;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 0.95;
+            letter-spacing: -0.01em;
+            margin-bottom: 2.5rem;
+        }
+
+        .case-body p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--ecru-dim);
+            margin-bottom: 1.5rem;
+            max-width: 650px;
+        }
+
+        .case-body p strong {
+            color: var(--ecru);
+            font-weight: 500;
+        }
+
+        /* Constraint List */
+        .constraint-list {
+            margin: 2rem 0;
+            max-width: 650px;
+        }
+
+        .constraint-item {
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--ecru-ghost);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.25rem;
+            align-items: start;
+        }
+
+        .constraint-item:first-child {
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .constraint-flag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            padding: 0.2rem 0.5rem;
+            text-transform: uppercase;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .constraint-flag.red {
+            color: var(--rosso);
+            border: 1px solid var(--rosso);
+        }
+
+        .constraint-flag.yellow {
+            color: var(--quetzal);
+            border: 1px solid var(--quetzal);
+        }
+
+        .constraint-label {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--ecru);
+            line-height: 1.4;
+        }
+
+        .constraint-detail {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            margin-top: 0.25rem;
+        }
+
+        /* The Failure Loop */
+        .failure-loop {
+            border-left: 3px solid var(--cacao);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            max-width: 400px;
+        }
+
+        .failure-loop .loop-step {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--ecru-dim);
+            padding: 0.4rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .failure-loop .loop-arrow {
+            color: var(--rosso);
+            font-weight: 700;
+        }
+
+        /* Approach Grid */
+        .approach-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            margin: 2.5rem 0;
+            max-width: 750px;
+        }
+
+        .approach-item {
+            background: var(--ecru-ghost);
+            padding: 2rem 1.75rem;
+        }
+
+        .approach-day {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.75rem;
+        }
+
+        .approach-title {
+            font-family: 'Imbue', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+
+        .approach-desc {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.5;
+        }
+
+        /* Evidence / Artifacts */
+        .artifact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2px;
+            margin: 2.5rem 0;
+        }
+
+        .artifact-card {
+            background: var(--ecru-ghost);
+            padding: 2rem 1.75rem;
+            position: relative;
+            transition: background 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .artifact-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 0; height: 3px;
+            background: var(--rosso);
+            transition: width 0.4s ease;
+        }
+
+        .artifact-card:hover {
+            background: rgba(245, 245, 220, 0.12);
+        }
+
+        .artifact-card:hover::before {
+            width: 100%;
+        }
+
+        .artifact-type {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: var(--quetzal);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.75rem;
+        }
+
+        .artifact-name {
+            font-family: 'Imbue', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 1.15;
+            margin-bottom: 0.75rem;
+        }
+
+        .artifact-desc {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .artifact-action {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        /* Outcome Stats */
+        .outcome-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2px;
+            margin: 2.5rem 0;
+            max-width: 750px;
+        }
+
+        .outcome-stat {
+            background: var(--ecru-ghost);
+            padding: 2rem 1.75rem;
+        }
+
+        .outcome-number {
+            font-family: 'Imbue', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--ecru);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .outcome-number.highlight {
+            color: var(--rosso);
+        }
+
+        .outcome-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--quetzal);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            line-height: 1.4;
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--ecru-dim);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.2s ease;
+            margin-top: 3rem;
+        }
+
+        .back-link::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--quetzal);
+            transition: width 0.3s ease, background 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--ecru);
+        }
+
+        .back-link:hover::before {
+            width: 40px;
+            background: var(--rosso);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+        }
+
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--ecru-dim);
+            letter-spacing: 0.05em;
+        }
+
+        /* Animations */
+        @keyframes spine-draw {
+            from { height: 0; }
+            to { height: 100%; }
+        }
+
+        @keyframes fade-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes grid-fade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .blueprint-overlay {
+            animation: grid-fade 2s ease 0.5s both;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .section-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .approach-grid { grid-template-columns: 1fr; }
+            .artifact-grid { grid-template-columns: 1fr; }
+            .outcome-grid { grid-template-columns: 1fr 1fr; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+        }
+
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .blueprint-overlay { background-size: 24px 24px; }
+            .outcome-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Architectural Grid -->
+<div class="blueprint-overlay" aria-hidden="true"></div>
+
+<!-- Structural Spine -->
+<div class="spine" aria-hidden="true"></div>
+
+<!-- Navigation -->
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
+    <ul class="nav-links">
+        <li><a href="/#warehouse">Warehouse</a></li>
+        <li><a href="/#investigation">Investigation</a></li>
+        <li><a href="/#verdict">Verdict</a></li>
+        <li><a href="/#signal">Signal</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- ========================================
+         CASE STUDY HEADER
+         ======================================== -->
+    <section class="case-header section-content">
+        <span class="case-meta">Case Study // Strategic Operations</span>
+        <span class="case-tag">Cross-Functional Alignment</span>
+
+        <h1>E-Commerce<br>Strategic<br><span class="accent-word">Summit</span></h1>
+
+        <div class="case-lede">
+            <p>
+                The company wanted a 3-year e-commerce strategy.
+                But <strong>the teams required to build it had never operated in
+                the same reality</strong>. My work created the alignment system
+                that allowed the roadmap to exist at all.
+            </p>
+        </div>
+    </section>
+
+    <!-- ========================================
+         THE SITUATION
+         ======================================== -->
+    <section class="case-section section-content reveal">
+        <span class="section-label">The Situation</span>
+        <h2>No Process Could<br>Survive the Complexity</h2>
+
+        <div class="case-body">
+            <p>
+                The roadmap did not exist because <strong>the coordination
+                mechanism required to create one did not exist</strong>. Eight
+                functional domains — DC Operations, Supply Chain, Procurement,
+                Finance, Marketing, Digital Experience, Platform/Product, and
+                Demand Planning — were operating independently, with no
+                structured forum to reconcile constraints.
+            </p>
+
+            <p>
+                Each function understood a different bottleneck. Operations
+                saw DC capacity constraints and staffing shortages. Finance
+                had no SKU-level margin visibility and an immature pricing
+                strategy. Marketing was working with attribution gaps and
+                incomplete SKU data. Technology was managing Shopify
+                limitations, integration fragility, and an ERP migration
+                with unclear scope.
+            </p>
+
+            <p>
+                These realities were all true simultaneously, but they were
+                not integrated into a single strategic model. Any attempt to
+                create a roadmap would collapse into arguments about feasibility
+                because <strong>no one had a shared view of what was actually
+                possible</strong>.
+            </p>
+
+            <p>
+                Critical areas had unclear ownership: inventory forecasting,
+                SKU data integrity, pricing logic, fulfillment readiness,
+                subdomain governance. Without ownership clarity, roadmap items
+                could not be assigned. The organization was stuck in a
+                predictable failure loop:
+            </p>
+
+            <div class="failure-loop">
+                <div class="loop-step"><span class="loop-arrow">&rarr;</span> Initiative proposed</div>
+                <div class="loop-step"><span class="loop-arrow">&rarr;</span> Ownership unclear</div>
+                <div class="loop-step"><span class="loop-arrow">&rarr;</span> Dependency conflict</div>
+                <div class="loop-step"><span class="loop-arrow">&rarr;</span> Decision stalls</div>
+                <div class="loop-step"><span class="loop-arrow">&rarr;</span> Repeat</div>
+            </div>
+
+            <p>
+                Strategic conversations were happening without constraint
+                visibility. Without a unified constraint map, strategy
+                defaults to optimistic assumptions. That is how unrealistic
+                roadmaps get created — and why this one had never materialized.
+            </p>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SELECTED PRESSURE POINTS
+         ======================================== -->
+    <section class="case-section section-content reveal">
+        <span class="section-label">Pressure Points Surfaced</span>
+        <h2>What the<br>Diagnostic Found</h2>
+
+        <div class="case-body">
+            <p>
+                Before any planning could begin, I ran a systematic diagnostic
+                across all eight functions. The full register documented 21
+                pressure points across 6 categories. Here are the critical
+                blockers:
+            </p>
+        </div>
+
+        <div class="constraint-list">
+            <div class="constraint-item">
+                <span class="constraint-flag red">Red</span>
+                <div>
+                    <div class="constraint-label">ERP System Unknown Impact</div>
+                    <div class="constraint-detail">No visibility into ERP capabilities or timeline, creating planning uncertainty across the entire tech stack</div>
+                </div>
+            </div>
+            <div class="constraint-item">
+                <span class="constraint-flag red">Red</span>
+                <div>
+                    <div class="constraint-label">Inventory Management Breakdown</div>
+                    <div class="constraint-detail">No systematic reordering process. Constant out-of-stock issues with direct revenue impact</div>
+                </div>
+            </div>
+            <div class="constraint-item">
+                <span class="constraint-flag red">Red</span>
+                <div>
+                    <div class="constraint-label">Communication Gaps with DC</div>
+                    <div class="constraint-detail">No proactive communication about warehouse changes affecting fulfillment. Service disruption risk</div>
+                </div>
+            </div>
+            <div class="constraint-item">
+                <span class="constraint-flag red">Red</span>
+                <div>
+                    <div class="constraint-label">Resource Overextension</div>
+                    <div class="constraint-detail">Key personnel handling multiple specialized roles due to understaffing. Burnout and quality risk</div>
+                </div>
+            </div>
+            <div class="constraint-item">
+                <span class="constraint-flag red">Red</span>
+                <div>
+                    <div class="constraint-label">E-Commerce Identity Crisis</div>
+                    <div class="constraint-detail">Unclear positioning within the company structure, directly affecting resource allocation decisions</div>
+                </div>
+            </div>
+            <div class="constraint-item">
+                <span class="constraint-flag yellow">Caution</span>
+                <div>
+                    <div class="constraint-label">Cross-Functional Pricing Rules</div>
+                    <div class="constraint-detail">No established margin guidelines or coordination between teams. Profitability risk</div>
+                </div>
+            </div>
+            <div class="constraint-item">
+                <span class="constraint-flag yellow">Caution</span>
+                <div>
+                    <div class="constraint-label">Vendor Data Access Limitations</div>
+                    <div class="constraint-detail">Limited access to product data, images, and pricing before physical receipt. Time-to-market impact</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         THE APPROACH
+         ======================================== -->
+    <section class="case-section section-content reveal">
+        <span class="section-label">The Approach</span>
+        <h2>Build the Decision<br>System First</h2>
+
+        <div class="case-body">
+            <p>
+                The answer was not to write a roadmap. The answer was to
+                <strong>build the organizational mechanism that could produce
+                one</strong>. I designed and facilitated a three-day strategic
+                summit with a specific structural arc: surface reality before
+                attempting to plan against it.
+            </p>
+        </div>
+
+        <div class="approach-grid">
+            <div class="approach-item">
+                <div class="approach-day">Day 01</div>
+                <div class="approach-title">Pressure<br>Testing</div>
+                <div class="approach-desc">
+                    Stress-test assumptions. Expose friction. Validate real
+                    limits of capacity, ownership, and system readiness.
+                    Not solving — agitating. Surface where things will break.
+                </div>
+            </div>
+            <div class="approach-item">
+                <div class="approach-day">Day 02</div>
+                <div class="approach-title">Prioritization<br>&amp; MVP</div>
+                <div class="approach-desc">
+                    Move from surfacing pain to forcing rank. Impact vs.
+                    feasibility. Define minimum viable initiatives. Force
+                    tradeoff clarity. If we say yes to X, what gets deferred?
+                </div>
+            </div>
+            <div class="approach-item">
+                <div class="approach-day">Day 03</div>
+                <div class="approach-title">Locking<br>Commitments</div>
+                <div class="approach-desc">
+                    Finalize ownership. Confirm executable initiatives.
+                    Document dependency risks. Exit with real commitments
+                    and a 30-60-90 day path. Clarity over consensus.
+                </div>
+            </div>
+            <div class="approach-item">
+                <div class="approach-day">Principle</div>
+                <div class="approach-title">Reality<br>Before Theory</div>
+                <div class="approach-desc">
+                    Every session was framed as a pressure test, not a
+                    brainstorm. It was explicitly okay to let initiatives
+                    die if stakeholders could not defend them. Documented
+                    tension, not just consensus.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         THE EVIDENCE — Artifacts
+         ======================================== -->
+    <section class="case-section section-content reveal">
+        <span class="section-label">The Evidence</span>
+        <h2>Frameworks<br>&amp; Artifacts</h2>
+
+        <div class="case-body">
+            <p>
+                The summit produced a set of diagnostic tools and decision
+                artifacts. Several have been generalized into reusable
+                frameworks.
+            </p>
+        </div>
+
+        <div class="artifact-grid">
+            <a href="assets/expectations-stress-test-framework.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                <div class="artifact-type">Framework</div>
+                <div class="artifact-name">Expectations<br>Stress Test</div>
+                <div class="artifact-desc">
+                    A systematic method for identifying hidden expectation
+                    gaps between organizational functions. Makes invisible
+                    dysfunction explicit and manageable.
+                </div>
+                <div class="artifact-action">View Framework &rarr;</div>
+            </a>
+
+            <a href="assets/expectations-sla-stress-test.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                <div class="artifact-type">Applied Example</div>
+                <div class="artifact-name">SLA Philosophy<br>Stress Test</div>
+                <div class="artifact-desc">
+                    The Expectations Stress Test applied to service-level
+                    agreements across 9 organizational domains. Shows what
+                    "good service" conflicts look like in practice.
+                </div>
+                <div class="artifact-action">View Example &rarr;</div>
+            </a>
+
+            <a href="assets/dependency-friction-map.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                <div class="artifact-type">Diagnostic Tool</div>
+                <div class="artifact-name">Dependency<br>Friction Map</div>
+                <div class="artifact-desc">
+                    Maps 20 cross-functional handoff points where work
+                    breaks down. Identifies the trigger, source function,
+                    receiving function, and consequence of each failure.
+                </div>
+                <div class="artifact-action">View Map &rarr;</div>
+            </a>
+
+            <a href="assets/pressure-points-register.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                <div class="artifact-type">Diagnostic Tool</div>
+                <div class="artifact-name">Pressure Points<br>Register</div>
+                <div class="artifact-desc">
+                    21 organizational pressure points across 6 categories
+                    (Technical, Operational, Ownership, Bandwidth, Strategic,
+                    Initiative), each flagged by severity.
+                </div>
+                <div class="artifact-action">View Register &rarr;</div>
+            </a>
+
+            <a href="assets/facilitation-mindsets-summary.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                <div class="artifact-type">Methodology</div>
+                <div class="artifact-name">3-Day Facilitation<br>Mindsets</div>
+                <div class="artifact-desc">
+                    The structural arc behind the summit: pressure test,
+                    prioritize, lock. Principles for facilitating
+                    cross-functional alignment without false consensus.
+                </div>
+                <div class="artifact-action">View Methodology &rarr;</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========================================
+         THE OUTCOME
+         ======================================== -->
+    <section class="case-section section-content reveal">
+        <span class="section-label">The Outcome</span>
+        <h2>What the<br>Summit Produced</h2>
+
+        <div class="outcome-grid">
+            <div class="outcome-stat">
+                <div class="outcome-number">18</div>
+                <div class="outcome-label">Stakeholders aligned<br>across functions</div>
+            </div>
+            <div class="outcome-stat">
+                <div class="outcome-number">8</div>
+                <div class="outcome-label">Functional domains<br>operating in shared reality</div>
+            </div>
+            <div class="outcome-stat">
+                <div class="outcome-number">12</div>
+                <div class="outcome-label">Initiatives with<br>named owners</div>
+            </div>
+            <div class="outcome-stat">
+                <div class="outcome-number highlight">3yr</div>
+                <div class="outcome-label">Strategic roadmap<br>validated and owned</div>
+            </div>
+            <div class="outcome-stat">
+                <div class="outcome-number">6mo</div>
+                <div class="outcome-label">Tactical execution<br>plan locked</div>
+            </div>
+            <div class="outcome-stat">
+                <div class="outcome-number">21</div>
+                <div class="outcome-label">Pressure points<br>documented and triaged</div>
+            </div>
+        </div>
+
+        <div class="case-body" style="margin-top: 2rem;">
+            <p>
+                The shortest version: the company wanted a 3-year e-commerce
+                strategy, but the teams required to build it had never been
+                in the same operational reality. <strong>I built the alignment
+                system that made the roadmap possible</strong>. The roadmap
+                was the output. The decision architecture was the work.
+            </p>
+        </div>
+
+        <a href="/" class="back-link">Back to The Warehouse</a>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <span>&copy; 2026 Angie Bailey</span>
+    </div>
+</footer>
+
+<!-- Scroll Reveal -->
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

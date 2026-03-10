@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dependency Friction Map — Cross-functional handoff analysis documenting 20 points where work breaks down between teams.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <title>Dependency Friction Map // Angie Bailey</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --nuit: #121A28;
+            --cacao: #2D1B14;
+            --quetzal: #00685E;
+            --ecru: #F5F5DC;
+            --rosso: #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        ::selection { background: var(--rosso); color: var(--ecru); }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--nuit);
+            color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .blueprint-overlay {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none; z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-fade 2s ease 0.5s both;
+        }
+
+        .spine {
+            position: fixed;
+            left: calc(var(--spine-left) - 40px);
+            top: 0; width: 4px; height: 100%;
+            background-color: var(--cacao);
+            z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .nav-bar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem; font-weight: 700;
+            letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--quetzal); text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem; font-weight: 400;
+            color: var(--ecru-dim); text-decoration: none;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            transition: color 0.2s ease; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--rosso);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--ecru); }
+        .nav-links a:hover::after { width: 100%; }
+
+        main { position: relative; z-index: 10; }
+
+        .doc-content {
+            padding-left: var(--spine-left);
+            padding-right: 4rem;
+            max-width: 1200px;
+        }
+
+        .doc-header { padding-top: 10rem; padding-bottom: 3rem; }
+
+        .doc-type {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem; font-weight: 700;
+            color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 1.5rem;
+            display: block; animation: fade-up 0.8s ease 0.4s both;
+        }
+
+        .doc-header h1 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2rem, 5vw, 4.5rem);
+            font-weight: 900; line-height: 0.9;
+            color: var(--ecru); text-transform: uppercase;
+            letter-spacing: -0.02em; margin-bottom: 1rem;
+            max-width: 600px; animation: fade-up 0.8s ease 0.5s both;
+        }
+
+        .doc-header h1 .accent-word { color: var(--rosso); }
+
+        .doc-subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem; color: var(--quetzal);
+            letter-spacing: 0.05em; margin-bottom: 2rem;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+
+        .doc-lede {
+            font-size: 1.15rem; font-weight: 300;
+            line-height: 1.7; color: var(--ecru-dim);
+            max-width: 600px; margin-bottom: 2rem;
+            animation: fade-up 0.8s ease 0.7s both;
+        }
+        .doc-lede strong { color: var(--ecru); font-weight: 500; }
+
+        .download-btn {
+            display: inline-flex; align-items: center; gap: 1rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem; font-weight: 700;
+            color: var(--nuit); background: var(--ecru);
+            text-decoration: none; text-transform: uppercase;
+            letter-spacing: 0.1em; padding: 1rem 2rem;
+            border: none; cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+            animation: fade-up 0.8s ease 0.8s both;
+        }
+        .download-btn:hover { background: var(--rosso); color: var(--ecru); }
+        .download-btn .arrow { font-size: 1.1rem; transition: transform 0.2s ease; }
+        .download-btn:hover .arrow { transform: translateY(2px); }
+
+        .doc-section {
+            padding-top: 4rem; padding-bottom: 4rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem; font-weight: 700;
+            color: var(--quetzal); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        h2 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 900; color: var(--ecru);
+            text-transform: uppercase; line-height: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .doc-body p {
+            font-size: 1rem; font-weight: 300;
+            line-height: 1.8; color: var(--ecru-dim);
+            margin-bottom: 1.25rem; max-width: 650px;
+        }
+        .doc-body p strong { color: var(--ecru); font-weight: 500; }
+
+        .branded-table {
+            width: 100%; max-width: 950px;
+            border-collapse: collapse;
+            margin: 2rem 0; font-size: 0.85rem;
+        }
+
+        .branded-table th {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem; font-weight: 700;
+            color: var(--quetzal); text-transform: uppercase;
+            letter-spacing: 0.1em; text-align: left;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid var(--cacao);
+        }
+
+        .branded-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--ecru-ghost);
+            color: var(--ecru-dim); font-weight: 300;
+            line-height: 1.5; vertical-align: top;
+        }
+        .branded-table td strong { color: var(--ecru); font-weight: 500; }
+        .branded-table tr:hover td { background: var(--ecru-ghost); }
+
+        .flag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.6rem; font-weight: 700;
+            letter-spacing: 0.1em; padding: 0.15rem 0.4rem;
+            text-transform: uppercase; display: inline-block;
+        }
+        .flag.red { color: var(--rosso); border: 1px solid var(--rosso); }
+        .flag.yellow { color: var(--quetzal); border: 1px solid var(--quetzal); }
+
+        /* Findings */
+        .findings-list { margin: 2rem 0; max-width: 650px; }
+
+        .finding-item {
+            padding: 1.5rem; background: var(--ecru-ghost); margin-bottom: 2px;
+        }
+        .finding-num {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.6rem; font-weight: 700;
+            color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 0.5rem;
+        }
+        .finding-title {
+            font-family: 'Imbue', serif;
+            font-size: 1.1rem; font-weight: 700;
+            color: var(--ecru); text-transform: uppercase;
+            line-height: 1.15; margin-bottom: 0.5rem;
+        }
+        .finding-desc {
+            font-size: 0.85rem; font-weight: 300;
+            color: var(--ecru-dim); line-height: 1.6;
+        }
+
+        .core-principle {
+            border-left: 5px solid var(--rosso);
+            padding: 2rem; margin: 2.5rem 0;
+            max-width: 650px; background: var(--ecru-ghost);
+        }
+        .core-principle p {
+            font-family: 'Imbue', serif;
+            font-size: 1.4rem; font-weight: 700;
+            color: var(--ecru); line-height: 1.3;
+            text-transform: uppercase;
+        }
+        .core-principle .sub {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 0.95rem; font-weight: 300;
+            color: var(--ecru-dim); line-height: 1.6;
+            text-transform: none; margin-top: 1rem;
+        }
+
+        /* Stat row */
+        .stat-row {
+            display: flex; gap: 2px; margin: 2rem 0; max-width: 400px;
+        }
+        .stat-box {
+            background: var(--ecru-ghost); padding: 1.5rem; flex: 1; text-align: center;
+        }
+        .stat-num {
+            font-family: 'Imbue', serif;
+            font-size: 2rem; font-weight: 900; color: var(--ecru); line-height: 1;
+        }
+        .stat-num.highlight { color: var(--rosso); }
+        .stat-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.6rem; color: var(--quetzal);
+            text-transform: uppercase; letter-spacing: 0.1em;
+            margin-top: 0.5rem; line-height: 1.4;
+        }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem; color: var(--ecru-dim);
+            text-decoration: none; text-transform: uppercase;
+            letter-spacing: 0.1em; transition: color 0.2s ease;
+            margin-top: 2rem;
+        }
+        .back-link::before {
+            content: ''; display: block; width: 24px; height: 2px;
+            background: var(--quetzal);
+            transition: width 0.3s ease, background 0.3s ease;
+        }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        .attribution {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem; color: var(--ecru-dim);
+            letter-spacing: 0.05em;
+            margin-top: 3rem; padding-top: 1.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .footer-content {
+            display: flex; justify-content: space-between;
+            align-items: center; max-width: 1200px;
+        }
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem; color: var(--ecru-dim);
+            letter-spacing: 0.05em;
+        }
+
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+
+        .reveal {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .doc-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+            .branded-table { font-size: 0.75rem; display: block; overflow-x: auto; }
+            .branded-table th, .branded-table td { padding: 0.5rem; min-width: 100px; }
+            .stat-row { flex-direction: column; max-width: 200px; }
+        }
+
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .blueprint-overlay { background-size: 24px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="blueprint-overlay" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true"></div>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="/" class="nav-mark">AB</a>
+    <ul class="nav-links">
+        <li><a href="/#warehouse">Warehouse</a></li>
+        <li><a href="/cases/e-commerce-summit.html">Case Study</a></li>
+        <li><a href="/#signal">Signal</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- Header -->
+    <section class="doc-header doc-content">
+        <span class="doc-type">Diagnostic Tool</span>
+        <h1>Dependency<br><span class="accent-word">Friction Map</span></h1>
+        <div class="doc-subtitle">Cross-Functional Handoff Analysis</div>
+        <p class="doc-lede">
+            Documents 20 cross-functional handoff points where work breaks down
+            between teams. Each row identifies the trigger event, which function
+            hands off to which, what fails at the boundary, and the downstream
+            consequence. <strong>10 Red flags, 10 Yellow flags.</strong>
+        </p>
+        <a href="templates/dependency-friction-map-blank.html" download class="download-btn">
+            Download Blank Template <span class="arrow">&darr;</span>
+        </a>
+    </section>
+
+    <!-- Summary Stats -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">At a Glance</span>
+
+        <div class="stat-row">
+            <div class="stat-box">
+                <div class="stat-num highlight">10</div>
+                <div class="stat-label">Red Flags</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">10</div>
+                <div class="stat-label">Yellow Flags</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">20</div>
+                <div class="stat-label">Handoff Points</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Friction Map Table -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Friction Map</span>
+        <h2>20 Handoff<br>Points</h2>
+
+        <table class="branded-table">
+            <thead>
+                <tr>
+                    <th>Trigger / Handoff</th>
+                    <th>Source</th>
+                    <th>Receiver</th>
+                    <th>What Breaks</th>
+                    <th>Consequence</th>
+                    <th>Flag</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>PO Issued</strong></td>
+                    <td>Procurement</td>
+                    <td>Distribution Center</td>
+                    <td>POs delayed or not shared promptly</td>
+                    <td>Stockouts, missed fulfillment windows</td>
+                    <td><span class="flag red">Red</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Inventory Depletion Detected</strong></td>
+                    <td>Warehouse</td>
+                    <td>Procurement</td>
+                    <td>No automated or scheduled reorder trigger</td>
+                    <td>Prolonged out-of-stock conditions</td>
+                    <td><span class="flag red">Red</span></td>
+                </tr>
+                <tr>
+                    <td><strong>SKU Added to System</strong></td>
+                    <td>Procurement</td>
+                    <td>E-Commerce</td>
+                    <td>Missing product images/specs; incomplete data</td>
+                    <td>Delays in product listings</td>
+                    <td><span class="flag yellow">Yellow</span></td>
+                </tr>
+                <tr>
+                    <td><strong>SKU Listed on Platform</strong></td>
+                    <td>E-Commerce</td>
+                    <td>Marketing</td>
+                    <td>Marketing assets or messaging not ready</td>
+                    <td>Incomplete merchandising</td>
+                    <td><span class="flag yellow">Yellow</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Price Change Needed</strong></td>
+                    <td>E-Commerce</td>
+                    <td>Finance</td>
+                    <td>No shared pricing model or rulebook</td>
+                    <td>Unapproved margin erosion</td>
+                    <td><span class="flag yellow">Yellow</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Customer Complaint Filed</strong></td>
+                    <td>Customer Support</td>
+                    <td>Warehouse / Fulfillment</td>
+                    <td>No feedback loop back to fulfillment</td>
+                    <td>Root cause not addressed</td>
+                    <td><span class="flag yellow">Yellow</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Order Routed</strong></td>
+                    <td>E-Commerce Platform</td>
+                    <td>Warehouse / Shipping</td>
+                    <td>Routing logic delay or failure</td>
+                    <td>Missed SLA on shipment</td>
+                    <td><span class="flag red">Red</span></td>
+                </tr>
+                <tr>
+                    <td><strong>System Update Needed</strong></td>
+                    <td>E-Commerce</td>
+                    <td>IT / Systems</td>
+                    <td>ERP and platform integration path unclear</td>
+                    <td>Tech stack uncertainty, platform risk</td>
+                    <td><span class="flag red">Red</span></td>
+                </tr>
+                <tr>
+                    <td><strong>SKU Reconciliation</strong></td>
+                    <td>E-Commerce</td>
+                    <td>Accounting / ERP</td>
+                    <td>Mismatch in pricing and SKU attribution</td>
+                    <td>COGS reporting errors</td>
+                    <td><span class="flag yellow">Yellow</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Product Forecast Shared</strong></td>
+                    <td>Planning</td>
+                    <td>Procurement</td>
+                    <td>Manual process, poor alignment</td>
+                    <td>Over/under ordering</td>
+                    <td><span class="flag red">Red</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Vendor Onboarded</strong></td>
+                    <td>Procurement</td>
+                    <td>Vendor Mgmt / E-Commerce</td>
+                    <td>Vendors unaware of asset requirements</td>
+                    <td>Poor SKU readiness</td>
+                    <td><span class="flag yellow">Yellow</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Fulfillment SLA Definition</strong></td>
+                    <td>Operations</td>
+                    <td>Customer Support</td>
+                    <td>No shared understanding or ownership</td>
+                    <td>Unmet customer expectations</td>
+                    <td><span class="flag red">Red</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Post-Sale Communication</strong></td>
+                    <td>E-Commerce</td>
+                    <td>Marketing / Support</td>
+                    <td>Fragmented ownership, no consistent plan</td>
+                    <td>High escalation volume</td>
+                    <td><span class="flag yellow">Yellow</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Financial Guardrails Set</strong></td>
+                    <td>Finance</td>
+                    <td>E-Commerce</td>
+                    <td>Delayed or unclear budget allocations</td>
+                    <td>Initiatives stall</td>
+                    <td><span class="flag yellow">Yellow</span></td>
+                </tr>
+                <tr>
+                    <td><strong>New Initiative Launched</strong></td>
+                    <td>Leadership</td>
+                    <td>Cross-Functional Teams</td>
+                    <td>No capacity validation or sequencing</td>
+                    <td>Overload, initiative failure</td>
+                    <td><span class="flag red">Red</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Tech Issue Detected</strong></td>
+                    <td>Operations / Support</td>
+                    <td>IT</td>
+                    <td>No direct escalation path for CX-impacting bugs</td>
+                    <td>Prolonged outages</td>
+                    <td><span class="flag red">Red</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Product Returns Received</strong></td>
+                    <td>Customer</td>
+                    <td>Warehouse / E-Commerce</td>
+                    <td>No clear reverse logistics or alert system</td>
+                    <td>Refund delays, churn</td>
+                    <td><span class="flag yellow">Yellow</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Branch Sales Goals Set</strong></td>
+                    <td>Leadership</td>
+                    <td>E-Commerce</td>
+                    <td>Competing goals, no shared targets</td>
+                    <td>Resource misallocation</td>
+                    <td><span class="flag red">Red</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Data Needed for Decision</strong></td>
+                    <td>E-Commerce</td>
+                    <td>Analytics / Data</td>
+                    <td>Analytics team not looped in early</td>
+                    <td>Slow or flawed decisions</td>
+                    <td><span class="flag yellow">Yellow</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Summit Insights Assigned</strong></td>
+                    <td>Facilitator</td>
+                    <td>Teams</td>
+                    <td>No clear owner follow-up after summit</td>
+                    <td>Drift post-summit, lost momentum</td>
+                    <td><span class="flag red">Red</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Structural Failures -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Analysis</span>
+        <h2>Three Structural<br>Failures</h2>
+
+        <div class="findings-list">
+            <div class="finding-item">
+                <div class="finding-num">Failure 01</div>
+                <div class="finding-title">No Automated Triggers</div>
+                <div class="finding-desc">Critical operational handoffs (inventory reorder, PO sharing, escalation routing) depended on manual coordination rather than system-level triggers.</div>
+            </div>
+            <div class="finding-item">
+                <div class="finding-num">Failure 02</div>
+                <div class="finding-title">No Shared Definitions</div>
+                <div class="finding-desc">Fulfillment SLAs, pricing rules, and sales targets existed without cross-functional agreement on what "good" meant.</div>
+            </div>
+            <div class="finding-item">
+                <div class="finding-num">Failure 03</div>
+                <div class="finding-title">No Capacity Validation</div>
+                <div class="finding-desc">New initiatives launched without checking whether receiving teams had bandwidth. The system incentivized ambition over feasibility.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Use -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">How to Use This</span>
+
+        <div class="core-principle">
+            <p>Each row is a diagnostic finding, not a blame assignment.</p>
+            <p class="sub">
+                To resolve a friction point, determine whether the fix is
+                (a) a process change, (b) a system/automation change, or
+                (c) an ownership clarification. Most require more than one.
+            </p>
+        </div>
+
+        <div class="attribution">
+            Diagnostic tool by Angie Bailey // <a href="/" style="color: var(--ecru-dim);">angieqbailey.com</a>
+        </div>
+
+        <a href="/cases/e-commerce-summit.html" class="back-link">Back to Case Study</a>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <span>&copy; 2026 Angie Bailey</span>
+    </div>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

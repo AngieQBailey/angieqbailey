@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Expectations Stress Test — Applied to SLA philosophy across 9 e-commerce operational domains.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <title>SLA Philosophy Stress Test // Angie Bailey</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --nuit: #121A28;
+            --cacao: #2D1B14;
+            --quetzal: #00685E;
+            --ecru: #F5F5DC;
+            --rosso: #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        ::selection { background: var(--rosso); color: var(--ecru); }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--nuit);
+            color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .blueprint-overlay {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none; z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-fade 2s ease 0.5s both;
+        }
+
+        .spine {
+            position: fixed;
+            left: calc(var(--spine-left) - 40px);
+            top: 0; width: 4px; height: 100%;
+            background-color: var(--cacao);
+            z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .nav-bar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem; font-weight: 700;
+            letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--quetzal); text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem; font-weight: 400;
+            color: var(--ecru-dim); text-decoration: none;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            transition: color 0.2s ease; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--rosso);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--ecru); }
+        .nav-links a:hover::after { width: 100%; }
+
+        main { position: relative; z-index: 10; }
+
+        .doc-content {
+            padding-left: var(--spine-left);
+            padding-right: 4rem;
+            max-width: 1200px;
+        }
+
+        .doc-header {
+            padding-top: 10rem;
+            padding-bottom: 3rem;
+        }
+
+        .doc-type {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem; font-weight: 700;
+            color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 1.5rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.4s both;
+        }
+
+        .doc-header h1 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2rem, 5vw, 4.5rem);
+            font-weight: 900; line-height: 0.9;
+            color: var(--ecru); text-transform: uppercase;
+            letter-spacing: -0.02em; margin-bottom: 1rem;
+            max-width: 600px;
+            animation: fade-up 0.8s ease 0.5s both;
+        }
+
+        .doc-header h1 .accent-word { color: var(--rosso); }
+
+        .doc-subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem; color: var(--quetzal);
+            letter-spacing: 0.05em; margin-bottom: 2rem;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+
+        .doc-lede {
+            font-size: 1.15rem; font-weight: 300;
+            line-height: 1.7; color: var(--ecru-dim);
+            max-width: 600px; margin-bottom: 2rem;
+            animation: fade-up 0.8s ease 0.7s both;
+        }
+
+        .doc-lede strong { color: var(--ecru); font-weight: 500; }
+
+        .download-btn {
+            display: inline-flex; align-items: center; gap: 1rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem; font-weight: 700;
+            color: var(--nuit); background: var(--ecru);
+            text-decoration: none; text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 1rem 2rem;
+            border: none; cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+            animation: fade-up 0.8s ease 0.8s both;
+        }
+
+        .download-btn:hover {
+            background: var(--rosso);
+            color: var(--ecru);
+        }
+
+        .download-btn .arrow {
+            font-size: 1.1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .download-btn:hover .arrow {
+            transform: translateY(2px);
+        }
+
+        .doc-section {
+            padding-top: 4rem; padding-bottom: 4rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem; font-weight: 700;
+            color: var(--quetzal); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        h2 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 900; color: var(--ecru);
+            text-transform: uppercase; line-height: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .doc-body p {
+            font-size: 1rem; font-weight: 300;
+            line-height: 1.8; color: var(--ecru-dim);
+            margin-bottom: 1.25rem; max-width: 650px;
+        }
+
+        .doc-body p strong { color: var(--ecru); font-weight: 500; }
+
+        /* Tables */
+        .branded-table {
+            width: 100%; max-width: 950px;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.85rem;
+        }
+
+        .branded-table th {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem; font-weight: 700;
+            color: var(--quetzal); text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid var(--cacao);
+        }
+
+        .branded-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--ecru-ghost);
+            color: var(--ecru-dim);
+            font-weight: 300;
+            line-height: 1.5;
+            vertical-align: top;
+        }
+
+        .branded-table td strong {
+            color: var(--ecru);
+            font-weight: 500;
+        }
+
+        .branded-table tr:hover td {
+            background: var(--ecru-ghost);
+        }
+
+        .flag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.6rem; font-weight: 700;
+            letter-spacing: 0.1em; padding: 0.15rem 0.4rem;
+            text-transform: uppercase; display: inline-block;
+        }
+        .flag.red { color: var(--rosso); border: 1px solid var(--rosso); }
+        .flag.yellow { color: var(--quetzal); border: 1px solid var(--quetzal); }
+
+        /* Findings List */
+        .findings-list {
+            margin: 2rem 0; max-width: 650px;
+        }
+
+        .finding-item {
+            padding: 1.5rem;
+            background: var(--ecru-ghost);
+            margin-bottom: 2px;
+        }
+
+        .finding-num {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.6rem; font-weight: 700;
+            color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 0.5rem;
+        }
+
+        .finding-title {
+            font-family: 'Imbue', serif;
+            font-size: 1.1rem; font-weight: 700;
+            color: var(--ecru); text-transform: uppercase;
+            line-height: 1.15; margin-bottom: 0.5rem;
+        }
+
+        .finding-desc {
+            font-size: 0.85rem; font-weight: 300;
+            color: var(--ecru-dim); line-height: 1.6;
+        }
+
+        /* Core Principle */
+        .core-principle {
+            border-left: 5px solid var(--rosso);
+            padding: 2rem 2rem;
+            margin: 2.5rem 0;
+            max-width: 650px;
+            background: var(--ecru-ghost);
+        }
+
+        .core-principle p {
+            font-family: 'Imbue', serif;
+            font-size: 1.4rem; font-weight: 700;
+            color: var(--ecru); line-height: 1.3;
+            text-transform: uppercase;
+        }
+
+        .core-principle .sub {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 0.95rem; font-weight: 300;
+            color: var(--ecru-dim); line-height: 1.6;
+            text-transform: none; margin-top: 1rem;
+        }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem; color: var(--ecru-dim);
+            text-decoration: none; text-transform: uppercase;
+            letter-spacing: 0.1em; transition: color 0.2s ease;
+            margin-top: 2rem;
+        }
+        .back-link::before {
+            content: ''; display: block;
+            width: 24px; height: 2px;
+            background: var(--quetzal);
+            transition: width 0.3s ease, background 0.3s ease;
+        }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        .attribution {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem; color: var(--ecru-dim);
+            letter-spacing: 0.05em;
+            margin-top: 3rem; padding-top: 1.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .footer-content {
+            display: flex; justify-content: space-between;
+            align-items: center; max-width: 1200px;
+        }
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem; color: var(--ecru-dim);
+            letter-spacing: 0.05em;
+        }
+
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+
+        .reveal {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .doc-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+            .branded-table { font-size: 0.75rem; display: block; overflow-x: auto; }
+            .branded-table th, .branded-table td { padding: 0.5rem; min-width: 120px; }
+        }
+
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .blueprint-overlay { background-size: 24px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="blueprint-overlay" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true"></div>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="/" class="nav-mark">AB</a>
+    <ul class="nav-links">
+        <li><a href="/#warehouse">Warehouse</a></li>
+        <li><a href="/cases/e-commerce-summit.html">Case Study</a></li>
+        <li><a href="/#signal">Signal</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- Header -->
+    <section class="doc-header doc-content">
+        <span class="doc-type">Applied Example</span>
+        <h1>SLA Philosophy<br><span class="accent-word">Stress Test</span></h1>
+        <div class="doc-subtitle">Expectations Stress Test — Applied to E-Commerce Operations</div>
+        <p class="doc-lede">
+            A real application of the Expectations Stress Test framework to
+            service-level agreements across an e-commerce organization.
+            <strong>5 of 9 SLA domains flagged critical.</strong>
+            Names removed; structure and findings are authentic.
+        </p>
+        <a href="templates/expectations-sla-stress-test-blank.html" download class="download-btn">
+            Download Blank Template <span class="arrow">&darr;</span>
+        </a>
+    </section>
+
+    <!-- Assessment Results -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Assessment Results</span>
+        <h2>9 SLA Domains<br>Assessed</h2>
+
+        <table class="branded-table">
+            <thead>
+                <tr>
+                    <th>SLA Domain</th>
+                    <th>Who Thinks They Own It</th>
+                    <th>What "Good" Means to Them</th>
+                    <th>What Others Expect</th>
+                    <th>Where the Gap Is</th>
+                    <th>Flag</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>PO Approval Time</strong></td>
+                    <td>Procurement</td>
+                    <td>48-72 hours is reasonable</td>
+                    <td>&lt;24 hours for high-velocity SKUs</td>
+                    <td>Urgency expectations are not shared</td>
+                    <td><span class="flag red">Red</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Fulfillment SLA</strong></td>
+                    <td>Operations</td>
+                    <td>Ship within 2 business days</td>
+                    <td>Same-day or next-day for in-stock SKUs</td>
+                    <td>Capacity vs. expectation mismatch</td>
+                    <td><span class="flag red">Red</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Post-Sale Communication</strong></td>
+                    <td>E-Commerce</td>
+                    <td>Transactional emails only</td>
+                    <td>Proactive customer updates (delays, delivery stages)</td>
+                    <td>Philosophical gap on CX role</td>
+                    <td><span class="flag yellow">Yellow</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Return/Refund Resolution</strong></td>
+                    <td>Customer Support</td>
+                    <td>Resolve within 5 days</td>
+                    <td>Customers expect refund status within 48 hrs</td>
+                    <td>Customer perception vs process cycle</td>
+                    <td><span class="flag yellow">Yellow</span></td>
+                </tr>
+                <tr>
+                    <td><strong>SKU Launch Readiness</strong></td>
+                    <td>Procurement</td>
+                    <td>List SKU once contract signed</td>
+                    <td>Must have images, specs, GTINs before launch</td>
+                    <td>Asset readiness expectation gap</td>
+                    <td><span class="flag red">Red</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Inventory Reorder Timing</strong></td>
+                    <td>Procurement</td>
+                    <td>Ad hoc, based on team flag</td>
+                    <td>Automated/scheduled reordering based on thresholds</td>
+                    <td>Systemization vs. manual approach</td>
+                    <td><span class="flag red">Red</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Pricing Approval</strong></td>
+                    <td>Finance</td>
+                    <td>Reviewed monthly for margin alignment</td>
+                    <td>Real-time flexibility for competitive positioning</td>
+                    <td>Timeliness + flexibility misalignment</td>
+                    <td><span class="flag red">Red</span></td>
+                </tr>
+                <tr>
+                    <td><strong>New SKU Onboarding</strong></td>
+                    <td>E-Commerce</td>
+                    <td>Marketing sets timeline</td>
+                    <td>Cross-functional inputs required before launch</td>
+                    <td>Role confusion + sequencing conflict</td>
+                    <td><span class="flag yellow">Yellow</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Customer Escalation Handling</strong></td>
+                    <td>Support Platform</td>
+                    <td>Owns escalations after ticket open</td>
+                    <td>E-commerce expects proactive ops updates pre-escalation</td>
+                    <td>Ownership vs. expectation divergence</td>
+                    <td><span class="flag yellow">Yellow</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Key Findings -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Key Findings</span>
+        <h2>Three Structural<br>Patterns</h2>
+
+        <div class="findings-list">
+            <div class="finding-item">
+                <div class="finding-num">Pattern 01</div>
+                <div class="finding-title">Speed vs. Process Capacity</div>
+                <div class="finding-desc">PO approval, fulfillment, pricing approval all showed the same pattern: one function optimizing for thoroughness while another needed speed. Neither was wrong; the philosophies were never reconciled.</div>
+            </div>
+            <div class="finding-item">
+                <div class="finding-num">Pattern 02</div>
+                <div class="finding-title">Ownership Ambiguity</div>
+                <div class="finding-desc">SKU launch readiness and new SKU onboarding both suffered from unclear sequencing. Multiple functions each assumed another was setting the timeline.</div>
+            </div>
+            <div class="finding-item">
+                <div class="finding-num">Pattern 03</div>
+                <div class="finding-title">Systemization Gaps</div>
+                <div class="finding-desc">Inventory reordering was still manual and ad hoc despite the organization's scale. The gap between what the process was and what stakeholders expected it to be was structural, not behavioral.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Read -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">How to Read This</span>
+
+        <div class="core-principle">
+            <p>Each row is not a complaint. It is a documented philosophical misalignment.</p>
+            <p class="sub">
+                The goal is not to assign blame but to make the misalignment visible
+                so leadership can decide whether to align the philosophies, accept
+                the gap, or restructure the responsibility.
+            </p>
+        </div>
+
+        <div class="attribution">
+            Applied framework by Angie Bailey // <a href="/" style="color: var(--ecru-dim);">angieqbailey.com</a><br>
+            See also: <a href="expectations-stress-test-framework.html" style="color: var(--quetzal);">Expectations Stress Test Framework (generalized version)</a>
+        </div>
+
+        <a href="/cases/e-commerce-summit.html" class="back-link">Back to Case Study</a>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <span>&copy; 2026 Angie Bailey</span>
+    </div>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
