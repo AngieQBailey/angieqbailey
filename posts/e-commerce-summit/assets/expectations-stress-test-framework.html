@@ -21,6 +21,7 @@
             --rosso: #C41E3A;
             --ecru-dim: rgba(245, 245, 220, 0.6);
             --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-bright: #00A896;
             --quetzal-line: rgba(0, 104, 94, 0.1);
             --spine-left: 22%;
         }
@@ -73,14 +74,14 @@
         }
         .nav-mark {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.75rem; font-weight: 700;
+            font-size: 0.85rem; font-weight: 700;
             letter-spacing: 0.15em; text-transform: uppercase;
-            color: var(--quetzal); text-decoration: none;
+            color: var(--quetzal-bright); text-decoration: none;
         }
         .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
         .nav-links a {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.75rem; font-weight: 400;
+            font-size: 0.85rem; font-weight: 400;
             color: var(--ecru-dim); text-decoration: none;
             text-transform: uppercase; letter-spacing: 0.1em;
             transition: color 0.2s ease; position: relative;
@@ -110,7 +111,7 @@
 
         .doc-type {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.65rem; font-weight: 700;
+            font-size: 0.85rem; font-weight: 700;
             color: var(--rosso); text-transform: uppercase;
             letter-spacing: 0.2em; margin-bottom: 1.5rem;
             display: block;
@@ -131,7 +132,7 @@
 
         .doc-subtitle {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.85rem; color: var(--quetzal);
+            font-size: 0.85rem; color: var(--quetzal-bright);
             letter-spacing: 0.05em; margin-bottom: 2rem;
             animation: fade-up 0.8s ease 0.6s both;
         }
@@ -175,14 +176,14 @@
 
         /* Document Sections */
         .doc-section {
-            padding-top: 4rem; padding-bottom: 4rem;
+            padding-top: 2rem; padding-bottom: 2rem;
             border-top: 1px solid var(--ecru-ghost);
         }
 
         .section-label {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.7rem; font-weight: 700;
-            color: var(--quetzal); letter-spacing: 0.2em;
+            font-size: 0.85rem; font-weight: 700;
+            color: var(--quetzal-bright); letter-spacing: 0.2em;
             text-transform: uppercase; margin-bottom: 0.5rem;
             display: block;
         }
@@ -211,13 +212,13 @@
         }
 
         .framework-col {
-            background: var(--ecru-ghost);
+            background: rgba(245, 245, 220, 0.14);
             padding: 1.5rem;
         }
 
         .framework-col-num {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.6rem; font-weight: 700;
+            font-size: 0.85rem; font-weight: 700;
             color: var(--rosso); text-transform: uppercase;
             letter-spacing: 0.2em; margin-bottom: 0.5rem;
         }
@@ -244,8 +245,8 @@
 
         .branded-table th {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.65rem; font-weight: 700;
-            color: var(--quetzal); text-transform: uppercase;
+            font-size: 0.85rem; font-weight: 700;
+            color: var(--quetzal-bright); text-transform: uppercase;
             letter-spacing: 0.1em;
             text-align: left;
             padding: 0.75rem 1rem;
@@ -267,18 +268,18 @@
         }
 
         .branded-table tr:hover td {
-            background: var(--ecru-ghost);
+            background: rgba(245, 245, 220, 0.14);
         }
 
         /* Flag Badges */
         .flag {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.6rem; font-weight: 700;
+            font-size: 0.85rem; font-weight: 700;
             letter-spacing: 0.1em; padding: 0.15rem 0.4rem;
             text-transform: uppercase; display: inline-block;
         }
         .flag.red { color: var(--rosso); border: 1px solid var(--rosso); }
-        .flag.yellow { color: var(--quetzal); border: 1px solid var(--quetzal); }
+        .flag.yellow { color: var(--quetzal-bright); border: 1px solid var(--quetzal); }
         .flag.green { color: var(--ecru-dim); border: 1px solid var(--ecru-dim); }
 
         /* Comparison Table */
@@ -289,14 +290,14 @@
         }
 
         .comparison-col {
-            background: var(--ecru-ghost);
+            background: rgba(245, 245, 220, 0.14);
             padding: 1.5rem;
         }
 
         .comparison-col-header {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.65rem; font-weight: 700;
-            color: var(--quetzal); text-transform: uppercase;
+            font-size: 0.85rem; font-weight: 700;
+            color: var(--quetzal-bright); text-transform: uppercase;
             letter-spacing: 0.15em; margin-bottom: 1rem;
             padding-bottom: 0.75rem;
             border-bottom: 2px solid var(--cacao);
@@ -324,13 +325,13 @@
         }
 
         .outcome-box {
-            background: var(--ecru-ghost);
+            background: rgba(245, 245, 220, 0.14);
             padding: 1.75rem;
         }
 
         .outcome-box-label {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.65rem; font-weight: 700;
+            font-size: 0.85rem; font-weight: 700;
             text-transform: uppercase; letter-spacing: 0.15em;
             margin-bottom: 1rem; padding-bottom: 0.5rem;
         }
@@ -341,7 +342,7 @@
         }
 
         .outcome-box-label.after {
-            color: var(--quetzal);
+            color: var(--quetzal-bright);
             border-bottom: 1px solid var(--quetzal);
         }
 
@@ -357,7 +358,7 @@
             padding: 2rem 2rem;
             margin: 2.5rem 0;
             max-width: 650px;
-            background: var(--ecru-ghost);
+            background: rgba(245, 245, 220, 0.14);
         }
 
         .core-principle p {
@@ -382,14 +383,14 @@
         }
 
         .impl-item {
-            background: var(--ecru-ghost);
+            background: rgba(245, 245, 220, 0.14);
             padding: 1.5rem;
         }
 
         .impl-label {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.6rem; font-weight: 700;
-            color: var(--quetzal); text-transform: uppercase;
+            font-size: 0.85rem; font-weight: 700;
+            color: var(--quetzal-bright); text-transform: uppercase;
             letter-spacing: 0.15em; margin-bottom: 0.5rem;
         }
 
@@ -419,7 +420,7 @@
         /* Attribution */
         .attribution {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.7rem; color: var(--ecru-dim);
+            font-size: 0.85rem; color: var(--ecru-dim);
             letter-spacing: 0.05em;
             margin-top: 3rem; padding-top: 1.5rem;
             border-top: 1px solid var(--ecru-ghost);
@@ -436,7 +437,7 @@
         }
         .footer-content span {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.7rem; color: var(--ecru-dim);
+            font-size: 0.85rem; color: var(--ecru-dim);
             letter-spacing: 0.05em;
         }
 
@@ -463,11 +464,12 @@
             .impl-grid { grid-template-columns: 1fr; }
             .nav-links { gap: 1.25rem; padding-right: 1rem; }
             footer { padding-left: 2rem; }
-            .branded-table { font-size: 0.75rem; }
+            .branded-table { font-size: 0.85rem; }
             .branded-table th, .branded-table td { padding: 0.5rem; }
         }
 
         @media (max-width: 500px) {
+            .nav-links a { font-size: 0.75rem; }
             .nav-mark { display: none; }
             .nav-bar { justify-content: flex-end; }
             .blueprint-overlay { background-size: 24px 24px; }
@@ -562,9 +564,9 @@
 
         <div class="doc-body" style="margin-top: 2rem;">
             <p>
-                <span class="flag red">Red</span> Critical — Revenue loss, customer churn, strategic failure.
-                <span class="flag yellow">Yellow</span> Moderate — Inefficiency, frustration, costly workarounds.
-                <span class="flag green">Green</span> Minor — Manageable through current processes.
+                <span class="flag red">Red</span> Critical ... Revenue loss, customer churn, strategic failure.
+                <span class="flag yellow">Yellow</span> Moderate ... Inefficiency, frustration, costly workarounds.
+                <span class="flag green">Green</span> Minor ... Manageable through current processes.
             </p>
         </div>
     </section>

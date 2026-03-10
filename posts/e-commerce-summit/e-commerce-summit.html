@@ -19,7 +19,7 @@
 
     <style>
         /* ===================================================
-           THE WAREHOUSE — Case Study Template
+           THE WAREHOUSE ... Case Study Template
            Design System: Durable Births (Dark Variant)
            =================================================== */
 
@@ -31,6 +31,7 @@
             --rosso:    #C41E3A;
             --ecru-dim: rgba(245, 245, 220, 0.6);
             --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-bright: #00A896;
             --quetzal-line: rgba(0, 104, 94, 0.1);
             --spine-left: 22%;
         }
@@ -104,11 +105,11 @@
 
         .nav-mark {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             font-weight: 700;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: var(--quetzal);
+            color: var(--quetzal-bright);
         }
 
         .nav-links {
@@ -120,7 +121,7 @@
 
         .nav-links a {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             font-weight: 400;
             color: var(--ecru-dim);
             text-decoration: none;
@@ -161,13 +162,13 @@
             flex-direction: column;
             justify-content: center;
             padding-top: 8rem;
-            padding-bottom: 4rem;
+            padding-bottom: 2rem;
         }
 
         .case-meta {
             font-family: 'IBM Plex Mono', monospace;
             font-size: 0.8rem;
-            color: var(--quetzal);
+            color: var(--quetzal-bright);
             letter-spacing: 0.1em;
             margin-bottom: 2rem;
             display: block;
@@ -176,7 +177,7 @@
 
         .case-tag {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.65rem;
+            font-size: 0.85rem;
             font-weight: 700;
             color: var(--rosso);
             text-transform: uppercase;
@@ -224,16 +225,16 @@
 
         /* Case Study Sections */
         .case-section {
-            padding-top: 5rem;
-            padding-bottom: 5rem;
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
             border-top: 1px solid var(--ecru-ghost);
         }
 
         .section-label {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.7rem;
+            font-size: 0.85rem;
             font-weight: 700;
-            color: var(--quetzal);
+            color: var(--quetzal-bright);
             letter-spacing: 0.2em;
             text-transform: uppercase;
             margin-bottom: 0.5rem;
@@ -286,7 +287,7 @@
 
         .constraint-flag {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.65rem;
+            font-size: 0.85rem;
             font-weight: 700;
             letter-spacing: 0.1em;
             padding: 0.2rem 0.5rem;
@@ -301,7 +302,7 @@
         }
 
         .constraint-flag.yellow {
-            color: var(--quetzal);
+            color: var(--quetzal-bright);
             border: 1px solid var(--quetzal);
         }
 
@@ -352,13 +353,13 @@
         }
 
         .approach-item {
-            background: var(--ecru-ghost);
+            background: rgba(245, 245, 220, 0.14);
             padding: 2rem 1.75rem;
         }
 
         .approach-day {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.65rem;
+            font-size: 0.85rem;
             font-weight: 700;
             color: var(--rosso);
             text-transform: uppercase;
@@ -392,7 +393,7 @@
         }
 
         .artifact-card {
-            background: var(--ecru-ghost);
+            background: rgba(245, 245, 220, 0.14);
             padding: 2rem 1.75rem;
             position: relative;
             transition: background 0.3s ease;
@@ -419,9 +420,9 @@
 
         .artifact-type {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.6rem;
+            font-size: 0.85rem;
             font-weight: 700;
-            color: var(--quetzal);
+            color: var(--quetzal-bright);
             text-transform: uppercase;
             letter-spacing: 0.2em;
             margin-bottom: 0.75rem;
@@ -447,7 +448,7 @@
 
         .artifact-action {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.7rem;
+            font-size: 0.85rem;
             color: var(--rosso);
             text-transform: uppercase;
             letter-spacing: 0.15em;
@@ -463,7 +464,7 @@
         }
 
         .outcome-stat {
-            background: var(--ecru-ghost);
+            background: rgba(245, 245, 220, 0.14);
             padding: 2rem 1.75rem;
         }
 
@@ -482,8 +483,8 @@
 
         .outcome-label {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--quetzal);
+            font-size: 0.85rem;
+            color: var(--quetzal-bright);
             text-transform: uppercase;
             letter-spacing: 0.1em;
             line-height: 1.4;
@@ -537,7 +538,7 @@
 
         .footer-content span {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.7rem;
+            font-size: 0.85rem;
             color: var(--ecru-dim);
             letter-spacing: 0.05em;
         }
@@ -587,6 +588,7 @@
         }
 
         @media (max-width: 500px) {
+            .nav-links a { font-size: 0.75rem; }
             .nav-mark { display: none; }
             .nav-bar { justify-content: flex-end; }
             .blueprint-overlay { background-size: 24px 24px; }
@@ -634,6 +636,79 @@
     </section>
 
     <!-- ========================================
+         THE EVIDENCE — Artifacts
+         ======================================== -->
+    <section class="case-section section-content reveal">
+        <span class="section-label">The Evidence</span>
+        <h2>Frameworks<br>&amp; Artifacts</h2>
+
+        <div class="case-body">
+            <p>
+                The summit produced a set of diagnostic tools and decision
+                artifacts. Several have been generalized into reusable
+                frameworks.
+            </p>
+        </div>
+
+        <div class="artifact-grid">
+            <a href="assets/expectations-stress-test-framework.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                <div class="artifact-type">Framework</div>
+                <div class="artifact-name">Expectations<br>Stress Test</div>
+                <div class="artifact-desc">
+                    A systematic method for identifying hidden expectation
+                    gaps between organizational functions. Makes invisible
+                    dysfunction explicit and manageable.
+                </div>
+                <div class="artifact-action">View Framework &rarr;</div>
+            </a>
+
+            <a href="assets/expectations-sla-stress-test.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                <div class="artifact-type">Applied Example</div>
+                <div class="artifact-name">SLA Philosophy<br>Stress Test</div>
+                <div class="artifact-desc">
+                    The Expectations Stress Test applied to service-level
+                    agreements across 9 organizational domains. Shows what
+                    "good service" conflicts look like in practice.
+                </div>
+                <div class="artifact-action">View Example &rarr;</div>
+            </a>
+
+            <a href="assets/dependency-friction-map.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                <div class="artifact-type">Diagnostic Tool</div>
+                <div class="artifact-name">Dependency<br>Friction Map</div>
+                <div class="artifact-desc">
+                    Maps 20 cross-functional handoff points where work
+                    breaks down. Identifies the trigger, source function,
+                    receiving function, and consequence of each failure.
+                </div>
+                <div class="artifact-action">View Map &rarr;</div>
+            </a>
+
+            <a href="assets/pressure-points-register.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                <div class="artifact-type">Diagnostic Tool</div>
+                <div class="artifact-name">Pressure Points<br>Register</div>
+                <div class="artifact-desc">
+                    21 organizational pressure points across 6 categories
+                    (Technical, Operational, Ownership, Bandwidth, Strategic,
+                    Initiative), each flagged by severity.
+                </div>
+                <div class="artifact-action">View Register &rarr;</div>
+            </a>
+
+            <a href="assets/facilitation-mindsets-summary.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                <div class="artifact-type">Methodology</div>
+                <div class="artifact-name">3-Day Facilitation<br>Mindsets</div>
+                <div class="artifact-desc">
+                    The structural arc behind the summit: pressure test,
+                    prioritize, lock. Principles for facilitating
+                    cross-functional alignment without false consensus.
+                </div>
+                <div class="artifact-action">View Methodology &rarr;</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========================================
          THE SITUATION
          ======================================== -->
     <section class="case-section section-content reveal">
@@ -644,9 +719,9 @@
             <p>
                 The roadmap did not exist because <strong>the coordination
                 mechanism required to create one did not exist</strong>. Eight
-                functional domains — DC Operations, Supply Chain, Procurement,
+                functional domains... DC Operations, Supply Chain, Procurement,
                 Finance, Marketing, Digital Experience, Platform/Product, and
-                Demand Planning — were operating independently, with no
+                Demand Planning ... were operating independently, with no
                 structured forum to reconcile constraints.
             </p>
 
@@ -688,7 +763,7 @@
                 Strategic conversations were happening without constraint
                 visibility. Without a unified constraint map, strategy
                 defaults to optimistic assumptions. That is how unrealistic
-                roadmaps get created — and why this one had never materialized.
+                roadmaps get created ... and why this one had never materialized.
             </p>
         </div>
     </section>
@@ -786,7 +861,7 @@
                 <div class="approach-desc">
                     Stress-test assumptions. Expose friction. Validate real
                     limits of capacity, ownership, and system readiness.
-                    Not solving — agitating. Surface where things will break.
+                    Not solving ... agitating. Surface where things will break.
                 </div>
             </div>
             <div class="approach-item">
@@ -817,79 +892,6 @@
                     tension, not just consensus.
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- ========================================
-         THE EVIDENCE — Artifacts
-         ======================================== -->
-    <section class="case-section section-content reveal">
-        <span class="section-label">The Evidence</span>
-        <h2>Frameworks<br>&amp; Artifacts</h2>
-
-        <div class="case-body">
-            <p>
-                The summit produced a set of diagnostic tools and decision
-                artifacts. Several have been generalized into reusable
-                frameworks.
-            </p>
-        </div>
-
-        <div class="artifact-grid">
-            <a href="assets/expectations-stress-test-framework.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
-                <div class="artifact-type">Framework</div>
-                <div class="artifact-name">Expectations<br>Stress Test</div>
-                <div class="artifact-desc">
-                    A systematic method for identifying hidden expectation
-                    gaps between organizational functions. Makes invisible
-                    dysfunction explicit and manageable.
-                </div>
-                <div class="artifact-action">View Framework &rarr;</div>
-            </a>
-
-            <a href="assets/expectations-sla-stress-test.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
-                <div class="artifact-type">Applied Example</div>
-                <div class="artifact-name">SLA Philosophy<br>Stress Test</div>
-                <div class="artifact-desc">
-                    The Expectations Stress Test applied to service-level
-                    agreements across 9 organizational domains. Shows what
-                    "good service" conflicts look like in practice.
-                </div>
-                <div class="artifact-action">View Example &rarr;</div>
-            </a>
-
-            <a href="assets/dependency-friction-map.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
-                <div class="artifact-type">Diagnostic Tool</div>
-                <div class="artifact-name">Dependency<br>Friction Map</div>
-                <div class="artifact-desc">
-                    Maps 20 cross-functional handoff points where work
-                    breaks down. Identifies the trigger, source function,
-                    receiving function, and consequence of each failure.
-                </div>
-                <div class="artifact-action">View Map &rarr;</div>
-            </a>
-
-            <a href="assets/pressure-points-register.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
-                <div class="artifact-type">Diagnostic Tool</div>
-                <div class="artifact-name">Pressure Points<br>Register</div>
-                <div class="artifact-desc">
-                    21 organizational pressure points across 6 categories
-                    (Technical, Operational, Ownership, Bandwidth, Strategic,
-                    Initiative), each flagged by severity.
-                </div>
-                <div class="artifact-action">View Register &rarr;</div>
-            </a>
-
-            <a href="assets/facilitation-mindsets-summary.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
-                <div class="artifact-type">Methodology</div>
-                <div class="artifact-name">3-Day Facilitation<br>Mindsets</div>
-                <div class="artifact-desc">
-                    The structural arc behind the summit: pressure test,
-                    prioritize, lock. Principles for facilitating
-                    cross-functional alignment without false consensus.
-                </div>
-                <div class="artifact-action">View Methodology &rarr;</div>
-            </a>
         </div>
     </section>
 

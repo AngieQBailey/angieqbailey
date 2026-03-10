@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expectations Stress Test — Blank Template</title>
+    <title>Expectations Stress Test ... Blank Template</title>
     <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root { --nuit: #121A28; --cacao: #2D1B14; --quetzal: #00685E; --ecru: #F5F5DC; --rosso: #C41E3A; --text: #1a1a1a; --text-dim: #555; --border: #d4d0c8; --border-light: #e8e4dc; --hover-bg: rgba(0, 104, 94, 0.04); }
@@ -12,40 +12,40 @@
         body { background-color: var(--ecru); color: var(--text); font-family: 'IBM Plex Sans', sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; padding: 4rem 3rem; max-width: 1000px; }
 
         .template-header { margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid var(--cacao); }
-        .template-type { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; font-weight: 700; color: var(--rosso); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 1rem; }
+        .template-type { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--rosso); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 1rem; }
         h1 { font-family: 'Imbue', serif; font-size: 2.5rem; font-weight: 900; line-height: 0.9; text-transform: uppercase; margin-bottom: 0.75rem; color: var(--nuit); }
         h1 .accent { color: var(--rosso); }
-        .subtitle { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--quetzal); letter-spacing: 0.05em; margin-bottom: 1.5rem; }
+        .subtitle { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--quetzal-bright); letter-spacing: 0.05em; margin-bottom: 1.5rem; }
         .instructions { font-size: 0.95rem; font-weight: 300; color: var(--text-dim); line-height: 1.7; max-width: 600px; }
         .instructions strong { color: var(--text); font-weight: 500; }
 
         .section { margin-top: 3rem; }
-        .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; font-weight: 700; color: var(--quetzal); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem; }
+        .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem; }
         h2 { font-family: 'Imbue', serif; font-size: 1.8rem; font-weight: 900; text-transform: uppercase; line-height: 0.95; margin-bottom: 1.5rem; color: var(--nuit); }
 
         table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.85rem; }
-        th { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; font-weight: 700; color: var(--quetzal); text-transform: uppercase; letter-spacing: 0.1em; text-align: left; padding: 0.75rem 1rem; border-bottom: 2px solid var(--cacao); }
+        th { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--quetzal-bright); text-transform: uppercase; letter-spacing: 0.1em; text-align: left; padding: 0.75rem 1rem; border-bottom: 2px solid var(--cacao); }
         td { padding: 1.5rem 1rem; border-bottom: 1px solid var(--border); color: var(--text-dim); font-weight: 300; vertical-align: top; min-height: 60px; }
         tr:hover td { background: var(--hover-bg); }
 
         .flag-key { margin: 2rem 0; font-size: 0.85rem; color: var(--text-dim); }
-        .flag { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; padding: 0.15rem 0.4rem; text-transform: uppercase; display: inline-block; margin-right: 1rem; }
+        .flag { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; padding: 0.15rem 0.4rem; text-transform: uppercase; display: inline-block; margin-right: 1rem; }
         .flag.red { color: var(--rosso); border: 1px solid var(--rosso); }
-        .flag.yellow { color: var(--quetzal); border: 1px solid var(--quetzal); }
+        .flag.yellow { color: var(--quetzal-bright); border: 1px solid var(--quetzal); }
         .flag.green { color: var(--text-dim); border: 1px solid var(--border); }
 
-        .attribution { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.05em; margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+        .attribution { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--text-dim); letter-spacing: 0.05em; margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
 
-        .print-btn { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ecru); background: var(--nuit); border: none; padding: 0.75rem 2rem; cursor: pointer; margin-top: 1rem; transition: background 0.2s; }
+        .print-btn { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ecru); background: var(--nuit); border: none; padding: 0.75rem 2rem; cursor: pointer; margin-top: 1rem; transition: background 0.2s; }
         .print-btn:hover { background: var(--quetzal); }
 
         @page { size: landscape; margin: 1.5cm; }
         @media print {
             body { background: white; padding: 1rem; max-width: none; }
             .print-btn { display: none; }
-            table { font-size: 0.75rem; }
+            table { font-size: 0.85rem; }
             td { min-height: 60px; padding: 1rem 0.75rem; }
-            th { font-size: 0.6rem; }
+            th { font-size: 0.85rem; }
         }
     </style>
 </head>
