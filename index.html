@@ -26,9 +26,13 @@
 
     <title>Angie Bailey | Transformation Architect</title>
 
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
     /* ===================================================
@@ -547,6 +551,28 @@
         letter-spacing: 0.05em;
     }
 
+    .footer-portrait {
+        width: 36px;
+        height: 36px;
+        border-radius: 50% !important;
+        object-fit: cover;
+        object-position: center 15%;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        border: 1px solid var(--ecru-ghost);
+        filter: grayscale(40%);
+    }
+
+    footer:hover .footer-portrait {
+        opacity: 1;
+    }
+
+    @media (max-width: 500px) {
+        .footer-portrait {
+            opacity: 0.6;
+        }
+    }
+
     /* ===================================================
        RESPONSIVE — Structural Adaptation
        =================================================== */
@@ -939,6 +965,7 @@
 <footer>
     <div class="footer-content">
         <span>&copy; 2026 Angie Bailey</span>
+        <img src="headshot.jpg" alt="Angie Bailey" class="footer-portrait" loading="lazy">
     </div>
 </footer>
 
