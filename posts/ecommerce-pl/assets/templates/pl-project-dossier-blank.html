@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P&L Project Dossier ... Blank Template</title>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --nuit: #121A28; --cacao: #2D1B14; --quetzal: #00685E; --ecru: #F5F5DC; --rosso: #C41E3A; --text: #1a1a1a; --text-dim: #555; --border: #d4d0c8; --hover-bg: rgba(0, 104, 94, 0.04); }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; font-style: normal !important; border-radius: 0 !important; }
+        ::selection { background: var(--rosso); color: var(--ecru); }
+        body { background-color: var(--ecru); color: var(--text); font-family: 'IBM Plex Sans', sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; padding: 4rem 3rem; max-width: 1000px; }
+
+        .template-header { margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid var(--cacao); }
+        .template-type { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--rosso); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 1rem; }
+        h1 { font-family: 'Imbue', serif; font-size: 2.5rem; font-weight: 900; line-height: 0.9; text-transform: uppercase; margin-bottom: 0.75rem; color: var(--nuit); }
+        h1 .accent { color: var(--rosso); }
+        .subtitle { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--quetzal); letter-spacing: 0.05em; margin-bottom: 1.5rem; }
+        .instructions { font-size: 0.95rem; font-weight: 300; color: var(--text-dim); line-height: 1.7; max-width: 600px; }
+        .instructions strong { color: var(--text); font-weight: 500; }
+
+        .section { margin-top: 3rem; }
+        .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--quetzal); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem; }
+        h2 { font-family: 'Imbue', serif; font-size: 1.8rem; font-weight: 900; text-transform: uppercase; line-height: 0.95; margin-bottom: 1.5rem; color: var(--nuit); }
+
+        .field-group { margin-bottom: 2rem; }
+        .field-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--quetzal); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .blank-line { border-bottom: 1px solid var(--cacao); min-height: 1.5rem; margin-bottom: 1rem; }
+        .blank-area { border: 1px solid var(--border); min-height: 4rem; padding: 0.5rem; margin-bottom: 1.5rem; background: rgba(255, 255, 255, 0.5); }
+        .blank-area.tall { min-height: 6rem; }
+
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .col-section h3 { font-family: 'Imbue', serif; font-size: 1.2rem; font-weight: 700; color: var(--nuit); margin-bottom: 1rem; }
+        .flag-item { display: flex; gap: 1rem; margin-bottom: 1rem; }
+        .flag-icon { font-size: 1.2rem; min-width: 1.5rem; }
+        .flag-icon.green { color: var(--quetzal); }
+        .flag-icon.yellow { color: #B8860B; }
+        .blank-flag-line { flex: 1; border-bottom: 1px solid var(--cacao); }
+
+        .roles-table { width: 100%; }
+        .roles-table-row { display: grid; grid-template-columns: 2fr 2fr; gap: 1rem; margin-bottom: 1.5rem; }
+        .role-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; margin-bottom: 0.25rem; }
+        .role-blank { border-bottom: 1px solid var(--cacao); min-height: 1.5rem; }
+
+        .card-block { border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; background: rgba(255, 255, 255, 0.3); }
+        .card-field { margin-bottom: 1.5rem; }
+        .card-field-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--quetzal); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .card-blank-line { border-bottom: 1px solid var(--cacao); min-height: 1.5rem; }
+        .card-blank-area { border: 1px solid var(--border); min-height: 3rem; padding: 0.5rem; background: rgba(255, 255, 255, 0.4); }
+
+        .assessment-option { display: inline-block; margin-right: 2rem; margin-bottom: 1rem; }
+        .assessment-checkbox { margin-right: 0.5rem; }
+
+        .gap-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .gap-item { border: 1px solid var(--border); padding: 1rem; background: rgba(255, 255, 255, 0.3); }
+        .gap-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; margin-bottom: 0.75rem; }
+        .gap-blank { border-bottom: 1px solid var(--cacao); min-height: 3rem; }
+
+        .attribution { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--text-dim); letter-spacing: 0.05em; margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+
+        .print-btn { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ecru); background: var(--nuit); border: none; padding: 0.75rem 2rem; cursor: pointer; margin-top: 1rem; transition: background 0.2s; }
+        .print-btn:hover { background: var(--quetzal); }
+
+        @media print {
+            body { background: white; padding: 1rem; max-width: none; }
+            .print-btn { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="template-header">
+    <div class="template-type">Blank Template // Diagnostic Tool</div>
+    <h1>Project<br><span class="accent">Dossier</span></h1>
+    <div class="subtitle">Blank Template // Diagnostic Tool</div>
+    <p class="instructions">
+        Use this template to conduct a forensic assessment of any financial reporting initiative.
+        Document the <strong>problem</strong>, <strong>scope</strong>, <strong>current state</strong>,
+        <strong>ownership</strong> and <strong>open risks</strong>. The goal is organizational honesty...
+        not a polished slide deck.
+    </p>
+    <button class="print-btn" onclick="window.print()">Print Template</button>
+</div>
+
+<div class="section">
+    <div class="section-label">Section 1: Executive Summary</div>
+    <h2>Project Overview</h2>
+
+    <div class="field-group">
+        <div class="field-label">Project Name</div>
+        <div class="blank-line"></div>
+    </div>
+
+    <div class="field-group">
+        <div class="field-label">Executive Sponsor</div>
+        <div class="blank-line"></div>
+    </div>
+
+    <div class="field-group">
+        <div class="field-label">Core Objective</div>
+        <div class="blank-area"></div>
+    </div>
+
+    <div class="field-group">
+        <div class="field-label">Current Assessment</div>
+        <div style="margin-bottom: 1rem;">
+            <div class="assessment-option">
+                <input type="checkbox" class="assessment-checkbox"> Decision-Safe
+            </div>
+            <div class="assessment-option">
+                <input type="checkbox" class="assessment-checkbox"> Directionally Correct
+            </div>
+            <div class="assessment-option">
+                <input type="checkbox" class="assessment-checkbox"> Not Decision-Safe
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-label">Section 2: Problem Statement</div>
+    <h2>The Core Challenge</h2>
+
+    <div class="field-group">
+        <div class="field-label">Core Question Leadership Cannot Answer</div>
+        <div class="blank-area"></div>
+    </div>
+
+    <div class="field-group">
+        <div class="field-label">Specific Gaps</div>
+        <div class="gap-grid">
+            <div class="gap-item">
+                <div class="gap-label">Gap 1</div>
+                <div class="gap-blank"></div>
+            </div>
+            <div class="gap-item">
+                <div class="gap-label">Gap 2</div>
+                <div class="gap-blank"></div>
+            </div>
+            <div class="gap-item">
+                <div class="gap-label">Gap 3</div>
+                <div class="gap-blank"></div>
+            </div>
+            <div class="gap-item">
+                <div class="gap-label">Gap 4</div>
+                <div class="gap-blank"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-label">Section 3: Scope & Structure</div>
+    <h2>Financial Definition</h2>
+
+    <div class="field-group">
+        <div class="field-label">Revenue Sources</div>
+        <div class="blank-area"></div>
+    </div>
+
+    <div class="field-group">
+        <div class="field-label">Cost Components</div>
+        <div class="blank-area"></div>
+    </div>
+
+    <div class="field-group">
+        <div class="field-label">Operating Expenses</div>
+        <div class="blank-area"></div>
+    </div>
+
+    <div class="field-group">
+        <div class="field-label">Reporting Format</div>
+        <div class="blank-area"></div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-label">Section 4: Current State Assessment</div>
+    <h2>The Honest Audit</h2>
+
+    <div class="two-col">
+        <div class="col-section">
+            <h3>What's Solid</h3>
+            <div class="flag-item">
+                <span class="flag-icon green">✓</span>
+                <div class="blank-flag-line"></div>
+            </div>
+            <div class="flag-item">
+                <span class="flag-icon green">✓</span>
+                <div class="blank-flag-line"></div>
+            </div>
+            <div class="flag-item">
+                <span class="flag-icon green">✓</span>
+                <div class="blank-flag-line"></div>
+            </div>
+        </div>
+
+        <div class="col-section">
+            <h3>What's Broken or Incomplete</h3>
+            <div class="flag-item">
+                <span class="flag-icon yellow">!</span>
+                <div class="blank-flag-line"></div>
+            </div>
+            <div class="flag-item">
+                <span class="flag-icon yellow">!</span>
+                <div class="blank-flag-line"></div>
+            </div>
+            <div class="flag-item">
+                <span class="flag-icon yellow">!</span>
+                <div class="blank-flag-line"></div>
+            </div>
+            <div class="flag-item">
+                <span class="flag-icon yellow">!</span>
+                <div class="blank-flag-line"></div>
+            </div>
+            <div class="flag-item">
+                <span class="flag-icon yellow">!</span>
+                <div class="blank-flag-line"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-label">Section 5: Ownership & Working Model</div>
+    <h2>Governance Structure</h2>
+
+    <div class="field-group">
+        <div class="field-label">Primary Driver</div>
+        <div class="blank-line"></div>
+    </div>
+
+    <div class="field-group">
+        <div class="field-label">Key Partners</div>
+        <div class="roles-table">
+            <div class="roles-table-row">
+                <div>
+                    <div class="role-label">Role</div>
+                    <div class="role-blank"></div>
+                </div>
+                <div>
+                    <div class="role-label">Responsibility</div>
+                    <div class="role-blank"></div>
+                </div>
+            </div>
+            <div class="roles-table-row">
+                <div>
+                    <div class="role-label">Role</div>
+                    <div class="role-blank"></div>
+                </div>
+                <div>
+                    <div class="role-label">Responsibility</div>
+                    <div class="role-blank"></div>
+                </div>
+            </div>
+            <div class="roles-table-row">
+                <div>
+                    <div class="role-label">Role</div>
+                    <div class="role-blank"></div>
+                </div>
+                <div>
+                    <div class="role-label">Responsibility</div>
+                    <div class="role-blank"></div>
+                </div>
+            </div>
+            <div class="roles-table-row">
+                <div>
+                    <div class="role-label">Role</div>
+                    <div class="role-blank"></div>
+                </div>
+                <div>
+                    <div class="role-label">Responsibility</div>
+                    <div class="role-blank"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="field-group">
+        <div class="field-label">Governance Notes</div>
+        <div class="blank-area"></div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-label">Section 6: Open Risks & Unchallenged Assumptions</div>
+    <h2>Assumption Audit</h2>
+
+    <div class="card-block">
+        <div class="card-field">
+            <div class="card-field-label">Assumption</div>
+            <div class="card-blank-line"></div>
+        </div>
+        <div class="card-field">
+            <div class="card-field-label">Counterpoint</div>
+            <div class="card-blank-area"></div>
+        </div>
+    </div>
+
+    <div class="card-block">
+        <div class="card-field">
+            <div class="card-field-label">Assumption</div>
+            <div class="card-blank-line"></div>
+        </div>
+        <div class="card-field">
+            <div class="card-field-label">Counterpoint</div>
+            <div class="card-blank-area"></div>
+        </div>
+    </div>
+
+    <div class="card-block">
+        <div class="card-field">
+            <div class="card-field-label">Assumption</div>
+            <div class="card-blank-line"></div>
+        </div>
+        <div class="card-field">
+            <div class="card-field-label">Counterpoint</div>
+            <div class="card-blank-area"></div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-label">Section 7: Strategic Importance</div>
+    <h2>Business Impact</h2>
+
+    <div class="field-group">
+        <div class="field-label">What growth decisions are gated behind this project?</div>
+        <div class="blank-area"></div>
+    </div>
+
+    <div class="field-group">
+        <div class="field-label">Bottom Line Assessment</div>
+        <div class="blank-area tall"></div>
+    </div>
+</div>
+
+<div class="attribution">
+    Diagnostic Tool by Angie Bailey // angieqbailey.com
+</div>
+
+</body>
+</html>

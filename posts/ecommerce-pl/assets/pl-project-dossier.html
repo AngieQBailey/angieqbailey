@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="P&L Project Dossier — Diagnostic assessment and decision infrastructure for e-commerce financial visibility.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <title>P&L Project Dossier // Angie Bailey</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --nuit: #121A28; --cacao: #2D1B14; --quetzal: #00685E;
+            --ecru: #F5F5DC; --rosso: #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-bright: #00A896;
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; font-style: normal !important; border-radius: 0 !important; }
+        ::selection { background: var(--rosso); color: var(--ecru); }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--nuit); color: var(--ecru); font-family: 'IBM Plex Sans', sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+        .blueprint-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1000; background-image: linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px), linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px); background-size: 40px 40px; animation: grid-fade 2s ease 0.5s both; }
+        .spine { position: fixed; left: calc(var(--spine-left) - 40px); top: 0; width: 4px; height: 100%; background-color: var(--cacao); z-index: 500; animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        .nav-bar { position: fixed; top: 0; left: 0; width: 100%; z-index: 900; padding: 1.5rem 2rem 1.5rem var(--spine-left); display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, var(--nuit) 60%, transparent); }
+        .nav-mark { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--quetzal-bright); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 400; color: var(--ecru-dim); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s ease; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--rosso); transition: width 0.3s ease; }
+        .nav-links a:hover { color: var(--ecru); }
+        .nav-links a:hover::after { width: 100%; }
+
+        main { position: relative; z-index: 10; }
+        .doc-content { padding-left: var(--spine-left); padding-right: 4rem; max-width: 1200px; }
+        .doc-header { padding-top: 10rem; padding-bottom: 3rem; }
+        .doc-type { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--rosso); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 1.5rem; display: block; animation: fade-up 0.8s ease 0.4s both; }
+        .doc-header h1 { font-family: 'Imbue', serif; font-size: clamp(2rem, 5vw, 4.5rem); font-weight: 900; line-height: 0.9; color: var(--ecru); text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 1rem; max-width: 600px; animation: fade-up 0.8s ease 0.5s both; }
+        .doc-header h1 .accent-word { color: var(--rosso); }
+        .doc-subtitle { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--quetzal-bright); letter-spacing: 0.05em; margin-bottom: 2rem; animation: fade-up 0.8s ease 0.6s both; }
+        .doc-lede { font-size: 1.15rem; font-weight: 300; line-height: 1.7; color: var(--ecru-dim); max-width: 600px; margin-bottom: 2rem; animation: fade-up 0.8s ease 0.7s both; }
+        .doc-lede strong { color: var(--ecru); font-weight: 500; }
+
+        .download-btn { display: inline-flex; align-items: center; gap: 1rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--nuit); background: var(--ecru); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; padding: 1rem 2rem; border: none; cursor: pointer; transition: background 0.2s ease, color 0.2s ease; animation: fade-up 0.8s ease 0.8s both; }
+        .download-btn:hover { background: var(--rosso); color: var(--ecru); }
+        .download-btn .arrow { font-size: 1.1rem; transition: transform 0.2s ease; }
+        .download-btn:hover .arrow { transform: translateY(2px); }
+
+        .doc-section { padding-top: 2.5rem; padding-bottom: 2.5rem; border-top: 1px solid var(--ecru-ghost); }
+        .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+        h2 { font-family: 'Imbue', serif; font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 900; color: var(--ecru); text-transform: uppercase; line-height: 0.95; margin-bottom: 2rem; }
+        .doc-body p { font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--ecru-dim); margin-bottom: 1.25rem; max-width: 650px; }
+        .doc-body p strong { color: var(--ecru); font-weight: 500; }
+
+        /* Callout box / core principle */
+        .callout-box { background: rgba(245, 245, 220, 0.14); border-left: 4px solid var(--quetzal-bright); padding: 1.5rem; margin: 2rem 0; max-width: 650px; }
+        .callout-box.highlight { border-left-color: var(--rosso); }
+        .callout-box p { margin-bottom: 0.75rem; }
+        .callout-box p:last-child { margin-bottom: 0; }
+        .callout-box strong { color: var(--ecru); }
+
+        /* Structured list for scope */
+        .scope-item { margin-bottom: 2rem; max-width: 650px; }
+        .scope-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .scope-content { font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--ecru-dim); }
+
+        /* List formatting */
+        ul { list-style: none; padding-left: 0; }
+        ul li { margin-bottom: 0.75rem; color: var(--ecru-dim); font-size: 1rem; line-height: 1.6; padding-left: 1.5rem; position: relative; }
+        ul li::before { content: '...'; position: absolute; left: 0; color: var(--quetzal-bright); }
+
+        /* Reality check sections */
+        .reality-section { margin: 2rem 0; }
+        .reality-header { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--ecru); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+        .reality-list { margin-left: 0; }
+        .reality-list li { margin-bottom: 0.75rem; }
+        .reality-list li::before { content: '✓'; margin-right: 0.5rem; color: var(--quetzal-bright); }
+        .reality-list.broken li::before { content: '✗'; color: var(--rosso); }
+
+        /* Ownership model */
+        .ownership-item { margin-bottom: 1.5rem; max-width: 650px; }
+        .ownership-role { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--quetzal-bright); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem; }
+        .ownership-desc { font-size: 1rem; font-weight: 300; line-height: 1.6; color: var(--ecru-dim); }
+
+        /* Risk assumptions */
+        .assumption-item { margin-bottom: 2rem; max-width: 650px; }
+        .assumption-num { font-family: 'Imbue', serif; font-size: 1.25rem; font-weight: 900; color: var(--rosso); display: inline-block; margin-right: 0.75rem; }
+        .assumption-claim { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--ecru); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-style: italic; }
+        .assumption-counter { font-size: 1rem; font-weight: 300; line-height: 1.6; color: var(--ecru-dim); margin-top: 0.5rem; }
+
+        .flag { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; padding: 0.15rem 0.4rem; text-transform: uppercase; display: inline-block; }
+        .flag.red { color: var(--rosso); border: 1px solid var(--rosso); }
+        .flag.yellow { color: var(--quetzal-bright); border: 1px solid var(--quetzal); }
+
+        .back-link { display: inline-flex; align-items: center; gap: 0.75rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: var(--ecru-dim); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s ease; margin-top: 2rem; }
+        .back-link::before { content: ''; display: block; width: 24px; height: 2px; background: var(--quetzal); transition: width 0.3s ease, background 0.3s ease; }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        .attribution { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--ecru-dim); letter-spacing: 0.05em; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--ecru-ghost); }
+
+        footer { padding: 2rem 2rem 2rem var(--spine-left); border-top: 1px solid var(--ecru-ghost); }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; }
+        .footer-content span { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--ecru-dim); letter-spacing: 0.05em; }
+
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .doc-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+        }
+        @media (max-width: 500px) {
+            .nav-links a { font-size: 0.75rem; }
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .blueprint-overlay { background-size: 24px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="blueprint-overlay" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true"></div>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="../ecommerce-pl.html" class="nav-mark">← First Decision-Grade P&L</a>
+    <ul class="nav-links">
+        <li><a href="/">Main Site</a></li>
+    </ul>
+</nav>
+
+<main>
+    <section class="doc-header doc-content">
+        <span class="doc-type">Diagnostic Assessment</span>
+        <h1>P&L Project<br><span class="accent-word">Dossier</span></h1>
+        <div class="doc-subtitle">Diagnostic Assessment // Decision Infrastructure</div>
+        <p class="doc-lede">
+            Financial visibility and governance for e-commerce parts business.
+            <strong>The shape of a P&L exists. The math cannot yet be trusted.</strong>
+        </p>
+        <a href="templates/pl-project-dossier-blank.html" class="download-btn">
+            Download Blank Template <span class="arrow">&darr;</span>
+        </a>
+    </section>
+
+    <!-- Executive Summary -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Section 1</span>
+        <h2>Executive<br>Summary</h2>
+
+        <div class="doc-body">
+            <p>
+                The e-commerce P&L initiative exists to create financial visibility and decision-grade reporting for the parts e-commerce business. It was explicitly positioned as the VP of E-Commerce's #1 priority and a prerequisite for scaling growth levers: marketing, marketplaces, pricing automation.
+            </p>
+            <p>
+                As of the initial assessment, the P&L was directionally correct but not decision-safe. Revenue and expense data existed, but allocation logic, COGS accuracy and formula integrity were incomplete, resulting in unresolved errors and open follow-ups.
+            </p>
+        </div>
+    </section>
+
+    <!-- Problem Statement -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Section 2</span>
+        <h2>Problem<br>Statement</h2>
+
+        <div class="doc-body">
+            <p>
+                <strong>Core problem:</strong> Leadership cannot confidently answer "Are we actually making money on e-commerce parts... and why?"
+            </p>
+
+            <div class="callout-box">
+                <p><strong>Specific Gaps</strong></p>
+                <ul>
+                    <li>Fragmented revenue across primary storefront, two marketplaces and B2B aggregator</li>
+                    <li>Blurred COGS vs. overhead vs. corporate allocations</li>
+                    <li>Platform fees and shipping expenses buried in generic GLs</li>
+                    <li>No reliable gross margin or contribution margin visibility</li>
+                </ul>
+            </div>
+
+            <p>
+                This is less an accounting exercise and more a governance and prioritization tool.
+            </p>
+        </div>
+    </section>
+
+    <!-- Scope & Structure -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Section 3</span>
+        <h2>Scope &<br>Structure</h2>
+
+        <div class="doc-body">
+            <div class="scope-item">
+                <div class="scope-label">Revenue</div>
+                <div class="scope-content">Primary storefront parts sales, marketplace sales (2 channels), B2B aggregator, shipping revenue, discounts/returns/store credits</div>
+            </div>
+
+            <div class="scope-item">
+                <div class="scope-label">COGS</div>
+                <div class="scope-content">Equipment part expense, freight, packaging and shipping supplies, platform fees (all channels), marketplace advertising</div>
+            </div>
+
+            <div class="scope-item">
+                <div class="scope-label">Operating Expenses</div>
+                <div class="scope-content">Marketing (PPC, email, SMS, affiliates), software and tooling, admin and overhead (rent, insurance, payroll allocations), depreciation and interest</div>
+            </div>
+
+            <div class="scope-item">
+                <div class="scope-label">Format</div>
+                <div class="scope-content">Monthly rollup (Jan...Dec), channel-level granularity, multiple views including template and GL-mapped tabs</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current State -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Section 4</span>
+        <h2>Current<br>State</h2>
+
+        <div class="doc-body">
+            <div class="reality-section">
+                <div class="reality-header">What's Solid</div>
+                <ul class="reality-list">
+                    <li>Revenue sources clearly enumerated</li>
+                    <li>Marketplace fees and ad spend visible</li>
+                    <li>Software sprawl fully exposed</li>
+                    <li>Finance collaboration documented and active</li>
+                </ul>
+            </div>
+
+            <div class="reality-section">
+                <div class="reality-header">What's Broken or Incomplete</div>
+                <ul class="reality-list broken">
+                    <li>#ERROR! fields in Net Sales, Total COGS, Gross Profit and Net Profit</li>
+                    <li>COGS logic not fully validated against real transactions</li>
+                    <li>Shipping expense allocation still unresolved</li>
+                    <li>Interest expense flagged as suspiciously high</li>
+                    <li>Some expenses clearly corporate but flowing into e-commerce</li>
+                </ul>
+            </div>
+
+            <div class="callout-box highlight">
+                <p>
+                    <strong>In short...</strong> the sheet exists, but the math cannot yet be trusted.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ownership & Working Model -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Section 5</span>
+        <h2>Ownership &<br>Working Model</h2>
+
+        <div class="doc-body">
+            <div class="ownership-item">
+                <div class="ownership-role">Primary Driver</div>
+                <div class="ownership-desc">Senior Operations Strategist: structure, logic, iteration, cross-functional follow-ups</div>
+            </div>
+
+            <div class="ownership-item">
+                <div class="ownership-role">Key Partners</div>
+                <div class="ownership-desc">Finance (GL mapping, account creation, validation); Procurement (vendor pricing, freight, COGS inputs); Marketing (ad spend, tooling costs); Leadership (VP of E-Commerce as exec sponsor)</div>
+            </div>
+
+            <div class="ownership-item">
+                <div class="ownership-role">Governance Reality</div>
+                <div class="ownership-desc">Accounting owns new GL creation. Multiple approval hops slow structural fixes. P&L work is interleaved with day-job execution.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Open Risks & Unchallenged Assumptions -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Section 6</span>
+        <h2>Open Risks &<br>Assumptions</h2>
+
+        <div class="doc-body">
+            <div class="assumption-item">
+                <div class="assumption-num">1</div>
+                <div class="assumption-claim">"Once the P&L exists, decisions will be obvious."</div>
+                <div class="assumption-counter">
+                    <strong>Counterpoint:</strong> A noisy or misallocated P&L can be worse than none. False confidence is expensive.
+                </div>
+            </div>
+
+            <div class="assumption-item">
+                <div class="assumption-num">2</div>
+                <div class="assumption-claim">"We can fix this incrementally."</div>
+                <div class="assumption-counter">
+                    <strong>Counterpoint:</strong> Incremental fixes won't resolve systemic issues like shipping allocation, shared overhead or interest treatment.
+                </div>
+            </div>
+
+            <div class="assumption-item">
+                <div class="assumption-num">3</div>
+                <div class="assumption-claim">"Finance clarity precedes growth."</div>
+                <div class="assumption-counter">
+                    <strong>Counterpoint:</strong> True...but growth decisions are already happening (ads, marketplaces). The P&L is chasing reality, not leading it.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategic Importance -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Section 7</span>
+        <h2>Strategic<br>Importance</h2>
+
+        <div class="doc-body">
+            <p>
+                The 3-year roadmap explicitly gates growth levers behind P&L maturity: loyalty programs, affiliate scale-up, advanced pricing optimization, full CAC/LTV visibility.
+            </p>
+
+            <div class="callout-box highlight">
+                <p>
+                    <strong>Bottom line:</strong> No clean P&L, no responsible scale.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Line -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Section 8</span>
+        <h2>Bottom<br>Line</h2>
+
+        <div class="doc-body">
+            <p>
+                This project is foundational, unfinished and unavoidable. The P&L is far enough along to reveal uncomfortable truths (cost structure, tool sprawl, margin pressure) but not far enough to safely guide investment decisions.
+            </p>
+            <p>
+                The remaining work is less about spreadsheet skill and more about organizational alignment on what "e-commerce profitability" actually means inside a billion-dollar enterprise.
+            </p>
+        </div>
+    </section>
+
+    <section class="doc-section doc-content reveal">
+        <div class="attribution">
+            Diagnostic tool by Angie Bailey // <a href="/" style="color: var(--ecru-dim);">angieqbailey.com</a>
+        </div>
+
+        <a href="../ecommerce-pl.html" class="back-link">Back to Case Study</a>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <span>&copy; 2026 Angie Bailey</span>
+    </div>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

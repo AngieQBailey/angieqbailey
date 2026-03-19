@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Case Study: First Decision-Grade E-Commerce P&L ... How a $1B+ company got financial visibility across four sales channels.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+
+    <meta property="og:title" content="First Decision-Grade E-Commerce P&L // Angie Bailey">
+    <meta property="og:description" content="The e-commerce division was scaling across four channels with zero financial visibility. Revenue was fragmented. Costs were buried. Leadership couldn't answer the basic question... Are we making money?">
+    <meta property="og:type" content="article">
+
+    <title>First Decision-Grade E-Commerce P&L // Angie Bailey</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===================================================
+           THE WAREHOUSE ... Case Study Template
+           Design System: Durable Births (Dark Variant)
+           =================================================== */
+
+        :root {
+            --nuit:     #121A28;
+            --cacao:    #2D1B14;
+            --quetzal:  #00685E;
+            --quetzal-bright: #00A896;
+            --ecru:     #F5F5DC;
+            --rosso:    #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        ::selection {
+            background: var(--rosso);
+            color: var(--ecru);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 2rem;
+        }
+
+        body {
+            background-color: var(--nuit);
+            color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* Blueprint Overlay */
+        .blueprint-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* Structural Spine */
+        .spine {
+            position: fixed;
+            left: calc(var(--spine-left) - 40px);
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--cacao);
+            z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--quetzal-bright);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            padding-right: 2rem;
+        }
+
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--ecru-dim);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: var(--rosso);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--ecru); }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* Main Content */
+        main {
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-content {
+            padding-left: var(--spine-left);
+            padding-right: 4rem;
+            max-width: 1200px;
+        }
+
+        /* Case Study Header */
+        .case-header {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 8rem;
+            padding-bottom: 2rem;
+        }
+
+        .case-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--quetzal-bright);
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.4s both;
+        }
+
+        .case-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.5s both;
+        }
+
+        .case-header h1 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2.5rem, 7vw, 6rem);
+            font-weight: 900;
+            line-height: 0.9;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+
+        .case-header h1 .accent-word {
+            color: var(--rosso);
+        }
+
+        .case-lede {
+            border-left: 5px solid var(--rosso);
+            padding-left: 2rem;
+            max-width: 600px;
+            animation: fade-up 0.8s ease 0.8s both;
+        }
+
+        .case-lede p {
+            font-size: 1.15rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+        }
+
+        .case-lede strong {
+            color: var(--ecru);
+            font-weight: 500;
+        }
+
+        /* Case Study Sections */
+        .case-section {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        h2 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 900;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 0.95;
+            letter-spacing: -0.01em;
+            margin-bottom: 2.5rem;
+        }
+
+        .case-body p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--ecru-dim);
+            margin-bottom: 1.5rem;
+            max-width: 650px;
+        }
+
+        .case-body p strong {
+            color: var(--ecru);
+            font-weight: 500;
+        }
+
+        /* Constraint List */
+        .constraint-list {
+            margin: 2rem 0;
+            max-width: 650px;
+        }
+
+        .constraint-item {
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--ecru-ghost);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.25rem;
+            align-items: start;
+        }
+
+        .constraint-item:first-child {
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .constraint-flag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            padding: 0.2rem 0.5rem;
+            text-transform: uppercase;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .constraint-flag.red {
+            color: var(--rosso);
+            border: 1px solid var(--rosso);
+        }
+
+        .constraint-flag.yellow {
+            color: var(--quetzal-bright);
+            border: 1px solid var(--quetzal);
+        }
+
+        .constraint-label {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--ecru);
+            line-height: 1.4;
+        }
+
+        .constraint-detail {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            margin-top: 0.25rem;
+        }
+
+        /* The Failure Loop */
+        .failure-loop {
+            border-left: 3px solid var(--cacao);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            max-width: 400px;
+        }
+
+        .failure-loop .loop-step {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--ecru-dim);
+            padding: 0.4rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .failure-loop .loop-arrow {
+            color: var(--rosso);
+            font-weight: 700;
+        }
+
+        /* Approach Grid */
+        .approach-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            margin: 2.5rem 0;
+            max-width: 750px;
+        }
+
+        .approach-item {
+            background: rgba(245, 245, 220, 0.14);
+            padding: 2rem 1.75rem;
+        }
+
+        .approach-day {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.75rem;
+        }
+
+        .approach-title {
+            font-family: 'Imbue', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+
+        .approach-desc {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.5;
+        }
+
+        /* Evidence / Artifacts */
+        .artifact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2px;
+            margin: 2.5rem 0;
+        }
+
+        .artifact-card {
+            background: rgba(245, 245, 220, 0.14);
+            padding: 2rem 1.75rem;
+            position: relative;
+            transition: background 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .artifact-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 0; height: 3px;
+            background: var(--rosso);
+            transition: width 0.4s ease;
+        }
+
+        .artifact-card:hover {
+            background: rgba(245, 245, 220, 0.12);
+        }
+
+        .artifact-card:hover::before {
+            width: 100%;
+        }
+
+        .artifact-type {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.75rem;
+        }
+
+        .artifact-name {
+            font-family: 'Imbue', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 1.15;
+            margin-bottom: 0.75rem;
+        }
+
+        .artifact-desc {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .artifact-action {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        /* Outcome Stats */
+        .outcome-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2px;
+            margin: 2.5rem 0;
+            max-width: 750px;
+        }
+
+        .outcome-stat {
+            background: rgba(245, 245, 220, 0.14);
+            padding: 2rem 1.75rem;
+        }
+
+        .outcome-number {
+            font-family: 'Imbue', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--ecru);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .outcome-number.highlight {
+            color: var(--rosso);
+        }
+
+        .outcome-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            line-height: 1.4;
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--ecru-dim);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.2s ease;
+            margin-top: 3rem;
+        }
+
+        .back-link::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--quetzal);
+            transition: width 0.3s ease, background 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--ecru);
+        }
+
+        .back-link:hover::before {
+            width: 40px;
+            background: var(--rosso);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+        }
+
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--ecru-dim);
+            letter-spacing: 0.05em;
+        }
+
+        /* Animations */
+        @keyframes spine-draw {
+            from { height: 0; }
+            to { height: 100%; }
+        }
+
+        @keyframes fade-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes grid-fade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .blueprint-overlay {
+            animation: grid-fade 2s ease 0.5s both;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .section-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .approach-grid { grid-template-columns: 1fr; }
+            .artifact-grid { grid-template-columns: 1fr; }
+            .outcome-grid { grid-template-columns: 1fr 1fr; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+        }
+
+        @media (max-width: 500px) {
+            .nav-links a { font-size: 0.75rem; }
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .blueprint-overlay { background-size: 24px 24px; }
+            .outcome-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Architectural Grid -->
+<div class="blueprint-overlay" aria-hidden="true"></div>
+
+<!-- Structural Spine -->
+<div class="spine" aria-hidden="true"></div>
+
+<!-- Navigation -->
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
+    <ul class="nav-links">
+        <li><a href="/#warehouse">Warehouse</a></li>
+        <li><a href="/#investigation">Investigation</a></li>
+        <li><a href="/#verdict">Verdict</a></li>
+        <li><a href="/#signal">Signal</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- ========================================
+         CASE STUDY HEADER
+         ======================================== -->
+    <section class="case-header section-content">
+        <span class="case-meta">Case Study // Decision Infrastructure</span>
+        <span class="case-tag">Financial Visibility Architecture</span>
+
+        <h1>First Decision-Grade<br>E-Commerce<br><span class="accent-word">P&L</span></h1>
+
+        <div class="case-lede">
+            <p>
+                The e-commerce division of a $1B+ industrial technology company was scaling
+                across four sales channels with <strong>zero financial visibility</strong>.
+                Revenue was fragmented. Costs were buried in generic ledger accounts.
+                Leadership couldn't answer the most basic question... "Are we actually making money?"
+            </p>
+        </div>
+    </section>
+
+    <!-- ========================================
+         THE EVIDENCE - Artifacts
+         ======================================== -->
+    <section class="case-section section-content reveal">
+        <span class="section-label">The Evidence</span>
+        <h2>Diagnostic Tools and<br>Governance Frameworks</h2>
+
+        <div class="case-body">
+            <p>
+                The P&L intervention produced diagnostic tools and decision-making frameworks
+                that bridge the gap between fragmented financial data and leadership confidence.
+            </p>
+        </div>
+
+        <div class="artifact-grid">
+            <a href="assets/pl-project-dossier.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                <div class="artifact-type">Diagnostic Tool</div>
+                <div class="artifact-name">P&L Project<br>Dossier</div>
+                <div class="artifact-desc">
+                    Forensic assessment of the financial visibility gap. Documents the core problem,
+                    scope, current state, ownership model, open risks and unchallenged assumptions.
+                    Built to force organizational honesty about what the numbers could and couldn't support.
+                </div>
+                <div class="artifact-action">View Tool &rarr;</div>
+            </a>
+
+            <a href="assets/pl-cutoff-definition.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                <div class="artifact-type">Governance Framework</div>
+                <div class="artifact-name">P&L v1.0 Cutoff<br>Definition</div>
+                <div class="artifact-desc">
+                    Defines the hard and soft requirements a P&L must meet before leadership can use
+                    it for decisions. Includes the litmus test... if leadership hesitates when asked
+                    a resource allocation question, the P&L isn't ready.
+                </div>
+                <div class="artifact-action">View Framework &rarr;</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========================================
+         THE SITUATION
+         ======================================== -->
+    <section class="case-section section-content reveal">
+        <span class="section-label">The Situation</span>
+        <h2>No Financial Visibility<br>Across Four Channels</h2>
+
+        <div class="case-body">
+            <p>
+                The e-commerce parts business generated revenue through four distinct channels...
+                a primary storefront, two third-party marketplaces and a B2B aggregator. But there
+                was no unified financial picture. Revenue data lived in separate platform dashboards.
+                Cost of goods sold was tangled with corporate overhead. Platform fees and shipping
+                expenses were buried in generic GL accounts that told leadership nothing about
+                channel profitability.
+            </p>
+
+            <p>
+                The team had been operating on manual spreadsheets... static, backward-looking and
+                maintained by whoever had bandwidth that week. When the VP of E-Commerce was asked
+                to justify increasing ad spend or expanding marketplace presence, the honest answer
+                was: "We think it's working, but we can't prove it."
+            </p>
+
+            <p>
+                This wasn't a reporting inconvenience. It was a structural blocker. Every growth
+                lever... marketing investment, marketplace expansion, OEM partnerships, loyalty
+                programs, pricing optimization... was gated behind a financial instrument that
+                didn't exist.
+            </p>
+
+            <div class="failure-loop">
+                <div class="loop-step"><span class="loop-arrow">&rarr;</span> Leadership asks "Is this channel profitable?"</div>
+                <div class="loop-step"><span class="loop-arrow">&rarr;</span> Team checks fragmented platform data</div>
+                <div class="loop-step"><span class="loop-arrow">&rarr;</span> Numbers don't reconcile across sources</div>
+                <div class="loop-step"><span class="loop-arrow">&rarr;</span> Decision gets deferred or made on instinct</div>
+                <div class="loop-step"><span class="loop-arrow">&rarr;</span> Cycle repeats next quarter</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         PRESSURE POINTS
+         ======================================== -->
+    <section class="case-section section-content reveal">
+        <span class="section-label">Pressure Points Surfaced</span>
+        <h2>What the<br>Diagnostic Found</h2>
+
+        <div class="case-body">
+            <p>
+                A forensic audit of the existing financial infrastructure revealed structural gaps
+                that no amount of spreadsheet polish could fix.
+            </p>
+        </div>
+
+        <div class="constraint-list">
+            <div class="constraint-item">
+                <span class="constraint-flag red">Red</span>
+                <div>
+                    <div class="constraint-label">No Single Source of Financial Truth</div>
+                    <div class="constraint-detail">Revenue, COGS and operating expenses lived in four different systems with no reconciliation layer. The same dollar could appear in two reports or none.</div>
+                </div>
+            </div>
+            <div class="constraint-item">
+                <span class="constraint-flag red">Red</span>
+                <div>
+                    <div class="constraint-label">Formula Errors in Core Metrics</div>
+                    <div class="constraint-detail">The existing spreadsheet showed #ERROR! fields in Net Sales, Total COGS, Gross Profit and Net Profit. The math itself couldn't be trusted.</div>
+                </div>
+            </div>
+            <div class="constraint-item">
+                <span class="constraint-flag red">Red</span>
+                <div>
+                    <div class="constraint-label">COGS Not Validated Against Transactions</div>
+                    <div class="constraint-detail">Cost of goods sold was partially inferred, not locked to actual transaction data. Gross margin was directional at best.</div>
+                </div>
+            </div>
+            <div class="constraint-item">
+                <span class="constraint-flag yellow">Caution</span>
+                <div>
+                    <div class="constraint-label">Shipping Economics Invisible</div>
+                    <div class="constraint-detail">Shipping revenue and shipping expense were both present but allocated differently... making it impossible to determine whether fulfillment was a profit center or a cost sink.</div>
+                </div>
+            </div>
+            <div class="constraint-item">
+                <span class="constraint-flag yellow">Caution</span>
+                <div>
+                    <div class="constraint-label">Corporate Costs Flowing Into E-Commerce</div>
+                    <div class="constraint-detail">Overhead expenses from other business units were silently dumped into the e-commerce GL with no explanation or allocation methodology.</div>
+                </div>
+            </div>
+            <div class="constraint-item">
+                <span class="constraint-flag yellow">Caution</span>
+                <div>
+                    <div class="constraint-label">Platform Fee Allocation Unclear</div>
+                    <div class="constraint-detail">Shared platform costs (the primary storefront served multiple business units) were charged entirely to e-commerce without a defensible split.</div>
+                </div>
+            </div>
+            <div class="constraint-item">
+                <span class="constraint-flag red">Red</span>
+                <div>
+                    <div class="constraint-label">No Executive-Ready View</div>
+                    <div class="constraint-detail">There was no single summary showing Net Sales, Gross Margin %, Operating Margin % and top cost drivers. Finding the numbers required archaeology across tabs and files.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         THE APPROACH
+         ======================================== -->
+    <section class="case-section section-content reveal">
+        <span class="section-label">The Approach</span>
+        <h2>Building the Machine<br>That Didn't Exist</h2>
+
+        <div class="case-body">
+            <p>
+                The intervention wasn't a dashboard project. It was <strong>financial architecture</strong>...
+                building the measurement system, the data mapping, the governance standards and the
+                organizational agreement on what "e-commerce profitability" actually means inside a
+                $1B+ enterprise.
+            </p>
+        </div>
+
+        <div class="approach-grid">
+            <div class="approach-item">
+                <div class="approach-day">Phase 01</div>
+                <div class="approach-title">Define the<br>Structure</div>
+                <div class="approach-desc">
+                    Researched P&L architecture, defined revenue sources, COGS components, operating
+                    expense categories. Mapped every GL account to its proper line. Coordinated with
+                    Finance and Accounting to create new GL accounts where the existing chart of
+                    accounts couldn't distinguish e-commerce costs from corporate overhead.
+                </div>
+            </div>
+            <div class="approach-item">
+                <div class="approach-day">Phase 02</div>
+                <div class="approach-title">Map the<br>Data Sources</div>
+                <div class="approach-desc">
+                    Identified where every dollar originated (storefront, marketplaces, B2B aggregator)
+                    and where every cost was recorded. Built the reconciliation logic connecting platform
+                    reports to internal accounting systems. Exposed the gaps... including platform fees
+                    buried in generic accounts and shipping costs allocated to the wrong business unit.
+                </div>
+            </div>
+            <div class="approach-item">
+                <div class="approach-day">Phase 03</div>
+                <div class="approach-title">Build in<br>Looker</div>
+                <div class="approach-desc">
+                    Translated the spreadsheet architecture into a live, self-serve dashboard. Revenue
+                    by category, SKU and channel. Gross margin and contribution margin. Freight and
+                    fulfillment costs. Marketing spend and return. Monthly and quarterly views with
+                    drill-down filters. Real-time... not a static snapshot updated whenever someone
+                    had bandwidth.
+                </div>
+            </div>
+            <div class="approach-item">
+                <div class="approach-day">Principle</div>
+                <div class="approach-title">Define<br>Decision-Safe</div>
+                <div class="approach-desc">
+                    Created the v1.0 Cutoff Definition... a governance framework that specified exactly
+                    when the P&L could be trusted for resource allocation decisions. Hard requirements
+                    (zero formula errors, complete revenue, explicit COGS). Soft requirements (overhead
+                    allocation declared, interest treatment documented). A litmus test tied to the
+                    actual questions leadership needed to answer.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         THE OUTCOME
+         ======================================== -->
+    <section class="case-section section-content reveal">
+        <span class="section-label">The Outcome</span>
+        <h2>What the P&L<br>Architecture Produced</h2>
+
+        <div class="outcome-grid">
+            <div class="outcome-stat">
+                <div class="outcome-number">6</div>
+                <div class="outcome-label">Cross-functional<br>departments aligned</div>
+            </div>
+            <div class="outcome-stat">
+                <div class="outcome-number highlight">4</div>
+                <div class="outcome-label">Revenue channels<br>unified</div>
+            </div>
+            <div class="outcome-stat">
+                <div class="outcome-number">1st</div>
+                <div class="outcome-label">Decision-grade<br>P&L in company history</div>
+            </div>
+            <div class="outcome-stat">
+                <div class="outcome-number">18+</div>
+                <div class="outcome-label">GL accounts mapped<br>and reconciled</div>
+            </div>
+        </div>
+
+        <div class="case-body" style="margin-top: 2rem;">
+            <p>
+                The shortest version... an e-commerce operation running blind across four channels
+                got its first unified financial picture. <strong>The P&L dashboard went live in the
+                company's BI platform, giving leadership real-time visibility into revenue, margins,
+                cost drivers and channel profitability</strong>. It became the gate for every growth
+                decision that followed... ad spend increases, OEM expansion, marketplace strategy,
+                pricing optimization. The measurement system that didn't exist became the prerequisite
+                for everything that came next.
+            </p>
+        </div>
+
+        <a href="/" class="back-link">Back to The Warehouse</a>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <span>&copy; 2026 Angie Bailey</span>
+    </div>
+</footer>
+
+<!-- Scroll Reveal -->
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

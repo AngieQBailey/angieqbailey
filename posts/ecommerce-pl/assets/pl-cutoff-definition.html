@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="P&L v1.0 Cutoff Definition — Governance framework for decision-grade profitability analysis in e-commerce.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <title>P&L v1.0 Cutoff Definition // Angie Bailey</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --nuit: #121A28;
+            --cacao: #2D1B14;
+            --quetzal: #00685E;
+            --quetzal-bright: #00A896;
+            --ecru: #F5F5DC;
+            --rosso: #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        ::selection { background: var(--rosso); color: var(--ecru); }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--nuit);
+            color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .blueprint-overlay {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none; z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-fade 2s ease 0.5s both;
+        }
+
+        .spine {
+            position: fixed;
+            left: calc(var(--spine-left) - 40px);
+            top: 0; width: 4px; height: 100%;
+            background-color: var(--cacao);
+            z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem; font-weight: 700;
+            letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--quetzal-bright); text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem; font-weight: 400;
+            color: var(--ecru-dim); text-decoration: none;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            transition: color 0.2s ease; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--rosso);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--ecru); }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* Content */
+        main { position: relative; z-index: 10; }
+
+        .doc-content {
+            padding-left: var(--spine-left);
+            padding-right: 4rem;
+            max-width: 1200px;
+        }
+
+        /* Document Header */
+        .doc-header {
+            padding-top: 10rem;
+            padding-bottom: 3rem;
+        }
+
+        .doc-type {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem; font-weight: 700;
+            color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 1.5rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.4s both;
+        }
+
+        .doc-header h1 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2rem, 5vw, 4.5rem);
+            font-weight: 900; line-height: 0.9;
+            color: var(--ecru); text-transform: uppercase;
+            letter-spacing: -0.02em; margin-bottom: 1rem;
+            max-width: 600px;
+            animation: fade-up 0.8s ease 0.5s both;
+        }
+
+        .doc-header h1 .accent-word { color: var(--quetzal-bright); }
+
+        .doc-subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem; color: var(--quetzal-bright);
+            letter-spacing: 0.05em; margin-bottom: 2rem;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+
+        .doc-lede {
+            font-size: 1.15rem; font-weight: 300;
+            line-height: 1.7; color: var(--ecru-dim);
+            max-width: 600px; margin-bottom: 2rem;
+            animation: fade-up 0.8s ease 0.7s both;
+        }
+
+        .doc-lede strong { color: var(--ecru); font-weight: 500; }
+
+        /* Stat Row */
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 2px; margin: 3rem 0; max-width: 650px;
+            animation: fade-up 0.8s ease 0.75s both;
+        }
+
+        .stat-item {
+            background: rgba(245, 245, 220, 0.14);
+            padding: 1.25rem;
+        }
+
+        .stat-number {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.8rem; font-weight: 700;
+            color: var(--quetzal-bright); margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem; font-weight: 700;
+            color: var(--ecru-dim); text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Download Button */
+        .download-btn {
+            display: inline-flex; align-items: center; gap: 1rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem; font-weight: 700;
+            color: var(--nuit); background: var(--ecru);
+            text-decoration: none; text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 1rem 2rem;
+            border: none; cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+            animation: fade-up 0.8s ease 0.8s both;
+        }
+
+        .download-btn:hover {
+            background: var(--rosso);
+            color: var(--ecru);
+        }
+
+        .download-btn .arrow {
+            font-size: 1.1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .download-btn:hover .arrow {
+            transform: translateY(2px);
+        }
+
+        /* Document Sections */
+        .doc-section {
+            padding-top: 2.5rem; padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem; font-weight: 700;
+            color: var(--quetzal-bright); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        h2 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 900; color: var(--ecru);
+            text-transform: uppercase; line-height: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .doc-body p {
+            font-size: 1rem; font-weight: 300;
+            line-height: 1.8; color: var(--ecru-dim);
+            margin-bottom: 1.25rem; max-width: 650px;
+        }
+
+        .doc-body p strong { color: var(--ecru); font-weight: 500; }
+
+        /* Core Principle Callout */
+        .core-principle {
+            border-left: 5px solid var(--rosso);
+            padding: 2rem 2rem;
+            margin: 2.5rem 0;
+            max-width: 650px;
+            background: rgba(245, 245, 220, 0.14);
+        }
+
+        .core-principle p {
+            font-family: 'Imbue', serif;
+            font-size: 1.4rem; font-weight: 700;
+            color: var(--ecru); line-height: 1.3;
+            text-transform: uppercase;
+        }
+
+        .core-principle .sub {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 0.95rem; font-weight: 300;
+            color: var(--ecru-dim); line-height: 1.6;
+            text-transform: none; margin-top: 1rem;
+        }
+
+        .core-principle ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .core-principle li {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 0.95rem; font-weight: 300;
+            color: var(--ecru-dim); line-height: 1.6;
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .core-principle li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--quetzal-bright);
+        }
+
+        /* Tables */
+        .branded-table {
+            width: 100%; max-width: 850px;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.85rem;
+        }
+
+        .branded-table th {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem; font-weight: 700;
+            color: var(--quetzal-bright); text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid var(--cacao);
+        }
+
+        .branded-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--ecru-ghost);
+            color: var(--ecru-dim);
+            font-weight: 300;
+            line-height: 1.5;
+            vertical-align: top;
+        }
+
+        .branded-table td strong {
+            color: var(--ecru);
+            font-weight: 500;
+        }
+
+        .branded-table tr:hover td {
+            background: rgba(245, 245, 220, 0.14);
+        }
+
+        /* Flag Badges */
+        .flag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem; font-weight: 700;
+            letter-spacing: 0.1em; padding: 0.15rem 0.4rem;
+            text-transform: uppercase; display: inline-block;
+        }
+        .flag.red { color: var(--rosso); border: 1px solid var(--rosso); }
+        .flag.yellow { color: var(--quetzal-bright); border: 1px solid var(--quetzal); }
+        .flag.green { color: var(--ecru-dim); border: 1px solid var(--ecru-dim); }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem; color: var(--ecru-dim);
+            text-decoration: none; text-transform: uppercase;
+            letter-spacing: 0.1em; transition: color 0.2s ease;
+            margin-top: 2rem;
+        }
+        .back-link::before {
+            content: ''; display: block;
+            width: 24px; height: 2px;
+            background: var(--quetzal);
+            transition: width 0.3s ease, background 0.3s ease;
+        }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        /* Attribution */
+        .attribution {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem; color: var(--ecru-dim);
+            letter-spacing: 0.05em;
+            margin-top: 3rem; padding-top: 1.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        /* Callout / Highlighted Section */
+        .highlighted-section {
+            border-left: 5px solid var(--quetzal-bright);
+            padding: 2rem 2rem;
+            margin: 2.5rem 0;
+            max-width: 650px;
+            background: rgba(245, 245, 220, 0.14);
+        }
+
+        .highlighted-section h3 {
+            font-family: 'Imbue', serif;
+            font-size: 1.2rem; font-weight: 700;
+            color: var(--quetzal-bright); text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .highlighted-section ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        .highlighted-section li {
+            font-size: 0.95rem; font-weight: 300;
+            color: var(--ecru-dim); line-height: 1.6;
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .highlighted-section li::before {
+            content: '?';
+            position: absolute;
+            left: 0;
+            color: var(--rosso);
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .footer-content {
+            display: flex; justify-content: space-between;
+            align-items: center; max-width: 1200px;
+        }
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem; color: var(--ecru-dim);
+            letter-spacing: 0.05em;
+        }
+
+        /* Animations */
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+
+        .reveal {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .doc-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .stat-row { grid-template-columns: 1fr 1fr; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+            .branded-table { font-size: 0.85rem; }
+            .branded-table th, .branded-table td { padding: 0.5rem; }
+        }
+
+        @media (max-width: 500px) {
+            .nav-links a { font-size: 0.75rem; }
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .blueprint-overlay { background-size: 24px 24px; }
+            .stat-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="blueprint-overlay" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true"></div>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="../ecommerce-pl.html" class="nav-mark">← First Decision-Grade P&L</a>
+    <ul class="nav-links">
+        <li><a href="/">Main Site</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- Header -->
+    <section class="doc-header doc-content">
+        <span class="doc-type">Governance Framework</span>
+        <h1>P&L v1.0<br>Cutoff <span class="accent-word">Definition</span></h1>
+        <div class="doc-subtitle">Governance Framework // Decision Infrastructure</div>
+
+        <!-- Stat Row -->
+        <div class="stat-row">
+            <div class="stat-item">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Hard Requirements</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Soft Requirements</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1</div>
+                <div class="stat-label">Litmus Test</div>
+            </div>
+        </div>
+
+        <a href="templates/pl-cutoff-definition-blank.html" download class="download-btn">
+            Download Blank Template <span class="arrow">&darr;</span>
+        </a>
+    </section>
+
+    <!-- Definition Section -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Definition</span>
+
+        <div class="core-principle">
+            <p>Safe for Leadership<br>Decision-Making</p>
+            <div class="sub">
+                <p style="margin-bottom: 1rem;">A P&L earns "v1.0" status when leadership can:</p>
+                <ul>
+                    <li>Trust the direction and magnitude of profitability</li>
+                    <li>Compare month-over-month trends without being misled</li>
+                    <li>Make go/no-go decisions on spend, pricing and growth levers... even if some refinements remain</li>
+                </ul>
+                <p style="margin-top: 1rem;">This is not audit-ready. It is "don't embarrass us in an exec meeting" ready.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hard Requirements -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Hard Requirements</span>
+        <h2>Non-Negotiable<br>Criteria</h2>
+
+        <table class="branded-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Requirement</th>
+                    <th>Description</th>
+                    <th>Why It Matters</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1</strong></td>
+                    <td>Zero Formula Errors in Core Metrics</td>
+                    <td>No #ERROR! in Net Sales, Total COGS, Gross Profit, Operating Income or Net Profit</td>
+                    <td>If the math breaks, every downstream conclusion is fiction</td>
+                    <td><span class="flag red">Red flag</span></td>
+                </tr>
+                <tr>
+                    <td><strong>2</strong></td>
+                    <td>Revenue Is Complete and Mutually Exclusive</td>
+                    <td>All revenue sources included (storefront, marketplaces, aggregator). No double counting. Discounts/returns net correctly</td>
+                    <td>Must cleanly answer "How much money did e-commerce actually bring in this month?"</td>
+                    <td><span class="flag yellow">Yellow flag</span></td>
+                </tr>
+                <tr>
+                    <td><strong>3</strong></td>
+                    <td>COGS Definition Is Explicit and Consistent</td>
+                    <td>COGS includes only costs that scale with orders (parts cost, freight, packaging, platform fees). Same rules every month</td>
+                    <td>Gross margin is the first gate for pricing, promos and marketplaces. If COGS floats, margin lies</td>
+                    <td><span class="flag red">Red flag</span></td>
+                </tr>
+                <tr>
+                    <td><strong>4</strong></td>
+                    <td>Platform Fees Fully Visible and Attributed</td>
+                    <td>All channel fees broken out, not buried in generic GLs. Tie back to platform reports directionally</td>
+                    <td>Must answer "Are marketplaces actually worth it?"</td>
+                    <td><span class="flag yellow">Yellow flag</span></td>
+                </tr>
+                <tr>
+                    <td><strong>5</strong></td>
+                    <td>Shipping Economics Not Lying</td>
+                    <td>Shipping revenue and expense both present. If allocation is imperfect, that imperfection is explicitly stated</td>
+                    <td>Can be rough, but cannot be invisible</td>
+                    <td><span class="flag red">Red flag</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Soft Requirements -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Soft Requirements</span>
+        <h2>Can Be Marked<br>"Known Gaps"</h2>
+
+        <table class="branded-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Requirement</th>
+                    <th>What's Acceptable for v1.0</th>
+                    <th>What's Not Acceptable</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>6</strong></td>
+                    <td>Overhead Allocation Declared</td>
+                    <td>Flat % allocation, headcount-based proxy, or shown below the line as estimated</td>
+                    <td>Silent dumping of corporate costs into e-commerce with no explanation</td>
+                </tr>
+                <tr>
+                    <td><strong>7</strong></td>
+                    <td>Interest & Depreciation</td>
+                    <td>Clearly included and explained, OR clearly excluded and footnoted</td>
+                    <td>Ambiguity about what's in and what's out</td>
+                </tr>
+                <tr>
+                    <td><strong>8</strong></td>
+                    <td>One-Page Exec View Exists</td>
+                    <td>Single summary showing Net Sales, Gross Margin %, Operating Margin %, top 5 cost drivers. No scrolling, no tabs</td>
+                    <td>If it takes explanation to find the numbers, it's not v1.0</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Required Disclosure -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Required Disclosure</span>
+
+        <div class="core-principle">
+            <p>P&L v1.0... Known<br>Limitations</p>
+            <ul>
+                <li>Shipping allocation is directional, not final</li>
+                <li>Overhead allocation uses a proxy methodology</li>
+                <li>Interest expense under review</li>
+                <li>Gross margin is decision-safe; net margin is directional</li>
+            </ul>
+            <p class="sub">This protects the builder and forces leadership to use the numbers responsibly.</p>
+        </div>
+    </section>
+
+    <!-- The Litmus Test -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Validation</span>
+
+        <div class="highlighted-section">
+            <h3>The Litmus Test</h3>
+            <p style="margin-bottom: 1.5rem; color: var(--ecru-dim);">If leadership asks any of the following and you hesitate, the P&L is not v1.0 yet:</p>
+            <ul>
+                <li>"Should we spend more on ads next quarter?"</li>
+                <li>"Are marketplaces helping or hurting margin?"</li>
+                <li>"Can we afford a loyalty program?"</li>
+                <li>"What happens to margin if we push discounts?"</li>
+            </ul>
+            <p class="sub">Right now, the honest answer to most of those is: "We think so, but..."<br><br>v1.0 means you can answer: "Yes... within these bounds."</p>
+        </div>
+    </section>
+
+    <!-- Close -->
+    <section class="doc-section doc-content reveal">
+        <div class="attribution">
+            Framework by Angie Bailey // <a href="/" style="color: var(--ecru-dim);">angieqbailey.com</a>
+        </div>
+
+        <a href="../ecommerce-pl.html" class="back-link">Back to First Decision-Grade P&L</a>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <span>&copy; 2026 Angie Bailey</span>
+    </div>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

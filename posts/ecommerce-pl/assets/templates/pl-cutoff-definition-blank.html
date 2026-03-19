@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P&L v1.0 Cutoff Definition ... Blank Template</title>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --nuit: #121A28; --cacao: #2D1B14; --quetzal: #00685E; --ecru: #F5F5DC; --rosso: #C41E3A; --text: #1a1a1a; --text-dim: #555; --border: #d4d0c8; --hover-bg: rgba(0, 104, 94, 0.04); }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; font-style: normal !important; border-radius: 0 !important; }
+        ::selection { background: var(--rosso); color: var(--ecru); }
+        body { background-color: var(--ecru); color: var(--text); font-family: 'IBM Plex Sans', sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; padding: 3rem; max-width: 1200px; }
+
+        .template-header { margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid var(--cacao); }
+        .template-type { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--rosso); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 1rem; }
+        h1 { font-family: 'Imbue', serif; font-size: 2.5rem; font-weight: 900; line-height: 0.9; text-transform: uppercase; margin-bottom: 0.75rem; color: var(--nuit); }
+        h1 .accent { color: var(--rosso); }
+        .subtitle { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--quetzal); letter-spacing: 0.05em; margin-bottom: 1.5rem; }
+        .instructions { font-size: 0.95rem; font-weight: 300; color: var(--text-dim); line-height: 1.7; max-width: 700px; }
+        .instructions strong { color: var(--text); font-weight: 500; }
+
+        .section { margin-top: 3rem; }
+        .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--quetzal); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem; }
+        h2 { font-family: 'Imbue', serif; font-size: 1.8rem; font-weight: 900; text-transform: uppercase; line-height: 0.95; margin-bottom: 1.5rem; color: var(--nuit); }
+
+        table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.85rem; }
+        th { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--quetzal); text-transform: uppercase; letter-spacing: 0.1em; text-align: left; padding: 0.75rem 0.75rem; border-bottom: 2px solid var(--cacao); }
+        td { padding: 1.5rem 0.75rem; border-bottom: 1px solid var(--border); color: var(--text-dim); font-weight: 300; vertical-align: top; }
+        tr:hover td { background: var(--hover-bg); }
+
+        .flag-key { margin: 1.5rem 0; font-size: 0.85rem; color: var(--text-dim); }
+        .flag { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; padding: 0.15rem 0.4rem; text-transform: uppercase; display: inline-block; margin-right: 1rem; }
+        .flag.red { color: var(--rosso); border: 1px solid var(--rosso); }
+        .flag.yellow { color: #B8860B; border: 1px solid #B8860B; }
+        .flag.green { color: var(--quetzal); border: 1px solid var(--quetzal); }
+
+        .field-group { margin-bottom: 2rem; }
+        .field-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--quetzal); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .blank-area { border: 1px solid var(--border); min-height: 6rem; padding: 0.5rem; margin-bottom: 1.5rem; background: rgba(255, 255, 255, 0.5); }
+
+        .litmus-questions { margin-bottom: 2rem; }
+        .litmus-question { margin-bottom: 1.5rem; }
+        .question-num { font-family: 'IBM Plex Mono', monospace; font-weight: 700; color: var(--cacao); margin-right: 0.5rem; }
+        .question-blank { border-bottom: 1px solid var(--cacao); min-height: 1.5rem; margin-bottom: 1rem; }
+
+        .response-options { margin-top: 2rem; padding: 1.5rem; background: rgba(0, 104, 94, 0.05); border-left: 3px solid var(--quetzal); }
+        .response-option { margin-bottom: 1.5rem; }
+        .response-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--quetzal); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .response-blank { border-bottom: 1px solid var(--cacao); min-height: 1.5rem; }
+
+        .attribution { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--text-dim); letter-spacing: 0.05em; margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+
+        .print-btn { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ecru); background: var(--nuit); border: none; padding: 0.75rem 2rem; cursor: pointer; margin-top: 1rem; transition: background 0.2s; }
+        .print-btn:hover { background: var(--quetzal); }
+
+        @page { size: landscape; margin: 1.5cm; }
+        @media print {
+            body { background: white; padding: 1rem; max-width: none; }
+            .print-btn { display: none; }
+            table { font-size: 0.85rem; }
+            td { min-height: 60px; padding: 1rem 0.75rem; }
+            th { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="template-header">
+    <div class="template-type">Blank Template // Governance Framework</div>
+    <h1>P&L v1.0 Cutoff<br><span class="accent">Definition</span></h1>
+    <div class="subtitle">Blank Template // Governance Framework</div>
+    <p class="instructions">
+        Use this template to define the hard and soft requirements a financial reporting tool must meet
+        before it can be used for leadership decisions. Fill in each requirement, its description,
+        why it matters and current status. Use the litmus test to validate readiness.
+    </p>
+    <button class="print-btn" onclick="window.print()">Print Template</button>
+</div>
+
+<div class="section">
+    <div class="section-label">Section 1: Hard Requirements</div>
+    <h2>Non-Negotiable Standards</h2>
+
+    <div class="flag-key">
+        <span class="flag red">Red</span> Not Met
+        <span class="flag yellow">Yellow</span> Partially Met
+        <span class="flag green">Green</span> Met
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 5%">#</th>
+                <th style="width: 20%">Requirement</th>
+                <th style="width: 25%">Description</th>
+                <th style="width: 25%">Why It Matters</th>
+                <th style="width: 15%">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="section">
+    <div class="section-label">Section 2: Soft Requirements</div>
+    <h2>Known Gaps Are Acceptable for v1.0</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 5%">#</th>
+                <th style="width: 30%">Requirement</th>
+                <th style="width: 35%">What's Acceptable for v1.0</th>
+                <th style="width: 30%">What's Not Acceptable</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="section">
+    <div class="section-label">Section 3: Required Disclosure</div>
+    <h2>Known Limitations Statement</h2>
+
+    <div class="field-group">
+        <p style="font-size: 0.95rem; color: var(--text-dim); margin-bottom: 1rem;">
+            List every known limitation. This protects the builder and forces leadership to use the numbers responsibly.
+        </p>
+        <div class="blank-area" style="min-height: 8rem;"></div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-label">Section 4: The Litmus Test</div>
+    <h2>Final Readiness Validation</h2>
+
+    <p style="font-size: 0.95rem; color: var(--text-dim); margin-bottom: 1.5rem;">
+        List the 4-5 questions leadership will ask. If you hesitate on any answer, the tool is not ready.
+    </p>
+
+    <div class="litmus-questions">
+        <div class="litmus-question">
+            <div><span class="question-num">1.</span></div>
+            <div class="question-blank"></div>
+        </div>
+        <div class="litmus-question">
+            <div><span class="question-num">2.</span></div>
+            <div class="question-blank"></div>
+        </div>
+        <div class="litmus-question">
+            <div><span class="question-num">3.</span></div>
+            <div class="question-blank"></div>
+        </div>
+        <div class="litmus-question">
+            <div><span class="question-num">4.</span></div>
+            <div class="question-blank"></div>
+        </div>
+        <div class="litmus-question">
+            <div><span class="question-num">5.</span></div>
+            <div class="question-blank"></div>
+        </div>
+    </div>
+
+    <div class="response-options">
+        <div class="response-option">
+            <div class="response-label">Current Honest Answer</div>
+            <div class="response-blank"></div>
+            <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.5rem;">"We think so, but..."</p>
+        </div>
+        <div class="response-option">
+            <div class="response-label">v1.0 Answer</div>
+            <div class="response-blank"></div>
+            <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.5rem;">"Yes... within these bounds."</p>
+        </div>
+    </div>
+</div>
+
+<div class="attribution">
+    Governance Framework by Angie Bailey // angieqbailey.com
+</div>
+
+</body>
+</html>
