@@ -563,14 +563,18 @@
         object-fit: cover;
         object-position: center 15%;
         opacity: 0.35;
-        transition: opacity 0.5s ease, filter 0.5s ease;
+        transition: opacity 0.5s ease, filter 0.5s ease, transform 0.5s ease, border-color 0.5s ease;
         border: 1px solid var(--ecru-ghost);
         filter: grayscale(60%);
+        transform: scale(1);
+        cursor: pointer;
     }
 
     .footer-portrait:hover {
         opacity: 1;
         filter: grayscale(0%);
+        transform: scale(1.35);
+        border-color: var(--quetzal-bright);
     }
 
     @media (max-width: 500px) {
