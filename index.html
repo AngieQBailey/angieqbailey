@@ -11,7 +11,7 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="Angie Bailey">
-    <meta property="og:description" content="I find where the process broke, build one that works and explain it so everyone gets it. Operations architecture for the humans doing the actual work.">
+    <meta property="og:description" content="I find where the process broke, build the architecture that works and explain it so everyone gets it. Operations architecture for the humans doing the actual work.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://angieqbailey.com">
     <meta name="image" property="og:image" content="https://angieqbailey.com/og-image.png">
@@ -23,7 +23,7 @@
     <!-- Twitter / X Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Angie Bailey">
-    <meta name="twitter:description" content="I find where the process broke, build one that works and explain it so everyone gets it.">
+    <meta name="twitter:description" content="I find where the process broke, build the architecture that works and explain it so everyone gets it.">
     <meta name="twitter:image" content="https://angieqbailey.com/og-image.png">
 
     <!-- LinkedIn fallback -->
@@ -709,17 +709,43 @@
     "@context": "https://schema.org",
     "@graph": [
         {
+            "@type": "Organization",
+            "@id": "https://angieqbailey.com/#organization",
+            "name": "Angie Bailey",
+            "url": "https://angieqbailey.com",
+            "logo": "https://angieqbailey.com/favicon.png",
+            "description": "Operations architecture, AI implementation and the humans doing the actual work.",
+            "founder": {
+                "@type": "Person",
+                "name": "Angie Bailey"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "angie@angieqbailey.com",
+                "contactType": "general"
+            },
+            "sameAs": [
+                "https://www.linkedin.com/in/angie-bailey/"
+            ]
+        },
+        {
             "@type": "WebSite",
+            "@id": "https://angieqbailey.com/#website",
             "name": "Angie Bailey | The Warehouse",
             "url": "https://angieqbailey.com",
-            "description": "Operations architecture, AI implementation and the humans doing the actual work."
+            "description": "Operations architecture, AI implementation and the humans doing the actual work.",
+            "publisher": {"@id": "https://angieqbailey.com/#organization"},
+            "datePublished": "2025-12-01",
+            "dateModified": "2026-03-20"
         },
         {
             "@type": "Person",
+            "@id": "https://angieqbailey.com/#person",
             "name": "Angie Bailey",
             "url": "https://angieqbailey.com",
+            "image": "https://angieqbailey.com/headshot.png",
             "jobTitle": "Operations Strategist",
-            "description": "Operations architecture for the humans doing the actual work. I find where the process broke, build one that works and explain it so everyone gets it. 20+ years translating complexity into structural clarity across GTM, rev ops, product marketing, AI implementation and comms.",
+            "description": "Operations architecture for the humans doing the actual work. I find where the process broke, build the architecture that works and explain it so everyone gets it. 20+ years translating complexity into structural clarity across GTM, rev ops, product marketing, AI implementation and comms.",
             "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Columbia",
@@ -727,6 +753,7 @@
                 "addressCountry": "US"
             },
             "email": "angie@angieqbailey.com",
+            "worksFor": {"@id": "https://angieqbailey.com/#organization"},
             "sameAs": [
                 "https://www.linkedin.com/in/angie-bailey/"
             ],
@@ -746,12 +773,11 @@
         },
         {
             "@type": "ProfilePage",
+            "@id": "https://angieqbailey.com/#profilepage",
             "datePublished": "2025-12-01",
-            "dateModified": "2026-03-19",
-            "mainEntity": {
-                "@type": "Person",
-                "name": "Angie Bailey"
-            }
+            "dateModified": "2026-03-20",
+            "mainEntity": {"@id": "https://angieqbailey.com/#person"},
+            "isPartOf": {"@id": "https://angieqbailey.com/#website"}
         }
     ]
 }
@@ -788,10 +814,10 @@
         
         <div class="verdict-box">
             <p>
-                I find where the process broke, <strong>build one that works</strong> and
+                I find where the process broke, <strong>build the architecture that works</strong> and
                 then explain it so <strong>everyone actually understands what's happening</strong>.
                 More than twenty years in journalism taught me how to make complicated things obvious.
-                Everything since has been showing me where the mess actually lives.
+                Everything since has been showing me where the operational architecture actually lives... and where it doesn't.
             </p>
         </div>
     </section>
