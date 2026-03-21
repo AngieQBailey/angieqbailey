@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A role-weighted capacity assessment for mixed-discipline teams. Maps upstream production volume against bottleneck execution capacity.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <title>Team Capacity Diagnostic // Angie Bailey</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --nuit: #121A28;
+            --cacao: #2D1B14;
+            --quetzal: #00685E;
+            --quetzal-bright: #00A896;
+            --ecru: #F5F5DC;
+            --rosso: #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        ::selection {
+            background: var(--rosso);
+            color: var(--ecru);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 2rem;
+        }
+
+        body {
+            background-color: var(--nuit);
+            color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* === Architectural Elements === */
+        .blueprint-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-fade 2s ease 0.5s both;
+        }
+
+        .spine {
+            position: fixed;
+            left: calc(var(--spine-left) - 40px);
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--cacao);
+            z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* === Navigation === */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--quetzal-bright);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            padding-right: 2rem;
+        }
+
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--ecru-dim);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--rosso);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--ecru);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* === Content Layout === */
+        main {
+            position: relative;
+            z-index: 10;
+        }
+
+        .doc-content {
+            padding-left: var(--spine-left);
+            padding-right: 4rem;
+            max-width: 1200px;
+        }
+
+        /* === Header === */
+        .doc-header {
+            padding-top: 8rem;
+            padding-bottom: 3rem;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .doc-type {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--quetzal);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.4s both;
+        }
+
+        .doc-header h1 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2.5rem, 7vw, 6rem);
+            font-weight: 900;
+            line-height: 0.9;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+
+        .doc-header h1 .accent-word {
+            color: var(--rosso);
+        }
+
+        .doc-subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--quetzal-bright);
+            letter-spacing: 0.05em;
+            margin-bottom: 2rem;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--nuit);
+            background: var(--ecru);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 1rem 2rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+            animation: fade-up 0.8s ease 0.8s both;
+        }
+
+        .download-btn:hover {
+            background: var(--rosso);
+            color: var(--ecru);
+        }
+
+        .download-btn .arrow {
+            font-size: 1.1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .download-btn:hover .arrow {
+            transform: translateY(2px);
+        }
+
+        /* === Sections === */
+        .doc-section {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        h2 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(1.5rem, 4vw, 2.8rem);
+            font-weight: 900;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 0.95;
+            letter-spacing: -0.01em;
+            margin-bottom: 2.5rem;
+        }
+
+        .doc-body p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--ecru-dim);
+            margin-bottom: 1.5rem;
+            max-width: 650px;
+        }
+
+        .doc-body p strong {
+            color: var(--ecru);
+            font-weight: 500;
+        }
+
+        /* === Tables === */
+        .branded-table {
+            width: 100%;
+            max-width: 950px;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.85rem;
+        }
+
+        .branded-table th {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid var(--cacao);
+        }
+
+        .branded-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--ecru-ghost);
+            color: var(--ecru-dim);
+            font-weight: 300;
+            line-height: 1.5;
+            vertical-align: top;
+        }
+
+        .branded-table td strong {
+            color: var(--ecru);
+            font-weight: 500;
+        }
+
+        .branded-table tr:hover td {
+            background: var(--ecru-ghost);
+        }
+
+        /* === Stat Row === */
+        .stat-row {
+            display: flex;
+            gap: 2px;
+            margin: 2rem 0;
+            max-width: 750px;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background: rgba(245, 245, 220, 0.14);
+            padding: 1.75rem 1.5rem;
+            flex: 1;
+            min-width: 140px;
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: 'Imbue', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--ecru);
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-num.highlight {
+            color: var(--rosso);
+        }
+
+        .stat-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            line-height: 1.4;
+        }
+
+        /* === Constraint List === */
+        .constraint-list {
+            margin: 2rem 0;
+            max-width: 750px;
+        }
+
+        .constraint-item {
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--ecru-ghost);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.25rem;
+            align-items: start;
+        }
+
+        .constraint-item:first-child {
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .constraint-flag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            padding: 0.2rem 0.5rem;
+            text-transform: uppercase;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .constraint-flag.red {
+            color: var(--rosso);
+            border: 1px solid var(--rosso);
+        }
+
+        .constraint-flag.yellow {
+            color: #D4A843;
+            border: 1px solid #D4A843;
+        }
+
+        .constraint-label {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--ecru);
+            line-height: 1.4;
+        }
+
+        .constraint-detail {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            margin-top: 0.25rem;
+        }
+
+        /* === Governance Table === */
+        .governance-table {
+            width: 100%;
+            max-width: 950px;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.85rem;
+        }
+
+        .governance-table th {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid var(--cacao);
+        }
+
+        .governance-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--ecru-ghost);
+            color: var(--ecru-dim);
+            font-weight: 300;
+            line-height: 1.5;
+            vertical-align: top;
+        }
+
+        .governance-table td strong {
+            color: var(--ecru);
+            font-weight: 500;
+        }
+
+        .governance-table tr:hover td {
+            background: var(--ecru-ghost);
+        }
+
+        /* === Related Work Cards === */
+        .related-work {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2px;
+            margin: 2.5rem 0;
+            max-width: 750px;
+        }
+
+        .related-card {
+            background: rgba(245, 245, 220, 0.14);
+            padding: 2rem 1.75rem;
+            text-decoration: none;
+            display: block;
+            transition: background 0.3s ease;
+            position: relative;
+        }
+
+        .related-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--rosso);
+            transition: width 0.4s ease;
+        }
+
+        .related-card:hover {
+            background: rgba(245, 245, 220, 0.18);
+        }
+
+        .related-card:hover::before {
+            width: 100%;
+        }
+
+        .related-title {
+            font-family: 'Imbue', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 1.15;
+            margin-bottom: 0.75rem;
+        }
+
+        .related-context {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.5;
+        }
+
+        /* === Back Link === */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--ecru-dim);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.2s ease;
+            margin-top: 2rem;
+        }
+
+        .back-link::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--quetzal);
+            transition: width 0.3s ease, background 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--ecru);
+        }
+
+        .back-link:hover::before {
+            width: 40px;
+            background: var(--rosso);
+        }
+
+        /* === Attribution === */
+        .attribution {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--ecru-dim);
+            letter-spacing: 0.05em;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+            line-height: 1.6;
+        }
+
+        .attribution a {
+            color: var(--ecru-dim);
+        }
+
+        /* === Footer === */
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+        }
+
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--ecru-dim);
+            letter-spacing: 0.05em;
+        }
+
+        /* === Animations === */
+        @keyframes spine-draw {
+            from { height: 0; }
+            to { height: 100%; }
+        }
+
+        @keyframes fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes grid-fade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === Responsive === */
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+
+            .spine {
+                left: 12px;
+                width: 3px;
+            }
+
+            .doc-content {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+
+            .nav-bar {
+                padding-left: 2rem;
+            }
+
+            .nav-links {
+                gap: 1.25rem;
+                padding-right: 1rem;
+            }
+
+            footer {
+                padding-left: 2rem;
+            }
+
+            .branded-table,
+            .governance-table {
+                font-size: 0.75rem;
+                display: block;
+                overflow-x: auto;
+            }
+
+            .branded-table th,
+            .branded-table td,
+            .governance-table th,
+            .governance-table td {
+                padding: 0.5rem;
+                min-width: 100px;
+            }
+
+            .stat-row {
+                flex-wrap: wrap;
+            }
+
+            .related-work {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .nav-mark {
+                display: none;
+            }
+
+            .nav-bar {
+                justify-content: flex-end;
+            }
+
+            .blueprint-overlay {
+                background-size: 24px 24px;
+            }
+
+            .doc-header {
+                padding-top: 5rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="blueprint-overlay" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true"></div>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="../web-experience-capacity-build.html" class="nav-mark" style="text-decoration: none;">← Web Experience Capacity Build</a>
+    <ul class="nav-links">
+        <li><a href="/">Main Site</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- HEADER -->
+    <section class="doc-header doc-content">
+        <span class="doc-type">Diagnostic Tool // Team Capacity Assessment</span>
+        <h1>Team Capacity<br><span class="accent-word">Diagnostic</span></h1>
+        <div class="doc-subtitle">Role-Weighted Capacity Assessment for Mixed-Discipline Teams</div>
+        <a href="templates/team-capacity-diagnostic-blank.html" target="_blank" rel="noopener noreferrer" class="download-btn">
+            View Blank Template &rarr;
+        </a>
+    </section>
+
+    <!-- PURPOSE -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Purpose</span>
+        <h2>What This<br>Diagnostic Does</h2>
+        <div class="doc-body">
+            <p>This diagnostic maps the structural capacity of a cross-functional team by analyzing role-weighted throughput ratios. It identifies where upstream production volume exceeds bottleneck execution capacity and surfaces the governance interventions required to protect the constraint.</p>
+            <p>The methodology draws on Sonnenberg's bandwidth model (Capacity - Admin - Meetings = Bandwidth) for individual capacity calculation and Goldratt's Theory of Constraints for bottleneck identification. The applied contribution is using role-weighted ratios to diagnose capacity imbalances in mixed-discipline teams where the problem isn't total workload but role asymmetry.</p>
+        </div>
+    </section>
+
+    <!-- APPLIED EXAMPLE -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Applied Example</span>
+        <h2>Web Experience<br>Team Assessment</h2>
+
+        <table class="branded-table">
+            <thead>
+                <tr>
+                    <th>Role</th>
+                    <th>Headcount</th>
+                    <th>Effective FTE</th>
+                    <th>Function</th>
+                    <th>Backlog Pressure</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Product Owner</strong></td>
+                    <td>2</td>
+                    <td>2.0</td>
+                    <td>Strategy, roadmap, user stories, stakeholder alignment</td>
+                    <td>Direct — generates scope continuously</td>
+                </tr>
+                <tr>
+                    <td><strong>UX Designer</strong></td>
+                    <td>2</td>
+                    <td>2.0</td>
+                    <td>Wireframes, prototypes, user research, design systems</td>
+                    <td>Direct — every design requires engineering to ship</td>
+                </tr>
+                <tr>
+                    <td><strong>Analyst</strong></td>
+                    <td>1</td>
+                    <td>1.0</td>
+                    <td>Performance measurement, SEO, web operations, reporting</td>
+                    <td>Indirect — measures output but doesn't generate backlog items</td>
+                </tr>
+                <tr>
+                    <td><strong>Full-Stack Engineer (Sr.)</strong></td>
+                    <td>1</td>
+                    <td>0.65</td>
+                    <td>Backend logic, API integration, data path architecture, vendor oversight</td>
+                    <td>Constraint — sole person who understands 159-page fulfillment system. ~35% bandwidth consumed by mentoring</td>
+                </tr>
+                <tr>
+                    <td><strong>Front-End Engineer (Jr.)</strong></td>
+                    <td>1</td>
+                    <td>0.60</td>
+                    <td>UI implementation, front-end features</td>
+                    <td>Dependent — requires mentorship from Sr. engineer, reducing both capacities</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="stat-row">
+            <div class="stat-box">
+                <div class="stat-num">4.0 FTE</div>
+                <div class="stat-label">Upstream Production</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">1.25 FTE</div>
+                <div class="stat-label">Execution Capacity</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">3.2:1</div>
+                <div class="stat-label">Overproduction Ratio</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIAGNOSTIC FINDINGS -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Diagnostic Findings</span>
+        <h2>Capacity<br>Constraints Identified</h2>
+        <div class="doc-body">
+            <p>The role-weighted analysis surfaced three categories of structural constraint: single-point-of-failure risk, upstream overproduction and governance gaps.</p>
+        </div>
+
+        <div class="constraint-list">
+            <div class="constraint-item">
+                <span class="constraint-flag red">RED</span>
+                <div>
+                    <div class="constraint-label">Single Point of Failure</div>
+                    <div class="constraint-detail">All backend logic, API integrations and data path decisions routed through one engineer. No redundancy. No documentation sufficient for another engineer to execute independently.</div>
+                </div>
+            </div>
+            <div class="constraint-item">
+                <span class="constraint-flag red">RED</span>
+                <div>
+                    <div class="constraint-label">Upstream Overproduction</div>
+                    <div class="constraint-detail">Four upstream producers generating 3.2x the work the engineering bottleneck could execute per sprint. Without an intake filter, the design queue grew faster than code shipped every cycle.</div>
+                </div>
+            </div>
+            <div class="constraint-item">
+                <span class="constraint-flag red">RED</span>
+                <div>
+                    <div class="constraint-label">Invisible Mentorship Tax</div>
+                    <div class="constraint-detail">Senior engineer spending ~35% of available time mentoring junior developer. This overhead was real but never accounted for in sprint capacity planning, leading to chronic overcommitment.</div>
+                </div>
+            </div>
+            <div class="constraint-item">
+                <span class="constraint-flag yellow">YELLOW</span>
+                <div>
+                    <div class="constraint-label">Executive Scope Bypass</div>
+                    <div class="constraint-detail">Leadership inserted new requests outside the prioritization process, displacing planned sprint work. No mechanism existed to evaluate these against current commitments.</div>
+                </div>
+            </div>
+            <div class="constraint-item">
+                <span class="constraint-flag yellow">YELLOW</span>
+                <div>
+                    <div class="constraint-label">No Feasibility Gate</div>
+                    <div class="constraint-detail">Design work reached high fidelity before engineering confirmed the backend could support it. Rework cycles consumed capacity that should have been spent on validated features.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GOVERNANCE INTERVENTIONS -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Governance Response</span>
+        <h2>Interventions<br>Designed</h2>
+        <div class="doc-body">
+            <p>Each constraint mapped to a specific governance mechanism. The interventions were structural, not personal... designed to make capacity visible and non-negotiable regardless of who occupied the scrum master role.</p>
+        </div>
+
+        <table class="governance-table">
+            <thead>
+                <tr>
+                    <th>Constraint</th>
+                    <th>Intervention</th>
+                    <th>Mechanism</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Single Point of Failure</strong></td>
+                    <td><strong>Engineering Veto Power</strong></td>
+                    <td>Definition of Ready required Sr. Engineer sign-off before any story entered sprint backlog</td>
+                </tr>
+                <tr>
+                    <td><strong>Upstream Overproduction</strong></td>
+                    <td><strong>Capacity-Based Grooming</strong></td>
+                    <td>Sprint capacity planned solely on engineering bandwidth. POs forced to stack-rank by ROI within that constraint</td>
+                </tr>
+                <tr>
+                    <td><strong>Invisible Mentorship Tax</strong></td>
+                    <td><strong>Visible Capacity Accounting</strong></td>
+                    <td>Mentorship hours subtracted from available engineering FTE before sprint planning. Commitments based on real capacity (1.25 FTE) not headcount (2.0 FTE)</td>
+                </tr>
+                <tr>
+                    <td><strong>Executive Scope Bypass</strong></td>
+                    <td><strong>Sprint Commitment Protection</strong></td>
+                    <td>New requests evaluated against current sprint commitments. If accepted, something else was explicitly removed. No silent additions</td>
+                </tr>
+                <tr>
+                    <td><strong>No Feasibility Gate</strong></td>
+                    <td><strong>Technical Vetting Before Design</strong></td>
+                    <td>Backend data path confirmation required before design moved to high fidelity. Prevented the "design graveyard" effect</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- OUTCOME -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Outcome</span>
+        <h2>What the<br>Governance Produced</h2>
+
+        <div class="stat-row">
+            <div class="stat-box">
+                <div class="stat-num">115%</div>
+                <div class="stat-label">Conversion Lift</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">160%</div>
+                <div class="stat-label">User Growth</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">122%</div>
+                <div class="stat-label">Session Increase</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-num">6</div>
+                <div class="stat-label">Ceremonies from Zero</div>
+            </div>
+        </div>
+
+        <div class="doc-body" style="margin-top: 2rem;">
+            <p>These metrics were produced while the capacity protection model was active. The governance didn't ship features directly... it created the structural conditions under which the team could ship consistently for the first time.</p>
+        </div>
+    </section>
+
+    <!-- METHODOLOGY -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Methodology</span>
+        <div class="attribution">
+            <p>Individual bandwidth calculation adapted from Nick Sonnenberg's CPR Framework (Come Up for Air, 2023). Bottleneck identification principles from Eliyahu Goldratt's Theory of Constraints. Sprint ceremony structure adapted from the Scrum Guide. The role-weighted capacity diagnostic and governance intervention mapping are applied contributions by Angie Bailey.</p>
+        </div>
+    </section>
+
+    <!-- RELATED WORK -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">Related Work</span>
+        <h2>Connected<br>Diagnostics</h2>
+        <div class="doc-body">
+            <p>Methodology from this engagement connects to diagnostic work in other case studies.</p>
+        </div>
+
+        <div class="related-work">
+            <a href="../../e-commerce-summit/assets/pressure-points-register.html" class="related-card">
+                <div class="related-title">Pressure Points<br>Register</div>
+                <div class="related-context">Constraint documentation methodology applied across engagements</div>
+            </a>
+            <a href="../../ecommerce-pl/assets/pl-project-dossier.html" class="related-card">
+                <div class="related-title">Project<br>Brief</div>
+                <div class="related-context">Project scoping and diagnostic framing for cross-functional work</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- BACK LINK -->
+    <section class="doc-section doc-content reveal">
+        <a href="../web-experience-capacity-build.html" class="back-link">Back to Web Experience Capacity Build</a>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <span>&copy; 2026 Angie Bailey</span>
+    </div>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

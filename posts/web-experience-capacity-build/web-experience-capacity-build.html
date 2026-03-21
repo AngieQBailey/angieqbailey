@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Case Study: Web Experience Capacity Build — Four strategists feeding 1.25 FTE of engineering through a 159-page backend system. No governance. All scope creep.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <meta property="og:title" content="Web Experience Capacity Build // Angie Bailey">
+    <meta property="og:description" content="Case Study: Web Experience Capacity Build — Four strategists feeding 1.25 FTE of engineering through a 159-page backend system. No governance. All scope creep.">
+    <meta property="og:type" content="article">
+    <title>Web Experience Capacity Build // Angie Bailey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit: #121A28;
+            --cacao: #2D1B14;
+            --quetzal: #00685E;
+            --quetzal-bright: #00A896;
+            --ecru: #F5F5DC;
+            --rosso: #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        ::selection {
+            background: var(--rosso);
+            color: var(--ecru);
+        }
+
+        /* === Base === */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 2rem;
+        }
+
+        body {
+            background-color: var(--nuit);
+            color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* === Architectural Elements === */
+        .blueprint-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-fade 2s ease 0.5s both;
+        }
+
+        .spine {
+            position: fixed;
+            left: calc(var(--spine-left) - 40px);
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--cacao);
+            z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* === Navigation === */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--quetzal-bright);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            padding-right: 2rem;
+        }
+
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--ecru-dim);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--rosso);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--ecru);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* === Content Layout === */
+        main {
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-content {
+            padding-left: var(--spine-left);
+            padding-right: 4rem;
+            max-width: 1200px;
+        }
+
+        /* === Case Header === */
+        .case-header {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 8rem;
+            padding-bottom: 4rem;
+        }
+
+        .case-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--quetzal);
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.4s both;
+        }
+
+        .case-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.5s both;
+        }
+
+        .case-header h1 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2.5rem, 7vw, 6rem);
+            font-weight: 900;
+            line-height: 0.9;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+
+        .case-header h1 .accent-word {
+            color: var(--rosso);
+        }
+
+        .case-lede {
+            border-left: 5px solid var(--rosso);
+            padding-left: 2rem;
+            max-width: 600px;
+            animation: fade-up 0.8s ease 0.8s both;
+        }
+
+        .case-lede p {
+            font-size: 1.15rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+        }
+
+        .case-lede strong {
+            color: var(--ecru);
+            font-weight: 500;
+        }
+
+        /* === Case Sections === */
+        .case-section {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        h2 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 900;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 0.95;
+            letter-spacing: -0.01em;
+            margin-bottom: 2.5rem;
+        }
+
+        .case-body p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--ecru-dim);
+            margin-bottom: 1.5rem;
+            max-width: 650px;
+        }
+
+        .case-body p strong {
+            color: var(--ecru);
+            font-weight: 500;
+        }
+
+        /* === Artifact Grid === */
+        .artifact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2px;
+            margin: 2.5rem 0;
+        }
+
+        .artifact-card {
+            background: rgba(245, 245, 220, 0.14);
+            padding: 2rem 1.75rem;
+            position: relative;
+            transition: background 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .artifact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--rosso);
+            transition: width 0.4s ease;
+        }
+
+        .artifact-card:hover {
+            background: rgba(245, 245, 220, 0.18);
+        }
+
+        .artifact-card:hover::before {
+            width: 100%;
+        }
+
+        .artifact-type {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.75rem;
+        }
+
+        .artifact-name {
+            font-family: 'Imbue', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 1.15;
+            margin-bottom: 0.75rem;
+        }
+
+        .artifact-desc {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .artifact-action {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        /* === Constraint List === */
+        .constraint-list {
+            margin: 2rem 0;
+            max-width: 650px;
+        }
+
+        .constraint-item {
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--ecru-ghost);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.25rem;
+            align-items: start;
+        }
+
+        .constraint-item:first-child {
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .constraint-flag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            padding: 0.2rem 0.5rem;
+            text-transform: uppercase;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .constraint-flag.red {
+            color: var(--rosso);
+            border: 1px solid var(--rosso);
+        }
+
+        .constraint-flag.yellow {
+            color: #D4A843;
+            border: 1px solid #D4A843;
+        }
+
+        .constraint-label {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--ecru);
+            line-height: 1.4;
+        }
+
+        .constraint-detail {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            margin-top: 0.25rem;
+        }
+
+        /* === Approach Grid === */
+        .approach-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            margin: 2.5rem 0;
+            max-width: 750px;
+        }
+
+        .approach-item {
+            background: rgba(245, 245, 220, 0.14);
+            padding: 2rem 1.75rem;
+        }
+
+        .approach-day {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.75rem;
+        }
+
+        .approach-title {
+            font-family: 'Imbue', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+
+        .approach-desc {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.5;
+        }
+
+        /* === Outcome Grid === */
+        .outcome-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2px;
+            margin: 2.5rem 0;
+            max-width: 750px;
+        }
+
+        .outcome-stat {
+            background: rgba(245, 245, 220, 0.14);
+            padding: 2rem 1.75rem;
+        }
+
+        .outcome-number {
+            font-family: 'Imbue', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--ecru);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .outcome-number.highlight {
+            color: var(--rosso);
+        }
+
+        .outcome-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            line-height: 1.4;
+        }
+
+        /* === Back Link === */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--ecru-dim);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.2s ease;
+            margin-top: 3rem;
+        }
+
+        .back-link::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--quetzal);
+            transition: width 0.3s ease, background 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--ecru);
+        }
+
+        .back-link:hover::before {
+            width: 40px;
+            background: var(--rosso);
+        }
+
+        /* === Footer === */
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+        }
+
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--ecru-dim);
+            letter-spacing: 0.05em;
+        }
+
+        /* === Animations === */
+        @keyframes spine-draw {
+            from {
+                height: 0;
+            }
+            to {
+                height: 100%;
+            }
+        }
+
+        @keyframes fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes grid-fade {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === Responsive Breakpoints === */
+        @media (max-width: 900px) {
+            :root {
+                --spine-left: 5%;
+            }
+
+            .spine {
+                left: 12px;
+                width: 3px;
+            }
+
+            .section-content {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+
+            .nav-bar {
+                padding-left: 2rem;
+            }
+
+            .approach-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .artifact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .outcome-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .nav-links {
+                gap: 1.25rem;
+                padding-right: 1rem;
+            }
+
+            footer {
+                padding-left: 2rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .nav-mark {
+                display: none;
+            }
+
+            .nav-bar {
+                justify-content: flex-end;
+            }
+
+            .nav-links a {
+                font-size: 0.75rem;
+            }
+
+            .blueprint-overlay {
+                background-size: 24px 24px;
+            }
+
+            .outcome-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blueprint-overlay" aria-hidden="true"></div>
+    <div class="spine" aria-hidden="true"></div>
+    <nav class="nav-bar" role="navigation" aria-label="Primary">
+        <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
+        <ul class="nav-links">
+            <li><a href="/#warehouse">Warehouse</a></li>
+            <li><a href="/#investigation">Investigation</a></li>
+            <li><a href="/#verdict">Verdict</a></li>
+            <li><a href="/#debrief">The Debrief</a></li>
+        </ul>
+    </nav>
+    <main>
+        <!-- HEADER -->
+        <section class="case-header section-content">
+            <span class="case-meta">Case Study // Delivery Governance</span>
+            <span class="case-tag">Capacity Protection + Sprint Architecture</span>
+            <h1>Web Experience<br>Capacity<br><span class="accent-word">Build</span></h1>
+            <div class="case-lede">
+                <p>Two product owners and two designers feeding a 159-page backend system through 1.25 FTE of engineering capacity. No intake filter. No scope governance. No delivery cadence. The senior engineer was the only person who understood the data paths... and he was spending a third of his time training a junior. This wasn't a staffing problem. It was a structural one. The team needed a capacity protection system before it needed a single new feature.</p>
+            </div>
+        </section>
+
+        <!-- THE EVIDENCE -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">The Evidence</span>
+            <h2>Frameworks<br>&amp; Artifacts</h2>
+            <div class="case-body"><p>The diagnostic produced one primary artifact: a role-weighted capacity assessment that mapped upstream production volume against bottleneck execution capacity.</p></div>
+            <div class="artifact-grid">
+                <a href="assets/team-capacity-diagnostic.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                    <div class="artifact-type">Diagnostic Tool</div>
+                    <div class="artifact-name">Team Capacity<br>Diagnostic</div>
+                    <div class="artifact-desc">A role-weighted capacity assessment for mixed-discipline teams. Maps upstream production volume against bottleneck execution capacity to identify where governance needs to intervene. Built on Sonnenberg's bandwidth model and Goldratt's Theory of Constraints... adapted for teams where the problem isn't workload but role asymmetry.</div>
+                    <div class="artifact-action">View Diagnostic &rarr;</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- THE SITUATION -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">The Situation</span>
+            <h2>No Process Could<br>Protect the Bottleneck</h2>
+            <div class="case-body">
+                <p>The web experience team was seven people: two product owners, two UX designers, an analyst, a senior full-stack engineer and a junior front-end developer. On paper, a reasonable roster. In practice, a structural mismatch.</p>
+                <p>The two product owners and two designers generated scope continuously... wireframes, user stories, research findings, feature requests. All of it funneled toward engineering for execution. But the senior engineer was the only person who understood the backend data paths through a <strong>159-page manual fulfillment system</strong>. Every feature, every fix, every integration had to pass through him. The junior developer was learning, but that learning consumed roughly a third of the senior engineer's available bandwidth.</p>
+                <p><strong>Effective engineering capacity: 1.25 FTE. Upstream production capacity: 4 FTE.</strong></p>
+                <p>Then there was the founder layer. New requests appeared without warning, reprioritized by executive attention span rather than roadmap logic. Features that weren't on any sprint plan would land in the engineering queue because leadership got excited about a shiny object. Whatever informal prioritization the team had built was regularly overridden from above.</p>
+                <p>There was no intake filter. No Definition of Ready. No sprint cadence to create predictable delivery windows. <strong>No mechanism to say 'not this sprint' to anyone... including leadership.</strong></p>
+                <p>The senior engineer was burning out. The design queue was growing faster than code shipped. And the team had no structural defense against any of it.</p>
+            </div>
+        </section>
+
+        <!-- PRESSURE POINTS -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">Pressure Points Surfaced</span>
+            <h2>What the<br>Diagnostic Found</h2>
+            <div class="case-body"><p>The capacity assessment surfaced seven structural constraints. None of them were about talent or effort. All of them were about how work flowed (or didn't) through the team.</p></div>
+            <div class="constraint-list">
+                <div class="constraint-item">
+                    <span class="constraint-flag red">Red</span>
+                    <div>
+                        <div class="constraint-label">Single Point of Failure on Backend Logic</div>
+                        <div class="constraint-detail">The senior engineer was the only person who could map features to the 159-page fulfillment system. If he was sick, on vacation or left the company... nothing shipped.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag red">Red</span>
+                    <div>
+                        <div class="constraint-label">4:1 Upstream-to-Execution Ratio</div>
+                        <div class="constraint-detail">Four producers generating scope for 1.25 FTE of engineering capacity. The team was creating work three times faster than it could deliver.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag red">Red</span>
+                    <div>
+                        <div class="constraint-label">No Intake Filter</div>
+                        <div class="constraint-detail">Stories entered the engineering queue without technical feasibility checks. Design work was completed before anyone confirmed the backend could support it.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag yellow">Yellow</span>
+                    <div>
+                        <div class="constraint-label">Executive Scope Injection</div>
+                        <div class="constraint-detail">Leadership bypassed whatever informal prioritization existed to insert new requests. No mechanism to evaluate these against current sprint commitments.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag yellow">Yellow</span>
+                    <div>
+                        <div class="constraint-label">Mentorship Tax Invisible in Planning</div>
+                        <div class="constraint-detail">The senior engineer's mentoring load on the junior developer was real but unaccounted for in capacity planning. Sprint commitments assumed full availability that didn't exist.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag yellow">Yellow</span>
+                    <div>
+                        <div class="constraint-label">No Definition of Ready</div>
+                        <div class="constraint-detail">Stories moved to engineering without clear acceptance criteria, technical vetting or task breakdowns. Engineers spent review cycles on work that should have been filtered upstream.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag yellow">Yellow</span>
+                    <div>
+                        <div class="constraint-label">No Delivery Cadence</div>
+                        <div class="constraint-detail">Work shipped on a 'when it's ready' basis. No sprint rhythm. No predictable release windows. Stakeholders had no visibility into when anything would land.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE APPROACH -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">The Approach</span>
+            <h2>Building the Machine<br>That Could Say No</h2>
+            <div class="case-body"><p>The intervention wasn't a reorganization or a new hire. It was a governance layer... a set of structural filters designed to protect the engineering bottleneck from upstream overproduction and executive scope injection. Every mechanism served one purpose: make the team's actual capacity visible and non-negotiable.</p></div>
+            <div class="approach-grid">
+                <div class="approach-item">
+                    <div class="approach-day">Phase 01</div>
+                    <div class="approach-title">Capacity<br>Diagnosis</div>
+                    <div class="approach-desc">Mapped the team by role type and production output. Calculated the real upstream-to-execution ratio. Made the mentorship tax visible in sprint planning for the first time. The 4:1 imbalance wasn't a surprise to anyone who lived it... but it had never been documented as a structural constraint.</div>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-day">Phase 02</div>
+                    <div class="approach-title">Intake<br>Filter</div>
+                    <div class="approach-desc">Implemented a Definition of Ready with engineering veto power. No story entered the sprint backlog without a technical feasibility check signed off by the senior engineer. Design work that couldn't be mapped to the backend data paths was returned to grooming. The veto was structural, not personal.</div>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-day">Phase 03</div>
+                    <div class="approach-title">Sprint<br>Cadence</div>
+                    <div class="approach-desc">Stood up a bi-weekly sprint cycle with six ceremonies: backlog grooming, sprint planning, async story-to-task breakdown, sprint kickoff, daily standups and stakeholder demos. Each ceremony had a single owner, a time boundary and a defined output. The cadence created predictable delivery windows that didn't exist before.</div>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-day">Principle</div>
+                    <div class="approach-title">ROI as the Only<br>Prioritization Axis</div>
+                    <div class="approach-desc">Forced ruthless stack-ranking of the backlog by return on investment. Not executive preference. Not recency of request. Not loudness of stakeholder. The question at every grooming session was the same: given 1.25 FTE of engineering capacity this sprint, what produces the most value? Everything else waited.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE OUTCOME -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">The Outcome</span>
+            <h2>What the<br>Governance Built</h2>
+            <div class="outcome-grid">
+                <div class="outcome-stat">
+                    <div class="outcome-number highlight">115%</div>
+                    <div class="outcome-label">Conversion Rate Lift<br>(20% &rarr; 43%)</div>
+                </div>
+                <div class="outcome-stat">
+                    <div class="outcome-number">160%</div>
+                    <div class="outcome-label">User Growth</div>
+                </div>
+                <div class="outcome-stat">
+                    <div class="outcome-number">122%</div>
+                    <div class="outcome-label">Session Increase</div>
+                </div>
+                <div class="outcome-stat">
+                    <div class="outcome-number">6</div>
+                    <div class="outcome-label">Ceremonies Stood Up<br>From Zero</div>
+                </div>
+                <div class="outcome-stat">
+                    <div class="outcome-number">5%</div>
+                    <div class="outcome-label">Rental Requests<br>Completed Online</div>
+                </div>
+            </div>
+            <div class="case-body" style="margin-top: 2rem;">
+                <p>The shortest version: a team that couldn't ship consistently was producing bi-weekly releases within two months. The governance model was working well enough that leadership had begun planning a handoff to a program manager... the early stages of a transition that would have tested whether the system could run without its architect. That transition never materialized. The director was fired. The team was moved to a new org.</p>
+                <p>The conversion lift, the user growth, the session increases... those happened while the capacity protection model was active. They're the output of a team that could finally <strong>prioritize by ROI instead of reacting to whoever asked last</strong>.</p>
+            </div>
+            <a href="/" class="back-link">Back to The Warehouse</a>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <span>&copy; 2026 Angie Bailey</span>
+        </div>
+    </footer>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

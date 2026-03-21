@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Team Capacity Diagnostic — Blank Template // Angie Bailey">
+    <meta name="author" content="Angie Bailey">
+    <title>Team Capacity Diagnostic — Blank Template // Angie Bailey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit: #121A28;
+            --cacao: #2D1B14;
+            --quetzal: #00685E;
+            --ecru: #F5F5DC;
+            --rosso: #C41E3A;
+            --text: #1a1a1a;
+            --text-dim: #555;
+            --border: #d4d0c8;
+            --border-light: #e8e4dc;
+            --hover-bg: rgba(0, 104, 94, 0.04);
+            --flag-red: #C41E3A;
+            --flag-yellow: #D4A843;
+            --flag-green: #00685E;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        ::selection {
+            background: var(--rosso);
+            color: var(--ecru);
+        }
+
+        body {
+            background-color: var(--ecru);
+            color: var(--text);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding: 4rem 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .template-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--cacao);
+        }
+
+        .template-type {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: 'Imbue', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            line-height: 0.9;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            color: var(--nuit);
+        }
+
+        h1 .accent {
+            color: var(--rosso);
+        }
+
+        .subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--quetzal);
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+        }
+
+        .instructions {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--text-dim);
+            line-height: 1.7;
+            max-width: 700px;
+            margin-bottom: 1.5rem;
+        }
+
+        .instructions strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .print-btn {
+            display: inline-block;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--ecru);
+            background: var(--nuit);
+            border: none;
+            padding: 0.75rem 2rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.2s;
+        }
+
+        .print-btn:hover {
+            background: var(--quetzal);
+        }
+
+        .section {
+            margin-top: 3rem;
+        }
+
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--quetzal);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-family: 'Imbue', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 0.95;
+            margin-bottom: 1.5rem;
+            color: var(--nuit);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.85rem;
+        }
+
+        th {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--quetzal);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid var(--cacao);
+            background: transparent;
+        }
+
+        td {
+            padding: 1.5rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-dim);
+            font-weight: 300;
+            vertical-align: top;
+            min-height: 3rem;
+        }
+
+        tr:hover td {
+            background: var(--hover-bg);
+        }
+
+        .section-note {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin: 1.5rem 0;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .section-note strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .field-group {
+            margin: 2rem 0;
+        }
+
+        .field-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--quetzal);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .field-area {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 0;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text);
+            background: transparent;
+            min-height: 3rem;
+            resize: vertical;
+        }
+
+        .field-area:focus {
+            outline: none;
+            border-bottom: 2px solid var(--quetzal);
+        }
+
+        .field-area.large {
+            min-height: 4rem;
+        }
+
+        .callout-box {
+            border-left: 3px solid var(--cacao);
+            padding: 1.5rem;
+            background: rgba(0, 104, 94, 0.04);
+            margin: 1.5rem 0;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .callout-box strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .flag-key {
+            margin: 2rem 0;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .flag-item {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .flag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            padding: 0.2rem 0.5rem;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            border: 1px solid;
+            line-height: 1;
+        }
+
+        .flag.red {
+            color: var(--flag-red);
+            border-color: var(--flag-red);
+        }
+
+        .flag.yellow {
+            color: var(--flag-yellow);
+            border-color: var(--flag-yellow);
+        }
+
+        .flag.green {
+            color: var(--flag-green);
+            border-color: var(--flag-green);
+        }
+
+        .flag-description {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            flex: 1;
+        }
+
+        .table-note {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin: 1.5rem 0;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .attribution {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            letter-spacing: 0.05em;
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .attribution-secondary {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-top: 0.5rem;
+        }
+
+        @page {
+            size: letter portrait;
+            margin: 1.5cm;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 1rem;
+                max-width: none;
+            }
+            .print-btn {
+                display: none;
+            }
+            table {
+                font-size: 0.75rem;
+            }
+            td, .field-area {
+                min-height: 60px;
+                padding: 1rem 0.75rem;
+            }
+            th {
+                font-size: 0.6rem;
+                padding: 0.6rem 0.75rem;
+            }
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 900px) {
+            body {
+                padding: 2rem 1.5rem;
+                font-size: 0.95rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.4rem;
+            }
+            table {
+                font-size: 0.8rem;
+            }
+            td {
+                padding: 1rem 0.75rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+            h1 {
+                font-size: 1.4rem;
+            }
+            h2 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="template-header">
+    <div class="template-type">Blank Template // Diagnostic Tool</div>
+    <h1>Team Capacity<br><span class="accent">Diagnostic</span></h1>
+    <div class="subtitle">Role-Weighted Capacity Assessment for Mixed-Discipline Teams</div>
+    <p class="instructions">
+        Use this diagnostic to map your team's structural capacity. Start by listing each role, then calculate effective FTE accounting for overhead like mentoring, admin and context-switching. The <strong>upstream-to-bottleneck ratio</strong> will surface whether your team has a governance problem or a staffing problem. Fill in each section. Print or save as PDF when complete.
+    </p>
+    <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<!-- SECTION 1: TEAM COMPOSITION -->
+<div class="section">
+    <div class="section-label">Step 01</div>
+    <h2>Map Your<br>Team</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Role Title</th>
+                <th>Headcount</th>
+                <th>Gross FTE</th>
+                <th>Overhead (%)</th>
+                <th>Effective FTE</th>
+                <th>Function</th>
+                <th>Backlog Pressure</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+        </tbody>
+    </table>
+
+    <p class="section-note">
+        Overhead includes mentoring, admin duties, context-switching and any recurring commitment that reduces time available for primary function output.
+    </p>
+</div>
+
+<!-- SECTION 2: CAPACITY CALCULATION -->
+<div class="section">
+    <div class="section-label">Step 02</div>
+    <h2>Calculate<br>Capacity Ratio</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>FTE Total</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Total Upstream Production FTE (roles with "Direct" backlog pressure)</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Total Execution FTE (roles with "Constraint" or "Dependent" backlog pressure)</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Indirect/Support FTE (roles with "Indirect" backlog pressure)</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Upstream-to-Execution Ratio (Upstream ÷ Execution)</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="callout-box">
+        <strong>Interpretation guide:</strong> A ratio above 2:1 suggests the team generates scope faster than it can execute. Above 3:1 typically indicates a governance intervention is needed. Below 1.5:1 may indicate underutilized upstream capacity or insufficient strategic input.
+    </div>
+</div>
+
+<!-- SECTION 3: BOTTLENECK IDENTIFICATION -->
+<div class="section">
+    <div class="section-label">Step 03</div>
+    <h2>Identify the<br>Constraint</h2>
+
+    <div class="field-group">
+        <label class="field-label">Primary Bottleneck Role</label>
+        <div class="field-area"></div>
+    </div>
+
+    <div class="field-group">
+        <label class="field-label">What Makes This Role the Constraint?</label>
+        <div class="field-area large"></div>
+    </div>
+
+    <div class="field-group">
+        <label class="field-label">Single Point of Failure Risk (Yes/No + Explanation)</label>
+        <div class="field-area large"></div>
+    </div>
+
+    <div class="field-group">
+        <label class="field-label">Hidden Overhead Not Accounted for in Planning</label>
+        <div class="field-area large"></div>
+    </div>
+
+    <div class="field-group">
+        <label class="field-label">What Happens if This Person Is Unavailable for 2 Weeks?</label>
+        <div class="field-area large"></div>
+    </div>
+</div>
+
+<!-- SECTION 4: GOVERNANCE GAP ASSESSMENT -->
+<div class="section">
+    <div class="section-label">Step 04</div>
+    <h2>Assess<br>Governance Gaps</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Governance Mechanism</th>
+                <th>Present? (Y/N)</th>
+                <th>Current State</th>
+                <th>Gap Severity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Intake Filter / Definition of Ready</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Engineering (or Bottleneck) Veto Power</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Capacity-Based Sprint Planning</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Visible Overhead Accounting</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Executive Scope Protection</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Predictable Delivery Cadence</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Prioritization by ROI (not recency or volume)</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="flag-key">
+        <div class="flag-item">
+            <span class="flag red">Red</span>
+            <span class="flag-description"><strong>Critical</strong> — No mechanism exists. Immediate governance risk.</span>
+        </div>
+        <div class="flag-item">
+            <span class="flag yellow">Yellow</span>
+            <span class="flag-description"><strong>Caution</strong> — Mechanism exists informally but isn't enforced or visible.</span>
+        </div>
+        <div class="flag-item">
+            <span class="flag green">Green</span>
+            <span class="flag-description"><strong>Active</strong> — Mechanism in place and functioning.</span>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 5: INTERVENTION DESIGN -->
+<div class="section">
+    <div class="section-label">Step 05</div>
+    <h2>Design the<br>Governance Response</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Constraint Identified</th>
+                <th>Proposed Intervention</th>
+                <th>Mechanism / Owner</th>
+                <th>Timeline</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+        </tbody>
+    </table>
+
+    <p class="table-note">
+        For each constraint, map a specific governance mechanism. Structural interventions (intake filters, veto power, visible capacity accounting) are more durable than process changes (additional meetings, status updates). Design for the system, not the person.
+    </p>
+</div>
+
+<!-- ATTRIBUTION -->
+<div class="attribution">
+    &copy; 2026 Diagnostic Tool by Angie Bailey // angieqbailey.com
+    <div class="attribution-secondary">
+        Individual bandwidth methodology: Nick Sonnenberg, Come Up for Air (2023). Constraint theory: Eliyahu Goldratt, Theory of Constraints.
+    </div>
+</div>
+
+</body>
+</html>
