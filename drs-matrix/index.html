@@ -124,27 +124,26 @@
     margin-bottom: 2rem;
   }
 
-  .jump-link {
-    margin-bottom: 2rem;
+  .top-cta {
+    margin-bottom: 2.5rem;
   }
 
-  .jump-link a {
+  .top-cta a {
+    display: inline-block;
     font-family: var(--font-clue);
     font-size: 0.85rem;
-    color: var(--grid-quetzal);
+    font-weight: 700;
+    color: var(--bg-ecru);
+    background: var(--text-night);
+    padding: 0.65rem 1.75rem;
     text-decoration: none;
-    letter-spacing: 0.03em;
-    opacity: 0.7;
-    transition: opacity 0.3s ease, color 0.3s ease;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: background 0.2s ease;
   }
 
-  .jump-link a:hover {
-    opacity: 1;
-    color: var(--pivot-rosso);
-  }
-
-  .jump-link a::after {
-    content: ' \2193';
+  .top-cta a:hover {
+    background: var(--grid-quetzal);
   }
 
   .fable-container p {
@@ -207,20 +206,22 @@
     font-weight: 500;
   }
 
-  .fable-cta a {
-    display: inline-block;
+  .fable-cta button {
     font-family: var(--font-clue);
-    font-size: 1rem;
+    font-size: 0.85rem;
+    font-weight: 700;
     color: var(--bg-ecru);
     background: var(--text-night);
+    border: none;
     padding: 0.75rem 2rem;
-    text-decoration: none;
-    letter-spacing: 0.03em;
+    cursor: pointer;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
     margin-top: 1rem;
-    transition: background 0.3s ease;
+    transition: background 0.2s ease;
   }
 
-  .fable-cta a:hover {
+  .fable-cta button:hover {
     background: var(--grid-quetzal);
   }
 
@@ -589,14 +590,103 @@
 
   /* ── Print Styles ── */
   @media print {
-    body { padding: 0; }
-    .site-nav, .fable-container, .site-footer, .fable-cta,
-    .print-action, .jump-link, .state-note { display: none !important; }
-    .widget-section { padding: 0; }
-    .reveal { opacity: 1; transform: none; }
-    .quadrant { break-inside: avoid; }
-    .detail-panel { max-height: none !important; padding: 0.75rem 1rem !important; opacity: 1 !important; }
-    .detail-panel.open { max-height: none !important; }
+    @page {
+      size: portrait;
+      margin: 1cm;
+    }
+
+    body {
+      padding: 0;
+      margin: 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .site-nav, .fable-container, .site-footer,
+    .top-cta, .state-note { display: none !important; }
+
+    .widget-section {
+      padding: 0.5cm 0 0;
+      max-width: 100%;
+    }
+
+    .widget-header {
+      padding-left: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .widget-header h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .widget-header .subtitle {
+      font-size: 0.8rem;
+    }
+
+    .matrix-container {
+      padding: 2.5rem 0 0.5rem 3rem;
+    }
+
+    .reveal { opacity: 1 !important; transform: none !important; }
+
+    .matrix-grid {
+      gap: 2px;
+      border-width: 2px;
+    }
+
+    .quadrant {
+      padding: 0.5rem;
+      break-inside: avoid;
+    }
+
+    .quadrant .segment-name {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .quadrant .segment-formation {
+      font-size: 0.7rem;
+      line-height: 1.3;
+      margin-bottom: 0.2rem;
+    }
+
+    .quadrant .segment-path {
+      font-size: 0.7rem;
+      padding: 0.25rem 0;
+    }
+
+    .quadrant .segment-tag {
+      font-size: 0.7rem;
+    }
+
+    .quadrant .click-hint { display: none; }
+
+    .detail-panel {
+      max-height: none !important;
+      padding: 0.5rem 0.75rem !important;
+      opacity: 1 !important;
+      overflow: visible !important;
+    }
+
+    .detail-panel .detail-label { font-size: 0.7rem; }
+    .detail-panel .detail-text { font-size: 0.75rem; line-height: 1.4; }
+    .detail-panel .trigger-tag { font-size: 0.7rem; padding: 0.1rem 0.4rem; }
+
+    .axis-x { font-size: 0.85rem; }
+    .axis-label-row span { font-size: 0.75rem; padding: 0.2rem 0; }
+    .y-labels span { font-size: 0.75rem; }
+
+    .widget-thesis {
+      padding-left: 3rem;
+      margin-top: 0.75rem;
+      padding-top: 0.5rem;
+    }
+
+    .widget-thesis p {
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
   }
 
   /* ── Scroll Reveal ── */
@@ -637,7 +727,7 @@
 <article class="fable-container">
   <div class="fable-meta">DRS Framework / Conversion Scene</div>
   <h1>The 9:02 AM Meeting</h1>
-  <div class="jump-link"><a href="#drs-widget">Skip to the interactive model</a></div>
+  <div class="top-cta"><a href="#drs-widget">See where you sit</a></div>
 
   <p>The invite said 9:00.</p>
 
@@ -859,7 +949,7 @@
 
   <div class="fable-cta">
     <p class="rosso-line">Explore the model.</p>
-    <a href="#drs-widget">See where you sit</a>
+    <button onclick="window.print()">Print / Save as PDF</button>
   </div>
 </article>
 
@@ -1000,9 +1090,6 @@
     <p>Traditional management tries to move everyone into the Operator bucket. This framework recognizes that forcing a segment change is a violation of the human experience. <span class="rosso">An elegant system meets the human where they currently sit.</span> If someone is a Fixer on Tuesday, you don't lecture them on Mastery... you give them the relief they need to survive the day.</p>
   </div>
 
-  <div class="print-action">
-    <button onclick="window.print()">Print / Save as PDF</button>
-  </div>
 </section>
 
 <footer class="site-footer">
