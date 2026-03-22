@@ -428,6 +428,87 @@
     }
 
     /* ===================================================
+       THE LAB — R&D / Frameworks in Progress
+       =================================================== */
+    .lab-divider {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--quetzal-line);
+    }
+
+    .lab-divider .lab-label {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.85rem;
+        font-weight: 400;
+        color: var(--quetzal-bright);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 0.25rem;
+    }
+
+    .lab-divider .lab-title {
+        font-family: 'Imbue', serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--ecru-dim);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .lab-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2px;
+        margin-top: 1.5rem;
+    }
+
+    .lab-card {
+        background: rgba(0, 104, 94, 0.12);
+        padding: 2.5rem 2rem;
+        position: relative;
+        transition: background 0.3s ease;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .lab-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: var(--quetzal-bright);
+        transition: width 0.4s ease;
+    }
+
+    .lab-card:hover {
+        background: rgba(0, 104, 94, 0.18);
+    }
+
+    .lab-card:hover::before {
+        width: 100%;
+    }
+
+    .lab-card .card-tag {
+        color: var(--quetzal-bright);
+    }
+
+    .lab-card .card-metric {
+        color: var(--quetzal-bright);
+    }
+
+    .lab-card .series-status {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.8rem;
+        color: var(--quetzal-bright);
+        letter-spacing: 0.05em;
+        margin-top: 1rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid rgba(0, 168, 150, 0.2);
+    }
+
+    /* ===================================================
        THE VERDICT — Principles
        =================================================== */
     .verdict-section {
@@ -934,6 +1015,24 @@
                 </div>
                 <div class="card-metric">Outcome: <span>42+ hrs/month recovered</span> // Adoption: <span>30% to near-100%</span></div>
             </div>
+        </div>
+
+        <!-- The Lab: R&D / Frameworks in Progress -->
+        <div class="lab-divider">
+            <div class="lab-label">R&D</div>
+            <div class="lab-title">Frameworks Under Construction</div>
+        </div>
+
+        <div class="lab-grid">
+            <a href="/drs-matrix" class="lab-card" style="text-decoration: none;">
+                <div class="card-tag">Workforce Psychographics</div>
+                <div class="card-title">The Weight of<br>Wired Dignity</div>
+                <div class="card-text">
+                    A diagnostic framework for why the same AI rollout produces four different realities in the same room. The DRS model maps cognitive bandwidth against identity source to reveal what adoption strategies ignore... the human sitting in the chair.
+                </div>
+                <div class="card-metric">Series: <span>The Dignity-Required System</span></div>
+                <div class="series-status">Chunk 1 of 5 // Interactive model live</div>
+            </a>
         </div>
     </section>
 
