@@ -124,6 +124,29 @@
     margin-bottom: 2rem;
   }
 
+  .jump-link {
+    margin-bottom: 2rem;
+  }
+
+  .jump-link a {
+    font-family: var(--font-clue);
+    font-size: 0.85rem;
+    color: var(--grid-quetzal);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, color 0.3s ease;
+  }
+
+  .jump-link a:hover {
+    opacity: 1;
+    color: var(--pivot-rosso);
+  }
+
+  .jump-link a::after {
+    content: ' \2193';
+  }
+
   .fable-container p {
     font-family: var(--font-evidence);
     font-weight: 300;
@@ -282,12 +305,12 @@
 
   .axis-label-row span {
     font-family: var(--font-evidence);
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--text-night);
     text-align: center;
-    padding: 0.4rem 0;
-    border: 3px solid var(--text-night);
+    padding: 0.35rem 0;
+    border: 2px solid var(--text-night);
     border-bottom: none;
     background: var(--bg-ecru);
   }
@@ -295,8 +318,8 @@
   .y-labels {
     position: absolute;
     left: 0.25rem;
-    top: 3rem;
-    bottom: 1rem;
+    top: 3.5rem;
+    bottom: 0;
     display: flex;
     flex-direction: column;
     gap: 3px;
@@ -306,7 +329,7 @@
 
   .y-labels span {
     font-family: var(--font-evidence);
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--text-night);
     writing-mode: vertical-lr;
@@ -316,10 +339,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 3px solid var(--text-night);
+    border: 2px solid var(--text-night);
     border-right: none;
     background: var(--bg-ecru);
-    padding: 0.25rem;
+    padding: 0.2rem;
   }
 
   /* Grid */
@@ -540,6 +563,42 @@
     opacity: 0.6;
   }
 
+  /* ── Print Button ── */
+  .print-action {
+    text-align: right;
+    padding: 1rem 0;
+  }
+
+  .print-action button {
+    font-family: var(--font-clue);
+    font-size: 0.8rem;
+    color: var(--grid-quetzal);
+    background: none;
+    border: 1px solid var(--grid-quetzal);
+    padding: 0.5rem 1.25rem;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .print-action button:hover {
+    background: var(--grid-quetzal);
+    color: var(--bg-ecru);
+  }
+
+  /* ── Print Styles ── */
+  @media print {
+    body { padding: 0; }
+    .site-nav, .fable-container, .site-footer, .fable-cta,
+    .print-action, .jump-link, .state-note { display: none !important; }
+    .widget-section { padding: 0; }
+    .reveal { opacity: 1; transform: none; }
+    .quadrant { break-inside: avoid; }
+    .detail-panel { max-height: none !important; padding: 0.75rem 1rem !important; opacity: 1 !important; }
+    .detail-panel.open { max-height: none !important; }
+  }
+
   /* ── Scroll Reveal ── */
   .reveal {
     opacity: 0;
@@ -578,6 +637,7 @@
 <article class="fable-container">
   <div class="fable-meta">DRS Framework / Conversion Scene</div>
   <h1>The 9:02 AM Meeting</h1>
+  <div class="jump-link"><a href="#drs-widget">Skip to the interactive model</a></div>
 
   <p>The invite said 9:00.</p>
 
@@ -938,6 +998,10 @@
 
   <div class="widget-thesis">
     <p>Traditional management tries to move everyone into the Operator bucket. This framework recognizes that forcing a segment change is a violation of the human experience. <span class="rosso">An elegant system meets the human where they currently sit.</span> If someone is a Fixer on Tuesday, you don't lecture them on Mastery... you give them the relief they need to survive the day.</p>
+  </div>
+
+  <div class="print-action">
+    <button onclick="window.print()">Print / Save as PDF</button>
   </div>
 </section>
 
