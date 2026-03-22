@@ -33,6 +33,14 @@ Current order and status. Live cards are `<a>` elements. Placeholders are `<div>
 | 4 | Post-Acquisition Integration | Ops Management | **PLACEHOLDER** | No case study page yet |
 | 5 | Workforce AI Adoption | AI Implementation | **PLACEHOLDER** | No case study page yet |
 
+### R&D Section (Frameworks Under Construction)
+
+Below the client case study grid, a separate subsection with Quetzal-tinted cards and its own visual treatment. Cards open in new tabs.
+
+| # | Card Title | Category | Status | Link Target |
+|---|------------|----------|--------|-------------|
+| R1 | The Weight of Wired Dignity | Workforce Psychographics | **LIVE** | `/drs-matrix` (new tab) |
+
 **Rule:** Card titles and case study page h1s do not need to match. The card is the fast read. The page h1 is the forensic record. Do not "fix" discrepancies.
 
 ---
@@ -74,6 +82,22 @@ Current order and status. Live cards are `<a>` elements. Placeholders are `<div>
 | `posts/web-experience-capacity-build/web-experience-capacity-build.html` | Case study page (dark) | **LIVE** | "Web Experience / Capacity / Build" |
 | `posts/web-experience-capacity-build/assets/team-capacity-diagnostic.html` | Branded artifact page (dark) | **LIVE** | Team Capacity Diagnostic |
 | `posts/web-experience-capacity-build/assets/templates/team-capacity-diagnostic-blank.html` | Blank template (light/ecru) | **LIVE** | — |
+
+---
+
+## DRS Framework: The Weight of Wired Dignity
+
+| File | Type | Status | Display Name |
+|------|------|--------|--------------|
+| `drs-matrix/index.html` | Framework page (light/ecru) | **LIVE** | "The 9:02 AM Meeting" (fable) + interactive DRS 2×2 matrix widget |
+
+**Notes:**
+- This is NOT a case study — it lives in the R&D section, not the client evidence grid
+- Single self-contained HTML file with embedded CSS/JS, Google Fonts, and Plausible analytics
+- URL: `angieqbailey.com/drs-matrix`
+- Features: Mini-fable ("The 9:02 AM Meeting"), interactive 2×2 matrix with click-to-expand detail panels, click-outside-to-close, scroll-reveal animation, Print/Save as PDF with dedicated print stylesheet
+- Series card in Warehouse shows "Chunk 1 of 5" — update as chunks ship
+- Plausible analytics embedded but requires paid account setup at plausible.io to activate tracking
 
 ---
 
