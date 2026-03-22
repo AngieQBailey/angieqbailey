@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Everyone gets the invite. No one is hearing the same thing. An interactive framework for understanding workforce AI adoption through the lens of dignity, bandwidth and identity.">
+<meta name="author" content="Angie Bailey">
+<meta name="theme-color" content="#121A28">
+<link rel="canonical" href="https://angieqbailey.com/drs-matrix">
+
+<!-- Open Graph -->
+<meta property="og:title" content="The 9:02 AM Meeting — DRS Framework">
+<meta property="og:description" content="Same rollout. Same training. Same message. Four completely different realities. An interactive diagnostic for workforce AI adoption.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://angieqbailey.com/drs-matrix">
+<meta name="image" property="og:image" content="https://angieqbailey.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The 9:02 AM Meeting — DRS Framework">
+<meta name="twitter:description" content="Same rollout. Same training. Same message. Four completely different realities.">
+<meta name="twitter:image" content="https://angieqbailey.com/og-image.png">
+
+<title>The 9:02 AM Meeting — DRS Framework | Angie Bailey</title>
+
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="192x192" href="/favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Plausible Analytics -->
+<script defer data-domain="angieqbailey.com" src="https://plausible.io/js/script.js"></script>
+
+<style>
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-style: normal !important;
+    border-radius: 0 !important;
+  }
+
+  ::selection {
+    background: #C41E3A;
+    color: #F5F5DC;
+  }
+
+  :root {
+    --bg-ecru: #F5F5DC;
+    --text-night: #121A28;
+    --accent-cacao: #2D1B14;
+    --grid-quetzal: #00685E;
+    --quetzal-bright: #00A896;
+    --pivot-rosso: #C41E3A;
+    --ecru-dim: rgba(245, 245, 220, 0.6);
+    --font-verdict: 'Imbue', serif;
+    --font-evidence: 'IBM Plex Sans', sans-serif;
+    --font-clue: 'IBM Plex Mono', monospace;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--bg-ecru);
+    color: var(--text-night);
+    font-family: var(--font-evidence);
+    font-weight: 300;
+    line-height: 1.7;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* ── Nav ── */
+  .site-nav {
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .site-nav a {
+    font-family: var(--font-clue);
+    font-size: 0.85rem;
+    color: var(--grid-quetzal);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+  }
+
+  .site-nav a:hover {
+    color: var(--pivot-rosso);
+  }
+
+  /* ── Fable Section ── */
+  .fable-container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 1rem 2rem 3rem;
+  }
+
+  .fable-meta {
+    font-family: var(--font-clue);
+    font-size: 0.85rem;
+    color: var(--grid-quetzal);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .fable-container h1 {
+    font-family: var(--font-verdict);
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--accent-cacao);
+    line-height: 1.1;
+    margin-bottom: 2rem;
+  }
+
+  .fable-container p {
+    font-family: var(--font-evidence);
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-night);
+    margin-bottom: 1rem;
+  }
+
+  .fable-container p strong {
+    font-weight: 500;
+  }
+
+  .fable-container .thought {
+    font-family: var(--font-evidence);
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-night);
+    margin-bottom: 1rem;
+    padding-left: 1.25rem;
+    border-left: 3px solid var(--pivot-rosso);
+  }
+
+  .fable-container hr {
+    border: none;
+    border-top: 1px solid var(--grid-quetzal);
+    margin: 2.5rem 0;
+    opacity: 0.3;
+  }
+
+  .fable-container h2 {
+    font-family: var(--font-verdict);
+    font-weight: 700;
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    color: var(--accent-cacao);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .fable-cta {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--grid-quetzal);
+  }
+
+  .fable-cta p {
+    font-family: var(--font-evidence);
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--text-night);
+    margin-bottom: 0.75rem;
+  }
+
+  .fable-cta .rosso-line {
+    color: var(--pivot-rosso);
+    font-weight: 500;
+  }
+
+  .fable-cta a {
+    display: inline-block;
+    font-family: var(--font-clue);
+    font-size: 1rem;
+    color: var(--bg-ecru);
+    background: var(--text-night);
+    padding: 0.75rem 2rem;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    margin-top: 1rem;
+    transition: background 0.3s ease;
+  }
+
+  .fable-cta a:hover {
+    background: var(--grid-quetzal);
+  }
+
+  /* ── Widget Section ── */
+  .widget-section {
+    background: var(--bg-ecru);
+    padding: 4rem 2rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .widget-header {
+    margin-bottom: 1rem;
+    padding-left: 4rem;
+  }
+
+  .widget-header .tag {
+    font-family: var(--font-clue);
+    font-size: 0.85rem;
+    color: var(--grid-quetzal);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .widget-header h2 {
+    font-family: var(--font-verdict);
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--accent-cacao);
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+
+  .widget-header .subtitle {
+    font-family: var(--font-evidence);
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--text-night);
+    max-width: none;
+    opacity: 0.8;
+  }
+
+  /* Axis Labels */
+  .matrix-container {
+    position: relative;
+    padding: 3.5rem 0 1rem 4rem;
+  }
+
+  .axis-y {
+    position: absolute;
+    left: -1rem;
+    top: 50%;
+    transform: rotate(-90deg) translateX(-50%);
+    transform-origin: left center;
+    font-family: var(--font-verdict);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-cacao);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .axis-x {
+    text-align: center;
+    font-family: var(--font-verdict);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-cacao);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 1rem;
+  }
+
+  .axis-label-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    padding: 0;
+  }
+
+  .axis-label-row span {
+    font-family: var(--font-evidence);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-night);
+    text-align: center;
+    padding: 0.4rem 0;
+    border: 3px solid var(--text-night);
+    border-bottom: none;
+    background: var(--bg-ecru);
+  }
+
+  .y-labels {
+    position: absolute;
+    left: 0.25rem;
+    top: 3rem;
+    bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    align-items: center;
+    width: 2.5rem;
+  }
+
+  .y-labels span {
+    font-family: var(--font-evidence);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-night);
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    white-space: nowrap;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--text-night);
+    border-right: none;
+    background: var(--bg-ecru);
+    padding: 0.25rem;
+  }
+
+  /* Grid */
+  .matrix-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 3px;
+    background: var(--text-night);
+    border: 3px solid var(--text-night);
+    min-height: 0;
+    position: relative;
+  }
+
+  /* Rosso crosshair at center intersection */
+  .matrix-grid::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background: var(--pivot-rosso);
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+
+  .quadrant {
+    background: var(--grid-quetzal);
+    padding: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .quadrant:hover {
+    background: #007A6E;
+  }
+
+  .quadrant.active {
+    background: var(--text-night);
+  }
+
+  .quadrant .segment-tag {
+    font-family: var(--font-clue);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--bg-ecru);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+    opacity: 0.85;
+  }
+
+  .quadrant .segment-name {
+    font-family: var(--font-verdict);
+    font-weight: 700;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    color: var(--bg-ecru);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    border-left: 3px solid var(--pivot-rosso);
+    padding-left: 0.5rem;
+  }
+
+  .quadrant .segment-formation {
+    font-family: var(--font-evidence);
+    font-weight: 300;
+    font-size: 0.85rem;
+    color: var(--bg-ecru);
+    opacity: 0.8;
+    margin-bottom: 0.4rem;
+    flex-grow: 0;
+    line-height: 1.4;
+  }
+
+  .quadrant .segment-path {
+    font-family: var(--font-clue);
+    font-size: 0.85rem;
+    color: var(--bg-ecru);
+    padding: 0.5rem 0;
+    border-top: 1px solid rgba(245, 245, 220, 0.25);
+  }
+
+  .quadrant .segment-path strong {
+    color: var(--text-night);
+  }
+
+  .quadrant.active .segment-path strong {
+    color: var(--pivot-rosso);
+    text-decoration: underline;
+    text-decoration-color: var(--pivot-rosso);
+    text-underline-offset: 2px;
+  }
+
+  .quadrant.active .segment-tag {
+    color: var(--quetzal-bright);
+    opacity: 0.9;
+  }
+
+  .quadrant .click-hint {
+    font-family: var(--font-clue);
+    font-size: 0.85rem;
+    color: var(--bg-ecru);
+    opacity: 0.4;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.75rem;
+  }
+
+  .quadrant.active .click-hint { display: none; }
+
+  /* Expanded Detail Panel */
+  .detail-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    background: var(--text-night);
+    color: var(--bg-ecru);
+    margin-top: 0.75rem;
+    border-left: 3px solid var(--pivot-rosso);
+  }
+
+  .detail-panel.open {
+    max-height: 800px;
+    padding: 1.25rem 1.5rem;
+    opacity: 1;
+    overflow-y: auto;
+  }
+
+  .detail-panel h3 {
+    font-family: var(--font-verdict);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--bg-ecru);
+    margin-bottom: 0.75rem;
+  }
+
+  .detail-panel .detail-section {
+    margin-bottom: 1rem;
+  }
+
+  .detail-panel .detail-label {
+    font-family: var(--font-clue);
+    font-size: 0.85rem;
+    color: var(--quetzal-bright);
+    letter-spacing: 0.03em;
+    margin-bottom: 0.25rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid var(--pivot-rosso);
+  }
+
+  .detail-panel .detail-text {
+    font-family: var(--font-evidence);
+    font-weight: 300;
+    font-size: 0.9rem;
+    color: rgba(245, 245, 220, 0.85);
+    line-height: 1.55;
+  }
+
+  .detail-panel .trigger-tag {
+    display: inline-block;
+    font-family: var(--font-clue);
+    font-size: 0.85rem;
+    color: var(--quetzal-bright);
+    border: 1px solid rgba(0, 168, 150, 0.3);
+    padding: 0.2rem 0.6rem;
+    margin: 0.25rem 0.25rem 0.25rem 0;
+  }
+
+  /* Thesis footer */
+  .widget-thesis {
+    margin-top: 2rem;
+    padding: 1.25rem;
+    padding-left: 4rem;
+    border-top: 1px solid var(--grid-quetzal);
+  }
+
+  .widget-thesis p {
+    font-family: var(--font-evidence);
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: var(--text-night);
+    max-width: none;
+    line-height: 1.6;
+  }
+
+  .widget-thesis .rosso {
+    color: var(--pivot-rosso);
+    font-weight: 600;
+  }
+
+  .state-note {
+    font-family: var(--font-clue);
+    font-size: 0.85rem;
+    color: var(--grid-quetzal);
+    text-align: center;
+    margin-top: 1rem;
+    opacity: 0.7;
+  }
+
+  /* ── Footer ── */
+  .site-footer {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(0, 104, 94, 0.2);
+  }
+
+  .site-footer span {
+    font-family: var(--font-clue);
+    font-size: 0.8rem;
+    color: var(--grid-quetzal);
+    opacity: 0.6;
+  }
+
+  /* ── Scroll Reveal ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .fable-container { padding: 1rem 1.25rem 2rem; }
+    .widget-section { padding: 2rem 1rem; }
+    .matrix-container { padding: 2.5rem 0 1rem 2.5rem; }
+    .widget-header { padding-left: 2.5rem; }
+    .widget-thesis { padding-left: 2.5rem; }
+    .quadrant { padding: 0.75rem; }
+    .quadrant .segment-formation { font-size: 0.8rem; }
+    .detail-panel.open { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="/">Angie Bailey</a>
+  <a href="/">Back to The Warehouse</a>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════
+     THE FABLE
+     ═══════════════════════════════════════════════════ -->
+<article class="fable-container">
+  <div class="fable-meta">DRS Framework / Conversion Scene</div>
+  <h1>The 9:02 AM Meeting</h1>
+
+  <p>The invite said 9:00.</p>
+
+  <p>The meeting started at 9:02 because Doug was losing a quiet fight with his microphone.</p>
+
+  <p>He had been COO for eighteen months. Smart. Calm. Good in front of a board. The kind of leader who could make a messy situation sound organized in a slide deck.</p>
+
+  <p>He spoke for a full minute before anyone told him he was on mute.</p>
+
+  <p>Vince from Sales typed "classic Doug" in the chat. A few people reacted. Doug never checked the chat.</p>
+
+  <p>Nobody offered to help. Helping Doug with tech had a way of turning into follow-up work.</p>
+
+  <p>When the audio finally kicked in, he smiled like nothing had happened.</p>
+
+  <p>"Alright. Thanks for your patience. I'm excited about this one."</p>
+
+  <p>Forty-three people were on the call. Finance. Sales. Ops. Marketing. A few cameras on. Most off. Half listening. Half already working.</p>
+
+  <p>Doug pulled up the deck.</p>
+
+  <p>"We're rolling out a new AI workspace. Forecasting, reporting, approvals. This is going to streamline how we operate across the board."</p>
+
+  <p>Same message.</p>
+
+  <p>Four very different reactions.</p>
+
+  <hr>
+
+  <p>Denise muted herself and kept eating the granola bar she'd been working on since 7:30.</p>
+
+  <p>It was stale. She didn't care.</p>
+
+  <p>She'd been at the company long enough to know which problems were real and which ones were announcements.</p>
+
+  <p>Her screen wasn't on the deck. It was on a spreadsheet labeled "DO NOT DELETE."</p>
+
+  <p>Nobody had told her to build it. Nobody outside her team knew how it worked. Everyone knew things broke when she wasn't there.</p>
+
+  <p>When Doug said "streamline," Denise's eyes went to one cell.</p>
+
+  <p>Q3 inventory override.</p>
+
+  <p>Manual. Undocumented. Necessary.</p>
+
+  <p>Her first thought wasn't about learning the new system.</p>
+
+  <p>It was simple.</p>
+
+  <p class="thought">Does it know about this?</p>
+
+  <p>She already knew the answer.</p>
+
+  <hr>
+
+  <p>Jeremy turned his camera off and pulled up a second monitor.</p>
+
+  <p>He wasn't watching the slides. He was reading the product documentation.</p>
+
+  <p>He had been at the company three years. Long enough to fix things. Not long enough to care who got credit.</p>
+
+  <p>He didn't think in features. He thought in logic.</p>
+
+  <p>When Doug said "AI-assisted," Jeremy was already scanning for how decisions were being made under the hood.</p>
+
+  <p>His first thought:</p>
+
+  <p class="thought">Where does it break?</p>
+
+  <p>If the system was solid, he'd use it.</p>
+
+  <p>If it wasn't, he'd build something better and keep it to himself.</p>
+
+  <hr>
+
+  <p>Frank didn't switch screens.</p>
+
+  <p>He stayed on the meeting, nodded once, and opened his fantasy football app.</p>
+
+  <p>Not because he didn't care.</p>
+
+  <p>Because nothing in the first three minutes sounded like it would make his day easier.</p>
+
+  <p>He handled invoices. A lot of them. The work was predictable. That was the point.</p>
+
+  <p>Predictable work meant he could manage everything else. His mom's schedule. His kid's practice. The refinance he hadn't finished.</p>
+
+  <p>When Doug said "training rollout," Frank did the math.</p>
+
+  <p>Time in training. Time fixing whatever didn't work. Time explaining it to someone else.</p>
+
+  <p>His first thought:</p>
+
+  <p class="thought">What goes away?</p>
+
+  <p>He'd learned the answer was usually "nothing."</p>
+
+  <hr>
+
+  <p>Tessa leaned forward.</p>
+
+  <p>Camera on. Notes open. Already typing.</p>
+
+  <p>She'd been there less than a year. Came from a place where new tools meant new leverage.</p>
+
+  <p>When Doug said "AI workspace," she didn't hear "standardization."</p>
+
+  <p>She heard:</p>
+
+  <p class="thought">What can I build with this?</p>
+
+  <p>She was already sketching a different workflow. One that skipped the monthly cycle entirely. Real-time instead of review meetings.</p>
+
+  <p>Faster. Cleaner. No waiting.</p>
+
+  <p>She didn't know why the current process existed.</p>
+
+  <p>She didn't ask.</p>
+
+  <hr>
+
+  <p>Doug clicked to the final slide.</p>
+
+  <p>"Ultimately, this is about helping everyone do their best work."</p>
+
+  <p>He meant it.</p>
+
+  <p>He opened the floor for questions.</p>
+
+  <p>Silence.</p>
+
+  <p>Then someone unmuted.</p>
+
+  <p>"So does this replace anything, or is it in addition?"</p>
+
+  <p>Doug paused.</p>
+
+  <p>"We'll get into specifics in Phase 2."</p>
+
+  <p>A few people nodded. A few people stopped listening entirely.</p>
+
+  <p>The meeting ended on time.</p>
+
+  <hr>
+
+  <h2>Thirty days later</h2>
+
+  <p>Denise still used her spreadsheet.</p>
+
+  <p>She went to the training. Took notes. Asked one question that didn't get answered.</p>
+
+  <p>The new system didn't know about the override.</p>
+
+  <p>So she kept both.</p>
+
+  <p>One official. One real.</p>
+
+  <p>Jeremy stopped logging into the tool after week two.</p>
+
+  <p>He'd found a flaw in how it handled edge cases. Quietly built a workaround.</p>
+
+  <p>Leadership saw his name on the adoption report.</p>
+
+  <p>He was counted as a success.</p>
+
+  <p>Frank completed the onboarding.</p>
+
+  <p>He used the tool exactly as shown in training. Nothing more.</p>
+
+  <p>His workload didn't go down.</p>
+
+  <p>He now spent an extra half hour a week checking outputs he didn't trust.</p>
+
+  <p>No one tracked it.</p>
+
+  <p>Tessa rebuilt her team's workflow in three days.</p>
+
+  <p>It worked.</p>
+
+  <p>Leadership loved it.</p>
+
+  <p>What no one noticed was what disappeared.</p>
+
+  <p>A check. A step. A piece of logic that had been catching something important for years. Denise's override. The one nobody documented. The one nobody asked about.</p>
+
+  <p>That would surface later.</p>
+
+  <p>Not in Tessa's metrics.</p>
+
+  <p>Doug presented an update to the board.</p>
+
+  <p>"Adoption is strong. Teams are engaging. Early indicators are positive."</p>
+
+  <p>He wasn't wrong.</p>
+
+  <p>From where he sat, the system was working.</p>
+
+  <hr>
+
+  <p>Same rollout.</p>
+
+  <p>Same training.</p>
+
+  <p>Same message.</p>
+
+  <p>Four completely different realities.</p>
+
+  <p>These aren't personality types.</p>
+
+  <p>They're states.</p>
+
+  <p>They change with pressure. With time. With what's at stake.</p>
+
+  <p>The same person can sit in that meeting on two different weeks and hear two completely different things.</p>
+
+  <p>Which one are you right now?</p>
+
+  <p>And more importantly... did anyone design for that?</p>
+
+  <div class="fable-cta">
+    <p class="rosso-line">Explore the model.</p>
+    <a href="#drs-widget">See where you sit</a>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════════════
+     THE WIDGET
+     ═══════════════════════════════════════════════════ -->
+<section class="widget-section reveal" id="drs-widget">
+  <div class="widget-header">
+    <div class="tag">DRS Framework / Core Model</div>
+    <h2>The Four Psychographic Segments of Workforce AI Adoption</h2>
+    <div class="subtitle">People are not fixed in a segment. They shift under pressure. Click a quadrant to see the integration path and transition triggers.</div>
+  </div>
+
+  <div class="matrix-container">
+    <div class="axis-y">Identity Source</div>
+
+    <div class="y-labels">
+      <span>Mastery (Craft)</span>
+      <span>Output (Result)</span>
+    </div>
+
+    <div class="axis-label-row" style="margin-bottom: 0;">
+      <span>Surplus</span>
+      <span>Deficit</span>
+    </div>
+
+    <div class="matrix-grid">
+      <!-- Top Left: Operator (Surplus + Mastery) -->
+      <div class="quadrant" onclick="toggleDetail(this, 'operator')" id="q-operator">
+        <div class="segment-tag">Surplus + Mastery</div>
+        <div class="segment-name">The Operator</div>
+        <div class="segment-formation">They have the energy to learn and they care deeply about the craft. They want a powerful tool... not a simple one.</div>
+        <div class="segment-path"><strong>Path: Expansion</strong> — Unlock complexity. If it's too easy, they'll reject it as a toy.</div>
+        <div class="click-hint">+</div>
+        <div class="detail-panel" id="detail-operator">
+          <div class="detail-section">
+            <div class="detail-label">You'll recognize them as</div>
+            <div class="detail-text">The person who already built a better version of your spreadsheet before you asked. The one who reads the documentation for fun. The architect who wants to know why the system made that recommendation... not just what it recommended.</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Transition triggers</div>
+            <div>
+              <span class="trigger-tag">Exhaustion Slide → Detective</span>
+              <span class="trigger-tag">Incentive Pivot → Maverick</span>
+            </div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Cynicism risk</div>
+            <div class="detail-text">Black Box Authority. If they can't see the logic behind the tool's recommendations, their sign-off becomes varnish on a guess. Years of mastery reduced to a rubber stamp.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top Right: Detective (Deficit + Mastery) -->
+      <div class="quadrant" onclick="toggleDetail(this, 'detective')" id="q-detective">
+        <div class="segment-tag">Deficit + Mastery</div>
+        <div class="segment-name">The Detective</div>
+        <div class="segment-formation">Overwhelmed, but they refuse to let quality slip. Often the Old Guard. Protective of the part of the job that makes them... them.</div>
+        <div class="segment-path"><strong>Path: Continuity</strong> — Build a bridge. Prove the new respects the old.</div>
+        <div class="click-hint">+</div>
+        <div class="detail-panel" id="detail-detective">
+          <div class="detail-section">
+            <div class="detail-label">You'll recognize them as</div>
+            <div class="detail-text">The person who's been here 15 years and knows where every body is buried. The one who keeps a shadow spreadsheet because the official system can't be trusted. The auditor who catches the error everyone else missed... and resents that nobody noticed.</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Transition triggers</div>
+            <div>
+              <span class="trigger-tag">Efficiency Dividend → Operator</span>
+              <span class="trigger-tag">Incentive Pivot → Fixer</span>
+            </div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Cynicism risk</div>
+            <div class="detail-text">Liability Node Trap. The system produces a 99% complete output. They verify it. If they catch the error, the system is "efficient." If they miss it, they're "negligent." They're not a governor... they're a legal shield.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Left: Maverick (Surplus + Output) -->
+      <div class="quadrant" onclick="toggleDetail(this, 'maverick')" id="q-maverick">
+        <div class="segment-tag">Surplus + Output</div>
+        <div class="segment-name">The Maverick</div>
+        <div class="segment-formation">Energy to burn. They want massive results and aren't wedded to "the way we've always done it."</div>
+        <div class="segment-path"><strong>Path: Modularity</strong> — Give them a kit of parts. Let them invent the workflow.</div>
+        <div class="click-hint">+</div>
+        <div class="detail-panel" id="detail-maverick">
+          <div class="detail-section">
+            <div class="detail-label">You'll recognize them as</div>
+            <div class="detail-text">The VP who bought the AI tool before IT approved it. The sales rep who built their own CRM in Notion because the official one was too slow. The founder who sees every system as a sandbox.</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Transition triggers</div>
+            <div>
+              <span class="trigger-tag">Exhaustion Slide → Fixer</span>
+              <span class="trigger-tag">Audit Shock → Operator</span>
+            </div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Cynicism risk</div>
+            <div class="detail-text">Efficiency Squeeze. They save four hours through innovation. The organization immediately fills those hours with grunt work. Being efficient is punished with more work. The path of least resistance becomes a treadmill.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Right: Fixer (Deficit + Output) -->
+      <div class="quadrant" onclick="toggleDetail(this, 'fixer')" id="q-fixer">
+        <div class="segment-tag">Deficit + Output</div>
+        <div class="segment-name">The Fixer</div>
+        <div class="segment-formation">Overwhelmed. Zero patience for features. They just want the job done and the desk cleared.</div>
+        <div class="segment-path"><strong>Path: Subtraction</strong> — Remove three steps for every one you add. Be invisible.</div>
+        <div class="click-hint">+</div>
+        <div class="detail-panel" id="detail-fixer">
+          <div class="detail-section">
+            <div class="detail-label">You'll recognize them as</div>
+            <div class="detail-text">The person with 47 unread Slack messages who just needs the report to go out. The admin who processes 200 tickets a day and has zero capacity for "innovation." The parent-caregiver-employee who just needs one thing to be easy today.</div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Transition triggers</div>
+            <div>
+              <span class="trigger-tag">Efficiency Dividend → Maverick</span>
+              <span class="trigger-tag">Audit Shock → Detective</span>
+            </div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-label">Cynicism risk</div>
+            <div class="detail-text">Performative Agency Paradox. The system asks "How would you like to work today?" but the KPIs stay fixed. If they choose the automated path and get penalized for "low engagement," the choice was an illusion. Dignity as theater.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="axis-x">Cognitive State (Bandwidth)</div>
+
+    <div class="state-note">These are states, not types. A person can be an Operator on Monday and a Fixer by Friday.</div>
+  </div>
+
+  <div class="widget-thesis">
+    <p>Traditional management tries to move everyone into the Operator bucket. This framework recognizes that forcing a segment change is a violation of the human experience. <span class="rosso">An elegant system meets the human where they currently sit.</span> If someone is a Fixer on Tuesday, you don't lecture them on Mastery... you give them the relief they need to survive the day.</p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span>&copy; 2026 Angie Bailey</span>
+</footer>
+
+<script>
+  let currentOpen = null;
+
+  function closeAll() {
+    document.querySelectorAll('.detail-panel').forEach(p => p.classList.remove('open'));
+    document.querySelectorAll('.quadrant').forEach(q => q.classList.remove('active'));
+    currentOpen = null;
+  }
+
+  function toggleDetail(quadrant, id) {
+    const panel = document.getElementById('detail-' + id);
+    const allQuadrants = document.querySelectorAll('.quadrant');
+    const allPanels = document.querySelectorAll('.detail-panel');
+
+    if (currentOpen === id) {
+      closeAll();
+      return;
+    }
+
+    allPanels.forEach(p => p.classList.remove('open'));
+    allQuadrants.forEach(q => q.classList.remove('active'));
+
+    panel.classList.add('open');
+    quadrant.classList.add('active');
+    currentOpen = id;
+  }
+
+  // Click outside the matrix grid closes any open panel
+  document.addEventListener('click', function(e) {
+    if (currentOpen && !e.target.closest('.matrix-grid')) {
+      closeAll();
+    }
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
