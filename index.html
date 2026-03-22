@@ -623,6 +623,7 @@
     footer {
         padding: 2rem 2rem 2rem var(--spine-left);
         border-top: 1px solid var(--ecru-ghost);
+        overflow: visible;
     }
 
     .footer-content {
@@ -643,6 +644,7 @@
         position: relative;
         display: inline-block;
         text-decoration: none;
+        overflow: visible;
     }
 
     .footer-portrait {
@@ -669,7 +671,7 @@
 
     .footer-cta {
         position: absolute;
-        bottom: -1.75rem;
+        top: -1.75rem;
         right: 0;
         font-family: 'IBM Plex Mono', monospace;
         font-size: 0.7rem;
@@ -677,7 +679,7 @@
         letter-spacing: 0.05em;
         white-space: nowrap;
         opacity: 0;
-        transform: translateY(-4px);
+        transform: translateY(4px);
         transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
         pointer-events: none;
     }
@@ -1141,7 +1143,7 @@
 <footer>
     <div class="footer-content">
         <span>&copy; 2026 Angie Bailey</span>
-        <a href="https://www.linkedin.com/in/angieqbailey/" target="_blank" rel="noopener noreferrer" class="footer-portrait-link">
+        <a href="https://www.linkedin.com/in/angie-bailey/" target="_blank" rel="noopener noreferrer" class="footer-portrait-link">
             <img src="headshot.png" alt="Angie Bailey" class="footer-portrait" loading="lazy">
             <span class="footer-cta">Connect on LinkedIn</span>
         </a>
