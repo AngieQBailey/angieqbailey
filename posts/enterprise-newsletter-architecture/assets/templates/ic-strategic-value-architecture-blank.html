@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IC Strategic Value Architecture - Blank Template</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500&family=Imbue:wght@900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit: #121A28;
+            --cacao: #2D1B14;
+            --quetzal: #00685E;
+            --ecru: #F5F5DC;
+            --rosso: #C41E3A;
+            --text: #1a1a1a;
+            --text-dim: #555;
+            --border: #d4d0c8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background-color: var(--ecru);
+            color: var(--text);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 400;
+            padding: 4rem 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Header Section */
+        .template-type {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--rosso);
+            font-weight: 400;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        h1 {
+            font-family: 'Imbue', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .value-highlight {
+            color: var(--rosso);
+        }
+
+        .subtitle {
+            color: var(--quetzal);
+            font-size: 1.125rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            font-family: 'IBM Plex Sans', sans-serif;
+        }
+
+        .instructions {
+            background-color: rgba(0, 104, 94, 0.03);
+            border-left: 3px solid var(--quetzal);
+            padding: 1rem;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            font-weight: 300;
+        }
+
+        .print-button-container {
+            text-align: right;
+            margin-bottom: 2rem;
+        }
+
+        .print-button {
+            background-color: var(--nuit);
+            color: var(--ecru);
+            border: 1px solid var(--text);
+            padding: 0.5rem 1.25rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.875rem;
+            cursor: pointer;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        .print-button:hover {
+            background-color: var(--text);
+        }
+
+        /* Content Sections */
+        .content-wrapper {
+            margin-top: 2rem;
+        }
+
+        .day-card {
+            background-color: rgba(0, 104, 94, 0.06);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .stage-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--quetzal);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .fields-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .field-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8125rem;
+            color: var(--quetzal);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+        }
+
+        .field-area {
+            border-bottom: 2px solid var(--border);
+            padding: 0.75rem 0;
+            min-height: 3rem;
+            background-color: transparent;
+        }
+
+        /* Cost Section */
+        .cost-section {
+            background-color: rgba(196, 30, 58, 0.04);
+            padding: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .cost-title {
+            font-family: 'Imbue', serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .cost-fields-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        /* Attribution */
+        .attribution {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8125rem;
+            color: var(--text-dim);
+            font-weight: 400;
+        }
+
+        .attribution a {
+            color: var(--quetzal);
+            text-decoration: none;
+            border-bottom: 1px solid var(--quetzal);
+        }
+
+        .attribution a:hover {
+            color: var(--rosso);
+            border-bottom-color: var(--rosso);
+        }
+
+        /* Print Styles */
+        @media print {
+            body { background: white; padding: 1.5cm; max-width: none; }
+            .print-button-container { display: none; }
+            .day-card { page-break-inside: avoid; }
+            .cost-section { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="template-type">Blank Template // Methodology</div>
+
+    <h1>IC Strategic <span class="value-highlight">Value</span> Architecture</h1>
+    <p class="subtitle">Maturity Framework for Internal Communications</p>
+
+    <div class="instructions">
+        <strong>Instructions</strong> Use this template to map your IC strategy across six key maturity stages. Fill in current state, desired state, metrics and ownership for each stage to visualize your communication transformation journey.
+    </div>
+
+    <div class="print-button-container">
+        <button class="print-button" onclick="window.print()">Print / Save as PDF</button>
+    </div>
+
+    <div class="content-wrapper">
+        <!-- Stage 01 -->
+        <div class="day-card">
+            <div class="stage-title">Stage 01: Communication to Awareness</div>
+            <div class="fields-grid">
+                <div class="field">
+                    <div class="field-label">Current State</div>
+                    <div class="field-area"></div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Desired State</div>
+                    <div class="field-area"></div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Key Metric</div>
+                    <div class="field-area"></div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Owner</div>
+                    <div class="field-area"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stage 02 -->
+        <div class="day-card">
+            <div class="stage-title">Stage 02: Awareness to Alignment</div>
+            <div class="fields-grid">
+                <div class="field">
+                    <div class="field-label">Current State</div>
+                    <div class="field-area"></div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Desired State</div>
+                    <div class="field-area"></div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Key Metric</div>
+                    <div class="field-area"></div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Owner</div>
+                    <div class="field-area"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stage 03 -->
+        <div class="day-card">
+            <div class="stage-title">Stage 03: Alignment to Engagement</div>
+            <div class="fields-grid">
+                <div class="field">
+                    <div class="field-label">Current State</div>
+                    <div class="field-area"></div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Desired State</div>
+                    <div class="field-area"></div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Key Metric</div>
+                    <div class="field-area"></div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Owner</div>
+                    <div class="field-area"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stage 04 -->
+        <div class="day-card">
+            <div class="stage-title">Stage 04: Engagement to Productivity</div>
+            <div class="fields-grid">
+                <div class="field">
+                    <div class="field-label">Current State</div>
+                    <div class="field-area"></div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Desired State</div>
+                    <div class="field-area"></div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Key Metric</div>
+                    <div class="field-area"></div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Owner</div>
+                    <div class="field-area"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stage 05 -->
+        <div class="day-card">
+            <div class="stage-title">Stage 05: Productivity to Revenue</div>
+            <div class="fields-grid">
+                <div class="field">
+                    <div class="field-label">Current State</div>
+                    <div class="field-area"></div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Desired State</div>
+                    <div class="field-area"></div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Key Metric</div>
+                    <div class="field-area"></div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Owner</div>
+                    <div class="field-area"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stage 06 -->
+        <div class="day-card">
+            <div class="stage-title">Stage 06: Revenue to Growth (Feedback Loop)</div>
+            <div class="fields-grid">
+                <div class="field">
+                    <div class="field-label">Current State</div>
+                    <div class="field-area"></div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Desired State</div>
+                    <div class="field-area"></div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Key Metric</div>
+                    <div class="field-area"></div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Owner</div>
+                    <div class="field-area"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cost of the Alternative Section -->
+        <div class="cost-section">
+            <div class="cost-title">Cost of the Alternative</div>
+            <div class="cost-fields-grid">
+                <div class="field">
+                    <div class="field-label">Estimated annual loss</div>
+                    <div class="field-area">$____</div>
+                </div>
+                <div class="field">
+                    <div class="field-label">Per-employee cost</div>
+                    <div class="field-area">$____</div>
+                </div>
+                <div class="field">
+                    <div class="field-label">% of workweek on comms</div>
+                    <div class="field-area">_____%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="attribution">
+        Methodology by <a href="https://angieqbailey.com" target="_blank">Angie Bailey</a> // angieqbailey.com
+    </div>
+</body>
+</html>
