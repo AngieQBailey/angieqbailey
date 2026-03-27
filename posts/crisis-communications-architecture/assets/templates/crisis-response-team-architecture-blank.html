@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crisis Response Team Architecture Template</title>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit: #121A28;
+            --cacao: #2D1B14;
+            --quetzal: #00685E;
+            --ecru: #F5F5DC;
+            --rosso: #C41E3A;
+            --text: #1a1a1a;
+            --text-dim: #555;
+            --border: #d4d0c8;
+            --border-light: #e8e4dc;
+            --hover-bg: rgba(0, 104, 94, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "IBM Plex Sans", sans-serif;
+            background-color: var(--ecru);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 40px;
+        }
+
+        .template-type {
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-family: "Imbue", serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--text);
+            margin-bottom: 8px;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-family: "Imbue", serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text);
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .accent {
+            color: var(--rosso);
+        }
+
+        .subtitle {
+            font-family: "IBM Plex Sans", sans-serif;
+            font-size: 18px;
+            color: var(--quetzal);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .instructions {
+            background-color: rgba(0, 104, 94, 0.04);
+            border-left: 4px solid var(--quetzal);
+            padding: 16px 20px;
+            margin-bottom: 40px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .tier-subtitle {
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        @page {
+            size: landscape;
+            margin: 1.5cm;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            font-size: 13px;
+        }
+
+        th {
+            background-color: var(--nuit);
+            color: var(--ecru);
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 700;
+            border: 1px solid var(--border);
+            font-family: "IBM Plex Sans", sans-serif;
+        }
+
+        td {
+            padding: 12px 14px;
+            border: 1px solid var(--border-light);
+            height: 45px;
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(245, 245, 220, 0.5);
+        }
+
+        .channel-table {
+            width: 100%;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .channel-table th {
+            background-color: var(--nuit);
+            color: var(--ecru);
+        }
+
+        .channel-table td {
+            height: 40px;
+        }
+
+        .attribution {
+            margin-top: 40px;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 11px;
+            color: var(--text-dim);
+            text-align: right;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+
+        .print-button {
+            background-color: var(--nuit);
+            color: var(--ecru);
+            border: none;
+            padding: 12px 24px;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+
+        .print-button:hover {
+            background-color: var(--rosso);
+        }
+
+        @page { size: landscape; margin: 1.5cm; }
+
+        @media print {
+            body { background: white; padding: 1rem; max-width: none; }
+            .print-button { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">Print / Save as PDF</button>
+
+    <div class="template-type">Blank Template // Framework</div>
+    <h1>Crisis Response <span class="accent">Team</span> Architecture</h1>
+    <p class="subtitle">Who communicates what to whom. Before it matters.</p>
+
+    <div class="instructions">
+        Map your crisis response team across three tiers. Assign communication responsibilities by stakeholder type. Define which channels are used for which audiences. Update contact information quarterly.
+    </div>
+
+    <h2>Tier 1: First Line</h2>
+    <div class="tier-subtitle">Primary decision makers and responders</div>
+    <table>
+        <thead>
+            <tr>
+                <th>Role</th>
+                <th>Name</th>
+                <th>Function</th>
+                <th>Phone</th>
+                <th>Crisis Responsibility</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Tier 2: Day-to-Day Operations</h2>
+    <div class="tier-subtitle">Supporting functions and backup roles</div>
+    <table>
+        <thead>
+            <tr>
+                <th>Role</th>
+                <th>Name</th>
+                <th>Function</th>
+                <th>Phone</th>
+                <th>Crisis Responsibility</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Tier 3: Communication Tasks</h2>
+    <div class="tier-subtitle">Specific communication responsibilities and ownership</div>
+    <table>
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Assigned Role</th>
+                <th>Backup</th>
+                <th>Contact</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Crisis Messaging</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>Internal FAQs</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>External FAQs</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>Social Media Response</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>Media Communications</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>Board Communications</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>Employee Communications</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>Vendor Communications</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Channel Routing</h2>
+    <div class="tier-subtitle">Communication channels by stakeholder group</div>
+    <table class="channel-table">
+        <thead>
+            <tr>
+                <th>Stakeholder Group</th>
+                <th>Primary Channel</th>
+                <th>Secondary Channel</th>
+                <th>Responsible Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="attribution">Crisis Response Team Architecture by Angie Bailey // angieqbailey.com</div>
+</body>
+</html>
