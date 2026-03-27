@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crisis Holding Statements Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --nuit: #121A28;
+      --cacao: #2D1B14;
+      --quetzal: #00685E;
+      --quetzal-bright: #00A896;
+      --ecru: #F5F5DC;
+      --rosso: #C41E3A;
+      --ecru-dim: rgba(245,245,220,0.6);
+      --ecru-ghost: rgba(245,245,220,0.08);
+      --card-bg: rgba(245,245,220,0.14);
+      --spine-left: 22%;
+    }
+
+    body {
+      background-color: var(--nuit);
+      color: var(--ecru);
+      font-family: "IBM Plex Sans", sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    .blueprint-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(0deg, transparent 24%, rgba(0, 168, 150, 0.05) 25%, rgba(0, 168, 150, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 168, 150, 0.05) 75%, rgba(0, 168, 150, 0.05) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(0, 168, 150, 0.05) 25%, rgba(0, 168, 150, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 168, 150, 0.05) 75%, rgba(0, 168, 150, 0.05) 76%, transparent 77%, transparent);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .spine-left {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: var(--spine-left);
+      height: 100vh;
+      border-right: 1px solid var(--ecru-ghost);
+      z-index: 2;
+    }
+
+    .nav-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: var(--spine-left);
+      padding: 2rem 1.5rem;
+      border-bottom: 1px solid var(--ecru-ghost);
+      z-index: 20;
+      background-color: rgba(18, 26, 40, 0.95);
+    }
+
+    .nav-header a {
+      display: block;
+      color: var(--quetzal-bright);
+      text-decoration: none;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-header a:hover {
+      color: var(--ecru);
+    }
+
+    .main-nav {
+      position: fixed;
+      bottom: 2rem;
+      left: var(--spine-left);
+      transform: translateX(-100%);
+      padding-right: 2rem;
+      z-index: 20;
+    }
+
+    .main-nav a {
+      display: block;
+      color: var(--quetzal-bright);
+      text-decoration: none;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      transition: color 0.3s ease;
+    }
+
+    .main-nav a:hover {
+      color: var(--ecru);
+    }
+
+    .download-button {
+      position: fixed;
+      top: 2rem;
+      right: 2rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--rosso);
+      color: var(--ecru);
+      text-decoration: none;
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      border: 1px solid var(--rosso);
+      cursor: pointer;
+      z-index: 20;
+      transition: all 0.3s ease;
+    }
+
+    .download-button:hover {
+      background-color: transparent;
+      color: var(--rosso);
+    }
+
+    .doc-content {
+      margin-left: var(--spine-left);
+      padding: 4rem 3rem;
+      padding-left: calc(var(--spine-left) + 3rem);
+      max-width: 1400px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .page-title {
+      font-family: "Imbue", serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      color: var(--ecru);
+    }
+
+    .page-subtitle {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.9rem;
+      color: var(--ecru-dim);
+      margin-bottom: 3rem;
+      letter-spacing: 0.05em;
+    }
+
+    .intro-text {
+      max-width: 900px;
+      margin-bottom: 4rem;
+      color: var(--ecru-dim);
+      line-height: 1.9;
+    }
+
+    .statements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .statement-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--ecru-ghost);
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .statement-card:hover {
+      border-color: var(--quetzal-bright);
+      background-color: rgba(245, 245, 220, 0.18);
+    }
+
+    .statement-category {
+      font-family: "Imbue", serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      color: var(--ecru);
+      display: flex;
+      align-items: center;
+    }
+
+    .category-number {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.75rem;
+      color: var(--quetzal-bright);
+      margin-right: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .statement-text {
+      font-family: "IBM Plex Sans", sans-serif;
+      font-weight: 300;
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: var(--ecru);
+    }
+
+    .placeholder {
+      font-family: "IBM Plex Mono", monospace;
+      color: var(--quetzal-bright);
+      font-size: 0.85rem;
+      font-weight: 400;
+    }
+
+    .protocol-section {
+      background-color: var(--card-bg);
+      border: 1px solid var(--ecru-ghost);
+      padding: 2rem;
+      margin-top: 4rem;
+    }
+
+    .protocol-title {
+      font-family: "Imbue", serif;
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 2rem;
+      color: var(--ecru);
+    }
+
+    .protocol-list {
+      list-style: none;
+    }
+
+    .protocol-item {
+      margin-bottom: 1.5rem;
+      padding-left: 2rem;
+      position: relative;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .protocol-item:before {
+      content: "...";
+      position: absolute;
+      left: 0;
+      color: var(--quetzal-bright);
+      font-family: "IBM Plex Mono", monospace;
+    }
+
+    .protocol-strong {
+      font-weight: 500;
+      color: var(--ecru);
+    }
+
+    @media (max-width: 900px) {
+      :root {
+        --spine-left: 18%;
+      }
+
+      .doc-content {
+        padding: 3rem 2rem;
+        padding-left: calc(var(--spine-left) + 2rem);
+      }
+
+      .page-title {
+        font-size: 2.5rem;
+      }
+
+      .statements-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .download-button {
+        font-size: 0.8rem;
+        padding: 0.6rem 1.2rem;
+      }
+    }
+
+    @media (max-width: 500px) {
+      :root {
+        --spine-left: 0;
+      }
+
+      .spine-left {
+        display: none;
+      }
+
+      .nav-header {
+        position: static;
+        width: 100%;
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--ecru-ghost);
+        border-right: none;
+      }
+
+      .main-nav {
+        position: static;
+        transform: none;
+        padding: 1.5rem;
+        border-top: 1px solid var(--ecru-ghost);
+      }
+
+      .main-nav a {
+        display: inline-block;
+        margin-right: 1.5rem;
+      }
+
+      .doc-content {
+        margin-left: 0;
+        padding: 2rem 1.5rem;
+        padding-left: 1.5rem;
+      }
+
+      .page-title {
+        font-size: 1.8rem;
+      }
+
+      .page-subtitle {
+        font-size: 0.8rem;
+      }
+
+      .download-button {
+        position: static;
+        display: block;
+        margin-bottom: 1.5rem;
+        width: 100%;
+        text-align: center;
+      }
+
+      .statement-card {
+        padding: 1.5rem;
+      }
+
+      .statement-category {
+        font-size: 1.1rem;
+      }
+
+      .statement-text {
+        font-size: 0.9rem;
+      }
+    }
+
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="blueprint-overlay"></div>
+
+  <div class="spine-left"></div>
+
+  <div class="nav-header">
+    <a href="../crisis-communications-architecture.html">Back to Architecture</a>
+  </div>
+
+  <div class="main-nav">
+    <a href="/">Main Site</a>
+  </div>
+
+  <a href="templates/crisis-holding-statements-blank.html" class="download-button">DOWNLOAD BLANK TEMPLATE</a>
+
+  <div class="doc-content">
+    <h1 class="page-title">Crisis Holding Statements Library</h1>
+    <p class="page-subtitle">ANONYMIZED REFERENCE TEMPLATES FOR CRISIS RESPONSE</p>
+
+    <div class="intro-text">
+      <p>
+        A standardized approach to categorizing crises helps teams respond with speed and clarity. These templates address distinct incident types, offering structured guidance for rapid external communication. Verify facts and obtain legal review before distribution.
+      </p>
+    </div>
+
+    <div class="statements-grid">
+      <div class="statement-card scroll-reveal">
+        <div class="statement-category">
+          <span class="category-number">01</span>
+          <span>Generic Holding Statement</span>
+        </div>
+        <p class="statement-text">
+          We're aware that <span class="placeholder">[what happened]</span> occurred at <span class="placeholder">[location]</span> <span class="placeholder">[time]</span>. We're looking into what happened and will share what we learn as soon as we can. In the meantime, <span class="placeholder">[relevant immediate action or reassurance]</span>.
+        </p>
+      </div>
+
+      <div class="statement-card scroll-reveal">
+        <div class="statement-category">
+          <span class="category-number">02</span>
+          <span>Natural Disaster</span>
+        </div>
+        <p class="statement-text">
+          Our thoughts are with everyone affected by <span class="placeholder">[disaster type]</span> in <span class="placeholder">[region/locations]</span>. We're coordinating support for our employees and their families. If you're in an affected area, please follow local emergency guidance and reach out to your regional leader. We'll update you as we learn more.
+        </p>
+      </div>
+
+      <div class="statement-card scroll-reveal">
+        <div class="statement-category">
+          <span class="category-number">03</span>
+          <span>Technology Outage</span>
+        </div>
+        <p class="statement-text">
+          We experienced a technical issue with <span class="placeholder">[service or product]</span> starting <span class="placeholder">[time]</span> that affected <span class="placeholder">[group]</span>. We understand how much you rely on this, and we're sorry. Our team is working to restore service now. We'll provide updates via <span class="placeholder">[channel]</span> every <span class="placeholder">[timeframe]</span>. For urgent issues, contact <span class="placeholder">[support]</span>.
+        </p>
+      </div>
+
+      <div class="statement-card scroll-reveal">
+        <div class="statement-category">
+          <span class="category-number">04</span>
+          <span>Unexpected Death or Injury of an Employee</span>
+        </div>
+        <p class="statement-text">
+          We are devastated by the loss of <span class="placeholder">[employee name/role]</span>. Our hearts go out to their family and loved ones. We're offering support to our team during this difficult time. Counseling and grief resources are available to anyone who needs them. We will honor their memory and <span class="placeholder">[relevant commitment]</span>.
+        </p>
+      </div>
+
+      <div class="statement-card scroll-reveal">
+        <div class="statement-category">
+          <span class="category-number">05</span>
+          <span>Personnel Crisis (Accusation)</span>
+        </div>
+        <p class="statement-text">
+          We've learned of serious allegations involving <span class="placeholder">[role title]</span>. We take these matters deeply and are looking into what happened. We're committed to a workplace where everyone feels safe and respected. We'll work with <span class="placeholder">[HR/legal]</span> to respond appropriately. Our focus right now is on caring for those affected.
+        </p>
+      </div>
+
+      <div class="statement-card scroll-reveal">
+        <div class="statement-category">
+          <span class="category-number">06</span>
+          <span>Personnel Crisis (Confirmed)</span>
+        </div>
+        <p class="statement-text">
+          What <span class="placeholder">[role title]</span> did does not reflect who we are. We see the pain this has caused and we're sorry. <span class="placeholder">[action taken]</span>. We're committed to rebuilding trust through real change, not just words. If you've been affected and need support, we have resources available.
+        </p>
+      </div>
+
+      <div class="statement-card scroll-reveal">
+        <div class="statement-category">
+          <span class="category-number">07</span>
+          <span>Merger or Acquisition</span>
+        </div>
+        <p class="statement-text">
+          We're excited to share that we're joining forces with <span class="placeholder">[organization]</span>. This partnership strengthens our ability to <span class="placeholder">[mission/benefit]</span>. We know change creates questions. Your role and benefits <span class="placeholder">[immediate clarification]</span>. We'll share more details <span class="placeholder">[timeframe]</span> and are here to answer your questions.
+        </p>
+      </div>
+
+      <div class="statement-card scroll-reveal">
+        <div class="statement-category">
+          <span class="category-number">08</span>
+          <span>Layoffs or Reduction in Force</span>
+        </div>
+        <p class="statement-text">
+          We've made the difficult decision to reduce our workforce. We know this creates fear and uncertainty. We're being transparent about who is affected and providing <span class="placeholder">[severance, benefits, support]</span>. If your role is changing, you'll hear directly. We're committed to treating everyone with respect through this transition. <span class="placeholder">[support resources]</span> are available to all.
+        </p>
+      </div>
+
+      <div class="statement-card scroll-reveal">
+        <div class="statement-category">
+          <span class="category-number">09</span>
+          <span>Product Delay, Damage, or Recall</span>
+        </div>
+        <p class="statement-text">
+          We discovered that shipments of <span class="placeholder">[product]</span> were <span class="placeholder">[contaminated/damaged/delayed]</span> due to <span class="placeholder">[reason]</span>. We apologize for this. We're working around the clock to <span class="placeholder">[replacement/refund/resolution]</span> by <span class="placeholder">[date]</span>. Your trust matters to us, and we're taking this seriously.
+        </p>
+      </div>
+
+      <div class="statement-card scroll-reveal">
+        <div class="statement-category">
+          <span class="category-number">10</span>
+          <span>Financial Crisis</span>
+        </div>
+        <p class="statement-text">
+          We're facing significant financial challenges that require us to <span class="placeholder">[restructure/seek capital/action]</span>. We understand this news is concerning. Here's what it means for you: <span class="placeholder">[impacts and support]</span>. We remain committed to <span class="placeholder">[core mission]</span> and will keep you informed as we move forward.
+        </p>
+      </div>
+
+      <div class="statement-card scroll-reveal">
+        <div class="statement-category">
+          <span class="category-number">11</span>
+          <span>Organizational Crisis</span>
+        </div>
+        <p class="statement-text">
+          We're aware of <span class="placeholder">[allegation/accusation type]</span> involving <span class="placeholder">[person/department]</span>. These accusations are serious and we take them to heart. We're conducting a thorough investigation and have <span class="placeholder">[immediate actions]</span>. We recognize this shakes the trust we've built, and we're committed to making things right.
+        </p>
+      </div>
+
+      <div class="statement-card scroll-reveal">
+        <div class="statement-category">
+          <span class="category-number">12</span>
+          <span>Regulatory or Compliance Issue</span>
+        </div>
+        <p class="statement-text">
+          We recently learned we didn't meet <span class="placeholder">[regulatory requirement/standard]</span>. We're taking this seriously and have <span class="placeholder">[immediate steps taken]</span>. We're working with <span class="placeholder">[agency/counsel]</span> to address this, and we'll share updates <span class="placeholder">[timeframe]</span>. Thank you for your patience.
+        </p>
+      </div>
+
+      <div class="statement-card scroll-reveal">
+        <div class="statement-category">
+          <span class="category-number">13</span>
+          <span>Lawsuit</span>
+        </div>
+        <p class="statement-text">
+          We're aware of litigation that has been filed against us. We can't comment on the specific claims, but we remain committed to <span class="placeholder">[core values/commitment that does not discuss the case]</span>. We take our responsibilities seriously and will address this through the legal process.
+        </p>
+      </div>
+
+      <div class="statement-card scroll-reveal">
+        <div class="statement-category">
+          <span class="category-number">14</span>
+          <span>Active Security Threat</span>
+        </div>
+        <p class="statement-text">
+          We're aware of a security situation at <span class="placeholder">[location]</span>. Your safety comes first. Follow instructions from local authorities and emergency responders. Do not come to this facility unless you receive the all-clear. We'll keep you updated via <span class="placeholder">[channel]</span>. If you need support, resources are available.
+        </p>
+      </div>
+
+      <div class="statement-card scroll-reveal">
+        <div class="statement-category">
+          <span class="category-number">15</span>
+          <span>Competitive Pressure Response</span>
+        </div>
+        <p class="statement-text">
+          We're aware of market pressures from <span class="placeholder">[competitor/market shift]</span>. This reinforces why we exist: <span class="placeholder">[core purpose]</span>. We're focused on what we do best and where we can add value for you. We'll navigate this together and stay true to what matters.
+        </p>
+      </div>
+    </div>
+
+    <div class="protocol-section scroll-reveal">
+      <h2 class="protocol-title">Deployment Protocol</h2>
+      <ul class="protocol-list">
+        <li class="protocol-item">
+          <span class="protocol-strong">Verify bracketed fields against confirmed facts only.</span> Cross-reference with incident command and primary sources before filling placeholders.
+        </li>
+        <li class="protocol-item">
+          <span class="protocol-strong">Obtain legal review for sensitive statements before external distribution.</span> Route through designated legal counsel with copy to crisis communications lead.
+        </li>
+        <li class="protocol-item">
+          <span class="protocol-strong">Separate internal and external versions.</span> Internal statements can include additional context. External statements must stay focused on key messages.
+        </li>
+        <li class="protocol-item">
+          <span class="protocol-strong">Assign a single primary spokesperson.</span> One voice prevents confusion and mixed messaging.
+        </li>
+        <li class="protocol-item">
+          <span class="protocol-strong">Log messages with timestamp and distribution channel.</span> Document approval chain, timing and template changes for post-crisis review.
+        </li>
+        <li class="protocol-item">
+          <span class="protocol-strong">Update stakeholders on a consistent schedule.</span> Set a cadence (every 2 hours, every 4 hours) and maintain it regardless of new information.
+        </li>
+        <li class="protocol-item">
+          <span class="protocol-strong">Avoid speculation, timelines, or language that implies liability.</span> Stick to verified facts and organizational values.
+        </li>
+        <li class="protocol-item">
+          <span class="protocol-strong">Maintain a media contact list for distribution.</span> Test systems during normal periods to ensure rapid deployment when needed.
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(element => {
+      observer.observe(element);
+    });
+  </script>
+</body>
+</html>
