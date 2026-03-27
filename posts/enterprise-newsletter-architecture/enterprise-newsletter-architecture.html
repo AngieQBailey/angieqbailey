@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Case Study: Enterprise Newsletter Architecture. Building the first enterprise-wide communication channel for a $1B+ industrial technology company with thousands of employees across hundreds of locations.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <meta property="og:title" content="Enterprise Newsletter Architecture // Angie Bailey">
+    <meta property="og:description" content="A $1B+ industrial technology company with thousands of employees had a 9% newsletter open rate. Built the entire system from scratch. From 9% to 95%+ sustained.">
+    <meta property="og:type" content="article">
+    <title>Enterprise Newsletter Architecture // Angie Bailey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit:     #121A28;
+            --cacao:    #2D1B14;
+            --quetzal:  #00685E;
+            --quetzal-bright: #00A896;
+            --ecru:     #F5F5DC;
+            --rosso:    #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        ::selection {
+            background: var(--rosso);
+            color: var(--ecru);
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+        body {
+            background-color: var(--nuit); color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif; font-weight: 400;
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale; overflow-x: hidden;
+        }
+
+        .blueprint-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-fade 2s ease 0.5s both;
+        }
+
+        .spine {
+            position: fixed; left: calc(var(--spine-left) - 40px);
+            top: 0; width: 4px; height: 100%;
+            background-color: var(--cacao); z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .nav-bar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--quetzal-bright); text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 400; color: var(--ecru-dim); text-decoration: none;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            transition: color 0.2s ease; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--rosso);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--ecru); }
+        .nav-links a:hover::after { width: 100%; }
+
+        main { position: relative; z-index: 10; }
+        .section-content {
+            padding-left: var(--spine-left); padding-right: 4rem; max-width: 1200px;
+        }
+
+        .case-header {
+            min-height: 70vh; display: flex; flex-direction: column;
+            justify-content: center; padding-top: 8rem; padding-bottom: 4rem;
+        }
+        .case-meta {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+            color: var(--quetzal); letter-spacing: 0.1em; margin-bottom: 2rem;
+            display: block; animation: fade-up 0.8s ease 0.4s both;
+        }
+        .case-tag {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 1.5rem; display: block;
+            animation: fade-up 0.8s ease 0.5s both;
+        }
+        .case-header h1 {
+            font-family: 'Imbue', serif; font-size: clamp(2.5rem, 7vw, 6rem);
+            font-weight: 900; line-height: 0.9; color: var(--ecru);
+            text-transform: uppercase; letter-spacing: -0.02em;
+            margin-bottom: 2.5rem; max-width: 700px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+        .case-header h1 .accent-word { color: var(--rosso); }
+        .case-lede {
+            border-left: 5px solid var(--rosso); padding-left: 2rem;
+            max-width: 600px; animation: fade-up 0.8s ease 0.8s both;
+        }
+        .case-lede p {
+            font-size: 1.15rem; font-weight: 300; line-height: 1.7; color: var(--ecru-dim);
+        }
+        .case-lede strong { color: var(--ecru); font-weight: 500; }
+
+        .case-section {
+            padding-top: 2.5rem; padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 0.5rem; display: block;
+        }
+        h2 {
+            font-family: 'Imbue', serif; font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 900; color: var(--ecru); text-transform: uppercase;
+            line-height: 0.95; letter-spacing: -0.01em; margin-bottom: 2.5rem;
+        }
+        .case-body p {
+            font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+            color: var(--ecru-dim); margin-bottom: 1.5rem; max-width: 650px;
+        }
+        .case-body p strong { color: var(--ecru); font-weight: 500; }
+
+        .constraint-list { margin: 2rem 0; max-width: 650px; }
+        .constraint-item {
+            padding: 1.25rem 0; border-bottom: 1px solid var(--ecru-ghost);
+            display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: start;
+        }
+        .constraint-item:first-child { border-top: 1px solid var(--ecru-ghost); }
+        .constraint-flag {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.1em; padding: 0.2rem 0.5rem;
+            text-transform: uppercase; min-width: 50px; text-align: center;
+        }
+        .constraint-flag.red { color: var(--rosso); border: 1px solid var(--rosso); }
+        .constraint-flag.yellow { color: var(--quetzal); border: 1px solid var(--quetzal); }
+        .constraint-label { font-size: 0.95rem; font-weight: 400; color: var(--ecru); line-height: 1.4; }
+        .constraint-detail { font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); margin-top: 0.25rem; }
+
+        .failure-loop {
+            border-left: 3px solid var(--cacao); padding-left: 1.5rem;
+            margin: 2rem 0; max-width: 400px;
+        }
+        .failure-loop .loop-step {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); padding: 0.4rem 0; display: flex;
+            align-items: center; gap: 0.75rem;
+        }
+        .failure-loop .loop-arrow { color: var(--rosso); font-weight: 700; }
+
+        .approach-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+            margin: 2.5rem 0; max-width: 750px;
+        }
+        .approach-item { background: rgba(245, 245, 220, 0.14); padding: 2rem 1.75rem; }
+        .approach-day {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 0.75rem;
+        }
+        .approach-title {
+            font-family: 'Imbue', serif; font-size: 1.3rem; font-weight: 700;
+            color: var(--ecru); text-transform: uppercase; line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+        .approach-desc {
+            font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.5;
+        }
+
+        .artifact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2px; margin: 2.5rem 0;
+        }
+        .artifact-card {
+            background: rgba(245, 245, 220, 0.14); padding: 2rem 1.75rem;
+            position: relative; transition: background 0.3s ease;
+            text-decoration: none; display: block;
+        }
+        .artifact-card::before {
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 0; height: 3px; background: var(--rosso);
+            transition: width 0.4s ease;
+        }
+        .artifact-card:hover { background: rgba(245, 245, 220, 0.18); }
+        .artifact-card:hover::before { width: 100%; }
+        .artifact-type {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 0.75rem;
+        }
+        .artifact-name {
+            font-family: 'Imbue', serif; font-size: 1.15rem; font-weight: 700;
+            color: var(--ecru); text-transform: uppercase; line-height: 1.15;
+            margin-bottom: 0.75rem;
+        }
+        .artifact-desc {
+            font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim);
+            line-height: 1.5; margin-bottom: 1rem;
+        }
+        .artifact-action {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--rosso); text-transform: uppercase; letter-spacing: 0.15em;
+        }
+
+        .outcome-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2px; margin: 2.5rem 0; max-width: 750px;
+        }
+        .outcome-stat { background: rgba(245, 245, 220, 0.14); padding: 2rem 1.75rem; }
+        .outcome-number {
+            font-family: 'Imbue', serif; font-size: 2.5rem; font-weight: 900;
+            color: var(--ecru); line-height: 1; margin-bottom: 0.5rem;
+        }
+        .outcome-number.highlight { color: var(--rosso); }
+        .outcome-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--quetzal-bright); text-transform: uppercase; letter-spacing: 0.1em;
+            line-height: 1.4;
+        }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+            color: var(--ecru-dim); text-decoration: none; text-transform: uppercase;
+            letter-spacing: 0.1em; transition: color 0.2s ease; margin-top: 3rem;
+        }
+        .back-link::before {
+            content: ''; display: block; width: 24px; height: 2px;
+            background: var(--quetzal); transition: width 0.3s ease, background 0.3s ease;
+        }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .footer-content {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 1200px;
+        }
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); letter-spacing: 0.05em;
+        }
+
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .section-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .approach-grid { grid-template-columns: 1fr; }
+            .artifact-grid { grid-template-columns: 1fr; }
+            .outcome-grid { grid-template-columns: 1fr 1fr; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+        }
+
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .nav-links a { font-size: 0.75rem; }
+            .blueprint-overlay { background-size: 24px 24px; }
+            .outcome-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="blueprint-overlay" aria-hidden="true"></div>
+    <div class="spine" aria-hidden="true"></div>
+    <nav class="nav-bar" role="navigation" aria-label="Primary">
+        <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
+        <ul class="nav-links">
+            <li><a href="/#warehouse">Warehouse</a></li>
+            <li><a href="/#investigation">Investigation</a></li>
+            <li><a href="/#verdict">Verdict</a></li>
+            <li><a href="/#signal">Signal</a></li>
+        </ul>
+    </nav>
+    <main>
+        <!-- HEADER -->
+        <section class="case-header section-content">
+            <span class="case-meta">Case Study // Internal Communications</span>
+            <span class="case-tag">Channel Strategy</span>
+            <h1>Enterprise<br>Newsletter<br><span class="accent-word">Architecture</span></h1>
+            <div class="case-lede">
+                <p>A $1B+ industrial technology company with thousands of employees across hundreds of locations had no enterprise-wide communication channel. The internal newsletter had a <strong>9% open rate</strong>. Slack reached 39% of the workforce. 83% of Slack activity was direct messages, not shared knowledge. The company had grown 43,000% more complex since founding. The communication infrastructure had not.</p>
+            </div>
+        </section>
+
+        <!-- THE EVIDENCE -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">The Evidence</span>
+            <h2>Frameworks<br>&amp; Artifacts</h2>
+            <div class="case-body"><p>Every artifact below was produced during the diagnostic and build phases. The audit mapped what was broken. The mix matrix mapped what was possible. The strategic value architecture made the business case. The style guide ensured one voice across every location.</p></div>
+            <div class="artifact-grid">
+                <a href="assets/internal-comms-channel-audit.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                    <div class="artifact-type">Framework</div>
+                    <div class="artifact-name">Internal Comms<br>Channel Audit</div>
+                    <div class="artifact-desc">Audience-by-channel scoring matrix across four workforce segments. Scored reach, relevance and engagement for desk-based, field-based, regional and leadership audiences.</div>
+                    <div class="artifact-action">View Framework &rarr;</div>
+                </a>
+                <a href="assets/channel-mix-matrix.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                    <div class="artifact-type">Framework</div>
+                    <div class="artifact-name">Channel Mix<br>Matrix</div>
+                    <div class="artifact-desc">Channel evaluation framework scoring reach, real-time capability, interaction potential, analytics depth, storytelling capacity, media richness, local relevance and cost across 12+ channels.</div>
+                    <div class="artifact-action">View Framework &rarr;</div>
+                </a>
+                <a href="assets/ic-strategic-value-architecture.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                    <div class="artifact-type">Methodology</div>
+                    <div class="artifact-name">IC Strategic<br>Value Architecture</div>
+                    <div class="artifact-desc">Operational model connecting communication investment to revenue. Communication creates Awareness. Awareness drives Alignment. Alignment drives Engagement. Engagement drives Productivity. Productivity generates Revenue.</div>
+                    <div class="artifact-action">View Methodology &rarr;</div>
+                </a>
+                <a href="assets/in-house-style-guide.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                    <div class="artifact-type">Applied Example</div>
+                    <div class="artifact-name">In-House<br>Style Guide</div>
+                    <div class="artifact-desc">Editorial standards governing voice, tone, terminology, capitalization, punctuation and visual guidelines across hundreds of locations.</div>
+                    <div class="artifact-action">View Applied Example &rarr;</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- THE SITUATION -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">The Situation</span>
+            <h2>Thousands of People.<br>No Source of Truth.</h2>
+            <div class="case-body">
+                <p>The company scaled to thousands of employees in under seven years. Hundreds of locations across dozens of states. Service technicians, drivers, coordinators, regional managers, department leaders and a corporate headquarters. The growth rate made the organization 43,000% more complex than at founding.</p>
+
+                <p>Internal communication had not kept pace. The channels told the story.</p>
+            </div>
+            <div class="constraint-list">
+                <div class="constraint-item">
+                    <span class="constraint-flag red">Red</span>
+                    <div>
+                        <div class="constraint-label">The monthly Communications Cadence newsletter: 9% open rate.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag red">Red</span>
+                    <div>
+                        <div class="constraint-label">Slack adoption: 39% of the workforce. Of that, 83% was direct messages. 4% was public channel activity.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag yellow">Yellow</span>
+                    <div>
+                        <div class="constraint-label">Company-Wide Call attendance: 20-40% participation.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag yellow">Yellow</span>
+                    <div>
+                        <div class="constraint-label">People First Survey: only 38% response rate. Of those who did respond, 64% said they wanted email or text. Not Slack. Not calls.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="case-body">
+                <p>The workforce had already told leadership how they wanted to receive information. No one had built the channel.</p>
+
+                <div class="failure-loop">
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> Information lives in silos</div>
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> Employees miss critical updates</div>
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> Confusion becomes the default</div>
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> Blame games replace problem-solving</div>
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> Goals are unclear across the organization</div>
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> Only 21% of employees globally are engaged at work (Gallup, 2025)</div>
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> Only 41% feel aligned with their organization's mission (Gallup, 2025)</div>
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> $12,506 per employee lost annually to poor communication (Grammarly/Harris Poll, 2022)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRESSURE POINTS -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">Pressure Points Surfaced</span>
+            <h2>What the<br>Audit Found</h2>
+            <div class="case-body"><p>A channel audit scored communication methods across four segments: desk-based branch employees, field-based employees, regional teams and department leaders. Rated each channel on frequency, reach and importance.</p></div>
+            <div class="constraint-list">
+                <div class="constraint-item">
+                    <span class="constraint-flag red">Red</span>
+                    <div>
+                        <div class="constraint-label">No Enterprise-Wide Communication Channel</div>
+                        <div class="constraint-detail">No single channel reached the entire workforce. All existing methods were opt-in, location-specific or limited to workforce subsets.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag red">Red</span>
+                    <div>
+                        <div class="constraint-label">Deskless Workforce Unreachable</div>
+                        <div class="constraint-detail">80% of the workforce did not sit at desks. Drivers, technicians and yard workers had no reliable way to receive communications.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag red">Red</span>
+                    <div>
+                        <div class="constraint-label">Information Siloed by Department</div>
+                        <div class="constraint-detail">Each department used its own channels with its own cadence. No cross-functional visibility. Regional teams received different information than HQ.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag yellow">Yellow</span>
+                    <div>
+                        <div class="constraint-label">No SMS/Text Capability</div>
+                        <div class="constraint-detail">64% of employees requested email or text as their preferred channel. No text infrastructure existed. 82% keep phones in sight during work.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag yellow">Yellow</span>
+                    <div>
+                        <div class="constraint-label">No Feedback Loop</div>
+                        <div class="constraint-detail">Communication was monologue, not dialogue. No mechanism existed for employees to respond or surface concerns.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag yellow">Yellow</span>
+                    <div>
+                        <div class="constraint-label">No Measurement Framework</div>
+                        <div class="constraint-detail">No analytics existed to measure reach, readership or behavioral change.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE APPROACH -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">The Approach</span>
+            <h2>One Email.<br>Every Week. Forever.</h2>
+            <div class="case-body"><p>The strategy was built on one insight: <strong>meet them where they said they want to be.</strong> 64% requested email. The newsletter had 9% opens. Not because email was wrong, but because the content was not worth opening. The fix was not a new platform. The fix was one channel, done well.</p></div>
+            <div class="approach-grid">
+                <div class="approach-item">
+                    <div class="approach-day">Phase 01</div>
+                    <div class="approach-title">Audit<br>the Terrain</div>
+                    <div class="approach-desc">Scored all existing channels by audience, frequency and importance. Mapped the gap between where communication happened and where the workforce was. Built the business case with data.</div>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-day">Phase 02</div>
+                    <div class="approach-title">Pitch<br>the CEO</div>
+                    <div class="approach-desc">Presented the Internal Marketing Strategy to the CEO. Led with the cost: $12,506 per employee lost to poor communication. Proposed the simplest intervention: one email, every week. Target: turn 9% into 19% by Q3.</div>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-day">Phase 03</div>
+                    <div class="approach-title">Build<br>The Dig</div>
+                    <div class="approach-desc">Designed and launched the first enterprise-wide weekly newsletter. Named it The Dig. Built subscriber infrastructure from the HRIS system. Created the editorial style guide. Established the content approval workflow. Wrote all issues.</div>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-day">Principle</div>
+                    <div class="approach-title">Win the War<br>for Attention</div>
+                    <div class="approach-desc">Each issue followed one rule: do not waste time or insult intelligence. Essential plus interesting plus brief plus conversational. That was the formula. The open rate was the proof.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE OUTCOME -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">The Outcome</span>
+            <h2>What The Dig<br>Produced</h2>
+            <div class="outcome-grid">
+                <div class="outcome-stat">
+                    <div class="outcome-number">88%</div>
+                    <div class="outcome-label">Peak open rate<br>on launch week</div>
+                </div>
+                <div class="outcome-stat">
+                    <div class="outcome-number highlight">95%+</div>
+                    <div class="outcome-label">Sustained open rate<br>at maturity</div>
+                </div>
+                <div class="outcome-stat">
+                    <div class="outcome-number">100%</div>
+                    <div class="outcome-label">Workforce reached<br>enterprise-wide</div>
+                </div>
+                <div class="outcome-stat">
+                    <div class="outcome-number">9% &rarr; 95%</div>
+                    <div class="outcome-label">Open rate growth<br>from predecessor</div>
+                </div>
+            </div>
+            <div class="case-body" style="margin-top: 2rem;">
+                <p>A company with thousands of employees across hundreds of locations went from 9% open rates to 95%+ sustained. One person built the system: the audit, business case, CEO pitch, editorial standards, subscriber infrastructure, content strategy and every issue.</p>
+
+                <p>The Dig did not replace the other channels. It became the source of truth that made them work. When information has a predictable home, everything downstream gets easier. Alignment, engagement, productivity, revenue.</p>
+
+                <p>Short not shallow. That was the principle. It still is.</p>
+            </div>
+            <div style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--ecru-ghost);">
+                <span class="section-label" style="font-size: 0.75rem; margin-bottom: 0.75rem;">Sources</span>
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: var(--ecru-dim); line-height: 1.8;">
+                    <a href="https://www.grammarly.com/business/Grammarly_The_State_Of_Business_Communication.pdf" style="color: var(--quetzal-bright);" target="_blank" rel="noopener noreferrer">Grammarly/Harris Poll, The State of Business Communication (2022)</a><br>
+                    <a href="https://www.gallup.com/workplace/697904/state-of-the-global-workplace-global-data.aspx" style="color: var(--quetzal-bright);" target="_blank" rel="noopener noreferrer">Gallup, State of the Global Workplace (2025)</a>
+                </div>
+            </div>
+            <a href="/" class="back-link">Back to The Warehouse</a>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <span>&copy; 2026 Angie Bailey</span>
+        </div>
+    </footer>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
