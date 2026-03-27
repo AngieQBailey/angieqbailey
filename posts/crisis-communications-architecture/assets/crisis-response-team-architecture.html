@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crisis Response Team & Channel Architecture</title>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit: #121A28;
+            --cacao: #2D1B14;
+            --quetzal: #00685E;
+            --quetzal-bright: #00A896;
+            --ecru: #F5F5DC;
+            --rosso: #C41E3A;
+            --ecru-dim: rgba(245,245,220,0.6);
+            --ecru-ghost: rgba(245,245,220,0.08);
+            --card-bg: rgba(245,245,220,0.14);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: var(--nuit);
+            color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* Blueprint overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(0deg, transparent 24%, rgba(0, 168, 150, 0.03) 25%, rgba(0, 168, 150, 0.03) 26%, transparent 27%, transparent 74%, rgba(0, 168, 150, 0.03) 75%, rgba(0, 168, 150, 0.03) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(0, 168, 150, 0.03) 25%, rgba(0, 168, 150, 0.03) 26%, transparent 27%, transparent 74%, rgba(0, 168, 150, 0.03) 75%, rgba(0, 168, 150, 0.03) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Spine */
+        body::after {
+            content: '';
+            position: fixed;
+            left: calc(22% - 40px);
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: var(--cacao);
+            z-index: 2;
+        }
+
+        /* Navigation bar */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background-color: var(--nuit);
+            border-bottom: 1px solid var(--ecru-ghost);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 10;
+        }
+
+        .nav-back {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--ecru-dim);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-back:hover {
+            color: var(--ecru);
+        }
+
+        .nav-home {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--ecru-dim);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-home:hover {
+            color: var(--ecru);
+        }
+
+        /* Download button */
+        .download-btn {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            padding: 10px 16px;
+            background-color: var(--quetzal);
+            color: var(--nuit);
+            border: none;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 9;
+        }
+
+        .download-btn:hover {
+            background-color: var(--quetzal-bright);
+        }
+
+        /* Main content area */
+        .doc-content {
+            padding-left: 22%;
+            padding-top: 100px;
+            padding-right: 40px;
+            padding-bottom: 60px;
+            position: relative;
+            z-index: 3;
+        }
+
+        h1 {
+            font-family: 'Imbue', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 40px;
+            margin-top: 40px;
+            color: var(--ecru);
+        }
+
+        h2 {
+            font-family: 'Imbue', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            margin-top: 60px;
+            color: var(--quetzal-bright);
+        }
+
+        .section-intro {
+            font-size: 1rem;
+            color: var(--ecru-dim);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        /* Table styles */
+        table {
+            width: 100%;
+            margin-bottom: 40px;
+            border-collapse: collapse;
+            background-color: transparent;
+        }
+
+        thead {
+            background-color: var(--ecru-ghost);
+            border-top: 1px solid var(--ecru-ghost);
+            border-bottom: 2px solid var(--quetzal);
+        }
+
+        th {
+            padding: 16px;
+            text-align: left;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid var(--ecru-ghost);
+            background-color: var(--card-bg);
+            transition: background-color 0.3s;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(245,245,220,0.2);
+        }
+
+        td {
+            padding: 16px;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--ecru);
+        }
+
+        td:first-child {
+            font-weight: 500;
+            color: var(--quetzal-bright);
+        }
+
+        /* Card grid for channel architecture */
+        .channel-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .channel-group {
+            background-color: var(--card-bg);
+            border-left: 4px solid var(--quetzal);
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .channel-group h3 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--ecru-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+        }
+
+        .channel-item {
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--ecru-ghost);
+        }
+
+        .channel-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .channel-name {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            margin-bottom: 6px;
+        }
+
+        .channel-description {
+            font-size: 0.95rem;
+            color: var(--ecru-dim);
+            font-weight: 300;
+        }
+
+        .channel-detail {
+            font-size: 0.9rem;
+            color: var(--ecru-dim);
+            margin-top: 8px;
+            padding-left: 12px;
+            border-left: 2px solid var(--quetzal);
+        }
+
+        /* Stakeholder routing */
+        .stakeholder-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stakeholder-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--ecru-ghost);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stakeholder-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--ecru-dim);
+            margin-bottom: 8px;
+        }
+
+        .stakeholder-role {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--quetzal-bright);
+        }
+
+        .stakeholder-contact {
+            font-size: 0.9rem;
+            color: var(--ecru-dim);
+            margin-top: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .doc-content {
+                padding-left: 20%;
+                padding-right: 30px;
+            }
+
+            body::after {
+                left: calc(20% - 40px);
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .channel-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .doc-content {
+                padding-left: 60px;
+                padding-right: 20px;
+                padding-top: 80px;
+            }
+
+            body::after {
+                left: 20px;
+            }
+
+            .nav-bar {
+                flex-direction: column;
+                height: auto;
+                padding: 12px 20px;
+                gap: 8px;
+            }
+
+            .download-btn {
+                position: static;
+                width: 100%;
+                margin-top: 8px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 12px;
+            }
+
+            .channel-section {
+                grid-template-columns: 1fr;
+            }
+
+            .stakeholder-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .doc-content {
+                padding-left: 40px;
+                padding-right: 16px;
+                padding-top: 120px;
+            }
+
+            body::after {
+                left: 12px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+                margin-bottom: 24px;
+            }
+
+            h2 {
+                font-size: 1.1rem;
+                margin-top: 40px;
+                margin-bottom: 16px;
+            }
+
+            .section-intro {
+                font-size: 0.9rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+
+            .channel-group {
+                padding: 16px;
+                margin-bottom: 16px;
+            }
+
+            .channel-name {
+                font-size: 0.8rem;
+            }
+
+            .channel-description {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Scroll reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <a href="../crisis-communications-architecture.html" class="nav-back">Back to Crisis Communications</a>
+        <a href="/" class="nav-home">Main Site</a>
+    </nav>
+
+    <a href="templates/crisis-response-team-architecture-blank.html" class="download-btn">Download Template</a>
+
+    <main class="doc-content">
+        <h1>Crisis Response Team & Channel Architecture</h1>
+
+        <section class="reveal">
+            <h2>Three-Tier Response Team Structure</h2>
+
+            <article>
+                <h3 style="font-family: 'IBM Plex Mono', monospace; font-size: 1rem; font-weight: 500; color: var(--ecru-dim); text-transform: uppercase; margin: 40px 0 20px 0; letter-spacing: 0.05em;">Tier 1: First Line Response Team</h3>
+                <p class="section-intro">First line of defense. Informed when the company is aware of a crisis at Level 1.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Role</th>
+                            <th>Function</th>
+                            <th>Crisis Responsibility</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>VP of PR and Communications</td>
+                            <td>External Communications</td>
+                            <td>Point person for Tier 1 crises. Contact directly and immediately.</td>
+                        </tr>
+                        <tr>
+                            <td>CEO</td>
+                            <td>Executive Leadership</td>
+                            <td>Final authority on location closures, strategic decisions</td>
+                        </tr>
+                        <tr>
+                            <td>President</td>
+                            <td>Executive Leadership</td>
+                            <td>External messaging approval authority</td>
+                        </tr>
+                        <tr>
+                            <td>Chief Digital Officer</td>
+                            <td>Technology and Data</td>
+                            <td>Technology-related crisis assessment and response</td>
+                        </tr>
+                        <tr>
+                            <td>Chief People Officer</td>
+                            <td>People Operations</td>
+                            <td>Employee welfare, personnel crisis management</td>
+                        </tr>
+                        <tr>
+                            <td>Chief Experience Officer</td>
+                            <td>Customer Experience</td>
+                            <td>Customer-facing impact assessment</td>
+                        </tr>
+                        <tr>
+                            <td>General Counsel</td>
+                            <td>Legal</td>
+                            <td>Legal review of all external messaging, regulatory compliance</td>
+                        </tr>
+                        <tr>
+                            <td>Director of Employer Communications</td>
+                            <td>Internal Communications</td>
+                            <td>C-suite and director/manager communications</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+
+            <article>
+                <h3 style="font-family: 'IBM Plex Mono', monospace; font-size: 1rem; font-weight: 500; color: var(--ecru-dim); text-transform: uppercase; margin: 40px 0 20px 0; letter-spacing: 0.05em;">Tier 2: Extended Response Team</h3>
+                <p class="section-intro">Activated for Tier 2, 3, and 4 crises requiring departmental involvement.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Role</th>
+                            <th>Function</th>
+                            <th>Crisis Responsibility</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Director of PR and Communications</td>
+                            <td>External Communications</td>
+                            <td>Point person for Tier 2, 3, and 4 crises. Lead coordinator.</td>
+                        </tr>
+                        <tr>
+                            <td>General Counsel</td>
+                            <td>Legal</td>
+                            <td>Legal review</td>
+                        </tr>
+                        <tr>
+                            <td>Director of HR</td>
+                            <td>People Operations</td>
+                            <td>Employee-related issues</td>
+                        </tr>
+                        <tr>
+                            <td>Director of Employer Communications</td>
+                            <td>Internal Communications</td>
+                            <td>Internal messaging coordination</td>
+                        </tr>
+                        <tr>
+                            <td>Internal Communications Specialist</td>
+                            <td>Internal Communications</td>
+                            <td>Line employee and family communications</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+
+            <article>
+                <h3 style="font-family: 'IBM Plex Mono', monospace; font-size: 1rem; font-weight: 500; color: var(--ecru-dim); text-transform: uppercase; margin: 40px 0 20px 0; letter-spacing: 0.05em;">Tier 3: Task-Based Communications Team</h3>
+                <p class="section-intro">Task assignments during active crisis response.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Assigned Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Crisis-specific key messages and updates</td>
+                            <td>Director of PR / Director of Employer Communications</td>
+                        </tr>
+                        <tr>
+                            <td>Internal FAQs</td>
+                            <td>Director of Employer Communications</td>
+                        </tr>
+                        <tr>
+                            <td>External FAQs</td>
+                            <td>Director of PR</td>
+                        </tr>
+                        <tr>
+                            <td>Crisis response center setup</td>
+                            <td>Director of PR / Director of Employer Communications</td>
+                        </tr>
+                        <tr>
+                            <td>Spokesperson preparation</td>
+                            <td>Director of PR</td>
+                        </tr>
+                        <tr>
+                            <td>Email and voicemail monitoring</td>
+                            <td>Communications Coordinator</td>
+                        </tr>
+                        <tr>
+                            <td>Social media response</td>
+                            <td>Director of PR</td>
+                        </tr>
+                        <tr>
+                            <td>Social media monitoring</td>
+                            <td>Communications Coordinator</td>
+                        </tr>
+                        <tr>
+                            <td>Media communications</td>
+                            <td>Director of PR</td>
+                        </tr>
+                        <tr>
+                            <td>Board communications</td>
+                            <td>CEO</td>
+                        </tr>
+                        <tr>
+                            <td>Employee communications</td>
+                            <td>Director of Employer Communications</td>
+                        </tr>
+                        <tr>
+                            <td>Vendor communications</td>
+                            <td>Director of PR / Director of Employer Communications</td>
+                        </tr>
+                        <tr>
+                            <td>Community outreach</td>
+                            <td>Director of PR</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+        </section>
+
+        <section class="reveal">
+            <h2>Channel Architecture</h2>
+
+            <article>
+                <h3 style="font-family: 'IBM Plex Mono', monospace; font-size: 1rem; font-weight: 500; color: var(--ecru-dim); text-transform: uppercase; margin: 30px 0 20px 0; letter-spacing: 0.05em;">Internal Channels</h3>
+
+                <div class="channel-section">
+                    <div class="channel-group">
+                        <div class="channel-name">Slack</div>
+                        <div class="channel-item">
+                            <div class="channel-description">#disasterthinktank (initial assessment)</div>
+                            <div class="channel-detail">Named incident channel (e.g., #hurricane-[name])</div>
+                        </div>
+                        <div class="channel-item">
+                            <div class="channel-description">#crisisthinktank</div>
+                            <div class="channel-detail">Non-disaster emergencies</div>
+                        </div>
+                        <div class="channel-item">
+                            <div class="channel-description">#announcements</div>
+                            <div class="channel-detail">Verified updates to all employees</div>
+                        </div>
+                    </div>
+
+                    <div class="channel-group">
+                        <div class="channel-name">Company-wide Email</div>
+                        <div class="channel-description">Reserved for crises meeting threshold criteria: impacted employees, location impact, customer impact, foundation involvement, volunteer mobilization, employee response</div>
+                    </div>
+
+                    <div class="channel-group">
+                        <div class="channel-name">Intranet / Operations Portal</div>
+                        <div class="channel-item">
+                            <div class="channel-description">Abbreviated messaging in ticker/header</div>
+                            <div class="channel-detail">Updated to reflect status</div>
+                        </div>
+                        <div class="channel-item">
+                            <div class="channel-description">Removed when crisis is closed</div>
+                        </div>
+                    </div>
+
+                    <div class="channel-group">
+                        <div class="channel-name">Text / SMS</div>
+                        <div class="channel-description">Critical future capability, not yet deployed.</div>
+                    </div>
+                </div>
+            </article>
+
+            <article>
+                <h3 style="font-family: 'IBM Plex Mono', monospace; font-size: 1rem; font-weight: 500; color: var(--ecru-dim); text-transform: uppercase; margin: 30px 0 20px 0; letter-spacing: 0.05em;">External Channels</h3>
+
+                <div class="channel-group">
+                    <div class="channel-name">Social Media</div>
+                    <div class="channel-description">Coordinated through PR</div>
+                </div>
+
+                <div class="channel-group">
+                    <div class="channel-name">Media Outlets</div>
+                    <div class="channel-description">PR spokesperson only</div>
+                </div>
+
+                <div class="channel-group">
+                    <div class="channel-name">Press Releases</div>
+                    <div class="channel-description">Legal-reviewed, executive-approved</div>
+                </div>
+            </article>
+
+            <article>
+                <h3 style="font-family: 'IBM Plex Mono', monospace; font-size: 1rem; font-weight: 500; color: var(--ecru-dim); text-transform: uppercase; margin: 30px 0 20px 0; letter-spacing: 0.05em;">Stakeholder Routing</h3>
+
+                <div class="stakeholder-grid">
+                    <div class="stakeholder-card">
+                        <div class="stakeholder-label">Audience</div>
+                        <div class="stakeholder-role">C-Suite</div>
+                        <div class="stakeholder-contact">Director of Employer Communications</div>
+                    </div>
+
+                    <div class="stakeholder-card">
+                        <div class="stakeholder-label">Audience</div>
+                        <div class="stakeholder-role">Directors and Managers</div>
+                        <div class="stakeholder-contact">Director of Employer Communications</div>
+                    </div>
+
+                    <div class="stakeholder-card">
+                        <div class="stakeholder-label">Audience</div>
+                        <div class="stakeholder-role">Line Employees</div>
+                        <div class="stakeholder-contact">Internal Communications Specialist</div>
+                    </div>
+
+                    <div class="stakeholder-card">
+                        <div class="stakeholder-label">Audience</div>
+                        <div class="stakeholder-role">Family Members</div>
+                        <div class="stakeholder-contact">Internal Communications Specialist</div>
+                    </div>
+
+                    <div class="stakeholder-card">
+                        <div class="stakeholder-label">Audience</div>
+                        <div class="stakeholder-role">News Media</div>
+                        <div class="stakeholder-contact">Director of PR</div>
+                    </div>
+
+                    <div class="stakeholder-card">
+                        <div class="stakeholder-label">Audience</div>
+                        <div class="stakeholder-role">Local Government</div>
+                        <div class="stakeholder-contact">Director of PR</div>
+                    </div>
+
+                    <div class="stakeholder-card">
+                        <div class="stakeholder-label">Audience</div>
+                        <div class="stakeholder-role">Community</div>
+                        <div class="stakeholder-contact">Director of PR</div>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <script>
+        // Scroll reveal functionality
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 100;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                } else {
+                    element.classList.remove('active');
+                }
+            });
+        }
+
+        // Trigger reveal on page load
+        window.addEventListener('load', revealOnScroll);
+        window.addEventListener('scroll', revealOnScroll, { passive: true });
+
+        // Initial check
+        revealOnScroll();
+    </script>
+</body>
+</html>
