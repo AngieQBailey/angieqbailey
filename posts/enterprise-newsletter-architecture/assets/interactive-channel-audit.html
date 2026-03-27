@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Channel Audit Diagnostic | Enterprise Newsletter Architecture</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:wght@900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --nuit: #121A28;
+            --cacao: #2D1B14;
+            --quetzal: #00685E;
+            --quetzal-bright: #00A896;
+            --ecru: #F5F5DC;
+            --rosso: #C41E3A;
+            --ecru-dim: rgba(245,245,220,0.6);
+            --ecru-ghost: rgba(245,245,220,0.08);
+            --input-bg: rgba(245,245,220,0.14);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            background: linear-gradient(135deg, #0a0f18 0%, #1a1520 100%);
+            color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        body {
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(90deg, transparent 0%, rgba(0,168,150,0.03) 50%, transparent 100%),
+                linear-gradient(0deg, transparent 0%, rgba(0,168,150,0.02) 100%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Navigation */
+        .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--ecru-ghost);
+            max-width: 1400px;
+            margin: 0 auto;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-back, .nav-home {
+            color: var(--quetzal-bright);
+            text-decoration: none;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-back:hover, .nav-home:hover {
+            opacity: 0.7;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        .header {
+            margin-bottom: 3rem;
+        }
+
+        .tool-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        h1 {
+            font-family: 'Imbue', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--ecru);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--ecru-dim);
+            max-width: 600px;
+        }
+
+        /* Intro Section */
+        .intro-section {
+            background: var(--input-bg);
+            border: 1px solid var(--ecru-ghost);
+            padding: 2rem;
+            margin-bottom: 3rem;
+            font-size: 1rem;
+            color: var(--ecru-dim);
+            line-height: 1.8;
+        }
+
+        /* Section Headers */
+        .section-header {
+            font-family: 'Imbue', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--ecru);
+            margin: 3rem 0 1.5rem 0;
+            letter-spacing: -0.01em;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: var(--ecru-ghost);
+            margin: 2rem 0;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--input-bg);
+            border: 1px solid var(--ecru-ghost);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--ecru-dim);
+            background: rgba(245,245,220,0.18);
+        }
+
+        /* Audience Segments */
+        .segments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .segment-card {
+            position: relative;
+        }
+
+        .segment-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .segment-input {
+            width: 100%;
+            background: transparent;
+            border: 1px solid var(--ecru-ghost);
+            color: var(--ecru);
+            padding: 0.75rem;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            transition: border-color 0.3s;
+        }
+
+        .segment-input:focus {
+            outline: none;
+            border-color: var(--quetzal-bright);
+            background: rgba(0,168,150,0.1);
+        }
+
+        /* Channels */
+        .channels-list {
+            margin-bottom: 2rem;
+        }
+
+        .channel-row {
+            background: var(--input-bg);
+            border: 1px solid var(--ecru-ghost);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .channel-name-wrapper {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .channel-name-input {
+            width: 100%;
+            background: transparent;
+            border: 1px solid var(--ecru-ghost);
+            color: var(--ecru);
+            padding: 0.75rem;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            transition: border-color 0.3s;
+        }
+
+        .channel-name-input:focus {
+            outline: none;
+            border-color: var(--quetzal-bright);
+            background: rgba(0,168,150,0.1);
+        }
+
+        .scoring-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .score-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            background: rgba(0,0,0,0.2);
+            padding: 1rem;
+            border: 1px solid var(--ecru-ghost);
+        }
+
+        .score-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .score-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .score-subheader {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            color: var(--ecru-dim);
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--ecru-ghost);
+        }
+
+        .score-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .score-btn {
+            background: transparent;
+            border: 1px solid var(--ecru-ghost);
+            color: var(--ecru);
+            padding: 0.5rem 0.75rem;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        .score-btn:hover {
+            border-color: var(--quetzal-bright);
+            background: rgba(0,168,150,0.15);
+        }
+
+        .score-btn.active {
+            background: var(--quetzal-bright);
+            border-color: var(--quetzal-bright);
+            color: var(--nuit);
+            font-weight: 500;
+        }
+
+        .remove-btn {
+            margin-top: 1rem;
+            background: transparent;
+            border: 1px solid var(--rosso);
+            color: var(--rosso);
+            padding: 0.5rem 1rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s;
+            align-self: flex-start;
+        }
+
+        .remove-btn:hover {
+            background: var(--rosso);
+            color: var(--ecru);
+        }
+
+        /* Button Group */
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: 1px solid var(--ecru-ghost);
+            color: var(--ecru);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 400;
+        }
+
+        .btn:hover {
+            border-color: var(--quetzal-bright);
+            color: var(--quetzal-bright);
+        }
+
+        .btn-primary {
+            background: var(--quetzal-bright);
+            border-color: var(--quetzal-bright);
+            color: var(--nuit);
+            font-weight: 500;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.85;
+            color: var(--nuit);
+        }
+
+        .btn-secondary {
+            border-color: var(--rosso);
+            color: var(--rosso);
+        }
+
+        .btn-secondary:hover {
+            background: var(--rosso);
+            color: var(--ecru);
+        }
+
+        /* Results Section */
+        .results-section {
+            display: none;
+            margin-top: 3rem;
+        }
+
+        .results-section.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-card {
+            background: var(--input-bg);
+            border: 1px solid var(--ecru-ghost);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            animation: slideIn 0.3s ease;
+        }
+
+        .result-card h3 {
+            font-family: 'Imbue', serif;
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--ecru);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        /* Heat Map */
+        .heatmap-container {
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .heatmap {
+            display: grid;
+            gap: 2px;
+            background: var(--nuit);
+            padding: 1rem;
+            min-width: fit-content;
+        }
+
+        .heatmap-header {
+            display: contents;
+        }
+
+        .heatmap-label {
+            padding: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            font-weight: 500;
+            white-space: nowrap;
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .heatmap-label.left {
+            text-align: left;
+            min-width: 150px;
+        }
+
+        .heatmap-cell {
+            padding: 1rem;
+            text-align: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 500;
+            min-width: 100px;
+            border: 1px solid rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60px;
+            transition: all 0.2s;
+        }
+
+        .heatmap-cell:hover {
+            filter: brightness(1.1);
+        }
+
+        .heatmap-cell.critical {
+            background: var(--rosso);
+            color: var(--ecru);
+        }
+
+        .heatmap-cell.warning {
+            background: var(--quetzal);
+            color: var(--ecru);
+        }
+
+        .heatmap-cell.strong {
+            background: var(--quetzal-bright);
+            color: var(--nuit);
+        }
+
+        /* Findings */
+        .findings-list {
+            list-style: none;
+        }
+
+        .findings-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--ecru-ghost);
+            font-size: 1rem;
+            line-height: 1.8;
+            animation: slideIn 0.4s ease;
+        }
+
+        .findings-list li:last-child {
+            border-bottom: none;
+        }
+
+        .finding-key {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+        }
+
+        .finding-value {
+            color: var(--ecru);
+        }
+
+        .cost-highlight {
+            background: rgba(196,30,58,0.15);
+            border: 1px solid var(--rosso);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            color: var(--ecru);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .cost-amount {
+            font-family: 'Imbue', serif;
+            font-size: 2rem;
+            color: var(--rosso);
+            font-weight: 900;
+            margin: 0.5rem 0;
+        }
+
+        .recommendation-box {
+            background: rgba(0,168,150,0.1);
+            border: 1px solid var(--quetzal-bright);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            color: var(--ecru);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-header {
+                font-size: 1.4rem;
+            }
+
+            .segments-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .score-section {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .heatmap-label {
+                min-width: 80px;
+                font-size: 0.7rem;
+            }
+
+            .heatmap-cell {
+                min-width: 80px;
+                padding: 0.75rem;
+                font-size: 0.75rem;
+                min-height: 50px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .nav-top {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .section-header {
+                font-size: 1.2rem;
+            }
+
+            .card, .channel-row, .result-card {
+                padding: 1rem;
+            }
+
+            .score-section {
+                grid-template-columns: 1fr;
+                padding: 0.75rem;
+            }
+
+            .heatmap-label {
+                min-width: 60px;
+                font-size: 0.65rem;
+                padding: 0.5rem;
+            }
+
+            .heatmap-cell {
+                min-width: 60px;
+                padding: 0.5rem;
+                font-size: 0.65rem;
+                min-height: 45px;
+            }
+
+            .cost-amount {
+                font-size: 1.5rem;
+            }
+        }
+
+        .no-results-message {
+            color: var(--ecru-dim);
+            font-style: normal;
+            padding: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-top">
+        <a href="../enterprise-newsletter-architecture.html" class="nav-back">← Back to Case Study</a>
+        <a href="/" class="nav-home">Main Site</a>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <span class="tool-label">Interactive Tool</span>
+            <h1>CHANNEL AUDIT DIAGNOSTIC</h1>
+            <p class="subtitle">Score your internal communication channels. Find the gaps. Build the case.</p>
+        </div>
+
+        <div class="intro-section">
+            <p>Add each communication channel your organization uses. Score it across three dimensions for each audience segment. The diagnostic will identify your coverage gaps and recommend where to invest.</p>
+        </div>
+
+        <form id="auditForm">
+            <!-- Step 1: Audience Segments -->
+            <h2 class="section-header">Step 1: Define Your Audience Segments</h2>
+            <div class="segments-grid" id="segmentsContainer">
+                <!-- Populated by JS -->
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Step 2: Add Channels -->
+            <h2 class="section-header">Step 2: Score Your Channels</h2>
+            <div class="channels-list" id="channelsContainer">
+                <!-- Populated by JS -->
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn" id="addChannelBtn">+ Add Channel</button>
+                <button type="button" class="btn btn-primary" id="runDiagnosticBtn">Run Diagnostic</button>
+            </div>
+        </form>
+
+        <!-- Results Section -->
+        <div class="results-section" id="resultsSection">
+            <h2 class="section-header">Diagnostic Results</h2>
+
+            <!-- Heat Map -->
+            <div class="result-card">
+                <h3>Coverage Heat Map</h3>
+                <p class="no-results-message" style="margin-bottom: 1rem;">Each cell shows the combined score for that channel reaching that audience segment.</p>
+                <div class="heatmap-container">
+                    <div class="heatmap" id="heatmapContainer">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                <div style="margin-top: 1rem; font-size: 0.9rem; color: var(--ecru-dim); display: flex; gap: 2rem; flex-wrap: wrap;">
+                    <div><span style="display: inline-block; width: 20px; height: 20px; background: var(--rosso); margin-right: 0.5rem; vertical-align: middle;"></span>0-3: Critical Gap</div>
+                    <div><span style="display: inline-block; width: 20px; height: 20px; background: var(--quetzal); margin-right: 0.5rem; vertical-align: middle;"></span>4-6: Needs Attention</div>
+                    <div><span style="display: inline-block; width: 20px; height: 20px; background: var(--quetzal-bright); margin-right: 0.5rem; vertical-align: middle;"></span>7-10: Strong Coverage</div>
+                </div>
+            </div>
+
+            <!-- Key Findings -->
+            <div class="result-card">
+                <h3>Key Findings</h3>
+                <ul class="findings-list" id="findingsList">
+                    <!-- Populated by JS -->
+                </ul>
+            </div>
+
+            <!-- Cost of Gaps -->
+            <div class="result-card">
+                <h3>Estimated Cost of Gaps</h3>
+                <p style="margin-bottom: 1rem;">Industry research estimates poor workplace communication costs <strong>$12,506 per employee annually</strong>. Based on your audit:</p>
+                <div class="cost-highlight" id="costHighlight">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Recommendations -->
+            <div class="result-card">
+                <h3>Recommendations</h3>
+                <div id="recommendationBox">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn btn-secondary" id="resetBtn">Reset Audit</button>
+                <button type="button" class="btn" id="printBtn">Print Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Default data
+        const defaultSegments = [
+            'Desk-Based Employees',
+            'Field/Deskless Employees',
+            'Regional/Distributed Teams',
+            'Department Leaders'
+        ];
+
+        const defaultChannels = [
+            'Email Newsletter',
+            'Slack/Teams/Chat',
+            'Company-Wide Meeting',
+            'Intranet/Portal',
+            'Manager Cascade',
+            'Digital Signage'
+        ];
+
+        const maxChannels = 12;
+        let state = {
+            segments: [...defaultSegments],
+            channels: defaultChannels.map(name => ({
+                name: name,
+                scores: {}
+            }))
+        };
+
+        // Initialize segments
+        function initSegments() {
+            state.segments.forEach((seg, idx) => {
+                state.channels.forEach(ch => {
+                    if (!ch.scores[idx]) {
+                        ch.scores[idx] = { frequency: 'None', reach: '0-25%', importance: '0' };
+                    }
+                });
+            });
+        }
+
+        // Render segments
+        function renderSegments() {
+            const container = document.getElementById('segmentsContainer');
+            container.innerHTML = '';
+            state.segments.forEach((seg, idx) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <label class="segment-label">Audience Segment ${idx + 1}</label>
+                    <input type="text" class="segment-input" value="${seg}" data-idx="${idx}">
+                `;
+                container.appendChild(card);
+
+                card.querySelector('input').addEventListener('change', (e) => {
+                    state.segments[idx] = e.target.value;
+                    renderChannels();
+                });
+            });
+        }
+
+        // Render channels
+        function renderChannels() {
+            const container = document.getElementById('channelsContainer');
+            container.innerHTML = '';
+            state.channels.forEach((ch, chIdx) => {
+                const row = document.createElement('div');
+                row.className = 'channel-row';
+                row.innerHTML = `
+                    <div class="channel-name-wrapper">
+                        <label class="input-label">Channel Name</label>
+                        <input type="text" class="channel-name-input" value="${ch.name}" data-idx="${chIdx}">
+                    </div>
+                    <div class="scoring-grid">
+                        ${state.segments.map((seg, segIdx) => {
+                            const scores = ch.scores[segIdx] || { frequency: 'None', reach: '0-25%', importance: '0' };
+                            return `
+                                <div class="score-section">
+                                    <div class="score-subheader">${seg}</div>
+                                    <div class="score-item">
+                                        <label class="score-label">Frequency</label>
+                                        <div class="score-buttons">
+                                            ${['None', 'Monthly', 'Weekly', 'Daily'].map(opt => `
+                                                <button type="button" class="score-btn ${scores.frequency === opt ? 'active' : ''}" data-ch="${chIdx}" data-seg="${segIdx}" data-field="frequency" data-value="${opt}">${opt}</button>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                    <div class="score-item">
+                                        <label class="score-label">Reach</label>
+                                        <div class="score-buttons">
+                                            ${['0-25%', '25-50%', '50-75%', '75-100%'].map(opt => `
+                                                <button type="button" class="score-btn ${scores.reach === opt ? 'active' : ''}" data-ch="${chIdx}" data-seg="${segIdx}" data-field="reach" data-value="${opt}">${opt}</button>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                    <div class="score-item">
+                                        <label class="score-label">Importance</label>
+                                        <div class="score-buttons">
+                                            ${['0: Irrelevant', '1: Inspirational', '2: Important', '3: Essential'].map((opt, i) => `
+                                                <button type="button" class="score-btn ${scores.importance === String(i) ? 'active' : ''}" data-ch="${chIdx}" data-seg="${segIdx}" data-field="importance" data-value="${i}">${opt}</button>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                    ${state.channels.length > 1 ? `<button type="button" class="remove-btn" data-idx="${chIdx}">Remove Channel</button>` : ''}
+                `;
+                container.appendChild(row);
+
+                row.querySelector('input').addEventListener('change', (e) => {
+                    state.channels[chIdx].name = e.target.value;
+                });
+
+                row.querySelectorAll('.score-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const ch = parseInt(btn.dataset.ch);
+                        const seg = parseInt(btn.dataset.seg);
+                        const field = btn.dataset.field;
+                        const value = btn.dataset.value;
+                        state.channels[ch].scores[seg][field] = value;
+                        renderChannels();
+                    });
+                });
+
+                if (state.channels.length > 1) {
+                    row.querySelector('.remove-btn').addEventListener('click', (e) => {
+                        e.preventDefault();
+                        state.channels.splice(chIdx, 1);
+                        renderChannels();
+                    });
+                }
+            });
+        }
+
+        // Add channel
+        document.getElementById('addChannelBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            if (state.channels.length < maxChannels) {
+                const newChannel = {
+                    name: `Channel ${state.channels.length + 1}`,
+                    scores: {}
+                };
+                state.segments.forEach((_, idx) => {
+                    newChannel.scores[idx] = { frequency: 'None', reach: '0-25%', importance: '0' };
+                });
+                state.channels.push(newChannel);
+                renderChannels();
+            }
+        });
+
+        // Scoring logic
+        function getFrequencyScore(freq) {
+            const map = { 'None': 0, 'Monthly': 1, 'Weekly': 2, 'Daily': 3 };
+            return map[freq] || 0;
+        }
+
+        function getReachScore(reach) {
+            const map = { '0-25%': 1, '25-50%': 2, '50-75%': 3, '75-100%': 4 };
+            return map[reach] || 0;
+        }
+
+        function getImportanceScore(imp) {
+            return parseInt(imp) || 0;
+        }
+
+        function calculateScore(frequency, reach, importance) {
+            return getFrequencyScore(frequency) + getReachScore(reach) + getImportanceScore(importance);
+        }
+
+        // Run diagnostic
+        document.getElementById('runDiagnosticBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const segmentScores = {};
+            const channelScores = {};
+            const heatmapData = [];
+
+            state.segments.forEach((seg, segIdx) => {
+                let segTotal = 0;
+                let segCount = 0;
+                state.channels.forEach((ch, chIdx) => {
+                    const scores = ch.scores[segIdx];
+                    const score = calculateScore(scores.frequency, scores.reach, scores.importance);
+                    heatmapData.push({ ch: chIdx, seg: segIdx, score, chName: ch.name, segName: seg });
+                    segTotal += score;
+                    segCount++;
+                });
+                segmentScores[segIdx] = segCount > 0 ? (segTotal / segCount).toFixed(1) : 0;
+            });
+
+            state.channels.forEach((ch, chIdx) => {
+                let chTotal = 0;
+                let chCount = 0;
+                state.segments.forEach((seg, segIdx) => {
+                    const scores = ch.scores[segIdx];
+                    const score = calculateScore(scores.frequency, scores.reach, scores.importance);
+                    chTotal += score;
+                    chCount++;
+                });
+                channelScores[chIdx] = chCount > 0 ? (chTotal / chCount).toFixed(1) : 0;
+            });
+
+            // Render heatmap
+            const heatmapContainer = document.getElementById('heatmapContainer');
+            heatmapContainer.innerHTML = '';
+
+            const headerRow = document.createElement('div');
+            headerRow.className = 'heatmap-header';
+            headerRow.innerHTML = '<div class="heatmap-label left"></div>';
+            state.segments.forEach(seg => {
+                const label = document.createElement('div');
+                label.className = 'heatmap-label';
+                label.textContent = seg;
+                headerRow.appendChild(label);
+            });
+            heatmapContainer.appendChild(headerRow);
+
+            state.channels.forEach((ch, chIdx) => {
+                const chNameLabel = document.createElement('div');
+                chNameLabel.className = 'heatmap-label left';
+                chNameLabel.textContent = ch.name;
+                heatmapContainer.appendChild(chNameLabel);
+
+                state.segments.forEach((seg, segIdx) => {
+                    const cell = document.createElement('div');
+                    const score = heatmapData.find(d => d.ch === chIdx && d.seg === segIdx).score;
+                    let className = 'heatmap-cell';
+                    if (score <= 3) className += ' critical';
+                    else if (score <= 6) className += ' warning';
+                    else className += ' strong';
+                    cell.className = className;
+                    cell.textContent = score;
+                    heatmapContainer.appendChild(cell);
+                });
+            });
+
+            // Generate findings
+            const findingsList = document.getElementById('findingsList');
+            findingsList.innerHTML = '';
+
+            const sortedSegments = Object.entries(segmentScores).sort((a, b) => b[1] - a[1]);
+            const highestSeg = state.segments[parseInt(sortedSegments[0][0])];
+            const highestScore = sortedSegments[0][1];
+            const lowestSeg = state.segments[parseInt(sortedSegments[sortedSegments.length - 1][0])];
+            const lowestScore = sortedSegments[sortedSegments.length - 1][1];
+
+            const sortedChannels = Object.entries(channelScores).sort((a, b) => b[1] - a[1]);
+            const strongestCh = state.channels[parseInt(sortedChannels[0][0])].name;
+            const strongestScore = sortedChannels[0][1];
+            const weakestCh = state.channels[parseInt(sortedChannels[sortedChannels.length - 1][0])].name;
+            const weakestScore = sortedChannels[sortedChannels.length - 1][1];
+
+            const criticalGaps = heatmapData.filter(d => d.score <= 3).length;
+
+            const findings = [
+                { key: 'Highest Coverage Audience', value: `${highestSeg} with average score of ${highestScore}` },
+                { key: 'Lowest Coverage Audience', value: `${lowestSeg} with average score of ${lowestScore}` },
+                { key: 'Strongest Channel', value: `${strongestCh} with average score of ${strongestScore}` },
+                { key: 'Weakest Channel', value: `${weakestCh} with average score of ${weakestScore}` },
+                { key: 'Critical Gaps Detected', value: `${criticalGaps} channel-audience combinations score below 4` }
+            ];
+
+            let redFlagFound = false;
+            state.segments.forEach((seg, segIdx) => {
+                const segChannels = state.channels.filter((ch, chIdx) => {
+                    const scores = ch.scores[segIdx];
+                    const score = calculateScore(scores.frequency, scores.reach, scores.importance);
+                    return score > 6;
+                });
+                if (segChannels.length === 0) {
+                    findings.push({ key: 'Red Flag', value: `${seg} has no reliable communication channel reaching them consistently` });
+                    redFlagFound = true;
+                }
+            });
+
+            findings.forEach(f => {
+                const li = document.createElement('li');
+                li.innerHTML = `<span class="finding-key">${f.key}</span><span class="finding-value">${f.value}</span>`;
+                findingsList.appendChild(li);
+            });
+
+            // Cost calculation
+            const costHighlight = document.getElementById('costHighlight');
+            const estimatedCost = criticalGaps * 12506;
+            costHighlight.innerHTML = `
+                <p><strong>Estimated annual cost impact from critical gaps:</strong></p>
+                <div class="cost-amount">$${estimatedCost.toLocaleString()}</div>
+                <p style="margin-top: 1rem; font-size: 0.9rem;">This estimate assumes each critical gap affects approximately 1 employee. Your actual number depends on audience size and channel scope. This is directional, not precise, but it quantifies the conversation.</p>
+            `;
+
+            // Recommendations
+            const recBox = document.getElementById('recommendationBox');
+            let recText = '';
+
+            const lowestSegIdx = parseInt(sortedSegments[sortedSegments.length - 1][0]);
+            const lowestSegName = state.segments[lowestSegIdx];
+
+            if (lowestSegName.includes('Field') || lowestSegName.includes('Deskless')) {
+                recText = `<p><strong>Your deskless workforce is your most underserved audience.</strong> They scored lowest across channels. Consider email or SMS as your first investment for this group, they scored highest for reach and analytics in channel mix research. Many deskless workers lack consistent access to chat or intranet tools.</p>`;
+            } else if (lowestSegName.includes('Leader') || lowestSegName.includes('Department')) {
+                recText = `<p><strong>Your leadership team lacks consistent communication channels.</strong> Consider a dedicated leadership digest or structured cascade system to ensure alignment flows downward. A weekly leader briefing or async video series could fill this gap.</p>`;
+            } else {
+                recText = `<p><strong>Focus on channels that score high across reach, analytics and storytelling.</strong> These three dimensions matter most for sustained engagement. Prioritize channels where your lowest-scoring audience spends their time.</p>`;
+            }
+
+            recBox.innerHTML = `<div class="recommendation-box">${recText}</div>`;
+
+            // Show results
+            document.getElementById('resultsSection').classList.add('show');
+            document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        // Reset
+        document.getElementById('resetBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            state.segments = [...defaultSegments];
+            state.channels = defaultChannels.map(name => ({
+                name: name,
+                scores: {}
+            }));
+            initSegments();
+            renderSegments();
+            renderChannels();
+            document.getElementById('resultsSection').classList.remove('show');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Print
+        document.getElementById('printBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.print();
+        });
+
+        // Initialize
+        initSegments();
+        renderSegments();
+        renderChannels();
+    </script>
+</body>
+</html>
