@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Channel Mix Matrix | Enterprise Newsletter Architecture</title>
+  <link href="https://fonts.googleapis.com/css2?family=Imbue:wght@900&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --nuit: #121A28;
+      --cacao: #2D1B14;
+      --quetzal: #00685E;
+      --quetzal-bright: #00A896;
+      --ecru: #F5F5DC;
+      --rosso: #C41E3A;
+      --ecru-dim: rgba(245,245,220,0.6);
+      --ecru-ghost: rgba(245,245,220,0.08);
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--nuit) 0%, var(--cacao) 100%);
+      color: var(--ecru);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 168, 150, 0.03) 2px,
+          rgba(0, 168, 150, 0.03) 4px
+        );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 80px 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(18, 26, 40, 0.95);
+      border-bottom: 1px solid rgba(245, 245, 220, 0.1);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+
+    nav a {
+      color: var(--ecru);
+      text-decoration: none;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--quetzal-bright);
+    }
+
+    .nav-left {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 30px;
+    }
+
+    header {
+      margin-bottom: 60px;
+      border-top: 3px solid var(--quetzal-bright);
+      padding-top: 30px;
+    }
+
+    h1 {
+      font-family: 'Imbue', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--ecru-dim);
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+
+    .download-btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: var(--quetzal-bright);
+      color: var(--nuit);
+      text-decoration: none;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    .download-btn:hover {
+      background: var(--quetzal);
+      transform: translateX(2px);
+    }
+
+    .doc-content {
+      padding-left: 22%;
+    }
+
+    section {
+      margin-bottom: 80px;
+      opacity: 0;
+      animation: slideIn 0.6s ease-out forwards;
+    }
+
+    section:nth-child(1) { animation-delay: 0.1s; }
+    section:nth-child(2) { animation-delay: 0.2s; }
+    section:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      font-family: 'Imbue', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      color: var(--quetzal-bright);
+      letter-spacing: -0.5px;
+    }
+
+    h3 {
+      font-family: 'Imbue', serif;
+      font-size: 1.2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin: 40px 0 20px 0;
+      color: var(--ecru-dim);
+      letter-spacing: 0.5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 40px;
+      background: rgba(245, 245, 220, 0.08);
+      border: 1px solid rgba(245, 245, 220, 0.1);
+      font-size: 0.9rem;
+    }
+
+    thead {
+      background: rgba(0, 168, 150, 0.15);
+      border-bottom: 2px solid var(--quetzal-bright);
+    }
+
+    th {
+      padding: 16px 14px;
+      text-align: left;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: var(--quetzal-bright);
+    }
+
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(245, 245, 220, 0.05);
+      font-size: 0.85rem;
+    }
+
+    tbody tr:hover {
+      background: rgba(0, 168, 150, 0.08);
+    }
+
+    .rating {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .good {
+      color: var(--quetzal-bright);
+    }
+
+    .medium {
+      color: #F5A623;
+    }
+
+    .bad {
+      color: var(--rosso);
+    }
+
+    .key-section {
+      background: rgba(245, 245, 220, 0.08);
+      border-left: 4px solid var(--quetzal-bright);
+      padding: 30px;
+      margin: 40px 0;
+    }
+
+    .key-section h4 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--quetzal-bright);
+      margin-bottom: 15px;
+    }
+
+    .key-section h5 {
+      font-family: 'Imbue', serif;
+      font-size: 1.1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--ecru);
+      margin: 20px 0 15px 0;
+    }
+
+    .key-section p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--ecru);
+      margin-bottom: 15px;
+    }
+
+    .explanation-box {
+      background: rgba(0, 168, 150, 0.08);
+      border: 1px solid rgba(0, 168, 150, 0.2);
+      padding: 25px;
+      margin: 40px 0;
+    }
+
+    .explanation-box h4 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--quetzal-bright);
+      margin-bottom: 15px;
+    }
+
+    .explanation-box p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--ecru);
+    }
+
+    @media (max-width: 900px) {
+      .doc-content {
+        padding-left: 0;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .container {
+        padding: 120px 30px 80px 30px;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .nav-left, .nav-right {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      table {
+        font-size: 0.8rem;
+      }
+
+      th, td {
+        padding: 8px 10px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+      }
+
+      .container {
+        padding: 120px 20px 60px 20px;
+      }
+
+      table {
+        font-size: 0.7rem;
+      }
+
+      th, td {
+        padding: 6px 8px;
+      }
+
+      .key-section {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-left">
+      <a href="../enterprise-newsletter-architecture.html">... back</a>
+    </div>
+    <div class="nav-right">
+      <a href="/">main site</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <header>
+      <h1>Channel Mix Matrix</h1>
+      <p class="subtitle">Comparative analysis of communication channels across eight critical dimensions at a $1B+ industrial technology company.</p>
+      <a href="templates/channel-mix-matrix-blank.html" class="download-btn" target="_blank" rel="noopener noreferrer">Download Blank Template &darr;</a>
+    </header>
+
+    <div class="doc-content">
+      <section>
+        <h2>Channel Capability Matrix</h2>
+        <p style="margin-bottom: 20px; color: var(--ecru-dim);">Each channel evaluated on critical dimensions: reach, real-time capability, interactivity, analytics, storytelling, media richness, local relevance and cost efficiency.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Channel</th>
+              <th>Reach</th>
+              <th>Real-Time</th>
+              <th>Interaction</th>
+              <th>Analytics</th>
+              <th>Storytelling</th>
+              <th>Media Richness</th>
+              <th>Local Relevance</th>
+              <th>Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Personal Conversation</strong></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating good">Good</span></td>
+            </tr>
+            <tr>
+              <td><strong>Email</strong></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating good">Good</span></td>
+            </tr>
+            <tr>
+              <td><strong>Intranet</strong></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating medium">Medium</span></td>
+            </tr>
+            <tr>
+              <td><strong>Staff Meeting</strong></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating medium">Medium</span></td>
+            </tr>
+            <tr>
+              <td><strong>Digital Signage</strong></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating medium">Medium</span></td>
+            </tr>
+            <tr>
+              <td><strong>Internal Video</strong></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating medium">Medium</span></td>
+            </tr>
+            <tr>
+              <td><strong>Internal Podcast</strong></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating medium">Medium</span></td>
+            </tr>
+            <tr>
+              <td><strong>Employee Event</strong></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating bad">Bad</span></td>
+            </tr>
+            <tr>
+              <td><strong>Home Address Mailer</strong></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating medium">Medium</span></td>
+            </tr>
+            <tr>
+              <td><strong>Bulletin Board</strong></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating good">Good</span></td>
+            </tr>
+            <tr>
+              <td><strong>Employee Magazine</strong></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating bad">Bad</span></td>
+            </tr>
+            <tr>
+              <td><strong>Text / SMS</strong></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating good">Good</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating bad">Bad</span></td>
+              <td><span class="rating medium">Medium</span></td>
+              <td><span class="rating medium">Medium</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Media Richness Spectrum</h2>
+        <div class="richness-diagram" style="margin: 30px 0 40px 0; padding: 30px 20px;">
+          <!-- Spectrum labels -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 600; color: var(--quetzal-bright); letter-spacing: 0.15em; text-transform: uppercase;">Lean</span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 600; color: var(--quetzal-bright); letter-spacing: 0.15em; text-transform: uppercase;">Rich</span>
+          </div>
+          <!-- Spectrum line -->
+          <div style="position: relative; height: 2px; background: var(--quetzal); margin-bottom: 0;">
+            <div style="position: absolute; left: 0; top: -3px; width: 8px; height: 8px; background: var(--quetzal-bright);"></div>
+            <div style="position: absolute; right: 0; top: -3px; width: 8px; height: 8px; background: var(--quetzal-bright);"></div>
+          </div>
+          <!-- Channel positions -->
+          <div style="display: flex; justify-content: space-between; margin-top: 0; position: relative;">
+            <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+              <div style="width: 1px; height: 16px; background: var(--quetzal);"></div>
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--rosso); text-align: center; margin-top: 4px; font-weight: 500;">Email *</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+              <div style="width: 1px; height: 16px; background: var(--quetzal);"></div>
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--ecru-dim); text-align: center; margin-top: 4px;">Text/SMS</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+              <div style="width: 1px; height: 16px; background: var(--quetzal);"></div>
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--ecru-dim); text-align: center; margin-top: 4px;">Bulletin Board</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+              <div style="width: 1px; height: 16px; background: var(--quetzal);"></div>
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--ecru-dim); text-align: center; margin-top: 4px;">Intranet</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+              <div style="width: 1px; height: 16px; background: var(--quetzal);"></div>
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--ecru-dim); text-align: center; margin-top: 4px;">Digital Signage</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+              <div style="width: 1px; height: 16px; background: var(--quetzal);"></div>
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--ecru-dim); text-align: center; margin-top: 4px;">Video</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+              <div style="width: 1px; height: 16px; background: var(--quetzal);"></div>
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--ecru-dim); text-align: center; margin-top: 4px;">Staff Meeting</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+              <div style="width: 1px; height: 16px; background: var(--quetzal);"></div>
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--ecru-dim); text-align: center; margin-top: 4px;">In-Person</span>
+            </div>
+          </div>
+          <!-- Annotation -->
+          <div style="margin-top: 20px; padding: 12px 16px; border-left: 3px solid var(--rosso); font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: var(--rosso);">
+            * Email selected for enterprise newsletter: lean delivery with high reach, measurable analytics and narrative depth.
+          </div>
+        </div>
+        <div class="explanation-box">
+          <h4>Understanding Media Richness</h4>
+          <p>Media richness refers to the capacity of different media to carry information and emotions. Rich media (face-to-face conversations, video calls) support complex conversations with immediate feedback. Lean media (email, text) reduce noise and information overload by filtering messages to essentials. The general rule: the less the chance of misunderstanding, the leaner the media you can use.</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="key-section">
+          <h4>Key Finding</h4>
+          <p><strong>Email scored GOOD across reach, analytics and storytelling.</strong> The three dimensions that matter most for a weekly enterprise newsletter. It was the only channel combining high reach with measurable engagement data and narrative depth. This finding guided the recommendation to position email as the primary carrier for enterprise-wide content, supported by supplementary channels for local relevance.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
