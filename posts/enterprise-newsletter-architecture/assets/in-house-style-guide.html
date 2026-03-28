@@ -3,321 +3,527 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <title>In-House Style Guide | Enterprise Newsletter Architecture</title>
+  <link href="https://fonts.googleapis.com/css2?family=Imbue:wght@900&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --nuit: #121A28;
+      --cacao: #2D1B14;
+      --quetzal: #00685E;
+      --quetzal-bright: #00A896;
+      --ecru: #F5F5DC;
+      --rosso: #C41E3A;
+      --ecru-dim: rgba(245,245,220,0.6);
+      --ecru-ghost: rgba(245,245,220,0.08);
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--nuit) 0%, var(--cacao) 100%);
+      color: var(--ecru);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 168, 150, 0.03) 2px,
+          rgba(0, 168, 150, 0.03) 4px
+        );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 80px 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(18, 26, 40, 0.95);
+      border-bottom: 1px solid rgba(245, 245, 220, 0.1);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+
+    nav a {
+      color: var(--ecru);
+      text-decoration: none;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--quetzal-bright);
+    }
+
+    .nav-left {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 30px;
+    }
+
+    header {
+      margin-bottom: 60px;
+      border-top: 3px solid var(--quetzal-bright);
+      padding-top: 30px;
+    }
+
+    h1 {
+      font-family: 'Imbue', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--ecru-dim);
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+
+    .doc-content {
+      padding-left: 22%;
+    }
+
+    section {
+      margin-bottom: 80px;
+      opacity: 0;
+      animation: slideIn 0.6s ease-out forwards;
+    }
+
+    section:nth-child(1) { animation-delay: 0.1s; }
+    section:nth-child(2) { animation-delay: 0.2s; }
+    section:nth-child(3) { animation-delay: 0.3s; }
+    section:nth-child(4) { animation-delay: 0.4s; }
+    section:nth-child(5) { animation-delay: 0.5s; }
+    section:nth-child(6) { animation-delay: 0.6s; }
+    section:nth-child(7) { animation-delay: 0.7s; }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      font-family: 'Imbue', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      color: var(--quetzal-bright);
+      letter-spacing: -0.5px;
+    }
+
+    h3 {
+      font-family: 'Imbue', serif;
+      font-size: 1.1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin: 30px 0 15px 0;
+      color: var(--ecru-dim);
+      letter-spacing: 0.5px;
+    }
+
+    .guide-box {
+      background: rgba(245, 245, 220, 0.08);
+      border-left: 4px solid var(--quetzal-bright);
+      padding: 25px;
+      margin: 20px 0;
+    }
+
+    .guide-box p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--ecru);
+    }
+
+    .style-list {
+      list-style: none;
+      margin: 20px 0;
+    }
+
+    .style-list li {
+      padding: 10px 0;
+      padding-left: 20px;
+      position: relative;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .style-list li:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 14px;
+      width: 4px;
+      height: 4px;
+      background: var(--quetzal-bright);
+    }
+
+    .example-block {
+      background: rgba(0, 168, 150, 0.08);
+      border: 1px solid rgba(0, 168, 150, 0.2);
+      padding: 20px;
+      margin: 15px 0;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+    }
+
+    .example-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--quetzal-bright);
+      margin-bottom: 8px;
+    }
+
+    .example-right {
+      color: var(--quetzal-bright);
+    }
+
+    .example-wrong {
+      color: var(--rosso);
+      text-decoration: line-through;
+    }
+
+    .voldemort-list {
+      list-style: none;
+      margin: 20px 0;
+    }
+
+    .voldemort-item {
+      background: rgba(196, 30, 58, 0.08);
+      border-left: 3px solid var(--rosso);
+      padding: 15px;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+    }
+
+    .voldemort-item strong {
+      color: var(--rosso);
+      font-weight: 500;
+    }
+
+    .voldemort-item .instead {
+      color: var(--quetzal-bright);
+      margin-top: 5px;
+      font-size: 0.85rem;
+    }
+
+    .approval-flow {
+      background: rgba(0, 168, 150, 0.08);
+      border: 1px solid rgba(0, 168, 150, 0.2);
+      padding: 25px;
+      margin: 30px 0;
+    }
+
+    .approval-step {
+      display: flex;
+      align-items: center;
+      padding: 12px 0;
+      font-size: 0.9rem;
+    }
+
+    .approval-step:not(:last-child) {
+      border-bottom: 1px solid rgba(245, 245, 220, 0.05);
+    }
+
+    .step-number {
+      font-family: 'Imbue', serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--quetzal-bright);
+      margin-right: 20px;
+      min-width: 30px;
+    }
+
+    .step-text {
+      flex: 1;
+    }
+
+    .arrow {
+      color: var(--quetzal-bright);
+      margin: 0 15px;
+    }
+
+    .reference-note {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--ecru-dim);
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(245, 245, 220, 0.1);
+    }
+
+    @media (max-width: 900px) {
+      .doc-content {
+        padding-left: 0;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .container {
+        padding: 120px 30px 80px 30px;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .nav-left, .nav-right {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .approval-step {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .step-number {
+        margin-bottom: 10px;
+      }
+
+      .arrow {
+        display: none;
+      }
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+      }
+
+      .container {
+        padding: 120px 20px 60px 20px;
+      }
+
+      .guide-box,
+      .approval-flow {
+        padding: 15px;
+      }
+
+      .example-block {
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-left">
+      <a href="../enterprise-newsletter-architecture.html">... back</a>
+    </div>
+    <div class="nav-right">
+      <a href="/">main site</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <header>
+      <h1>In-House Style Guide</h1>
+      <p class="subtitle">Applied example of the style standards, tone guidelines and approval process for enterprise newsletter communications.</p>
+    </header>
+
+    <div class="doc-content">
+      <section>
+        <h2>Voice & Tone</h2>
+        <div class="guide-box">
+          <p><strong>Conversational, relatable, industry leader.</strong> Easy to read, to the point. Make it clear the organization is the subject matter expert. Hook the reader by making even dry subjects entertaining.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Style Standards</h2>
+        <div class="guide-box">
+          <p>AP Style and Merriam-Webster Dictionary as baseline. Apply modifications in sections below.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Capitalization Rules</h2>
+        <ul class="style-list">
+          <li>Titles capitalized when directly preceding a name. "Director of Operations [Name]" not "director of operations [Name]." Lowercase when standing alone: "the director of operations sent the memo."</li>
+          <li>Product names and services always capitalized. "The Dig" always capitalized</li>
+          <li>Published works follow standard title case rules</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Punctuation</h2>
+        <ul class="style-list">
+          <li>No Oxford comma. Write "red, white and blue" not "red, white, and blue"</li>
+          <li>Hyphens for compound modifiers before a noun. "high-performing teams" but "teams that are high performing"</li>
+          <li>Punctuation inside quotation marks. She said, "I agree."</li>
+          <li>Use "said" not "says" for attribution in past tense reporting</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Numbers</h2>
+        <ul class="style-list">
+          <li><strong>Headlines:</strong> numerals for all numbers. "2 Ways to..." not "Two Ways to..."</li>
+          <li><strong>Body copy:</strong> write out numbers below 10, numerals for 10 and above. "five people attended" but "12 people attended"</li>
+          <li><strong>Dollar amounts:</strong> always numerals. "$500,000" not "five hundred thousand dollars"</li>
+          <li><strong>Percentages:</strong> always numerals with %. "47%" not "forty-seven percent"</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>The Voldemort List</h2>
+        <p style="margin-bottom: 20px; color: var(--ecru-dim);">Words and phrases never to use. These phrases carry brand baggage or misalign with our positioning.</p>
+
+        <div class="voldemort-list">
+          <div class="voldemort-item">
+            <strong>Do NOT use:</strong> surveillance language ("tracking people," "monitoring employees")
+            <div class="instead">Instead use: "asset visibility," "workforce management," "operational oversight"</div>
+          </div>
+          <div class="voldemort-item">
+            <strong>Do NOT use:</strong> "sell" when describing technology adoption
+            <div class="instead">Instead use: "educate," "enable," "empower"</div>
+          </div>
+          <div class="voldemort-item">
+            <strong>Do NOT use:</strong> "family" for the employee relationship
+            <div class="instead">Instead use: "team." Family implies obligation without boundaries.</div>
+          </div>
+          <div class="voldemort-item">
+            <strong>Do NOT use:</strong> "corporate" as a noun
+            <div class="instead">Instead use: "HQ," "Home Office" or "the leadership team"</div>
+          </div>
+          <div class="voldemort-item">
+            <strong>Do NOT use:</strong> informal job titles when formal ones exist
+            <div class="instead">Use the accurate, professional title. "Customer Success Manager" not "account rep." "Facilities Coordinator" not "the maintenance guy."</div>
+          </div>
+          <div class="voldemort-item">
+            <strong>Do NOT use:</strong> "nationwide" or other scope claims without specifics
+            <div class="instead">Instead use: specific regions, market counts or "across all locations"</div>
+          </div>
+          <div class="voldemort-item">
+            <strong>Do NOT use:</strong> "synergy," "best-in-class," "world-class," "cutting-edge"
+            <div class="instead">Say what it does. If you cannot describe it without a buzzword, you do not understand it yet.</div>
+          </div>
+          <div class="voldemort-item">
+            <strong>Do NOT use:</strong> "stakeholder alignment" or "circle back"
+            <div class="instead">Name the people. Name the action. "The ops team will review by Friday."</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Approval Process</h2>
+        <div class="approval-flow">
+          <div class="approval-step">
+            <div class="step-number">1</div>
+            <div class="step-text">Writer develops outline</div>
+          </div>
+          <div class="approval-step">
+            <div class="step-number">2</div>
+            <div class="step-text">Senior Editor review</div>
+          </div>
+          <div class="approval-step">
+            <div class="step-number">3</div>
+            <div class="step-text">Draft with Subject Matter Expert</div>
+          </div>
+          <div class="approval-step">
+            <div class="step-number">4</div>
+            <div class="step-text">Peer review</div>
+          </div>
+          <div class="approval-step">
+            <div class="step-number">5</div>
+            <div class="step-text">Senior Editor tone/voice/style check</div>
+          </div>
+          <div class="approval-step">
+            <div class="step-number">6</div>
+            <div class="step-text">Director approval</div>
+          </div>
+          <div class="approval-step">
+            <div class="step-number">7</div>
+            <div class="step-text">Legal review</div>
+          </div>
+          <div class="approval-step">
+            <div class="step-number">8</div>
+            <div class="step-text">Publish</div>
+          </div>
+        </div>
+        <p style="margin-top: 20px; color: var(--ecru-dim); font-size: 0.9rem;">This process ensures consistency in voice, accuracy of information and alignment with organizational standards before any communication reaches our audience.</p>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
