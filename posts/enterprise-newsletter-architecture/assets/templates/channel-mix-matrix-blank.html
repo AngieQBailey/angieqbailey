@@ -3,158 +3,412 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <title>Channel Mix Matrix - Blank Template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500&family=Imbue:wght@900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --nuit: #121A28;
+      --cacao: #2D1B14;
+      --quetzal: #00685E;
+      --ecru: #F5F5DC;
+      --rosso: #C41E3A;
+      --text: #1a1a1a;
+      --text-dim: #555;
+      --border: #d4d0c8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--ecru);
+      color: var(--text);
+      font-family: "IBM Plex Sans", sans-serif;
+      font-weight: 400;
+      padding: 4rem 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .template-type {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.875rem;
+      letter-spacing: 0.05em;
+      color: var(--rosso);
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-family: "Imbue", serif;
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .rosso-accent {
+      color: var(--rosso);
+    }
+
+    .subtitle {
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: 1.125rem;
+      font-weight: 400;
+      color: var(--quetzal);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .instructions {
+      background-color: rgba(0, 104, 94, 0.05);
+      border-left: 4px solid var(--quetzal);
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .instructions h3 {
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .instructions ol {
+      margin-left: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .instructions li {
+      margin-bottom: 0.5rem;
+    }
+
+    .key {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .key-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .key-color {
+      width: 20px;
+      height: 20px;
+      border: 1px solid var(--border);
+    }
+
+    .good { background-color: #c8e6c9; }
+    .medium { background-color: #fff9c4; }
+    .bad { background-color: #ffcccc; }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      gap: 1rem;
+    }
+
+    .print-button {
+      background-color: var(--rosso);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid var(--rosso);
+      transition: all 0.2s ease;
+    }
+
+    .print-button:hover {
+      background-color: transparent;
+      color: var(--rosso);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 3rem;
+    }
+
+    thead {
+      background-color: var(--nuit);
+      color: white;
+    }
+
+    th {
+      padding: 1rem;
+      text-align: left;
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid var(--border);
+    }
+
+    td {
+      padding: 1.25rem 1rem;
+      border: 1px solid var(--border);
+      height: 60px;
+      vertical-align: top;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: rgba(0, 0, 0, 0.02);
+    }
+
+    tbody tr:hover {
+      background-color: rgba(0, 104, 94, 0.05);
+    }
+
+    .channel-cell {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .attribution {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      font-weight: 400;
+    }
+
+    .attribution a {
+      color: var(--quetzal);
+      text-decoration: none;
+      border-bottom: 1px solid var(--quetzal);
+    }
+
+    .attribution a:hover {
+      color: var(--rosso);
+      border-bottom-color: var(--rosso);
+    }
+
+    @page {
+      size: landscape;
+      margin: 1.5cm;
+    }
+
+    @media print {
+      body { background: white; padding: 1.5cm; max-width: none; }
+      .print-button { display: none; }
+      .controls { display: none; }
+      thead {
+        background-color: var(--nuit) !important;
+        color: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      tbody tr:nth-child(odd) {
+        background-color: rgba(0, 0, 0, 0.02) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      table { page-break-inside: avoid; }
+      tr { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="template-type">Blank Template // Framework</div>
+  <h1>Channel Mix <span class="rosso-accent">Mix</span>atrix</h1>
+  <p class="subtitle">The right mix makes the difference to reach all employees.</p>
+
+  <div class="instructions">
+    <h3>How to Use This Template</h3>
+    <ol>
+      <li>List your communication channels in the Channel column (email, intranet, town hall, etc.)</li>
+      <li>Evaluate each channel across the eight dimensions using the key below</li>
+      <li>Color-code each cell to show GOOD (green), MEDIUM (yellow), or BAD (red) performance</li>
+      <li>Use this analysis to optimize your employee communication mix</li>
+    </ol>
+    <div class="key">
+      <div class="key-item"><div class="key-color good"></div> GOOD</div>
+      <div class="key-item"><div class="key-color medium"></div> MEDIUM</div>
+      <div class="key-item"><div class="key-color bad"></div> BAD</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div></div>
+    <button class="print-button" onclick="window.print()">Print / Save as PDF</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Channel</th>
+        <th>Reach</th>
+        <th>Real-Time</th>
+        <th>Interaction</th>
+        <th>Analytics</th>
+        <th>Storytelling</th>
+        <th>Media Richness</th>
+        <th>Local Relevance</th>
+        <th>Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="channel-cell"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="channel-cell"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="channel-cell"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="channel-cell"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="channel-cell"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="channel-cell"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="channel-cell"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="channel-cell"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="channel-cell"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="channel-cell"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="channel-cell"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="channel-cell"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="attribution">
+    Framework by Angie Bailey // <a href="https://angieqbailey.com">angieqbailey.com</a>
+  </div>
+</body>
+</html>
