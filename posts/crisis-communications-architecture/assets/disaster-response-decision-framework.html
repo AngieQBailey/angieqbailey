@@ -4,4 +4,627 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Disaster Response Decision Framework | Angie Bailey Portfolio</title>
-	<link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wghtA10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--nuit: #121A28;
+			--cacao: #2D1B14;
+			--quetzal: #00685E;
+			--quetzal-bright: #00A896;
+			--ecru: #F5F5DC;
+			--rosso: #C41E3A;
+			--ecru-dim: rgba(245,245,220,0.6);
+			--ecru-ghost: rgba(245,245,220,0.08);
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html, body {
+			width: 100%;
+			height: 100%;
+		}
+
+		body {
+			background-color: var(--nuit);
+			color: var(--ecru);
+			font-family: 'IBM Plex Sans', sans-serif;
+			font-weight: 300;
+			line-height: 1.6;
+			overflow-x: hidden;
+		}
+
+		/* Blueprint overlay effect */
+		body::before {
+			content: '';
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image:
+				linear-gradient(0deg, transparent 24%, var(--ecru-ghost) 25%, var(--ecru-ghost) 26%, transparent 27%, transparent 74%, var(--ecru-ghost) 75%, var(--ecru-ghost) 76%, transparent 77%, transparent),
+				linear-gradient(90deg, transparent 24%, var(--ecru-ghost) 25%, var(--ecru-ghost) 26%, transparent 27%, transparent 74%, var(--ecru-ghost) 75%, var(--ecru-ghost) 76%, transparent 77%, transparent);
+			background-size: 50px 50px;
+			pointer-events: none;
+			z-index: 0;
+		}
+
+		/* Fixed left spine */
+		body::after {
+			content: '';
+			position: fixed;
+			left: calc(22% - 40px);
+			top: 0;
+			width: 4px;
+			height: 100%;
+			background-color: var(--cacao);
+			z-index: 5;
+		}
+
+		/* Navigation and controls */
+		header {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 80px;
+			background: linear-gradient(180deg, rgba(18,26,40,0.95) 0%, rgba(18,26,40,0.85) 100%);
+			border-bottom: 1px solid var(--ecru-ghost);
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0 40px;
+			z-index: 10;
+			backdrop-filter: blur(10px);
+		}
+
+		nav {
+			display: flex;
+			gap: 30px;
+			align-items: center;
+		}
+
+		nav a {
+			color: var(--ecru-dim);
+			text-decoration: none;
+			font-size: 0.9rem;
+			font-weight: 400;
+			transition: color 0.3s ease;
+			font-family: 'IBM Plex Mono', monospace;
+			letter-spacing: 0.05em;
+		}
+
+		nav a:hover {
+			color: var(--quetzal-bright);
+		}
+
+		.download-btn {
+			background-color: var(--quetzal-bright);
+			color: var(--nuit);
+			padding: 10px 20px;
+			text-decoration: none;
+			font-size: 0.85rem;
+			font-weight: 500;
+			font-family: 'IBM Plex Mono', monospace;
+			letter-spacing: 0.05em;
+			transition: background-color 0.3s ease;
+			border: none;
+			cursor: pointer;
+		}
+
+		.download-btn:hover {
+			background-color: var(--quetzal);
+		}
+
+		/* Main content area */
+		main {
+			position: relative;
+			z-index: 1;
+			padding-top: 80px;
+		}
+
+		.doc-content {
+			padding-left: 22%;
+			padding-right: 60px;
+			padding-top: 60px;
+			padding-bottom: 80px;
+			max-width: 1200px;
+		}
+
+		/* Sections */
+		section {
+			margin-bottom: 100px;
+			opacity: 0;
+			animation: revealIn 0.8s ease forwards;
+		}
+
+		@keyframes revealIn {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		section:nth-child(1) { animation-delay: 0.1s; }
+		section:nth-child(2) { animation-delay: 0.2s; }
+		section:nth-child(3) { animation-delay: 0.3s; }
+		section:nth-child(4) { animation-delay: 0.4s; }
+		section:nth-child(5) { animation-delay: 0.5s; }
+
+		h1 {
+			font-family: 'Imbue', serif;
+			font-size: 3.5rem;
+			font-weight: 900;
+			margin-bottom: 40px;
+			color: var(--ecru);
+			line-height: 1.1;
+			letter-spacing: -0.02em;
+		}
+
+		h2 {
+			font-family: 'Imbue', serif;
+			font-size: 2rem;
+			font-weight: 900;
+			margin-bottom: 40px;
+			color: var(--quetzal-bright);
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+		}
+
+		p {
+			font-size: 1rem;
+			line-height: 1.8;
+			margin-bottom: 30px;
+			color: var(--ecru-dim);
+			max-width: 700px;
+		}
+
+		/* Response protocol intro */
+		.intro-text {
+			font-size: 1.1rem;
+			line-height: 1.9;
+			color: var(--ecru);
+			max-width: 750px;
+			margin-bottom: 20px;
+		}
+
+		/* Step cards */
+		.approach-grid {
+			display: grid;
+			gap: 30px;
+			margin-bottom: 40px;
+		}
+
+		.approach-item {
+			background: rgba(245,245,220,0.14);
+			border-left: 4px solid var(--quetzal-bright);
+			padding: 30px;
+			opacity: 0;
+			animation: revealIn 0.6s ease forwards;
+		}
+
+		.approach-item:nth-child(1) { animation-delay: 0.25s; }
+		.approach-item:nth-child(2) { animation-delay: 0.35s; }
+		.approach-item:nth-child(3) { animation-delay: 0.45s; }
+		.approach-item:nth-child(4) { animation-delay: 0.55s; }
+		.approach-item:nth-child(5) { animation-delay: 0.65s; }
+
+		.step-number {
+			font-family: 'IBM Plex Mono', monospace;
+			font-size: 0.75rem;
+			font-weight: 700;
+			color: var(--quetzal-bright);
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			margin-bottom: 12px;
+		}
+
+		.step-title {
+			font-family: 'Imbue', serif;
+			font-size: 1.5rem;
+			font-weight: 900;
+			color: var(--ecru);
+			margin-bottom: 12px;
+			text-transform: uppercase;
+			letter-spacing: 0.02em;
+		}
+
+		.step-description {
+			font-size: 0.95rem;
+			line-height: 1.7;
+			color: var(--ecru-dim);
+		}
+
+		/* Response Tier Matrix */
+		.tier-matrix {
+			width: 100%;
+			overflow-x: auto;
+			margin: 40px 0;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			background: rgba(245,245,220,0.08);
+		}
+
+		thead {
+			background: rgba(245,245,220,0.14);
+			border-bottom: 2px solid var(--quetzal-bright);
+		}
+
+		th {
+			padding: 20px;
+			text-align: left;
+			font-family: 'IBM Plex Mono', monospace;
+			font-size: 0.75rem;
+			font-weight: 700;
+			color: var(--quetzal-bright);
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+		}
+
+		td {
+			padding: 16px 20px;
+			border-bottom: 1px solid var(--ecru-ghost);
+			font-size: 0.9rem;
+			color: var(--ecru-dim);
+			line-height: 1.6;
+		}
+
+		tbody tr:hover {
+			background: rgba(245,245,220,0.06);
+		}
+
+		td:first-child {
+			font-weight: 500;
+			color: var(--ecru);
+			width: 120px;
+		}
+
+		td:nth-child(2) {
+			font-family: 'IBM Plex Mono', monospace;
+			font-size: 0.75rem;
+			font-weight: 700;
+			color: var(--quetzal-bright);
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			width: 110px;
+		}
+
+		/* Site Securing Protocol */
+		.protocol-checklist {
+			background: rgba(245,245,220,0.14);
+			padding: 30px;
+			margin: 30px 0;
+		}
+
+		.checklist-item {
+			display: flex;
+			gap: 16px;
+			margin-bottom: 16px;
+			font-size: 0.95rem;
+			line-height: 1.6;
+			color: var(--ecru-dim);
+		}
+
+		.checklist-item:last-child {
+			margin-bottom: 0;
+		}
+
+		.checklist-number {
+			font-family: 'IBM Plex Mono', monospace;
+			font-size: 0.75rem;
+			font-weight: 700;
+			color: var(--quetzal-bright);
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			min-width: 40px;
+		}
+
+		/* Volunteer Mobilization */
+		.mobilization-list {
+			list-style: none;
+			margin: 30px 0;
+		}
+
+		.mobilization-list li {
+			padding: 12px 0;
+			padding-left: 20px;
+			border-left: 2px solid var(--quetzal-bright);
+			font-size: 0.95rem;
+			color: var(--ecru-dim);
+			line-height: 1.6;
+		}
+
+		/* Responsive design */
+		@media (max-width: 900px) {
+			.doc-content {
+				padding-left: 30px;
+				padding-right: 30px;
+			}
+
+			body::after {
+				left: calc(0% - 40px);
+				display: none;
+			}
+
+			h1 {
+				font-size: 2.5rem;
+			}
+
+			h2 {
+				font-size: 1.5rem;
+			}
+
+			.approach-item {
+				padding: 20px;
+			}
+
+			table {
+				font-size: 0.85rem;
+			}
+
+			th, td {
+				padding: 12px;
+			}
+		}
+
+		@media (max-width: 500px) {
+			header {
+				padding: 0 20px;
+				height: 120px;
+				flex-direction: column;
+				justify-content: center;
+				gap: 12px;
+			}
+
+			nav {
+				flex-direction: column;
+				gap: 12px;
+				width: 100%;
+			}
+
+			nav a, .download-btn {
+				font-size: 0.75rem;
+			}
+
+			.doc-content {
+				padding-left: 20px;
+				padding-right: 20px;
+				padding-top: 140px;
+			}
+
+			h1 {
+				font-size: 1.8rem;
+				margin-bottom: 30px;
+			}
+
+			h2 {
+				font-size: 1.1rem;
+				margin-bottom: 25px;
+			}
+
+			p {
+				font-size: 0.9rem;
+			}
+
+			.approach-item {
+				padding: 16px;
+				border-left-width: 3px;
+			}
+
+			.step-title {
+				font-size: 1.1rem;
+			}
+
+			.step-description {
+				font-size: 0.85rem;
+			}
+
+			table {
+				font-size: 0.75rem;
+			}
+
+			th, td {
+				padding: 10px;
+			}
+
+			.protocol-checklist {
+				padding: 20px;
+			}
+
+			.checklist-item {
+				gap: 12px;
+				font-size: 0.85rem;
+			}
+		}
+
+		/* Scroll reveal effect */
+		.scroll-reveal {
+			opacity: 0;
+			transform: translateY(30px);
+			transition: opacity 0.8s ease, transform 0.8s ease;
+		}
+
+		.scroll-reveal.visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav>
+			<a href="../crisis-communications-architecture.html">Back to Crisis Communications</a>
+			<a href="/">Main Site</a>
+		</nav>
+		<button class="download-btn" onclick="downloadTemplate()">Download Framework Template</button>
+	</header>
+
+	<main>
+		<div class="doc-content">
+			<section class="scroll-reveal">
+				<h1>Disaster Response Decision Framework</h1>
+				<p class="intro-text">This framework provides field leaders with a structured decision architecture for disaster events. It operates on one principle: the organization is not a first responder, but it has the resources and people to make a significant difference when called upon.</p>
+			</section>
+
+			<section class="scroll-reveal">
+				<h2>Five-Step Response Sequence</h2>
+				<div class="approach-grid">
+					<div class="approach-item">
+						<div class="step-number">Step 01</div>
+						<div class="step-title">Appoint</div>
+						<div class="step-description">Designate primary and secondary weather watch or crisis POCs at regional and site levels. They monitor developments and escalate when a response plan is needed.</div>
+					</div>
+					<div class="approach-item">
+						<div class="step-number">Step 02</div>
+						<div class="step-title">Assess</div>
+						<div class="step-description">Identify threat type (tornado, hurricane, fire, flood, other). Determine severity and scope. Reference the appropriate disaster response plan.</div>
+					</div>
+					<div class="approach-item">
+						<div class="step-number">Step 03</div>
+						<div class="step-title">Notify</div>
+						<div class="step-description">Inform field leadership as the situation develops. Post to the disaster response channel. Share severity and scope. Flag requests for community or customer support. Identify assistance needed from headquarters or other locations.</div>
+					</div>
+					<div class="approach-item">
+						<div class="step-number">Step 04</div>
+						<div class="step-title">Respond</div>
+						<div class="step-description">Execute response appropriate to the situation. Each disaster is unique. Field leaders are trusted and backed to make the best decisions on the ground with imperfect information.</div>
+					</div>
+					<div class="approach-item">
+						<div class="step-number">Step 05</div>
+						<div class="step-title">Review</div>
+						<div class="step-description">After the crisis, conduct a structured review. What worked. What needs improvement. Capture employee feedback. Update contact information in the crisis comms manual.</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="scroll-reveal">
+				<h2>Response Tier Matrix</h2>
+				<div class="tier-matrix">
+					<table>
+						<thead>
+							<tr>
+								<th>Asset</th>
+								<th>Tier</th>
+								<th>Considerations</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>People</td>
+								<td>Tier 1</td>
+								<td>Ensure employee and family safety. Take necessary action. Report status to leadership.</td>
+							</tr>
+							<tr>
+								<td>People</td>
+								<td>Tier 2</td>
+								<td>Assess requests for community support based on impact. Follow local emergency responder directives. The organization is not a first responder.</td>
+							</tr>
+							<tr>
+								<td>Assets</td>
+								<td>Tier 1</td>
+								<td>Follow site securing protocol: secure large assets and outdoor inventory, secure loose materials, remove temporary structures, store hazardous chemicals, photograph the site.</td>
+							</tr>
+							<tr>
+								<td>Assets</td>
+								<td>Tier 2</td>
+								<td>Respond to increased demand for company assets (debris removal, power generation, HVAC, lighting).</td>
+							</tr>
+							<tr>
+								<td>Assets</td>
+								<td>Tier 3</td>
+								<td>Adjust business rules based on emergency urgency (relaxed approval requirements, reduced pricing, modified terms). Site Leader/Regional Manager decision.</td>
+							</tr>
+							<tr>
+								<td>Other Support</td>
+								<td>Tier 1</td>
+								<td>Elevate requests for foundation contributions. Coordinate volunteer mobilization through the formal volunteer system.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+			<section class="scroll-reveal">
+				<h2>Site Securing Protocol</h2>
+				<p>Quick checklist for immediate site protection:</p>
+				<div class="protocol-checklist">
+					<div class="checklist-item">
+						<div class="checklist-number">01</div>
+						<div>Secure all large assets and outdoor inventory</div>
+					</div>
+					<div class="checklist-item">
+						<div class="checklist-number">02</div>
+						<div>Remove or tightly secure all loose materials (tools, bins, portable structures)</div>
+					</div>
+					<div class="checklist-item">
+						<div class="checklist-number">03</div>
+						<div>Take down temporary structures and fencing</div>
+					</div>
+					<div class="checklist-item">
+						<div class="checklist-number">04</div>
+						<div>Remove and safely store hazardous chemicals</div>
+					</div>
+					<div class="checklist-item">
+						<div class="checklist-number">05</div>
+						<div>Photograph the site for insurance documentation</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="scroll-reveal">
+				<h2>Volunteer Mobilization</h2>
+				<p>A formal volunteer registry activates community support during declared disaster events:</p>
+				<ul class="mobilization-list">
+					<li>Formal volunteer registry maintained through the HRIS system</li>
+					<li>Employees self-enroll through their HR profile</li>
+					<li>Volunteer list is activated during declared disaster events</li>
+					<li>Coordination flows through regional leadership</li>
+				</ul>
+			</section>
+		</div>
+	</main>
+
+	<script>
+		// Scroll reveal animation
+		const observerOptions = {
+			threshold: 0.1,
+			rootMargin: '0px 0px -100px 0px'
+		};
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('visible');
+					observer.unobserve(entry.target);
+				}
+			});
+		}, observerOptions);
+
+		document.querySelectorAll('.scroll-reveal').forEach(el => {
+			observer.observe(el);
+		});
+
+		// Download template function
+		function downloadTemplate() {
+			const templatePath = 'templates/disaster-response-decision-framework-blank.html';
+			const link = document.createElement('a');
+			link.href = templatePath;
+			link.download = 'disaster-response-decision-framework-blank.html';
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+		}
+	</script>
+</body>
+</html>
