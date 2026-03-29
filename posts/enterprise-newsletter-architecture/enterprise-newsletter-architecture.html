@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Case Study: Enterprise Newsletter Launch. Building the first enterprise-wide communication channel for a $1B+ industrial technology company with thousands of employees across hundreds of locations.">
+    <meta name="description" content="Case Study: Enterprise Newsletter Architecture. Building the first enterprise-wide communication channel for a $1B+ industrial technology company with thousands of employees across hundreds of locations.">
     <meta name="author" content="Angie Bailey">
     <meta name="theme-color" content="#121A28">
-    <meta property="og:title" content="Enterprise Newsletter Launch // Angie Bailey">
+    <meta property="og:title" content="Enterprise Newsletter Architecture // Angie Bailey">
     <meta property="og:description" content="A $1B+ industrial technology company with thousands of employees had a 9% newsletter open rate. Built the entire system from scratch. From 9% to 95%+ sustained.">
     <meta property="og:type" content="article">
-    <title>Enterprise Newsletter Launch // Angie Bailey</title>
+    <title>Enterprise Newsletter Architecture // Angie Bailey</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -158,7 +158,7 @@
             text-transform: uppercase; min-width: 50px; text-align: center;
         }
         .constraint-flag.red { color: var(--rosso); border: 1px solid var(--rosso); }
-        .constraint-flag.yellow { color: var(--quetzal); border: 1px solid var(--quetzal); }
+        .constraint-flag.yellow { color: #D4A017; border: 1px solid #D4A017; }
         .constraint-label { font-size: 0.95rem; font-weight: 400; color: var(--ecru); line-height: 1.4; }
         .constraint-detail { font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); margin-top: 0.25rem; }
 
@@ -313,9 +313,9 @@
         <section class="case-header section-content">
             <span class="case-meta">Case Study // Internal Communications</span>
             <span class="case-tag">Channel Strategy</span>
-            <h1>Enterprise<br>Newsletter<br><span class="accent-word">Launch</span></h1>
+            <h1>Enterprise<br>Newsletter<br><span class="accent-word">Architecture</span></h1>
             <div class="case-lede">
-                <p>A $1B+ industrial technology company with thousands of employees across hundreds of locations had no weekly, enterprise-wide communication channel. The internal newsletter had a <strong>9% open rate</strong>. At the time, Slack reached 39% of the workforce. 83% of Slack activity was direct messages, not shared knowledge. The company had grown 43,000% more complex since founding. The communication infrastructure had not.</p>
+                <p>A $1B+ industrial technology company with thousands of employees across hundreds of locations had no enterprise-wide communication channel. The internal newsletter had a <strong>9% open rate</strong>. Slack reached 39% of the workforce. 83% of Slack activity was direct messages, not shared knowledge. The company had grown 43,000% more complex since founding. The communication infrastructure had not.</p>
             </div>
         </section>
 
@@ -323,7 +323,7 @@
         <section class="case-section section-content reveal">
             <span class="section-label">The Evidence</span>
             <h2>Frameworks<br>&amp; Artifacts</h2>
-            <div class="case-body"><p>The artifacts below were produced during the diagnostic and build phases. The audit mapped what was broken. The mix matrix mapped what was possible. The strategic value architecture made the business case. The style guide ensured one voice across every location.</p></div>
+            <div class="case-body"><p>Every artifact below was produced during the diagnostic and build phases. The audit mapped what was broken. The mix matrix mapped what was possible. The strategic value architecture made the business case. The style guide ensured one voice across every location.</p></div>
             <div class="artifact-grid">
                 <a href="assets/internal-comms-channel-audit.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
                     <div class="artifact-type">Framework</div>
@@ -355,9 +355,9 @@
         <!-- THE SITUATION -->
         <section class="case-section section-content reveal">
             <span class="section-label">The Situation</span>
-            <h2>Thousands of People.<br>No Consistant Source of Truth.</h2>
+            <h2>Thousands of People.<br>No Source of Truth.</h2>
             <div class="case-body">
-                <p>The company scaled to thousands of employees in less than seven years. Hundreds of locations across dozens of states. The growth rate made the organization 43,000% more complex than at founding.</p>
+                <p>The company scaled to thousands of employees in under seven years. Hundreds of locations across dozens of states. Service technicians, drivers, coordinators, regional managers, department leaders and a corporate headquarters. The growth rate made the organization 43,000% more complex than at founding.</p>
 
                 <p>Internal communication had not kept pace. The channels told the story.</p>
             </div>
@@ -365,7 +365,7 @@
                 <div class="constraint-item">
                     <span class="constraint-flag red">Red</span>
                     <div>
-                        <div class="constraint-label">The legacy monthly newsletter: 9% open rate.</div>
+                        <div class="constraint-label">The monthly Communications Cadence newsletter: 9% open rate.</div>
                     </div>
                 </div>
                 <div class="constraint-item">
@@ -383,7 +383,7 @@
                 <div class="constraint-item">
                     <span class="constraint-flag yellow">Yellow</span>
                     <div>
-                        <div class="constraint-label">Internal Survey: only 38% response rate. Of those who did respond, 64% said they wanted email or text. Not Slack. Not calls.</div>
+                        <div class="constraint-label">People First Survey: only 38% response rate. Of those who did respond, 64% said they wanted email or text. Not Slack. Not calls.</div>
                     </div>
                 </div>
             </div>
@@ -420,7 +420,7 @@
                     <span class="constraint-flag red">Red</span>
                     <div>
                         <div class="constraint-label">Deskless Workforce Unreachable</div>
-                        <div class="constraint-detail">80% of the workforce did not sit at desks. Drivers, technicians and outdoor employees had no reliable way to receive communications.</div>
+                        <div class="constraint-detail">80% of the workforce did not sit at desks. Drivers, technicians and yard workers had no reliable way to receive communications.</div>
                     </div>
                 </div>
                 <div class="constraint-item">
@@ -468,12 +468,12 @@
                 <div class="approach-item">
                     <div class="approach-day">Phase 02</div>
                     <div class="approach-title">Pitch<br>the CEO</div>
-                    <div class="approach-desc">Presented the Internal Marketing Strategy to the CEO. Led with the cost: $12,506 per employee lost to poor communication. Proposed the simplest intervention: one email, every week. Target: turn 9% into 19% by Q3 (crushed it).</div>
+                    <div class="approach-desc">Presented the Internal Marketing Strategy to the CEO. Led with the cost: $12,506 per employee lost to poor communication. Proposed the simplest intervention: one email, every week. Target: turn 9% into 19% by Q3.</div>
                 </div>
                 <div class="approach-item">
                     <div class="approach-day">Phase 03</div>
-                    <div class="approach-title">Build<br>The Weekly Newsletter</div>
-                    <div class="approach-desc">Designed and launched the first enterprise-wide weekly internal communication asset. Built send-list infrastructure from the HRIS system. Established the content approval workflow and brevity mandate. Wrote content pipeline. </div>
+                    <div class="approach-title">Build<br>The Dig</div>
+                    <div class="approach-desc">Designed and launched the first enterprise-wide weekly newsletter. Named it The Dig. Built subscriber infrastructure from the HRIS system. Created the editorial style guide. Established the content approval workflow. Wrote all issues.</div>
                 </div>
                 <div class="approach-item">
                     <div class="approach-day">Principle</div>
@@ -486,8 +486,12 @@
         <!-- THE OUTCOME -->
         <section class="case-section section-content reveal">
             <span class="section-label">The Outcome</span>
-            <h2>What The Enterprise Newsletter<br>Produced</h2>
+            <h2>What The Dig<br>Produced</h2>
             <div class="outcome-grid">
+                <div class="outcome-stat">
+                    <div class="outcome-number">88%</div>
+                    <div class="outcome-label">Peak open rate<br>on launch week</div>
+                </div>
                 <div class="outcome-stat">
                     <div class="outcome-number highlight">95%+</div>
                     <div class="outcome-label">Sustained open rate<br>at maturity</div>
@@ -502,11 +506,11 @@
                 </div>
             </div>
             <div class="case-body" style="margin-top: 2rem;">
-                <p>I built the system: the audit, business case, CEO pitch, editorial standards, subscriber infrastructure, content strategy and every initial issue sent.</p>
+                <p>A company with thousands of employees across hundreds of locations went from 9% open rates to 95%+ sustained. One person built the system: the audit, business case, CEO pitch, editorial standards, subscriber infrastructure, content strategy and every issue.</p>
 
-                <p>The weekly send didn't replace the other channels. It became the source of truth that made them work. When information has a predictable home, everything downstream gets easier. Alignment, engagement, productivity, revenue.</p>
+                <p>The Dig did not replace the other channels. It became the source of truth that made them work. When information has a predictable home, everything downstream gets easier. Alignment, engagement, productivity, revenue.</p>
 
-                <p>Short not shallow. That was the principle.</p>
+                <p>Short not shallow. That was the principle. It still is.</p>
             </div>
             <div style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--ecru-ghost);">
                 <span class="section-label" style="font-size: 0.75rem; margin-bottom: 0.75rem;">Sources</span>
