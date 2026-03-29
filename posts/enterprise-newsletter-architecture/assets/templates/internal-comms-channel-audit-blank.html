@@ -3,321 +3,419 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <title>Internal Comms Channel Audit - Blank Template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500&family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --nuit: #121A28;
+      --cacao: #2D1B14;
+      --quetzal: #00685E;
+      --ecru: #F5F5DC;
+      --rosso: #C41E3A;
+      --text: #1a1a1a;
+      --text-dim: #555;
+      --border: #d4d0c8;
+      --border-light: #e8e4dc;
+      --hover-bg: rgba(0, 104, 94, 0.04);
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-style: normal !important;
+      border-radius: 0 !important;
+    }
+
+    ::selection {
+      background: var(--rosso);
+      color: var(--ecru);
+    }
+
+    body {
+      background-color: var(--ecru);
+      color: var(--text);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding: 4rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .template-header {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid var(--cacao);
+    }
+
+    .template-type {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--rosso);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Imbue', serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      line-height: 0.9;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      color: var(--nuit);
+    }
+
+    h1 .accent { color: var(--rosso); }
+
+    .subtitle {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--quetzal);
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+    }
+
+    .instructions {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--text-dim);
+      line-height: 1.7;
+      max-width: 700px;
+      margin-bottom: 1rem;
+    }
+
+    .instructions strong { color: var(--text); font-weight: 500; }
+
+    .print-btn {
+      display: inline-block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ecru);
+      background: var(--nuit);
+      border: none;
+      padding: 0.75rem 2rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: background 0.2s;
+    }
+
+    .print-btn:hover { background: var(--quetzal); }
+
+    .section {
+      margin-top: 3rem;
+    }
+
+    .section-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--quetzal);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-family: 'Imbue', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.95;
+      margin-bottom: 0.5rem;
+      color: var(--nuit);
+    }
+
+    .audience-desc {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--text-dim);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0 2rem 0;
+      font-size: 0.85rem;
+    }
+
+    th {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--quetzal);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      border-bottom: 2px solid var(--cacao);
+    }
+
+    th.score-col {
+      text-align: center;
+      width: 120px;
+    }
+
+    td {
+      padding: 1.5rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-dim);
+      font-weight: 300;
+      vertical-align: top;
+      min-height: 60px;
+    }
+
+    td.score-cell {
+      text-align: center;
+    }
+
+    tr:hover td { background: var(--hover-bg); }
+
+    .scoring-key {
+      margin: 3rem 0 2rem 0;
+      max-width: 700px;
+      padding: 1.5rem;
+      background: rgba(0, 104, 94, 0.06);
+    }
+
+    .scoring-key-title {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--quetzal);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 1rem;
+    }
+
+    .score-item {
+      padding: 0.5rem 0;
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--text-dim);
+      line-height: 1.5;
+      display: flex;
+      gap: 0.75rem;
+      align-items: baseline;
+    }
+
+    .score-num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--nuit);
+      min-width: 20px;
+      text-align: center;
+    }
+
+    .score-item strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .attribution {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .attribution a {
+      color: var(--quetzal);
+      text-decoration: none;
+      border-bottom: 1px solid var(--quetzal);
+    }
+
+    .attribution a:hover {
+      color: var(--rosso);
+      border-bottom-color: var(--rosso);
+    }
+
+    @page { size: landscape; margin: 1.5cm; }
+
+    @media print {
+      body { background: white; padding: 1.5cm; max-width: none; }
+      .print-btn { display: none; }
+      table { font-size: 0.75rem; }
+      td { min-height: 50px; padding: 1rem 0.75rem; }
+      th { font-size: 0.6rem; }
+      .section { page-break-inside: avoid; }
+      .scoring-key { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+
+    @media (max-width: 900px) {
+      body { padding: 2rem 1.5rem; }
+      h1 { font-size: 2rem; }
+      table { font-size: 0.8rem; }
+      th, td { padding: 0.75rem 0.5rem; }
+    }
+
+    @media (max-width: 500px) {
+      body { padding: 1.5rem 1rem; }
+      h1 { font-size: 1.6rem; }
+      h2 { font-size: 1.3rem; }
+      table { font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="template-header">
+    <div class="template-type">Blank Template // Diagnostic Tool</div>
+    <h1>Internal Comms<br>Channel <span class="accent">Audit</span></h1>
+    <p class="subtitle">Map every channel against every audience. Find the gaps before they find you.</p>
+    <p class="instructions">Score each communication channel by audience segment using the <strong>0-3 importance scale</strong> below. List all active and planned channels, rate their current importance to each segment, note frequency and any operational gaps. The goal is a single-page diagnostic that exposes which audiences are underserved and which channels are carrying dead weight.</p>
+    <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+  </div>
+
+  <div class="scoring-key">
+    <div class="scoring-key-title">Importance Scoring Key</div>
+    <div class="score-item">
+      <span class="score-num">0</span>
+      <span><strong>Irrelevant</strong> to this audience segment</span>
+    </div>
+    <div class="score-item">
+      <span class="score-num">1</span>
+      <span><strong>Inspirational, non-essential</strong> / builds culture but is not operationally critical</span>
+    </div>
+    <div class="score-item">
+      <span class="score-num">2</span>
+      <span><strong>Important, but not timely</strong> / matters but may arrive too late to influence daily decisions</span>
+    </div>
+    <div class="score-item">
+      <span class="score-num">3</span>
+      <span><strong>Essential upon arrival</strong> / information employees need immediately to perform their roles</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Audience Segment 01</div>
+    <h2>Audience: _______________</h2>
+    <p class="audience-desc">Describe this segment: roles, locations, primary work context, tech access level.</p>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 22%;">Channel</th>
+          <th style="width: 15%;">Frequency</th>
+          <th class="score-col">Score (0-3)</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Audience Segment 02</div>
+    <h2>Audience: _______________</h2>
+    <p class="audience-desc">Describe this segment: roles, locations, primary work context, tech access level.</p>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 22%;">Channel</th>
+          <th style="width: 15%;">Frequency</th>
+          <th class="score-col">Score (0-3)</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Audience Segment 03</div>
+    <h2>Audience: _______________</h2>
+    <p class="audience-desc">Describe this segment: roles, locations, primary work context, tech access level.</p>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 22%;">Channel</th>
+          <th style="width: 15%;">Frequency</th>
+          <th class="score-col">Score (0-3)</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Audience Segment 04</div>
+    <h2>Audience: _______________</h2>
+    <p class="audience-desc">Describe this segment: roles, locations, primary work context, tech access level.</p>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 22%;">Channel</th>
+          <th style="width: 15%;">Frequency</th>
+          <th class="score-col">Score (0-3)</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td class="score-cell">&nbsp;</td><td>&nbsp;</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="attribution">
+    Diagnostic Tool by Angie Bailey // <a href="https://angieqbailey.com">angieqbailey.com</a>
+  </div>
+</body>
+</html>
