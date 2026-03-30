@@ -7,9 +7,9 @@ Running record of what changed, when, and why. Git commits are terse. This docum
 
 ## March 2026
 
-### Post-Acquisition Integration Launch — case study deployed (8 of 9 pages)
-**Commit:** Series of commits via GitHub API, March 29 2026
-**What:** Main case study page and 7 subpages deployed. Includes 3 branded artifact pages (vendor-governance-model, product-taxonomy-architecture, cross-functional-workback), 3 blank templates, and a warehouse card page. System Integration Sequence interactive artifact page pending separate upload.
+### Post-Acquisition Integration Launch — full case study deployed
+**Commit:** Series of commits via GitHub API, March 29–30 2026
+**What:** Full case study deployed: main page, 4 branded artifact pages, 3 blank templates, and warehouse card. Warehouse card on index.html converted from placeholder to live link with forensic copy and Scope // Output metrics.
 
 **Files added:**
 - `posts/post-acquisition-integration-launch/post-acquisition-integration-launch.html` — Main case study page
@@ -21,10 +21,32 @@ Running record of what changed, when, and why. Git commits are terse. This docum
 - `posts/post-acquisition-integration-launch/assets/templates/vendor-governance-model-blank.html` — Blank template
 - `posts/post-acquisition-integration-launch/assets/templates/product-taxonomy-architecture-blank.html` — Blank template
 
-**Pending:**
-- `posts/post-acquisition-integration-launch/assets/system-integration-sequence.html` — Interactive sequence map, uploading separately
+**Files modified:**
+- `index.html` — Post-Acquisition warehouse card converted from `<div>` placeholder to live `<a>` with forensic copy, Scope // Output metrics, "Ops Management" tag
 
-**Why:** Fifth client case study. Post-acquisition integration operations covering vendor governance, product taxonomy architecture, system integration sequencing, and cross-functional workback for a multi-brand merger.
+**Why:** Fifth client case study. Post-acquisition integration operations covering vendor governance, product taxonomy architecture, system integration sequencing and cross-functional workback for a multi-brand merger.
+
+### Post-Acquisition Integration Launch — post-deployment refinements
+**Commit:** Series of commits via GitHub API, March 30 2026
+**What:** Multiple UX and cross-linking improvements across the case study and site-wide.
+
+**Changes:**
+- System Integration Sequence Map: "Break" button CTA changed to "What breaks?" for clearer intent. Button restyled — larger font (0.7rem to 0.85rem), ecru text on rosso-tinted background with visible border. Vertical text orientation removed (was `writing-mode: vertical-rl`).
+- Cross-Functional Workback: Related Work section added linking to Summit's Dependency Friction Map and Pressure Points Register
+- Vendor Governance Model: Related Work section added linking to Summit's Expectations SLA Stress Test
+- White flash fix: `style="background-color: #121A28"` (dark pages) or `#F5F5DC` (ecru pages) added to `<html>` tag on all 50 HTML files site-wide. Eliminates white frame between page transitions.
+- Same-tab navigation: `target="_blank"` removed from all internal links across index.html, 6 case study pages, and 15 artifact pages. Only external links (LinkedIn) retain new-tab behavior.
+
+**Files modified:**
+- All 50 HTML files (inline bg on `<html>` tag)
+- `index.html` (warehouse card `target="_blank"` removal)
+- 6 case study main pages (`target="_blank"` removal from artifact links)
+- 15 artifact pages (`target="_blank"` removal from cross-links)
+- `posts/post-acquisition-integration-launch/assets/system-integration-sequence.html` (CTA and button styling)
+- `posts/post-acquisition-integration-launch/assets/cross-functional-workback.html` (Related Work section)
+- `posts/post-acquisition-integration-launch/assets/vendor-governance-model.html` (Related Work section)
+
+**Why:** Polish pass. The interactive sequence map's "Break" label was ambiguous and hard to read. Cross-links between case studies reinforce that the diagnostic methodology is a system, not one-off work. White flash and new-tab behavior were degrading the dark-theme experience.
 
 ### Case study page titles aligned with Warehouse card names
 **Commit:** Series of commits via GitHub API, March 28 2026
