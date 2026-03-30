@@ -184,16 +184,16 @@
             font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.5;
         }
         .break-btn {
-            background: rgba(245, 245, 220, 0.14); border: none; cursor: pointer;
+            background: rgba(196, 30, 58, 0.12); border: 1px solid rgba(196, 30, 58, 0.4); cursor: pointer;
             padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: center;
-            transition: background 0.3s ease;
-            border-left: 1px solid rgba(245, 245, 220, 0.06);
+            transition: background 0.3s ease, border-color 0.3s ease;
+            border-left: 1px solid rgba(196, 30, 58, 0.4);
         }
-        .break-btn:hover { background: rgba(196, 30, 58, 0.15); }
+        .break-btn:hover { background: rgba(196, 30, 58, 0.3); border-color: var(--rosso); }
         .break-label {
-            font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
-            font-weight: 700; color: var(--rosso); text-transform: uppercase;
-            letter-spacing: 0.1em;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--ecru); text-transform: uppercase;
+            letter-spacing: 0.15em;
         }
 
         /* Connector */
@@ -257,7 +257,7 @@
         .seq-step.broken .step-info { background: rgba(196, 30, 58, 0.08); }
         .seq-step.broken .step-num { color: var(--rosso); }
         .seq-step.broken .break-btn { background: rgba(196, 30, 58, 0.2); }
-        .seq-step.broken .break-label { color: var(--ecru); }
+        .seq-step.broken .break-label { color: var(--ecru); font-weight: 900; }
         .seq-step.broken + .seq-connector .connector-line { background: var(--rosso); }
 
         /* Downstream damage indicators */
@@ -330,7 +330,7 @@
             footer { padding-left: 2rem; }
             .step-row { grid-template-columns: 55px 1fr auto; }
             .cascade-inner { padding-left: calc(55px + 1.25rem); }
-            .break-label { font-size: 0.6rem; }
+            .break-label { font-size: 0.75rem; }
         }
         @media (max-width: 500px) {
             .nav-mark { display: none; }
