@@ -126,7 +126,7 @@ Below the client case study grid, a separate subsection with Quetzal-tinted card
 | `posts/post-acquisition-integration-launch/assets/vendor-governance-model.html` | Branded artifact page (dark) | **LIVE** | Vendor Governance Model |
 | `posts/post-acquisition-integration-launch/assets/product-taxonomy-architecture.html` | Branded artifact page (dark) | **LIVE** | Product Taxonomy Architecture |
 | `posts/post-acquisition-integration-launch/assets/cross-functional-workback.html` | Branded artifact page (dark) | **LIVE** | Cross-Functional Workback |
-| `posts/post-acquisition-integration-launch/assets/system-integration-sequence.html` | Branded artifact page (dark) | **PENDING** | System Integration Sequence (interactive map) |
+| `posts/post-acquisition-integration-launch/assets/system-integration-sequence.html` | Branded artifact page (dark) | **LIVE** | System Integration Sequence (interactive map) |
 | `posts/post-acquisition-integration-launch/assets/templates/system-integration-sequence-blank.html` | Blank template (light/ecru) | **LIVE** | — |
 | `posts/post-acquisition-integration-launch/assets/templates/vendor-governance-model-blank.html` | Blank template (light/ecru) | **LIVE** | — |
 | `posts/post-acquisition-integration-launch/assets/templates/product-taxonomy-architecture-blank.html` | Blank template (light/ecru) | **LIVE** | — |
