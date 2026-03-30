@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Product Taxonomy Architecture — 281 categories built from actual SKU data for an industrial supply e-commerce catalog on SuiteCommerce.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <title>Product Taxonomy Architecture // Angie Bailey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit: #121A28; --cacao: #2D1B14; --quetzal: #00685E;
+            --quetzal-bright: #00A896; --ecru: #F5F5DC; --rosso: #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; font-style: normal !important; border-radius: 0 !important; }
+        ::selection { background: var(--rosso); color: var(--ecru); }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--nuit); color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif; font-weight: 400;
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale; overflow-x: hidden;
+        }
+        .blueprint-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px; animation: grid-fade 2s ease 0.5s both;
+        }
+        .spine {
+            position: fixed; left: calc(var(--spine-left) - 40px);
+            top: 0; width: 4px; height: 100%;
+            background-color: var(--cacao); z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .nav-bar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--quetzal-bright); text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 400; color: var(--ecru-dim); text-decoration: none;
+            text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s ease;
+        }
+        .nav-links a:hover { color: var(--ecru); }
+        main { position: relative; z-index: 10; }
+        .doc-content { padding-left: var(--spine-left); padding-right: 4rem; max-width: 1200px; }
+
+        /* Header */
+        .artifact-header {
+            padding-top: 8rem; padding-bottom: 3rem;
+        }
+        .artifact-meta {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+            color: var(--quetzal-bright); letter-spacing: 0.2em; text-transform: uppercase;
+            margin-bottom: 1.5rem; display: block;
+        }
+        .artifact-header h1 {
+            font-family: 'Imbue', serif; font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 900; line-height: 0.9; color: var(--ecru);
+            text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 1.5rem;
+        }
+        .artifact-header h1 .accent-word { color: var(--rosso); }
+        .artifact-desc {
+            font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+            color: var(--ecru-dim); max-width: 600px; margin-bottom: 2rem;
+        }
+        .artifact-desc strong { color: var(--ecru); font-weight: 500; }
+        .download-btn {
+            display: inline-block; font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em;
+            text-transform: uppercase; color: var(--nuit); background: var(--ecru);
+            text-decoration: none; padding: 0.75rem 2rem;
+            transition: background 0.2s, color 0.2s;
+        }
+        .download-btn:hover { background: var(--rosso); color: var(--ecru); }
+
+        /* Sections */
+        .doc-section {
+            padding-top: 2.5rem; padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 0.5rem; display: block;
+        }
+        h2 {
+            font-family: 'Imbue', serif; font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 900; color: var(--ecru); text-transform: uppercase;
+            line-height: 0.95; margin-bottom: 2rem;
+        }
+        .body-text {
+            font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+            color: var(--ecru-dim); margin-bottom: 1.5rem; max-width: 650px;
+        }
+        .body-text strong { color: var(--ecru); font-weight: 500; }
+
+        /* Approach Grid */
+        .approach-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+            margin: 2.5rem 0; max-width: 900px;
+        }
+        .approach-card {
+            background: rgba(245, 245, 220, 0.14); padding: 2rem 1.75rem;
+        }
+        .principle-number {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 0.75rem; display: block;
+        }
+        .principle-title {
+            font-family: 'Imbue', serif; font-size: 1.15rem; font-weight: 700;
+            color: var(--ecru); text-transform: uppercase; line-height: 1.15;
+            margin-bottom: 0.75rem;
+        }
+        .principle-desc {
+            font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.5;
+        }
+
+        /* Taxonomy Table */
+        .taxonomy-table {
+            margin: 2.5rem 0; max-width: 900px;
+            background: rgba(245, 245, 220, 0.14);
+        }
+        .table-wrapper {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%; border-collapse: collapse;
+        }
+        th {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+            font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.15em;
+            text-transform: uppercase; padding: 1rem; text-align: left;
+            border-bottom: 2px solid var(--cacao);
+        }
+        td {
+            font-size: 0.9rem; font-weight: 300; color: var(--ecru-dim);
+            padding: 1rem; border-bottom: 1px solid var(--ecru-ghost);
+        }
+        tr:last-child td { border-bottom: none; }
+
+        /* Stats Grid */
+        .outcome-grid {
+            display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 2px;
+            margin: 2.5rem 0; max-width: 900px;
+        }
+        .stat-card {
+            background: rgba(245, 245, 220, 0.14); padding: 2rem 1.75rem;
+            text-align: center;
+        }
+        .stat-number {
+            font-family: 'Imbue', serif; font-size: 2.5rem; font-weight: 900;
+            color: var(--rosso); line-height: 1; margin-bottom: 0.5rem;
+        }
+        .stat-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+            font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        /* Core Principle */
+        .core-principle {
+            border-left: 4px solid var(--rosso); padding: 2rem;
+            background: rgba(245, 245, 220, 0.14); margin: 2.5rem 0; max-width: 650px;
+        }
+        .core-principle p {
+            font-size: 1.05rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.7;
+        }
+        .core-principle strong { color: var(--ecru); font-weight: 500; }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+            color: var(--ecru-dim); text-decoration: none; text-transform: uppercase;
+            letter-spacing: 0.1em; transition: color 0.2s ease; margin-top: 3rem;
+        }
+        .back-link::before {
+            content: ''; display: block; width: 24px; height: 2px;
+            background: var(--quetzal); transition: width 0.3s ease, background 0.3s ease;
+        }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .footer-content {
+            display: flex; justify-content: space-between; align-items: center; max-width: 1200px;
+        }
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); letter-spacing: 0.05em;
+        }
+
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .doc-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .approach-grid { grid-template-columns: 1fr; }
+            .outcome-grid { grid-template-columns: 1fr 1fr; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+        }
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .nav-links a { font-size: 0.75rem; }
+            .blueprint-overlay { background-size: 24px 24px; }
+            .outcome-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="blueprint-overlay" aria-hidden="true"></div>
+    <div class="spine" aria-hidden="true"></div>
+    <nav class="nav-bar" role="navigation">
+        <a href="../post-acquisition-integration-launch.html" class="nav-mark">
+            &larr; Post-Acquisition Integration Launch
+        </a>
+        <ul class="nav-links">
+            <li><a href="/">Main Site</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="doc-content">
+            <div class="artifact-header">
+                <span class="artifact-meta">Applied Architecture // Catalog Design</span>
+                <h1>Product Taxonomy<br><span class="accent-word">Architecture</span></h1>
+                <p class="artifact-desc">281 categories built from actual SKU data, not leadership assumptions or inherited structures. A four-level hierarchy designed for findability, merchandising scalability, and structured data ingest into SuiteCommerce.</p>
+                <a href="templates/product-taxonomy-architecture-blank.html" class="download-btn" target="_blank" rel="noopener noreferrer">
+                    Download Blank Template &darr;
+                </a>
+            </div>
+
+            <!-- DESIGN DECISIONS -->
+            <section class="doc-section reveal">
+                <span class="section-label">Architecture Decisions</span>
+                <h2>Why This Structure<br>Not Another</h2>
+                <p class="body-text">Leadership initially dictated four top-level categories without data backing. The project lead pushed back, mined actual SKU data, forced a GM to justify his logic, and built an L1 through L4 hierarchy grounded in how customers actually search for industrial supply products.</p>
+                <div class="approach-grid">
+                    <div class="approach-card">
+                        <div class="principle-number">Principle 01</div>
+                        <div class="principle-title">Data Over Opinions</div>
+                        <div class="principle-desc">Category structure derived from SKU attributes and search patterns, not organizational chart logic or inherited catalog conventions.</div>
+                    </div>
+                    <div class="approach-card">
+                        <div class="principle-number">Principle 02</div>
+                        <div class="principle-title">Depth Over Breadth</div>
+                        <div class="principle-desc">L3 and L4 categories created to support filtering, faceted navigation, and future merchandising. Shallow taxonomies create dead-end browsing.</div>
+                    </div>
+                    <div class="approach-card">
+                        <div class="principle-number">Principle 03</div>
+                        <div class="principle-title">Ingest-Ready Structure</div>
+                        <div class="principle-desc">Categories designed to support CSV bulk import with External IDs, parent-child relationships, and sequence numbering. Manual entry does not scale.</div>
+                    </div>
+                    <div class="approach-card">
+                        <div class="principle-number">Principle 04</div>
+                        <div class="principle-title">Platform-Native</div>
+                        <div class="principle-desc">Built within SuiteCommerce's Commerce Categories framework. No workarounds. No custom fields. No structures that break on platform updates.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAXONOMY SAMPLE -->
+            <section class="doc-section reveal">
+                <span class="section-label">Structure Sample</span>
+                <h2>Four Levels<br>One Logic</h2>
+                <div class="taxonomy-table">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>L1</th>
+                                    <th>L2</th>
+                                    <th>L3</th>
+                                    <th>L4</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tools</td>
+                                    <td>Hand Tools</td>
+                                    <td>Wrenches</td>
+                                    <td>Combination wrenches</td>
+                                </tr>
+                                <tr>
+                                    <td>Tools</td>
+                                    <td>Hand Tools</td>
+                                    <td>Wrenches</td>
+                                    <td>Torque wrenches</td>
+                                </tr>
+                                <tr>
+                                    <td>Tools</td>
+                                    <td>Hand Tools</td>
+                                    <td>Screwdrivers</td>
+                                    <td>Phillips head</td>
+                                </tr>
+                                <tr>
+                                    <td>Tools</td>
+                                    <td>Power Tools</td>
+                                    <td>Drills</td>
+                                    <td>Cordless drills</td>
+                                </tr>
+                                <tr>
+                                    <td>Tools</td>
+                                    <td>Power Tools</td>
+                                    <td>Saws</td>
+                                    <td>Circular saws</td>
+                                </tr>
+                                <tr>
+                                    <td>Safety</td>
+                                    <td>PPE</td>
+                                    <td>Head Protection</td>
+                                    <td>Hard hats</td>
+                                </tr>
+                                <tr>
+                                    <td>Safety</td>
+                                    <td>PPE</td>
+                                    <td>Eye Protection</td>
+                                    <td>Safety glasses</td>
+                                </tr>
+                                <tr>
+                                    <td>Safety</td>
+                                    <td>Fall Protection</td>
+                                    <td>Harnesses</td>
+                                    <td>Full body harnesses</td>
+                                </tr>
+                                <tr>
+                                    <td>Industrial Supplies</td>
+                                    <td>Fasteners</td>
+                                    <td>Bolts</td>
+                                    <td>Hex bolts</td>
+                                </tr>
+                                <tr>
+                                    <td>Industrial Supplies</td>
+                                    <td>Fasteners</td>
+                                    <td>Nuts</td>
+                                    <td>Hex nuts</td>
+                                </tr>
+                                <tr>
+                                    <td>Industrial Supplies</td>
+                                    <td>Abrasives</td>
+                                    <td>Grinding Wheels</td>
+                                    <td>Type 27 wheels</td>
+                                </tr>
+                                <tr>
+                                    <td>Equipment</td>
+                                    <td>Material Handling</td>
+                                    <td>Carts</td>
+                                    <td>Utility carts</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STATS -->
+            <section class="doc-section reveal">
+                <span class="section-label">Outcomes</span>
+                <h2>Numbers That Matter</h2>
+                <div class="outcome-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">281</div>
+                        <div class="stat-label">Grandchild Categories</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Hierarchy Levels</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">SKUs at Launch</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Categories from Assumption</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PRINCIPLE -->
+            <section class="doc-section reveal">
+                <div class="core-principle">
+                    <p><strong>Taxonomy is quietly one of the hardest parts of e-commerce because it determines findability, conversion rate, and future merchandising capability.</strong> A shallow or assumption-driven category structure creates technical debt that compounds with every SKU added. The taxonomy was designed to be correct first and convenient second.</p>
+                </div>
+                <a href="../post-acquisition-integration-launch.html" class="back-link">Back to Case Study</a>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <span>&copy; 2026 Angie Bailey</span>
+        </div>
+    </footer>
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
