@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="System Integration Sequence Map — Interactive consequence visualizer showing what breaks when integration steps are skipped or executed out of order.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <title>System Integration Sequence Map // Angie Bailey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit: #121A28; --cacao: #2D1B14; --quetzal: #00685E;
+            --quetzal-bright: #00A896; --ecru: #F5F5DC; --rosso: #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; font-style: normal !important; border-radius: 0 !important; }
+        ::selection { background: var(--rosso); color: var(--ecru); }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--nuit); color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif; font-weight: 400;
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale; overflow-x: hidden;
+        }
+        .blueprint-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px; animation: grid-fade 2s ease 0.5s both;
+        }
+        .spine {
+            position: fixed; left: calc(var(--spine-left) - 40px);
+            top: 0; width: 4px; height: 100%;
+            background-color: var(--cacao); z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .nav-bar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--quetzal-bright); text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 400; color: var(--ecru-dim); text-decoration: none;
+            text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s ease;
+        }
+        .nav-links a:hover { color: var(--ecru); }
+        main { position: relative; z-index: 10; }
+        .doc-content { padding-left: var(--spine-left); padding-right: 4rem; max-width: 1200px; }
+
+        /* Header */
+        .artifact-header { padding-top: 8rem; padding-bottom: 3rem; }
+        .artifact-meta {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--quetzal-bright); letter-spacing: 0.2em; text-transform: uppercase;
+            margin-bottom: 1.5rem; display: block;
+        }
+        .artifact-header h1 {
+            font-family: 'Imbue', serif; font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 900; line-height: 0.9; color: var(--ecru);
+            text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 1.5rem;
+        }
+        .artifact-header h1 .accent-word { color: var(--rosso); }
+        .artifact-desc {
+            font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+            color: var(--ecru-dim); max-width: 600px; margin-bottom: 2rem;
+        }
+        .artifact-desc strong { color: var(--ecru); font-weight: 500; }
+        .download-btn {
+            display: inline-block; font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em;
+            text-transform: uppercase; color: var(--nuit); background: var(--ecru);
+            text-decoration: none; padding: 0.75rem 2rem;
+            transition: background 0.2s, color 0.2s;
+        }
+        .download-btn:hover { background: var(--rosso); color: var(--ecru); }
+
+        /* Sections */
+        .doc-section {
+            padding-top: 2.5rem; padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 0.5rem; display: block;
+        }
+        h2 {
+            font-family: 'Imbue', serif; font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 900; color: var(--ecru); text-transform: uppercase;
+            line-height: 0.95; margin-bottom: 2rem;
+        }
+        .body-text {
+            font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+            color: var(--ecru-dim); margin-bottom: 1.5rem; max-width: 650px;
+        }
+        .body-text strong { color: var(--ecru); font-weight: 500; }
+
+        /* System Role Cards */
+        .role-grid {
+            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px;
+            margin: 2.5rem 0; max-width: 900px;
+        }
+        .role-card { background: rgba(245, 245, 220, 0.14); padding: 2rem 1.75rem; }
+        .role-system {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 0.75rem;
+        }
+        .role-title {
+            font-family: 'Imbue', serif; font-size: 1.15rem; font-weight: 700;
+            color: var(--ecru); text-transform: uppercase; line-height: 1.15;
+            margin-bottom: 0.75rem;
+        }
+        .role-desc {
+            font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        .role-constraints {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--rosso); line-height: 1.6;
+        }
+
+        /* === CONSEQUENCE VISUALIZER === */
+        .sequence-intro {
+            background: rgba(245, 245, 220, 0.14); padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem; max-width: 900px;
+            border-left: 4px solid var(--quetzal);
+        }
+        .sequence-intro p {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); line-height: 1.6;
+        }
+        .sequence-intro strong { color: var(--ecru); }
+
+        .sequence-container { margin: 2.5rem 0; max-width: 900px; }
+
+        /* Individual step */
+        .seq-step { margin-bottom: 2px; }
+        .step-row {
+            display: grid; grid-template-columns: 70px 1fr auto; gap: 0;
+            align-items: stretch;
+        }
+        .step-num-col {
+            background: rgba(245, 245, 220, 0.14); padding: 1.25rem 0.75rem;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            border-right: 3px solid var(--cacao);
+            transition: border-color 0.4s ease, background 0.4s ease;
+        }
+        .step-num {
+            font-family: 'Imbue', serif; font-size: 1.6rem; font-weight: 900;
+            color: var(--ecru); line-height: 1;
+        }
+        .step-sys {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+            font-weight: 700; color: var(--quetzal-bright); text-transform: uppercase;
+            letter-spacing: 0.1em; margin-top: 0.25rem;
+        }
+        .step-info {
+            background: rgba(245, 245, 220, 0.14); padding: 1.25rem 1.75rem;
+            transition: background 0.4s ease;
+        }
+        .step-title {
+            font-family: 'Imbue', serif; font-size: 1.05rem; font-weight: 700;
+            color: var(--ecru); text-transform: uppercase; line-height: 1.15;
+            margin-bottom: 0.35rem;
+        }
+        .step-summary {
+            font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.5;
+        }
+        .break-btn {
+            background: rgba(245, 245, 220, 0.14); border: none; cursor: pointer;
+            padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: center;
+            transition: background 0.3s ease;
+            border-left: 1px solid rgba(245, 245, 220, 0.06);
+        }
+        .break-btn:hover { background: rgba(196, 30, 58, 0.15); }
+        .break-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
+            font-weight: 700; color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.1em; writing-mode: vertical-rl; text-orientation: mixed;
+        }
+
+        /* Connector */
+        .seq-connector { display: flex; padding-left: 32px; height: 16px; }
+        .connector-line {
+            width: 3px; height: 16px; background: var(--cacao);
+            transition: background 0.4s ease;
+        }
+
+        /* Cascade panel (hidden by default) */
+        .cascade-panel {
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.4s ease;
+            opacity: 0;
+        }
+        .cascade-panel.open {
+            max-height: 800px; opacity: 1;
+        }
+        .cascade-inner {
+            padding: 1.5rem 1.75rem 1.5rem calc(70px + 1.75rem);
+            background: rgba(196, 30, 58, 0.06);
+            border-left: 4px solid var(--rosso);
+        }
+        .cascade-header {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.15em; margin-bottom: 1rem;
+        }
+
+        /* Cascade domino items */
+        .domino { display: flex; gap: 1rem; margin-bottom: 1rem; align-items: flex-start; }
+        .domino-arrow {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); flex-shrink: 0; padding-top: 0.1rem;
+        }
+        .domino-content { flex: 1; }
+        .domino-system {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+            font-weight: 700; color: #D4A017; text-transform: uppercase;
+            letter-spacing: 0.1em; margin-bottom: 0.2rem;
+        }
+        .domino-text {
+            font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.5;
+        }
+        .domino-text strong { color: var(--ecru); font-weight: 500; }
+        .domino-terminal .domino-system { color: var(--rosso); }
+        .domino-terminal .domino-arrow { color: var(--rosso); }
+
+        .cascade-cost {
+            margin-top: 1.25rem; padding-top: 1rem;
+            border-top: 1px solid rgba(196, 30, 58, 0.2);
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--rosso); line-height: 1.6;
+        }
+
+        /* Broken state styling */
+        .seq-step.broken .step-num-col {
+            border-right-color: var(--rosso);
+            background: rgba(196, 30, 58, 0.12);
+        }
+        .seq-step.broken .step-info { background: rgba(196, 30, 58, 0.08); }
+        .seq-step.broken .step-num { color: var(--rosso); }
+        .seq-step.broken .break-btn { background: rgba(196, 30, 58, 0.2); }
+        .seq-step.broken .break-label { color: var(--ecru); }
+        .seq-step.broken + .seq-connector .connector-line { background: var(--rosso); }
+
+        /* Downstream damage indicators */
+        .seq-step.damaged .step-num-col { border-right-color: #D4A017; }
+        .seq-step.damaged .step-info { background: rgba(212, 160, 23, 0.06); }
+        .seq-step.damaged .step-sys { color: #D4A017; }
+
+        /* Reset button */
+        .reset-bar {
+            display: none; margin: 1.5rem 0; max-width: 900px;
+        }
+        .reset-bar.visible { display: flex; }
+        .reset-btn {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--ecru); background: var(--cacao); border: none;
+            padding: 0.6rem 1.5rem; cursor: pointer; transition: background 0.2s;
+        }
+        .reset-btn:hover { background: var(--quetzal); }
+
+        /* Core Principle */
+        .core-principle {
+            border-left: 4px solid var(--rosso); padding: 2rem;
+            background: rgba(245, 245, 220, 0.14); margin: 2.5rem 0; max-width: 650px;
+        }
+        .core-principle p {
+            font-size: 1.05rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.7;
+        }
+        .core-principle strong { color: var(--ecru); font-weight: 500; }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); text-decoration: none; text-transform: uppercase;
+            letter-spacing: 0.1em; transition: color 0.2s ease; margin-top: 3rem;
+        }
+        .back-link::before {
+            content: ''; display: block; width: 24px; height: 2px;
+            background: var(--quetzal); transition: width 0.3s ease, background 0.3s ease;
+        }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .footer-content {
+            display: flex; justify-content: space-between; align-items: center; max-width: 1200px;
+        }
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); letter-spacing: 0.05em;
+        }
+
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .doc-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .role-grid { grid-template-columns: 1fr; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+            .step-row { grid-template-columns: 55px 1fr auto; }
+            .cascade-inner { padding-left: calc(55px + 1.25rem); }
+            .break-label { font-size: 0.6rem; }
+        }
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .nav-links a { font-size: 0.75rem; }
+            .blueprint-overlay { background-size: 24px 24px; }
+            .step-row { grid-template-columns: 45px 1fr auto; }
+            .cascade-inner { padding-left: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="blueprint-overlay" aria-hidden="true"></div>
+    <div class="spine" aria-hidden="true"></div>
+    <nav class="nav-bar" role="navigation">
+        <a href="../post-acquisition-integration-launch.html" class="nav-mark" style="text-decoration: none;">
+            &larr; Post-Acquisition Integration Launch
+        </a>
+        <ul class="nav-links">
+            <li><a href="/">Main Site</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="doc-content">
+            <div class="artifact-header">
+                <span class="artifact-meta">Interactive Framework // Consequence Visualizer</span>
+                <h1>System Integration<br><span class="accent-word">Sequence</span> Map</h1>
+                <p class="artifact-desc">The full dependency chain for a post-acquisition e-commerce integration across ERP, tax compliance, and payment processing. <strong>Break any step to see what fails downstream.</strong> Every constraint in this architecture exists because the alternative was tested ... by accident or by assumption.</p>
+                <a href="templates/system-integration-sequence-blank.html" class="download-btn" target="_blank" rel="noopener noreferrer">
+                    Download Blank Template &darr;
+                </a>
+            </div>
+
+            <!-- SYSTEM ROLES -->
+            <section class="doc-section reveal">
+                <span class="section-label">System Roles</span>
+                <h2>Three Systems<br>One Sequence</h2>
+                <div class="role-grid">
+                    <div class="role-card">
+                        <div class="role-system">NetSuite</div>
+                        <div class="role-title">System of Record<br>+ Transaction Hub</div>
+                        <div class="role-desc">Single source of truth for all invoice, order, and financial data. Every other system reads from or writes back to NetSuite. Nothing bypasses it.</div>
+                        <div class="role-constraints">Must not: calculate tax, process payments directly, or allow parallel config</div>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-system">Tax Engine</div>
+                        <div class="role-title">Tax Calculation<br>+ Compliance</div>
+                        <div class="role-desc">Calculates tax on invoices, writes amounts back to the ERP, and handles returns reporting. Activated only after invoice creation, never before.</div>
+                        <div class="role-constraints">Must not: process payments, modify invoice records, or operate independently</div>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-system">Payment Processor</div>
+                        <div class="role-title">Payment Collection<br>+ Posting</div>
+                        <div class="role-desc">Consumes finalized invoices (after tax) and posts payment records back to the ERP. Operates only inside the ERP's native record structure.</div>
+                        <div class="role-constraints">Must not: calculate tax, override amounts, or bypass the ERP</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONSEQUENCE VISUALIZER -->
+            <section class="doc-section reveal">
+                <span class="section-label">Consequence Visualizer</span>
+                <h2>Break a Step<br>Watch What Falls</h2>
+                <p class="body-text">This is the transaction lifecycle. Each step depends on the one before it. <strong>Click "Break" on any step to see what fails downstream.</strong> The cascade is not theoretical. These are the failure modes the governance model was built to prevent.</p>
+
+                <div class="sequence-intro">
+                    <p><strong>How to read this:</strong> Green steps are healthy. Click "Break" to skip or corrupt a step. Downstream steps turn yellow (damaged) and a cascade panel shows the domino effect. Click "Break" again to restore. Break multiple steps to see compound failure.</p>
+                </div>
+
+                <div class="reset-bar" id="resetBar">
+                    <button class="reset-btn" id="resetAll">Reset All Steps</button>
+                </div>
+
+                <div class="sequence-container" id="sequenceContainer">
+
+                    <!-- STEP 1 -->
+                    <div class="seq-step" data-step="1" id="step1">
+                        <div class="step-row">
+                            <div class="step-num-col">
+                                <div class="step-num">01</div>
+                                <div class="step-sys">ERP</div>
+                            </div>
+                            <div class="step-info">
+                                <div class="step-title">Invoice Created in ERP</div>
+                                <div class="step-summary">Order enters the system. Invoice record created with line items, quantities, and pre-tax amounts.</div>
+                            </div>
+                            <button class="break-btn" data-target="1" aria-label="Break step 1">
+                                <span class="break-label">Break</span>
+                            </button>
+                        </div>
+                        <div class="cascade-panel" id="cascade1">
+                            <div class="cascade-inner">
+                                <div class="cascade-header">If This Step Fails</div>
+                                <div class="domino">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">Tax Engine</div>
+                                        <div class="domino-text">Nothing to calculate against. Tax engine receives no invoice data. <strong>Sits idle or throws errors.</strong></div>
+                                    </div>
+                                </div>
+                                <div class="domino">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">Payment Processor</div>
+                                        <div class="domino-text">No invoice to collect on. Payment processor has <strong>no record to reference</strong> ... it cannot even start.</div>
+                                    </div>
+                                </div>
+                                <div class="domino">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">Accounts Receivable</div>
+                                        <div class="domino-text">No payment posted. No invoice to reconcile. AR has <strong>a ghost transaction</strong> ... revenue recognized in one system, invisible in another.</div>
+                                    </div>
+                                </div>
+                                <div class="domino domino-terminal">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">Terminal Consequence</div>
+                                        <div class="domino-text"><strong>The entire transaction lifecycle is dead.</strong> No invoice means no tax, no payment, no reconciliation. Every downstream system is waiting for a record that does not exist.</div>
+                                    </div>
+                                </div>
+                                <div class="cascade-cost">Cost: Total system halt per transaction. Manual intervention required for every order.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="seq-connector"><div class="connector-line"></div></div>
+
+                    <!-- STEP 2 -->
+                    <div class="seq-step" data-step="2" id="step2">
+                        <div class="step-row">
+                            <div class="step-num-col">
+                                <div class="step-num">02</div>
+                                <div class="step-sys">Tax</div>
+                            </div>
+                            <div class="step-info">
+                                <div class="step-title">Tax Engine Calculates</div>
+                                <div class="step-summary">Tax engine reads the invoice, calculates jurisdiction-specific tax, and returns the amount.</div>
+                            </div>
+                            <button class="break-btn" data-target="2" aria-label="Break step 2">
+                                <span class="break-label">Break</span>
+                            </button>
+                        </div>
+                        <div class="cascade-panel" id="cascade2">
+                            <div class="cascade-inner">
+                                <div class="cascade-header">If This Step Is Skipped</div>
+                                <div class="domino">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">ERP Invoice</div>
+                                        <div class="domino-text">Invoice remains pre-tax. Total is <strong>incomplete but looks valid</strong> ... the most dangerous state because nothing flags it as wrong.</div>
+                                    </div>
+                                </div>
+                                <div class="domino">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">Payment Processor</div>
+                                        <div class="domino-text">Collects on the pre-tax amount. Customer is <strong>undercharged on every transaction.</strong> The gap compounds with volume.</div>
+                                    </div>
+                                </div>
+                                <div class="domino">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">Compliance</div>
+                                        <div class="domino-text">Tax engine has no transaction data for reporting. <strong>Filing obligations go unmet.</strong> Audit exposure accumulates silently.</div>
+                                    </div>
+                                </div>
+                                <div class="domino domino-terminal">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">Terminal Consequence</div>
+                                        <div class="domino-text"><strong>Revenue leakage + compliance exposure on every transaction.</strong> The system appears functional. Customers are being served. But the company is losing money and accumulating tax liability on every single order.</div>
+                                    </div>
+                                </div>
+                                <div class="cascade-cost">Cost: Revenue leakage per transaction + compounding compliance liability. This was the live state when the project started.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="seq-connector"><div class="connector-line"></div></div>
+
+                    <!-- STEP 3 -->
+                    <div class="seq-step" data-step="3" id="step3">
+                        <div class="step-row">
+                            <div class="step-num-col">
+                                <div class="step-num">03</div>
+                                <div class="step-sys">ERP</div>
+                            </div>
+                            <div class="step-info">
+                                <div class="step-title">Tax Written Back to ERP</div>
+                                <div class="step-summary">Tax amount written back to the invoice record. Invoice is now tax-complete and ready for payment.</div>
+                            </div>
+                            <button class="break-btn" data-target="3" aria-label="Break step 3">
+                                <span class="break-label">Break</span>
+                            </button>
+                        </div>
+                        <div class="cascade-panel" id="cascade3">
+                            <div class="cascade-inner">
+                                <div class="cascade-header">If the Write-Back Fails</div>
+                                <div class="domino">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">ERP Record</div>
+                                        <div class="domino-text">Tax was calculated but never recorded. The ERP thinks the invoice is pre-tax. The tax engine thinks it is done. <strong>Two systems disagree on the same transaction.</strong></div>
+                                    </div>
+                                </div>
+                                <div class="domino">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">Payment Processor</div>
+                                        <div class="domino-text">Same problem as skipping Step 2 ... collects on a pre-tax amount. <strong>But now tax was calculated and lost</strong>, which is harder to diagnose.</div>
+                                    </div>
+                                </div>
+                                <div class="domino domino-terminal">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">Terminal Consequence</div>
+                                        <div class="domino-text"><strong>System state divergence.</strong> The tax engine's records and the ERP's records no longer match. Reconciliation becomes forensic work, not routine accounting.</div>
+                                    </div>
+                                </div>
+                                <div class="cascade-cost">Cost: Silent data divergence. Harder to detect than a total failure because both systems appear operational.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="seq-connector"><div class="connector-line"></div></div>
+
+                    <!-- STEP 4 -->
+                    <div class="seq-step" data-step="4" id="step4">
+                        <div class="step-row">
+                            <div class="step-num-col">
+                                <div class="step-num">04</div>
+                                <div class="step-sys">ERP</div>
+                            </div>
+                            <div class="step-info">
+                                <div class="step-title">Invoice Finalized</div>
+                                <div class="step-summary">Invoice is complete: line items + tax + total. Locked as a committal financial record. Ready for payment.</div>
+                            </div>
+                            <button class="break-btn" data-target="4" aria-label="Break step 4">
+                                <span class="break-label">Break</span>
+                            </button>
+                        </div>
+                        <div class="cascade-panel" id="cascade4">
+                            <div class="cascade-inner">
+                                <div class="cascade-header">If Finalization Is Skipped</div>
+                                <div class="domino">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">Payment Processor</div>
+                                        <div class="domino-text">Collects on a draft invoice. Amounts can still change after payment. <strong>Customer is charged for a moving target.</strong></div>
+                                    </div>
+                                </div>
+                                <div class="domino">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">Accounts Receivable</div>
+                                        <div class="domino-text">Payment posted against an unfrozen record. If the invoice is later modified, the payment <strong>no longer matches the invoice</strong>. Manual adjustment required.</div>
+                                    </div>
+                                </div>
+                                <div class="domino domino-terminal">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">Terminal Consequence</div>
+                                        <div class="domino-text"><strong>Financial record integrity breaks.</strong> Payments and invoices drift apart. Every adjustment creates a new reconciliation problem. The accounting team stops trusting the system.</div>
+                                    </div>
+                                </div>
+                                <div class="cascade-cost">Cost: AR trust erosion. Manual reconciliation per transaction. System credibility loss.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="seq-connector"><div class="connector-line"></div></div>
+
+                    <!-- STEP 5 -->
+                    <div class="seq-step" data-step="5" id="step5">
+                        <div class="step-row">
+                            <div class="step-num-col">
+                                <div class="step-num">05</div>
+                                <div class="step-sys">Pay</div>
+                            </div>
+                            <div class="step-info">
+                                <div class="step-title">Payment Processor Collects</div>
+                                <div class="step-summary">Reads the finalized invoice. Collects payment from the customer based on the locked total.</div>
+                            </div>
+                            <button class="break-btn" data-target="5" aria-label="Break step 5">
+                                <span class="break-label">Break</span>
+                            </button>
+                        </div>
+                        <div class="cascade-panel" id="cascade5">
+                            <div class="cascade-inner">
+                                <div class="cascade-header">If Payment Collection Fails</div>
+                                <div class="domino">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">ERP</div>
+                                        <div class="domino-text">Invoice exists and is finalized but <strong>no payment record is created</strong>. The invoice ages. AR sees an unpaid balance.</div>
+                                    </div>
+                                </div>
+                                <div class="domino">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">Customer</div>
+                                        <div class="domino-text">Depending on failure mode: customer is <strong>either double-charged on retry or never charged at all</strong>. Both outcomes create support and trust problems.</div>
+                                    </div>
+                                </div>
+                                <div class="domino domino-terminal">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">Terminal Consequence</div>
+                                        <div class="domino-text"><strong>Revenue collection stops.</strong> The upstream work (invoice, tax, finalization) was all correct but valueless without payment. Orders ship, money does not arrive.</div>
+                                    </div>
+                                </div>
+                                <div class="cascade-cost">Cost: Revenue gap per failed collection. Customer relationship damage. Manual dunning required.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="seq-connector"><div class="connector-line"></div></div>
+
+                    <!-- STEP 6 -->
+                    <div class="seq-step" data-step="6" id="step6">
+                        <div class="step-row">
+                            <div class="step-num-col">
+                                <div class="step-num">06</div>
+                                <div class="step-sys">ERP</div>
+                            </div>
+                            <div class="step-info">
+                                <div class="step-title">Payment Posted to ERP</div>
+                                <div class="step-summary">Payment record written back to the ERP. Invoice marked paid. AR updated. Loop nearly closed.</div>
+                            </div>
+                            <button class="break-btn" data-target="6" aria-label="Break step 6">
+                                <span class="break-label">Break</span>
+                            </button>
+                        </div>
+                        <div class="cascade-panel" id="cascade6">
+                            <div class="cascade-inner">
+                                <div class="cascade-header">If the Post-Back Fails</div>
+                                <div class="domino">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">Accounts Receivable</div>
+                                        <div class="domino-text">Customer was charged. Money was collected. But the ERP does not know. <strong>Invoice still shows as unpaid.</strong> AR sends collection notices for debt that does not exist.</div>
+                                    </div>
+                                </div>
+                                <div class="domino">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">Tax Reporting</div>
+                                        <div class="domino-text">Tax engine receives incomplete transaction data. Payment details are missing. <strong>Compliance reporting is inaccurate.</strong></div>
+                                    </div>
+                                </div>
+                                <div class="domino domino-terminal">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">Terminal Consequence</div>
+                                        <div class="domino-text"><strong>Orphaned payments.</strong> Money exists in the payment processor but is invisible to the ERP. This is the reconciliation nightmare that makes finance teams demand manual oversight of every transaction.</div>
+                                    </div>
+                                </div>
+                                <div class="cascade-cost">Cost: Orphaned payment records. False collection actions. Finance trust collapse.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="seq-connector"><div class="connector-line"></div></div>
+
+                    <!-- STEP 7 -->
+                    <div class="seq-step" data-step="7" id="step7">
+                        <div class="step-row">
+                            <div class="step-num-col">
+                                <div class="step-num">07</div>
+                                <div class="step-sys">Tax</div>
+                            </div>
+                            <div class="step-info">
+                                <div class="step-title">Tax Engine Receives Transaction Data</div>
+                                <div class="step-summary">Completed transaction data flows back to the tax engine for compliance reporting and returns processing.</div>
+                            </div>
+                            <button class="break-btn" data-target="7" aria-label="Break step 7">
+                                <span class="break-label">Break</span>
+                            </button>
+                        </div>
+                        <div class="cascade-panel" id="cascade7">
+                            <div class="cascade-inner">
+                                <div class="cascade-header">If Reporting Data Never Arrives</div>
+                                <div class="domino">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">Tax Compliance</div>
+                                        <div class="domino-text">Tax was calculated and collected but <strong>the tax engine has no record of the completed transaction</strong>. Its filing data is incomplete.</div>
+                                    </div>
+                                </div>
+                                <div class="domino">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">Audit Exposure</div>
+                                        <div class="domino-text">If audited, the company cannot demonstrate that tax collected matches tax filed. <strong>The gap between "collected" and "reported" becomes a liability.</strong></div>
+                                    </div>
+                                </div>
+                                <div class="domino domino-terminal">
+                                    <span class="domino-arrow">&darr;</span>
+                                    <div class="domino-content">
+                                        <div class="domino-system">Terminal Consequence</div>
+                                        <div class="domino-text"><strong>Compliance liability with no visibility.</strong> The operational system works. Customers are served. Revenue is collected. But the compliance record has holes that grow with every transaction.</div>
+                                    </div>
+                                </div>
+                                <div class="cascade-cost">Cost: Invisible compliance debt. Audit risk. Potential penalties that scale with transaction volume.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PRINCIPLE -->
+            <section class="doc-section reveal">
+                <div class="core-principle">
+                    <p><strong>Every constraint in this architecture exists because the failure it prevents was either observed or narrowly avoided.</strong> The sequence is not a preference. It is a structural requirement. Breaking any step does not just affect that step ... it damages every system downstream. The over-thinking is the product.</p>
+                </div>
+                <a href="../post-acquisition-integration-launch.html" class="back-link">Back to Case Study</a>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <span>&copy; 2026 Angie Bailey</span>
+        </div>
+    </footer>
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Downstream dependency map: which steps are damaged when a step breaks
+        const downstreamMap = {
+            1: [2, 3, 4, 5, 6, 7],
+            2: [3, 4, 5, 6, 7],
+            3: [4, 5, 6, 7],
+            4: [5, 6, 7],
+            5: [6, 7],
+            6: [7],
+            7: []
+        };
+
+        const brokenSteps = new Set();
+
+        function updateVisuals() {
+            const resetBar = document.getElementById('resetBar');
+            resetBar.classList.toggle('visible', brokenSteps.size > 0);
+
+            // Determine all damaged steps (downstream of any broken step)
+            const damagedSteps = new Set();
+            brokenSteps.forEach(s => {
+                downstreamMap[s].forEach(d => {
+                    if (!brokenSteps.has(d)) damagedSteps.add(d);
+                });
+            });
+
+            // Update each step
+            for (let i = 1; i <= 7; i++) {
+                const stepEl = document.getElementById('step' + i);
+                const cascadeEl = document.getElementById('cascade' + i);
+
+                stepEl.classList.remove('broken', 'damaged');
+
+                if (brokenSteps.has(i)) {
+                    stepEl.classList.add('broken');
+                    cascadeEl.classList.add('open');
+                } else if (damagedSteps.has(i)) {
+                    stepEl.classList.add('damaged');
+                    cascadeEl.classList.remove('open');
+                } else {
+                    cascadeEl.classList.remove('open');
+                }
+            }
+        }
+
+        // Break buttons
+        document.querySelectorAll('.break-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const step = parseInt(btn.dataset.target);
+                if (brokenSteps.has(step)) {
+                    brokenSteps.delete(step);
+                } else {
+                    brokenSteps.add(step);
+                }
+                updateVisuals();
+            });
+        });
+
+        // Reset all
+        document.getElementById('resetAll').addEventListener('click', () => {
+            brokenSteps.clear();
+            updateVisuals();
+        });
+    </script>
+</body>
+</html>
