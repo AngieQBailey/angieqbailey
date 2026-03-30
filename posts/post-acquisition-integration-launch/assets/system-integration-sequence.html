@@ -417,8 +417,8 @@
                                 <div class="step-title">Invoice Created in ERP</div>
                                 <div class="step-summary">Order enters the system. Invoice record created with line items, quantities, and pre-tax amounts.</div>
                             </div>
-                            <button class="break-btn" data-target="1" aria-label="Break step 1">
-                                <span class="break-label">Break</span>
+                            <button class="break-btn" data-target="1" aria-label="What breaks if step 1 fails?">
+                                <span class="break-label">What breaks?</span>
                             </button>
                         </div>
                         <div class="cascade-panel" id="cascade1">
@@ -469,8 +469,8 @@
                                 <div class="step-title">Tax Engine Calculates</div>
                                 <div class="step-summary">Tax engine reads the invoice, calculates jurisdiction-specific tax, and returns the amount.</div>
                             </div>
-                            <button class="break-btn" data-target="2" aria-label="Break step 2">
-                                <span class="break-label">Break</span>
+                            <button class="break-btn" data-target="2" aria-label="What breaks if step 2 fails?">
+                                <span class="break-label">What breaks?</span>
                             </button>
                         </div>
                         <div class="cascade-panel" id="cascade2">
@@ -521,8 +521,8 @@
                                 <div class="step-title">Tax Written Back to ERP</div>
                                 <div class="step-summary">Tax amount written back to the invoice record. Invoice is now tax-complete and ready for payment.</div>
                             </div>
-                            <button class="break-btn" data-target="3" aria-label="Break step 3">
-                                <span class="break-label">Break</span>
+                            <button class="break-btn" data-target="3" aria-label="What breaks if step 3 fails?">
+                                <span class="break-label">What breaks?</span>
                             </button>
                         </div>
                         <div class="cascade-panel" id="cascade3">
@@ -566,8 +566,8 @@
                                 <div class="step-title">Invoice Finalized</div>
                                 <div class="step-summary">Invoice is complete: line items + tax + total. Locked as a committal financial record. Ready for payment.</div>
                             </div>
-                            <button class="break-btn" data-target="4" aria-label="Break step 4">
-                                <span class="break-label">Break</span>
+                            <button class="break-btn" data-target="4" aria-label="What breaks if step 4 fails?">
+                                <span class="break-label">What breaks?</span>
                             </button>
                         </div>
                         <div class="cascade-panel" id="cascade4">
@@ -611,8 +611,8 @@
                                 <div class="step-title">Payment Processor Collects</div>
                                 <div class="step-summary">Reads the finalized invoice. Collects payment from the customer based on the locked total.</div>
                             </div>
-                            <button class="break-btn" data-target="5" aria-label="Break step 5">
-                                <span class="break-label">Break</span>
+                            <button class="break-btn" data-target="5" aria-label="What breaks if step 5 fails?">
+                                <span class="break-label">What breaks?</span>
                             </button>
                         </div>
                         <div class="cascade-panel" id="cascade5">
@@ -656,8 +656,8 @@
                                 <div class="step-title">Payment Posted to ERP</div>
                                 <div class="step-summary">Payment record written back to the ERP. Invoice marked paid. AR updated. Loop nearly closed.</div>
                             </div>
-                            <button class="break-btn" data-target="6" aria-label="Break step 6">
-                                <span class="break-label">Break</span>
+                            <button class="break-btn" data-target="6" aria-label="What breaks if step 6 fails?">
+                                <span class="break-label">What breaks?</span>
                             </button>
                         </div>
                         <div class="cascade-panel" id="cascade6">
@@ -701,8 +701,8 @@
                                 <div class="step-title">Tax Engine Receives Transaction Data</div>
                                 <div class="step-summary">Completed transaction data flows back to the tax engine for compliance reporting and returns processing.</div>
                             </div>
-                            <button class="break-btn" data-target="7" aria-label="Break step 7">
-                                <span class="break-label">Break</span>
+                            <button class="break-btn" data-target="7" aria-label="What breaks if step 7 fails?">
+                                <span class="break-label">What breaks?</span>
                             </button>
                         </div>
                         <div class="cascade-panel" id="cascade7">
