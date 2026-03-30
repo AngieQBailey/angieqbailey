@@ -7,6 +7,25 @@ Running record of what changed, when, and why. Git commits are terse. This docum
 
 ## March 2026
 
+### Post-Acquisition Integration Launch — case study deployed (8 of 9 pages)
+**Commit:** Series of commits via GitHub API, March 29 2026
+**What:** Main case study page and 7 subpages deployed. Includes 3 branded artifact pages (vendor-governance-model, product-taxonomy-architecture, cross-functional-workback), 3 blank templates, and a warehouse card page. System Integration Sequence interactive artifact page pending separate upload.
+
+**Files added:**
+- `posts/post-acquisition-integration-launch/post-acquisition-integration-launch.html` — Main case study page
+- `posts/post-acquisition-integration-launch/warehouse-card.html` — Warehouse card
+- `posts/post-acquisition-integration-launch/assets/vendor-governance-model.html` — Branded artifact
+- `posts/post-acquisition-integration-launch/assets/product-taxonomy-architecture.html` — Branded artifact
+- `posts/post-acquisition-integration-launch/assets/cross-functional-workback.html` — Branded artifact
+- `posts/post-acquisition-integration-launch/assets/templates/system-integration-sequence-blank.html` — Blank template
+- `posts/post-acquisition-integration-launch/assets/templates/vendor-governance-model-blank.html` — Blank template
+- `posts/post-acquisition-integration-launch/assets/templates/product-taxonomy-architecture-blank.html` — Blank template
+
+**Pending:**
+- `posts/post-acquisition-integration-launch/assets/system-integration-sequence.html` — Interactive sequence map, uploading separately
+
+**Why:** Fifth client case study. Post-acquisition integration operations covering vendor governance, product taxonomy architecture, system integration sequencing, and cross-functional workback for a multi-brand merger.
+
 ### Case study page titles aligned with Warehouse card names
 **Commit:** Series of commits via GitHub API, March 28 2026
 **What:** Updated the Enterprise Newsletter case study page (title tag, h1, OG meta tags) from "Enterprise Newsletter Architecture" to "Enterprise Newsletter Launch." Updated the Web Experience case study page from "Web Experience Capacity Build" to "Web Experience Capacity Expansion." Folder paths and filenames unchanged to preserve existing URLs. Site registry updated with full enumerated file inventory for Crisis Communications (replaced generic "6 additional assets" with specific filenames). Handoff doc updated to reflect titles are now aligned.
