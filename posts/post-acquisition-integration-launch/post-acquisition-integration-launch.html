@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Case Study: Post-Acquisition Integration Launch — Architected the first e-commerce acquisition integration at a $4B equipment company, building the governance model, system architecture and cross-functional execution framework that survived leadership change.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <meta property="og:title" content="Post-Acquisition Integration Launch // Angie Bailey">
+    <meta property="og:description" content="No playbook existed. No integration model had been tested. The acquired company needed a live e-commerce storefront wired into an ERP it had never touched. The architecture I built held after I was no longer there to run it.">
+    <meta property="og:type" content="article">
+    <title>Post-Acquisition Integration Launch // Angie Bailey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit:     #121A28;
+            --cacao:    #2D1B14;
+            --quetzal:  #00685E;
+            --quetzal-bright: #00A896;
+            --ecru:     #F5F5DC;
+            --rosso:    #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+        ::selection { background: var(--rosso); color: var(--ecru); }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+        body {
+            background-color: var(--nuit); color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif; font-weight: 400;
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale; overflow-x: hidden;
+        }
+
+        /* === Architectural Elements === */
+        .blueprint-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-fade 2s ease 0.5s both;
+        }
+        .spine {
+            position: fixed; left: calc(var(--spine-left) - 40px);
+            top: 0; width: 4px; height: 100%;
+            background-color: var(--cacao); z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* === Navigation === */
+        .nav-bar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--quetzal-bright); text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 400; color: var(--ecru-dim); text-decoration: none;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            transition: color 0.2s ease; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--rosso);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--ecru); }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* === Content Layout === */
+        main { position: relative; z-index: 10; }
+        .section-content {
+            padding-left: var(--spine-left); padding-right: 4rem; max-width: 1200px;
+        }
+
+        /* === Case Header === */
+        .case-header {
+            min-height: 70vh; display: flex; flex-direction: column;
+            justify-content: center; padding-top: 8rem; padding-bottom: 4rem;
+        }
+        .case-meta {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+            color: var(--quetzal); letter-spacing: 0.1em; margin-bottom: 2rem;
+            display: block; animation: fade-up 0.8s ease 0.4s both;
+        }
+        .case-tag {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 1.5rem; display: block;
+            animation: fade-up 0.8s ease 0.5s both;
+        }
+        .case-header h1 {
+            font-family: 'Imbue', serif; font-size: clamp(2.5rem, 7vw, 6rem);
+            font-weight: 900; line-height: 0.9; color: var(--ecru);
+            text-transform: uppercase; letter-spacing: -0.02em;
+            margin-bottom: 2.5rem; max-width: 700px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+        .case-header h1 .accent-word { color: var(--rosso); }
+        .case-lede {
+            border-left: 5px solid var(--rosso); padding-left: 2rem;
+            max-width: 600px; animation: fade-up 0.8s ease 0.8s both;
+        }
+        .case-lede p {
+            font-size: 1.15rem; font-weight: 300; line-height: 1.7; color: var(--ecru-dim);
+        }
+        .case-lede strong { color: var(--ecru); font-weight: 500; }
+
+        /* === Case Sections === */
+        .case-section {
+            padding-top: 2.5rem; padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 0.5rem; display: block;
+        }
+        h2 {
+            font-family: 'Imbue', serif; font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 900; color: var(--ecru); text-transform: uppercase;
+            line-height: 0.95; letter-spacing: -0.01em; margin-bottom: 2.5rem;
+        }
+        .case-body p {
+            font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+            color: var(--ecru-dim); margin-bottom: 1.5rem; max-width: 650px;
+        }
+        .case-body p strong { color: var(--ecru); font-weight: 500; }
+
+        /* === Constraint List === */
+        .constraint-list { margin: 2rem 0; max-width: 650px; }
+        .constraint-item {
+            padding: 1.25rem 0; border-bottom: 1px solid var(--ecru-ghost);
+            display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: start;
+        }
+        .constraint-item:first-child { border-top: 1px solid var(--ecru-ghost); }
+        .constraint-flag {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.1em; padding: 0.2rem 0.5rem;
+            text-transform: uppercase; min-width: 50px; text-align: center;
+        }
+        .constraint-flag.red { color: var(--rosso); border: 1px solid var(--rosso); }
+        .constraint-flag.yellow { color: #D4A017; border: 1px solid #D4A017; }
+        .constraint-label { font-size: 0.95rem; font-weight: 400; color: var(--ecru); line-height: 1.4; }
+        .constraint-detail { font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); margin-top: 0.25rem; }
+
+        /* === Failure Loop === */
+        .failure-loop {
+            border-left: 3px solid var(--cacao); padding-left: 1.5rem;
+            margin: 2rem 0; max-width: 400px;
+        }
+        .failure-loop .loop-step {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); padding: 0.4rem 0; display: flex;
+            align-items: center; gap: 0.75rem;
+        }
+        .failure-loop .loop-arrow { color: var(--rosso); font-weight: 700; }
+
+        /* === Approach Grid === */
+        .approach-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+            margin: 2.5rem 0; max-width: 750px;
+        }
+        .approach-item { background: rgba(245, 245, 220, 0.14); padding: 2rem 1.75rem; }
+        .approach-day {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 0.75rem;
+        }
+        .approach-title {
+            font-family: 'Imbue', serif; font-size: 1.3rem; font-weight: 700;
+            color: var(--ecru); text-transform: uppercase; line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+        .approach-desc {
+            font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.5;
+        }
+
+        /* === Artifact Grid === */
+        .artifact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2px; margin: 2.5rem 0;
+        }
+        .artifact-card {
+            background: rgba(245, 245, 220, 0.14); padding: 2rem 1.75rem;
+            position: relative; transition: background 0.3s ease;
+            text-decoration: none; display: block;
+        }
+        .artifact-card::before {
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 0; height: 3px; background: var(--rosso);
+            transition: width 0.4s ease;
+        }
+        .artifact-card:hover { background: rgba(245, 245, 220, 0.18); }
+        .artifact-card:hover::before { width: 100%; }
+        .artifact-type {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 0.75rem;
+        }
+        .artifact-name {
+            font-family: 'Imbue', serif; font-size: 1.15rem; font-weight: 700;
+            color: var(--ecru); text-transform: uppercase; line-height: 1.15;
+            margin-bottom: 0.75rem;
+        }
+        .artifact-desc {
+            font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim);
+            line-height: 1.5; margin-bottom: 1rem;
+        }
+        .artifact-action {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--rosso); text-transform: uppercase; letter-spacing: 0.15em;
+        }
+
+        /* === Outcome Grid === */
+        .outcome-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2px; margin: 2.5rem 0; max-width: 750px;
+        }
+        .outcome-stat { background: rgba(245, 245, 220, 0.14); padding: 2rem 1.75rem; }
+        .outcome-number {
+            font-family: 'Imbue', serif; font-size: 2.5rem; font-weight: 900;
+            color: var(--ecru); line-height: 1; margin-bottom: 0.5rem;
+        }
+        .outcome-number.highlight { color: var(--rosso); }
+        .outcome-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--quetzal-bright); text-transform: uppercase; letter-spacing: 0.1em;
+            line-height: 1.4;
+        }
+
+        /* === Back Link === */
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+            color: var(--ecru-dim); text-decoration: none; text-transform: uppercase;
+            letter-spacing: 0.1em; transition: color 0.2s ease; margin-top: 3rem;
+        }
+        .back-link::before {
+            content: ''; display: block; width: 24px; height: 2px;
+            background: var(--quetzal); transition: width 0.3s ease, background 0.3s ease;
+        }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        /* === Footer === */
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .footer-content {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 1200px;
+        }
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); letter-spacing: 0.05em;
+        }
+
+        /* === Animations === */
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* === Responsive === */
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .section-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .approach-grid { grid-template-columns: 1fr; }
+            .artifact-grid { grid-template-columns: 1fr; }
+            .outcome-grid { grid-template-columns: 1fr 1fr; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+        }
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .nav-links a { font-size: 0.75rem; }
+            .blueprint-overlay { background-size: 24px 24px; }
+            .outcome-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="blueprint-overlay" aria-hidden="true"></div>
+    <div class="spine" aria-hidden="true"></div>
+    <nav class="nav-bar" role="navigation" aria-label="Primary">
+        <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
+        <ul class="nav-links">
+            <li><a href="/#warehouse">Warehouse</a></li>
+            <li><a href="/#investigation">Investigation</a></li>
+            <li><a href="/#verdict">Verdict</a></li>
+            <li><a href="/#signal">Signal</a></li>
+        </ul>
+    </nav>
+    <main>
+        <!-- HEADER -->
+        <section class="case-header section-content">
+            <span class="case-meta">Case Study // Strategic Revenue Ops</span>
+            <span class="case-tag">Acquisition Integration</span>
+            <h1>Post-Acquisition<br>Integration<br><span class="accent-word">Launch</span></h1>
+            <div class="case-lede">
+                <p>No playbook existed. No integration model had been tested. An acquired industrial supply company needed a live e-commerce storefront wired into an ERP it had never touched ... across eight teams, three vendors, and a system architecture nobody had mapped. <strong>The architecture I built held after I was no longer there to run it.</strong></p>
+            </div>
+        </section>
+
+        <!-- THE EVIDENCE -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">The Evidence</span>
+            <h2>Frameworks<br>&amp; Artifacts</h2>
+            <div class="case-body"><p>Four structural deliverables from a six-month integration engagement. Each artifact addressed a specific failure mode the organization had no prior model for handling.</p></div>
+            <div class="artifact-grid">
+                <a href="assets/system-integration-sequence.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                    <div class="artifact-type">Interactive Framework</div>
+                    <div class="artifact-name">System Integration<br>Sequence Map</div>
+                    <div class="artifact-desc">The full dependency chain across ERP, tax engine, and payment processor. Every system role, handoff point, and constraint rule mapped into a single visual architecture.</div>
+                    <div class="artifact-action">View Framework &rarr;</div>
+                </a>
+                <a href="assets/vendor-governance-model.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                    <div class="artifact-type">Governance Framework</div>
+                    <div class="artifact-name">Vendor Governance<br>Model</div>
+                    <div class="artifact-desc">The control architecture that prevented parallel vendor motion, rogue system installs, and scope boundary violations across three external partners and five internal functions.</div>
+                    <div class="artifact-action">View Framework &rarr;</div>
+                </a>
+                <a href="assets/product-taxonomy-architecture.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                    <div class="artifact-type">Applied Architecture</div>
+                    <div class="artifact-name">Product Taxonomy<br>Architecture</div>
+                    <div class="artifact-desc">281 categories built from SKU data, not inherited guesswork. A four-level hierarchy designed for findability, merchandising scalability, and structured data ingest.</div>
+                    <div class="artifact-action">View Architecture &rarr;</div>
+                </a>
+                <a href="assets/cross-functional-workback.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                    <div class="artifact-type">Execution Framework</div>
+                    <div class="artifact-name">Cross-Functional<br>Workback Plan</div>
+                    <div class="artifact-desc">Eight teams coordinated into a single phased roadmap with dependency gates, escalation paths, and a P0/P1/P2 prioritization structure that prevented scope paralysis.</div>
+                    <div class="artifact-action">View Framework &rarr;</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- THE SITUATION -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">The Situation</span>
+            <h2>No Precedent<br>for What Was Required</h2>
+            <div class="case-body">
+                <p>The parent company acquired an industrial supply distributor. The mandate was clear: stand up a functional e-commerce storefront integrated with NetSuite and SuiteCommerce. The timeline was aggressive. The complication was structural.</p>
+                <p><strong>Nobody had done this before inside this organization.</strong> No acquisition integration playbook existed for e-commerce. No cross-functional coordination model had been tested. The acquired company operated on legacy processes with no digital commerce infrastructure. The parent company's own teams had never aligned Finance, Distribution, Procurement, Marketing, and IT around a single digital launch.</p>
+                <p>The work required simultaneous coordination of a third-party NetSuite consultancy, a product information management vendor, a payment gateway provider, a tax compliance engine, internal Cloud Ops, and warehouse operations ... all while defining what "minimum viable launch" actually meant for a B2B industrial catalog with thousands of potential SKUs.</p>
+
+                <div class="failure-loop">
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> Acquisition closes</div>
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> No integration model exists</div>
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> Teams operate independently</div>
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> Vendors make conflicting assumptions</div>
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> Scope expands without governance</div>
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> Launch date becomes theoretical</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRESSURE POINTS -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">Pressure Points Surfaced</span>
+            <h2>What the<br>Diagnostic Found</h2>
+            <div class="case-body"><p>The integration had six structural exposures. Three were architectural. Three were operational. All were interconnected.</p></div>
+            <div class="constraint-list">
+                <div class="constraint-item">
+                    <span class="constraint-flag red">Red</span>
+                    <div>
+                        <div class="constraint-label">No System Integration Sequence</div>
+                        <div class="constraint-detail">Three vendors (NetSuite SI, tax engine, payment processor) had no shared understanding of which system moves first, which consumes what, or where handoffs occur. Parallel motion was the default.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag red">Red</span>
+                    <div>
+                        <div class="constraint-label">Tax Compliance Entirely Manual</div>
+                        <div class="constraint-detail">Tax calculations entered manually into the ERP. Sales data manually uploaded to the tax engine. 100% manual intervention rate with high compliance and human-error exposure.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag red">Red</span>
+                    <div>
+                        <div class="constraint-label">No Vendor Governance Model</div>
+                        <div class="constraint-detail">No single-threaded ownership. No rules preventing rogue system installs. No scope boundaries between the SI partner, internal teams, and third-party vendors.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag yellow">Yellow</span>
+                    <div>
+                        <div class="constraint-label">Product Taxonomy Based on Assumption</div>
+                        <div class="constraint-detail">Leadership dictated four top-level categories without data backing. No L3/L4 depth. No alignment with how customers actually search for industrial supply products.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag yellow">Yellow</span>
+                    <div>
+                        <div class="constraint-label">Image Pipeline Schema Unresolved</div>
+                        <div class="constraint-detail">SuiteCommerce maps images to parent products, not child SKUs. Naming conventions and CSV schemas for bulk upload were undefined. Automation existed but correctness at scale did not.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag yellow">Yellow</span>
+                    <div>
+                        <div class="constraint-label">No UAT Infrastructure</div>
+                        <div class="constraint-detail">Zero test cases, no QA tracker, no accountability model. The team had no way to validate checkout, order creation, pricing logic, or data flow before going live.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE APPROACH -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">The Approach</span>
+            <h2>Build the Rails<br>Before the Train</h2>
+            <div class="case-body"><p>The intervention was structural, not managerial. The goal was to create an integration architecture durable enough to survive personnel changes, vendor handoffs, and timeline shifts ... and then execute against it in phases.</p></div>
+            <div class="approach-grid">
+                <div class="approach-item">
+                    <div class="approach-day">Phase 01</div>
+                    <div class="approach-title">Lock the<br>Architecture</div>
+                    <div class="approach-desc">Define system roles (ERP as hub, tax engine as calculator, payment processor as consumer). Map the full transaction lifecycle. Establish explicit constraints: what each system must not do.</div>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-day">Phase 02</div>
+                    <div class="approach-title">Establish<br>Governance</div>
+                    <div class="approach-desc">Centralize NetSuite orchestration under the SI partner. Define scope boundaries for every vendor and internal team. Create "do not proceed until" dependency gates to prevent premature execution.</div>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-day">Phase 03</div>
+                    <div class="approach-title">Build the<br>Execution Layer</div>
+                    <div class="approach-desc">Cross-functional workback plan across eight teams. P0/P1/P2 prioritization to prevent scope paralysis. UAT infrastructure from scratch. Taxonomy built from data. Communications and escalation pathing.</div>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-day">Principle</div>
+                    <div class="approach-title">Decision Quality<br>Over Speed</div>
+                    <div class="approach-desc">The biggest risk was not slowness. It was executing too early against partially locked assumptions. Every structural decision was designed to prevent entire categories of downstream failure.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE OUTCOME -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">The Outcome</span>
+            <h2>What the<br>Integration Produced</h2>
+            <div class="outcome-grid">
+                <div class="outcome-stat">
+                    <div class="outcome-number highlight">8+</div>
+                    <div class="outcome-label">Cross-functional<br>teams aligned</div>
+                </div>
+                <div class="outcome-stat">
+                    <div class="outcome-number">281</div>
+                    <div class="outcome-label">Product categories<br>built from data</div>
+                </div>
+                <div class="outcome-stat">
+                    <div class="outcome-number">70+</div>
+                    <div class="outcome-label">UAT test cases<br>completed pre-launch</div>
+                </div>
+                <div class="outcome-stat">
+                    <div class="outcome-number">13</div>
+                    <div class="outcome-label">Weeks to P0<br>vs 20-24 typical</div>
+                </div>
+                <div class="outcome-stat">
+                    <div class="outcome-number">3</div>
+                    <div class="outcome-label">External vendors<br>governed under one model</div>
+                </div>
+                <div class="outcome-stat">
+                    <div class="outcome-number">1st</div>
+                    <div class="outcome-label">Acquisition e-commerce<br>integration blueprint</div>
+                </div>
+            </div>
+            <div class="case-body" style="margin-top: 2rem;">
+                <p>The shortest version: I built the first post-acquisition e-commerce integration architecture this organization had ever attempted. It unified eight teams, three vendors, and four systems into a single governed execution path. <strong>The site launched. The architecture held. The governance model survived my departure.</strong> That last part is the point. Durable systems do not require their architect to remain in the room.</p>
+            </div>
+            <a href="/" class="back-link">Back to The Warehouse</a>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <span>&copy; 2026 Angie Bailey</span>
+        </div>
+    </footer>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
