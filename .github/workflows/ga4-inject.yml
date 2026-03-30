@@ -1,0 +1,61 @@
+name: GA4 Tag Auto-Inject
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+
+permissions:
+  contents: write
+
+jobs:
+  inject-ga4:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Inject GA4 tag into HTML files missing it
+        run: |
+          GA4_ID="G-S0MXDDKP4E"
+          GA4_TAG="<!-- Google tag (gtag.js) -->\\n<script async src=\\"https://www.googletagmanager.com/gtag/js?id=${GA4_ID}\\"></script>\\n<script>\\n  window.dataLayer = window.dataLayer || [];\\n  function gtag(){dataLayer.push(arguments);}\\n  gtag('js', new Date());\\n  gtag('config', '${GA4_ID}');\\n</script>"
+
+          FIXED_FILES=""
+
+          for file in $(find . -name "*.html" -type f); do
+            if grep -q "$GA4_ID" "$file"; then
+              continue
+            fi
+
+            if ! grep -qi "<head" "$file"; then
+              echo "SKIP (no <head>): $file"
+              continue
+            fi
+
+            sed -i "s|<head[^>]*>|&\\n${GA4_TAG}|I" "$file"
+
+            if grep -q "$GA4_ID" "$file"; then
+              echo "INJECTED: $file"
+              FIXED_FILES="${FIXED_FILES} ${file}"
+            else
+              echo "FAILED: $file"
+            fi
+          done
+
+          if [ -z "$FIXED_FILES" ]; then
+            echo "All HTML files already have GA4 tag."
+          else
+            echo "Fixed files:${FIXED_FILES}"
+          fi
+
+      - name: Commit and push if changes were made
+        run: |
+          git config user.name "GA4 Auto-Inject"
+          git config user.email "actions@angieqbailey.com"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Auto-inject GA4 tracking tag (G-S0MXDDKP4E) into new HTML pages"
+            git push
+          fi
