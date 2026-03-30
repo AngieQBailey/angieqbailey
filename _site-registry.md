@@ -30,7 +30,7 @@ Current order and status. Live cards are `<a>` elements. Placeholders are `<div>
 | 1 | Multi-Team Roadmap Summit | Strategic Operations | **LIVE** | `posts/e-commerce-summit/e-commerce-summit.html` |
 | 2 | E-Commerce P&L Build | Decision Infrastructure | **LIVE** | `posts/ecommerce-pl/ecommerce-pl.html` |
 | 3 | Web Experience Capacity Expansion | Delivery Governance | **LIVE** | `posts/web-experience-capacity-build/web-experience-capacity-build.html` |
-| 4 | Post-Acquisition Integration | Ops Management | **PLACEHOLDER** | No case study page yet |
+| 4 | Post-Acquisition Integration Launch | Strategic Revenue Ops | **LIVE** | `posts/post-acquisition-integration-launch/post-acquisition-integration-launch.html` |
 | 5 | Enterprise Newsletter Launch | Channel Strategy | **LIVE** | `posts/enterprise-newsletter-architecture/enterprise-newsletter-architecture.html` |
 | 6 | Crisis Communications Architecture | Strategic Communications | **LIVE** | `posts/crisis-communications-architecture/crisis-communications-architecture.html` |
 | 7 | Workforce AI Adoption | AI Implementation | **PLACEHOLDER** | No case study page yet |
@@ -114,6 +114,22 @@ Below the client case study grid, a separate subsection with Quetzal-tinted card
 | `posts/enterprise-newsletter-architecture/assets/ic-strategic-value-architecture.html` | Branded artifact page (dark) | **LIVE** | IC Strategic Value Architecture |
 | `posts/enterprise-newsletter-architecture/assets/internal-comms-channel-audit.html` | Branded artifact page (dark) | **LIVE** | Internal Comms Channel Audit |
 | `posts/enterprise-newsletter-architecture/assets/templates/*.html` | Blank templates (light/ecru) | **LIVE** | 3 blank templates |
+
+---
+
+## Case Study: Post-Acquisition Integration Launch
+
+| File | Type | Status | Display Name |
+|------|------|--------|--------------|
+| `posts/post-acquisition-integration-launch/post-acquisition-integration-launch.html` | Case study page (dark) | **LIVE** | — |
+| `posts/post-acquisition-integration-launch/warehouse-card.html` | Warehouse card | **LIVE** | — |
+| `posts/post-acquisition-integration-launch/assets/vendor-governance-model.html` | Branded artifact page (dark) | **LIVE** | Vendor Governance Model |
+| `posts/post-acquisition-integration-launch/assets/product-taxonomy-architecture.html` | Branded artifact page (dark) | **LIVE** | Product Taxonomy Architecture |
+| `posts/post-acquisition-integration-launch/assets/cross-functional-workback.html` | Branded artifact page (dark) | **LIVE** | Cross-Functional Workback |
+| `posts/post-acquisition-integration-launch/assets/system-integration-sequence.html` | Branded artifact page (dark) | **PENDING** | System Integration Sequence (interactive map) |
+| `posts/post-acquisition-integration-launch/assets/templates/system-integration-sequence-blank.html` | Blank template (light/ecru) | **LIVE** | — |
+| `posts/post-acquisition-integration-launch/assets/templates/vendor-governance-model-blank.html` | Blank template (light/ecru) | **LIVE** | — |
+| `posts/post-acquisition-integration-launch/assets/templates/product-taxonomy-architecture-blank.html` | Blank template (light/ecru) | **LIVE** | — |
 
 ---
 
