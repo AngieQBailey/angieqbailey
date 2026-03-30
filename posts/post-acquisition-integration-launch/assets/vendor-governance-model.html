@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vendor Governance Model — The control architecture designed to prevent parallel vendor motion, rogue system installs, and scope boundary violations during post-acquisition e-commerce integration.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <title>Vendor Governance Model // Angie Bailey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit: #121A28; --cacao: #2D1B14; --quetzal: #00685E;
+            --quetzal-bright: #00A896; --ecru: #F5F5DC; --rosso: #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; font-style: normal !important; border-radius: 0 !important; }
+        ::selection { background: var(--rosso); color: var(--ecru); }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--nuit); color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif; font-weight: 400;
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale; overflow-x: hidden;
+        }
+        .blueprint-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px; animation: grid-fade 2s ease 0.5s both;
+        }
+        .spine {
+            position: fixed; left: calc(var(--spine-left) - 40px);
+            top: 0; width: 4px; height: 100%;
+            background-color: var(--cacao); z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .nav-bar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--quetzal-bright); text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 400; color: var(--ecru-dim); text-decoration: none;
+            text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s ease;
+        }
+        .nav-links a:hover { color: var(--ecru); }
+        main { position: relative; z-index: 10; }
+        .doc-content { padding-left: var(--spine-left); padding-right: 4rem; max-width: 1200px; }
+
+        /* Header */
+        .artifact-header {
+            padding-top: 8rem; padding-bottom: 3rem;
+        }
+        .artifact-meta {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+            color: var(--quetzal-bright); letter-spacing: 0.2em; text-transform: uppercase;
+            margin-bottom: 1.5rem; display: block;
+        }
+        .artifact-header h1 {
+            font-family: 'Imbue', serif; font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 900; line-height: 0.9; color: var(--ecru);
+            text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 1.5rem;
+        }
+        .artifact-header h1 .accent-word { color: var(--rosso); }
+        .artifact-desc {
+            font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+            color: var(--ecru-dim); max-width: 600px; margin-bottom: 2rem;
+        }
+        .artifact-desc strong { color: var(--ecru); font-weight: 500; }
+        .download-btn {
+            display: inline-block; font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em;
+            text-transform: uppercase; color: var(--nuit); background: var(--ecru);
+            text-decoration: none; padding: 0.75rem 2rem;
+            transition: background 0.2s, color 0.2s;
+        }
+        .download-btn:hover { background: var(--rosso); color: var(--ecru); }
+
+        /* Sections */
+        .doc-section {
+            padding-top: 2.5rem; padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 0.5rem; display: block;
+        }
+        h2 {
+            font-family: 'Imbue', serif; font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 900; color: var(--ecru); text-transform: uppercase;
+            line-height: 0.95; margin-bottom: 2rem;
+        }
+        .body-text {
+            font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+            color: var(--ecru-dim); margin-bottom: 1.5rem; max-width: 650px;
+        }
+        .body-text strong { color: var(--ecru); font-weight: 500; }
+
+        /* Branded Table */
+        .branded-table {
+            width: 100%; margin: 2.5rem 0; max-width: 900px;
+            border-collapse: collapse; background: rgba(245, 245, 220, 0.14);
+        }
+        .branded-table thead {
+            background: rgba(245, 245, 220, 0.08);
+        }
+        .branded-table th {
+            padding: 1.25rem 1.5rem; text-align: left;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); text-transform: uppercase;
+            letter-spacing: 0.1em; border-bottom: 2px solid var(--ecru-ghost);
+        }
+        .branded-table td {
+            padding: 1.5rem; border-bottom: 1px solid var(--ecru-ghost);
+            font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.6;
+        }
+        .branded-table td strong {
+            color: var(--ecru); font-weight: 500; display: block; margin-bottom: 0.5rem;
+        }
+        .branded-table tbody tr:hover td {
+            background: rgba(245, 245, 220, 0.06);
+        }
+        .branded-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Constraint List */
+        .constraint-list {
+            margin: 2.5rem 0; max-width: 700px;
+        }
+        .constraint-item {
+            padding: 1.75rem 1.5rem; margin-bottom: 2px;
+            background: rgba(245, 245, 220, 0.14);
+            border-left: 4px solid var(--ecru-ghost);
+        }
+        .constraint-item.red {
+            border-left-color: var(--rosso);
+        }
+        .constraint-item.yellow {
+            border-left-color: #D4A017;
+        }
+        .constraint-flag {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+        .constraint-item.red .constraint-flag {
+            color: var(--rosso);
+        }
+        .constraint-item.yellow .constraint-flag {
+            color: #D4A017;
+        }
+        .constraint-title {
+            font-family: 'Imbue', serif; font-size: 1.1rem; font-weight: 700;
+            color: var(--ecru); text-transform: uppercase; line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+        .constraint-text {
+            font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.6;
+        }
+        .constraint-text strong { color: var(--ecru); font-weight: 500; }
+
+        /* Core Principle */
+        .core-principle {
+            border-left: 4px solid var(--rosso); padding: 2rem;
+            background: rgba(245, 245, 220, 0.14); margin: 2.5rem 0; max-width: 700px;
+        }
+        .core-principle p {
+            font-size: 1.05rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.7;
+        }
+        .core-principle strong { color: var(--ecru); font-weight: 500; }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+            color: var(--ecru-dim); text-decoration: none; text-transform: uppercase;
+            letter-spacing: 0.1em; transition: color 0.2s ease; margin-top: 3rem;
+        }
+        .back-link::before {
+            content: ''; display: block; width: 24px; height: 2px;
+            background: var(--quetzal); transition: width 0.3s ease, background 0.3s ease;
+        }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .footer-content {
+            display: flex; justify-content: space-between; align-items: center; max-width: 1200px;
+        }
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); letter-spacing: 0.05em;
+        }
+
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .doc-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            .branded-table { font-size: 0.9rem; }
+            .branded-table td, .branded-table th { padding: 1rem; }
+            footer { padding-left: 2rem; }
+        }
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .nav-links a { font-size: 0.75rem; }
+            .blueprint-overlay { background-size: 24px 24px; }
+            .branded-table th, .branded-table td { padding: 0.75rem; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="blueprint-overlay" aria-hidden="true"></div>
+    <div class="spine" aria-hidden="true"></div>
+    <nav class="nav-bar" role="navigation">
+        <a href="../post-acquisition-integration-launch.html" class="nav-mark" style="text-decoration: none;">
+            &larr; Post-Acquisition Integration Launch
+        </a>
+        <ul class="nav-links">
+            <li><a href="/">Main Site</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="doc-content">
+            <div class="artifact-header">
+                <span class="artifact-meta">Governance Framework // Vendor Management</span>
+                <h1>Vendor Governance<br><span class="accent-word">Model</span></h1>
+                <p class="artifact-desc">The control architecture designed to prevent the most common cause of integration failure: vendors and internal teams operating independently without shared constraints or clear ownership boundaries.</p>
+                <a href="templates/vendor-governance-model-blank.html" class="download-btn" target="_blank" rel="noopener noreferrer">
+                    Download Blank Template &darr;
+                </a>
+            </div>
+
+            <!-- OWNERSHIP MAP -->
+            <section class="doc-section reveal">
+                <span class="section-label">Ownership Architecture</span>
+                <h2>Who Owns What<br>And What They Don't</h2>
+                <table class="branded-table">
+                    <thead>
+                        <tr>
+                            <th>Function</th>
+                            <th>Owns</th>
+                            <th>Does Not Own</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>SI Partner (NetSuite Orchestrator)</strong></td>
+                            <td>NetSuite configuration validation, SuiteApp install coordination, sandbox-to-production sequencing, constraint validation, File Cabinet standards, import mechanics and compatibility checks</td>
+                            <td>Data cleanup, PIM design, attribute taxonomy, image quality and content logic, ongoing image maintenance</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Finance</strong></td>
+                            <td>Payment strategy, automation approval, compliance and audit guardrails, final approval for payment processor and tax engine direction</td>
+                            <td>System configuration, vendor management, technical implementation decisions</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Accounts Receivable</strong></td>
+                            <td>Day-to-day AR workflows, operational pain-point input, current manual execution</td>
+                            <td>Architecture decisions, bundle decisions, tax-system design</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Project Lead</strong></td>
+                            <td>Escalation, dependency management, keeping SI partner, vendors, and internal teams from crossing scope boundaries</td>
+                            <td>System configuration, vendor deliverables, individual team execution</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Distribution and Warehouse Ops</strong></td>
+                            <td>Fulfillment routing, inventory data, warehouse process requirements</td>
+                            <td>ERP configuration, e-commerce platform decisions, vendor relationships</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- GOVERNANCE RULES -->
+            <section class="doc-section reveal">
+                <span class="section-label">Hard Constraints</span>
+                <h2>Rules That<br>Cannot Bend</h2>
+                <div class="constraint-list">
+                    <div class="constraint-item red">
+                        <div class="constraint-flag">RED</div>
+                        <div class="constraint-title">Single-Threaded Orchestration</div>
+                        <div class="constraint-text">All NetSuite configuration, SuiteApp installs, and environment changes go through the SI partner. No parallel vendor work. No internal teams making system changes independently.</div>
+                    </div>
+                    <div class="constraint-item red">
+                        <div class="constraint-flag">RED</div>
+                        <div class="constraint-title">No Rogue Installs</div>
+                        <div class="constraint-text">No production installs or bundle changes outside the SI-led sequencing. One path to production. No exceptions.</div>
+                    </div>
+                    <div class="constraint-item red">
+                        <div class="constraint-flag">RED</div>
+                        <div class="constraint-title">Scope Boundary Enforcement</div>
+                        <div class="constraint-text">There is a specific line between "validate system constraints" and "clean up or define the data." If that boundary blurs, the project creates frustration, delays, and SOW friction.</div>
+                    </div>
+                    <div class="constraint-item yellow">
+                        <div class="constraint-flag">YELLOW</div>
+                        <div class="constraint-title">Dependency Gate Protocol</div>
+                        <div class="constraint-text">"Do not proceed until X is defined" rules are enforced at every handoff. Image automation blocked on schema clarity. System work blocked on SI sequencing.</div>
+                    </div>
+                    <div class="constraint-item yellow">
+                        <div class="constraint-flag">YELLOW</div>
+                        <div class="constraint-title">Visibility Without Reprioritization</div>
+                        <div class="constraint-text">Get the SI partner's current punch list, capacity usage, and blockers without triggering reprioritization or SOW negotiation. Observe the constraint without disturbing it.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CORE PRINCIPLE -->
+            <section class="doc-section reveal">
+                <div class="core-principle">
+                    <p><strong>The governance model was designed around a single premise: most integration failures happen not because teams lack competence but because they lack constraints.</strong> When three vendors and five internal functions can all modify the same system independently, the system becomes the casualty. Single-threaded ownership is not a management preference. It is an architectural requirement.</p>
+                </div>
+                <a href="../post-acquisition-integration-launch.html" class="back-link">Back to Case Study</a>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <span>&copy; 2026 Angie Bailey</span>
+        </div>
+    </footer>
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
