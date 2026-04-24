@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#121A28;">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learning & Development: Infrastructure of A Life. Love letters to things, thinking and history. What happens when something snags your attention and you can't stop pulling the thread.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <meta property="og:title" content="Learning & Development // Infrastructure of A Life // Angie Bailey">
+    <meta property="og:description" content="Love letters to things. Not people. The objects and practices I loved enough to investigate until I found myself at the bottom of them.">
+    <meta property="og:type" content="article">
+    <title>Learning & Development // Infrastructure of A Life // Angie Bailey</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --nuit:     #121A28;
+        --cacao:    #2D1B14;
+        --quetzal:  #00685E;
+        --quetzal-bright: #00A896;
+        --ecru:     #F5F5DC;
+        --rosso:    #C41E3A;
+        --ecru-dim: rgba(245, 245, 220, 0.6);
+        --ecru-ghost: rgba(245, 245, 220, 0.08);
+        --quetzal-line: rgba(0, 104, 94, 0.1);
+        --spine-left: 22%;
+    }
+
+    *, *::before, *::after {
+        margin: 0; padding: 0; box-sizing: border-box;
+        font-style: normal !important;
+        border-radius: 0 !important;
+    }
+
+    ::selection { background: var(--rosso); color: var(--ecru); }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+
+    body {
+        background-color: var(--nuit); color: var(--ecru);
+        font-family: 'IBM Plex Sans', sans-serif; font-weight: 400;
+        line-height: 1.6; -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale; overflow-x: hidden;
+    }
+
+    /* Architectural Elements */
+    .blueprint-overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        pointer-events: none; z-index: 1000;
+        background-image:
+            linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+        background-size: 40px 40px;
+        animation: grid-fade 2s ease 0.5s both;
+    }
+
+    .spine {
+        position: fixed; left: calc(var(--spine-left) - 40px);
+        top: 0; width: 4px; height: 100%;
+        background-color: var(--cacao); z-index: 500;
+        animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Navigation */
+    .nav-bar {
+        position: fixed; top: 0; left: 0; width: 100%; z-index: 900;
+        padding: 1.5rem 2rem 1.5rem var(--spine-left);
+        display: flex; justify-content: space-between; align-items: center;
+        background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+    }
+    .nav-mark {
+        font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+        font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+        color: var(--quetzal-bright); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+    .nav-links a {
+        font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+        font-weight: 400; color: var(--ecru-dim); text-decoration: none;
+        text-transform: uppercase; letter-spacing: 0.1em;
+        transition: color 0.2s ease; position: relative;
+    }
+    .nav-links a::after {
+        content: ''; position: absolute; bottom: -4px; left: 0;
+        width: 0; height: 2px; background: var(--rosso);
+        transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--ecru); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* Content Layout */
+    main { position: relative; z-index: 10; }
+    .section-content {
+        padding-left: var(--spine-left); padding-right: 4rem; max-width: 1200px;
+    }
+
+    /* Header */
+    .ld-header {
+        min-height: 70vh; display: flex; flex-direction: column;
+        justify-content: center; padding-top: 8rem; padding-bottom: 4rem;
+    }
+    .ld-meta {
+        font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+        color: var(--quetzal-bright); letter-spacing: 0.1em; margin-bottom: 2rem;
+        display: block; animation: fade-up 0.8s ease 0.4s both;
+    }
+    .ld-tag {
+        font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+        font-weight: 700; color: var(--rosso); text-transform: uppercase;
+        letter-spacing: 0.2em; margin-bottom: 1.5rem; display: block;
+        animation: fade-up 0.8s ease 0.5s both;
+    }
+    .ld-header h1 {
+        font-family: 'Imbue', serif; font-size: clamp(2.5rem, 7vw, 6rem);
+        font-weight: 900; line-height: 0.9; color: var(--ecru);
+        text-transform: uppercase; letter-spacing: -0.02em;
+        margin-bottom: 2.5rem; max-width: 700px;
+        animation: fade-up 0.8s ease 0.6s both;
+    }
+    .ld-header h1 .accent-word { color: var(--rosso); }
+
+    .ld-lede {
+        border-left: 5px solid var(--cacao); padding-left: 2rem;
+        max-width: 600px; animation: fade-up 0.8s ease 0.8s both;
+    }
+    .ld-lede p {
+        font-size: 1.15rem; font-weight: 300; line-height: 1.7; color: var(--ecru-dim);
+    }
+    .ld-lede strong { color: var(--ecru); font-weight: 500; }
+
+    .ld-subtitle {
+        font-family: 'IBM Plex Mono', monospace; font-size: 0.95rem;
+        font-weight: 700; color: var(--ecru); letter-spacing: 0.05em;
+        margin-bottom: 1.5rem; animation: fade-up 0.8s ease 0.7s both;
+    }
+
+    /* Sections */
+    .ld-section {
+        padding-top: 2.5rem; padding-bottom: 2.5rem;
+        border-top: 1px solid var(--ecru-ghost);
+    }
+    .section-label {
+        font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+        font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.2em;
+        text-transform: uppercase; margin-bottom: 0.5rem; display: block;
+    }
+    h2 {
+        font-family: 'Imbue', serif; font-size: clamp(1.8rem, 4vw, 3rem);
+        font-weight: 900; color: var(--ecru); text-transform: uppercase;
+        line-height: 0.95; letter-spacing: -0.01em; margin-bottom: 2.5rem;
+    }
+    .section-body p {
+        font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+        color: var(--ecru-dim); margin-bottom: 1.5rem; max-width: 650px;
+    }
+    .section-body p strong { color: var(--ecru); font-weight: 500; }
+
+    /* Collection Label */
+    .collection-label {
+        font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+        font-weight: 700; color: var(--ecru-dim); letter-spacing: 0.15em;
+        text-transform: uppercase; margin-bottom: 1.5rem; display: block;
+        padding-bottom: 0.75rem; border-bottom: 1px solid var(--ecru-ghost);
+    }
+    .collection-accent {
+        color: var(--rosso); font-weight: 700;
+    }
+
+    /* Piece Grid */
+    .piece-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2px; margin: 1.5rem 0;
+    }
+
+    .piece-card {
+        background: rgba(45, 27, 20, 0.35);
+        padding: 2rem 1.75rem;
+        position: relative; transition: background 0.3s ease;
+        text-decoration: none; display: block;
+    }
+    .piece-card::before {
+        content: ''; position: absolute; top: 0; left: 0;
+        width: 0; height: 3px; background: var(--cacao);
+        transition: width 0.4s ease;
+    }
+    .piece-card:hover { background: rgba(45, 27, 20, 0.45); }
+    .piece-card:hover::before { width: 100%; }
+
+    .piece-card.placeholder {
+        opacity: 0.5;
+        cursor: default;
+    }
+    .piece-card.placeholder:hover {
+        background: rgba(45, 27, 20, 0.35);
+    }
+    .piece-card.placeholder::before {
+        background: none;
+    }
+
+    .piece-type {
+        font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+        font-weight: 700; color: var(--quetzal-bright); text-transform: uppercase;
+        letter-spacing: 0.2em; margin-bottom: 0.75rem;
+    }
+    .piece-name {
+        font-family: 'Imbue', serif; font-size: 1.15rem; font-weight: 700;
+        color: var(--ecru); text-transform: uppercase; line-height: 1.15;
+        margin-bottom: 0.75rem;
+    }
+    .piece-desc {
+        font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim);
+        line-height: 1.5; margin-bottom: 1rem;
+    }
+    .piece-status {
+        font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+        color: var(--rosso); text-transform: uppercase; letter-spacing: 0.15em;
+    }
+    .piece-status.live { color: var(--quetzal-bright); }
+
+    /* Back Link */
+    .back-link {
+        display: inline-flex; align-items: center; gap: 0.75rem;
+        font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+        color: var(--ecru-dim); text-decoration: none; text-transform: uppercase;
+        letter-spacing: 0.1em; transition: color 0.2s ease; margin-top: 3rem;
+    }
+    .back-link::before {
+        content: ''; display: block; width: 24px; height: 2px;
+        background: var(--quetzal); transition: width 0.3s ease, background 0.3s ease;
+    }
+    .back-link:hover { color: var(--ecru); }
+    .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+    /* Footer */
+    footer {
+        padding: 2rem 2rem 2rem var(--spine-left);
+        border-top: 1px solid var(--ecru-ghost);
+    }
+    .footer-content {
+        display: flex; justify-content: space-between; align-items: center;
+        max-width: 1200px;
+    }
+    .footer-content span {
+        font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+        color: var(--ecru-dim); letter-spacing: 0.05em;
+    }
+
+    /* Animations */
+    @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+    @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+        :root { --spine-left: 5%; }
+        .spine { left: 12px; width: 3px; }
+        .section-content { padding-left: 2rem; padding-right: 2rem; }
+        .nav-bar { padding-left: 2rem; }
+        .piece-grid { grid-template-columns: 1fr; }
+        .nav-links { gap: 1.25rem; padding-right: 1rem; }
+        footer { padding-left: 2rem; }
+    }
+
+    @media (max-width: 500px) {
+        .nav-mark { display: none; }
+        .nav-bar { justify-content: flex-end; }
+        .nav-links a { font-size: 0.75rem; }
+        .blueprint-overlay { background-size: 24px 24px; }
+    }
+</style>
+</head>
+<body style="background-color: #121A28;">
+
+<div class="blueprint-overlay" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true"></div>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
+    <ul class="nav-links">
+        <li><a href="/#warehouse">Warehouse</a></li>
+        <li><a href="/#investigation">Investigation</a></li>
+        <li><a href="/#verdict">Verdict</a></li>
+        <li><a href="/#debrief">Debrief</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- HEADER -->
+    <section class="ld-header section-content">
+        <span class="ld-meta">Learning & Development</span>
+        <span class="ld-tag">Love Letters to Things, Thinking & History</span>
+        <h1>Infrastructure<br>of A <span class="accent-word">Life</span></h1>
+
+        <div class="ld-lede">
+            <p>
+                None of this is work product. None of it has a client.
+                This is what happens when something snags my attention and I can't stop pulling the thread
+                until I've accidentally connected it to three other things I wasn't even thinking about.
+                Sometimes I love the thing. Sometimes I just found a really interesting connection between things
+                and couldn't leave it alone.
+            </p>
+        </div>
+    </section>
+
+    <!-- THE COLLECTION -->
+    <section class="ld-section section-content reveal">
+        <span class="section-label">The Collection</span>
+        <h2>What's<br>In Here</h2>
+
+        <div class="section-body">
+            <p>
+                Wite-Out and how the Nazis stole a Sanskrit good-luck charm have no business
+                being in the same section. But here we are, because my brain made the connection
+                and I wrote 2,000 words about it before I could talk myself out of it.
+            </p>
+            <p>
+                Not a portfolio. Not a content strategy. Just the stuff I couldn't stop
+                thinking about long enough to realize I'd already started writing it down.
+            </p>
+        </div>
+
+        <span class="collection-label">Dots, Pens & Commonplace Books: <span class="collection-accent">A Supply Closet Romance</span></span>
+
+        <div class="piece-grid">
+            <div class="piece-card placeholder">
+                <div class="piece-name">The Dotted<br>Notebook</div>
+                <div class="piece-desc">From architectural blueprints to bullet journals. How the dotted grid became the analog sovereignty tool for people who think in structure but need permission to deviate.</div>
+                <div class="piece-status">Reworking &rarr;</div>
+            </div>
+
+            <div class="piece-card placeholder">
+                <div class="piece-name">The Good<br>Pen</div>
+                <div class="piece-desc">For twenty-four years I believed there were exactly two categories of pen users: normal people and snobs. A dry erase pen in Brian's pocket collapsed that binary in a single afternoon.</div>
+                <div class="piece-status">Reworking &rarr;</div>
+            </div>
+
+            <div class="piece-card placeholder">
+                <div class="piece-name">The New<br>Wite-Out</div>
+                <div class="piece-desc">Bette Nesmith Graham mixed tempera paint in her kitchen in 1951. Seventy years later, the correction tape sitting on my desk for three months taught me what forgiveness in writing actually looks like.</div>
+                <div class="piece-status">Reworking &rarr;</div>
+            </div>
+
+            <div class="piece-card placeholder">
+                <div class="piece-name">The Commonplace<br>Book</div>
+                <div class="piece-desc">Four centuries of collecting what matters. From John Locke's indexing system to Tiago Forte's digital repackaging. The question that never changes: what is worth keeping?</div>
+                <div class="piece-status">Reworking &rarr;</div>
+            </div>
+        </div>
+
+        <span class="collection-label" style="margin-top: 3rem;">Em-Dash Unpacking: <span class="collection-accent">Thief by Mass Visual Weaponization</span></span>
+
+        <div class="piece-grid">
+            <div class="piece-card placeholder">
+                <div class="piece-name">The Assassination<br>of the Em-Dash</div>
+                <div class="piece-desc"></div>
+                <div class="piece-status">Coming &rarr;</div>
+            </div>
+
+            <div class="piece-card placeholder">
+                <div class="piece-name">Semiotic Thief Charges<br>Don't Stick</div>
+                <div class="piece-desc"></div>
+                <div class="piece-status">Coming &rarr;</div>
+            </div>
+
+            <div class="piece-card placeholder">
+                <div class="piece-name">The Case of Hitler vs.<br>The Ancient Greeks</div>
+                <div class="piece-desc"></div>
+                <div class="piece-status">Coming &rarr;</div>
+            </div>
+
+            <div class="piece-card placeholder">
+                <div class="piece-name">Stars & Bars: Straight<br>Out of 1861 Manassas</div>
+                <div class="piece-desc"></div>
+                <div class="piece-status">Coming &rarr;</div>
+            </div>
+        </div>
+
+        <a href="/" class="back-link">Back to the business side of it all</a>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <span>&copy; 2026 Angie Bailey</span>
+    </div>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
