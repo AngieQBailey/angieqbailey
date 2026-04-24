@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blank template for the Content Prioritization Framework. Evaluate, rank and decide which content to create, update or remove.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#F5F5DC">
+    <meta property="og:title" content="Content Prioritization Framework // Blank Template">
+    <meta property="og:description" content="Evaluate, rank and decide which content to create, update or remove.">
+    <meta property="og:type" content="article">
+    <title>Content Prioritization Framework // Blank Template // Angie Bailey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit:     #121A28;
+            --cacao:    #2D1B14;
+            --quetzal:  #00685E;
+            --quetzal-bright: #00A896;
+            --ecru:     #F5F5DC;
+            --rosso:    #C41E3A;
+            --nuit-dim: rgba(18, 26, 40, 0.55);
+            --nuit-ghost: rgba(18, 26, 40, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.08);
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        ::selection { background: var(--rosso); color: var(--ecru); }
+
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--ecru); color: var(--nuit);
+            font-family: 'IBM Plex Sans', sans-serif; font-weight: 400;
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale; overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px; margin: 0 auto;
+            padding: 3rem 2.5rem;
+        }
+
+        /* HEADER */
+        .template-type {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal); letter-spacing: 0.15em;
+            text-transform: uppercase; display: block; margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: 'Imbue', serif; font-size: clamp(2.2rem, 6vw, 4.5rem);
+            font-weight: 900; line-height: 0.9; color: var(--nuit);
+            text-transform: uppercase; letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+        h1 .accent { color: var(--rosso); }
+
+        .subtitle {
+            font-family: 'IBM Plex Sans', sans-serif; font-size: 1.1rem;
+            font-weight: 300; line-height: 1.7; color: var(--quetzal);
+            max-width: 600px; margin-bottom: 1.5rem;
+        }
+
+        .instructions {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+            font-weight: 400; color: var(--nuit-dim); line-height: 1.7;
+            max-width: 600px; margin-bottom: 2rem;
+            border-left: 3px solid var(--quetzal); padding-left: 1.25rem;
+        }
+
+        .btn-print {
+            display: inline-block; padding: 0.75rem 1.75rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            background: var(--nuit); color: var(--ecru);
+            border: none; cursor: pointer; text-decoration: none;
+            transition: background 0.2s ease;
+            margin-bottom: 3rem;
+        }
+        .btn-print:hover { background: var(--rosso); }
+
+        /* SECTIONS */
+        .section {
+            padding-top: 2.5rem; padding-bottom: 2.5rem;
+            border-top: 2px solid var(--nuit-ghost);
+        }
+
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 0.5rem; display: block;
+        }
+
+        h2 {
+            font-family: 'Imbue', serif; font-size: clamp(1.6rem, 4vw, 2.5rem);
+            font-weight: 900; color: var(--nuit); text-transform: uppercase;
+            line-height: 0.95; letter-spacing: -0.01em; margin-bottom: 2rem;
+        }
+
+        /* PRIORITY KEY */
+        .priority-key {
+            display: grid; grid-template-columns: 1fr; gap: 1.25rem;
+            max-width: 750px; margin-bottom: 1rem;
+        }
+        .flag-item {
+            border-left: 4px solid; padding: 1rem 1.25rem;
+            background: var(--nuit-ghost);
+        }
+        .flag-item.high { border-color: var(--rosso); }
+        .flag-item.medium { border-color: var(--quetzal); }
+        .flag-item.low { border-color: var(--nuit-dim); }
+
+        .flag-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            margin-bottom: 0.35rem; display: block;
+        }
+        .flag-item.high .flag-label { color: var(--rosso); }
+        .flag-item.medium .flag-label { color: var(--quetzal); }
+        .flag-item.low .flag-label { color: var(--nuit-dim); }
+
+        .flag-desc {
+            font-size: 0.95rem; font-weight: 400; color: var(--nuit-dim);
+            line-height: 1.6;
+        }
+
+        /* TABLES */
+        table {
+            width: 100%; border-collapse: collapse; margin-top: 1rem;
+        }
+        th {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+            font-weight: 700; color: var(--quetzal); letter-spacing: 0.1em;
+            text-transform: uppercase; text-align: left;
+            padding: 0.75rem 0.6rem; border-bottom: 2px solid var(--quetzal);
+            background: transparent; white-space: nowrap;
+        }
+        td {
+            font-family: 'IBM Plex Sans', sans-serif; font-size: 0.9rem;
+            font-weight: 400; color: var(--nuit);
+            padding: 0.75rem 0.6rem; border-bottom: 1px solid var(--nuit-ghost);
+            vertical-align: top; line-height: 1.5;
+            min-height: 2rem;
+        }
+        td.editable {
+            border-bottom: 1px solid rgba(18, 26, 40, 0.18);
+        }
+
+        /* ATTRIBUTION */
+        .attribution {
+            margin-top: 3rem; padding-top: 2rem;
+            border-top: 2px solid var(--nuit-ghost);
+        }
+        .attribution p {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+            font-weight: 400; color: var(--nuit-dim); letter-spacing: 0.05em;
+        }
+        .attribution a {
+            color: var(--quetzal); text-decoration: none;
+        }
+        .attribution a:hover { text-decoration: underline; }
+
+        /* PRINT */
+        @page {
+            size: landscape;
+            margin: 0.5in;
+        }
+
+        @media print {
+            body { background: #fff; }
+            .btn-print { display: none !important; }
+            .container { padding: 0; max-width: 100%; }
+            .section { break-inside: avoid; }
+            table { font-size: 0.8rem; }
+            th { font-size: 0.7rem; }
+            td { padding: 0.5rem 0.4rem; }
+            td.editable { border-bottom: 1px solid #ccc; }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .container { padding: 2rem 1.25rem; }
+            table { display: block; overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- HEADER -->
+        <span class="template-type">Blank Template // Framework</span>
+        <h1>Content<br><span class="accent">Prioritization</span><br>Framework</h1>
+        <p class="subtitle">Evaluate, rank and decide which content to create, update or remove</p>
+        <div class="instructions">
+            Use this template to audit your existing content against AI Overview impact, assign priority levels, and track optimization actions. Print or save as PDF for your records. Fill in each row as you work through your content inventory.
+        </div>
+        <button class="btn-print" onclick="window.print()">Print Template</button>
+
+        <!-- PRIORITY CLASSIFICATION KEY -->
+        <div class="section">
+            <span class="section-label">01 // Reference</span>
+            <h2>Priority<br>Classification Key</h2>
+            <div class="priority-key">
+                <div class="flag-item high">
+                    <span class="flag-label">High</span>
+                    <span class="flag-desc">Pages declining from AI Overview impact, ranking positions 4-15, brand-critical content</span>
+                </div>
+                <div class="flag-item medium">
+                    <span class="flag-label">Medium</span>
+                    <span class="flag-desc">Older evergreen content needing refresh, pages losing engagement quarter over quarter</span>
+                </div>
+                <div class="flag-item low">
+                    <span class="flag-label">Low</span>
+                    <span class="flag-desc">Outdated content, irrelevant pages, duplicate content cannibalizing stronger pages</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTENT AUDIT LOG -->
+        <div class="section">
+            <span class="section-label">02 // Audit</span>
+            <h2>Content<br>Audit Log</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>URL / Page</th>
+                        <th>Current Traffic</th>
+                        <th>Keyword Ranking</th>
+                        <th>AI Overview Impact?</th>
+                        <th>Priority Level (H/M/L)</th>
+                        <th>Action Required</th>
+                        <th>Owner</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ACTION TRACKER -->
+        <div class="section">
+            <span class="section-label">03 // Tracking</span>
+            <h2>Action<br>Tracker</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>URL / Page</th>
+                        <th>Action Taken</th>
+                        <th>Date Updated</th>
+                        <th>Performance Change</th>
+                        <th>Next Review Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ATTRIBUTION -->
+        <div class="attribution">
+            <p>Framework by Angie Bailey // <a href="https://angieqbailey.com">angieqbailey.com</a></p>
+        </div>
+
+    </div>
+</body>
+</html>
