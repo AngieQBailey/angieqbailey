@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blank template: SEO &amp; AI Search Playbook for New Team Members. Structured onboarding path for SEO and AI-driven search optimization.">
+    <meta name="author" content="Angie Bailey">
+    <title>SEO &amp; AI Search Playbook // Blank Template // Angie Bailey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit:     #121A28;
+            --cacao:    #2D1B14;
+            --quetzal:  #00685E;
+            --quetzal-bright: #00A896;
+            --ecru:     #F5F5DC;
+            --rosso:    #C41E3A;
+            --nuit-dim: rgba(18, 26, 40, 0.6);
+            --nuit-ghost: rgba(18, 26, 40, 0.08);
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        ::selection { background: var(--rosso); color: var(--ecru); }
+
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--ecru); color: var(--nuit);
+            font-family: 'IBM Plex Sans', sans-serif; font-weight: 400;
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .template-wrap {
+            max-width: 850px; margin: 0 auto;
+            padding: 3rem 2.5rem 2rem;
+        }
+
+        /* Header */
+        .template-type {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
+            font-weight: 700; color: var(--quetzal); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 1.5rem; display: block;
+        }
+
+        h1 {
+            font-family: 'Imbue', serif; font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900; line-height: 0.95; color: var(--nuit);
+            text-transform: uppercase; letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        h1 .accent { color: var(--rosso); }
+
+        .subtitle {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+            font-weight: 400; color: var(--quetzal); letter-spacing: 0.05em;
+            margin-bottom: 1.5rem; display: block; max-width: 550px;
+        }
+
+        .instructions {
+            font-family: 'IBM Plex Sans', sans-serif; font-size: 0.85rem;
+            font-weight: 300; color: var(--nuit-dim); line-height: 1.6;
+            margin-bottom: 2rem; max-width: 600px;
+            border-left: 4px solid var(--quetzal); padding-left: 1.25rem;
+        }
+
+        .btn-print {
+            display: inline-block;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--ecru); background: var(--nuit); border: none;
+            padding: 0.7rem 1.75rem; cursor: pointer;
+            transition: background 0.3s ease;
+            margin-bottom: 3rem;
+        }
+        .btn-print:hover { background: var(--rosso); }
+
+        /* Section headers */
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
+            font-weight: 700; color: var(--quetzal); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 0.75rem; display: block;
+        }
+
+        h2 {
+            font-family: 'Imbue', serif; font-size: 1.6rem;
+            font-weight: 900; color: var(--nuit); text-transform: uppercase;
+            line-height: 1; letter-spacing: -0.01em; margin-bottom: 1.5rem;
+        }
+
+        /* Day cards */
+        .day-card {
+            background: rgba(0,104,94,0.06);
+            padding: 2rem;
+            margin-bottom: 2px;
+        }
+
+        .day-num {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem;
+            font-weight: 700; color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 0.5rem; display: block;
+        }
+
+        .day-label {
+            font-family: 'Imbue', serif; font-size: 1.3rem;
+            font-weight: 900; color: var(--nuit); text-transform: uppercase;
+            line-height: 1.1; margin-bottom: 1.25rem;
+        }
+
+        .field {
+            margin-bottom: 1.25rem;
+        }
+        .field:last-child {
+            margin-bottom: 0;
+        }
+
+        .field-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
+            font-weight: 700; color: var(--nuit); letter-spacing: 0.1em;
+            text-transform: uppercase; margin-bottom: 0.4rem; display: block;
+        }
+
+        .field-area {
+            width: 100%; min-height: 2.5rem;
+            border: none; border-bottom: 1px solid rgba(18, 26, 40, 0.2);
+            background: transparent; font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 0.85rem; color: var(--nuit); padding: 0.5rem 0;
+            resize: none; outline: none;
+        }
+        .field-area:focus {
+            border-bottom-color: var(--quetzal);
+        }
+
+        /* Metrics table */
+        .metrics-section {
+            margin-top: 2.5rem;
+        }
+
+        table {
+            width: 100%; border-collapse: collapse; margin-top: 1rem;
+        }
+
+        thead th {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem;
+            font-weight: 700; color: var(--quetzal); letter-spacing: 0.15em;
+            text-transform: uppercase; text-align: left;
+            padding: 0.75rem 0.75rem; border-bottom: 2px solid var(--nuit);
+        }
+
+        tbody td {
+            font-family: 'IBM Plex Sans', sans-serif; font-size: 0.85rem;
+            color: var(--nuit); padding: 0.75rem 0.75rem;
+            border-bottom: 1px solid rgba(18, 26, 40, 0.12);
+        }
+
+        tbody td:first-child {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+            font-weight: 700; color: var(--nuit); letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        tbody td.editable {
+            min-width: 80px;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: 2px solid var(--nuit);
+        }
+
+        /* Attribution */
+        .attribution {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
+            font-weight: 400; color: var(--nuit-dim); letter-spacing: 0.05em;
+            margin-top: 3rem; padding-top: 1.5rem;
+            border-top: 1px solid rgba(18, 26, 40, 0.12);
+        }
+
+        /* Print styles */
+        @media print {
+            body { background: white; }
+            .btn-print { display: none !important; }
+            .template-wrap { padding: 1.5rem; }
+            .day-card { break-inside: avoid; }
+            table { break-inside: avoid; }
+            @page { size: portrait; margin: 1.5cm; }
+        }
+
+        @media (max-width: 600px) {
+            .template-wrap { padding: 1.5rem 1.25rem; }
+            .day-card { padding: 1.5rem; }
+            table { font-size: 0.75rem; }
+            thead th, tbody td { padding: 0.5rem 0.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="template-wrap">
+
+        <!-- HEADER -->
+        <span class="template-type">Blank Template // Onboarding System</span>
+        <h1>SEO &amp; AI<br><span class="accent">Search Playbook</span><br>for New Team Members</h1>
+        <span class="subtitle">Structured onboarding path for SEO and AI-driven search optimization</span>
+        <p class="instructions">Use this playbook to onboard new team members into search optimization workflows. Work through each phase sequentially, completing every field before moving to the next card. The metrics tracker at the end establishes baselines and tracks progress over time.</p>
+        <button class="btn-print" onclick="window.print()">Print Template</button>
+
+        <!-- PHASE 1 -->
+        <div class="day-card">
+            <span class="day-num">Phase 01</span>
+            <div class="day-label">Research &amp; Strategy</div>
+            <div class="field">
+                <span class="field-label">Target Audience Defined</span>
+                <textarea class="field-area" rows="2"></textarea>
+            </div>
+            <div class="field">
+                <span class="field-label">Keyword Research Completed (Tools Used)</span>
+                <textarea class="field-area" rows="2"></textarea>
+            </div>
+            <div class="field">
+                <span class="field-label">Competitor Analysis Summary</span>
+                <textarea class="field-area" rows="2"></textarea>
+            </div>
+            <div class="field">
+                <span class="field-label">AI Search Trends Identified</span>
+                <textarea class="field-area" rows="2"></textarea>
+            </div>
+        </div>
+
+        <!-- PHASE 2 -->
+        <div class="day-card">
+            <span class="day-num">Phase 02</span>
+            <div class="day-label">Content Creation &amp; Optimization</div>
+            <div class="field">
+                <span class="field-label">Content Aligned with AI Search Behaviors?</span>
+                <textarea class="field-area" rows="2"></textarea>
+            </div>
+            <div class="field">
+                <span class="field-label">Headings, Structure and Internal Links Optimized?</span>
+                <textarea class="field-area" rows="2"></textarea>
+            </div>
+            <div class="field">
+                <span class="field-label">Metadata and Structured Data Added?</span>
+                <textarea class="field-area" rows="2"></textarea>
+            </div>
+            <div class="field">
+                <span class="field-label">Review Notes</span>
+                <textarea class="field-area" rows="2"></textarea>
+            </div>
+        </div>
+
+        <!-- PHASE 3 -->
+        <div class="day-card">
+            <span class="day-num">Phase 03</span>
+            <div class="day-label">Technical SEO &amp; AI Readiness</div>
+            <div class="field">
+                <span class="field-label">Mobile Optimization Verified?</span>
+                <textarea class="field-area" rows="2"></textarea>
+            </div>
+            <div class="field">
+                <span class="field-label">Schema Markup Implemented?</span>
+                <textarea class="field-area" rows="2"></textarea>
+            </div>
+            <div class="field">
+                <span class="field-label">AI-Generated Summaries Monitored?</span>
+                <textarea class="field-area" rows="2"></textarea>
+            </div>
+            <div class="field">
+                <span class="field-label">Issues Found</span>
+                <textarea class="field-area" rows="2"></textarea>
+            </div>
+        </div>
+
+        <!-- PHASE 4 -->
+        <div class="day-card">
+            <span class="day-num">Phase 04</span>
+            <div class="day-label">Performance Monitoring</div>
+            <div class="field">
+                <span class="field-label">Organic Traffic Baseline</span>
+                <textarea class="field-area" rows="2"></textarea>
+            </div>
+            <div class="field">
+                <span class="field-label">AI Snippet Appearances Tracked?</span>
+                <textarea class="field-area" rows="2"></textarea>
+            </div>
+            <div class="field">
+                <span class="field-label">Engagement Metrics Reviewed?</span>
+                <textarea class="field-area" rows="2"></textarea>
+            </div>
+            <div class="field">
+                <span class="field-label">Strategy Adjustments Needed</span>
+                <textarea class="field-area" rows="2"></textarea>
+            </div>
+        </div>
+
+        <!-- KEY METRICS TRACKER -->
+        <div class="metrics-section">
+            <span class="section-label">Key Metrics Tracker</span>
+            <h2>Baseline &amp; Progress</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Baseline</th>
+                        <th>Current</th>
+                        <th>Change</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Organic Traffic</td>
+                        <td class="editable" contenteditable="true"></td>
+                        <td class="editable" contenteditable="true"></td>
+                        <td class="editable" contenteditable="true"></td>
+                        <td class="editable" contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td>Keyword Rankings</td>
+                        <td class="editable" contenteditable="true"></td>
+                        <td class="editable" contenteditable="true"></td>
+                        <td class="editable" contenteditable="true"></td>
+                        <td class="editable" contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td>AI Feature Appearances</td>
+                        <td class="editable" contenteditable="true"></td>
+                        <td class="editable" contenteditable="true"></td>
+                        <td class="editable" contenteditable="true"></td>
+                        <td class="editable" contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td>Engagement (Time on Page)</td>
+                        <td class="editable" contenteditable="true"></td>
+                        <td class="editable" contenteditable="true"></td>
+                        <td class="editable" contenteditable="true"></td>
+                        <td class="editable" contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td>Backlinks</td>
+                        <td class="editable" contenteditable="true"></td>
+                        <td class="editable" contenteditable="true"></td>
+                        <td class="editable" contenteditable="true"></td>
+                        <td class="editable" contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td>Conversion Rate</td>
+                        <td class="editable" contenteditable="true"></td>
+                        <td class="editable" contenteditable="true"></td>
+                        <td class="editable" contenteditable="true"></td>
+                        <td class="editable" contenteditable="true"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ATTRIBUTION -->
+        <div class="attribution">
+            Onboarding System by Angie Bailey // angieqbailey.com
+        </div>
+
+    </div>
+</body>
+</html>
