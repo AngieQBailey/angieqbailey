@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SEO &amp; AI Search Playbook for New Team Members. Onboarding system covering core SEO principles, AI search optimization strategies, essential tools and a four-phase workflow.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <meta property="og:title" content="SEO &amp; AI Search Playbook // Angie Bailey">
+    <meta property="og:description" content="Team onboarding infrastructure for GEO/AEO concepts. Core principles, AI search strategies, essential tools and a step-by-step workflow.">
+    <meta property="og:type" content="article">
+    <title>SEO &amp; AI Search Playbook // Angie Bailey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit:     #121A28;
+            --cacao:    #2D1B14;
+            --quetzal:  #00685E;
+            --quetzal-bright: #00A896;
+            --ecru:     #F5F5DC;
+            --rosso:    #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        ::selection { background: var(--rosso); color: var(--ecru); }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+        body {
+            background-color: var(--nuit); color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif; font-weight: 400;
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale; overflow-x: hidden;
+        }
+
+        .blueprint-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-fade 2s ease 0.5s both;
+        }
+
+        .spine {
+            position: fixed; left: calc(var(--spine-left) - 40px);
+            top: 0; width: 4px; height: 100%;
+            background-color: var(--cacao); z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .nav-bar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--quetzal-bright); text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 400; color: var(--ecru-dim); text-decoration: none;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            transition: color 0.2s ease; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--rosso);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--ecru); }
+        .nav-links a:hover::after { width: 100%; }
+
+        main { position: relative; z-index: 10; }
+        .doc-content {
+            padding-left: var(--spine-left); padding-right: 4rem; max-width: 1200px;
+        }
+
+        .doc-header {
+            min-height: 50vh; display: flex; flex-direction: column;
+            justify-content: center; padding-top: 8rem; padding-bottom: 3rem;
+        }
+        .doc-meta {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--quetzal-bright); letter-spacing: 0.1em; margin-bottom: 2rem;
+            display: block; animation: fade-up 0.8s ease 0.4s both;
+        }
+        .doc-header h1 {
+            font-family: 'Imbue', serif; font-size: clamp(2.2rem, 6vw, 5rem);
+            font-weight: 900; line-height: 0.9; color: var(--ecru);
+            text-transform: uppercase; letter-spacing: -0.02em;
+            margin-bottom: 2rem; max-width: 700px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+        .doc-header h1 .accent-word { color: var(--rosso); }
+        .doc-lede {
+            border-left: 5px solid var(--rosso); padding-left: 2rem;
+            max-width: 600px; animation: fade-up 0.8s ease 0.8s both;
+        }
+        .doc-lede p {
+            font-size: 1.1rem; font-weight: 300; line-height: 1.7; color: var(--ecru-dim);
+        }
+        .doc-lede strong { color: var(--ecru); font-weight: 500; }
+
+        .btn-download {
+            display: inline-block; margin-top: 2rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--nuit); background: var(--ecru); text-decoration: none;
+            padding: 0.85rem 2rem; transition: background 0.3s ease, color 0.3s ease;
+            animation: fade-up 0.8s ease 1s both;
+        }
+        .btn-download:hover { background: var(--rosso); color: var(--ecru); }
+
+        .doc-section {
+            padding-top: 2.5rem; padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 0.5rem; display: block;
+        }
+        h2 {
+            font-family: 'Imbue', serif; font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 900; color: var(--ecru); text-transform: uppercase;
+            line-height: 0.95; letter-spacing: -0.01em; margin-bottom: 2.5rem;
+        }
+        .doc-body p {
+            font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+            color: var(--ecru-dim); margin-bottom: 1.5rem; max-width: 650px;
+        }
+        .doc-body p strong { color: var(--ecru); font-weight: 500; }
+
+        /* Objective list */
+        .objective-list { margin: 2rem 0; max-width: 650px; }
+        .objective-item {
+            padding: 1.25rem 0; border-bottom: 1px solid var(--ecru-ghost);
+            display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: start;
+        }
+        .objective-item:first-child { border-top: 1px solid var(--ecru-ghost); }
+        .objective-num {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); letter-spacing: 0.1em;
+            min-width: 30px;
+        }
+        .objective-text {
+            font-size: 0.95rem; font-weight: 400; color: var(--ecru); line-height: 1.5;
+        }
+
+        /* Principle list */
+        .principle-list { margin: 2rem 0; max-width: 650px; }
+        .principle-item {
+            padding: 1rem 0; border-bottom: 1px solid var(--ecru-ghost);
+        }
+        .principle-item:first-child { border-top: 1px solid var(--ecru-ghost); }
+        .principle-name {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); text-transform: uppercase;
+            letter-spacing: 0.1em; margin-bottom: 0.25rem;
+        }
+        .principle-desc {
+            font-size: 0.9rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.5;
+        }
+
+        /* Strategy list */
+        .strategy-list { margin: 2rem 0; max-width: 650px; }
+        .strategy-item {
+            padding: 1.25rem 0; border-bottom: 1px solid var(--ecru-ghost);
+            display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: start;
+        }
+        .strategy-item:first-child { border-top: 1px solid var(--ecru-ghost); }
+        .strategy-num {
+            font-family: 'Imbue', serif; font-size: 1.5rem; font-weight: 900;
+            color: var(--rosso); line-height: 1;
+        }
+        .strategy-text {
+            font-size: 0.95rem; font-weight: 400; color: var(--ecru); line-height: 1.5;
+        }
+
+        /* Tool panels (stat-row style) */
+        .tool-panels { margin: 2.5rem 0; max-width: 750px; }
+        .tool-panel {
+            background: rgba(245, 245, 220, 0.14); padding: 2rem 1.75rem;
+            margin-bottom: 2px;
+        }
+        .tool-panel-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 1rem;
+        }
+        .tool-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;
+        }
+        .tool-entry {
+            font-size: 0.9rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.4;
+            padding-left: 1rem; border-left: 2px solid var(--quetzal);
+        }
+
+        /* Workflow: approach-grid style */
+        .approach-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+            margin: 2.5rem 0; max-width: 750px;
+        }
+        .approach-item { background: rgba(245, 245, 220, 0.14); padding: 2rem 1.75rem; }
+        .approach-day {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 0.75rem;
+        }
+        .approach-title {
+            font-family: 'Imbue', serif; font-size: 1.3rem; font-weight: 700;
+            color: var(--ecru); text-transform: uppercase; line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+        .approach-desc {
+            font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.5;
+        }
+
+        /* Metrics grid */
+        .metrics-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2px; margin: 2.5rem 0; max-width: 750px;
+        }
+        .metric-item { background: rgba(245, 245, 220, 0.14); padding: 1.5rem 1.75rem; }
+        .metric-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--quetzal-bright); text-transform: uppercase; letter-spacing: 0.1em;
+            line-height: 1.4;
+        }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); text-decoration: none; text-transform: uppercase;
+            letter-spacing: 0.1em; transition: color 0.2s ease; margin-top: 3rem;
+        }
+        .back-link::before {
+            content: ''; display: block; width: 24px; height: 2px;
+            background: var(--quetzal); transition: width 0.3s ease, background 0.3s ease;
+        }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .footer-content {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 1200px;
+        }
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); letter-spacing: 0.05em;
+        }
+
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .doc-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .approach-grid { grid-template-columns: 1fr; }
+            .tool-grid { grid-template-columns: 1fr; }
+            .metrics-grid { grid-template-columns: 1fr 1fr; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+        }
+
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .nav-links a { font-size: 0.75rem; }
+            .blueprint-overlay { background-size: 24px 24px; }
+            .metrics-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="blueprint-overlay" aria-hidden="true"></div>
+    <div class="spine" aria-hidden="true"></div>
+    <nav class="nav-bar" role="navigation" aria-label="Primary">
+        <a href="../geo-aeo-transition.html" class="nav-mark" style="text-decoration: none;">
+            &larr; GEO/AEO Transition
+        </a>
+        <ul class="nav-links">
+            <li><a href="/">Main Site</a></li>
+        </ul>
+    </nav>
+    <main>
+        <!-- HEADER -->
+        <section class="doc-header doc-content">
+            <span class="doc-meta">Onboarding System // GEO/AEO Transition</span>
+            <h1>SEO &amp; AI Search<br><span class="accent-word">Playbook</span><br>for New Team Members</h1>
+            <div class="doc-lede">
+                <p>A structured onboarding system that takes new team members from <strong>zero AI search knowledge to operational competency</strong>. Covers core SEO principles, AI-specific optimization strategies, essential tooling and a four-phase workflow from research through continuous monitoring.</p>
+            </div>
+            <a href="templates/seo-ai-search-playbook-blank.html" class="btn-download" download>Download Blank Template</a>
+        </section>
+
+        <!-- KEY OBJECTIVES -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Key Objectives</span>
+            <h2>What This<br>Playbook Builds</h2>
+            <div class="objective-list">
+                <div class="objective-item">
+                    <span class="objective-num">01</span>
+                    <div class="objective-text">Develop strong SEO foundation</div>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-num">02</span>
+                    <div class="objective-text">Apply AI to search optimization</div>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-num">03</span>
+                    <div class="objective-text">Enhance content discoverability</div>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-num">04</span>
+                    <div class="objective-text">Implement data-driven strategies</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CORE SEO PRINCIPLES -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Core SEO Principles</span>
+            <h2>The Foundation<br>Layer</h2>
+            <div class="doc-body">
+                <p>Five principles that underpin every optimization decision. These are non-negotiable regardless of whether the search engine is traditional or AI-driven.</p>
+            </div>
+            <div class="principle-list">
+                <div class="principle-item">
+                    <div class="principle-name">Search Intent Focus</div>
+                    <div class="principle-desc">Understanding what the user actually wants when they type a query. Informational, navigational, transactional and commercial intent each require different content structures.</div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-name">On-Page Optimization</div>
+                    <div class="principle-desc">Title tags, meta descriptions, header hierarchy, internal linking and content structure. The basics that still drive 80% of organic visibility.</div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-name">Technical SEO</div>
+                    <div class="principle-desc">Site speed, crawlability, indexation, Core Web Vitals and mobile-first architecture. The infrastructure layer that determines whether content can be found at all.</div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-name">Content Authority</div>
+                    <div class="principle-desc">Depth, accuracy, originality and topical coverage. Search engines and AI models both favor content that demonstrates genuine expertise over surface-level rewrites.</div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-name">Link Building &amp; E-E-A-T</div>
+                    <div class="principle-desc">Experience, Expertise, Authoritativeness and Trustworthiness. Backlink quality, author credentials and brand signals that establish credibility with both crawlers and AI systems.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI SEARCH OPTIMIZATION STRATEGIES -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">AI Search Optimization</span>
+            <h2>Strategies for<br>Generative Search</h2>
+            <div class="doc-body">
+                <p>Five strategies that move beyond traditional SEO into the AI search layer. These are the capabilities most teams are missing entirely.</p>
+            </div>
+            <div class="strategy-list">
+                <div class="strategy-item">
+                    <span class="strategy-num">1</span>
+                    <div class="strategy-text">Conversational and long-tail keywords. AI search responds to natural language queries. Optimize for how people actually talk, not just how they type.</div>
+                </div>
+                <div class="strategy-item">
+                    <span class="strategy-num">2</span>
+                    <div class="strategy-text">Structured data and schema markup. JSON-LD, FAQ schema and product markup make content machine-readable. AI models pull from structured sources first.</div>
+                </div>
+                <div class="strategy-item">
+                    <span class="strategy-num">3</span>
+                    <div class="strategy-text">Content clusters and semantic SEO. Topical authority through interconnected content hubs. Build depth around subjects rather than chasing isolated keywords.</div>
+                </div>
+                <div class="strategy-item">
+                    <span class="strategy-num">4</span>
+                    <div class="strategy-text">AI-powered content ideation. Use AI tools to identify gaps, generate topic variations and stress-test content angles before production begins.</div>
+                </div>
+                <div class="strategy-item">
+                    <span class="strategy-num">5</span>
+                    <div class="strategy-text">Real-time monitoring and adaptation. Track AI Overview appearances, citation patterns and traffic shifts. Adjust content strategy based on what the AI is actually surfacing.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESSENTIAL TOOLS -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Essential Tools</span>
+            <h2>The Stack<br>You Need</h2>
+            <div class="doc-body">
+                <p>Two toolkits: one for traditional SEO infrastructure, one for AI search readiness. Most teams have the first. Almost none have the second.</p>
+            </div>
+            <div class="tool-panels">
+                <div class="tool-panel">
+                    <div class="tool-panel-label">SEO Tools</div>
+                    <div class="tool-grid">
+                        <div class="tool-entry">Google Search Console</div>
+                        <div class="tool-entry">Google Analytics</div>
+                        <div class="tool-entry">SEMrush / Ahrefs / Moz</div>
+                        <div class="tool-entry">Screaming Frog</div>
+                        <div class="tool-entry">AnswerThePublic / AlsoAsked</div>
+                    </div>
+                </div>
+                <div class="tool-panel">
+                    <div class="tool-panel-label">AI &amp; Search Tools</div>
+                    <div class="tool-grid">
+                        <div class="tool-entry">ChatGPT / Gemini / Claude</div>
+                        <div class="tool-entry">SGE Insights</div>
+                        <div class="tool-entry">Frase.io / Clearscope</div>
+                        <div class="tool-entry">Schema Markup Generators</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WORKFLOW -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Workflow</span>
+            <h2>Four Phases,<br>One Loop</h2>
+            <div class="doc-body">
+                <p>A repeatable four-phase workflow that takes a topic from initial research through continuous optimization. Each phase feeds the next.</p>
+            </div>
+            <div class="approach-grid">
+                <div class="approach-item">
+                    <div class="approach-day">Phase 01</div>
+                    <div class="approach-title">Research &amp;<br>Strategy</div>
+                    <div class="approach-desc">Define the audience. Map keyword opportunities across traditional and AI search. Analyze competitors for content gaps, AI Overview presence and citation patterns.</div>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-day">Phase 02</div>
+                    <div class="approach-title">Content Creation<br>&amp; Optimization</div>
+                    <div class="approach-desc">Build content aligned with AI search requirements. Structure for featured snippets and AI summarization. Optimize metadata, headers and internal links for both crawlers and language models.</div>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-day">Phase 03</div>
+                    <div class="approach-title">Technical SEO<br>&amp; AI Readiness</div>
+                    <div class="approach-desc">Ensure mobile-first performance. Implement schema markup across content types. Test AI summary generation and verify structured data renders correctly for generative search.</div>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-day">Phase 04</div>
+                    <div class="approach-title">Performance<br>Monitoring</div>
+                    <div class="approach-desc">Track organic traffic, keyword rankings and AI snippet appearances. Identify what the AI is surfacing vs. ignoring. Make adjustments based on data, not assumptions.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MEASURING SUCCESS -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Measuring Success</span>
+            <h2>What Gets<br>Tracked</h2>
+            <div class="doc-body">
+                <p>Five metrics that tell you whether the system is working. Traditional SEO KPIs plus the AI-specific signals most teams are not measuring yet.</p>
+            </div>
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-label">Organic Traffic<br>Growth</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">AI Feature<br>Appearances</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">Engagement<br>Metrics</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">Backlink<br>Quality</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">Conversion<br>Rate</div>
+                </div>
+            </div>
+            <div class="doc-body" style="margin-top: 2rem;">
+                <p>The landscape shifts continuously. Review these metrics on a weekly cadence, adjust content strategy monthly and <strong>rebuild assumptions quarterly</strong> as AI search behavior evolves. The playbook is designed to be a living document that adapts alongside the search engines it targets.</p>
+            </div>
+            <a href="../geo-aeo-transition.html" class="back-link">Back to GEO/AEO Transition</a>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <span>&copy; 2026 Angie Bailey</span>
+        </div>
+    </footer>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
