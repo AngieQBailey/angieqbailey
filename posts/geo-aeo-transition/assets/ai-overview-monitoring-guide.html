@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Overview Monitoring & Response Guide — A framework for tracking AI Overview presence and responding to generative search impact.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <meta property="og:title" content="AI Overview Monitoring & Response Guide // Angie Bailey">
+    <meta property="og:description" content="Decision tree and monitoring cadence for tracking AI Overview presence across key terms. Includes response protocols for three scenarios.">
+    <meta property="og:type" content="article">
+    <title>AI Overview Monitoring & Response Guide // Angie Bailey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit:     #121A28;
+            --cacao:    #2D1B14;
+            --quetzal:  #00685E;
+            --quetzal-bright: #00A896;
+            --ecru:     #F5F5DC;
+            --rosso:    #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        ::selection { background: var(--rosso); color: var(--ecru); }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+        body {
+            background-color: var(--nuit); color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif; font-weight: 400;
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale; overflow-x: hidden;
+        }
+
+        .blueprint-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-fade 2s ease 0.5s both;
+        }
+
+        .spine {
+            position: fixed; left: calc(var(--spine-left) - 40px);
+            top: 0; width: 4px; height: 100%;
+            background-color: var(--cacao); z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .nav-bar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--quetzal-bright); text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 400; color: var(--ecru-dim); text-decoration: none;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            transition: color 0.2s ease; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--rosso);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--ecru); }
+        .nav-links a:hover::after { width: 100%; }
+
+        main { position: relative; z-index: 10; }
+        .doc-content {
+            padding-left: var(--spine-left); padding-right: 4rem; max-width: 1200px;
+        }
+
+        .doc-header {
+            min-height: 50vh; display: flex; flex-direction: column;
+            justify-content: center; padding-top: 8rem; padding-bottom: 3rem;
+        }
+        .doc-meta {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--quetzal-bright); letter-spacing: 0.1em; margin-bottom: 2rem;
+            display: block; animation: fade-up 0.8s ease 0.4s both;
+        }
+        .doc-header h1 {
+            font-family: 'Imbue', serif; font-size: clamp(2.2rem, 6vw, 5rem);
+            font-weight: 900; line-height: 0.9; color: var(--ecru);
+            text-transform: uppercase; letter-spacing: -0.02em;
+            margin-bottom: 2rem; max-width: 650px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+        .doc-header h1 .accent-word { color: var(--rosso); }
+        .doc-lede {
+            border-left: 5px solid var(--rosso); padding-left: 2rem;
+            max-width: 600px; animation: fade-up 0.8s ease 0.8s both;
+        }
+        .doc-lede p {
+            font-size: 1.1rem; font-weight: 300; line-height: 1.7; color: var(--ecru-dim);
+        }
+        .doc-lede strong { color: var(--ecru); font-weight: 500; }
+
+        .doc-section {
+            padding-top: 2.5rem; padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 0.5rem; display: block;
+        }
+        h2 {
+            font-family: 'Imbue', serif; font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 900; color: var(--ecru); text-transform: uppercase;
+            line-height: 0.95; letter-spacing: -0.01em; margin-bottom: 2.5rem;
+        }
+        .doc-body p {
+            font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+            color: var(--ecru-dim); margin-bottom: 1.5rem; max-width: 650px;
+        }
+        .doc-body p strong { color: var(--ecru); font-weight: 500; }
+
+        /* Metric list */
+        .metric-list { margin: 2rem 0; max-width: 650px; }
+        .metric-item {
+            padding: 1.25rem 0; border-bottom: 1px solid var(--ecru-ghost);
+            display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: start;
+        }
+        .metric-item:first-child { border-top: 1px solid var(--ecru-ghost); }
+        .metric-flag {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.1em; padding: 0.2rem 0.5rem;
+            text-transform: uppercase; min-width: 50px; text-align: center;
+            color: #D4A017; border: 1px solid #D4A017;
+        }
+        .metric-label { font-size: 0.95rem; font-weight: 400; color: var(--ecru); line-height: 1.4; }
+        .metric-detail { font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); margin-top: 0.25rem; }
+
+        /* Tool grid */
+        .tool-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2px; margin: 2.5rem 0; max-width: 750px;
+        }
+        .tool-card {
+            background: rgba(245, 245, 220, 0.14); padding: 2rem 1.75rem;
+        }
+        .tool-name {
+            font-family: 'Imbue', serif; font-size: 1.2rem; font-weight: 700;
+            color: var(--ecru); text-transform: uppercase; line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+        .tool-desc {
+            font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.5;
+        }
+
+        /* Workflow steps */
+        .workflow-cadence {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 1.5rem; margin-top: 1rem;
+        }
+        .workflow-steps {
+            border-left: 3px solid var(--cacao); padding-left: 1.5rem;
+            margin: 1.5rem 0; max-width: 650px;
+        }
+        .workflow-step {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); padding: 0.5rem 0; display: flex;
+            align-items: flex-start; gap: 0.75rem; line-height: 1.5;
+        }
+        .workflow-step .step-num {
+            color: var(--quetzal-bright); font-weight: 700; flex-shrink: 0;
+        }
+        .workflow-step strong { color: var(--ecru); font-weight: 500; }
+
+        /* Branded table */
+        .branded-table {
+            width: 100%; max-width: 850px; margin: 2.5rem 0;
+            border-collapse: collapse;
+        }
+        .branded-table thead th {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); text-transform: uppercase;
+            letter-spacing: 0.1em; text-align: left; padding: 1rem 1.25rem;
+            border-bottom: 2px solid var(--cacao);
+        }
+        .branded-table tbody td {
+            font-size: 0.9rem; font-weight: 300; color: var(--ecru-dim);
+            padding: 1.25rem; line-height: 1.6; vertical-align: top;
+            border-bottom: 1px solid var(--ecru-ghost);
+            background: rgba(245, 245, 220, 0.14);
+        }
+        .branded-table tbody td:first-child {
+            font-weight: 400; color: var(--ecru);
+        }
+        .branded-table tbody td strong { color: var(--ecru); font-weight: 500; }
+        .scenario-flag {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+            font-weight: 700; letter-spacing: 0.1em; padding: 0.15rem 0.4rem;
+            text-transform: uppercase; display: inline-block; margin-bottom: 0.5rem;
+            color: #D4A017; border: 1px solid #D4A017;
+        }
+
+        /* Core principle callout */
+        .core-principle {
+            border-left: 4px solid var(--rosso); padding: 2rem;
+            background: rgba(245, 245, 220, 0.14); margin: 2.5rem 0; max-width: 650px;
+        }
+        .core-principle p {
+            font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+            color: var(--ecru-dim); margin-bottom: 0;
+        }
+        .core-principle strong { color: var(--ecru); font-weight: 500; }
+
+        /* Reporting list */
+        .reporting-list { margin: 2rem 0; max-width: 650px; }
+        .reporting-item {
+            padding: 1.25rem 0; border-bottom: 1px solid var(--ecru-ghost);
+            display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: start;
+        }
+        .reporting-item:first-child { border-top: 1px solid var(--ecru-ghost); }
+        .reporting-flag {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.1em; padding: 0.2rem 0.5rem;
+            text-transform: uppercase; min-width: 80px; text-align: center;
+            color: var(--quetzal-bright); border: 1px solid var(--quetzal);
+        }
+        .reporting-label { font-size: 0.95rem; font-weight: 400; color: var(--ecru); line-height: 1.4; }
+        .reporting-detail { font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); margin-top: 0.25rem; }
+
+        /* Download button */
+        .download-btn {
+            display: inline-block; margin-top: 2rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;
+            padding: 0.85rem 2rem; text-decoration: none;
+            background: var(--ecru); color: var(--nuit);
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        .download-btn:hover {
+            background: var(--rosso); color: var(--ecru);
+        }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); text-decoration: none; text-transform: uppercase;
+            letter-spacing: 0.1em; transition: color 0.2s ease; margin-top: 3rem;
+        }
+        .back-link::before {
+            content: ''; display: block; width: 24px; height: 2px;
+            background: var(--quetzal); transition: width 0.3s ease, background 0.3s ease;
+        }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .footer-content {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 1200px;
+        }
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); letter-spacing: 0.05em;
+        }
+
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .doc-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .tool-grid { grid-template-columns: 1fr; }
+            .branded-table { font-size: 0.85rem; }
+            .branded-table thead th { padding: 0.75rem; }
+            .branded-table tbody td { padding: 0.75rem; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+        }
+
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .nav-links a { font-size: 0.75rem; }
+            .blueprint-overlay { background-size: 24px 24px; }
+            .branded-table { display: block; overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+    <div class="blueprint-overlay" aria-hidden="true"></div>
+    <div class="spine" aria-hidden="true"></div>
+    <nav class="nav-bar" role="navigation" aria-label="Primary">
+        <a href="../geo-aeo-transition.html" class="nav-mark" style="text-decoration: none;">&larr; GEO/AEO Transition</a>
+        <ul class="nav-links">
+            <li><a href="/">Main Site</a></li>
+        </ul>
+    </nav>
+    <main>
+        <!-- HEADER -->
+        <section class="doc-header doc-content">
+            <span class="doc-meta">Framework // GEO/AEO Transition</span>
+            <h1>AI Overview<br>Monitoring &amp;<br><span class="accent-word">Response Guide</span></h1>
+            <div class="doc-lede">
+                <p>A framework for tracking AI Overview presence across key search terms and <strong>responding to generative search impact</strong> before it erodes organic performance. Covers monitoring cadence, tool selection and a decision tree for three common scenarios.</p>
+            </div>
+            <a href="templates/ai-overview-monitoring-guide-blank.html" class="download-btn" style="animation: fade-up 0.8s ease 1s both;">Download Blank Template</a>
+        </section>
+
+        <!-- WHAT TO TRACK -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">What to Track</span>
+            <h2>Key Metrics<br>for AI Overview<br>Monitoring</h2>
+            <div class="doc-body">
+                <p>AI Overviews change the search landscape without warning. Tracking five metrics consistently reveals whether generative search is helping, ignoring or actively cannibalizing your organic presence.</p>
+            </div>
+            <div class="metric-list">
+                <div class="metric-item">
+                    <span class="metric-flag">Track</span>
+                    <div>
+                        <div class="metric-label">Keywords Triggering AI Overviews</div>
+                        <div class="metric-detail">Which of your target queries now generate an AI Overview in the SERP? This is the baseline. If you don't know which keywords trigger them, you can't measure anything else.</div>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-flag">Track</span>
+                    <div>
+                        <div class="metric-label">Brand Presence in AI Overviews</div>
+                        <div class="metric-detail">When an AI Overview appears for your target keyword, does your brand get cited? Getting mentioned is not the same as ranking. It requires different optimization.</div>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-flag">Track</span>
+                    <div>
+                        <div class="metric-label">Competitor AI Overview Rankings</div>
+                        <div class="metric-detail">Which competitors appear in AI Overviews for terms you target? If they are being cited and you are not, the gap is structural... not a ranking fluctuation.</div>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-flag">Track</span>
+                    <div>
+                        <div class="metric-label">Click-Through Rate Impact</div>
+                        <div class="metric-detail">Compare CTR on keywords with AI Overviews against keywords without them. A CTR drop on a high-ranking page often signals that the AI Overview is answering the query directly.</div>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-flag">Track</span>
+                    <div>
+                        <div class="metric-label">Frequency of Appearance</div>
+                        <div class="metric-detail">AI Overviews are not static. They appear and disappear based on query intent, search volume and content quality signals. Monitoring frequency over time reveals patterns.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOOLS FOR MONITORING -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Tools for Monitoring</span>
+            <h2>Platform<br>Stack</h2>
+            <div class="doc-body">
+                <p>No single tool covers AI Overview monitoring end-to-end. The workflow requires layering four platforms to get a complete picture of generative search impact.</p>
+            </div>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <div class="tool-name">Google Search Console</div>
+                    <div class="tool-desc">Primary source for impressions, clicks and CTR data at the query level. Filter by search appearance to isolate queries where AI Overviews may be suppressing click-through.</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-name">GA4</div>
+                    <div class="tool-desc">Landing page performance and traffic trends. Cross-reference GSC query data with actual page sessions to identify where CTR drops translate to real traffic losses.</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-name">Ahrefs</div>
+                    <div class="tool-desc">Competitor analysis and SERP feature tracking. Use the SERP overview to see which queries trigger AI Overviews and which competitors are cited within them.</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-name">Perplexity AI / Search GPT</div>
+                    <div class="tool-desc">Test how AI search engines summarize your content. If your pages are not being cited in AI-native search tools, the optimization gap extends beyond Google.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MONITORING WORKFLOW -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Monitoring Workflow</span>
+            <h2>Cadence &amp;<br>Process</h2>
+            <div class="doc-body">
+                <p>AI Overview monitoring works on a layered cadence. Weekly checks catch acute shifts. Bi-weekly analysis reveals trends. Monthly reviews drive strategic adjustments.</p>
+            </div>
+
+            <div class="workflow-cadence">Weekly / Bi-Weekly / Monthly</div>
+            <div class="workflow-steps">
+                <div class="workflow-step">
+                    <span class="step-num">01</span>
+                    <span>Check GSC and GA4 for traffic drops and CTR compression on priority keywords. Flag any query where CTR has declined while impressions remain stable or increase.</span>
+                </div>
+                <div class="workflow-step">
+                    <span class="step-num">02</span>
+                    <span>Use Ahrefs to analyze competitor AI Overview presence. Identify which competitors are being cited for your target terms and what content format they use.</span>
+                </div>
+                <div class="workflow-step">
+                    <span class="step-num">03</span>
+                    <span>Manually search top keywords to verify AI Overview format. Note whether the Overview pulls from a single source or synthesizes multiple sources. Check if preview links are present.</span>
+                </div>
+                <div class="workflow-step">
+                    <span class="step-num">04</span>
+                    <span>Log findings in tracking sheet. Record which keywords triggered AI Overviews, whether the brand was cited, competitor presence and any CTR changes observed.</span>
+                </div>
+            </div>
+
+            <div class="core-principle">
+                <p><strong>The discipline:</strong> AI Overviews are volatile. A keyword that triggers one today may not trigger one next week. The tracking sheet is the institutional memory that prevents reactive decision-making based on a single snapshot.</p>
+            </div>
+        </section>
+
+        <!-- DECISION TREE -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Decision Tree</span>
+            <h2>Response<br>Protocols</h2>
+            <div class="doc-body">
+                <p>Three scenarios cover the majority of AI Overview situations. Each requires a different response. Treating them identically wastes effort and misdiagnoses the problem.</p>
+            </div>
+            <table class="branded-table">
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th>Response</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="scenario-flag">Scenario A</span><br>
+                            AI Overviews appearing but brand NOT included
+                        </td>
+                        <td>
+                            Optimize for structured data and E-E-A-T signals. Improve answer quality on target pages... concise, direct, formatted for extraction. Add FAQ schema, how-to markup and clear summary paragraphs that AI can pull from.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="scenario-flag">Scenario B</span><br>
+                            Competitors dominate AI Overviews
+                        </td>
+                        <td>
+                            Compare competitor content structure against yours. Identify format advantages (tables, lists, step-by-step layouts). Optimize page structure to match or exceed. Strengthen off-page SEO through backlink acquisition, brand mentions and topical authority signals.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="scenario-flag">Scenario C</span><br>
+                            AI Overviews reduce CTR on key pages
+                        </td>
+                        <td>
+                            Target preview links within the AI Overview by optimizing for citation-worthy content. Shift traffic acquisition to platforms less affected by AI summarization (LinkedIn, Reddit, industry forums). Monitor long-tail keyword variants where AI Overviews appear less frequently.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- REPORTING & ACTION PLAN -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Reporting &amp; Action Plan</span>
+            <h2>Tracking,<br>Reporting,<br>Adjusting</h2>
+            <div class="doc-body">
+                <p>Monitoring without reporting is observation without action. The reporting layer transforms raw AI Overview data into decisions that move content strategy forward.</p>
+            </div>
+            <div class="reporting-list">
+                <div class="reporting-item">
+                    <span class="reporting-flag">Ongoing</span>
+                    <div>
+                        <div class="reporting-label">AI Overview Tracking Sheet</div>
+                        <div class="reporting-detail">Living document updated with each monitoring cycle. Logs keyword triggers, brand presence, competitor citations and CTR impact per query.</div>
+                    </div>
+                </div>
+                <div class="reporting-item">
+                    <span class="reporting-flag">Monthly</span>
+                    <div>
+                        <div class="reporting-label">Monthly Summary Report</div>
+                        <div class="reporting-detail">Aggregated findings from weekly and bi-weekly monitoring. Highlights new AI Overview appearances, lost citations, CTR trends and recommended content updates.</div>
+                    </div>
+                </div>
+                <div class="reporting-item">
+                    <span class="reporting-flag">Quarterly</span>
+                    <div>
+                        <div class="reporting-label">Quarterly Strategy Adjustment</div>
+                        <div class="reporting-detail">Review of three months of AI Overview data against organic traffic goals. Adjust content prioritization, schema strategy and off-page SEO investment based on observed patterns.</div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="../geo-aeo-transition.html" class="back-link">&larr; Back to Case Study</a>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <span>&copy; 2026 Angie Bailey</span>
+        </div>
+    </footer>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
