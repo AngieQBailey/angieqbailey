@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blank template for the AI-Ready Content Brief. Standardized content planning for SEO and AI search optimization.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#F5F5DC">
+    <meta property="og:title" content="Content Brief (AI-Ready) // Blank Template">
+    <meta property="og:description" content="Standardized content planning for SEO and AI search optimization.">
+    <meta property="og:type" content="article">
+    <title>Content Brief (AI-Ready) // Blank Template // Angie Bailey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit:     #121A28;
+            --cacao:    #2D1B14;
+            --quetzal:  #00685E;
+            --ecru:     #F5F5DC;
+            --rosso:    #C41E3A;
+            --text:     #1a1a1a;
+            --text-dim: #555;
+            --border:   #d4d0c8;
+            --border-light: #e8e4dc;
+            --hover-bg: rgba(0,104,94,0.04);
+            --nuit-dim: rgba(18, 26, 40, 0.55);
+            --nuit-ghost: rgba(18, 26, 40, 0.08);
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        ::selection { background: var(--rosso); color: var(--ecru); }
+
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--ecru); color: var(--text);
+            font-family: 'IBM Plex Sans', sans-serif; font-weight: 400;
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale; overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px; margin: 0 auto;
+            padding: 3rem 2.5rem;
+        }
+
+        /* HEADER */
+        .template-type {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal); letter-spacing: 0.15em;
+            text-transform: uppercase; display: block; margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: 'Imbue', serif; font-size: clamp(2.2rem, 6vw, 4.5rem);
+            font-weight: 900; line-height: 0.9; color: var(--nuit);
+            text-transform: uppercase; letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+        h1 .accent { color: var(--rosso); }
+
+        .subtitle {
+            font-family: 'IBM Plex Sans', sans-serif; font-size: 1.1rem;
+            font-weight: 300; line-height: 1.7; color: var(--quetzal);
+            max-width: 600px; margin-bottom: 1.5rem;
+        }
+
+        .instructions {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+            font-weight: 400; color: var(--nuit-dim); line-height: 1.7;
+            max-width: 600px; margin-bottom: 2rem;
+            border-left: 3px solid var(--quetzal); padding-left: 1.25rem;
+        }
+
+        .btn-print {
+            display: inline-block; padding: 0.75rem 1.75rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            background: var(--nuit); color: var(--ecru);
+            border: none; cursor: pointer; text-decoration: none;
+            transition: background 0.2s ease;
+            margin-bottom: 3rem;
+        }
+        .btn-print:hover { background: var(--rosso); }
+
+        /* SECTIONS */
+        .section {
+            padding-top: 2.5rem; padding-bottom: 2.5rem;
+            border-top: 2px solid var(--nuit-ghost);
+        }
+
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 0.5rem; display: block;
+        }
+
+        h2 {
+            font-family: 'Imbue', serif; font-size: clamp(1.6rem, 4vw, 2.5rem);
+            font-weight: 900; color: var(--nuit); text-transform: uppercase;
+            line-height: 0.95; letter-spacing: -0.01em; margin-bottom: 2rem;
+        }
+
+        /* DAY-CARD LAYOUT */
+        .day-card-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .day-card {
+            border: 1px solid var(--border-light);
+            padding: 1.25rem 1.5rem;
+            background: transparent;
+            min-height: 5rem;
+        }
+
+        .day-card-full {
+            grid-column: 1 / -1;
+        }
+
+        .day-card-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+            font-weight: 700; color: var(--quetzal); letter-spacing: 0.15em;
+            text-transform: uppercase; margin-bottom: 0.5rem; display: block;
+        }
+
+        .day-card-value {
+            font-family: 'IBM Plex Sans', sans-serif; font-size: 0.95rem;
+            font-weight: 400; color: var(--text-dim); line-height: 1.6;
+            min-height: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.25rem;
+        }
+
+        /* TABLES */
+        table {
+            width: 100%; border-collapse: collapse; margin-top: 1rem;
+        }
+        th {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+            font-weight: 700; color: var(--quetzal); letter-spacing: 0.1em;
+            text-transform: uppercase; text-align: left;
+            padding: 0.75rem 0.6rem; border-bottom: 2px solid var(--quetzal);
+            background: transparent; white-space: nowrap;
+        }
+        td {
+            font-family: 'IBM Plex Sans', sans-serif; font-size: 0.9rem;
+            font-weight: 400; color: var(--text);
+            padding: 0.75rem 0.6rem; border-bottom: 1px solid var(--nuit-ghost);
+            vertical-align: top; line-height: 1.5;
+            min-height: 2rem;
+        }
+        td.editable {
+            border-bottom: 1px solid rgba(18, 26, 40, 0.18);
+        }
+        td.element {
+            font-weight: 500; color: var(--nuit);
+            white-space: nowrap;
+        }
+
+        /* ATTRIBUTION */
+        .attribution {
+            margin-top: 3rem; padding-top: 2rem;
+            border-top: 2px solid var(--nuit-ghost);
+        }
+        .attribution p {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+            font-weight: 400; color: var(--nuit-dim); letter-spacing: 0.05em;
+        }
+        .attribution a {
+            color: var(--quetzal); text-decoration: none;
+        }
+        .attribution a:hover { text-decoration: underline; }
+
+        /* PRINT */
+        @page {
+            size: portrait;
+            margin: 0.5in;
+        }
+
+        @media print {
+            body { background: #fff; }
+            .btn-print { display: none !important; }
+            .container { padding: 0; max-width: 100%; }
+            .section { break-inside: avoid; }
+            table { font-size: 0.8rem; }
+            th { font-size: 0.7rem; }
+            td { padding: 0.5rem 0.4rem; }
+            td.editable { border-bottom: 1px solid #ccc; }
+            .day-card { border-color: #ccc; }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .container { padding: 2rem 1.25rem; }
+            .day-card-grid { grid-template-columns: 1fr; }
+            table { display: block; overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- HEADER -->
+        <span class="template-type">Blank Template // Execution Template</span>
+        <h1>Content<br><span class="accent">Brief</span></h1>
+        <p class="subtitle">Standardized content planning for SEO and AI search optimization</p>
+        <div class="instructions">
+            Fill in this brief for each piece of content you plan or publish. Use it to align your team on keyword targets, search intent, optimization tasks and performance goals before writing begins. Print or save as PDF for your records.
+        </div>
+        <button class="btn-print" onclick="window.print()">Print Template</button>
+
+        <!-- CONTENT OVERVIEW -->
+        <div class="section">
+            <span class="section-label">01 // Planning</span>
+            <h2>Content<br>Overview</h2>
+            <div class="day-card-grid">
+                <div class="day-card day-card-full">
+                    <span class="day-card-label">Content Title</span>
+                    <div class="day-card-value">&nbsp;</div>
+                </div>
+                <div class="day-card">
+                    <span class="day-card-label">Target URL / Page</span>
+                    <div class="day-card-value">&nbsp;</div>
+                </div>
+                <div class="day-card">
+                    <span class="day-card-label">Primary Keyword</span>
+                    <div class="day-card-value">&nbsp;</div>
+                </div>
+                <div class="day-card day-card-full">
+                    <span class="day-card-label">Secondary Keywords</span>
+                    <div class="day-card-value">&nbsp;</div>
+                </div>
+                <div class="day-card">
+                    <span class="day-card-label">Search Intent</span>
+                    <div class="day-card-value">Informational / Commercial / Transactional</div>
+                </div>
+                <div class="day-card">
+                    <span class="day-card-label">Target Audience</span>
+                    <div class="day-card-value">&nbsp;</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO & AI OPTIMIZATION CHECKLIST -->
+        <div class="section">
+            <span class="section-label">02 // Optimization</span>
+            <h2>SEO &amp; AI<br>Optimization Checklist</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>Status</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="element">Title Tag Optimized</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="element">Meta Description Written</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="element">H1/H2/H3 Structure Set</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="element">Internal Links Added</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="element">Schema Markup Planned</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="element">AI Readability Check</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="element">Featured Snippet Target Identified</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="element">Image Alt Text Added</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- PERFORMANCE TRACKING -->
+        <div class="section">
+            <span class="section-label">03 // Tracking</span>
+            <h2>Performance<br>Tracking</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Baseline</th>
+                        <th>Target</th>
+                        <th>Actual</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="element">Organic Traffic</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="element">Keyword Ranking</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="element">CTR</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="element">Bounce Rate</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="element">Conversion Rate</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                    <tr><td class="element">AI Snippet Appearance</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td><td class="editable">&nbsp;</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ATTRIBUTION -->
+        <div class="attribution">
+            <p>Execution Template by Angie Bailey // <a href="https://angieqbailey.com">angieqbailey.com</a></p>
+        </div>
+
+    </div>
+</body>
+</html>
