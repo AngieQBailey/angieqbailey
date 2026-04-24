@@ -524,9 +524,10 @@
 
     .ld-card {
         background: rgba(45, 27, 20, 0.35);
+        border: 1px solid rgba(45, 27, 20, 0.6);
         padding: 2.5rem 2rem;
         position: relative;
-        transition: background 0.3s ease;
+        transition: background 0.3s ease, border-color 0.3s ease;
         text-decoration: none;
         cursor: pointer;
     }
@@ -544,6 +545,7 @@
 
     .ld-card:hover {
         background: rgba(45, 27, 20, 0.5);
+        border-color: rgba(45, 27, 20, 0.8);
     }
 
     .ld-card:hover::before {
