@@ -170,3 +170,23 @@ When a new case study is ready to deploy:
 5. Update `index.html` ÃÂ¢ÃÂÃÂ convert the placeholder `<div>` Warehouse card to a clickable `<a>` tag
 6. Update this registry ÃÂ¢ÃÂÃÂ add new rows to the appropriate case study table, update Warehouse card status
 7. Update `_changelog.md` with what changed and why
+
+## The GEO/AEO Transition
+- **Category:** Process Architecture // AI Search Readiness
+- **Case Study:** `posts/geo-aeo-transition/geo-aeo-transition.html`
+- **Artifacts:**
+  - `posts/geo-aeo-transition/assets/ai-overview-monitoring-guide.html`
+  - `posts/geo-aeo-transition/assets/content-prioritization-framework.html`
+  - `posts/geo-aeo-transition/assets/geo-best-practices-guide.html`
+  - `posts/geo-aeo-transition/assets/schema-markup-ai-content-guide.html`
+  - `posts/geo-aeo-transition/assets/seo-ai-search-playbook.html`
+  - `posts/geo-aeo-transition/assets/content-brief-template.html`
+- **Templates:**
+  - `posts/geo-aeo-transition/assets/templates/ai-overview-monitoring-guide-blank.html`
+  - `posts/geo-aeo-transition/assets/templates/content-prioritization-framework-blank.html`
+  - `posts/geo-aeo-transition/assets/templates/geo-best-practices-guide-blank.html`
+  - `posts/geo-aeo-transition/assets/templates/schema-markup-ai-content-guide-blank.html`
+  - `posts/geo-aeo-transition/assets/templates/seo-ai-search-playbook-blank.html`
+  - `posts/geo-aeo-transition/assets/templates/content-brief-template-blank.html`
+- **Warehouse Card:** index.html (row 1, column 2)
+- **Date Added:** 2026-04-24
