@@ -1,3 +1,17 @@
+### 2026-04-24 — The GEO/AEO Transition
+- Added: `posts/geo-aeo-transition/geo-aeo-transition.html` (case study page)
+- Added: `posts/geo-aeo-transition/assets/ai-overview-monitoring-guide.html` (artifact page)
+- Added: `posts/geo-aeo-transition/assets/content-prioritization-framework.html` (artifact page)
+- Added: `posts/geo-aeo-transition/assets/geo-best-practices-guide.html` (artifact page)
+- Added: `posts/geo-aeo-transition/assets/schema-markup-ai-content-guide.html` (artifact page)
+- Added: `posts/geo-aeo-transition/assets/seo-ai-search-playbook.html` (artifact page)
+- Added: `posts/geo-aeo-transition/assets/content-brief-template.html` (artifact page)
+- Added: `posts/geo-aeo-transition/assets/templates/*-blank.html` (6 blank templates)
+- Added: Warehouse card to `index.html` (position 2, top row)
+- Moved: AI Implementation/Workforce AI Adoption card to position 1, top row
+- Category: Process Architecture // AI Search Readiness
+- Artifacts: 6 branded pages, 6 blank templates
+
 # AQB Site Changelog
 **Repo:** `AngieQBailey/angieqbailey`
 
