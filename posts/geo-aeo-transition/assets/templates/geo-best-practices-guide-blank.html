@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GEO Best Practices Guide — Blank Template. Methodology worksheet for optimizing content for AI-driven search engines and generative AI platforms.">
+    <meta name="author" content="Angie Bailey">
+    <title>GEO Best Practices Guide // Blank Template // Angie Bailey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit:     #121A28;
+            --cacao:    #2D1B14;
+            --quetzal:  #00685E;
+            --rosso:    #C41E3A;
+            --ecru:     #F5F5DC;
+            --border:   rgba(0, 104, 94, 0.25);
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--ecru);
+            color: var(--nuit);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .template-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2.5rem;
+        }
+
+        /* Header */
+        .template-type {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--quetzal);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: 'Imbue', serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            line-height: 0.9;
+            color: var(--nuit);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        h1 .accent {
+            color: var(--rosso);
+        }
+
+        .subtitle {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--quetzal);
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+        }
+
+        .instructions {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.6rem;
+            color: var(--nuit);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--ecru);
+            background: var(--nuit);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.6rem 1.25rem;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 2.5rem;
+            transition: background 0.2s ease;
+        }
+
+        .print-btn:hover {
+            background: var(--rosso);
+        }
+
+        /* Day Cards */
+        .day-card {
+            background: rgba(0, 104, 94, 0.06);
+            padding: 2rem;
+            margin-bottom: 2px;
+        }
+
+        .day-num {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            display: block;
+            margin-bottom: 0.35rem;
+        }
+
+        .day-label {
+            font-family: 'Imbue', serif;
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--nuit);
+            text-transform: uppercase;
+            line-height: 1;
+            letter-spacing: -0.01em;
+            margin-bottom: 1.5rem;
+        }
+
+        .field {
+            margin-bottom: 1.5rem;
+        }
+
+        .field:last-child {
+            margin-bottom: 0;
+        }
+
+        .field-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: var(--quetzal);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .field-area {
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 0;
+            min-height: 2.5rem;
+        }
+
+        /* Attribution */
+        .attribution {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.6rem;
+            color: var(--quetzal);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Print Styles */
+        @media print {
+            .print-btn { display: none !important; }
+
+            @page {
+                size: portrait;
+                margin: 1.5cm;
+            }
+
+            body {
+                background: #fff;
+                color: #000;
+            }
+
+            .template-wrapper {
+                padding: 0;
+                max-width: 100%;
+            }
+
+            .day-card {
+                background: rgba(0, 104, 94, 0.04);
+                break-inside: avoid;
+            }
+
+            .field-area {
+                border-bottom-color: rgba(0, 104, 94, 0.3);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="template-wrapper">
+
+        <!-- Header -->
+        <span class="template-type">Blank Template // Methodology</span>
+        <h1>GEO <span class="accent">Best Practices</span><br>Guide</h1>
+        <p class="subtitle">Optimize content for AI-driven search engines and generative AI platforms</p>
+        <div class="instructions">Print or save as PDF. Complete each practice area with current status, gaps identified and actions to take. Use as a working audit document for GEO optimization.</div>
+        <button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+
+        <!-- Card A -->
+        <div class="day-card">
+            <span class="day-num">Practice Area 01</span>
+            <div class="day-label">AI Search Visibility</div>
+            <div class="field">
+                <span class="field-label">Current Structured Data Status</span>
+                <div class="field-area"></div>
+            </div>
+            <div class="field">
+                <span class="field-label">FAQ-Style Content Gaps Identified</span>
+                <div class="field-area"></div>
+            </div>
+            <div class="field">
+                <span class="field-label">Featured Snippet Targets</span>
+                <div class="field-area"></div>
+            </div>
+            <div class="field">
+                <span class="field-label">Actions to Take</span>
+                <div class="field-area"></div>
+            </div>
+        </div>
+
+        <!-- Card B -->
+        <div class="day-card">
+            <span class="day-num">Practice Area 02</span>
+            <div class="day-label">AI Readability & Summarization</div>
+            <div class="field">
+                <span class="field-label">Content Formatting Assessment</span>
+                <div class="field-area"></div>
+            </div>
+            <div class="field">
+                <span class="field-label">Subheading Structure Status</span>
+                <div class="field-area"></div>
+            </div>
+            <div class="field">
+                <span class="field-label">Direct Answer Placement</span>
+                <div class="field-area"></div>
+            </div>
+            <div class="field">
+                <span class="field-label">Actions to Take</span>
+                <div class="field-area"></div>
+            </div>
+        </div>
+
+        <!-- Card C -->
+        <div class="day-card">
+            <span class="day-num">Practice Area 03</span>
+            <div class="day-label">Semantic Search & Entity Optimization</div>
+            <div class="field">
+                <span class="field-label">Entity Mapping Status</span>
+                <div class="field-area"></div>
+            </div>
+            <div class="field">
+                <span class="field-label">Internal Linking Assessment</span>
+                <div class="field-area"></div>
+            </div>
+            <div class="field">
+                <span class="field-label">Topic Cluster Gaps</span>
+                <div class="field-area"></div>
+            </div>
+            <div class="field">
+                <span class="field-label">Actions to Take</span>
+                <div class="field-area"></div>
+            </div>
+        </div>
+
+        <!-- Card D -->
+        <div class="day-card">
+            <span class="day-num">Practice Area 04</span>
+            <div class="day-label">Authority & Trust Signals</div>
+            <div class="field">
+                <span class="field-label">E-E-A-T Compliance Status</span>
+                <div class="field-area"></div>
+            </div>
+            <div class="field">
+                <span class="field-label">Author Credentials on Page?</span>
+                <div class="field-area"></div>
+            </div>
+            <div class="field">
+                <span class="field-label">Source Citation Quality</span>
+                <div class="field-area"></div>
+            </div>
+            <div class="field">
+                <span class="field-label">Actions to Take</span>
+                <div class="field-area"></div>
+            </div>
+        </div>
+
+        <!-- Card E -->
+        <div class="day-card">
+            <span class="day-num">Practice Area 05</span>
+            <div class="day-label">Conversational AI & Voice Search</div>
+            <div class="field">
+                <span class="field-label">Voice Search Readiness</span>
+                <div class="field-area"></div>
+            </div>
+            <div class="field">
+                <span class="field-label">Q&A Schema Implemented?</span>
+                <div class="field-area"></div>
+            </div>
+            <div class="field">
+                <span class="field-label">Local SEO Status</span>
+                <div class="field-area"></div>
+            </div>
+            <div class="field">
+                <span class="field-label">Actions to Take</span>
+                <div class="field-area"></div>
+            </div>
+        </div>
+
+        <!-- Attribution -->
+        <div class="attribution">Methodology by Angie Bailey // angieqbailey.com</div>
+
+    </div>
+</body>
+</html>
