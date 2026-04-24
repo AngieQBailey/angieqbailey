@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Content Prioritization Framework... A decision architecture for evaluating which content to create, update or remove based on AI Overview trends and business impact.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <meta property="og:title" content="Content Prioritization Framework // Angie Bailey">
+    <meta property="og:description" content="A decision architecture for evaluating which content to create, update or remove based on AI Overview trends and business impact.">
+    <meta property="og:type" content="article">
+    <title>Content Prioritization Framework // Angie Bailey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit:     #121A28;
+            --cacao:    #2D1B14;
+            --quetzal:  #00685E;
+            --quetzal-bright: #00A896;
+            --ecru:     #F5F5DC;
+            --rosso:    #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        ::selection { background: var(--rosso); color: var(--ecru); }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+        body {
+            background-color: var(--nuit); color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif; font-weight: 400;
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale; overflow-x: hidden;
+        }
+
+        .blueprint-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-fade 2s ease 0.5s both;
+        }
+
+        .spine {
+            position: fixed; left: calc(var(--spine-left) - 40px);
+            top: 0; width: 4px; height: 100%;
+            background-color: var(--cacao); z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .nav-bar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--quetzal-bright); text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 400; color: var(--ecru-dim); text-decoration: none;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            transition: color 0.2s ease; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--rosso);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--ecru); }
+        .nav-links a:hover::after { width: 100%; }
+
+        main { position: relative; z-index: 10; }
+        .doc-content {
+            padding-left: var(--spine-left); padding-right: 4rem; max-width: 1200px;
+        }
+
+        .doc-header {
+            min-height: 50vh; display: flex; flex-direction: column;
+            justify-content: center; padding-top: 8rem; padding-bottom: 3rem;
+        }
+        .doc-meta {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--quetzal-bright); letter-spacing: 0.1em; margin-bottom: 2rem;
+            display: block; animation: fade-up 0.8s ease 0.4s both;
+        }
+        .doc-header h1 {
+            font-family: 'Imbue', serif; font-size: clamp(2.2rem, 6vw, 5rem);
+            font-weight: 900; line-height: 0.9; color: var(--ecru);
+            text-transform: uppercase; letter-spacing: -0.02em;
+            margin-bottom: 2rem; max-width: 650px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+        .doc-header h1 .accent-word { color: var(--rosso); }
+        .doc-lede {
+            border-left: 5px solid var(--rosso); padding-left: 2rem;
+            max-width: 600px; animation: fade-up 0.8s ease 0.8s both;
+        }
+        .doc-lede p {
+            font-size: 1.1rem; font-weight: 300; line-height: 1.7; color: var(--ecru-dim);
+        }
+        .doc-lede strong { color: var(--ecru); font-weight: 500; }
+
+        .btn-download {
+            display: inline-block; margin-top: 2rem;
+            padding: 0.85rem 2rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            background: var(--ecru); color: var(--nuit);
+            text-decoration: none; border: none; cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+            animation: fade-up 0.8s ease 1s both;
+        }
+        .btn-download:hover {
+            background: var(--rosso); color: var(--ecru);
+        }
+
+        .doc-section {
+            padding-top: 2.5rem; padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 0.5rem; display: block;
+        }
+        h2 {
+            font-family: 'Imbue', serif; font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 900; color: var(--ecru); text-transform: uppercase;
+            line-height: 0.95; letter-spacing: -0.01em; margin-bottom: 2.5rem;
+        }
+        .doc-body p {
+            font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+            color: var(--ecru-dim); margin-bottom: 1.5rem; max-width: 650px;
+        }
+        .doc-body p strong { color: var(--ecru); font-weight: 500; }
+        .doc-body a {
+            color: var(--quetzal-bright); text-decoration: underline;
+            text-decoration-color: rgba(0, 168, 150, 0.3);
+            text-underline-offset: 2px; transition: text-decoration-color 0.2s ease;
+        }
+        .doc-body a:hover { text-decoration-color: var(--quetzal-bright); }
+
+        .core-principle {
+            border-left: 4px solid var(--rosso); padding: 2rem;
+            background: rgba(245, 245, 220, 0.14); margin: 2.5rem 0; max-width: 650px;
+        }
+        .core-principle p {
+            font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+            color: var(--ecru-dim); margin-bottom: 0;
+        }
+        .core-principle strong { color: var(--ecru); font-weight: 500; }
+
+        /* Metric cards */
+        .metric-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem; margin: 2rem 0; max-width: 750px;
+        }
+        .metric-card {
+            background: rgba(245, 245, 220, 0.14); padding: 1.25rem 1.5rem;
+            border-left: 3px solid var(--quetzal);
+        }
+        .metric-card .metric-name {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--ecru); letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+        }
+        .metric-card .metric-desc {
+            font-size: 0.9rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.5;
+        }
+
+        /* Tool tags */
+        .tool-list {
+            display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.5rem 0; max-width: 650px;
+        }
+        .tool-tag {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 400; color: var(--quetzal-bright);
+            padding: 0.5rem 1rem; border: 1px solid var(--quetzal);
+            background: transparent; letter-spacing: 0.05em;
+        }
+
+        /* Steps */
+        .step-block {
+            margin: 2.5rem 0; max-width: 700px;
+        }
+        .step-header {
+            display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1rem;
+        }
+        .step-number {
+            font-family: 'Imbue', serif; font-size: 2.5rem; font-weight: 900;
+            color: var(--rosso); line-height: 1;
+        }
+        .step-title {
+            font-family: 'Imbue', serif; font-size: 1.4rem; font-weight: 900;
+            color: var(--ecru); text-transform: uppercase; line-height: 1.1;
+        }
+        .step-body {
+            padding-left: 3.5rem;
+        }
+        .step-body p {
+            font-size: 1rem; font-weight: 300; line-height: 1.7;
+            color: var(--ecru-dim); margin-bottom: 1rem; max-width: 600px;
+        }
+        .step-body p strong { color: var(--ecru); font-weight: 500; }
+
+        /* Priority levels */
+        .priority-group {
+            margin: 1.5rem 0;
+        }
+        .priority-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            margin-bottom: 0.5rem; display: block;
+        }
+        .priority-label.high { color: var(--rosso); }
+        .priority-label.medium { color: var(--quetzal-bright); }
+        .priority-label.low { color: var(--ecru-dim); }
+        .priority-items {
+            list-style: none; padding-left: 0;
+        }
+        .priority-items li {
+            font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim);
+            line-height: 1.7; padding-left: 1.25rem; position: relative;
+        }
+        .priority-items li::before {
+            content: ''; position: absolute; left: 0; top: 0.7em;
+            width: 6px; height: 6px; background: var(--quetzal);
+        }
+
+        /* Decision table */
+        .decision-table {
+            width: 100%; max-width: 750px; border-collapse: collapse;
+            margin: 2rem 0;
+        }
+        .decision-table th {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.1em;
+            text-transform: uppercase; text-align: left;
+            padding: 1rem 1.25rem; border-bottom: 2px solid var(--quetzal);
+            background: transparent;
+        }
+        .decision-table td {
+            font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim);
+            padding: 1rem 1.25rem; border-bottom: 1px solid var(--ecru-ghost);
+            vertical-align: top; line-height: 1.6;
+        }
+        .decision-table td strong { color: var(--ecru); font-weight: 500; }
+        .decision-table tr:last-child td { border-bottom: none; }
+        .decision-table td:first-child {
+            color: var(--ecru); font-weight: 400; width: 45%;
+        }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); text-decoration: none; text-transform: uppercase;
+            letter-spacing: 0.1em; transition: color 0.2s ease; margin-top: 3rem;
+        }
+        .back-link::before {
+            content: ''; display: block; width: 24px; height: 2px;
+            background: var(--quetzal); transition: width 0.3s ease, background 0.3s ease;
+        }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .footer-content {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 1200px;
+        }
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); letter-spacing: 0.05em;
+        }
+
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .doc-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+            .metric-grid { grid-template-columns: 1fr 1fr; }
+            .step-body { padding-left: 0; }
+            .decision-table { font-size: 0.85rem; }
+            .decision-table th, .decision-table td { padding: 0.75rem; }
+        }
+
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .nav-links a { font-size: 0.85rem; }
+            .blueprint-overlay { background-size: 24px 24px; }
+            .metric-grid { grid-template-columns: 1fr; }
+            .decision-table { display: block; overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+    <div class="blueprint-overlay" aria-hidden="true"></div>
+    <div class="spine" aria-hidden="true"></div>
+    <nav class="nav-bar" role="navigation">
+        <a href="../geo-aeo-transition.html" class="nav-mark" style="text-decoration: none;">
+            &larr; GEO/AEO Transition
+        </a>
+        <ul class="nav-links">
+            <li><a href="/">Main Site</a></li>
+        </ul>
+    </nav>
+    <main>
+        <!-- HEADER -->
+        <section class="doc-header doc-content">
+            <span class="doc-meta">Framework // GEO/AEO Transition</span>
+            <h1>Content<br><span class="accent-word">Prioritization</span><br>Framework</h1>
+            <div class="doc-lede">
+                <p>A decision architecture for evaluating which content to create, update or remove based on AI Overview trends and business impact. <strong>Not a content calendar. A triage system.</strong></p>
+            </div>
+            <a href="templates/content-prioritization-framework-blank.html" class="btn-download" download>Download Blank Template</a>
+        </section>
+
+        <!-- KEY METRICS -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">01 // Inputs</span>
+            <h2>Key Metrics<br>to Track</h2>
+            <div class="doc-body">
+                <p>These are the signals that feed the prioritization engine. No single metric makes a decision. <strong>The framework requires all eight working together.</strong></p>
+            </div>
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-name">Organic Traffic</div>
+                    <div class="metric-desc">Volume trends by page and segment. Declining pages surface first.</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-name">Search Intent Alignment</div>
+                    <div class="metric-desc">Does the page answer the query the way users now expect?</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-name">AI Overview Presence</div>
+                    <div class="metric-desc">Is your content cited in AI Overviews? Is it being bypassed entirely?</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-name">Keyword Ranking</div>
+                    <div class="metric-desc">Position tracking with emphasis on the 4-15 range where gains are realistic.</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-name">CTR</div>
+                    <div class="metric-desc">Click-through rate from SERPs. AI Overviews compress CTR for informational queries.</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-name">Backlinks &amp; Authority</div>
+                    <div class="metric-desc">Domain and page-level authority signals. E-E-A-T validation from external sources.</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-name">Engagement Metrics</div>
+                    <div class="metric-desc">Time on page, scroll depth, bounce rate. Behavioral proof of content quality.</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-name">Conversion Performance</div>
+                    <div class="metric-desc">Does the page drive the action it was designed to drive?</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOOLS REQUIRED -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">02 // Stack</span>
+            <h2>Tools<br>Required</h2>
+            <div class="doc-body">
+                <p>The minimum viable toolkit for running this framework. Each tool feeds a different metric layer.</p>
+            </div>
+            <div class="tool-list">
+                <span class="tool-tag">GA4</span>
+                <span class="tool-tag">Google Search Console</span>
+                <span class="tool-tag">Ahrefs</span>
+                <span class="tool-tag">Perplexity AI Search Trends</span>
+                <span class="tool-tag">Internal CMS</span>
+            </div>
+        </section>
+
+        <!-- STEP-BY-STEP PROCESS -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">03 // Process</span>
+            <h2>Step-by-Step<br>Execution</h2>
+
+            <!-- Step 1 -->
+            <div class="step-block">
+                <div class="step-header">
+                    <span class="step-number">01</span>
+                    <span class="step-title">Audit Existing Content</span>
+                </div>
+                <div class="step-body">
+                    <p>Export all URLs from your CMS and cross-reference with GA4 and GSC data. Identify pages with declining traffic over the past 90 days. Check which pages appear in AI Overviews and which have been excluded. <strong>The audit is the foundation. Skip it and the rest of the framework fails.</strong></p>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-block">
+                <div class="step-header">
+                    <span class="step-number">02</span>
+                    <span class="step-title">Categorize by Priority Level</span>
+                </div>
+                <div class="step-body">
+                    <div class="priority-group">
+                        <span class="priority-label high">High Priority</span>
+                        <ul class="priority-items">
+                            <li>Pages declining specifically due to AI Overview displacement</li>
+                            <li>Pages ranking positions 4-15 with realistic optimization potential</li>
+                            <li>Brand-critical content that defines your market position</li>
+                        </ul>
+                    </div>
+                    <div class="priority-group">
+                        <span class="priority-label medium">Medium Priority</span>
+                        <ul class="priority-items">
+                            <li>Older evergreen content that needs refreshing but still drives traffic</li>
+                            <li>Informational pages losing engagement metrics quarter over quarter</li>
+                        </ul>
+                    </div>
+                    <div class="priority-group">
+                        <span class="priority-label low">Low Priority</span>
+                        <ul class="priority-items">
+                            <li>Outdated content no longer aligned with current offerings</li>
+                            <li>Irrelevant pages that serve no strategic purpose</li>
+                            <li>Duplicate content cannibalizing stronger pages</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-block">
+                <div class="step-header">
+                    <span class="step-number">03</span>
+                    <span class="step-title">Optimize High-Priority Content</span>
+                </div>
+                <div class="step-body">
+                    <p>Update metadata to reflect current search intent patterns. Improve E-E-A-T signals by adding author credentials, first-hand experience and expert citations. <strong>Optimize for depth over breadth.</strong> AI Overviews favor comprehensive answers that demonstrate genuine expertise rather than surface-level keyword coverage.</p>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-block">
+                <div class="step-header">
+                    <span class="step-number">04</span>
+                    <span class="step-title">Evaluate New Content Opportunities</span>
+                </div>
+                <div class="step-body">
+                    <p>Identify keyword gaps where competitors rank but you do not. Analyze AI Overview topics where your expertise qualifies you for inclusion but no content exists yet. Prioritize long-form content that builds topical authority over isolated blog posts. <strong>New content should fill strategic holes, not pad the editorial calendar.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DECISION FRAMEWORK -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">04 // Decisions</span>
+            <h2>Decision<br>Framework</h2>
+            <div class="doc-body">
+                <p>When the audit surfaces a page, run it through this table. The condition determines the action.</p>
+            </div>
+            <table class="decision-table">
+                <thead>
+                    <tr>
+                        <th>Condition</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Declining traffic due to AI Overview</td>
+                        <td>Optimize for AI Overview inclusion or explore alternative distribution channels (LinkedIn, Reddit, niche communities)</td>
+                    </tr>
+                    <tr>
+                        <td>Ranking positions 4-15 for key terms</td>
+                        <td>Improve on-page SEO, strengthen internal linking and increase content depth</td>
+                    </tr>
+                    <tr>
+                        <td>High-traffic but low-converting</td>
+                        <td>Adjust CTAs, restructure internal linking and tighten page architecture around conversion paths</td>
+                    </tr>
+                    <tr>
+                        <td>Outdated or duplicate content</td>
+                        <td>Refresh with current data or consolidate into a single authoritative page</td>
+                    </tr>
+                    <tr>
+                        <td>Not ranking or receiving traffic</td>
+                        <td>Consider removal or major rework... the page may be doing more harm than good to site authority</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- REPORTING & OPTIMIZATION -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">05 // Cadence</span>
+            <h2>Reporting &amp;<br>Optimization</h2>
+            <div class="doc-body">
+                <p><strong>Content Prioritization Tracker.</strong> Maintain a living document that maps every page against its priority level, current metrics and assigned action. This is the operating layer between strategy and execution.</p>
+                <p><strong>Quarterly reviews.</strong> Re-run the full audit every quarter. AI Overview inclusion patterns shift. Competitor content changes. Search intent evolves. A static prioritization matrix becomes a liability within 90 days.</p>
+                <p><strong>CTR tracking.</strong> Monitor click-through rates at the query level, not just the page level. AI Overviews compress CTR for informational queries but can increase CTR for well-optimized pages that earn featured citations.</p>
+                <p><strong>Strategy adjustment.</strong> Use quarterly data to reallocate resources. Pages that were high-priority last quarter may have stabilized. New declines will surface. The framework is designed to be re-run, not completed once.</p>
+            </div>
+            <div class="core-principle">
+                <p><strong>The operating principle:</strong> Prioritization is not a one-time sort. It is a continuous triage system that responds to how AI-driven search redistributes traffic. The framework stays useful only if it stays current.</p>
+            </div>
+            <a href="../geo-aeo-transition.html" class="back-link">&larr; Back to GEO/AEO Transition</a>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <span>&copy; 2026 Angie Bailey</span>
+        </div>
+    </footer>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
