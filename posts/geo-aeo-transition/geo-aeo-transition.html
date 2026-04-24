@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Case Study: The GEO/AEO Transition — 20 process documents built from nothing to onboard an e-commerce team to AI-driven search. The operating system was complete. The org chart wasn't stable enough to install it.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <meta property="og:title" content="The GEO/AEO Transition // Angie Bailey">
+    <meta property="og:description" content="An e-commerce division had zero infrastructure for the AI search shift already redistributing web traffic. So the operating system got built without a mandate.">
+    <meta property="og:type" content="article">
+    <title>The GEO/AEO Transition // Angie Bailey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit:     #121A28;
+            --cacao:    #2D1B14;
+            --quetzal:  #00685E;
+            --quetzal-bright: #00A896;
+            --ecru:     #F5F5DC;
+            --rosso:    #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        ::selection {
+            background: var(--rosso);
+            color: var(--ecru);
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+        body {
+            background-color: var(--nuit); color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif; font-weight: 400;
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale; overflow-x: hidden;
+        }
+
+        .blueprint-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-fade 2s ease 0.5s both;
+        }
+
+        .spine {
+            position: fixed; left: calc(var(--spine-left) - 40px);
+            top: 0; width: 4px; height: 100%;
+            background-color: var(--cacao); z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .nav-bar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--quetzal-bright); text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 400; color: var(--ecru-dim); text-decoration: none;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            transition: color 0.2s ease; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--rosso);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--ecru); }
+        .nav-links a:hover::after { width: 100%; }
+
+        main { position: relative; z-index: 10; }
+        .section-content {
+            padding-left: var(--spine-left); padding-right: 4rem; max-width: 1200px;
+        }
+
+        .case-header {
+            min-height: 70vh; display: flex; flex-direction: column;
+            justify-content: center; padding-top: 8rem; padding-bottom: 4rem;
+        }
+        .case-meta {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--quetzal-bright); letter-spacing: 0.1em; margin-bottom: 2rem;
+            display: block; animation: fade-up 0.8s ease 0.4s both;
+        }
+        .case-tag {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 1.5rem; display: block;
+            animation: fade-up 0.8s ease 0.5s both;
+        }
+        .case-header h1 {
+            font-family: 'Imbue', serif; font-size: clamp(2.5rem, 7vw, 6rem);
+            font-weight: 900; line-height: 0.9; color: var(--ecru);
+            text-transform: uppercase; letter-spacing: -0.02em;
+            margin-bottom: 2.5rem; max-width: 700px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+        .case-header h1 .accent-word { color: var(--rosso); }
+        .case-lede {
+            border-left: 5px solid var(--rosso); padding-left: 2rem;
+            max-width: 600px; animation: fade-up 0.8s ease 0.8s both;
+        }
+        .case-lede p {
+            font-size: 1.15rem; font-weight: 300; line-height: 1.7; color: var(--ecru-dim);
+        }
+        .case-lede strong { color: var(--ecru); font-weight: 500; }
+
+        .case-section {
+            padding-top: 2.5rem; padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 0.5rem; display: block;
+        }
+        h2 {
+            font-family: 'Imbue', serif; font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 900; color: var(--ecru); text-transform: uppercase;
+            line-height: 0.95; letter-spacing: -0.01em; margin-bottom: 2.5rem;
+        }
+        .case-body p {
+            font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+            color: var(--ecru-dim); margin-bottom: 1.5rem; max-width: 650px;
+        }
+        .case-body p strong { color: var(--ecru); font-weight: 500; }
+
+        .constraint-list { margin: 2rem 0; max-width: 650px; }
+        .constraint-item {
+            padding: 1.25rem 0; border-bottom: 1px solid var(--ecru-ghost);
+            display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: start;
+        }
+        .constraint-item:first-child { border-top: 1px solid var(--ecru-ghost); }
+        .constraint-flag {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.1em; padding: 0.2rem 0.5rem;
+            text-transform: uppercase; min-width: 50px; text-align: center;
+        }
+        .constraint-flag.red { color: var(--rosso); border: 1px solid var(--rosso); }
+        .constraint-flag.yellow { color: #D4A017; border: 1px solid #D4A017; }
+        .constraint-label { font-size: 0.95rem; font-weight: 400; color: var(--ecru); line-height: 1.4; }
+        .constraint-detail { font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); margin-top: 0.25rem; }
+
+        .failure-loop {
+            border-left: 3px solid var(--cacao); padding-left: 1.5rem;
+            margin: 2rem 0; max-width: 400px;
+        }
+        .failure-loop .loop-step {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); padding: 0.4rem 0; display: flex;
+            align-items: center; gap: 0.75rem;
+        }
+        .failure-loop .loop-arrow { color: var(--rosso); font-weight: 700; }
+
+        .approach-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+            margin: 2.5rem 0; max-width: 750px;
+        }
+        .approach-item { background: rgba(245, 245, 220, 0.14); padding: 2rem 1.75rem; }
+        .approach-day {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 0.75rem;
+        }
+        .approach-title {
+            font-family: 'Imbue', serif; font-size: 1.3rem; font-weight: 700;
+            color: var(--ecru); text-transform: uppercase; line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+        .approach-desc {
+            font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.5;
+        }
+
+        .artifact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2px; margin: 2.5rem 0;
+        }
+        .artifact-card {
+            background: rgba(245, 245, 220, 0.14); padding: 2rem 1.75rem;
+            position: relative; transition: background 0.3s ease;
+            text-decoration: none; display: block;
+        }
+        .artifact-card::before {
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 0; height: 3px; background: var(--rosso);
+            transition: width 0.4s ease;
+        }
+        .artifact-card:hover { background: rgba(245, 245, 220, 0.18); }
+        .artifact-card:hover::before { width: 100%; }
+        .artifact-type {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 0.75rem;
+        }
+        .artifact-name {
+            font-family: 'Imbue', serif; font-size: 1.15rem; font-weight: 700;
+            color: var(--ecru); text-transform: uppercase; line-height: 1.15;
+            margin-bottom: 0.75rem;
+        }
+        .artifact-desc {
+            font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim);
+            line-height: 1.5; margin-bottom: 1rem;
+        }
+        .artifact-action {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--rosso); text-transform: uppercase; letter-spacing: 0.15em;
+        }
+
+        .outcome-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2px; margin: 2.5rem 0; max-width: 750px;
+        }
+        .outcome-stat { background: rgba(245, 245, 220, 0.14); padding: 2rem 1.75rem; }
+        .outcome-number {
+            font-family: 'Imbue', serif; font-size: 2.5rem; font-weight: 900;
+            color: var(--ecru); line-height: 1; margin-bottom: 0.5rem;
+        }
+        .outcome-number.highlight { color: var(--rosso); }
+        .outcome-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--quetzal-bright); text-transform: uppercase; letter-spacing: 0.1em;
+            line-height: 1.4;
+        }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); text-decoration: none; text-transform: uppercase;
+            letter-spacing: 0.1em; transition: color 0.2s ease; margin-top: 3rem;
+        }
+        .back-link::before {
+            content: ''; display: block; width: 24px; height: 2px;
+            background: var(--quetzal); transition: width 0.3s ease, background 0.3s ease;
+        }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .footer-content {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 1200px;
+        }
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); letter-spacing: 0.05em;
+        }
+
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .section-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .approach-grid { grid-template-columns: 1fr; }
+            .artifact-grid { grid-template-columns: 1fr; }
+            .outcome-grid { grid-template-columns: 1fr 1fr; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+        }
+
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .nav-links a { font-size: 0.75rem; }
+            .blueprint-overlay { background-size: 24px 24px; }
+            .outcome-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="blueprint-overlay" aria-hidden="true"></div>
+    <div class="spine" aria-hidden="true"></div>
+    <nav class="nav-bar" role="navigation" aria-label="Primary">
+        <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
+        <ul class="nav-links">
+            <li><a href="/#warehouse">Warehouse</a></li>
+            <li><a href="/#investigation">Investigation</a></li>
+            <li><a href="/#verdict">Verdict</a></li>
+            <li><a href="/#signal">Signal</a></li>
+        </ul>
+    </nav>
+    <main>
+        <!-- HEADER -->
+        <section class="case-header section-content">
+            <span class="case-meta">Case Study // Process Architecture</span>
+            <span class="case-tag">AI Search Readiness</span>
+            <h1>The GEO/AEO<br><span class="accent-word">Transition</span></h1>
+            <div class="case-lede">
+                <p>An e-commerce division was measuring traditional SEO but had <strong>zero infrastructure for the AI search shift</strong> already redistributing web traffic. No one had flagged it. No one owned it. So the operating system got built without a mandate... 20 process documents across three implementation phases designed to onboard an entire team to a capability it didn't have yet.</p>
+            </div>
+        </section>
+
+        <!-- THE EVIDENCE -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">The Evidence</span>
+            <h2>Frameworks<br>&amp; Artifacts</h2>
+            <div class="case-body"><p>Six of the twenty documents produced during the build. Each represents a different layer of the operating system: monitoring, prioritization, methodology, technical execution, team onboarding and daily content production.</p></div>
+            <div class="artifact-grid">
+                <a href="assets/ai-overview-monitoring-guide.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                    <div class="artifact-type">Framework</div>
+                    <div class="artifact-name">AI Overview Monitoring<br>&amp; Response Guide</div>
+                    <div class="artifact-desc">Decision tree and monitoring cadence for tracking AI Overview presence across key terms. Includes response protocols for three scenarios: exclusion, competitor dominance and CTR erosion.</div>
+                    <div class="artifact-action">View Framework &rarr;</div>
+                </a>
+                <a href="assets/content-prioritization-framework.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                    <div class="artifact-type">Framework</div>
+                    <div class="artifact-name">Content Prioritization<br>Framework</div>
+                    <div class="artifact-desc">Structured process for evaluating which content to create, update or remove based on AI Overview trends, keyword performance and conversion impact. Priority-tiered with clear action triggers.</div>
+                    <div class="artifact-action">View Framework &rarr;</div>
+                </a>
+                <a href="assets/geo-best-practices-guide.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                    <div class="artifact-type">Methodology</div>
+                    <div class="artifact-name">GEO Best Practices<br>Guide</div>
+                    <div class="artifact-desc">Core methodology for optimizing content to appear in AI-driven search engines and chatbots. Covers visibility, readability, semantic optimization, authority signals and conversational AI adaptation.</div>
+                    <div class="artifact-action">View Methodology &rarr;</div>
+                </a>
+                <a href="assets/schema-markup-ai-content-guide.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                    <div class="artifact-type">Technical Guide</div>
+                    <div class="artifact-name">Schema Markup &amp;<br>AI-Optimized Content</div>
+                    <div class="artifact-desc">Structured data implementation guide covering JSON-LD formats, schema types for AI readability, voice search optimization and chatbot-ready content architecture.</div>
+                    <div class="artifact-action">View Technical Guide &rarr;</div>
+                </a>
+                <a href="assets/seo-ai-search-playbook.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                    <div class="artifact-type">Onboarding System</div>
+                    <div class="artifact-name">SEO &amp; AI Search<br>Playbook</div>
+                    <div class="artifact-desc">Team onboarding infrastructure for GEO/AEO concepts. Structured learning path covering core principles, AI search strategies, essential tools and a step-by-step workflow from research to continuous optimization.</div>
+                    <div class="artifact-action">View Onboarding System &rarr;</div>
+                </a>
+                <a href="assets/content-brief-template.html" class="artifact-card" target="_blank" rel="noopener noreferrer">
+                    <div class="artifact-type">Execution Template</div>
+                    <div class="artifact-name">Content Brief<br>(AI-Ready)</div>
+                    <div class="artifact-desc">Standardized content brief ensuring every piece of content is optimized for both traditional SEO and AI search readiness. Covers keyword targeting, search intent alignment, structured data requirements and performance tracking.</div>
+                    <div class="artifact-action">View Execution Template &rarr;</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- THE SITUATION -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">The Situation</span>
+            <h2>The Search Engine<br>Was Becoming<br>Something Else</h2>
+            <div class="case-body">
+                <p>The marketing function had basic SEO tracking in place. Organic rankings were monitored. Keyword performance was reported. But the measurement infrastructure was still maturing... reporting was being built out while the landscape underneath it was already shifting.</p>
+                <p>Generative AI search had begun redistributing web traffic. AI Overviews were pulling answers directly into the SERP. Traditional click-through rates were compressing on informational queries. And <strong>nobody inside the organization had a framework for what to do about it.</strong></p>
+                <p>No AI Overview monitoring existed. No content had been optimized for AI summarization. No decision trees covered the scenario where a top-ranking page suddenly lost traffic to a generative answer. The team was optimizing for a search engine that was quietly becoming something else entirely.</p>
+                <div class="failure-loop">
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> Team optimizes for traditional SEO</div>
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> AI Overviews absorb that content</div>
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> Organic CTR drops on key queries</div>
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> No monitoring catches the shift</div>
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> Team continues optimizing for traditional SEO</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRESSURE POINTS -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">Pressure Points Surfaced</span>
+            <h2>What the<br>Diagnostic Found</h2>
+            <div class="case-body"><p>Six structural constraints identified before the build began. Three were operational gaps in the search function. One was organizational.</p></div>
+            <div class="constraint-list">
+                <div class="constraint-item">
+                    <span class="constraint-flag red">Red</span>
+                    <div>
+                        <div class="constraint-label">No AI Overview Monitoring</div>
+                        <div class="constraint-detail">Zero visibility into whether generative search was cannibalizing traffic. No tools configured, no monitoring cadence, no ownership assigned.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag red">Red</span>
+                    <div>
+                        <div class="constraint-label">No GEO Content Strategy</div>
+                        <div class="constraint-detail">All content optimized for crawlers and keyword density. Nothing structured for AI summarization, citation or generative answer inclusion.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag yellow">Yellow</span>
+                    <div>
+                        <div class="constraint-label">No Schema Markup Strategy</div>
+                        <div class="constraint-detail">Structured data implementation was ad hoc. No systematic approach to JSON-LD, FAQ schema or AI readability signals across the content library.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag yellow">Yellow</span>
+                    <div>
+                        <div class="constraint-label">No Team Training Infrastructure</div>
+                        <div class="constraint-detail">No onboarding materials for GEO/AEO concepts. New team members inherited a traditional SEO playbook with no awareness of the AI search shift.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag yellow">Yellow</span>
+                    <div>
+                        <div class="constraint-label">No Decision Frameworks for AI Traffic Shifts</div>
+                        <div class="constraint-detail">When AI Overviews appeared for key terms, nobody had a response protocol. No decision tree, no escalation path, no triage process.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag red">Red</span>
+                    <div>
+                        <div class="constraint-label">Leadership Volatility</div>
+                        <div class="constraint-detail">The director and VP were removed within months. Two reorganizations in fewer than six months left no one with authority to approve, prioritize or resource the build.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE APPROACH -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">The Approach</span>
+            <h2>Three Phases,<br>No Mandate</h2>
+            <div class="case-body"><p>The build was organized by impact, not by request. Phase 1 established the strategic decision-making layer. Phase 2 produced the execution tools teams would use daily. Phase 3 built the training infrastructure and advanced technical guides. The entire system was designed so <strong>any team member could onboard themselves to GEO/AEO</strong> without a subject matter expert in the room.</p></div>
+            <div class="approach-grid">
+                <div class="approach-item">
+                    <div class="approach-day">Phase 01</div>
+                    <div class="approach-title">Strategy &amp;<br>Decision Frameworks</div>
+                    <div class="approach-desc">Built the monitoring and decision architecture first. AI Overview tracking, content prioritization framework, competitor analysis adapted for generative search, performance reporting and brand vs. conversion strategy.</div>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-day">Phase 02</div>
+                    <div class="approach-title">Execution<br>Templates</div>
+                    <div class="approach-desc">Produced the operational documents teams would use daily: AI-ready content briefs, content refresh checklists, distribution guides, stakeholder communication templates and LinkedIn/Reddit amplification playbooks.</div>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-day">Phase 03</div>
+                    <div class="approach-title">Training &amp;<br>Technical Depth</div>
+                    <div class="approach-desc">Built the onboarding infrastructure and advanced guides: new team member playbooks, schema markup methodology, GEO best practices, SEO tool implementation guides and an AI/SEO knowledge base.</div>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-day">Principle</div>
+                    <div class="approach-title">Build Before<br>the Mandate</div>
+                    <div class="approach-desc">The work was initiated without authorization because the structural gap was visible and the organizational cost of waiting was higher than the cost of building. If the capability was going to exist, someone had to create it.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE OUTCOME -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">The Outcome</span>
+            <h2>What the<br>Build Produced</h2>
+            <div class="outcome-grid">
+                <div class="outcome-stat">
+                    <div class="outcome-number">20</div>
+                    <div class="outcome-label">Process Documents<br>Produced</div>
+                </div>
+                <div class="outcome-stat">
+                    <div class="outcome-number">3</div>
+                    <div class="outcome-label">Implementation<br>Phases Designed</div>
+                </div>
+                <div class="outcome-stat">
+                    <div class="outcome-number">5</div>
+                    <div class="outcome-label">Functional<br>Categories Covered</div>
+                </div>
+            </div>
+            <div class="case-body" style="margin-top: 2rem;">
+                <p>The operating system was complete. Two leadership changes and two team reorganizations in fewer than six months meant <strong>no one with authority remained to deploy it.</strong> The work survived the volatility. The org chart didn't.</p>
+                <p>The shortest version: a complete GEO/AEO capability infrastructure was built from nothing, designed to onboard a team that had never been asked to think about AI search. The organization's instability made it a proof of architecture instead of a production system. <strong>The infrastructure remains sound.</strong></p>
+            </div>
+            <a href="/" class="back-link">Back to The Warehouse</a>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <span>&copy; 2026 Angie Bailey</span>
+        </div>
+    </footer>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
