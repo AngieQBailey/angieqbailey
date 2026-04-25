@@ -451,6 +451,21 @@
         color: var(--quetzal-bright);
     }
 
+    .lab-card .card-text,
+    .ld-card .card-text {
+        max-height: none;
+        opacity: 1;
+        overflow: visible;
+        margin-bottom: 1.5rem;
+    }
+
+    .lab-card .card-metric,
+    .ld-card .card-metric {
+        max-height: none;
+        opacity: 1;
+        overflow: visible;
+    }
+
     .lab-card .series-status {
         font-family: 'IBM Plex Mono', monospace;
         font-size: 0.8rem;
@@ -544,211 +559,6 @@
         margin-top: 1rem;
     }
 
-
-    /* Portal Links (index R&D/L&D sections) */
-    .portal-intro {
-        font-size: 1.05rem;
-        font-weight: 300;
-        line-height: 1.8;
-        color: var(--ecru-dim);
-        max-width: 600px;
-        margin-top: 1rem;
-    }
-
-    .portal-link {
-        font-family: 'IBM Plex Mono', monospace;
-        font-size: 0.9rem;
-        color: var(--ecru);
-        text-decoration: none;
-        display: inline-block;
-        margin-top: 1.5rem;
-        padding: 0.6rem 1.2rem;
-        border: 1px solid rgba(245, 245, 220, 0.2);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        transition: border-color 0.3s ease, color 0.3s ease;
-    }
-
-    .portal-link.quetzal-portal:hover {
-        border-color: var(--quetzal-bright);
-        color: var(--quetzal-bright);
-    }
-
-    .portal-link.cacao-portal:hover {
-        border-color: var(--rosso);
-        color: var(--rosso);
-    }
-
-    .portal-subtitle {
-        font-family: 'IBM Plex Mono', monospace;
-        font-size: 0.85rem;
-        color: var(--quetzal-bright);
-        margin-bottom: 0.5rem;
-        display: block;
-    }
-
-    .portal-subtitle.cacao-sub {
-        color: var(--ecru-dim);
-    }
-
-    /* Hub Page Styles (R&D + L&D hub pages) */
-    .hub-header {
-        min-height: 40vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding-top: 8rem;
-        padding-bottom: 2rem;
-    }
-
-    .hub-meta {
-        font-family: 'IBM Plex Mono', monospace;
-        font-size: 0.8rem;
-        color: var(--quetzal-bright);
-        letter-spacing: 0.1em;
-        margin-bottom: 1.5rem;
-        display: block;
-        animation: fade-up 0.8s ease 0.4s both;
-    }
-
-    .hub-header h1 {
-        font-family: 'Imbue', serif;
-        font-size: clamp(2.5rem, 7vw, 6rem);
-        font-weight: 900;
-        line-height: 0.9;
-        color: var(--ecru);
-        text-transform: uppercase;
-        letter-spacing: -0.02em;
-        margin-bottom: 2rem;
-        max-width: 700px;
-        animation: fade-up 0.8s ease 0.5s both;
-    }
-
-    .hub-header h1 .accent-word { color: var(--rosso); }
-
-    .hub-section {
-        padding-top: 2.5rem;
-        padding-bottom: 2.5rem;
-    }
-
-    .hub-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 2px;
-        margin-top: 1.5rem;
-    }
-
-    /* R&D hub cards — quetzal variant */
-    .hub-card.quetzal-hub {
-        background: rgba(0, 104, 94, 0.12);
-        padding: 2.5rem 2rem;
-        position: relative;
-        transition: background 0.3s ease;
-        text-decoration: none;
-        display: block;
-        cursor: pointer;
-    }
-
-    .hub-card.quetzal-hub::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 3px;
-        background: var(--quetzal-bright);
-        transition: width 0.4s ease;
-    }
-
-    .hub-card.quetzal-hub:hover {
-        background: rgba(0, 104, 94, 0.18);
-    }
-
-    .hub-card.quetzal-hub:hover::before {
-        width: 100%;
-    }
-
-    .hub-card.quetzal-hub .card-tag {
-        color: var(--quetzal-bright);
-    }
-
-    .hub-card.quetzal-hub .card-metric {
-        color: var(--quetzal-bright);
-    }
-
-    .hub-card.quetzal-hub .card-action {
-        font-family: 'IBM Plex Mono', monospace;
-        font-size: 0.85rem;
-        color: var(--quetzal-bright);
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        margin-top: 1rem;
-    }
-
-    /* L&D hub cards — cacao variant */
-    .hub-card.cacao-hub {
-        background: rgba(45, 27, 20, 0.35);
-        border: 1px solid rgba(245, 245, 220, 0.15);
-        padding: 2.5rem 2rem;
-        position: relative;
-        transition: background 0.3s ease, border-color 0.3s ease;
-        text-decoration: none;
-        display: block;
-        cursor: pointer;
-    }
-
-    .hub-card.cacao-hub::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 3px;
-        background: var(--cacao);
-        transition: width 0.4s ease;
-    }
-
-    .hub-card.cacao-hub:hover {
-        background: rgba(45, 27, 20, 0.5);
-        border-color: rgba(245, 245, 220, 0.25);
-    }
-
-    .hub-card.cacao-hub:hover::before {
-        width: 100%;
-    }
-
-    .hub-card.cacao-hub .card-tag {
-        color: var(--ecru-dim);
-        font-weight: 400;
-    }
-
-    .hub-card.cacao-hub .card-action {
-        font-family: 'IBM Plex Mono', monospace;
-        font-size: 0.85rem;
-        color: var(--rosso);
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        margin-top: 1rem;
-    }
-
-    /* Hub placeholder cards */
-    .hub-card.placeholder {
-        opacity: 0.4;
-        cursor: default;
-    }
-
-    .hub-card.placeholder:hover {
-        background: rgba(0, 104, 94, 0.12);
-    }
-
-    .hub-card.cacao-hub.placeholder:hover {
-        background: rgba(45, 27, 20, 0.35);
-        border-color: rgba(245, 245, 220, 0.15);
-    }
-
-    .hub-card.placeholder::before {
-        background: none;
-    }
 
     /* Verdict */
     .verdict-section {
