@@ -1000,6 +1000,20 @@
     .piece-status.live { color: var(--quetzal-bright); }
 
 
+    /* Back Link (verdict essays, L&D page, artifact pages) */
+    .back-link {
+        display: inline-flex; align-items: center; gap: 0.75rem;
+        font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+        color: var(--ecru-dim); text-decoration: none; text-transform: uppercase;
+        letter-spacing: 0.1em; transition: color 0.2s ease; margin-top: 3rem;
+    }
+    .back-link::before {
+        content: ''; display: block; width: 24px; height: 2px;
+        background: var(--quetzal); transition: width 0.3s ease, background 0.3s ease;
+    }
+    .back-link:hover { color: var(--ecru); }
+    .back-link:hover::before { width: 40px; background: var(--rosso); }
+
     /* Responsive overrides for verdict + L&D pages */
     @media (max-width: 900px) {
         .doc-content { padding-left: 2rem; padding-right: 2rem; }
