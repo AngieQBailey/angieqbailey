@@ -1,3 +1,16 @@
+### 2026-04-25 — Site Architecture Overhaul + Verdict Essays + L&D Landing Page
+- Restructured: index.html now has 5 numbered sections (Investigation, Warehouse, R&D, L&D, Verdict) + unnumbered Debrief
+- Added: `ld/infrastructure-of-a-life.html` (L&D landing page with two collections)
+- Added: `verdict/add-value-not-noise.html` (Verdict essay, Principle 01)
+- Added: `verdict/vocabulary-is-the-barrier.html` (Verdict essay, Principle 02)
+- Added: `verdict/reality-before-theory.html` (Verdict essay, Principle 03)
+- Added: `verdict/structure-is-how-you-protect-people.html` (Verdict essay, Principle 04)
+- Added: `verdict/the-implementation-failed-not-the-people.html` (Verdict essay, Principle 05)
+- Changed: R&D and L&D broken out of Warehouse into own sections (03, 04)
+- Changed: Verdict principles now clickable links to essay pages
+- Changed: Warehouse cards collapse text/metric by default, unfurl on hover
+- L&D Collections: "Dots, Good Pens & a Commonplace Book: A Supply Closet Romance" (4 reworking) + "Em-Dash Unpacking: Thief by Mass Visual Weaponization" (4 coming)
+
 ### 2026-04-24 — The GEO/AEO Transition
 - Added: `posts/geo-aeo-transition/geo-aeo-transition.html` (case study page)
 - Added: `posts/geo-aeo-transition/assets/ai-overview-monitoring-guide.html` (artifact page)
