@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#121A28;">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <meta name="description" content="Vocabulary Is the Barrier. Principle 02 from The Verdict by Angie Bailey.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <meta property="og:title" content="Vocabulary Is the Barrier // Angie Bailey">
+    <meta property="og:description" content="Principle 02. If you can't name what you need in the language the other side uses, you don't exist to them.">
+    <meta property="og:type" content="article">
+    <title>Vocabulary Is the Barrier // Angie Bailey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit:     #121A28;
+            --cacao:    #2D1B14;
+            --quetzal:  #00685E;
+            --quetzal-bright: #00A896;
+            --ecru:     #F5F5DC;
+            --rosso:    #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        ::selection { background: var(--rosso); color: var(--ecru); }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+        body {
+            background-color: var(--nuit); color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif; font-weight: 300;
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale; overflow-x: hidden;
+        }
+
+        .blueprint-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-fade 2s ease 0.5s both;
+        }
+
+        .spine {
+            position: fixed; left: calc(var(--spine-left) - 40px);
+            top: 0; width: 4px; height: 100%;
+            background-color: var(--cacao); z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .nav-bar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--quetzal-bright); text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 400; color: var(--ecru-dim); text-decoration: none;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            transition: color 0.2s ease; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--rosso);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--ecru); }
+        .nav-links a:hover::after { width: 100%; }
+
+        main { position: relative; z-index: 10; }
+        .doc-content {
+            padding-left: var(--spine-left); padding-right: 4rem; max-width: 1200px;
+        }
+
+        .doc-header {
+            min-height: 50vh; display: flex; flex-direction: column;
+            justify-content: center; padding-top: 8rem; padding-bottom: 3rem;
+        }
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 2rem; display: block;
+            animation: fade-up 0.8s ease 0.4s both;
+        }
+        .doc-header h1 {
+            font-family: 'Imbue', serif; font-size: clamp(2.2rem, 6vw, 5rem);
+            font-weight: 900; line-height: 0.9; color: var(--ecru);
+            text-transform: uppercase; letter-spacing: -0.02em;
+            margin-bottom: 2rem; max-width: 650px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+        .doc-header h1 .accent-word { color: var(--rosso); }
+        .doc-lede {
+            border-left: 5px solid var(--cacao); padding-left: 2rem;
+            max-width: 600px; animation: fade-up 0.8s ease 0.8s both;
+            height: 0; margin-bottom: 0;
+        }
+
+        .doc-section {
+            padding-top: 2.5rem; padding-bottom: 2.5rem;
+        }
+        .essay-body p {
+            font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+            color: var(--ecru-dim); margin-bottom: 1.5rem; max-width: 650px;
+        }
+        .essay-body p strong { color: var(--ecru); font-weight: 500; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); text-decoration: none; text-transform: uppercase;
+            letter-spacing: 0.1em; transition: color 0.2s ease; margin-top: 3rem;
+        }
+        .back-link::before {
+            content: ''; display: block; width: 24px; height: 2px;
+            background: var(--quetzal); transition: width 0.3s ease, background 0.3s ease;
+        }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .footer-content {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 1200px;
+        }
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); letter-spacing: 0.05em;
+        }
+
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .doc-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+        }
+
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .nav-links a { font-size: 0.85rem; }
+            .blueprint-overlay { background-size: 24px 24px; }
+        }
+    </style>
+</head>
+<body style="background-color:#121A28;">
+    <div class="blueprint-overlay" aria-hidden="true"></div>
+    <div class="spine" aria-hidden="true"></div>
+    <nav class="nav-bar" role="navigation">
+        <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
+        <ul class="nav-links">
+            <li><a href="/#warehouse">Warehouse</a></li>
+            <li><a href="/#investigation">Investigation</a></li>
+            <li><a href="/#verdict">Verdict</a></li>
+            <li><a href="/#debrief">Debrief</a></li>
+        </ul>
+    </nav>
+    <main>
+        <!-- HEADER -->
+        <section class="doc-header doc-content">
+            <span class="section-label">The Verdict // Principle 02</span>
+            <h1>VOCABULARY IS<br>THE <span class="accent-word">BARRIER</span></h1>
+            <div class="doc-lede"></div>
+        </section>
+
+        <!-- ESSAY BODY -->
+        <section class="doc-section doc-content reveal">
+            <div class="essay-body">
+                <p>I couldn't start a GitHub repo without learning what a repo was. Not conceptually. Literally. I couldn't type the right words into the right fields because I didn't have the vocabulary to make what I needed tangible to the system or to the people who ran it.</p>
+
+                <p>This is not a metaphor. This is what it actually feels like to be competent, experienced, and completely locked out of a conversation because you don't speak the language yet.</p>
+
+                <p>Most people assume communication problems are about tone or timing or politics. They're not. They're about vocabulary. If you can't name what you need in the language the other side uses, you don't exist to them. Not because they're gatekeeping. Because they literally cannot hear a request they don't recognize the shape of.</p>
+
+                <p>The most important communications work I've ever done looked like project management. An enterprise naming convention project. The full-stack engineers needed a standardized naming system across the organization. They understood why it was critical and why it was difficult. I didn't. So before I could do anything useful, I had to learn their language well enough to understand the problem from the inside. Not summarize it. Understand it the way they did.</p>
+
+                <p>Then I had to turn around and explain it to every non-technical team in the building. People moving at full speed on their own priorities who had no patience for engineering jargon. I had to translate without diluting. Simplify without lying. It felt like being a foreign correspondent in my own company.</p>
+
+                <p>Nearly a decade and a half in broadcast journalism trained this instinct without giving it a name. Every day was translation. Take the complicated thing, understand it well enough to be honest about it, then explain it so someone with no background still understands why it matters. The vocabulary was always the barrier. Not the audience's intelligence. Their access to the right words.</p>
+
+                <p>The career pivot made it obvious. I watched brilliant technical specialists fail to get AI adoption. Not because the tools were bad. Because nobody could bridge the vocabulary gap between what the technology does and what the average employee needed to hear to trust it. The implementation spoke one language. The workforce spoke another. Nobody was translating.</p>
+
+                <p>Communication isn't decoration on top of the real work. It's the mechanism by which the real work becomes possible.</p>
+
+                <p>They're listening. They just can't hear you yet.</p>
+            </div>
+            <a href="/#verdict" class="back-link">Back to The Verdict</a>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <span>&copy; 2026 Angie Bailey</span>
+        </div>
+    </footer>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
