@@ -612,6 +612,20 @@
         border-bottom: 1px solid var(--ecru-ghost);
     }
 
+    a.principle-link {
+        text-decoration: none;
+        display: block;
+        transition: padding-left 0.3s ease;
+    }
+
+    a.principle-link:hover {
+        padding-left: 1rem;
+    }
+
+    a.principle-link:hover .principle-text {
+        color: var(--rosso);
+    }
+
     .principle:first-child {
         border-top: 1px solid var(--ecru-ghost);
     }
@@ -1189,35 +1203,45 @@
         <h2>The<br>Verdict</h2>
 
         <div class="principles-list">
-            <div class="principle">
-                <div class="principle-number">01</div>
-                <div class="principle-text">Add value, not noise.</div>
-                <div class="principle-sub">Every action either contributes or clutters. There is no neutral.</div>
-            </div>
+            <a href="verdict/add-value-not-noise.html" class="principle-link">
+                <div class="principle">
+                    <div class="principle-number">01</div>
+                    <div class="principle-text">Add value, not noise.</div>
+                    <div class="principle-sub">Every action either contributes or clutters. There is no neutral.</div>
+                </div>
+            </a>
 
-            <div class="principle">
-                <div class="principle-number">02</div>
-                <div class="principle-text">Vocabulary is the barrier.</div>
-                <div class="principle-sub">Most failures aren't technical. They're linguistic. Define the terms and the conflict dissolves.</div>
-            </div>
+            <a href="verdict/vocabulary-is-the-barrier.html" class="principle-link">
+                <div class="principle">
+                    <div class="principle-number">02</div>
+                    <div class="principle-text">Vocabulary is the barrier.</div>
+                    <div class="principle-sub">Most failures aren't technical. They're linguistic. Define the terms and the conflict dissolves.</div>
+                </div>
+            </a>
 
-            <div class="principle">
-                <div class="principle-number">03</div>
-                <div class="principle-text">Reality before theory.</div>
-                <div class="principle-sub">The map is not the terrain. Observe the system as it is, not as you wish it to be.</div>
-            </div>
+            <a href="verdict/reality-before-theory.html" class="principle-link">
+                <div class="principle">
+                    <div class="principle-number">03</div>
+                    <div class="principle-text">Reality before theory.</div>
+                    <div class="principle-sub">The map is not the terrain. Observe the system as it is, not as you wish it to be.</div>
+                </div>
+            </a>
 
-            <div class="principle">
-                <div class="principle-number">04</div>
-                <div class="principle-text">Structure is how you protect people.</div>
-                <div class="principle-sub">Good systems prevent harm. Clarity reduces suffering. Organization is care made operational.</div>
-            </div>
+            <a href="verdict/structure-is-how-you-protect-people.html" class="principle-link">
+                <div class="principle">
+                    <div class="principle-number">04</div>
+                    <div class="principle-text">Structure is how you protect people.</div>
+                    <div class="principle-sub">Good systems prevent harm. Clarity reduces suffering. Organization is care made operational.</div>
+                </div>
+            </a>
 
-            <div class="principle">
-                <div class="principle-number">05</div>
-                <div class="principle-text">The implementation failed. Not the people.</div>
-                <div class="principle-sub">Technology serves people. When it stops doing that, blame the system, not the humans inside it.</div>
-            </div>
+            <a href="verdict/the-implementation-failed-not-the-people.html" class="principle-link">
+                <div class="principle">
+                    <div class="principle-number">05</div>
+                    <div class="principle-text">The implementation failed. Not the people.</div>
+                    <div class="principle-sub">Technology serves people. When it stops doing that, blame the system, not the humans inside it.</div>
+                </div>
+            </a>
         </div>
     </section>
 
