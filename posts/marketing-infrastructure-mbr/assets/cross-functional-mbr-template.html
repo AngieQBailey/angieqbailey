@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#121A28;">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cross-Functional MBR Template // 13-section monthly business review structure for omni-channel marketing operations.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <title>Cross-Functional MBR Template // Angie Bailey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit: #121A28; --cacao: #2D1B14; --quetzal: #00685E;
+            --quetzal-bright: #00A896; --ecru: #F5F5DC; --rosso: #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; font-style: normal !important; border-radius: 0 !important; }
+        ::selection { background: var(--rosso); color: var(--ecru); }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--nuit); color: var(--ecru); font-family: 'IBM Plex Sans', sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; }
+
+        .blueprint-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1000; background-image: linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px), linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px); background-size: 40px 40px; animation: grid-fade 2s ease 0.5s both; }
+        .spine { position: fixed; left: calc(var(--spine-left) - 40px); top: 0; width: 4px; height: 100%; background-color: var(--cacao); z-index: 500; animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        .nav-bar { position: fixed; top: 0; left: 0; width: 100%; z-index: 900; padding: 1.5rem 2rem 1.5rem var(--spine-left); display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, var(--nuit) 60%, transparent); }
+        .nav-mark { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--quetzal-bright); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 400; color: var(--ecru-dim); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s ease; }
+        .nav-links a:hover { color: var(--ecru); }
+
+        .doc-content { padding-left: var(--spine-left); padding-right: 4rem; max-width: 1200px; }
+
+        .doc-header { padding-top: 8rem; padding-bottom: 3rem; }
+        .doc-type { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.5rem; display: block; }
+        h1 { font-family: 'Imbue', serif; font-size: clamp(2rem, 5vw, 4rem); font-weight: 900; line-height: 0.9; color: var(--ecru); text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 1.5rem; max-width: 600px; }
+        h1 .accent-word { color: var(--rosso); }
+        .doc-subtitle { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--quetzal-bright); letter-spacing: 0.05em; margin-bottom: 2rem; }
+        .doc-intro { font-size: 1.05rem; font-weight: 300; line-height: 1.8; color: var(--ecru-dim); max-width: 650px; margin-bottom: 2rem; }
+        .doc-intro strong { color: var(--ecru); font-weight: 500; }
+
+        .download-btn { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--nuit); background: var(--ecru); text-decoration: none; padding: 0.75rem 2rem; transition: background 0.2s, color 0.2s; }
+        .download-btn:hover { background: var(--rosso); color: var(--ecru); }
+
+        .doc-section { padding-top: 2.5rem; padding-bottom: 2.5rem; border-top: 1px solid var(--ecru-ghost); }
+        .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+        h2 { font-family: 'Imbue', serif; font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 900; color: var(--ecru); text-transform: uppercase; line-height: 0.95; margin-bottom: 2rem; }
+        .doc-body p { font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--ecru-dim); margin-bottom: 1.5rem; max-width: 650px; }
+        .doc-body p strong { color: var(--ecru); font-weight: 500; }
+
+        .branded-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        .branded-table th { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--quetzal-bright); text-transform: uppercase; letter-spacing: 0.1em; text-align: left; padding: 0.75rem 1rem; border-bottom: 2px solid var(--cacao); }
+        .branded-table td { font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); padding: 1rem; border-bottom: 1px solid var(--ecru-ghost); vertical-align: top; line-height: 1.5; }
+        .branded-table td strong { color: var(--ecru); font-weight: 500; }
+        .branded-table tr:hover td { background: var(--ecru-ghost); }
+
+        .stat-row { display: flex; gap: 2px; margin: 2rem 0; }
+        .stat-box { background: rgba(245, 245, 220, 0.14); padding: 1.5rem; flex: 1; text-align: center; }
+        .stat-box .stat-num { font-family: 'Imbue', serif; font-size: 2rem; font-weight: 900; color: var(--ecru); }
+        .stat-box .stat-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--quetzal-bright); text-transform: uppercase; letter-spacing: 0.1em; }
+
+        .template-card { background: rgba(245, 245, 220, 0.14); padding: 1.5rem; margin-bottom: 2px; }
+        .template-card-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--rosso); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5rem; }
+        .template-card-title { font-family: 'Imbue', serif; font-size: 1.15rem; font-weight: 700; color: var(--ecru); text-transform: uppercase; line-height: 1.15; margin-bottom: 0.5rem; }
+        .template-card-desc { font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.5; }
+
+        .back-link { display: inline-flex; align-items: center; gap: 0.75rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: var(--ecru-dim); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s ease; margin-top: 3rem; }
+        .back-link::before { content: ''; display: block; width: 24px; height: 2px; background: var(--quetzal); transition: width 0.3s ease, background 0.3s ease; }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        footer { padding: 2rem 2rem 2rem var(--spine-left); border-top: 1px solid var(--ecru-ghost); }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; }
+        .footer-content span { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--ecru-dim); letter-spacing: 0.05em; }
+
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .doc-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .stat-row { flex-direction: column; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+        }
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .nav-links a { font-size: 0.75rem; }
+            .blueprint-overlay { background-size: 24px 24px; }
+        }
+    </style>
+</head>
+<body style="background-color: #121A28;">
+    <div class="blueprint-overlay" aria-hidden="true"></div>
+    <div class="spine" aria-hidden="true"></div>
+    <nav class="nav-bar" role="navigation">
+        <a href="../marketing-infrastructure-mbr.html" class="nav-mark" style="text-decoration: none;">&larr; MBR Debt Clearance</a>
+        <ul class="nav-links">
+            <li><a href="/">Main Site</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section class="doc-header doc-content">
+            <span class="doc-type">Framework // Strategic Operations</span>
+            <h1>Cross-Functional<br>MBR <span class="accent-word">Template</span></h1>
+            <div class="doc-subtitle">13-Section Monthly Business Review Structure</div>
+            <div class="doc-intro">
+                <p>The operational architecture behind a unified monthly business review covering 13 omni-channel marketing functions. Each section follows a standardized template: <strong>owner and description, metrics table with temporal comparisons, supporting dashboard links, term definitions, performance summary and upcoming initiatives.</strong></p>
+                <p>Anonymized from a $1B+ industrial technology company. Platform names retained to demonstrate technical breadth.</p>
+            </div>
+            <a href="templates/cross-functional-mbr-template-blank.html" class="download-btn">View Blank Template &rarr;</a>
+        </section>
+
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">At a Glance</span>
+            <h2>System Scale</h2>
+            <div class="stat-row">
+                <div class="stat-box">
+                    <div class="stat-num">13</div>
+                    <div class="stat-label">Business Functions</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">10+</div>
+                    <div class="stat-label">Data Platforms</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">120+</div>
+                    <div class="stat-label">Metrics Tracked</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">MBR Architecture</span>
+            <h2>The 13 Sections</h2>
+            <div class="doc-body"><p>Each section was owned by a functional lead responsible for data accuracy, narrative analysis and forward-looking planning. The structure moved teams from passive data entry to active performance ownership.</p></div>
+            <table class="branded-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Section</th>
+                        <th>Owner Role</th>
+                        <th>Key Platforms</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><strong>Web Operations</strong></td>
+                        <td>Web Operations Lead</td>
+                        <td>GA4, Looker Studio</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>Online Rental Experience</strong></td>
+                        <td>Product Owner</td>
+                        <td>GA4, Looker Studio, Internal Orders</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><strong>Online Parts (DTC)</strong></td>
+                        <td>E-Commerce Lead</td>
+                        <td>Shopify, Looker Studio, Google Sheets</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>3P Marketplace Channels</strong></td>
+                        <td>Marketplace Manager</td>
+                        <td>Amazon, eBay, Google Sheets</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><strong>SEO</strong></td>
+                        <td>SEO Specialist + Web Ops</td>
+                        <td>Google Search Console, Ahrefs</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><strong>Paid Search</strong></td>
+                        <td>Paid Media Manager</td>
+                        <td>Google Ads, CallRail</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><strong>Affiliates</strong></td>
+                        <td>Affiliate Manager</td>
+                        <td>Impact</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><strong>Organic Social</strong></td>
+                        <td>Social Media Manager</td>
+                        <td>Chatmeter (FB/IG/LI)</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><strong>Marketing Emails</strong></td>
+                        <td>Email/SMS Manager</td>
+                        <td>Klaviyo, Google Sheets</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><strong>SMS</strong></td>
+                        <td>Email/SMS Manager</td>
+                        <td>Klaviyo, Google Sheets</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td><strong>Digital Asset Management</strong></td>
+                        <td>DAM Manager</td>
+                        <td>DAM Platform, Internal LMS</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td><strong>Promotional Merchandise</strong></td>
+                        <td>Swag Operations</td>
+                        <td>Swag Store, Shopify Integration</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td><strong>Regional Programs</strong></td>
+                        <td>Regional Marketing Leads</td>
+                        <td>Looker Studio, Google Sheets, Various</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Section Template</span>
+            <h2>Standardized Structure</h2>
+            <div class="doc-body"><p>Every section followed the same six-part structure. This standardization was the behavioral intervention... it forced analytical reporting from teams that had only done data entry.</p></div>
+            <div class="template-card">
+                <div class="template-card-label">Component 01</div>
+                <div class="template-card-title">Owner &amp; Description</div>
+                <div class="template-card-desc">Named functional owner responsible for data accuracy and narrative. Brief description of what the section covers.</div>
+            </div>
+            <div class="template-card">
+                <div class="template-card-label">Component 02</div>
+                <div class="template-card-title">Metrics Table</div>
+                <div class="template-card-desc">Monthly columns with month-over-month, year-over-year and year-to-date calculations. Metrics specific to each function (sessions, orders, revenue, CTR, subscribers, etc.).</div>
+            </div>
+            <div class="template-card">
+                <div class="template-card-label">Component 03</div>
+                <div class="template-card-title">Supporting Dashboards</div>
+                <div class="template-card-desc">Direct links to the live data sources. Looker Studio boards, Google Sheets trackers, platform-specific dashboards. The reference layer that made verification possible.</div>
+            </div>
+            <div class="template-card">
+                <div class="template-card-label">Component 04</div>
+                <div class="template-card-title">Definitions</div>
+                <div class="template-card-desc">Standardized term definitions specific to each function. What counts as a "session," "new customer," "repeat customer," "engaged session." The shared vocabulary that made cross-functional comparison possible.</div>
+            </div>
+            <div class="template-card">
+                <div class="template-card-label">Component 05</div>
+                <div class="template-card-title">Performance Summary</div>
+                <div class="template-card-desc">Narrative analysis written by the section owner. Not a restatement of the numbers... an interpretation. What happened, why it happened and what it means for the next period.</div>
+            </div>
+            <div class="template-card">
+                <div class="template-card-label">Component 06</div>
+                <div class="template-card-title">Upcoming Initiatives</div>
+                <div class="template-card-desc">Forward-looking section listing planned work, in-progress items and dependencies. Created visibility across teams that had never shared roadmaps.</div>
+            </div>
+        </section>
+
+        <section class="doc-section doc-content reveal">
+            <a href="../marketing-infrastructure-mbr.html" class="back-link">Back to Case Study</a>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <span>&copy; 2026 Angie Bailey</span>
+        </div>
+    </footer>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
