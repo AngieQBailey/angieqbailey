@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#121A28;">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Case Study: Marketing Infrastructure // MBR Debt Clearance. Thirteen marketing functions. More than ten data platforms. Zero unified view. Built the consolidated operating system that freed the capacity and broke the data bottleneck.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <meta property="og:title" content="Marketing Infrastructure: MBR Debt Clearance // Angie Bailey">
+    <meta property="og:description" content="Thirteen marketing functions. More than ten data platforms. Zero unified view. A monthly reporting cycle consumed more than 50 hours of team capacity just to aggregate numbers that already existed.">
+    <meta property="og:type" content="article">
+    <title>Marketing Infrastructure: MBR Debt Clearance // Angie Bailey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit:     #121A28;
+            --cacao:    #2D1B14;
+            --quetzal:  #00685E;
+            --quetzal-bright: #00A896;
+            --ecru:     #F5F5DC;
+            --rosso:    #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        ::selection {
+            background: var(--rosso);
+            color: var(--ecru);
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+        body {
+            background-color: var(--nuit); color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif; font-weight: 400;
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale; overflow-x: hidden;
+        }
+
+        .blueprint-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-fade 2s ease 0.5s both;
+        }
+
+        .spine {
+            position: fixed; left: calc(var(--spine-left) - 40px);
+            top: 0; width: 4px; height: 100%;
+            background-color: var(--cacao); z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .nav-bar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--quetzal-bright); text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 400; color: var(--ecru-dim); text-decoration: none;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            transition: color 0.2s ease; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--rosso);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--ecru); }
+        .nav-links a:hover::after { width: 100%; }
+
+        main { position: relative; z-index: 10; }
+        .section-content {
+            padding-left: var(--spine-left); padding-right: 4rem; max-width: 1200px;
+        }
+
+        .case-header {
+            min-height: 70vh; display: flex; flex-direction: column;
+            justify-content: center; padding-top: 8rem; padding-bottom: 4rem;
+        }
+        .case-meta {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--quetzal-bright); letter-spacing: 0.1em; margin-bottom: 2rem;
+            display: block; animation: fade-up 0.8s ease 0.4s both;
+        }
+        .case-tag {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 1.5rem; display: block;
+            animation: fade-up 0.8s ease 0.5s both;
+        }
+        .case-header h1 {
+            font-family: 'Imbue', serif; font-size: clamp(2.5rem, 7vw, 6rem);
+            font-weight: 900; line-height: 0.9; color: var(--ecru);
+            text-transform: uppercase; letter-spacing: -0.02em;
+            margin-bottom: 2.5rem; max-width: 700px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+        .case-header h1 .accent-word { color: var(--rosso); }
+        .case-lede {
+            border-left: 5px solid var(--rosso); padding-left: 2rem;
+            max-width: 600px; animation: fade-up 0.8s ease 0.8s both;
+        }
+        .case-lede p {
+            font-size: 1.15rem; font-weight: 300; line-height: 1.7; color: var(--ecru-dim);
+        }
+        .case-lede strong { color: var(--ecru); font-weight: 500; }
+
+        .case-section {
+            padding-top: 2.5rem; padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 0.5rem; display: block;
+        }
+        h2 {
+            font-family: 'Imbue', serif; font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 900; color: var(--ecru); text-transform: uppercase;
+            line-height: 0.95; letter-spacing: -0.01em; margin-bottom: 2.5rem;
+        }
+        .case-body p {
+            font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+            color: var(--ecru-dim); margin-bottom: 1.5rem; max-width: 650px;
+        }
+        .case-body p strong { color: var(--ecru); font-weight: 500; }
+
+        .constraint-list { margin: 2rem 0; max-width: 650px; }
+        .constraint-item {
+            padding: 1.25rem 0; border-bottom: 1px solid var(--ecru-ghost);
+            display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: start;
+        }
+        .constraint-item:first-child { border-top: 1px solid var(--ecru-ghost); }
+        .constraint-flag {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.1em; padding: 0.2rem 0.5rem;
+            text-transform: uppercase; min-width: 50px; text-align: center;
+        }
+        .constraint-flag.red { color: var(--rosso); border: 1px solid var(--rosso); }
+        .constraint-flag.yellow { color: #D4A017; border: 1px solid #D4A017; }
+        .constraint-label { font-size: 0.95rem; font-weight: 400; color: var(--ecru); line-height: 1.4; }
+        .constraint-detail { font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); margin-top: 0.25rem; }
+
+        .failure-loop {
+            border-left: 3px solid var(--cacao); padding-left: 1.5rem;
+            margin: 2rem 0; max-width: 400px;
+        }
+        .failure-loop .loop-step {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); padding: 0.4rem 0; display: flex;
+            align-items: center; gap: 0.75rem;
+        }
+        .failure-loop .loop-arrow { color: var(--rosso); font-weight: 700; }
+
+        .approach-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+            margin: 2.5rem 0; max-width: 750px;
+        }
+        .approach-item { background: rgba(245, 245, 220, 0.14); padding: 2rem 1.75rem; }
+        .approach-day {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 0.75rem;
+        }
+        .approach-title {
+            font-family: 'Imbue', serif; font-size: 1.3rem; font-weight: 700;
+            color: var(--ecru); text-transform: uppercase; line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+        .approach-desc {
+            font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.5;
+        }
+
+        .artifact-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2px; margin: 2.5rem 0;
+        }
+        .artifact-card {
+            background: rgba(245, 245, 220, 0.14); padding: 2rem 1.75rem;
+            position: relative; transition: background 0.3s ease;
+            text-decoration: none; display: block;
+        }
+        .artifact-card::before {
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 0; height: 3px; background: var(--rosso);
+            transition: width 0.4s ease;
+        }
+        .artifact-card:hover { background: rgba(245, 245, 220, 0.18); }
+        .artifact-card:hover::before { width: 100%; }
+        .artifact-type {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 0.75rem;
+        }
+        .artifact-name {
+            font-family: 'Imbue', serif; font-size: 1.15rem; font-weight: 700;
+            color: var(--ecru); text-transform: uppercase; line-height: 1.15;
+            margin-bottom: 0.75rem;
+        }
+        .artifact-desc {
+            font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim);
+            line-height: 1.5; margin-bottom: 1rem;
+        }
+        .artifact-action {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--rosso); text-transform: uppercase; letter-spacing: 0.15em;
+        }
+
+        .outcome-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2px; margin: 2.5rem 0; max-width: 750px;
+        }
+        .outcome-stat { background: rgba(245, 245, 220, 0.14); padding: 2rem 1.75rem; }
+        .outcome-number {
+            font-family: 'Imbue', serif; font-size: 2.5rem; font-weight: 900;
+            color: var(--ecru); line-height: 1; margin-bottom: 0.5rem;
+        }
+        .outcome-number.highlight { color: var(--rosso); }
+        .outcome-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--quetzal-bright); text-transform: uppercase; letter-spacing: 0.1em;
+            line-height: 1.4;
+        }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+            color: var(--ecru-dim); text-decoration: none; text-transform: uppercase;
+            letter-spacing: 0.1em; transition: color 0.2s ease; margin-top: 3rem;
+        }
+        .back-link::before {
+            content: ''; display: block; width: 24px; height: 2px;
+            background: var(--quetzal); transition: width 0.3s ease, background 0.3s ease;
+        }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .footer-content {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 1200px;
+        }
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); letter-spacing: 0.05em;
+        }
+
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .section-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .approach-grid { grid-template-columns: 1fr; }
+            .artifact-grid { grid-template-columns: 1fr; }
+            .outcome-grid { grid-template-columns: 1fr 1fr; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+        }
+
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .nav-links a { font-size: 0.75rem; }
+            .blueprint-overlay { background-size: 24px 24px; }
+            .outcome-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body style="background-color: #121A28;">
+    <div class="blueprint-overlay" aria-hidden="true"></div>
+    <div class="spine" aria-hidden="true"></div>
+    <nav class="nav-bar" role="navigation" aria-label="Primary">
+        <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
+        <ul class="nav-links">
+            <li><a href="/#investigation">Investigation</a></li>
+            <li><a href="/#warehouse">Warehouse</a></li>
+            <li><a href="/#rnd">R&D</a></li>
+            <li><a href="/#lnd">L&D</a></li>
+            <li><a href="/#verdict">Verdict</a></li>
+            <li><a href="/#debrief">Debrief</a></li>
+        </ul>
+    </nav>
+    <main>
+        <!-- HEADER -->
+        <section class="case-header section-content">
+            <span class="case-meta">Case Study // Strategic Operations</span>
+            <span class="case-tag">Unified Visibility</span>
+            <h1>Marketing<br>Infrastructure<br>MBR Debt<br><span class="accent-word">Clearance</span></h1>
+            <div class="case-lede">
+                <p>Thirteen marketing functions. More than ten data platforms. Zero unified view. A monthly reporting cycle consumed <strong>more than 50 hours of team capacity</strong> just to aggregate numbers that already existed in dashboards no one had connected.</p>
+            </div>
+        </section>
+
+        <!-- THE EVIDENCE -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">The Evidence</span>
+            <h2>Frameworks<br>&amp; Artifacts</h2>
+            <div class="case-body"><p>Two of the operational tools produced during the build. One is the reporting structure itself. The other is the governance rhythm that made it run.</p></div>
+            <div class="artifact-grid">
+                <a href="assets/cross-functional-mbr-template.html" class="artifact-card">
+                    <div class="artifact-type">Framework</div>
+                    <div class="artifact-name">Cross-Functional<br>MBR Template</div>
+                    <div class="artifact-desc">Anonymized 13-section monthly business review structure. Section ownership, metrics tables, supporting dashboards, definitions, performance summaries and upcoming initiatives across a full omni-channel marketing operation.</div>
+                    <div class="artifact-action">View Framework &rarr;</div>
+                </a>
+                <a href="assets/reporting-governance-cadence.html" class="artifact-card">
+                    <div class="artifact-type">Methodology</div>
+                    <div class="artifact-name">Reporting Governance<br>Cadence</div>
+                    <div class="artifact-desc">The operational rhythm that moved a marketing team from ad-hoc reporting to standardized governance. Submission cadence, review cadence, follow-up tracking and distribution protocol.</div>
+                    <div class="artifact-action">View Methodology &rarr;</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- THE SITUATION -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">The Situation</span>
+            <h2>No Operating System.<br>Just Thirteen<br>Calendars.</h2>
+            <div class="case-body">
+                <p>A rapidly scaling technology company's omni-channel marketing team had no unified reporting infrastructure. Thirteen distinct business functions... web operations, online rental, e-commerce DTC, marketplace channels, SEO, paid search, affiliates, organic social, email, SMS, digital asset management, promotional merchandise and regional programs... each reported in their own format, on their own timeline, from their own systems.</p>
+                <p>Data lived across more than ten platforms. No single view of how these functions connected. No shared definitions. No standardized cadence.</p>
+                <p>The monthly business review was a manual aggregation exercise. Thirteen section owners chased each month to pull numbers from dashboards that already existed but weren't consolidated. <strong>A collaborative doc doing the job of a dashboard.</strong> The MBR owner's time went to administrative herding, not analysis.</p>
+                <p>One critical commerce platform was opaque by design. Only two people could extract real-time inventory and P&L data from the backend. Everyone else sent a Slack message and waited. That interrupt-and-wait cycle bottlenecked every team with a stake in parts commerce.</p>
+                <p>Section owners were in sprint-grind... exhausted executors asked to suddenly become analytical reporters. A fundamentally different cognitive task than their daily work. The monthly cycle consumed more than 50 hours of collective capacity across data gathering, entry, summary writing, definition creation and coordination overhead.</p>
+                <p>The $1B+ industrial technology company sat on a significant data asset with terrible data hygiene. Nobody was going to trust AI outputs built on unreliable, manually aggregated, once-a-month data. The prerequisite for broader AI adoption was a visible proof-of-concept that clean, consolidated, continuously updated data could actually work.</p>
+                <div class="failure-loop">
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> Section owner gets nudged for monthly numbers</div>
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> Opens three dashboards and two spreadsheets</div>
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> Manually copies data into the master doc</div>
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> Writes a summary in a cognitive mode they don't operate in daily</div>
+                    <div class="loop-step"><span class="loop-arrow">&rarr;</span> Repeats next month from scratch</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRESSURE POINTS -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">Pressure Points Surfaced</span>
+            <h2>What the<br>Diagnostic Found</h2>
+            <div class="case-body"><p>Six structural constraints identified before the build began. Three were infrastructure failures. Three were capacity and readiness gaps.</p></div>
+            <div class="constraint-list">
+                <div class="constraint-item">
+                    <span class="constraint-flag red">Red</span>
+                    <div>
+                        <div class="constraint-label">No Unified Reporting Infrastructure</div>
+                        <div class="constraint-detail">Thirteen functions reporting independently. No shared cadence, no shared definitions, no consolidated view. Every team was an island with its own spreadsheet.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag red">Red</span>
+                    <div>
+                        <div class="constraint-label">Data Access Bottleneck</div>
+                        <div class="constraint-detail">Real-time commerce data locked behind two people. Everyone else sent a Slack and waited. Not anger... resignation. This was just how it worked.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag red">Red</span>
+                    <div>
+                        <div class="constraint-label">Capacity Consumed by Manual Aggregation</div>
+                        <div class="constraint-detail">More than 50 hours per month of collective team capacity spent pulling numbers that already existed in disconnected dashboards.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag yellow">Yellow</span>
+                    <div>
+                        <div class="constraint-label">No Standardized Definitions</div>
+                        <div class="constraint-detail">"Session," "engaged session," "new customer," "repeat customer"... all undefined across functions. Comparing performance across teams meant comparing apples to weather patterns.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag yellow">Yellow</span>
+                    <div>
+                        <div class="constraint-label">Executor Mode, Not Owner Mode</div>
+                        <div class="constraint-detail">Cognitively maxed out. The mode switch from sprint execution to reflective reporting required bandwidth nobody had.</div>
+                    </div>
+                </div>
+                <div class="constraint-item">
+                    <span class="constraint-flag yellow">Yellow</span>
+                    <div>
+                        <div class="constraint-label">No AI-Ready Data Foundation</div>
+                        <div class="constraint-detail">The company wanted AI adoption. But you cannot build AI-first culture on top of manual processes. The data hygiene problem was the prerequisite nobody wanted to solve first.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE APPROACH -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">The Approach</span>
+            <h2>Build the Infrastructure.<br>Free the Capacity.</h2>
+            <div class="case-body"><p>Four objectives stacked on a single initiative: prove clean data at scale, free 13-plus team members from aggregation work, create lived use cases that skeptical employees could experience firsthand and design the showcase so AI felt like a tool... not a mandate.</p></div>
+            <div class="approach-grid">
+                <div class="approach-item">
+                    <div class="approach-day">Phase 01</div>
+                    <div class="approach-title">Consolidate the<br>Data Feeds</div>
+                    <div class="approach-desc">Partnered with data analytics to connect more than ten platforms into unified dashboards with continuous data pulls. Eliminated monthly spreadsheet herding.</div>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-day">Phase 02</div>
+                    <div class="approach-title">Democratize<br>Access</div>
+                    <div class="approach-desc">Moved real-time inventory and P&amp;L data from a two-person bottleneck into a dynamic dashboard anyone could view. The Slack-interrupt-and-wait cycle ended. A welcomed delete.</div>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-day">Phase 03</div>
+                    <div class="approach-title">Standardize the<br>Operating Cadence</div>
+                    <div class="approach-desc">Section owners complete by first Wednesday. Review on first Thursday. Follow-ups distributed via internal channel. Responses linked back to the master document.</div>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-day">Principle</div>
+                    <div class="approach-title">Shift the<br>Cognitive Mode</div>
+                    <div class="approach-desc">The real intervention was not the dashboards. It was moving section owners from data entry to data verification and performance analysis. Strategic reflection, not number reporting.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE OUTCOME -->
+        <section class="case-section section-content reveal">
+            <span class="section-label">The Outcome</span>
+            <h2>What the<br>Infrastructure Produced</h2>
+            <div class="outcome-grid">
+                <div class="outcome-stat">
+                    <div class="outcome-number">13</div>
+                    <div class="outcome-label">Functions Unified<br>on a Single Cadence</div>
+                </div>
+                <div class="outcome-stat">
+                    <div class="outcome-number">10+</div>
+                    <div class="outcome-label">Data Platforms<br>Consolidated</div>
+                </div>
+                <div class="outcome-stat">
+                    <div class="outcome-number highlight">120+</div>
+                    <div class="outcome-label">Cross-Functional Metrics<br>in One View</div>
+                </div>
+                <div class="outcome-stat">
+                    <div class="outcome-number">2&rarr;0</div>
+                    <div class="outcome-label">Person Bottleneck<br>Eliminated</div>
+                </div>
+            </div>
+            <div class="case-body" style="margin-top: 2rem;">
+                <p>The dashboard infrastructure survived multiple organizational restructures. Sound independent of any single person.</p>
+                <p>The director who championed this structure was terminated alongside more than 100 headquarters and executive employees. The governance layer died with the sponsorship. The team was divided and reshuffled twice within six months.</p>
+                <p>They had just hit a groove. Section owners contributing consistently. The system reaching the point where it could move past reporting into the AI use cases that were the original intent.</p>
+                <p>The dashboard still runs. The governance doesn't.</p>
+                <p>Automation without sustained organizational sponsorship is infrastructure without a roof. The technology survived every disruption thrown at it. What collapsed was the human layer... the cadence, the accountability, the direction. That's not a failure of the system design. <strong>That's proof the system design was the easy part.</strong></p>
+            </div>
+            <a href="/" class="back-link">Back to The Warehouse</a>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <span>&copy; 2026 Angie Bailey</span>
+        </div>
+    </footer>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
