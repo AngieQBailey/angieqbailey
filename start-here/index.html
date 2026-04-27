@@ -1,0 +1,2115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S0MXDDKP4E');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start Here | Build Your AI Context | Angie Bailey</title>
+<meta name="description" content="AI works better when it knows who you are. Answer a few questions, get a personal profile you can paste into any AI tool.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --night: #121A28;
+  --cacao: #2D1B14;
+  --quetzal: #00685E;
+  --quetzal-bright: #00A896;
+  --ecru: #F5F5DC;
+  --rosso: #C41E3A;
+  --card-bg: rgba(245, 245, 220, 0.08);
+  --card-bg-hover: rgba(245, 245, 220, 0.14);
+  --card-bg-selected: rgba(0, 168, 150, 0.18);
+  --font-verdict: 'Imbue', serif;
+  --font-evidence: 'IBM Plex Sans', sans-serif;
+  --font-clue: 'IBM Plex Mono', monospace;
+}
+
+html { font-size: 18px; scroll-behavior: smooth; }
+
+body {
+  background: var(--night);
+  color: var(--ecru);
+  font-family: var(--font-evidence);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* No italics anywhere */
+em, i { font-style: normal; font-weight: 600; }
+
+#app {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+  min-height: 100vh;
+}
+
+/* ── Welcome Screen ── */
+.welcome { animation: fadeUp 0.5s ease; }
+
+.welcome h1 {
+  font-family: var(--font-verdict);
+  font-size: clamp(2.8rem, 8vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--ecru);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.welcome h1 span { color: var(--quetzal-bright); }
+
+.welcome-lead {
+  font-family: var(--font-verdict);
+  font-size: 1.65rem;
+  font-weight: 400;
+  font-variation-settings: 'opsz' 100;
+  line-height: 1.5;
+  color: rgba(245, 245, 220, 0.85);
+  margin-bottom: 2rem;
+  max-width: 520px;
+}
+
+.welcome-details {
+  border-left: 3px solid var(--quetzal);
+  padding-left: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.welcome-details p {
+  font-family: var(--font-evidence);
+  font-size: 1.2rem;
+  color: rgba(245, 245, 220, 0.7);
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.welcome-details strong {
+  color: var(--ecru);
+  font-weight: 600;
+}
+
+/* ── Card Picker Grid ── */
+.card-picker {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.card-pick {
+  background: var(--card-bg);
+  border: 1px solid rgba(245, 245, 220, 0.1);
+  padding: 1.25rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  text-align: left;
+  position: relative;
+}
+
+.card-pick:hover {
+  background: var(--card-bg-hover);
+  border-color: rgba(245, 245, 220, 0.2);
+}
+
+.card-pick:first-child {
+  border-color: var(--rosso);
+  background: rgba(196, 30, 58, 0.08);
+}
+
+.card-pick:first-child:hover {
+  background: rgba(196, 30, 58, 0.15);
+}
+
+.card-pick-num {
+  font-family: var(--font-clue);
+  font-size: 0.85rem;
+  color: var(--quetzal-bright);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4rem;
+}
+
+.card-pick:first-child .card-pick-num {
+  color: var(--rosso);
+}
+
+.card-pick-title {
+  font-family: var(--font-verdict);
+  font-size: 1.9rem;
+  font-weight: 400;
+  font-variation-settings: 'opsz' 100;
+  color: var(--ecru);
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
+}
+
+.card-pick-sub {
+  font-family: var(--font-evidence);
+  font-size: 0.95rem;
+  color: rgba(245, 245, 220, 0.5);
+  line-height: 1.4;
+}
+
+.card-pick-meta {
+  font-family: var(--font-clue);
+  font-size: 0.85rem;
+  color: var(--quetzal-bright);
+  margin-top: 0.6rem;
+}
+
+@media (max-width: 480px) {
+  .card-picker { grid-template-columns: 1fr; }
+}
+
+.btn-start {
+  display: inline-block;
+  background: var(--rosso);
+  color: var(--ecru);
+  font-family: var(--font-evidence);
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 1rem 2.5rem;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: background 0.2s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-start:hover { background: #d42a47; }
+.btn-start:active { transform: scale(0.98); }
+
+/* ── Progress Bar ── */
+.progress-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--night);
+  padding: 1rem 0 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.progress-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.progress-card-label {
+  font-family: var(--font-clue);
+  font-size: 0.95rem;
+  color: var(--quetzal-bright);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.progress-step {
+  font-family: var(--font-clue);
+  font-size: 0.95rem;
+  color: rgba(245, 245, 220, 0.5);
+}
+
+.progress-bar {
+  height: 3px;
+  background: rgba(245, 245, 220, 0.1);
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--rosso);
+  transition: width 0.4s ease;
+}
+
+/* ── Card Intro ── */
+.card-intro {
+  animation: fadeUp 0.4s ease;
+  margin-bottom: 2rem;
+}
+
+.card-intro .progress-card-label {
+  color: var(--rosso);
+}
+
+.card-intro h2 {
+  font-family: var(--font-verdict);
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 700;
+  color: var(--ecru);
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+
+.card-intro p {
+  font-size: 1.25rem;
+  color: rgba(245, 245, 220, 0.7);
+  line-height: 1.6;
+  max-width: 520px;
+}
+
+.card-intro .time-est {
+  font-family: var(--font-clue);
+  font-size: 1rem;
+  color: var(--quetzal-bright);
+  margin-top: 1rem;
+  display: inline-block;
+}
+
+.btn-begin-card {
+  display: inline-block;
+  background: transparent;
+  color: var(--quetzal-bright);
+  font-family: var(--font-evidence);
+  font-size: 1.15rem;
+  font-weight: 600;
+  padding: 0.85rem 2rem;
+  border: 2px solid var(--quetzal-bright);
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-begin-card:hover {
+  background: var(--quetzal-bright);
+  color: var(--night);
+}
+
+/* ── Question Screen ── */
+.question-screen { animation: fadeUp 0.35s ease; }
+
+.question-text {
+  font-family: var(--font-verdict);
+  font-size: clamp(1.8rem, 5.5vw, 2.4rem);
+  font-weight: 700;
+  font-variation-settings: 'opsz' 100;
+  color: var(--ecru);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+.question-instruction {
+  font-family: var(--font-clue);
+  font-size: 1rem;
+  color: rgba(245, 245, 220, 0.45);
+  margin-bottom: 1.5rem;
+}
+
+/* ── Option Cards ── */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.option-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(245, 245, 220, 0.08);
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  position: relative;
+}
+
+.option-card:hover {
+  background: var(--card-bg-hover);
+  border-color: rgba(245, 245, 220, 0.15);
+}
+
+.option-card.selected {
+  background: var(--card-bg-selected);
+  border-color: var(--quetzal-bright);
+}
+
+.option-card.selected::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--quetzal-bright);
+}
+
+.option-label {
+  font-family: var(--font-verdict);
+  font-size: 1.35rem;
+  font-weight: 400;
+  font-variation-settings: 'opsz' 80;
+  color: var(--ecru);
+  line-height: 1.35;
+}
+
+.option-desc {
+  font-family: var(--font-evidence);
+  font-size: 1.1rem;
+  color: rgba(245, 245, 220, 0.55);
+  margin-top: 0.3rem;
+  line-height: 1.45;
+}
+
+.option-card.selected .option-label { color: var(--quetzal-bright); }
+
+/* ── Max selection warning ── */
+.max-warning {
+  font-family: var(--font-clue);
+  font-size: 1rem;
+  color: var(--rosso);
+  margin-bottom: 1rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.max-warning.visible { opacity: 1; }
+
+/* ── Text Input (optional questions) ── */
+.text-input-wrap { margin-bottom: 1.5rem; }
+
+.text-input {
+  width: 100%;
+  background: var(--card-bg);
+  border: 1px solid rgba(245, 245, 220, 0.15);
+  color: var(--ecru);
+  font-family: var(--font-evidence);
+  font-size: 1.1rem;
+  padding: 1rem 1.25rem;
+  line-height: 1.5;
+  resize: none;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.text-input:focus { border-color: var(--quetzal-bright); }
+
+.text-input::placeholder { color: rgba(245, 245, 220, 0.3); }
+
+.text-hint {
+  font-family: var(--font-clue);
+  font-size: 0.95rem;
+  color: rgba(245, 245, 220, 0.4);
+  margin-top: 0.5rem;
+}
+
+/* ── Navigation Buttons ── */
+.nav-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn-next {
+  background: var(--quetzal-bright);
+  color: var(--night);
+  font-family: var(--font-evidence);
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.85rem 2rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-next:hover { background: #00c4af; }
+.btn-next:disabled { opacity: 0.3; cursor: default; }
+.btn-next:disabled:hover { background: var(--quetzal-bright); }
+
+.btn-skip {
+  background: transparent;
+  color: rgba(245, 245, 220, 0.5);
+  font-family: var(--font-evidence);
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.85rem 1.5rem;
+  border: 1px solid rgba(245, 245, 220, 0.15);
+  cursor: pointer;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-skip:hover {
+  color: var(--ecru);
+  border-color: rgba(245, 245, 220, 0.3);
+}
+
+.btn-back {
+  background: transparent;
+  color: rgba(245, 245, 220, 0.4);
+  font-family: var(--font-clue);
+  font-size: 0.95rem;
+  padding: 0.5rem 0;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  margin-top: 0.5rem;
+}
+
+.btn-back:hover { color: var(--ecru); }
+
+/* ── Output Screen ── */
+.output-screen { animation: fadeUp 0.4s ease; }
+
+.output-screen h2 {
+  font-family: var(--font-verdict);
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: 700;
+  color: var(--ecru);
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+}
+
+.output-screen .output-subtitle {
+  font-size: 1.15rem;
+  color: rgba(245, 245, 220, 0.65);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.output-block {
+  background: rgba(245, 245, 220, 0.06);
+  border-left: 3px solid var(--quetzal);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.output-block pre {
+  font-family: var(--font-clue);
+  font-size: 0.875rem;
+  color: rgba(245, 245, 220, 0.85);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  line-height: 1.7;
+}
+
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--quetzal-bright);
+  color: var(--night);
+  font-family: var(--font-evidence);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.85rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 0.5rem;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-download:hover { background: #00c4af; }
+.btn-download:active { transform: scale(0.98); }
+
+.btn-download.done {
+  background: rgba(0, 168, 150, 0.3);
+  color: var(--quetzal-bright);
+}
+
+.btn-copy-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: rgba(245, 245, 220, 0.5);
+  font-family: var(--font-clue);
+  font-size: 0.95rem;
+  padding: 0.6rem 1.25rem;
+  border: 1px solid rgba(245, 245, 220, 0.15);
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 2rem;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-copy-text:hover {
+  color: var(--ecru);
+  border-color: rgba(245, 245, 220, 0.3);
+}
+
+.download-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.output-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.btn-continue {
+  background: var(--quetzal-bright);
+  color: var(--night);
+  font-family: var(--font-evidence);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-continue:hover { background: #00c4af; }
+
+.btn-continue .btn-sub {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 400;
+  opacity: 0.7;
+  margin-top: 0.2rem;
+}
+
+.btn-done {
+  background: transparent;
+  color: rgba(245, 245, 220, 0.6);
+  font-family: var(--font-evidence);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.85rem 2rem;
+  border: 1px solid rgba(245, 245, 220, 0.15);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-done:hover {
+  color: var(--ecru);
+  border-color: rgba(245, 245, 220, 0.3);
+}
+
+/* ── Final Screen ── */
+.final-screen { animation: fadeUp 0.4s ease; }
+
+.final-screen h2 {
+  font-family: var(--font-verdict);
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 700;
+  color: var(--ecru);
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+
+.final-screen .final-subtitle {
+  font-size: 1.15rem;
+  color: rgba(245, 245, 220, 0.65);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.paste-instructions {
+  background: rgba(245, 245, 220, 0.06);
+  border-left: 3px solid var(--quetzal);
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.paste-instructions p {
+  font-family: var(--font-evidence);
+  font-size: 1.1rem;
+  color: rgba(245, 245, 220, 0.75);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.paste-instructions p:last-child { margin-bottom: 0; }
+
+.paste-instructions strong { color: var(--ecru); }
+
+.section-divider {
+  border: none;
+  border-top: 1px solid rgba(245, 245, 220, 0.08);
+  margin: 2rem 0;
+}
+
+/* ── Footer ── */
+.site-footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(245, 245, 220, 0.08);
+}
+
+.site-footer p {
+  font-family: var(--font-clue);
+  font-size: 0.95rem;
+  color: rgba(245, 245, 220, 0.35);
+  line-height: 1.6;
+}
+
+.site-footer a {
+  color: var(--quetzal-bright);
+  text-decoration: none;
+}
+
+.site-footer a:hover { text-decoration: underline; }
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  #app { padding: 1.5rem 1rem 3rem; }
+  .option-card { padding: 0.9rem 1rem; }
+  .output-block { padding: 1rem; }
+  .nav-buttons { flex-direction: column; }
+  .btn-next, .btn-skip { width: 100%; text-align: center; }
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--night); }
+::-webkit-scrollbar-thumb { background: rgba(245, 245, 220, 0.15); }
+::-webkit-scrollbar-thumb:hover { background: rgba(245, 245, 220, 0.25); }
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+// ═══════════════════════════════════════════
+// DATA: All four cards and their questions
+// ═══════════════════════════════════════════
+
+const CARDS = [
+  {
+    id: 'context',
+    title: 'My Context',
+    subtitle: 'Who you are in work and life terms.',
+    description: 'These are the durable facts. They don\'t change week to week. This card alone gives an AI more useful context than most people ever provide.',
+    time: 'About 2 minutes',
+    outputTitle: 'Who I Am',
+    questions: [
+      {
+        id: 'role',
+        text: 'What best describes your work right now?',
+        pick: 'one',
+        options: [
+          { label: 'Individual contributor' },
+          { label: 'Manager of people' },
+          { label: 'Senior leader or executive' },
+          { label: 'Business owner or founder' },
+          { label: 'Consultant or fractional operator' },
+          { label: 'Freelancer or independent' },
+          { label: 'Between roles' }
+        ]
+      },
+      {
+        id: 'experience',
+        text: 'How experienced are you in your current kind of work?',
+        pick: 'one',
+        options: [
+          { label: 'New to this' },
+          { label: 'Growing into it' },
+          { label: 'Experienced' },
+          { label: 'Very experienced' }
+        ]
+      },
+      {
+        id: 'industry',
+        text: 'What industry do you work in?',
+        pick: 'one',
+        options: [
+          { label: 'Healthcare' },
+          { label: 'Higher education' },
+          { label: 'K-12 education' },
+          { label: 'Government or public sector' },
+          { label: 'Nonprofit' },
+          { label: 'Technology or software' },
+          { label: 'Manufacturing' },
+          { label: 'Construction' },
+          { label: 'Logistics or transportation' },
+          { label: 'Retail or e-commerce' },
+          { label: 'Financial services or insurance' },
+          { label: 'Media, marketing or agency' },
+          { label: 'Professional services' },
+          { label: 'Hospitality or food service' },
+          { label: 'Real estate' },
+          { label: 'Other' }
+        ]
+      },
+      {
+        id: 'function',
+        text: 'What department or function do you work in?',
+        pick: 'one',
+        options: [
+          { label: 'HR or people' },
+          { label: 'Operations' },
+          { label: 'Marketing' },
+          { label: 'Sales' },
+          { label: 'Customer success or account management' },
+          { label: 'Finance or accounting' },
+          { label: 'IT or systems' },
+          { label: 'Product' },
+          { label: 'Project or program management' },
+          { label: 'Executive or leadership' },
+          { label: 'Admin or office support' },
+          { label: 'Legal or compliance' },
+          { label: 'Recruiting or talent acquisition' },
+          { label: 'Learning or training' },
+          { label: 'Other' }
+        ]
+      },
+      {
+        id: 'skills',
+        text: 'Your work usually requires you to:',
+        pick: 'up to 3',
+        max: 3,
+        options: [
+          { label: 'Write clearly' },
+          { label: 'Make decisions' },
+          { label: 'Manage people' },
+          { label: 'Solve messy problems' },
+          { label: 'Organize complexity' },
+          { label: 'Communicate across teams' },
+          { label: 'Move work forward quickly' },
+          { label: 'Create strategy' },
+          { label: 'Handle sensitive conversations' },
+          { label: 'Build processes' }
+        ]
+      },
+      {
+        id: 'environment',
+        text: 'Your work environment is usually:',
+        pick: 'up to 2',
+        max: 2,
+        options: [
+          { label: 'Fast-moving' },
+          { label: 'Ambiguous' },
+          { label: 'Highly collaborative' },
+          { label: 'Politically sensitive' },
+          { label: 'Under-resourced' },
+          { label: 'Process-heavy' },
+          { label: 'Customer-facing' },
+          { label: 'Deadline-driven' },
+          { label: 'Reactive' },
+          { label: 'Constantly changing' }
+        ]
+      },
+      {
+        id: 'life',
+        text: 'Outside work, life usually feels:',
+        pick: 'one',
+        options: [
+          { label: 'Pretty steady' },
+          { label: 'Full but manageable' },
+          { label: 'Stretched thin' },
+          { label: 'Unpredictable' },
+          { label: 'Seasonally intense' }
+        ]
+      },
+      {
+        id: 'frustrations',
+        text: 'What frustrates you most in work?',
+        pick: 'up to 2',
+        max: 2,
+        options: [
+          { label: 'Unclear expectations' },
+          { label: 'Slow decisions' },
+          { label: 'Too much busywork' },
+          { label: 'Too much context switching' },
+          { label: 'Weak communication' },
+          { label: 'Other people\'s confusion' },
+          { label: 'No time to think' },
+          { label: 'Poor follow-through' },
+          { label: 'Avoidable complexity' },
+          { label: 'Low ownership' }
+        ]
+      },
+      {
+        id: 'aiGoals',
+        text: 'Over time, what do you most want AI to help with?',
+        pick: 'up to 2',
+        max: 2,
+        options: [
+          { label: 'Save me time' },
+          { label: 'Improve my writing' },
+          { label: 'Help me think more clearly' },
+          { label: 'Help me make decisions' },
+          { label: 'Help me organize and plan' },
+          { label: 'Help me communicate better' },
+          { label: 'Help me reduce overwhelm' },
+          { label: 'Help me get started faster' }
+        ]
+      },
+      {
+        id: 'contextNote',
+        text: 'One thing AI should know about you overall:',
+        pick: 'text',
+        placeholder: 'Optional. One sentence is plenty.',
+        optional: true
+      }
+    ]
+  },
+  {
+    id: 'interaction',
+    title: 'My Interaction Style',
+    subtitle: 'How to work with you without being annoying.',
+    description: 'This teaches AI your preferences. What you want, what you hate, how you break down under pressure. So it can adapt instead of guessing.',
+    time: 'About 2 minutes',
+    outputTitle: 'How to Work With Me',
+    questions: [
+      {
+        id: 'archetype',
+        text: 'Which one feels most like your default mode?',
+        pick: 'one',
+        options: [
+          { label: 'Fixer', desc: 'Something\'s broken and you\'re already fixing it' },
+          { label: 'Detective', desc: 'You need to understand it before you touch it' },
+          { label: 'Maverick', desc: 'You\'d rather move fast and adjust than wait for permission' },
+          { label: 'Operator', desc: 'You keep what works running and protect the standard' }
+        ]
+      },
+      {
+        id: 'wants',
+        text: 'What do you usually want most from AI?',
+        pick: 'up to 2',
+        max: 2,
+        options: [
+          { label: 'Make this faster' },
+          { label: 'Make this clearer' },
+          { label: 'Help me think it through' },
+          { label: 'Help me start' },
+          { label: 'Help me say it better' },
+          { label: 'Help me reduce the work' },
+          { label: 'Help me decide' },
+          { label: 'Give me a strong first draft' }
+        ]
+      },
+      {
+        id: 'dislikes',
+        text: 'What do you usually dislike in AI responses?',
+        pick: 'up to 3',
+        max: 3,
+        options: [
+          { label: 'Too long' },
+          { label: 'Too vague' },
+          { label: 'Too cheerful' },
+          { label: 'Too robotic' },
+          { label: 'Too basic' },
+          { label: 'Too many options' },
+          { label: 'Too much jargon' },
+          { label: 'Too much explanation before the answer' },
+          { label: 'Too much "it depends"' }
+        ]
+      },
+      {
+        id: 'pressure',
+        text: 'When you\'re under pressure, what usually goes wrong?',
+        pick: 'up to 2',
+        max: 2,
+        options: [
+          { label: 'I move too fast' },
+          { label: 'I overthink' },
+          { label: 'I avoid starting' },
+          { label: 'I get buried in details' },
+          { label: 'I lose patience' },
+          { label: 'I need help finding the words' },
+          { label: 'I keep too many tabs open' },
+          { label: 'I default to doing it myself' }
+        ]
+      },
+      {
+        id: 'outputs',
+        text: 'What kind of outputs are usually most useful to you?',
+        pick: 'up to 3',
+        max: 3,
+        options: [
+          { label: 'Bullet points' },
+          { label: 'Short summary' },
+          { label: 'Step-by-step plan' },
+          { label: 'First draft I can edit' },
+          { label: 'Decision options with tradeoffs' },
+          { label: 'Talking points' },
+          { label: 'Checklist' },
+          { label: 'Copy-paste-ready message' },
+          { label: 'Strategic recommendation' }
+        ]
+      },
+      {
+        id: 'optimize',
+        text: 'What should AI usually optimize for?',
+        pick: 'exactly 2',
+        max: 2,
+        min: 2,
+        options: [
+          { label: 'Shortest useful answer' },
+          { label: 'Directness' },
+          { label: 'Emotional tact' },
+          { label: 'Step-by-step structure' },
+          { label: 'Strategic thinking' },
+          { label: 'Strong first draft' },
+          { label: 'Decision support' },
+          { label: 'Accuracy and caveats' },
+          { label: 'Practical examples' },
+          { label: 'Something I can copy and use immediately' }
+        ]
+      },
+      {
+        id: 'interactionNote',
+        text: 'One thing AI should know about how to work with you:',
+        pick: 'text',
+        placeholder: 'Optional. One sentence is plenty.',
+        optional: true
+      }
+    ]
+  },
+  {
+    id: 'rightnow',
+    title: 'My Right Now',
+    subtitle: 'What kind of day or problem this is.',
+    description: 'This card changes. Come back to it when your situation shifts. It tells AI what you need today, not in general.',
+    time: 'About 90 seconds',
+    outputTitle: 'Right Now',
+    questions: [
+      {
+        id: 'state',
+        text: 'Which state fits you right now?',
+        pick: 'one',
+        options: [
+          { label: 'Fixer', desc: 'Something\'s broken and you\'re triaging' },
+          { label: 'Detective', desc: 'You\'re trying to understand before you act' },
+          { label: 'Maverick', desc: 'You\'re ready to move and need to move fast' },
+          { label: 'Operator', desc: 'You\'re maintaining and protecting what works' }
+        ]
+      },
+      {
+        id: 'needs',
+        text: 'What do you need most right now?',
+        pick: 'up to 2',
+        max: 2,
+        options: [
+          { label: 'Reduce the work' },
+          { label: 'Make a decision' },
+          { label: 'Make this make sense' },
+          { label: 'Help me start' },
+          { label: 'Help me say the hard thing' },
+          { label: 'Turn this into something usable' },
+          { label: 'Calm the chaos' },
+          { label: 'Find the best next step' }
+        ]
+      },
+      {
+        id: 'bandwidth',
+        text: 'What is affecting your bandwidth right now?',
+        pick: 'up to 2',
+        max: 2,
+        options: [
+          { label: 'Workload' },
+          { label: 'Unclear expectations' },
+          { label: 'People problems' },
+          { label: 'Too many decisions' },
+          { label: 'Time pressure' },
+          { label: 'Home or family demands' },
+          { label: 'Context switching' },
+          { label: 'Low energy' },
+          { label: 'Emotional stress' },
+          { label: 'Not enough information' }
+        ]
+      },
+      {
+        id: 'frustrationNow',
+        text: 'What\'s frustrating you most right now?',
+        pick: 'one',
+        options: [
+          { label: 'I\'m buried' },
+          { label: 'I\'m stuck' },
+          { label: 'I\'m moving too fast' },
+          { label: 'I can\'t get clear' },
+          { label: 'I can\'t get started' },
+          { label: 'I can\'t get the words right' },
+          { label: 'I\'m dealing with other people\'s confusion' },
+          { label: 'I keep circling the same problem' }
+        ]
+      },
+      {
+        id: 'priorities',
+        text: 'What should AI prioritize in this moment?',
+        pick: 'exactly 2',
+        max: 2,
+        min: 2,
+        options: [
+          { label: 'Speed' },
+          { label: 'Clarity' },
+          { label: 'Focus' },
+          { label: 'Reassurance without fluff' },
+          { label: 'Stronger wording' },
+          { label: 'Better structure' },
+          { label: 'Fewer steps' },
+          { label: 'Caveats and risk flags' },
+          { label: 'Options with tradeoffs' },
+          { label: 'Something ready to copy and use' }
+        ]
+      },
+      {
+        id: 'outputNow',
+        text: 'What kind of output do you need right now?',
+        pick: 'one',
+        options: [
+          { label: 'Quick answer' },
+          { label: 'Decision support' },
+          { label: 'Draft' },
+          { label: 'Talking points' },
+          { label: 'Checklist' },
+          { label: 'Plan' },
+          { label: 'Message I can send' },
+          { label: 'Explanation in plain English' }
+        ]
+      },
+      {
+        id: 'rightnowNote',
+        text: 'One thing AI should know about your situation right now:',
+        pick: 'text',
+        placeholder: 'Optional. One sentence is plenty.',
+        optional: true
+      }
+    ]
+  },
+  {
+    id: 'fieldguide',
+    title: 'My Field Guide',
+    subtitle: 'Where AI helps you. Where you\'re likely to trip.',
+    description: 'This is the self-awareness layer. Honest answers here protect you from your own patterns. This card makes the other three safer to use.',
+    time: 'About 2 minutes',
+    outputTitle: 'My AI Guardrails',
+    questions: [
+      {
+        id: 'useful',
+        text: 'Where is AI most useful to you?',
+        pick: 'up to 3',
+        max: 3,
+        options: [
+          { label: 'Turning messy thoughts into structure' },
+          { label: 'Drafting writing quickly' },
+          { label: 'Summarizing long material' },
+          { label: 'Helping me prepare for hard conversations' },
+          { label: 'Brainstorming options' },
+          { label: 'Making decisions with tradeoffs' },
+          { label: 'Simplifying complexity' },
+          { label: 'Creating plans or checklists' },
+          { label: 'Editing tone and clarity' },
+          { label: 'Translating something into plain English' }
+        ]
+      },
+      {
+        id: 'overtrust',
+        text: 'Where are you most likely to over-trust AI?',
+        pick: 'up to 2',
+        max: 2,
+        options: [
+          { label: 'When I\'m rushed' },
+          { label: 'When the writing sounds polished' },
+          { label: 'When I don\'t know the topic well' },
+          { label: 'When I\'m emotionally drained' },
+          { label: 'When I want a fast answer more than a right one' },
+          { label: 'When I\'m trying to avoid thinking' },
+          { label: 'When the output confirms what I already wanted' },
+          { label: 'When it gives me a strong first draft' }
+        ]
+      },
+      {
+        id: 'misuse',
+        text: 'Where are you most likely to misuse AI?',
+        pick: 'up to 2',
+        max: 2,
+        options: [
+          { label: 'Using it to replace judgment' },
+          { label: 'Using it to speak for me before I\'ve thought it through' },
+          { label: 'Using it on sensitive issues too casually' },
+          { label: 'Simplifying something that needed caveats' },
+          { label: 'Moving too fast from draft to final' },
+          { label: 'Asking it for certainty when the situation is ambiguous' },
+          { label: 'Copying output without enough editing' },
+          { label: 'Using it when I really need a conversation, not a tool' }
+        ]
+      },
+      {
+        id: 'slowdown',
+        text: 'What kind of work should make you slow down and review more carefully?',
+        pick: 'exactly 2',
+        max: 2,
+        min: 2,
+        options: [
+          { label: 'People issues' },
+          { label: 'Policy or compliance' },
+          { label: 'Legal or financial risk' },
+          { label: 'Emotionally sensitive communication' },
+          { label: 'Executive-facing work' },
+          { label: 'Anything public-facing' },
+          { label: 'Anything with health, benefits or safety implications' },
+          { label: 'Anything that could be misread easily' }
+        ]
+      },
+      {
+        id: 'checkself',
+        text: 'What\'s your best "check yourself" move before using AI output?',
+        pick: 'up to 2',
+        max: 2,
+        options: [
+          { label: 'Ask: what\'s missing?' },
+          { label: 'Ask: what caveat got flattened?' },
+          { label: 'Read it out loud' },
+          { label: 'Cut anything that doesn\'t sound like me' },
+          { label: 'Check the source material again' },
+          { label: 'Verify facts separately' },
+          { label: 'Ask whether this is a draft or a decision' },
+          { label: 'Sleep on it before sending' }
+        ]
+      },
+      {
+        id: 'helpwithout',
+        text: 'What do you want AI to help you do without taking over?',
+        pick: 'up to 2',
+        max: 2,
+        options: [
+          { label: 'Get started' },
+          { label: 'Get organized' },
+          { label: 'Get clearer' },
+          { label: 'Get unstuck' },
+          { label: 'Get to a better first draft' },
+          { label: 'Get to the real issue faster' },
+          { label: 'Get the wording right' },
+          { label: 'Get the next step visible' }
+        ]
+      },
+      {
+        id: 'fieldguideNote',
+        text: 'One thing AI should help you watch out for:',
+        pick: 'text',
+        placeholder: 'Optional. One sentence is plenty.',
+        optional: true
+      }
+    ]
+  }
+];
+
+// ═══════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════
+
+let currentView = 'welcome'; // welcome | cardIntro | question | output | final
+let currentCard = 0;
+let currentQuestion = 0;
+let answers = {}; // { cardId: { questionId: [selections] or 'text' } }
+let completedCards = [];
+
+// Init answer storage
+CARDS.forEach(c => { answers[c.id] = {}; });
+
+// ═══════════════════════════════════════════
+// RENDERING
+// ═══════════════════════════════════════════
+
+const app = document.getElementById('app');
+
+function render() {
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  switch (currentView) {
+    case 'welcome': renderWelcome(); break;
+    case 'cardIntro': renderCardIntro(); break;
+    case 'question': renderQuestion(); break;
+    case 'output': renderOutput(); break;
+    case 'final': renderFinal(); break;
+  }
+}
+
+function renderWelcome() {
+  const cardPickerHTML = CARDS.map((c, i) => `
+    <div class="card-pick" onclick="jumpToCard(${i})">
+      <p class="card-pick-num">Card ${i + 1}</p>
+      <p class="card-pick-title">${c.title}</p>
+      <p class="card-pick-sub">${c.subtitle}</p>
+      <p class="card-pick-meta">${c.questions.length} questions</p>
+    </div>
+  `).join('');
+
+  app.innerHTML = `
+    <div class="welcome">
+      <h1>Start <span>Here</span></h1>
+      <p class="welcome-lead">
+        AI works better when it knows who you are. Most people skip that part.
+      </p>
+      <div class="welcome-details">
+        <p>Four cards. 31 questions. All multiple choice... no typing, no wrong answers. Just pick what fits.</p>
+        <p><strong>Finish Card 1 in two minutes</strong> and you've already given AI more context than most people provide in a year of using it. Ten minutes total for all four.</p>
+        <p>Finish all four and you get Boardwalk and a Get-Out-of-Jail-Free card. (Not really. But you do get a personal AI profile most people will never bother to build.)</p>
+      </div>
+      <div class="card-picker">
+        ${cardPickerHTML}
+      </div>
+    </div>
+    ${renderFooter()}
+  `;
+}
+
+function renderCardIntro() {
+  const card = CARDS[currentCard];
+  const cardNum = currentCard + 1;
+  const qCount = card.questions.length;
+  app.innerHTML = `
+    <div class="card-intro">
+      <p class="progress-card-label" style="margin-bottom:1rem;">CARD ${cardNum} OF 4</p>
+      <h2>${card.title}</h2>
+      <p>${card.description}</p>
+      <span class="time-est">${qCount} easy questions</span>
+      <br>
+      <button class="btn-begin-card" onclick="beginCard()">Let's go</button>
+    </div>
+    ${renderFooter()}
+  `;
+}
+
+function renderQuestion() {
+  const card = CARDS[currentCard];
+  const q = card.questions[currentQuestion];
+  const cardNum = currentCard + 1;
+  const qNum = currentQuestion + 1;
+  const totalQ = card.questions.length;
+  const totalAllQ = CARDS.reduce((sum, c) => sum + c.questions.length, 0);
+  const completedQ = CARDS.slice(0, currentCard).reduce((sum, c) => sum + c.questions.length, 0) + currentQuestion;
+  const progressPct = ((completedQ + 1) / totalAllQ) * 100;
+
+  const currentAnswers = answers[card.id][q.id] || [];
+
+  let pickLabel = '';
+  if (q.pick === 'one') pickLabel = 'Pick one';
+  else if (q.pick === 'exactly 2') pickLabel = 'Pick exactly 2';
+  else if (q.pick === 'text') pickLabel = '';
+  else pickLabel = `Pick ${q.pick}`;
+
+  let contentHTML = '';
+
+  if (q.pick === 'text') {
+    const val = answers[card.id][q.id] || '';
+    contentHTML = `
+      <div class="text-input-wrap">
+        <textarea class="text-input" id="textAnswer" rows="3"
+          placeholder="${q.placeholder || ''}"
+          oninput="handleTextInput(this.value)">${val}</textarea>
+        <p class="text-hint">This is for you. Whatever helps AI understand you better.</p>
+      </div>
+      <div class="nav-buttons">
+        <button class="btn-next" onclick="advanceQuestion()">
+          ${currentQuestion === totalQ - 1 ? 'See my results' : 'Next'}
+        </button>
+        ${q.optional ? `<button class="btn-skip" onclick="skipText()">Skip</button>` : ''}
+      </div>
+    `;
+  } else {
+    const isMulti = q.pick !== 'one';
+    const maxSel = q.max || 1;
+    const minSel = q.min || 1;
+    const atMax = isMulti && currentAnswers.length >= maxSel;
+
+    contentHTML = `
+      <div class="options-list">
+        ${q.options.map((opt, i) => {
+          const selected = currentAnswers.includes(opt.label);
+          const disabled = atMax && !selected;
+          return `
+            <div class="option-card ${selected ? 'selected' : ''} ${disabled ? 'disabled' : ''}"
+                 onclick="selectOption('${escapeStr(opt.label)}', ${isMulti}, ${maxSel})"
+                 style="${disabled ? 'opacity:0.35;pointer-events:none;' : ''}">
+              <div class="option-label">${opt.label}</div>
+              ${opt.desc ? `<div class="option-desc">${opt.desc}</div>` : ''}
+            </div>
+          `;
+        }).join('')}
+      </div>
+      ${isMulti ? `
+        <div class="nav-buttons">
+          <button class="btn-next"
+            ${currentAnswers.length < minSel ? 'disabled' : ''}
+            onclick="advanceQuestion()">
+            ${currentQuestion === totalQ - 1 ? 'See my results' : 'Next'}
+          </button>
+        </div>
+      ` : ''}
+    `;
+  }
+
+  app.innerHTML = `
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span class="progress-card-label">${card.title}</span>
+        <span class="progress-step">${qNum} of ${totalQ}</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width:${progressPct}%"></div>
+      </div>
+    </div>
+    <div class="question-screen">
+      <p class="question-text">${q.text}</p>
+      ${pickLabel ? `<p class="question-instruction">${pickLabel}</p>` : ''}
+      ${contentHTML}
+      ${currentQuestion > 0 ? `<button class="btn-back" onclick="goBack()">Back</button>` : ''}
+    </div>
+  `;
+}
+
+function renderOutput() {
+  const card = CARDS[currentCard];
+  const cardNum = currentCard + 1;
+  const md = generateMarkdown(currentCard);
+  const isLast = currentCard === CARDS.length - 1;
+
+  // Build all completed markdown so far
+  let allMd = generateHeader();
+  for (let i = 0; i <= currentCard; i++) {
+    if (completedCards.includes(i) || i === currentCard) {
+      allMd += generateMarkdown(i) + '\n';
+    }
+  }
+
+  const nextCard = CARDS[currentCard + 1];
+
+  app.innerHTML = `
+    <div class="output-screen">
+      <p class="progress-card-label" style="margin-bottom:0.75rem;">CARD ${cardNum} COMPLETE</p>
+      <h2>${card.outputTitle}</h2>
+      <p class="output-subtitle">Here's what you just built. This is ready to copy and paste into any AI tool's custom instructions.</p>
+
+      <div class="output-block">
+        <pre id="outputText">${escapeHTML(md)}</pre>
+      </div>
+      <div class="download-group">
+        <button class="btn-download" onclick="downloadPDF(false, event)">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M9 3v9m0 0l-3-3m3 3l3-3M3 14h12"/>
+          </svg>
+          Download this card as PDF
+        </button>
+        ${completedCards.length > 0 || currentCard > 0 ? `
+          <button class="btn-download" onclick="downloadPDF(true, event)">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M9 3v9m0 0l-3-3m3 3l3-3M3 14h12"/>
+            </svg>
+            Download everything so far
+          </button>
+        ` : ''}
+        <button class="btn-copy-text" onclick="copyText(false, event)">Copy as text</button>
+      </div>
+
+      <div class="output-actions">
+        ${!isLast ? `
+          <button class="btn-continue" onclick="nextCard()">
+            Continue to Card ${cardNum + 1}: ${nextCard.title}
+            <span class="btn-sub">${nextCard.subtitle}</span>
+          </button>
+        ` : ''}
+        <button class="btn-done" onclick="finishUp()">
+          ${isLast ? 'See my complete profile' : 'I\'m done for now'}
+        </button>
+      </div>
+    </div>
+    ${renderFooter()}
+  `;
+}
+
+function renderFinal() {
+  let allMd = generateHeader();
+  for (let i = 0; i < CARDS.length; i++) {
+    if (completedCards.includes(i)) {
+      allMd += generateMarkdown(i) + '\n';
+    }
+  }
+
+  const completedCount = completedCards.length;
+  const remaining = 4 - completedCount;
+
+  app.innerHTML = `
+    <div class="final-screen">
+      <h2>Your AI Context</h2>
+      <p class="final-subtitle">${completedCount} of 4 cards complete.${remaining > 0 ? ` Come back for the rest when you're ready.` : ` Full profile built.`}</p>
+
+      <div class="paste-instructions">
+        <p><strong>Where to paste this:</strong></p>
+        <p><strong>ChatGPT:</strong> Settings > Personalization > Custom Instructions</p>
+        <p><strong>Claude:</strong> Your profile preferences, or paste at the start of a conversation</p>
+        <p><strong>Gemini:</strong> Settings > Extensions, or paste at the start of a conversation</p>
+        <p>Any AI tool. Paste it once. It works until you change.</p>
+      </div>
+
+      <div class="output-block">
+        <pre id="finalOutput">${escapeHTML(allMd)}</pre>
+      </div>
+      <div class="download-group">
+        <button class="btn-download" onclick="downloadPDF(true, event)">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M9 3v9m0 0l-3-3m3 3l3-3M3 14h12"/>
+          </svg>
+          Download as PDF
+        </button>
+        <button class="btn-copy-text" onclick="copyText(true, event)">Copy as text</button>
+      </div>
+
+      ${remaining > 0 ? `
+        <hr class="section-divider">
+        <div class="output-actions">
+          <button class="btn-continue" onclick="continueFromFinal()">
+            Continue to Card ${completedCount + 1}: ${CARDS[completedCount].title}
+            <span class="btn-sub">Add another layer of context</span>
+          </button>
+        </div>
+      ` : `
+        <hr class="section-divider">
+        <div class="output-actions">
+          <button class="btn-done" onclick="startOver()">Start over with new answers</button>
+        </div>
+      `}
+    </div>
+    ${renderFooter()}
+  `;
+}
+
+function renderFooter() {
+  return `
+    <div class="site-footer">
+      <p>Built by <a href="https://angieqbailey.com" target="_blank">Angie Bailey</a></p>
+      <p>I spent months figuring out who I was so I could tell AI. This is the shortcut.</p>
+    </div>
+  `;
+}
+
+// ═══════════════════════════════════════════
+// EVENT HANDLERS
+// ═══════════════════════════════════════════
+
+function startCards() {
+  currentView = 'cardIntro';
+  currentCard = 0;
+  currentQuestion = 0;
+  render();
+}
+
+function jumpToCard(index) {
+  currentView = 'cardIntro';
+  currentCard = index;
+  currentQuestion = 0;
+  render();
+}
+
+function beginCard() {
+  currentView = 'question';
+  currentQuestion = 0;
+  render();
+}
+
+function selectOption(label, isMulti, maxSel) {
+  const card = CARDS[currentCard];
+  const q = card.questions[currentQuestion];
+
+  if (!answers[card.id][q.id]) answers[card.id][q.id] = [];
+
+  if (isMulti) {
+    const arr = answers[card.id][q.id];
+    const idx = arr.indexOf(label);
+    if (idx > -1) {
+      arr.splice(idx, 1);
+      render();
+    } else if (arr.length < maxSel) {
+      arr.push(label);
+      // Auto-advance when max selections reached
+      if (arr.length >= maxSel) {
+        render();
+        setTimeout(() => advanceQuestion(), 350);
+      } else {
+        render();
+      }
+    }
+  } else {
+    answers[card.id][q.id] = [label];
+    // Auto-advance after brief delay for single-select
+    setTimeout(() => advanceQuestion(), 250);
+  }
+}
+
+function handleTextInput(val) {
+  const card = CARDS[currentCard];
+  const q = card.questions[currentQuestion];
+  answers[card.id][q.id] = val.trim();
+}
+
+function skipText() {
+  const card = CARDS[currentCard];
+  const q = card.questions[currentQuestion];
+  answers[card.id][q.id] = '';
+  advanceQuestion();
+}
+
+function advanceQuestion() {
+  const card = CARDS[currentCard];
+  const q = card.questions[currentQuestion];
+
+  // Validate
+  if (q.pick !== 'text') {
+    const ans = answers[card.id][q.id] || [];
+    if (q.min && ans.length < q.min) return;
+    if (q.pick === 'one' && ans.length === 0) return;
+  }
+
+  if (currentQuestion < card.questions.length - 1) {
+    currentQuestion++;
+    currentView = 'question';
+  } else {
+    // Card complete
+    if (!completedCards.includes(currentCard)) {
+      completedCards.push(currentCard);
+    }
+    currentView = 'output';
+  }
+  render();
+}
+
+function goBack() {
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    render();
+  }
+}
+
+function nextCard() {
+  if (currentCard < CARDS.length - 1) {
+    currentCard++;
+    currentQuestion = 0;
+    currentView = 'cardIntro';
+    render();
+  }
+}
+
+function finishUp() {
+  currentView = 'final';
+  render();
+}
+
+function continueFromFinal() {
+  // Find next incomplete card
+  for (let i = 0; i < CARDS.length; i++) {
+    if (!completedCards.includes(i)) {
+      currentCard = i;
+      currentQuestion = 0;
+      currentView = 'cardIntro';
+      render();
+      return;
+    }
+  }
+}
+
+function startOver() {
+  CARDS.forEach(c => { answers[c.id] = {}; });
+  completedCards = [];
+  currentCard = 0;
+  currentQuestion = 0;
+  currentView = 'welcome';
+  render();
+}
+
+function gatherText(all) {
+  let text = generateHeader();
+  if (all) {
+    for (let i = 0; i < CARDS.length; i++) {
+      if (completedCards.includes(i)) {
+        text += generateMarkdown(i) + '\n';
+      }
+    }
+  } else {
+    text = generateMarkdown(currentCard);
+  }
+  return text;
+}
+
+function downloadPDF(all, evt) {
+  try {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: 'mm', format: 'letter' });
+
+  const pageW = doc.internal.pageSize.getWidth();
+  const pageH = doc.internal.pageSize.getHeight();
+  const marginL = 20;
+  const marginR = 20;
+  const maxW = pageW - marginL - marginR;
+  let y = 25;
+
+  // Colors
+  const night = [18, 26, 40];
+  const ecru = [245, 245, 220];
+  const quetzal = [0, 168, 150];
+  const cacao = [45, 27, 20];
+
+  // Background
+  function drawBg() {
+    doc.setFillColor(...night);
+    doc.rect(0, 0, pageW, pageH, 'F');
+  }
+  drawBg();
+
+  function checkPage(needed) {
+    if (y + needed > pageH - 20) {
+      doc.addPage();
+      drawBg();
+      y = 25;
+    }
+  }
+
+  // Title
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(28);
+  doc.setTextColor(...ecru);
+  doc.text('My AI Context', marginL, y);
+  y += 10;
+
+  // Subtitle
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(9);
+  doc.setTextColor(...quetzal);
+  doc.text('Built with Start Here  |  angieqbailey.com/start-here', marginL, y);
+  y += 5;
+  doc.text('Paste this into your AI tool\'s custom instructions or at the start of a conversation.', marginL, y);
+  y += 10;
+
+  // Divider
+  doc.setDrawColor(...quetzal);
+  doc.setLineWidth(0.5);
+  doc.line(marginL, y, pageW - marginR, y);
+  y += 10;
+
+  // Render sections
+  const cards = all ? completedCards.slice().sort() : [currentCard];
+
+  cards.forEach(cardIdx => {
+    const md = generateMarkdown(cardIdx);
+    const lines = md.split('\n');
+
+    lines.forEach(line => {
+      if (!line.trim()) {
+        y += 4;
+        return;
+      }
+
+      if (line.startsWith('## ')) {
+        checkPage(16);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(18);
+        doc.setTextColor(...ecru);
+        doc.text(line.replace('## ', ''), marginL, y);
+        y += 9;
+      } else if (line.startsWith('*') && line.endsWith('*')) {
+        checkPage(8);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(9);
+        doc.setTextColor(...quetzal);
+        const clean = line.replace(/\*/g, '');
+        const wrapped = doc.splitTextToSize(clean, maxW);
+        doc.text(wrapped, marginL, y);
+        y += wrapped.length * 4.5;
+      } else {
+        checkPage(8);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(11);
+        doc.setTextColor(220, 220, 200);
+        const wrapped = doc.splitTextToSize(line, maxW);
+        doc.text(wrapped, marginL, y);
+        y += wrapped.length * 5.5;
+      }
+    });
+
+    y += 6;
+  });
+
+  // Footer
+  checkPage(15);
+  y = pageH - 15;
+  doc.setDrawColor(...quetzal);
+  doc.setLineWidth(0.3);
+  doc.line(marginL, y, pageW - marginR, y);
+  y += 5;
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.setTextColor(...quetzal);
+  doc.text('angieqbailey.com/start-here  |  Angie Bailey', marginL, y);
+
+  // Download
+  const cardCount = cards.length;
+  const fileName = cardCount === 1
+    ? 'my-ai-context-' + CARDS[cards[0]].id + '.pdf'
+    : 'my-ai-context.pdf';
+  doc.save(fileName);
+
+  // Visual feedback on button
+  const btn = (evt || window.event || {}).target;
+  const btnEl = btn ? btn.closest('.btn-download') : null;
+  if (btnEl) {
+    const originalHTML = btnEl.innerHTML;
+    btnEl.classList.add('done');
+    btnEl.innerHTML = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9.5l3.5 3.5 7-7"/></svg> Downloaded`;
+    setTimeout(() => {
+      btnEl.classList.remove('done');
+      btnEl.innerHTML = originalHTML;
+    }, 2500);
+  }
+  } catch(err) {
+    console.error('PDF download failed:', err);
+    alert('Download failed. Try the "Copy as text" button instead.');
+  }
+}
+
+function copyText(all, evt) {
+  const text = gatherText(all);
+
+  function showFeedback() {
+    const target = (evt || window.event || {}).target;
+    const btnEl = target ? target.closest('.btn-copy-text') : null;
+    if (btnEl) {
+      const orig = btnEl.textContent;
+      btnEl.textContent = 'Copied to clipboard';
+      setTimeout(() => { btnEl.textContent = orig; }, 2000);
+    }
+  }
+
+  // Try modern clipboard API first, fall back to execCommand
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(showFeedback).catch(function() {
+      fallbackCopy(text);
+      showFeedback();
+    });
+  } else {
+    fallbackCopy(text);
+    showFeedback();
+  }
+}
+
+function fallbackCopy(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(ta);
+}
+
+// ═══════════════════════════════════════════
+// MARKDOWN OUTPUT GENERATION
+// ═══════════════════════════════════════════
+
+function generateHeader() {
+  return `# My AI Context
+> Built with Start Here (angieqbailey.com/start-here)
+> Paste this into your AI tool's custom instructions or at the start of a conversation.
+
+---
+
+`;
+}
+
+function get(cardId, qId) {
+  const val = answers[cardId]?.[qId];
+  if (!val) return [];
+  if (typeof val === 'string') return val;
+  return val;
+}
+
+function joinNatural(arr) {
+  if (!arr || arr.length === 0) return '';
+  if (arr.length === 1) return arr[0].toLowerCase();
+  if (arr.length === 2) return arr[0].toLowerCase() + ' and ' + arr[1].toLowerCase();
+  return arr.slice(0, -1).map(s => s.toLowerCase()).join(', ') + ' and ' + arr[arr.length - 1].toLowerCase();
+}
+
+function joinNaturalKeepCase(arr) {
+  if (!arr || arr.length === 0) return '';
+  if (arr.length === 1) return arr[0];
+  if (arr.length === 2) return arr[0] + ' and ' + arr[1];
+  return arr.slice(0, -1).join(', ') + ' and ' + arr[arr.length - 1];
+}
+
+const ARCHETYPE_DESC = {
+  'Fixer': 'I fix what\'s broken and subtract what\'s not working',
+  'Detective': 'I verify before I trust',
+  'Maverick': 'I move fast and figure it out later',
+  'Operator': 'I maintain what works and protect the standard'
+};
+
+const ARCHETYPE_NOW = {
+  'Fixer': 'cutting, prioritizing, trying to get ahead of the mess',
+  'Detective': 'verifying, analyzing, trying to understand before acting',
+  'Maverick': 'moving fast, making calls, trying to ship before the window closes',
+  'Operator': 'maintaining, protecting, trying to keep what works running'
+};
+
+function generateMarkdown(cardIndex) {
+  const card = CARDS[cardIndex];
+  switch(card.id) {
+    case 'context': return genContext();
+    case 'interaction': return genInteraction();
+    case 'rightnow': return genRightNow();
+    case 'fieldguide': return genFieldGuide();
+  }
+  return '';
+}
+
+function genContext() {
+  const role = (get('context', 'role')[0] || '').toLowerCase();
+  const exp = (get('context', 'experience')[0] || '').toLowerCase();
+  const industry = (get('context', 'industry')[0] || '').toLowerCase();
+  const func = (get('context', 'function')[0] || '').toLowerCase();
+  const skills = get('context', 'skills') || [];
+  const env = get('context', 'environment') || [];
+  const life = (get('context', 'life')[0] || '').toLowerCase();
+  const frust = get('context', 'frustrations') || [];
+  const goals = get('context', 'aiGoals') || [];
+  const note = get('context', 'contextNote');
+
+  let md = `## Who I Am\n\n`;
+
+  if (role && exp && industry && func) {
+    const article = /^[aeiou]/.test(exp) ? 'an' : 'a';
+    md += `I'm ${article} ${exp} ${role} in ${industry}, working in ${func}.\n\n`;
+  }
+
+  if (skills.length > 0) {
+    md += `My work runs on ${joinNatural(skills.map(toGerund))}. `;
+  }
+  if (env.length > 0) {
+    md += `The environment is usually ${joinNatural(env)}.`;
+  }
+  md += '\n\n';
+
+  if (life) {
+    md += `Life outside work: ${life}.\n\n`;
+  }
+
+  if (frust.length > 0) {
+    md += `What frustrates me most at work: ${joinNatural(frust)}.\n\n`;
+  }
+
+  if (goals.length > 0) {
+    md += `Where I want AI headed long-term: ${dedupePrefix(goals, 'help me ')}.\n\n`;
+  }
+
+  if (note) {
+    md += `One thing to know: "${note}"\n\n`;
+  }
+
+  return md;
+}
+
+function genInteraction() {
+  const arch = get('interaction', 'archetype')[0] || '';
+  const wants = get('interaction', 'wants') || [];
+  const dislikes = get('interaction', 'dislikes') || [];
+  const pressure = get('interaction', 'pressure') || [];
+  const outputs = get('interaction', 'outputs') || [];
+  const optimize = get('interaction', 'optimize') || [];
+  const note = get('interaction', 'interactionNote');
+
+  let md = `## How to Work With Me\n\n`;
+
+  if (arch) {
+    md += `My default mode is ${arch}. ${ARCHETYPE_DESC[arch] || ''}.\n\n`;
+  }
+
+  if (wants.length > 0) {
+    md += `When I come to AI, I usually want it to ${dedupePrefix(wants, 'help me ')}.\n\n`;
+  }
+
+  if (dislikes.length > 0) {
+    md += `I do not want responses that are ${joinNatural(dislikes)}.\n\n`;
+  }
+
+  if (pressure.length > 0) {
+    md += `When I'm under pressure: ${joinPressure(pressure)}. That's when I need AI to pull me up, not dig deeper with me.\n\n`;
+  }
+
+  if (outputs.length > 0) {
+    md += `Most useful outputs: ${joinNatural(outputs)}. `;
+  }
+  if (optimize.length > 0) {
+    md += `Optimize for ${joinNatural(optimize)}.`;
+  }
+  md += '\n\n';
+
+  if (note) {
+    md += `One thing to know: "${note}"\n\n`;
+  }
+
+  return md;
+}
+
+function genRightNow() {
+  const state = get('rightnow', 'state')[0] || '';
+  const needs = get('rightnow', 'needs') || [];
+  const bw = get('rightnow', 'bandwidth') || [];
+  const frust = (get('rightnow', 'frustrationNow')[0] || '').toLowerCase();
+  const priorities = get('rightnow', 'priorities') || [];
+  const output = (get('rightnow', 'outputNow')[0] || '').toLowerCase();
+  const note = get('rightnow', 'rightnowNote');
+
+  let md = `## Right Now\n\n`;
+  md += `*Update this card when your situation changes. This is temporary context.*\n\n`;
+
+  if (state) {
+    md += `I'm in ${state} mode right now. ${ARCHETYPE_NOW[state] ? ARCHETYPE_NOW[state].charAt(0).toUpperCase() + ARCHETYPE_NOW[state].slice(1) : ''}.\n\n`;
+  }
+
+  if (needs.length > 0) {
+    md += `What I need most right now: ${joinNatural(needs)}.\n\n`;
+  }
+
+  if (bw.length > 0) {
+    md += `My bandwidth is squeezed by ${joinNatural(bw)}.`;
+    if (frust) md += ` Main frustration: ${frust}.`;
+    md += '\n\n';
+  }
+
+  if (priorities.length > 0) {
+    md += `In this moment, prioritize ${joinNatural(priorities)}.`;
+    if (output) md += ` I need a ${output}, not a deep analysis.`;
+    md += '\n\n';
+  }
+
+  if (note) {
+    md += `Right now: "${note}"\n\n`;
+  }
+
+  return md;
+}
+
+function genFieldGuide() {
+  const useful = get('fieldguide', 'useful') || [];
+  const overtrust = get('fieldguide', 'overtrust') || [];
+  const misuse = get('fieldguide', 'misuse') || [];
+  const slow = get('fieldguide', 'slowdown') || [];
+  const check = get('fieldguide', 'checkself') || [];
+  const help = get('fieldguide', 'helpwithout') || [];
+  const note = get('fieldguide', 'fieldguideNote');
+
+  let md = `## My AI Guardrails\n\n`;
+
+  if (useful.length > 0) {
+    md += `Where AI helps me most: ${joinNatural(useful)}.\n\n`;
+  }
+
+  if (overtrust.length > 0) {
+    md += `Where I over-trust AI: ${joinNatural(overtrust)}.\n`;
+  }
+  if (misuse.length > 0) {
+    md += `Where I misuse AI: ${joinNatural(misuse)}.\n\n`;
+  }
+
+  if (slow.length > 0) {
+    md += `Slow down and review carefully when working on: ${joinNatural(slow)}.\n\n`;
+  }
+
+  if (check.length > 0) {
+    md += `My check-yourself move before using AI output: ${joinNatural(check)}.\n\n`;
+  }
+
+  if (help.length > 0) {
+    md += `I want AI to help me ${joinNatural(help)}... without taking over.\n\n`;
+  }
+
+  if (note) {
+    md += `Watch out for this: "${note}"\n\n`;
+  }
+
+  return md;
+}
+
+// ═══════════════════════════════════════════
+// UTILITIES
+// ═══════════════════════════════════════════
+
+function toGerund(phrase) {
+  // "Solve messy problems" → "solving messy problems"
+  const verbMap = {
+    'write': 'writing', 'make': 'making', 'manage': 'managing',
+    'solve': 'solving', 'organize': 'organizing', 'communicate': 'communicating',
+    'move': 'moving', 'create': 'creating', 'handle': 'handling',
+    'build': 'building', 'save': 'saving', 'improve': 'improving',
+    'help': 'helping', 'reduce': 'reducing', 'get': 'getting'
+  };
+  const words = phrase.split(' ');
+  const firstWord = words[0].toLowerCase();
+  if (verbMap[firstWord]) {
+    words[0] = verbMap[firstWord];
+  } else if (firstWord.endsWith('e')) {
+    words[0] = firstWord.slice(0, -1) + 'ing';
+  } else {
+    words[0] = firstWord + 'ing';
+  }
+  return words.join(' ').toLowerCase();
+}
+
+function joinPressure(arr) {
+  // Keep capital I for first-person statements like "I overthink"
+  if (!arr || arr.length === 0) return '';
+  if (arr.length === 1) return arr[0];
+  // Don't lowercase if the item starts with "I " (first person)
+  const lowerFirst = (s) => s.startsWith('I ') ? s : s.charAt(0).toLowerCase() + s.slice(1);
+  if (arr.length === 2) return arr[0] + ' and ' + lowerFirst(arr[1]);
+  return arr.slice(0, -1).join(', ') + ' and ' + lowerFirst(arr[arr.length - 1]);
+}
+
+function dedupePrefix(arr, prefix) {
+  // "Help me think clearly" + "Help me reduce overwhelm" → "help me think clearly and reduce overwhelm"
+  const lowerPrefix = prefix.toLowerCase();
+  if (!arr || arr.length === 0) return '';
+  const cleaned = arr.map((s, i) => {
+    const lower = s.toLowerCase();
+    if (i > 0 && lower.startsWith(lowerPrefix)) {
+      return lower.slice(lowerPrefix.length).trim();
+    }
+    return lower;
+  });
+  if (cleaned.length === 1) return cleaned[0];
+  if (cleaned.length === 2) return cleaned[0] + ' and ' + cleaned[1];
+  return cleaned.slice(0, -1).join(', ') + ' and ' + cleaned[cleaned.length - 1];
+}
+
+function escapeStr(s) {
+  return s.replace(/'/g, "\\'").replace(/"/g, '\\"');
+}
+
+function escapeHTML(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+
+render();
+</script>
+</body>
+</html>
