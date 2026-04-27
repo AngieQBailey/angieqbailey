@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#121A28;">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reporting Governance Cadence // The operational rhythm for standardized monthly business review governance.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <title>Reporting Governance Cadence // Angie Bailey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit: #121A28; --cacao: #2D1B14; --quetzal: #00685E;
+            --quetzal-bright: #00A896; --ecru: #F5F5DC; --rosso: #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; font-style: normal !important; border-radius: 0 !important; }
+        ::selection { background: var(--rosso); color: var(--ecru); }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--nuit); color: var(--ecru); font-family: 'IBM Plex Sans', sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; }
+
+        .blueprint-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1000; background-image: linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px), linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px); background-size: 40px 40px; animation: grid-fade 2s ease 0.5s both; }
+        .spine { position: fixed; left: calc(var(--spine-left) - 40px); top: 0; width: 4px; height: 100%; background-color: var(--cacao); z-index: 500; animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        .nav-bar { position: fixed; top: 0; left: 0; width: 100%; z-index: 900; padding: 1.5rem 2rem 1.5rem var(--spine-left); display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, var(--nuit) 60%, transparent); }
+        .nav-mark { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--quetzal-bright); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 400; color: var(--ecru-dim); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s ease; }
+        .nav-links a:hover { color: var(--ecru); }
+
+        .doc-content { padding-left: var(--spine-left); padding-right: 4rem; max-width: 1200px; }
+        .doc-header { padding-top: 8rem; padding-bottom: 3rem; }
+        .doc-type { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.5rem; display: block; }
+        h1 { font-family: 'Imbue', serif; font-size: clamp(2rem, 5vw, 4rem); font-weight: 900; line-height: 0.9; color: var(--ecru); text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 1.5rem; max-width: 600px; }
+        h1 .accent-word { color: var(--rosso); }
+        .doc-intro { font-size: 1.05rem; font-weight: 300; line-height: 1.8; color: var(--ecru-dim); max-width: 650px; margin-bottom: 2rem; }
+        .doc-intro strong { color: var(--ecru); font-weight: 500; }
+
+        .download-btn { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--nuit); background: var(--ecru); text-decoration: none; padding: 0.75rem 2rem; transition: background 0.2s, color 0.2s; }
+        .download-btn:hover { background: var(--rosso); color: var(--ecru); }
+
+        .doc-section { padding-top: 2.5rem; padding-bottom: 2.5rem; border-top: 1px solid var(--ecru-ghost); }
+        .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+        h2 { font-family: 'Imbue', serif; font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 900; color: var(--ecru); text-transform: uppercase; line-height: 0.95; margin-bottom: 2rem; }
+        .doc-body p { font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--ecru-dim); margin-bottom: 1.5rem; max-width: 650px; }
+        .doc-body p strong { color: var(--ecru); font-weight: 500; }
+
+        .cadence-step { background: rgba(245, 245, 220, 0.14); padding: 2rem 1.75rem; margin-bottom: 2px; display: grid; grid-template-columns: 80px 1fr; gap: 1.5rem; align-items: start; }
+        .cadence-when { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--rosso); text-transform: uppercase; letter-spacing: 0.15em; }
+        .cadence-what-title { font-family: 'Imbue', serif; font-size: 1.15rem; font-weight: 700; color: var(--ecru); text-transform: uppercase; line-height: 1.15; margin-bottom: 0.5rem; }
+        .cadence-what-desc { font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.5; }
+
+        .core-principle { border-left: 4px solid var(--rosso); padding: 2rem; background: rgba(245, 245, 220, 0.14); margin: 2.5rem 0; max-width: 650px; }
+        .core-principle p { font-size: 1rem; font-weight: 300; line-height: 1.7; color: var(--ecru-dim); }
+        .core-principle strong { color: var(--ecru); font-weight: 500; }
+
+        .back-link { display: inline-flex; align-items: center; gap: 0.75rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: var(--ecru-dim); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s ease; margin-top: 3rem; }
+        .back-link::before { content: ''; display: block; width: 24px; height: 2px; background: var(--quetzal); transition: width 0.3s ease, background 0.3s ease; }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        footer { padding: 2rem 2rem 2rem var(--spine-left); border-top: 1px solid var(--ecru-ghost); }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; }
+        .footer-content span { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--ecru-dim); letter-spacing: 0.05em; }
+
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .doc-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .cadence-step { grid-template-columns: 1fr; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+        }
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .nav-links a { font-size: 0.75rem; }
+            .blueprint-overlay { background-size: 24px 24px; }
+        }
+    </style>
+</head>
+<body style="background-color: #121A28;">
+    <div class="blueprint-overlay" aria-hidden="true"></div>
+    <div class="spine" aria-hidden="true"></div>
+    <nav class="nav-bar" role="navigation">
+        <a href="../marketing-infrastructure-mbr.html" class="nav-mark" style="text-decoration: none;">&larr; MBR Debt Clearance</a>
+        <ul class="nav-links">
+            <li><a href="/">Main Site</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section class="doc-header doc-content">
+            <span class="doc-type">Methodology // Strategic Operations</span>
+            <h1>Reporting<br>Governance<br><span class="accent-word">Cadence</span></h1>
+            <div class="doc-intro">
+                <p>The operational rhythm that moved an omni-channel marketing team from ad-hoc, chase-driven reporting to a standardized governance system. <strong>Designed for 13 section owners across a $1B+ organization.</strong></p>
+                <p>This cadence eliminated the monthly scramble by creating clear ownership, fixed deadlines and a distribution protocol that made follow-up visible and trackable.</p>
+            </div>
+            <a href="templates/reporting-governance-cadence-blank.html" class="download-btn">View Blank Template &rarr;</a>
+        </section>
+
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">The Monthly Cycle</span>
+            <h2>Governance Cadence</h2>
+            <div class="doc-body"><p>Four steps. Fixed timing. No ambiguity about who does what and when.</p></div>
+
+            <div class="cadence-step">
+                <div class="cadence-when">Week 1<br>Wed</div>
+                <div>
+                    <div class="cadence-what-title">Section Completion Deadline</div>
+                    <div class="cadence-what-desc">All 13 section owners complete their sections by the first Wednesday of each month. Data verification (not entry... the dashboards are already pulling continuously), performance summary and upcoming initiatives.</div>
+                </div>
+            </div>
+            <div class="cadence-step">
+                <div class="cadence-when">Week 1<br>Thu</div>
+                <div>
+                    <div class="cadence-what-title">MBR Review</div>
+                    <div class="cadence-what-desc">Cross-functional review on the first Thursday. All 13 sections reviewed, patterns identified across functions, dependencies surfaced. The MBR owner captures follow-ups during the session.</div>
+                </div>
+            </div>
+            <div class="cadence-step">
+                <div class="cadence-when">Week 1<br>Thu PM</div>
+                <div>
+                    <div class="cadence-what-title">Distribution</div>
+                    <div class="cadence-what-desc">MBR owner distributes follow-ups via Slack to the designated announcements channel with a direct link to the master document. All stakeholders receive the same information at the same time.</div>
+                </div>
+            </div>
+            <div class="cadence-step">
+                <div class="cadence-when">Week 2+</div>
+                <div>
+                    <div class="cadence-what-title">Follow-Up Tracking</div>
+                    <div class="cadence-what-desc">Follow-up owners respond in the Slack thread and link their responses back to the master document. Creates a visible accountability chain. No private side conversations. No "I thought someone else was handling that."</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Design Principles</span>
+            <h2>Why This Structure</h2>
+
+            <div class="core-principle">
+                <p><strong>Data verification, not data entry.</strong> The dashboards pull continuously. Section owners verify accuracy and write analysis. The cognitive task shifted from "find the number" to "interpret the number." That was the real intervention.</p>
+            </div>
+
+            <div class="doc-body">
+                <p><strong>Fixed cadence eliminates negotiation.</strong> No "when can you get this to me?" conversations. First Wednesday, every month. The deadline is structural, not personal.</p>
+                <p><strong>Public follow-ups create accountability.</strong> Responses live in a shared thread, not private DMs. Everyone sees who responded, when and what they committed to. Visibility is the governance mechanism.</p>
+                <p><strong>One document, one source of truth.</strong> The master doc is the system of record. Dashboard links inside each section point to the live data. The document itself is the connective tissue between 13 functions that had never shared a common operating view.</p>
+            </div>
+        </section>
+
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">The Honest Context</span>
+            <h2>What Happened</h2>
+            <div class="doc-body">
+                <p>This cadence ran successfully across 13 functions in a rapidly scaling technology company. Section owners were contributing consistently and the system was reaching the point where it could support AI use cases built on the clean data infrastructure.</p>
+                <p>The director who championed the structure was terminated alongside more than 100 headquarters employees. The governance layer collapsed. The team was divided and reshuffled twice in fewer than six months.</p>
+                <p><strong>The dashboard infrastructure survived every disruption.</strong> The cadence did not. The technology was the easy part. The organizational protection was the hard part.</p>
+            </div>
+            <a href="../marketing-infrastructure-mbr.html" class="back-link">Back to Case Study</a>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <span>&copy; 2026 Angie Bailey</span>
+        </div>
+    </footer>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
