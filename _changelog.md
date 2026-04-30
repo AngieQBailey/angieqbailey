@@ -1,3 +1,23 @@
+## [2026-04-30] — TIER 2 — Site-Wide
+**Change:** Added site-wide disclaimer to footer of all 17 pages: "All case studies describe the author's original work product and methodology. Company names, proprietary data and confidential metrics have been removed. Organizational contexts are described in general terms."
+**Rationale:** C&D compliance — explicitly frames case study content as author's work product
+**Operator:** Angie Bailey + Claude via Cowork
+
+## [2026-04-30] — TIER 1 — Warehouse (Newsletter)
+**Change:** Made "Underperforming → 95%+ Open rate growth from predecessor" outcome box span 2 columns instead of 1
+**Rationale:** Layout adjustment for readability
+**Operator:** Angie Bailey + Claude via Cowork
+
+## [2026-04-30] — TIER 2 — Warehouse (MBR)
+**Change:** Replaced outcome stat numbers "13" and "10+" with "Multiple" in the MBR case study outcome grid
+**Rationale:** C&D compliance — these specific numbers were cited in the letter
+**Operator:** Angie Bailey + Claude via Cowork
+
+## [2026-04-30] — TIER 2 — Warehouse (MBR)
+**Change:** Scrubbed companion .docx (marketing-infrastructure-mbr-companion.docx) — removed $1B+, Looker Studio, 50 hours, Thirteen, full channel list, two-person bottleneck language
+**Rationale:** C&D compliance — downloadable asset contained same identifying content as the HTML page
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-04-27] — TIER 3 — Start Here (New Page)
 **Change:** Deployed /start-here/index.html — interactive AI context builder. Single self-contained file (62 KB). Four-card questionnaire that generates a personal AI profile users can paste into any AI tool. GA4 tag injected. All dependencies CDN or inline.
 **Rationale:** Lead-gen and value-delivery tool for LinkedIn Content Engine. Gives visitors an immediate, useful artifact while introducing Angie's methodology.
