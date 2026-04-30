@@ -178,7 +178,7 @@ Running record of what changed, when, and why. Git commits are terse. This docum
 - `posts/web-experience-capacity-build/assets/team-capacity-diagnostic.html` ÃÂ¢ÃÂÃÂ branded artifact page
 - `posts/web-experience-capacity-build/assets/templates/team-capacity-diagnostic-blank.html` ÃÂ¢ÃÂÃÂ blank template
 Converted Warehouse card #3 from placeholder `<div>` to live `<a>`.
-**Why:** New case study covering EquipmentShare web experience scrum master and team architecture work. Key framework: Role-Weighted Capacity Diagnostic ÃÂ¢ÃÂÃÂ maps capacity ratios for mixed-discipline teams where upstream roles (POs, designers) outnumber engineering bottlenecks. Artifact credits Nick Sonnenberg (*Come Up for Air*, 2023) for bandwidth calculation methodology and Eliyahu Goldratt for Theory of Constraints. Applied diagnostic (role-weighted mapping) is original.
+**Why:** New case study covering web experience scrum master and team architecture work for a high-growth industrial technology company. Key framework: Role-Weighted Capacity Diagnostic ÃÂ¢ÃÂÃÂ maps capacity ratios for mixed-discipline teams where upstream roles (POs, designers) outnumber engineering bottlenecks. Artifact credits Nick Sonnenberg (*Come Up for Air*, 2023) for bandwidth calculation methodology and Eliyahu Goldratt for Theory of Constraints. Applied diagnostic (role-weighted mapping) is original.
 
 **Design decisions made during build:**
 - Stat box max-width bumped 500px ÃÂ¢ÃÂÃÂ 750px; padding 1.25rem ÃÂ¢ÃÂÃÂ 1.75rem 1.5rem; min-width 100px ÃÂ¢ÃÂÃÂ 140px (labels "Overproduction Ratio" and "What the Governance Produced" were overflowing)
