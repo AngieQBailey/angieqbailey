@@ -303,6 +303,18 @@
             .blueprint-overlay { background-size: 24px 24px; }
             .outcome-grid { grid-template-columns: 1fr; }
         }
+    
+        .site-disclaimer {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--ecru-dim, #999);
+            letter-spacing: 0.03em;
+            line-height: 1.5;
+            max-width: 600px;
+            margin: 0;
+            opacity: 0.6;
+        }
+        .outcome-stat-wide { grid-column: span 2; }
     </style>
 </head>
 <body>
@@ -509,7 +521,7 @@
                     <div class="outcome-number">100%</div>
                     <div class="outcome-label">Workforce reached<br>enterprise-wide</div>
                 </div>
-                <div class="outcome-stat">
+                <div class="outcome-stat outcome-stat-wide">
                     <div class="outcome-number">Underperforming &rarr; 95%+</div>
                     <div class="outcome-label">Open rate growth<br>from predecessor</div>
                 </div>
@@ -535,6 +547,7 @@
         <div class="footer-content">
             <span>&copy; 2026 Angie Bailey</span>
         </div>
+        <p class="site-disclaimer">All case studies describe the author's original work product and methodology. Company names, proprietary data and confidential metrics have been removed. Organizational contexts are described in general terms.</p>
     </footer>
     <script>
         const observer = new IntersectionObserver((entries) => {
