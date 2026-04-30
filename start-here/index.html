@@ -874,7 +874,7 @@ const CARDS = [
     id: 'interaction',
     title: 'My Interaction Style',
     subtitle: 'How to work with you without being annoying.',
-    description: 'This teaches AI your preferences. What you want, what you hate, how you break down under pressure. So it can adapt instead of guessing.',
+    description: 'This tells AI your preferences so it can adapt instead of guessing.',
     time: 'About 2 minutes',
     outputTitle: 'How to Work With Me',
     questions: [
@@ -891,7 +891,7 @@ const CARDS = [
       },
       {
         id: 'wants',
-        text: 'What do you usually want most from AI?',
+        text: 'What do you think you'll usually want most from AI?',
         pick: 'up to 2',
         max: 2,
         options: [
@@ -1280,7 +1280,7 @@ function renderCardIntro() {
       <p class="progress-card-label" style="margin-bottom:1rem;">CARD ${cardNum} OF 4</p>
       <h2>${card.title}</h2>
       <p>${card.description}</p>
-      <span class="time-est">${qCount} easy questions</span>
+      <span class="time-est">${qCount} questions</span>
       <br>
       <button class="btn-begin-card" onclick="beginCard()">Let's go</button>
     </div>
