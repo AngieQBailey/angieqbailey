@@ -303,6 +303,17 @@
             .blueprint-overlay { background-size: 24px 24px; }
             .outcome-grid { grid-template-columns: 1fr; }
         }
+    
+        .site-disclaimer {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--ecru-dim, #999);
+            letter-spacing: 0.03em;
+            line-height: 1.5;
+            max-width: 600px;
+            margin: 0;
+            opacity: 0.6;
+        }
     </style>
 </head>
 <body style="background-color: #121A28;">
@@ -457,11 +468,11 @@
             <h2>What the<br>Infrastructure Produced</h2>
             <div class="outcome-grid">
                 <div class="outcome-stat">
-                    <div class="outcome-number">13</div>
+                    <div class="outcome-number">Multiple</div>
                     <div class="outcome-label">Functions Unified<br>on a Single Cadence</div>
                 </div>
                 <div class="outcome-stat">
-                    <div class="outcome-number">10+</div>
+                    <div class="outcome-number">Multiple</div>
                     <div class="outcome-label">Data Platforms<br>Consolidated</div>
                 </div>
                 <div class="outcome-stat">
@@ -482,6 +493,7 @@
         <div class="footer-content">
             <span>&copy; 2026 Angie Bailey</span>
         </div>
+        <p class="site-disclaimer">All case studies describe the author's original work product and methodology. Company names, proprietary data and confidential metrics have been removed. Organizational contexts are described in general terms.</p>
     </footer>
     <script>
         const observer = new IntersectionObserver((entries) => {
