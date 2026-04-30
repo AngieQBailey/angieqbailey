@@ -5,7 +5,7 @@
 
 ## [2026-04-26] — TIER 2 — Warehouse
 **Change:** Added Marketing Infrastructure MBR Debt Clearance case study. 1 case study page (dark-variant), 2 branded artifact pages (Cross-Functional MBR Template, Reporting Governance Cadence), 2 blank downloadable templates, 1 companion .docx narrative. MBR Warehouse card added as first card in grid. TBA placeholder card added as last card. Warehouse card limit overridden from 8 to 10. Collapsed card padding tightened with hover transition.
-**Rationale:** New case study showcasing unified reporting infrastructure build across 13 marketing functions and 10+ data platforms for a $1B+ organization. Demonstrates strategic operations and governance methodology capabilities.
+**Rationale:** New case study showcasing unified reporting infrastructure build across a full omni-channel marketing operation. Demonstrates strategic operations and governance methodology capabilities.
 **Operator:** Angie Bailey + Claude via Cowork
 
 ### 2026-04-25 — Site Architecture Overhaul + Verdict Essays + L&D Landing Page
