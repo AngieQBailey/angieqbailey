@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#121A28;">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SOP Playbook Builder: a four-pass system for turning expert knowledge into instructions that actually transfer. Step 3 of 3 in the Hello, World AI Implementation Toolkit.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <meta property="og:title" content="SOP Playbook Builder // Hello, World Step 3 // Angie Bailey">
+    <meta property="og:description" content="'Just write down what you do' captures about half of what you actually do. This system catches the other half.">
+    <meta property="og:type" content="article">
+    <title>SOP Playbook Builder // Hello, World Step 3 // Angie Bailey</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        /* SOP Playbook Builder — page-specific styles */
+
+        .sop-header {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 8rem;
+            padding-bottom: 4rem;
+        }
+
+        .sop-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--quetzal-bright);
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.4s both;
+        }
+
+        .sop-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.5s both;
+        }
+
+        .sop-header h1 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2.5rem, 7vw, 6rem);
+            font-weight: 900;
+            line-height: 0.9;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+
+        .sop-header h1 .accent-word {
+            color: var(--rosso);
+        }
+
+        .sop-lede {
+            border-left: 5px solid var(--cacao);
+            padding-left: 2rem;
+            max-width: 600px;
+            animation: fade-up 0.8s ease 0.8s both;
+        }
+
+        .sop-lede p {
+            font-size: 1.15rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+        }
+
+        /* The Problem */
+        .sop-section {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .sop-section .section-body p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--ecru-dim);
+            margin-bottom: 1.5rem;
+            max-width: 650px;
+        }
+
+        .sop-section .section-body p strong {
+            color: var(--ecru);
+            font-weight: 500;
+        }
+
+        /* Pass cards */
+        .pass-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2px;
+            margin-top: 1.5rem;
+        }
+
+        .pass-card {
+            background: rgba(0, 104, 94, 0.10);
+            padding: 2rem 1.75rem;
+            position: relative;
+            transition: background 0.3s ease;
+        }
+
+        .pass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--quetzal-bright);
+            transition: width 0.4s ease;
+        }
+
+        .pass-card:hover {
+            background: rgba(0, 104, 94, 0.18);
+        }
+
+        .pass-card:hover::before {
+            width: 100%;
+        }
+
+        .pass-number {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.5rem;
+        }
+
+        .pass-title {
+            font-family: 'Imbue', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 1.15;
+            margin-bottom: 0.75rem;
+        }
+
+        .pass-desc {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.5;
+        }
+
+        .pass-catch {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--quetzal-bright);
+            margin-top: 0.75rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(0, 168, 150, 0.2);
+        }
+
+        /* Gap tags */
+        .tag-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2px;
+            margin-top: 1.5rem;
+        }
+
+        .gap-tag-card {
+            background: rgba(245, 245, 220, 0.06);
+            padding: 1.5rem 1.5rem;
+            border-left: 3px solid var(--cacao);
+        }
+
+        .gap-tag-name {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .gap-tag-meaning {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.5;
+        }
+
+        /* Resource links */
+        .resource-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            margin-top: 1.5rem;
+        }
+
+        .resource-link {
+            background: rgba(0, 104, 94, 0.10);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            transition: background 0.3s ease;
+            position: relative;
+        }
+
+        .resource-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--quetzal-bright);
+            transition: width 0.4s ease;
+        }
+
+        .resource-link:hover {
+            background: rgba(0, 104, 94, 0.18);
+        }
+
+        .resource-link:hover::before {
+            width: 100%;
+        }
+
+        .resource-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resource-type {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.25rem;
+        }
+
+        .resource-name {
+            font-family: 'Imbue', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 1.15;
+        }
+
+        .resource-desc {
+            font-size: 0.8rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            margin-top: 0.25rem;
+        }
+
+        .resource-cta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--quetzal-bright);
+            letter-spacing: 0.05em;
+            flex-shrink: 0;
+            margin-left: 2rem;
+        }
+
+        /* Back link */
+        .sop-footer {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            border-top: 1px solid var(--ecru-ghost);
+            margin-top: 2rem;
+        }
+
+        .sop-footer p {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--ecru-dim);
+            letter-spacing: 0.03em;
+            line-height: 1.7;
+            max-width: 650px;
+            opacity: 0.6;
+        }
+
+        .back-nav {
+            display: inline-block;
+            margin-top: 1.5rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--quetzal-bright);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: color 0.2s ease;
+        }
+
+        .back-nav:hover {
+            color: var(--ecru);
+        }
+
+        @media (max-width: 600px) {
+            .resource-link {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+            .resource-cta {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body style="background-color: #121A28;">
+
+<div class="blueprint-overlay" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true"></div>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
+    <ul class="nav-links">
+        <li><a href="/#investigation">Investigation</a></li>
+        <li><a href="/#warehouse">Warehouse</a></li>
+        <li><a href="/#rnd">R&D</a></li>
+        <li><a href="/#lnd">L&D</a></li>
+        <li><a href="/#verdict">Verdict</a></li>
+        <li><a href="/#debrief">Debrief</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- HEADER -->
+    <section class="sop-header section-content">
+        <span class="sop-meta">Hello, World // Step 03 of 03</span>
+        <span class="sop-tag">Process Documentation</span>
+        <h1>SOP Playbook<br><span class="accent-word">Builder</span></h1>
+
+        <div class="sop-lede">
+            <p>
+                You were told to "just write down what you do." You sat down. You typed three steps. You stared at the screen. You thought, "that can't be right." It wasn't. The gap between what you write and what you actually do is where every SOP falls apart. This system closes that gap.
+            </p>
+        </div>
+    </section>
+
+    <!-- THE TWO PROBLEMS -->
+    <section class="sop-section section-content reveal">
+        <span class="section-label">The Problem</span>
+        <h2>Why<br>"Write It Down"<br>Fails</h2>
+
+        <div class="section-body">
+            <p>
+                Two structural problems make process documentation harder than it sounds. <strong>First, you leave things out without realizing it.</strong> When you know something well enough, your brain stops flagging the intermediate steps. You write "make the sauce" when what you actually do involves checking the consistency, adjusting the heat three times and tasting at a specific point. The compression is invisible to you because it feels like one step.
+            </p>
+            <p>
+                <strong>Second, you can't see your own autopilot.</strong> Some of what you do happens so fast and so automatically that you don't register it as a decision. You glance at something before starting. You make a split-second call about which approach to take. You sense when something is "off" before you can explain why. You can't document what you can't observe yourself doing.
+            </p>
+            <p>
+                These two problems compound. You compress without knowing it AND you can't observe large portions of what you do. The result is SOPs that are approximately 40-60% complete while appearing 100% complete. The missing portion is precisely the part that makes the difference between expert execution and someone following instructions and failing in ways they can't explain.
+            </p>
+        </div>
+    </section>
+
+    <!-- THE FOUR PASSES -->
+    <section class="sop-section section-content reveal">
+        <span class="section-label">The System</span>
+        <h2>Four<br>Passes</h2>
+
+        <div class="section-body">
+            <p>
+                One pass catches about half of it. The conscious half. The part you'd tell a colleague over coffee. The other half lives in your hands, your peripheral vision, your pattern recognition. Four passes, each with a different lens, surface what one pass structurally cannot.
+            </p>
+        </div>
+
+        <div class="pass-grid">
+            <div class="pass-card">
+                <div class="pass-number">Pass 01</div>
+                <div class="pass-title">Write What<br>You Do</div>
+                <div class="pass-desc">Write out every step from start to finish. The key discipline: if any single step takes longer than 5 minutes, it contains hidden sub-steps. Pull them apart.</div>
+                <div class="pass-catch">Catches: ~40-60% of the process. The conscious, articulable portion.</div>
+            </div>
+
+            <div class="pass-card">
+                <div class="pass-number">Pass 02</div>
+                <div class="pass-title">Describe What<br>Wrong Looks Like</div>
+                <div class="pass-desc">For each step, describe failure instead of success. You might struggle to articulate what makes a good email, but you can spot a bad one immediately. Use that instinct.</div>
+                <div class="pass-catch">Catches: Your implicit quality standards. The invisible line between "done" and "good."</div>
+            </div>
+
+            <div class="pass-card">
+                <div class="pass-number">Pass 03</div>
+                <div class="pass-title">Watch Yourself<br>Work</div>
+                <div class="pass-desc">Perform the process in real time while narrating every micro-decision, hesitation and environmental check. Then compare what you said against what you wrote in Pass 01. Everything in Pass 03 that isn't in Pass 01 is the invisible work.</div>
+                <div class="pass-catch">Catches: The other 40-60%. The autopilot layer. The most valuable part of your SOP.</div>
+            </div>
+
+            <div class="pass-card">
+                <div class="pass-number">Pass 04</div>
+                <div class="pass-title">Map Your<br>If/Then Decisions</div>
+                <div class="pass-desc">Take every "I just know" moment from Pass 03 and force it into an explicit WHEN/IF/THEN structure. Your instincts aren't magic. They're patterns you've seen so many times your brain processes them instantly.</div>
+                <div class="pass-catch">Catches: The decision logic experts have internalized to the point of invisibility.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GAP TAGS -->
+    <section class="sop-section section-content reveal">
+        <span class="section-label">Honest Incompleteness</span>
+        <h2>Gap<br>Tags</h2>
+
+        <div class="section-body">
+            <p>
+                You will have places where your instructions are incomplete. Mark those places so the person following your SOP knows where the exposure is. An SOP with zero tags is almost certainly lying about its completeness.
+            </p>
+        </div>
+
+        <div class="tag-grid">
+            <div class="gap-tag-card">
+                <div class="gap-tag-name">[Simplified]</div>
+                <div class="gap-tag-meaning">Intentional simplification. What was omitted is documented.</div>
+            </div>
+            <div class="gap-tag-card">
+                <div class="gap-tag-name">[Can't Explain Yet]</div>
+                <div class="gap-tag-meaning">Knowledge the expert cannot yet articulate. Executor should consult the process owner.</div>
+            </div>
+            <div class="gap-tag-card">
+                <div class="gap-tag-name">[It Depends]</div>
+                <div class="gap-tag-meaning">Step varies by conditions not fully mapped. Known variations listed, others exist.</div>
+            </div>
+            <div class="gap-tag-card">
+                <div class="gap-tag-name">[Human Call]</div>
+                <div class="gap-tag-meaning">Requires human judgment that cannot be codified. AI executors: stop and escalate.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section class="sop-section section-content reveal">
+        <span class="section-label">The Toolkit</span>
+        <h2>Pick<br>Your Version</h2>
+
+        <div class="section-body">
+            <p>
+                Two versions exist. Same structure, same rigor, different vocabulary. The plain language edition is written at a high-school reading level for anyone running this system for the first time. The pro edition uses the full technical vocabulary for instructional designers, ops architects and advanced users. Both produce compatible outputs.
+            </p>
+        </div>
+
+        <div class="resource-grid">
+            <a href="assets/plain-language-guide.html" class="resource-link">
+                <div class="resource-info">
+                    <div class="resource-type">Builder Guide</div>
+                    <div class="resource-name">Plain Language Edition</div>
+                    <div class="resource-desc">How to turn something you know how to do into instructions someone else can follow. No jargon.</div>
+                </div>
+                <div class="resource-cta">View Guide &rarr;</div>
+            </a>
+
+            <a href="assets/pro-guide.html" class="resource-link">
+                <div class="resource-info">
+                    <div class="resource-type">Builder Guide</div>
+                    <div class="resource-name">Pro Edition</div>
+                    <div class="resource-desc">The full 4-Layer Capture Stack with technical vocabulary. For instructional designers and ops architects.</div>
+                </div>
+                <div class="resource-cta">View Guide &rarr;</div>
+            </a>
+
+            <a href="assets/templates/capture-template-blank.html" class="resource-link">
+                <div class="resource-info">
+                    <div class="resource-type">Capture Template</div>
+                    <div class="resource-name">Plain Language Template</div>
+                    <div class="resource-desc">Fillable template with vocabulary matched to the plain language guide. Print or save as PDF.</div>
+                </div>
+                <div class="resource-cta">View Template &rarr;</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <section class="sop-footer section-content">
+        <p>Sources: Rachel Woods / AI Exchange (Quickstart Playbook Template, SMMW 2025). Core invention: the 4-Layer Capture Stack (semantic compression and proprioceptive labor as the two structural failure modes of process documentation).</p>
+        <a href="/hello-world/" class="back-nav">&larr; Back to Hello, World</a>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <span>&copy; 2026 Angie Bailey</span>
+    </div>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
