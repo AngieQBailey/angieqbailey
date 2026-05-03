@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#121A28;">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SOP Playbook Builder // Pro Edition. A four-layer capture stack for converting human process knowledge into executable standard operating procedures. Covers Semantic Compression, Proprioceptive Labor, Conscious Narration, Failure Forensics, Self-Shadowing and Decision Tree Extraction.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <meta property="og:title" content="SOP Playbook Builder // Pro Edition // Angie Bailey">
+    <meta property="og:description" content="From human process to executable SOP. Four layers, technical vocabulary, compression markers.">
+    <meta property="og:type" content="article">
+    <title>SOP Playbook Builder // Pro Edition // Angie Bailey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit:     #121A28;
+            --cacao:    #2D1B14;
+            --quetzal:  #00685E;
+            --quetzal-bright: #00A896;
+            --ecru:     #F5F5DC;
+            --rosso:    #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        ::selection { background: var(--rosso); color: var(--ecru); }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+        body {
+            background-color: var(--nuit); color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif; font-weight: 400;
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale; overflow-x: hidden;
+        }
+
+        .blueprint-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-fade 2s ease 0.5s both;
+        }
+
+        .spine {
+            position: fixed; left: calc(var(--spine-left) - 40px);
+            top: 0; width: 4px; height: 100%;
+            background-color: var(--cacao); z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .nav-bar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--quetzal-bright); text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 400; color: var(--ecru-dim); text-decoration: none;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            transition: color 0.2s ease; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--rosso);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--ecru); }
+        .nav-links a:hover::after { width: 100%; }
+
+        main { position: relative; z-index: 10; }
+        .doc-content {
+            padding-left: var(--spine-left); padding-right: 4rem; max-width: 1200px;
+        }
+
+        .doc-header {
+            min-height: 50vh; display: flex; flex-direction: column;
+            justify-content: center; padding-top: 8rem; padding-bottom: 3rem;
+        }
+        .doc-meta {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--quetzal-bright); letter-spacing: 0.1em; margin-bottom: 2rem;
+            display: block; animation: fade-up 0.8s ease 0.4s both;
+        }
+        .doc-header h1 {
+            font-family: 'Imbue', serif; font-size: clamp(2.2rem, 6vw, 5rem);
+            font-weight: 900; line-height: 0.9; color: var(--ecru);
+            text-transform: uppercase; letter-spacing: -0.02em;
+            margin-bottom: 2rem; max-width: 650px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+        .doc-header h1 .accent-word { color: var(--rosso); }
+        .doc-lede {
+            border-left: 5px solid var(--rosso); padding-left: 2rem;
+            max-width: 600px; animation: fade-up 0.8s ease 0.8s both;
+        }
+        .doc-lede p {
+            font-size: 1.1rem; font-weight: 300; line-height: 1.7; color: var(--ecru-dim);
+        }
+        .doc-lede strong { color: var(--ecru); font-weight: 500; }
+
+        .doc-section {
+            padding-top: 2.5rem; padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 0.5rem; display: block;
+        }
+        h2 {
+            font-family: 'Imbue', serif; font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 900; color: var(--ecru); text-transform: uppercase;
+            line-height: 0.95; letter-spacing: -0.01em; margin-bottom: 2.5rem;
+        }
+        .doc-body p {
+            font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+            color: var(--ecru-dim); margin-bottom: 1.5rem; max-width: 650px;
+        }
+        .doc-body p strong { color: var(--ecru); font-weight: 500; }
+
+        .pass-card {
+            background: rgba(245, 245, 220, 0.14); padding: 2rem 1.75rem;
+            margin-bottom: 2px; max-width: 750px;
+        }
+        .pass-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 0.75rem; display: block;
+        }
+        .pass-title {
+            font-family: 'Imbue', serif; font-size: clamp(1.4rem, 3vw, 1.8rem);
+            font-weight: 900; color: var(--ecru); text-transform: uppercase;
+            line-height: 0.95; margin-bottom: 1rem;
+        }
+        .pass-body p {
+            font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim);
+            line-height: 1.7; margin-bottom: 1rem; max-width: 650px;
+        }
+        .pass-body p strong { color: var(--ecru); font-weight: 500; }
+        .pass-body ul {
+            list-style: none; padding: 0; margin: 1rem 0;
+        }
+        .pass-body ul li {
+            font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim);
+            line-height: 1.6; padding: 0.4rem 0; padding-left: 1rem;
+            border-top: 1px solid var(--ecru-ghost); position: relative;
+        }
+        .pass-body ul li::before {
+            content: ''; position: absolute; left: 0; top: 50%;
+            width: 4px; height: 4px; background: var(--quetzal-bright);
+        }
+        .pass-body ul li strong { color: var(--ecru); font-weight: 500; }
+        .pass-catches {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--quetzal-bright); margin-top: 1rem;
+        }
+
+        .setup-item {
+            padding: 1.25rem 0; border-bottom: 1px solid var(--ecru-ghost);
+            max-width: 650px;
+        }
+        .setup-item:first-child { border-top: 1px solid var(--ecru-ghost); }
+        .setup-num {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); margin-bottom: 0.25rem;
+        }
+        .setup-question {
+            font-size: 1rem; font-weight: 400; color: var(--ecru); line-height: 1.4;
+        }
+        .setup-detail {
+            font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim);
+            margin-top: 0.25rem; line-height: 1.5;
+        }
+
+        .example-block {
+            border-left: 3px solid var(--cacao); padding: 1.5rem;
+            margin: 1.5rem 0; max-width: 650px;
+            background: rgba(245, 245, 220, 0.05);
+        }
+        .example-block p {
+            font-size: 0.9rem; font-weight: 300; color: var(--ecru-dim);
+            line-height: 1.6; margin-bottom: 0.75rem;
+        }
+        .example-block p:last-child { margin-bottom: 0; }
+        .example-block strong { color: var(--ecru); font-weight: 500; }
+
+        .core-principle {
+            border-left: 4px solid var(--rosso); padding: 2rem;
+            background: rgba(245, 245, 220, 0.14); margin: 2.5rem 0; max-width: 650px;
+        }
+        .core-principle p {
+            font-size: 1.05rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.7;
+        }
+        .core-principle strong { color: var(--ecru); font-weight: 500; }
+
+        .gap-tag-item {
+            background: rgba(245, 245, 220, 0.14); padding: 1.25rem 1.5rem;
+            margin-bottom: 2px; max-width: 650px;
+        }
+        .gap-tag-name {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); margin-bottom: 0.25rem;
+        }
+        .gap-tag-desc {
+            font-size: 0.9rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.5;
+        }
+
+        .ref-step {
+            padding: 0.6rem 0; border-bottom: 1px solid var(--ecru-ghost);
+            display: flex; gap: 1rem; align-items: baseline; max-width: 650px;
+        }
+        .ref-step:first-child { border-top: 1px solid var(--ecru-ghost); }
+        .ref-num {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); min-width: 2rem;
+        }
+        .ref-text {
+            font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.5;
+        }
+        .ref-text strong { color: var(--ecru); font-weight: 500; }
+
+        /* SOP Structure Fields */
+        .field-list {
+            list-style: none; padding: 0; margin: 1rem 0; max-width: 650px;
+        }
+        .field-list li {
+            font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim);
+            line-height: 1.6; padding: 0.6rem 0; border-top: 1px solid var(--ecru-ghost);
+            padding-left: 1rem; position: relative;
+        }
+        .field-list li::before {
+            content: ''; position: absolute; left: 0; top: 50%;
+            width: 4px; height: 4px; background: var(--quetzal-bright);
+        }
+        .field-list li strong { color: var(--ecru); font-weight: 500; }
+
+        /* Deployment Cards */
+        .deploy-card {
+            background: rgba(245, 245, 220, 0.14); padding: 1.5rem 1.75rem;
+            margin-bottom: 2px; max-width: 750px;
+        }
+        .deploy-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); text-transform: uppercase;
+            letter-spacing: 0.1em; margin-bottom: 0.5rem; display: block;
+        }
+        .deploy-body {
+            font-size: 0.9rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.6;
+        }
+        .deploy-body strong { color: var(--ecru); font-weight: 500; }
+
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+            color: var(--ecru-dim); text-decoration: none; text-transform: uppercase;
+            letter-spacing: 0.1em; transition: color 0.2s ease; margin-top: 3rem;
+        }
+        .back-link::before {
+            content: ''; display: block; width: 24px; height: 2px;
+            background: var(--quetzal); transition: width 0.3s ease, background 0.3s ease;
+        }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .footer-content {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 1200px;
+        }
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); letter-spacing: 0.05em;
+        }
+
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            :root { --spine-left: 2rem; }
+            .doc-content { padding-right: 2rem; }
+            .nav-bar { padding: 1rem 1.5rem; }
+            .nav-links { gap: 1rem; }
+        }
+        @media (max-width: 500px) {
+            .nav-links a { font-size: 0.75rem; }
+            .doc-header h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body style="background-color: #121A28;">
+    <div class="blueprint-overlay"></div>
+    <div class="spine"></div>
+
+    <nav class="nav-bar" role="navigation" aria-label="Primary">
+        <a href="/hello-world/sop-playbook-builder/" class="nav-mark" style="text-decoration: none;">
+            &larr; SOP Playbook Builder
+        </a>
+        <ul class="nav-links">
+            <li><a href="/">Main Site</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <header class="doc-header doc-content">
+            <span class="doc-meta">Builder Guide // Pro Edition</span>
+            <h1>SOP Playbook<br><span class="accent-word">Builder</span></h1>
+            <div class="doc-lede">
+                <p>From human process to executable standard operating procedure. <strong>A four-layer capture stack</strong> for converting what lives in your head, your hands and your habits into documentation that someone (or something) else can run.</p>
+            </div>
+        </header>
+
+        <!-- THE TWO PROBLEMS -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">The Structural Failure</span>
+            <h2>The Two Problems<br>Nobody Talks About</h2>
+            <div class="doc-body">
+                <p>Most SOP guides tell you to "write down what you do, step by step." That advice is technically correct and practically useless. It fails because of two problems that compound each other.</p>
+            </div>
+            <div class="core-principle">
+                <p><strong>Problem 1: Semantic Compression.</strong> When you translate a rich, contextual, multi-sensory process into linear written instructions, you lose information. A lot of it. Think about it this way. You're a chef who's been making a particular dish for ten years. Someone asks you to write the recipe. You write "sear the steak until browned." But what you actually do involves: assessing the marbling to decide how hot the pan needs to be, listening to the sound of the sizzle to know if the pan was hot enough, watching the color change at the edge of the meat, pressing the surface to gauge doneness by resistance and making a split-second call about when the Maillard reaction has gone far enough based on smell. "Sear until browned" compresses all of that into three words. The gap between what you write and what you actually do is the compression gap, and it's where SOPs go to die.</p>
+            </div>
+            <div class="core-principle" style="margin-top: 2px;">
+                <p><strong>Problem 2: Proprioceptive Labor.</strong> Proprioception is your body's awareness of itself in space. Proprioceptive labor is the cognitive equivalent: the invisible work your brain does automatically because you've done this process so many times. It includes pattern recognition you can't articulate ("this lead feels off"), environmental scanning you don't notice you're doing ("I always check Slack before starting this"), quality assessments that happen below conscious awareness ("something about this draft isn't right") and branching decisions you make so fast they feel like instinct rather than logic. You can't write down what you can't see yourself doing.</p>
+            </div>
+        </section>
+
+        <!-- SCOPE THE PROCESS -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Before You Start</span>
+            <h2>Scope the<br>Process</h2>
+            <div class="doc-body">
+                <p>Before capturing anything, answer five questions. Write the answers down... they become the header of your SOP.</p>
+            </div>
+            <div class="setup-item">
+                <div class="setup-num">01</div>
+                <div class="setup-question">What is the goal?</div>
+                <div class="setup-detail">State the outcome in one sentence. Not what you do, but what's true when you're done. "The client receives a qualified lead report with a fit/no-fit recommendation and supporting evidence" is a goal. "Process incoming leads" is not.</div>
+            </div>
+            <div class="setup-item">
+                <div class="setup-num">02</div>
+                <div class="setup-question">What triggers this process?</div>
+                <div class="setup-detail">What event, signal or condition causes you to start? Time-based ("every Monday morning"), event-based ("when a new lead enters the CRM") or request-based ("when a client asks for a deliverable"). "When needed" is not a trigger.</div>
+            </div>
+            <div class="setup-item">
+                <div class="setup-num">03</div>
+                <div class="setup-question">What inputs do you need before you can start?</div>
+                <div class="setup-detail">Every piece of information, access, file or resource you need in hand before step one. If you frequently start and then realize you're missing something, that thing is an input you forgot to list.</div>
+            </div>
+            <div class="setup-item">
+                <div class="setup-num">04</div>
+                <div class="setup-question">What does done look like?</div>
+                <div class="setup-detail">Not just the format (a document, an email, a dashboard update) but the qualities it must have. "A 2-page brief with three strategic recommendations, each supported by at least one data point, written in the client's preferred terminology" is a done state.</div>
+            </div>
+            <div class="setup-item">
+                <div class="setup-num">05</div>
+                <div class="setup-question">Who (or what) will execute this?</div>
+                <div class="setup-detail">A human with domain expertise needs less scaffolding than a human without it. An AI agent needs the most explicit instructions of all but also benefits from examples and constraints more than narrative explanation. Design for the least-context executor you'll use.</div>
+            </div>
+        </section>
+
+        <!-- THE 4-LAYER CAPTURE STACK -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">The System</span>
+            <h2>The 4-Layer<br>Capture Stack</h2>
+            <div class="doc-body">
+                <p>You will run through your process four times, each time with a different lens. Each layer captures something the others miss. Skipping layers produces SOPs with invisible holes.</p>
+            </div>
+
+            <!-- LAYER 1 -->
+            <div class="pass-card">
+                <span class="pass-label">Layer 1</span>
+                <div class="pass-title">Conscious Narration</div>
+                <div class="pass-body">
+                    <p><strong>What you're doing:</strong> Writing out the process as you'd naturally describe it to a competent peer.</p>
+                    <p>Sit down and write out every step from trigger to done state. Don't overthink it. Write the way you'd explain it to someone smart who's never done this specific task.</p>
+                    <p>The key discipline here is <strong>granularity.</strong> If you think your process has 3 steps, it probably has 8-12. A useful test: if a step takes you more than 5 minutes to do, it's probably multiple steps compressed into one. Break it apart.</p>
+                    <p>For each step, write:</p>
+                    <ul>
+                        <li>What you do (the instruction)</li>
+                        <li>What you're trying to achieve (the purpose)</li>
+                        <li>What the output of this step looks like (the deliverable)</li>
+                    </ul>
+                    <p>Don't worry about being perfect. This is Layer 1... it's supposed to have gaps. The next three layers exist specifically to find and fill those gaps.</p>
+                </div>
+                <div class="pass-catches">What this captures: The conscious, articulable portion of your process... typically 40-60% of what you actually do.</div>
+            </div>
+
+            <!-- LAYER 2 -->
+            <div class="pass-card">
+                <span class="pass-label">Layer 2</span>
+                <div class="pass-title">Failure Forensics</div>
+                <div class="pass-body">
+                    <p><strong>What you're doing:</strong> For each step, describing what wrong looks like instead of what right looks like.</p>
+                    <p><strong>Why this works:</strong> Experts struggle to articulate their quality standards in the positive ("what makes this good") but can easily recognize and describe failure ("this is wrong because..."). Failure patterns are more salient, more specific and more actionable than success descriptions.</p>
+                    <p>Go through each step from Layer 1 and answer:</p>
+                    <ul>
+                        <li>What does a bad version of this step's output look like? Describe 2-3 specific failure modes.</li>
+                        <li>What's the most common mistake someone new makes here?</li>
+                        <li>What would make you redo this step if you saw the output?</li>
+                        <li>Is there a failure here that's subtle enough that someone might not catch it and it causes problems downstream?</li>
+                    </ul>
+                    <p>Write these as "If you see X, that means Y went wrong" statements. These become your success criteria (inverted) and your quality gates.</p>
+                </div>
+                <div class="example-block">
+                    <p><strong>Example:</strong></p>
+                    <p>Step: "Draft the executive summary"</p>
+                    <p>Layer 1 instruction: "Summarize the key findings in 3-4 paragraphs for a senior audience"</p>
+                    <p>Layer 2 failure modes:</p>
+                    <p>"If the summary is longer than half a page, you included too much detail... it should be findings and implications only, not methodology"</p>
+                    <p>"If every paragraph starts with 'The data shows,' you're writing a report, not a summary... lead with the business implication, not the data"</p>
+                    <p>"If someone who hasn't read the full report can't make a decision from the summary alone, it's missing the 'so what'"</p>
+                </div>
+                <div class="pass-catches">What this captures: Implicit quality standards, edge cases and the difference between "technically correct" and "actually good."</div>
+            </div>
+
+            <!-- LAYER 3 -->
+            <div class="pass-card">
+                <span class="pass-label">Layer 3</span>
+                <div class="pass-title">Self-Shadowing</div>
+                <div class="pass-body">
+                    <p><strong>What you're doing:</strong> Actually performing the process in real time while narrating every micro-decision, hesitation and environmental check you make.</p>
+                    <p><strong>This is the most important layer.</strong> It's also the most uncomfortable, because it forces you to watch yourself think.</p>
+                    <p>Set up a way to capture your narration while you work:</p>
+                    <ul>
+                        <li>Voice memo on your phone (transcribe later)</li>
+                        <li>Screen recording with audio narration</li>
+                        <li>A colleague watching you work and writing down what they see you do that isn't in your Layer 1 writeup</li>
+                        <li>A running notes document open next to your work</li>
+                    </ul>
+                    <p>Then do the process for real. Not hypothetically. Not from memory. Actually do it, start to finish, while narrating:</p>
+                    <ul>
+                        <li>"I'm checking X before I start because..."</li>
+                        <li>"I'm pausing here because something doesn't look right... specifically..."</li>
+                        <li>"I just skipped ahead to check Y before continuing because..."</li>
+                        <li>"I almost did X but then changed my mind because..."</li>
+                        <li>"I'm going back to adjust the thing from step 2 because now that I see step 4's output..."</li>
+                    </ul>
+                    <p><strong>The Delta Protocol:</strong> After self-shadowing, compare your Layer 3 narration against your Layer 1 writeup. Every action, check or decision that appears in Layer 3 but not Layer 1 is part of the proprioceptive layer... the invisible work you do automatically.</p>
+                    <p>This delta is the most valuable part of your SOP. Common things that surface:</p>
+                    <ul>
+                        <li>Pre-checks you run before starting a step (environmental scanning)</li>
+                        <li>Quality micro-assessments between steps (is this good enough to proceed?)</li>
+                        <li>Conditional branches you take without thinking</li>
+                        <li>Tool switches or workarounds you've developed</li>
+                        <li>Reference materials you consult that aren't in your instructions</li>
+                        <li>Backtracking patterns (going back to revise earlier work based on later discoveries)</li>
+                    </ul>
+                </div>
+                <div class="pass-catches">What this captures: The 40-60% of your process that lives below conscious awareness... the proprioceptive labor.</div>
+            </div>
+
+            <!-- LAYER 4 -->
+            <div class="pass-card">
+                <span class="pass-label">Layer 4</span>
+                <div class="pass-title">Decision Tree Extraction</div>
+                <div class="pass-body">
+                    <p><strong>What you're doing:</strong> Taking every "I just know" moment from Layer 3 and forcing it into explicit if/then logic.</p>
+                    <p><strong>Why this matters:</strong> Tacit knowledge isn't magic. It's pattern recognition that's been repeated so many times it's become automatic. The patterns ARE logical... you've just stopped seeing the logic. Decision tree extraction makes that logic visible, testable and teachable.</p>
+                    <p>Take each proprioceptive item from Layer 3's delta and ask:</p>
+                    <ul>
+                        <li>What am I actually looking at when I make this judgment? (The input signal)</li>
+                        <li>What are the possible states of that signal? (The conditions)</li>
+                        <li>What do I do differently based on each state? (The branches)</li>
+                        <li>What happens if I get it wrong? (The stakes... this helps calibrate how much precision the rule needs)</li>
+                    </ul>
+                    <p>Structure each one as:</p>
+                    <p><strong>WHEN</strong> [situation/signal] <strong>IF</strong> [condition A] &rarr; <strong>THEN</strong> [action A] <strong>IF</strong> [condition B] &rarr; <strong>THEN</strong> [action B] <strong>ELSE</strong> &rarr; [default action] <strong>STAKES:</strong> [what goes wrong if this decision is wrong]</p>
+                    <p>Not every judgment call will reduce cleanly to rules. That's fine. For the ones that resist, use Compression Markers (next section) to flag them honestly rather than pretending they don't exist.</p>
+                </div>
+                <div class="pass-catches">What this captures: The decision logic that experts have internalized to the point of invisibility.</div>
+            </div>
+        </section>
+
+        <!-- COMPRESSION MARKERS -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Honest Incompleteness</span>
+            <h2>Compression<br>Markers</h2>
+            <div class="doc-body">
+                <p>Semantic compression is inevitable. The goal isn't to eliminate it... it's to compress deliberately, marking where fidelity was lost so future users (or future you) know where the SOP is approximating rather than specifying.</p>
+            </div>
+            <div class="gap-tag-item">
+                <div class="gap-tag-name">[COMPRESSED]</div>
+                <div class="gap-tag-desc">"I simplified this section intentionally. Here's what I left out: ___." Use when you've deliberately reduced complexity for readability or because the full version would be too long. Include a note about what was compressed and where to find the full version if needed.</div>
+            </div>
+            <div class="gap-tag-item">
+                <div class="gap-tag-name">[TACIT]</div>
+                <div class="gap-tag-desc">"There's knowledge here I can't fully articulate yet." Use when Layer 3 surfaced something you do but Layer 4 couldn't reduce it to rules. This is an honest acknowledgment that the SOP is incomplete at this point. It tells the executor: "You may need to ask the expert for guidance here until this gets resolved."</div>
+            </div>
+            <div class="gap-tag-item">
+                <div class="gap-tag-name">[CONTEXT-DEPENDENT]</div>
+                <div class="gap-tag-desc">"This step changes based on conditions I haven't fully mapped." Use when you know the step varies but haven't catalogued all the variations. Include the variations you have identified and a note that others exist.</div>
+            </div>
+            <div class="gap-tag-item">
+                <div class="gap-tag-name">[JUDGMENT CALL]</div>
+                <div class="gap-tag-desc">"This requires human judgment that I haven't reduced to rules." Use when the decision genuinely requires expertise, taste or political awareness that can't be codified. This marker explicitly tells AI executors: "stop and escalate to a human here."</div>
+            </div>
+            <div class="doc-body" style="margin-top: 1.5rem;">
+                <p><strong>These markers aren't failures. They're the most honest parts of your SOP.</strong> An SOP with no compression markers is almost certainly lying about its completeness.</p>
+            </div>
+        </section>
+
+        <!-- STRUCTURING THE SOP -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Assembly</span>
+            <h2>Structuring<br>the SOP</h2>
+            <div class="doc-body">
+                <p>Once you've run all four layers, you have raw material. Structure it into the companion template. Each step includes fields for:</p>
+                <ul class="field-list">
+                    <li><strong>Step Name</strong> ... A verb-first action label. "Qualify the lead" not "Lead qualification."</li>
+                    <li><strong>Instructions</strong> ... Your Layer 1 narration, refined. Write for the least-context executor you'll use.</li>
+                    <li><strong>Failure Modes</strong> ... Your Layer 2 output. 2-4 specific ways this step goes wrong.</li>
+                    <li><strong>Proprioceptive Notes</strong> ... Your Layer 3 delta items for this step. The things you do that you wouldn't have written down.</li>
+                    <li><strong>Decision Logic</strong> ... Your Layer 4 if/then structures for this step.</li>
+                    <li><strong>Success Criteria</strong> ... Inverted from your failure modes. "The step is done correctly when [none of the failure modes are present] AND [these positive conditions are met]."</li>
+                    <li><strong>Example</strong> ... One good output and one bad output. The contrast is more instructive than either alone.</li>
+                    <li><strong>Response Format</strong> ... What the output of this step should look like structurally. A template, a schema, a sample.</li>
+                    <li><strong>Compression Markers</strong> ... Any [COMPRESSED], [TACIT], [CONTEXT-DEPENDENT] or [JUDGMENT CALL] flags for this step, with notes.</li>
+                    <li><strong>Configuration Notes</strong> ... Tool links, automation references, environment setup. The "where and how" rather than the "what."</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- TESTING -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Validation</span>
+            <h2>Testing and<br>Validation</h2>
+            <div class="doc-body">
+                <p><strong>An SOP you haven't tested is a hypothesis, not a procedure.</strong></p>
+            </div>
+            <div class="pass-card">
+                <span class="pass-label">Test 1</span>
+                <div class="pass-title">Cold Run</div>
+                <div class="pass-body">
+                    <p>Give the SOP to someone who has never done this process. Watch them attempt it without helping. Every place they get stuck, ask a question or do something wrong is a gap in your documentation. Fix the SOP, don't coach the person.</p>
+                </div>
+            </div>
+            <div class="pass-card">
+                <span class="pass-label">Test 2</span>
+                <div class="pass-title">Expert Review</div>
+                <div class="pass-body">
+                    <p>Give the SOP to another expert (if one exists). Ask them: "What's missing? What would you do differently? Where would this fail?" Their disagreements with your approach are either errors to fix or legitimate variations to document.</p>
+                </div>
+            </div>
+            <div class="pass-card">
+                <span class="pass-label">Test 3</span>
+                <div class="pass-title">Edge Case Sweep</div>
+                <div class="pass-body">
+                    <p>Think of the three weirdest, most unusual instances of this process you've ever encountered. Walk through the SOP with each one. If the SOP doesn't handle them, decide: add a branch, or add a [CONTEXT-DEPENDENT] marker with a note about what to do.</p>
+                </div>
+            </div>
+            <div class="pass-card">
+                <span class="pass-label">Test 4</span>
+                <div class="pass-title">AI Dry Run</div>
+                <div class="pass-body">
+                    <p>If this SOP will be used by AI, convert each step into a prompt and run it. The AI's mistakes are diagnostic... they tell you exactly where your instructions are ambiguous, incomplete or assume knowledge that isn't in the SOP.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAKING IT EXECUTABLE -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Deployment</span>
+            <h2>Making It<br>Executable</h2>
+            <div class="doc-body">
+                <p>Once the SOP is stable, you can deploy it in multiple ways. The core principle: <strong>own the SOP, choose the executor.</strong> The process definition is the asset. The execution layer is interchangeable.</p>
+            </div>
+            <div class="deploy-card">
+                <span class="deploy-label">For Human Executors</span>
+                <div class="deploy-body">The SOP as-is should be sufficient. Hand it off with the expectation that they'll flag gaps and you'll refine together.</div>
+            </div>
+            <div class="deploy-card">
+                <span class="deploy-label">For AI Agents (Prompt-Based)</span>
+                <div class="deploy-body">Each step becomes a prompt. The step's <strong>Instructions</strong> become the main directive, <strong>Success Criteria</strong> become the evaluation rubric, <strong>Examples</strong> become few-shot demonstrations and <strong>Response Format</strong> becomes the output schema. [JUDGMENT CALL] markers become "stop and ask the user" instructions.</div>
+            </div>
+            <div class="deploy-card">
+                <span class="deploy-label">For Automation Tools</span>
+                <div class="deploy-body">Each step becomes a module or action in your tool of choice (Zapier, Make, n8n, etc.). <strong>Decision Logic</strong> maps directly to conditional branches. Inputs and outputs map to data flows between modules.</div>
+            </div>
+            <div class="deploy-card">
+                <span class="deploy-label">For Agent Frameworks</span>
+                <div class="deploy-body">The entire SOP can become a system prompt or skill definition. <strong>Compression Markers</strong> help you decide which steps to give the agent autonomy on and which to gate with human review.</div>
+            </div>
+        </section>
+
+        <!-- QUICK REFERENCE -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Reference</span>
+            <h2>Quick<br>Reference</h2>
+            <div class="ref-step">
+                <span class="ref-num">01</span>
+                <span class="ref-text"><strong>Scope</strong> ... Answer the five scoping questions (goal, trigger, inputs, done state, executor)</span>
+            </div>
+            <div class="ref-step">
+                <span class="ref-num">02</span>
+                <span class="ref-text"><strong>Layer 1: Conscious Narration</strong> ... Write out what you think you do</span>
+            </div>
+            <div class="ref-step">
+                <span class="ref-num">03</span>
+                <span class="ref-text"><strong>Layer 2: Failure Forensics</strong> ... Describe what wrong looks like for each step</span>
+            </div>
+            <div class="ref-step">
+                <span class="ref-num">04</span>
+                <span class="ref-text"><strong>Layer 3: Self-Shadowing</strong> ... Do the process while narrating every micro-decision</span>
+            </div>
+            <div class="ref-step">
+                <span class="ref-num">05</span>
+                <span class="ref-text"><strong>Delta Protocol</strong> ... Compare Layer 3 against Layer 1; the gap is the proprioceptive layer</span>
+            </div>
+            <div class="ref-step">
+                <span class="ref-num">06</span>
+                <span class="ref-text"><strong>Layer 4: Decision Tree Extraction</strong> ... Force every "I just know" into if/then logic</span>
+            </div>
+            <div class="ref-step">
+                <span class="ref-num">07</span>
+                <span class="ref-text"><strong>Structure</strong> ... Fill in the companion template with outputs from all four layers</span>
+            </div>
+            <div class="ref-step">
+                <span class="ref-num">08</span>
+                <span class="ref-text"><strong>Mark Compression</strong> ... Add [COMPRESSED], [TACIT], [CONTEXT-DEPENDENT], [JUDGMENT CALL] markers</span>
+            </div>
+            <div class="ref-step">
+                <span class="ref-num">09</span>
+                <span class="ref-text"><strong>Test</strong> ... Cold run, expert review, edge case sweep, AI dry run</span>
+            </div>
+            <div class="ref-step">
+                <span class="ref-num">10</span>
+                <span class="ref-text"><strong>Deploy and Iterate</strong> ... Ship it, use it, improve it, repeat</span>
+            </div>
+
+            <a href="/hello-world/sop-playbook-builder/" class="back-link">Back to SOP Playbook Builder</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <span>&copy; 2026 Angie Bailey</span>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
