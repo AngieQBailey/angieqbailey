@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SOP Playbook Capture Template // Blank Template. Four-pass process documentation worksheet for turning what you know into instructions someone else can follow.">
+    <meta name="author" content="Angie Bailey">
+    <title>SOP Playbook Capture Template // Blank Template // Angie Bailey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit:     #121A28;
+            --cacao:    #2D1B14;
+            --quetzal:  #00685E;
+            --rosso:    #C41E3A;
+            --ecru:     #F5F5DC;
+            --border:   rgba(0, 104, 94, 0.25);
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--ecru);
+            color: var(--nuit);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .template-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2.5rem;
+        }
+
+        .template-type {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--quetzal);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: 'Imbue', serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            line-height: 0.9;
+            color: var(--nuit);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        h1 .accent { color: var(--rosso); }
+
+        .subtitle {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--quetzal);
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+        }
+
+        .instructions {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.6rem;
+            color: var(--nuit);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--ecru);
+            background: var(--nuit);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.6rem 1.25rem;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 2.5rem;
+            transition: background 0.2s ease;
+        }
+
+        .print-btn:hover { background: var(--rosso); }
+
+        /* Section Headers */
+        .section {
+            margin-top: 3rem;
+        }
+
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--quetzal);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-family: 'Imbue', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 0.95;
+            margin-bottom: 1.5rem;
+            color: var(--nuit);
+        }
+
+        /* Info Table */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .info-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+            font-size: 0.85rem;
+        }
+
+        .info-table td:first-child {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--quetzal);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            width: 180px;
+            padding-top: 1.15rem;
+        }
+
+        .info-table td:last-child {
+            color: #555;
+            font-weight: 300;
+            min-height: 2.5rem;
+        }
+
+        /* Step Cards */
+        .step-card {
+            background: rgba(0, 104, 94, 0.06);
+            padding: 2rem;
+            margin-bottom: 2px;
+        }
+
+        .step-num {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            display: block;
+            margin-bottom: 0.35rem;
+        }
+
+        .step-label {
+            font-family: 'Imbue', serif;
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--nuit);
+            text-transform: uppercase;
+            line-height: 1;
+            letter-spacing: -0.01em;
+            margin-bottom: 1.5rem;
+        }
+
+        .field {
+            margin-bottom: 1.5rem;
+        }
+
+        .field:last-child {
+            margin-bottom: 0;
+        }
+
+        .field-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: var(--quetzal);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .field-hint {
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: #888;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .field-area {
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 0;
+            min-height: 2.5rem;
+        }
+
+        .field-area.tall {
+            min-height: 5rem;
+        }
+
+        /* Gap Tag Reference */
+        .tag-ref {
+            margin: 2rem 0;
+            max-width: 700px;
+        }
+
+        .tag-item {
+            padding: 0.75rem 1rem;
+            background: rgba(0, 104, 94, 0.06);
+            margin-bottom: 2px;
+            display: flex;
+            gap: 1rem;
+            align-items: baseline;
+        }
+
+        .tag-name {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            min-width: 140px;
+        }
+
+        .tag-desc {
+            font-size: 0.8rem;
+            font-weight: 300;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        /* Testing Log */
+        .log-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.85rem;
+        }
+
+        .log-table th {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--quetzal);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid var(--cacao);
+        }
+
+        .log-table td {
+            padding: 1.5rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: #555;
+            font-weight: 300;
+            vertical-align: top;
+            min-height: 2.5rem;
+        }
+
+        .log-table tr:hover td {
+            background: rgba(0, 104, 94, 0.04);
+        }
+
+        /* Attribution */
+        .attribution {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.6rem;
+            color: var(--quetzal);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Print Styles */
+        @media print {
+            .print-btn { display: none !important; }
+
+            @page {
+                size: portrait;
+                margin: 0.5in;
+            }
+
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .template-wrapper {
+                padding: 1rem;
+                max-width: none;
+            }
+
+            .step-card {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            .section {
+                break-before: auto;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .template-wrapper { padding: 2rem 1.5rem; }
+            h1 { font-size: 2rem; }
+            .info-table td:first-child { width: 120px; }
+            .tag-item { flex-direction: column; gap: 0.25rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="template-wrapper">
+        <span class="template-type">Blank Template // SOP Capture Worksheet</span>
+        <h1>SOP Playbook<br><span class="accent">Capture</span> Template</h1>
+        <div class="subtitle">Turn what you know into instructions someone else can follow. Four passes. Plain language.</div>
+        <div class="instructions">Complete this template using the SOP Playbook Builder guide. Run all four passes for each step. An SOP with zero gap tags is almost certainly glossing over the hard parts.</div>
+        <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+
+        <!-- PROCESS INFO -->
+        <div class="section">
+            <span class="section-label">Process Metadata</span>
+            <h2>Process Info</h2>
+            <table class="info-table">
+                <tr><td>Process Name</td><td>&nbsp;</td></tr>
+                <tr><td>Version</td><td>1.0</td></tr>
+                <tr><td>Owner</td><td>&nbsp;</td></tr>
+                <tr><td>Status</td><td>DRAFT / TESTING / ACTIVE / RETIRED</td></tr>
+                <tr><td>Last Tested</td><td>&nbsp;</td></tr>
+                <tr><td>Who Runs This</td><td>Human / AI / Either</td></tr>
+            </table>
+        </div>
+
+        <!-- SETUP QUESTIONS -->
+        <div class="section">
+            <span class="section-label">Scoping</span>
+            <h2>Setup Questions</h2>
+            <table class="info-table">
+                <tr><td>End Result</td><td>One sentence. Not what you do. What is true when the process is complete.&nbsp;</td></tr>
+                <tr><td>What Kicks This Off</td><td>The event or condition that makes you start. A time? An email? A request? "When needed" is not a trigger.&nbsp;</td></tr>
+                <tr><td>What You Need Before Starting</td><td>Every resource required before Step 01 can begin. If you've ever had to stop mid-process to go get something, it belongs here.&nbsp;</td></tr>
+                <tr><td>What Done Looks Like</td><td>The finished product: format, quality standards and what makes it acceptable to hand off.&nbsp;</td></tr>
+                <tr><td>Background Info</td><td>What does the executor need to know about this work before they start? Business rules, context, constraints.&nbsp;</td></tr>
+            </table>
+        </div>
+
+        <!-- PROCESS STEPS -->
+        <div class="section">
+            <span class="section-label">Four-Pass Capture</span>
+            <h2>Process Steps</h2>
+
+            <!-- STEP 01 -->
+            <div class="step-card">
+                <span class="step-num">Step 01</span>
+                <div class="step-label">&nbsp;</div>
+                <div class="field">
+                    <span class="field-label">Step Name</span>
+                    <div class="field-hint">Start with a verb. What does this step do?</div>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Instructions [Pass 01]</span>
+                    <div class="field-hint">Write for someone who has never done this before. If this step takes more than 5 minutes, it's probably multiple steps.</div>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">What Goes Wrong [Pass 02]</span>
+                    <div class="field-hint">List 2-4 specific ways this step fails. Format: IF [you see this] THEN [this went wrong].</div>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Autopilot Notes [Pass 03]</span>
+                    <div class="field-hint">The work you do that you wouldn't have written down. Source: the gap between Pass 01 and Pass 03.</div>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">If/Then Rules [Pass 04]</span>
+                    <div class="field-hint">WHEN [situation] / IF [condition] DO [action] / OTHERWISE [default] / STAKES: [what goes wrong].</div>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Success Check</span>
+                    <div class="field-hint">Flip your failure list. What must be true before you move to the next step?</div>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Example [Good + Bad]</span>
+                    <div class="field-hint">One correct output. One incorrect output. The contrast teaches more than either alone.</div>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Output Format</span>
+                    <div class="field-hint">What does the finished result of this step look like? A sample, a template, a sketch.</div>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Gap Tags</span>
+                    <div class="field-hint">[SIMPLIFIED] / [CAN'T EXPLAIN YET] / [IT DEPENDS] / [HUMAN CALL]. Zero tags means you glossed over the hard parts.</div>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Tools + Setup</span>
+                    <div class="field-hint">Software, links, logins, environment requirements.</div>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+            </div>
+
+            <!-- STEP 02 -->
+            <div class="step-card">
+                <span class="step-num">Step 02</span>
+                <div class="step-label">&nbsp;</div>
+                <div class="field">
+                    <span class="field-label">Step Name</span>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Instructions [Pass 01]</span>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">What Goes Wrong [Pass 02]</span>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Autopilot Notes [Pass 03]</span>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">If/Then Rules [Pass 04]</span>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Success Check</span>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Example [Good + Bad]</span>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Output Format</span>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Gap Tags</span>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Tools + Setup</span>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+            </div>
+
+            <!-- STEP 03 -->
+            <div class="step-card">
+                <span class="step-num">Step 03</span>
+                <div class="step-label">&nbsp;</div>
+                <div class="field">
+                    <span class="field-label">Step Name</span>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Instructions [Pass 01]</span>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">What Goes Wrong [Pass 02]</span>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Autopilot Notes [Pass 03]</span>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">If/Then Rules [Pass 04]</span>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Success Check</span>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Example [Good + Bad]</span>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Output Format</span>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Gap Tags</span>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Tools + Setup</span>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+            </div>
+
+            <!-- STEP 04 -->
+            <div class="step-card">
+                <span class="step-num">Step 04</span>
+                <div class="step-label">&nbsp;</div>
+                <div class="field">
+                    <span class="field-label">Step Name</span>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Instructions [Pass 01]</span>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">What Goes Wrong [Pass 02]</span>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Autopilot Notes [Pass 03]</span>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">If/Then Rules [Pass 04]</span>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Success Check</span>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Example [Good + Bad]</span>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Output Format</span>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Gap Tags</span>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Tools + Setup</span>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+            </div>
+
+            <!-- STEP 05 -->
+            <div class="step-card">
+                <span class="step-num">Step 05</span>
+                <div class="step-label">&nbsp;</div>
+                <div class="field">
+                    <span class="field-label">Step Name</span>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Instructions [Pass 01]</span>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">What Goes Wrong [Pass 02]</span>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Autopilot Notes [Pass 03]</span>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">If/Then Rules [Pass 04]</span>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Success Check</span>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Example [Good + Bad]</span>
+                    <div class="field-area tall">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Output Format</span>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Gap Tags</span>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+                <div class="field">
+                    <span class="field-label">Tools + Setup</span>
+                    <div class="field-area">&nbsp;</div>
+                </div>
+            </div>
+
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; color: var(--quetzal); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 1rem; padding: 0.75rem 1rem; background: rgba(0, 104, 94, 0.06);">
+                Need more steps? Duplicate the block above. If you have fewer than 5 steps, run Pass 03 again. You're probably compressing.
+            </div>
+        </div>
+
+        <!-- GAP TAG REFERENCE -->
+        <div class="section">
+            <span class="section-label">Reference</span>
+            <h2>Gap Tag Key</h2>
+            <div class="tag-ref">
+                <div class="tag-item">
+                    <span class="tag-name">[Simplified]</span>
+                    <span class="tag-desc">You left out complexity on purpose. Note what you skipped and where to find the full version.</span>
+                </div>
+                <div class="tag-item">
+                    <span class="tag-name">[Can't Explain Yet]</span>
+                    <span class="tag-desc">You do something here you can't put into words yet. The executor should ask the process owner for help at this point.</span>
+                </div>
+                <div class="tag-item">
+                    <span class="tag-name">[It Depends]</span>
+                    <span class="tag-desc">This step changes based on conditions you haven't fully mapped. Known variations listed. Others exist.</span>
+                </div>
+                <div class="tag-item">
+                    <span class="tag-name">[Human Call]</span>
+                    <span class="tag-desc">Requires human judgment you can't reduce to rules. AI executors: stop here. Ask a human.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TESTING LOG -->
+        <div class="section">
+            <span class="section-label">Validation</span>
+            <h2>Testing Log</h2>
+            <table class="log-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Test Type</th>
+                        <th>Findings</th>
+                        <th>Changes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- VERSION HISTORY -->
+        <div class="section">
+            <span class="section-label">Version Control</span>
+            <h2>Version History</h2>
+            <table class="log-table">
+                <thead>
+                    <tr>
+                        <th>Ver</th>
+                        <th>Date</th>
+                        <th>Owner</th>
+                        <th>Changes</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1.0</td><td>&nbsp;</td><td>&nbsp;</td><td>Initial capture</td><td>DRAFT</td></tr>
+                    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="attribution">
+            Capture Template by Angie Bailey // angieqbailey.com
+        </div>
+    </div>
+</body>
+</html>
