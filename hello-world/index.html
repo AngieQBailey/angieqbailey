@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#121A28;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hello, World (...of AI chaos). An operational toolkit for the three things that have to exist before AI productivity starts: context, safety and a documented process.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <meta property="og:title" content="Hello, World (...of AI chaos) // AI Implementation Toolkit // Angie Bailey">
+    <meta property="og:description" content="Three things have to exist before AI productivity starts: context, safety and a documented process. This is the operational toolkit for the part everyone skipped.">
+    <meta property="og:type" content="article">
+    <title>Hello, World (...of AI chaos) // AI Implementation Toolkit // Angie Bailey</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        /* Hello World Hub — page-specific styles */
+
+        .hw-header {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 8rem;
+            padding-bottom: 4rem;
+        }
+
+        .hw-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--quetzal-bright);
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.4s both;
+        }
+
+        .hw-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.5s both;
+        }
+
+        .hw-header h1 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2.5rem, 7vw, 6rem);
+            font-weight: 900;
+            line-height: 0.9;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+
+        .hw-header h1 .accent-word {
+            color: var(--rosso);
+        }
+
+        .hw-lede {
+            border-left: 5px solid var(--cacao);
+            padding-left: 2rem;
+            max-width: 600px;
+            animation: fade-up 0.8s ease 0.8s both;
+        }
+
+        .hw-lede p {
+            font-size: 1.15rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+        }
+
+        /* Step sequence */
+        .hw-steps {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .hw-steps .section-body p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--ecru-dim);
+            margin-bottom: 1.5rem;
+            max-width: 650px;
+        }
+
+        .step-sequence {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            margin-top: 1.5rem;
+        }
+
+        .step-card {
+            background: rgba(0, 104, 94, 0.10);
+            padding: 2.5rem 2rem 2.5rem 2rem;
+            position: relative;
+            transition: background 0.3s ease;
+            text-decoration: none;
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 2rem;
+            align-items: start;
+            cursor: pointer;
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--quetzal-bright);
+            transition: width 0.4s ease;
+        }
+
+        .step-card:hover {
+            background: rgba(0, 104, 94, 0.18);
+        }
+
+        .step-card:hover::before {
+            width: 100%;
+        }
+
+        .step-number {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 900;
+            color: var(--quetzal-bright);
+            line-height: 1;
+            opacity: 0.4;
+            transition: opacity 0.3s ease;
+        }
+
+        .step-card:hover .step-number {
+            opacity: 1;
+        }
+
+        .step-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .step-subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-title {
+            font-family: 'Imbue', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .step-desc {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease, margin-bottom 0.4s ease;
+        }
+
+        .step-card:hover .step-desc {
+            max-height: 300px;
+            opacity: 1;
+            margin-bottom: 1rem;
+        }
+
+        .step-cta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--quetzal-bright);
+            letter-spacing: 0.05em;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(0, 168, 150, 0.2);
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease 0.1s, opacity 0.3s ease 0.1s;
+        }
+
+        .step-card:hover .step-cta {
+            max-height: 50px;
+            opacity: 1;
+        }
+
+        /* Connector lines between steps */
+        .step-connector {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0 0.5rem 36px;
+        }
+
+        .step-connector-line {
+            width: 2px;
+            height: 24px;
+            background: rgba(0, 168, 150, 0.25);
+        }
+
+        /* Sources footer on hub */
+        .hw-sources {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            border-top: 1px solid var(--ecru-ghost);
+            margin-top: 2rem;
+        }
+
+        .hw-sources p {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--ecru-dim);
+            letter-spacing: 0.03em;
+            line-height: 1.7;
+            max-width: 650px;
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .step-card {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+                padding: 2rem 1.5rem;
+            }
+
+            .step-number {
+                font-size: 2rem;
+                opacity: 1;
+            }
+
+            .step-desc {
+                max-height: none;
+                opacity: 1;
+                margin-bottom: 1rem;
+            }
+
+            .step-cta {
+                max-height: none;
+                opacity: 1;
+            }
+
+            .step-connector {
+                padding-left: 16px;
+            }
+        }
+    </style>
+</head>
+<body style="background-color: #121A28;">
+
+<div class="blueprint-overlay" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true"></div>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
+    <ul class="nav-links">
+        <li><a href="/#investigation">Investigation</a></li>
+        <li><a href="/#warehouse">Warehouse</a></li>
+        <li><a href="/#rnd">R&D</a></li>
+        <li><a href="/#lnd">L&D</a></li>
+        <li><a href="/#verdict">Verdict</a></li>
+        <li><a href="/#debrief">Debrief</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- HEADER -->
+    <section class="hw-header section-content">
+        <span class="hw-meta">Research & Development // AI Implementation Toolkit</span>
+        <span class="hw-tag">The prerequisite nobody told you about</span>
+        <h1>Hello,<br><span class="accent-word">World</span><br>(...of AI chaos)</h1>
+
+        <div class="hw-lede">
+            <p>
+                Everyone skipped this part. They downloaded the AI tool, typed a prompt, got mediocre results and blamed the technology. The technology wasn't the problem. The missing prerequisites were. Three things have to exist before AI can do anything useful with your work: you need to know yourself well enough to give it context, you need to know what's safe to hand it and you need a process documented well enough that someone (or something) other than you can follow it. This is that checklist. In order. No skipping.
+            </p>
+        </div>
+    </section>
+
+    <!-- THE THREE STEPS -->
+    <section class="hw-steps section-content reveal">
+        <span class="section-label">The Toolkit</span>
+        <h2>Three<br>Steps</h2>
+
+        <div class="section-body">
+            <p>
+                Each step produces something usable on its own. But they work in sequence because each one depends on what the step before it surfaces. Start Here builds the self-awareness. The Safety First Gate applies it to a specific project. The SOP Playbook Builder documents what survives the gate.
+            </p>
+        </div>
+
+        <div class="step-sequence">
+
+            <!-- STEP 01 -->
+            <a href="/start-here/" class="step-card" style="text-decoration: none;">
+                <div class="step-number">01</div>
+                <div class="step-content">
+                    <div class="step-subtitle">Context Onboarding</div>
+                    <div class="step-title">Start Here</div>
+                    <div class="step-desc">
+                        AI without context produces generic output. This interactive tool builds your personal AI profile in ten minutes or fewer. Four cards. All multiple-choice. The output is a paste-ready markdown profile for ChatGPT, Claude, Gemini... whatever you're using. Card 1 alone takes two minutes and gives AI more useful information about you than most people ever provide.
+                    </div>
+                    <div class="step-cta">Build Your Profile &rarr;</div>
+                </div>
+            </a>
+
+            <div class="step-connector"><div class="step-connector-line"></div></div>
+
+            <!-- STEP 02 -->
+            <a href="/hello-world/safety-first-gate/" class="step-card" style="text-decoration: none;">
+                <div class="step-number">02</div>
+                <div class="step-content">
+                    <div class="step-subtitle">AI Project Readiness</div>
+                    <div class="step-title">The Safety First Gate</div>
+                    <div class="step-desc">
+                        Six gates. 25 binary questions. All must pass. Before you hand AI a process to execute, this gate forces you to answer whether this specific project is safe, legal and ethical enough to proceed. Not a policy document. A decision tool you run once per project. GO, CONDITIONAL or NO-GO. If you can't pass the gate, the project isn't ready... and finding that out now costs nothing compared to finding out after.
+                    </div>
+                    <div class="step-cta">Run the Gate &rarr;</div>
+                </div>
+            </a>
+
+            <div class="step-connector"><div class="step-connector-line"></div></div>
+
+            <!-- STEP 03 -->
+            <a href="/hello-world/sop-playbook-builder/" class="step-card" style="text-decoration: none;">
+                <div class="step-number">03</div>
+                <div class="step-content">
+                    <div class="step-subtitle">Process Documentation</div>
+                    <div class="step-title">SOP Playbook Builder</div>
+                    <div class="step-desc">
+                        "Just write down what you do" produces SOPs that are approximately half-complete while appearing finished. The missing half is the work your brain does automatically... the micro-checks, the pattern recognition, the split-second decisions you've made so many times they feel like instinct. This system runs you through four passes to surface what one pass structurally cannot. The result is instructions that actually transfer.
+                    </div>
+                    <div class="step-cta">Build Your Playbook &rarr;</div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- SOURCES -->
+    <section class="hw-sources section-content">
+        <p>Built for the person who got the AI tool before they got the instructions. Sources and frameworks credited inside each step.</p>
+        <a href="/" class="back-link" style="display: inline-block; margin-top: 1.5rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: var(--quetzal-bright); text-decoration: none; letter-spacing: 0.05em; transition: color 0.2s ease;">Back to the business side of it all</a>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <span>&copy; 2026 Angie Bailey</span>
+    </div>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
