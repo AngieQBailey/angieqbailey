@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#121A28;">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SOP Playbook Builder // Plain Language Edition. A four-pass system for turning something you know how to do into instructions someone else can follow.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <meta property="og:title" content="SOP Playbook Builder // Plain Language Edition // Angie Bailey">
+    <meta property="og:description" content="Four passes. Plain language. Turn what you know into instructions someone else can follow.">
+    <meta property="og:type" content="article">
+    <title>SOP Playbook Builder // Plain Language Edition // Angie Bailey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nuit:     #121A28;
+            --cacao:    #2D1B14;
+            --quetzal:  #00685E;
+            --quetzal-bright: #00A896;
+            --ecru:     #F5F5DC;
+            --rosso:    #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+
+        ::selection { background: var(--rosso); color: var(--ecru); }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+        body {
+            background-color: var(--nuit); color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif; font-weight: 400;
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale; overflow-x: hidden;
+        }
+
+        .blueprint-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-fade 2s ease 0.5s both;
+        }
+
+        .spine {
+            position: fixed; left: calc(var(--spine-left) - 40px);
+            top: 0; width: 4px; height: 100%;
+            background-color: var(--cacao); z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .nav-bar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--quetzal-bright); text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; padding-right: 2rem; }
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 400; color: var(--ecru-dim); text-decoration: none;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            transition: color 0.2s ease; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--rosso);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--ecru); }
+        .nav-links a:hover::after { width: 100%; }
+
+        main { position: relative; z-index: 10; }
+        .doc-content {
+            padding-left: var(--spine-left); padding-right: 4rem; max-width: 1200px;
+        }
+
+        .doc-header {
+            min-height: 50vh; display: flex; flex-direction: column;
+            justify-content: center; padding-top: 8rem; padding-bottom: 3rem;
+        }
+        .doc-meta {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--quetzal-bright); letter-spacing: 0.1em; margin-bottom: 2rem;
+            display: block; animation: fade-up 0.8s ease 0.4s both;
+        }
+        .doc-header h1 {
+            font-family: 'Imbue', serif; font-size: clamp(2.2rem, 6vw, 5rem);
+            font-weight: 900; line-height: 0.9; color: var(--ecru);
+            text-transform: uppercase; letter-spacing: -0.02em;
+            margin-bottom: 2rem; max-width: 650px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+        .doc-header h1 .accent-word { color: var(--rosso); }
+        .doc-lede {
+            border-left: 5px solid var(--rosso); padding-left: 2rem;
+            max-width: 600px; animation: fade-up 0.8s ease 0.8s both;
+        }
+        .doc-lede p {
+            font-size: 1.1rem; font-weight: 300; line-height: 1.7; color: var(--ecru-dim);
+        }
+        .doc-lede strong { color: var(--ecru); font-weight: 500; }
+
+        .download-btn {
+            display: inline-block; font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem; font-weight: 700; letter-spacing: 0.15em;
+            text-transform: uppercase; color: var(--nuit); background: var(--ecru);
+            text-decoration: none; padding: 0.75rem 2rem;
+            transition: background 0.2s, color 0.2s;
+            margin-top: 1.5rem;
+            animation: fade-up 0.8s ease 1s both;
+        }
+        .download-btn:hover { background: var(--rosso); color: var(--ecru); }
+
+        .doc-section {
+            padding-top: 2.5rem; padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--quetzal-bright); letter-spacing: 0.2em;
+            text-transform: uppercase; margin-bottom: 0.5rem; display: block;
+        }
+        h2 {
+            font-family: 'Imbue', serif; font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 900; color: var(--ecru); text-transform: uppercase;
+            line-height: 0.95; letter-spacing: -0.01em; margin-bottom: 2.5rem;
+        }
+        .doc-body p {
+            font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+            color: var(--ecru-dim); margin-bottom: 1.5rem; max-width: 650px;
+        }
+        .doc-body p strong { color: var(--ecru); font-weight: 500; }
+
+        /* Pass Cards */
+        .pass-card {
+            background: rgba(245, 245, 220, 0.14); padding: 2rem 1.75rem;
+            margin-bottom: 2px; max-width: 750px;
+        }
+        .pass-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); text-transform: uppercase;
+            letter-spacing: 0.2em; margin-bottom: 0.75rem; display: block;
+        }
+        .pass-title {
+            font-family: 'Imbue', serif; font-size: clamp(1.4rem, 3vw, 1.8rem);
+            font-weight: 900; color: var(--ecru); text-transform: uppercase;
+            line-height: 0.95; margin-bottom: 1rem;
+        }
+        .pass-body p {
+            font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim);
+            line-height: 1.7; margin-bottom: 1rem; max-width: 650px;
+        }
+        .pass-body p strong { color: var(--ecru); font-weight: 500; }
+        .pass-body ul {
+            list-style: none; padding: 0; margin: 1rem 0;
+        }
+        .pass-body ul li {
+            font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim);
+            line-height: 1.6; padding: 0.4rem 0; padding-left: 1rem;
+            border-top: 1px solid var(--ecru-ghost); position: relative;
+        }
+        .pass-body ul li::before {
+            content: ''; position: absolute; left: 0; top: 50%;
+            width: 4px; height: 4px; background: var(--quetzal-bright);
+        }
+        .pass-body ul li strong { color: var(--ecru); font-weight: 500; }
+        .pass-catches {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--quetzal-bright); margin-top: 1rem;
+        }
+
+        /* Setup Questions */
+        .setup-item {
+            padding: 1.25rem 0; border-bottom: 1px solid var(--ecru-ghost);
+            max-width: 650px;
+        }
+        .setup-item:first-child { border-top: 1px solid var(--ecru-ghost); }
+        .setup-num {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); margin-bottom: 0.25rem;
+        }
+        .setup-question {
+            font-size: 1rem; font-weight: 400; color: var(--ecru); line-height: 1.4;
+        }
+        .setup-detail {
+            font-size: 0.85rem; font-weight: 300; color: var(--ecru-dim);
+            margin-top: 0.25rem; line-height: 1.5;
+        }
+
+        /* Example Block */
+        .example-block {
+            border-left: 3px solid var(--cacao); padding: 1.5rem;
+            margin: 1.5rem 0; max-width: 650px;
+            background: rgba(245, 245, 220, 0.05);
+        }
+        .example-block p {
+            font-size: 0.9rem; font-weight: 300; color: var(--ecru-dim);
+            line-height: 1.6; margin-bottom: 0.75rem;
+        }
+        .example-block p:last-child { margin-bottom: 0; }
+        .example-block strong { color: var(--ecru); font-weight: 500; }
+
+        /* Gap Tag Cards */
+        .gap-tag-item {
+            background: rgba(245, 245, 220, 0.14); padding: 1.25rem 1.5rem;
+            margin-bottom: 2px; max-width: 650px;
+        }
+        .gap-tag-name {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); margin-bottom: 0.25rem;
+        }
+        .gap-tag-desc {
+            font-size: 0.9rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.5;
+        }
+
+        /* Quick Reference */
+        .ref-step {
+            padding: 0.6rem 0; border-bottom: 1px solid var(--ecru-ghost);
+            display: flex; gap: 1rem; align-items: baseline; max-width: 650px;
+        }
+        .ref-step:first-child { border-top: 1px solid var(--ecru-ghost); }
+        .ref-num {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; color: var(--rosso); min-width: 2rem;
+        }
+        .ref-text {
+            font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.5;
+        }
+        .ref-text strong { color: var(--ecru); font-weight: 500; }
+
+        /* Core Principle */
+        .core-principle {
+            border-left: 4px solid var(--rosso); padding: 2rem;
+            background: rgba(245, 245, 220, 0.14); margin: 2.5rem 0; max-width: 650px;
+        }
+        .core-principle p {
+            font-size: 1.05rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.7;
+        }
+        .core-principle strong { color: var(--ecru); font-weight: 500; }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+            color: var(--ecru-dim); text-decoration: none; text-transform: uppercase;
+            letter-spacing: 0.1em; transition: color 0.2s ease; margin-top: 3rem;
+        }
+        .back-link::before {
+            content: ''; display: block; width: 24px; height: 2px;
+            background: var(--quetzal); transition: width 0.3s ease, background 0.3s ease;
+        }
+        .back-link:hover { color: var(--ecru); }
+        .back-link:hover::before { width: 40px; background: var(--rosso); }
+
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .footer-content {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 1200px;
+        }
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            color: var(--ecru-dim); letter-spacing: 0.05em;
+        }
+
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            :root { --spine-left: 2rem; }
+            .doc-content { padding-right: 2rem; }
+            .nav-bar { padding: 1rem 1.5rem; }
+            .nav-links { gap: 1rem; }
+        }
+        @media (max-width: 500px) {
+            .nav-links a { font-size: 0.75rem; }
+            .doc-header h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body style="background-color: #121A28;">
+    <div class="blueprint-overlay"></div>
+    <div class="spine"></div>
+
+    <nav class="nav-bar" role="navigation" aria-label="Primary">
+        <a href="/hello-world/sop-playbook-builder/" class="nav-mark" style="text-decoration: none;">
+            &larr; SOP Playbook Builder
+        </a>
+        <ul class="nav-links">
+            <li><a href="/">Main Site</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <header class="doc-header doc-content">
+            <span class="doc-meta">Builder Guide // Plain Language Edition</span>
+            <h1>SOP Playbook<br><span class="accent-word">Builder</span></h1>
+            <div class="doc-lede">
+                <p>How to turn something you know how to do into instructions someone else can follow. <strong>Four passes. Plain language.</strong> No jargon required.</p>
+            </div>
+            <a href="templates/capture-template-blank.html" class="download-btn">View Blank Template &rarr;</a>
+        </header>
+
+        <!-- THE PROBLEM -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">The Problem</span>
+            <h2>Why "Write Down<br>What You Do" Fails</h2>
+            <div class="doc-body">
+                <p>You know how to do something well. Maybe you've been doing it for months or years. Now someone else needs to do it... a coworker, a new hire, an AI tool. You need to write instructions good enough that they can execute without you standing over their shoulder.</p>
+                <p>That's harder than it sounds. Two structural problems get in the way.</p>
+            </div>
+            <div class="core-principle">
+                <p><strong>Problem 01: You leave stuff out without realizing it.</strong> When you write instructions for something you know well, you skip things. Not on purpose. Your brain doesn't flag them because they've become automatic. You write "make the sauce" when what you actually do involves checking the consistency, adjusting the heat three times and tasting it at a specific point. The gap between what you write and what you actually do is where instructions fall apart.</p>
+            </div>
+            <div class="core-principle" style="margin-top: 2px;">
+                <p><strong>Problem 02: You can't see your own autopilot.</strong> Some of what you do happens so fast and so automatically that you don't register it as a step. You glance at something before starting. You make a split-second call about which approach to take. You sense when something is "off" before you can explain why. You can't document what you can't observe yourself doing.</p>
+            </div>
+            <div class="doc-body" style="margin-top: 1.5rem;">
+                <p>This playbook gives you a system for catching both problems. You'll run through your process four times, each time looking for different signals. By the end, you'll have instructions that actually transfer.</p>
+            </div>
+        </section>
+
+        <!-- SETUP QUESTIONS -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Before You Start</span>
+            <h2>Five Setup<br>Questions</h2>
+            <div class="doc-body">
+                <p>These answers become the header of your SOP. Don't skip them. They keep the entire document focused.</p>
+            </div>
+            <div class="setup-item">
+                <div class="setup-num">01</div>
+                <div class="setup-question">What's the end result?</div>
+                <div class="setup-detail">Not what you do. What's true when you're done. "The customer has a confirmed appointment with the right department" is an end result. "Handle incoming calls" is not.</div>
+            </div>
+            <div class="setup-item">
+                <div class="setup-num">02</div>
+                <div class="setup-question">What kicks this off?</div>
+                <div class="setup-detail">What makes you start? A time of day? An email arriving? A request from someone? Be specific. "Whenever it's needed" is not a trigger.</div>
+            </div>
+            <div class="setup-item">
+                <div class="setup-num">03</div>
+                <div class="setup-question">What do you need before you can start?</div>
+                <div class="setup-detail">List everything. Logins, files, information, tools. If you've ever started this process and had to stop because something was missing, that missing thing belongs on this list.</div>
+            </div>
+            <div class="setup-item">
+                <div class="setup-num">04</div>
+                <div class="setup-question">What does "done" look like?</div>
+                <div class="setup-detail">Describe the finished product. Not just what it is (an email, a report, an updated spreadsheet) but what makes it acceptable to hand off.</div>
+            </div>
+            <div class="setup-item">
+                <div class="setup-num">05</div>
+                <div class="setup-question">Who's going to follow these instructions?</div>
+                <div class="setup-detail">Someone with experience needs less detail. Someone brand new needs more. An AI tool needs the most explicit instructions of all. Write for the person who knows the least about this task.</div>
+            </div>
+        </section>
+
+        <!-- THE FOUR PASSES -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">The System</span>
+            <h2>The Four<br>Passes</h2>
+            <div class="doc-body">
+                <p>You run through your process four times. Each pass catches signals the others miss.</p>
+            </div>
+
+            <!-- PASS 01 -->
+            <div class="pass-card">
+                <span class="pass-label">Pass 01</span>
+                <div class="pass-title">Write What You Do</div>
+                <div class="pass-body">
+                    <p><strong>The goal:</strong> Get your process on paper the way you'd explain it to someone competent who's never done this specific task.</p>
+                    <p>Write out every step from start to finish. For each step, include:</p>
+                    <ul>
+                        <li>What you do (the action)</li>
+                        <li>Why you're doing it (the purpose)</li>
+                        <li>What the result looks like (the output)</li>
+                    </ul>
+                    <p>The most important discipline here: <strong>break it down smaller than feels necessary.</strong> If you think your process has 3 steps, it probably has 8-12. A reliable test: if any single step takes more than 5 minutes to execute, it contains hidden sub-steps. Pull them apart.</p>
+                    <p>Don't stress about completeness. This first pass is supposed to have gaps. The next three passes exist to surface them.</p>
+                </div>
+                <div class="pass-catches">What this catches: About 40-60% of what you actually do. The conscious, observable portion.</div>
+            </div>
+
+            <!-- PASS 02 -->
+            <div class="pass-card">
+                <span class="pass-label">Pass 02</span>
+                <div class="pass-title">Describe What Wrong Looks Like</div>
+                <div class="pass-body">
+                    <p><strong>The goal:</strong> For each step, describe what a bad version looks like instead of what a good version looks like.</p>
+                    <p><strong>Why this works:</strong> It's structurally easier to explain what's wrong than what's right. You might struggle to describe what makes a good email, but you can spot a bad one immediately. Use that instinct.</p>
+                    <p>Go through each step from Pass 01 and answer:</p>
+                    <ul>
+                        <li>What does a bad version of this step's output look like? Give 2-3 specific examples.</li>
+                        <li>What's the most common mistake someone new makes here?</li>
+                        <li>What would make you redo this step?</li>
+                        <li>Is there a subtle failure here that someone might not notice until it causes problems downstream?</li>
+                    </ul>
+                    <p>Write these as "If you see X, that means Y went wrong" statements.</p>
+                </div>
+                <div class="example-block">
+                    <p><strong>Example:</strong></p>
+                    <p>Step: "Write the summary email to the client"</p>
+                    <p>Pass 01 instruction: "Summarize what we decided in the meeting in 2-3 short paragraphs"</p>
+                    <p>Pass 02 (what wrong looks like):</p>
+                    <p>"If your email is longer than your phone screen, you included too much. It should be decisions and next steps only, not the full discussion."</p>
+                    <p>"If every sentence starts with 'We discussed,' you're writing meeting minutes, not a summary. Lead with what was decided, not what was said."</p>
+                    <p>"If the client would need to reply asking 'so what do I need to do?' your summary is missing the action items."</p>
+                </div>
+                <div class="pass-catches">What this catches: Your quality standards. The invisible line between "technically done" and "actually good."</div>
+            </div>
+
+            <!-- PASS 03 -->
+            <div class="pass-card">
+                <span class="pass-label">Pass 03</span>
+                <div class="pass-title">Watch Yourself Work</div>
+                <div class="pass-body">
+                    <p><strong>The goal:</strong> Perform the process in real time while narrating every tiny decision, pause and check you make.</p>
+                    <p><strong>This is the most important pass.</strong> It's also the most uncomfortable. You're observing your own thinking, out loud, while executing. (That's supposed to feel weird. It means you're doing it right.)</p>
+                    <p>Pick a capture method:</p>
+                    <ul>
+                        <li>Voice memo on your phone (talk while you work, transcribe later)</li>
+                        <li>Screen recording with narration</li>
+                        <li>A colleague watching you work and documenting everything they see you do that isn't in your Pass 01 writeup</li>
+                    </ul>
+                    <p>Then do the process for real. Not from memory. Not hypothetically. Start to finish while saying things like:</p>
+                    <ul>
+                        <li>"I'm checking X first because..."</li>
+                        <li>"I'm pausing here because something looks off. Specifically..."</li>
+                        <li>"I almost did it this way but changed my mind because..."</li>
+                        <li>"I'm jumping ahead to check something before I continue because..."</li>
+                        <li>"I'm going back to fix step 2 now that I can see what step 4 produced..."</li>
+                    </ul>
+                    <p><strong>Find the Gap:</strong> After you finish, compare what you said in Pass 03 against what you wrote in Pass 01. Everything that shows up in Pass 03 but NOT in Pass 01 is the invisible work. The autopilot layer. The stuff your brain does that you never would have documented.</p>
+                    <p>This gap is the most valuable part of your SOP. Things that commonly surface:</p>
+                    <ul>
+                        <li>Pre-checks you run before starting (glancing at something to confirm conditions are right)</li>
+                        <li>Quick quality assessments between steps ("is this good enough to move on?")</li>
+                        <li>Branching decisions you make without thinking</li>
+                        <li>Workarounds you've developed that nobody taught you</li>
+                        <li>Reference materials you consult that aren't mentioned in your instructions</li>
+                        <li>Backtracking patterns (going back to revise earlier work based on what you discover later)</li>
+                    </ul>
+                </div>
+                <div class="pass-catches">What this catches: The other 40-60%. The work that lives below conscious awareness.</div>
+            </div>
+
+            <!-- PASS 04 -->
+            <div class="pass-card">
+                <span class="pass-label">Pass 04</span>
+                <div class="pass-title">Map Your If/Then Decisions</div>
+                <div class="pass-body">
+                    <p><strong>The goal:</strong> Take every "I just know" moment from Pass 03 and force it into a clear if/then rule.</p>
+                    <p><strong>Why this matters:</strong> Your instincts aren't magic. They're patterns you've seen so many times your brain processes them instantly. The patterns ARE logical. You've just stopped noticing the logic. This pass makes that logic visible so someone else can follow it.</p>
+                    <p>For each autopilot item from Pass 03's gap, ask:</p>
+                    <ul>
+                        <li>What am I actually looking at when I make this call? (The signal)</li>
+                        <li>What are the possible states of that signal? (The conditions)</li>
+                        <li>What do I do differently depending on what I see? (The branches)</li>
+                        <li>What happens if I get this wrong? (The stakes)</li>
+                    </ul>
+                    <p>Write each one as:</p>
+                    <p><strong>WHEN</strong> [situation] <strong>IF</strong> [this is true] &rarr; <strong>DO</strong> [this] <strong>IF</strong> [that is true instead] &rarr; <strong>DO</strong> [that] <strong>OTHERWISE</strong> &rarr; <strong>DO</strong> [default thing] <strong>STAKES:</strong> [what goes wrong if you call this incorrectly]</p>
+                </div>
+                <div class="example-block">
+                    <p><strong>Example:</strong></p>
+                    <p><strong>WHEN</strong> a customer sounds frustrated on the call</p>
+                    <p><strong>IF</strong> they mention a specific past issue &rarr; ACKNOWLEDGE it by name before solving the new one</p>
+                    <p><strong>IF</strong> they're frustrated but it's their first contact &rarr; SKIP the history, go straight to solving</p>
+                    <p><strong>OTHERWISE</strong> &rarr; ASK one clarifying question before jumping to solutions</p>
+                    <p><strong>STAKES:</strong> If you skip acknowledgment on a repeat caller, they escalate. Every time.</p>
+                </div>
+                <div class="pass-body">
+                    <p>Not every judgment call will break down into clean rules. That's fine. For the ones that resist, use a Gap Tag (next section) and move on. Honest incompleteness is more useful than false precision.</p>
+                </div>
+                <div class="pass-catches">What this catches: The decision logic that experts have internalized to the point of invisibility.</div>
+            </div>
+        </section>
+
+        <!-- GAP TAGS -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Honest Incompleteness</span>
+            <h2>Gap Tags</h2>
+            <div class="doc-body">
+                <p>You will have places where your instructions are incomplete. That's not failure. That's the most honest thing in the document. Mark those places so the person following your SOP knows where the exposure is.</p>
+            </div>
+            <div class="gap-tag-item">
+                <div class="gap-tag-name">[SIMPLIFIED]</div>
+                <div class="gap-tag-desc">"I left out complexity here on purpose. Here's what I skipped: ___." Use when you deliberately kept something short. Note what's missing and where to find the full version.</div>
+            </div>
+            <div class="gap-tag-item">
+                <div class="gap-tag-name">[CAN'T EXPLAIN YET]</div>
+                <div class="gap-tag-desc">"I do something here that I can't fully articulate." Use when Pass 03 surfaced something you do but Pass 04 couldn't turn it into rules. This tells the executor: "Ask the expert for help at this point."</div>
+            </div>
+            <div class="gap-tag-item">
+                <div class="gap-tag-name">[IT DEPENDS]</div>
+                <div class="gap-tag-desc">"This step changes based on conditions I haven't fully mapped." Use when you know the step varies but haven't catalogued every variation. List the ones you know. Flag that others exist.</div>
+            </div>
+            <div class="gap-tag-item">
+                <div class="gap-tag-name">[HUMAN CALL]</div>
+                <div class="gap-tag-desc">"This requires human judgment I can't reduce to rules." Use when the decision genuinely requires experience, taste or situational awareness that can't be codified. This tells AI executors: "Stop here. Escalate to a human."</div>
+            </div>
+            <div class="doc-body" style="margin-top: 1.5rem;">
+                <p>These tags are the most honest parts of your SOP. <strong>An SOP with zero tags is almost certainly lying about its completeness.</strong></p>
+            </div>
+        </section>
+
+        <!-- STRUCTURING OUTPUT -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Assembly</span>
+            <h2>Structuring<br>the Output</h2>
+            <div class="doc-body">
+                <p>Once you've completed all four passes, you have raw material. Organize it into the capture template. Each step includes fields for:</p>
+                <ul style="list-style: none; padding: 0; margin: 1rem 0; max-width: 650px;">
+                    <li style="font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.6; padding: 0.6rem 0; border-top: 1px solid var(--ecru-ghost); padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0; top: 50%; width: 4px; height: 4px; background: var(--quetzal-bright); display: block;"></span><strong>Step Name</strong> ... Start with a verb. "Send the confirmation" not "Confirmation sending."</li>
+                    <li style="font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.6; padding: 0.6rem 0; border-top: 1px solid var(--ecru-ghost); padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0; top: 50%; width: 4px; height: 4px; background: var(--quetzal-bright); display: block;"></span><strong>Instructions</strong> ... Your Pass 01 writing, cleaned up for the target executor.</li>
+                    <li style="font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.6; padding: 0.6rem 0; border-top: 1px solid var(--ecru-ghost); padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0; top: 50%; width: 4px; height: 4px; background: var(--quetzal-bright); display: block;"></span><strong>What Goes Wrong</strong> ... Your Pass 02 failure patterns. 2-4 specific failure modes per step.</li>
+                    <li style="font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.6; padding: 0.6rem 0; border-top: 1px solid var(--ecru-ghost); padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0; top: 50%; width: 4px; height: 4px; background: var(--quetzal-bright); display: block;"></span><strong>Autopilot Notes</strong> ... Your Pass 03 gap items. The work you do without conscious awareness.</li>
+                    <li style="font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.6; padding: 0.6rem 0; border-top: 1px solid var(--ecru-ghost); padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0; top: 50%; width: 4px; height: 4px; background: var(--quetzal-bright); display: block;"></span><strong>If/Then Rules</strong> ... Your Pass 04 decision structures.</li>
+                    <li style="font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.6; padding: 0.6rem 0; border-top: 1px solid var(--ecru-ghost); padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0; top: 50%; width: 4px; height: 4px; background: var(--quetzal-bright); display: block;"></span><strong>Success Check</strong> ... Flip your failure patterns. "This step is done right when [none of the bad things happened] AND [these positive conditions are true]."</li>
+                    <li style="font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.6; padding: 0.6rem 0; border-top: 1px solid var(--ecru-ghost); padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0; top: 50%; width: 4px; height: 4px; background: var(--quetzal-bright); display: block;"></span><strong>Example (Good + Bad)</strong> ... One correct output. One incorrect output. The contrast teaches more than either alone.</li>
+                    <li style="font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.6; padding: 0.6rem 0; border-top: 1px solid var(--ecru-ghost); padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0; top: 50%; width: 4px; height: 4px; background: var(--quetzal-bright); display: block;"></span><strong>Output Format</strong> ... A sample, template or sketch of what the finished step looks like structurally.</li>
+                    <li style="font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.6; padding: 0.6rem 0; border-top: 1px solid var(--ecru-ghost); padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0; top: 50%; width: 4px; height: 4px; background: var(--quetzal-bright); display: block;"></span><strong>Gap Tags</strong> ... Any [SIMPLIFIED], [CAN'T EXPLAIN YET], [IT DEPENDS] or [HUMAN CALL] flags with notes.</li>
+                    <li style="font-size: 0.95rem; font-weight: 300; color: var(--ecru-dim); line-height: 1.6; padding: 0.6rem 0; border-top: 1px solid var(--ecru-ghost); padding-left: 1rem; position: relative;"><span style="position: absolute; left: 0; top: 50%; width: 4px; height: 4px; background: var(--quetzal-bright); display: block;"></span><strong>Tools and Setup</strong> ... Software, links, login info, environment requirements. The operational wiring.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- TESTING -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Validation</span>
+            <h2>Testing</h2>
+            <div class="doc-body">
+                <p><strong>Instructions you haven't tested are a hypothesis. Not a procedure.</strong></p>
+            </div>
+            <div class="pass-card">
+                <span class="pass-label">Test 01</span>
+                <div class="pass-title">Cold Handoff</div>
+                <div class="pass-body">
+                    <p>Give your SOP to someone who has never done this process. Watch them attempt it without helping. Every place they get stuck, ask a question or go wrong is a gap in your documentation. Fix the SOP. Don't coach the person.</p>
+                </div>
+            </div>
+            <div class="pass-card">
+                <span class="pass-label">Test 02</span>
+                <div class="pass-title">Expert Review</div>
+                <div class="pass-body">
+                    <p>If someone else also does this process, show them your SOP. Ask: "What's missing? What would you do differently?" Their disagreements are either errors to fix or legitimate variations to document.</p>
+                </div>
+            </div>
+            <div class="pass-card">
+                <span class="pass-label">Test 03</span>
+                <div class="pass-title">Edge Case Sweep</div>
+                <div class="pass-body">
+                    <p>Remember the three strangest or most unusual times you've run this process. Walk through your SOP with each one in mind. If your instructions don't handle them, either add a branch or add an [IT DEPENDS] tag with a note.</p>
+                </div>
+            </div>
+            <div class="pass-card">
+                <span class="pass-label">Test 04</span>
+                <div class="pass-title">AI Dry Run</div>
+                <div class="pass-body">
+                    <p>If this SOP will be executed by AI, convert each step into a prompt and run it. The AI's mistakes are diagnostic. They tell you exactly where your instructions are ambiguous or assume knowledge that isn't written down.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUICK REFERENCE -->
+        <section class="doc-section doc-content reveal">
+            <span class="section-label">Reference</span>
+            <h2>Quick<br>Reference</h2>
+            <div class="ref-step">
+                <span class="ref-num">01</span>
+                <span class="ref-text"><strong>Scope</strong> ... Answer the five setup questions (end result, trigger, inputs, done state, executor)</span>
+            </div>
+            <div class="ref-step">
+                <span class="ref-num">02</span>
+                <span class="ref-text"><strong>Pass 01: Write What You Do</strong> ... Get the conscious steps documented</span>
+            </div>
+            <div class="ref-step">
+                <span class="ref-num">03</span>
+                <span class="ref-text"><strong>Pass 02: Describe What Wrong Looks Like</strong> ... Name the failure patterns for each step</span>
+            </div>
+            <div class="ref-step">
+                <span class="ref-num">04</span>
+                <span class="ref-text"><strong>Pass 03: Watch Yourself Work</strong> ... Execute the process while narrating every micro-decision</span>
+            </div>
+            <div class="ref-step">
+                <span class="ref-num">05</span>
+                <span class="ref-text"><strong>Find the Gap</strong> ... Compare Pass 03 against Pass 01. The difference is the autopilot layer.</span>
+            </div>
+            <div class="ref-step">
+                <span class="ref-num">06</span>
+                <span class="ref-text"><strong>Pass 04: Map Your If/Then Decisions</strong> ... Turn every "I just know" into a structured rule</span>
+            </div>
+            <div class="ref-step">
+                <span class="ref-num">07</span>
+                <span class="ref-text"><strong>Organize</strong> ... Fill the capture template with outputs from all four passes</span>
+            </div>
+            <div class="ref-step">
+                <span class="ref-num">08</span>
+                <span class="ref-text"><strong>Tag the Gaps</strong> ... Add [SIMPLIFIED], [CAN'T EXPLAIN YET], [IT DEPENDS], [HUMAN CALL] markers</span>
+            </div>
+            <div class="ref-step">
+                <span class="ref-num">09</span>
+                <span class="ref-text"><strong>Test</strong> ... Cold handoff, expert review, edge cases, AI dry run</span>
+            </div>
+            <div class="ref-step">
+                <span class="ref-num">10</span>
+                <span class="ref-text"><strong>Ship and Improve</strong> ... Use it, fix it, repeat</span>
+            </div>
+
+            <a href="/hello-world/sop-playbook-builder/" class="back-link">Back to SOP Playbook Builder</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <span>&copy; 2026 Angie Bailey</span>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
