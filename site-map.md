@@ -1,6 +1,6 @@
 # Site Map — angieqbailey.com
 
-Last Updated: 2026-04-27
+Last Updated: 2026-05-03
 
 ## Index Page Structure (5 Sections)
 
@@ -8,7 +8,7 @@ Last Updated: 2026-04-27
 |---|---|---|
 | Section 01 | The Investigation | About / professional identity |
 | Section 02 | The Warehouse | 10 cards: 9 case studies + 1 TBA placeholder (collapsible on hover) |
-| Section 03 | Research & Development (R&D) | Hardwiring Dignity / DRS series |
+| Section 03 | Research & Development (R&D) | Hello, World toolkit (3 steps) + Hardwiring Dignity / DRS series |
 | Section 04 | Learning & Development (L&D) | Gateway to ld/infrastructure-of-a-life.html |
 | Section 05 | The Verdict | 5 clickable principles linking to essay pages |
 | (no number) | The Debrief | Contact / closing |
@@ -46,7 +46,13 @@ Last Updated: 2026-04-27
 | Schema Markup Guide (Blank) | Blank Template | Process Architecture // GEO/AEO | Portfolio Work/GEO AEO Transition/assets/templates/schema-markup-ai-content-guide-blank.html | 2026-04-24 |
 | SEO & AI Search Playbook (Blank) | Blank Template | Process Architecture // GEO/AEO | Portfolio Work/GEO AEO Transition/assets/templates/seo-ai-search-playbook-blank.html | 2026-04-24 |
 | Content Brief (Blank) | Blank Template | Process Architecture // GEO/AEO | Portfolio Work/GEO AEO Transition/assets/templates/content-brief-template-blank.html | 2026-04-24 |
-| Start Here | Interactive Tool | AI Context Builder | start-here/index.html | 2026-04-27 |
+| Hello, World (...of AI chaos) | Hub Page | R&D // AI Implementation Toolkit | hello-world/index.html | 2026-05-03 |
+| Start Here | Interactive Tool | R&D // Hello, World Step 1 | start-here/index.html | 2026-04-27 |
+| The Safety First Gate | Interactive Tool | R&D // Hello, World Step 2 | hello-world/safety-first-gate/index.html | 2026-05-03 |
+| SOP Playbook Builder | Landing Page | R&D // Hello, World Step 3 | hello-world/sop-playbook-builder/index.html | 2026-05-03 |
+| SOP Playbook — Plain Language Guide | Artifact Page | R&D // SOP Playbook Builder | hello-world/sop-playbook-builder/assets/plain-language-guide.html | 2026-05-03 |
+| SOP Playbook — Pro Edition Guide | Artifact Page | R&D // SOP Playbook Builder | hello-world/sop-playbook-builder/assets/pro-guide.html | 2026-05-03 |
+| SOP Playbook — Capture Template (Blank) | Blank Template | R&D // SOP Playbook Builder | hello-world/sop-playbook-builder/assets/templates/capture-template-blank.html | 2026-05-03 |
 
 ## L&D Collections (on infrastructure-of-a-life.html)
 
