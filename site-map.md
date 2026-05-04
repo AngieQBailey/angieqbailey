@@ -48,7 +48,7 @@ Last Updated: 2026-05-03
 | Content Brief (Blank) | Blank Template | Process Architecture // GEO/AEO | Portfolio Work/GEO AEO Transition/assets/templates/content-brief-template-blank.html | 2026-04-24 |
 | Hello, World (...of AI chaos) | Hub Page | R&D // AI Implementation Toolkit | hello-world/index.html | 2026-05-03 |
 | Start Here | Interactive Tool | R&D // Hello, World Step 1 | start-here/index.html | 2026-04-27 |
-| The Safety First Gate | Interactive Tool | R&D // Hello, World Step 2 | hello-world/safety-first-gate/index.html | 2026-05-03 |
+| The Safety-First Gate | Interactive Tool | R&D // Hello, World Step 2 | hello-world/safety-first-gate/index.html | 2026-05-03 |
 | SOP Playbook Builder | Landing Page | R&D // Hello, World Step 3 | hello-world/sop-playbook-builder/index.html | 2026-05-03 |
 | SOP Playbook — Plain Language Guide | Artifact Page | R&D // SOP Playbook Builder | hello-world/sop-playbook-builder/assets/plain-language-guide.html | 2026-05-03 |
 | SOP Playbook — Pro Edition Guide | Artifact Page | R&D // SOP Playbook Builder | hello-world/sop-playbook-builder/assets/pro-guide.html | 2026-05-03 |
