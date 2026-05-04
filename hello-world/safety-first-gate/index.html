@@ -761,7 +761,6 @@ function renderCheckItem(item) {
       <div class="check-text">
         <div class="question-text">${item.question}</div>
         <div class="context-text">${item.context}</div>
-        <div class="source-tag">${item.source}</div>
         <div class="mitigation-prompt ${val === false ? 'visible' : ''}" id="mit-${item.id}">
           <strong>Blocker identified.</strong> Document how you will mitigate this before proceeding:
           <textarea placeholder="What specific action will you take to address this gap?" oninput="saveMitigation('${item.id}', this.value)"></textarea>
