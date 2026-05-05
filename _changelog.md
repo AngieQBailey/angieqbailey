@@ -1,3 +1,8 @@
+## [2026-05-05] — TIER 3 — Resources (New Section + New Page)
+**Change:** Created /resources/index.html (The Receipt Drawer) — standalone resources landing page with 4 categories (Prompts, Templates, Playbooks, Tools) and 15 resource cards linking to existing site content. Created /resources/digital-gratuity.html — standalone prompt stack page with 3-step system (Capture, Prompt, Send), 8 capture questions, 2-turn copyable AI prompt, and 6-step LinkedIn send instructions. Added "Resources" to nav bar on index.html between Verdict and Debrief. All pages include GA4 tag, inline base CSS for local preview, and anchor IDs for deep-linking from LinkedIn posts.
+**Rationale:** Needed a single URL to point LinkedIn and presentation audiences to when referencing templates, prompts, or tools. Eliminates the "go find it on my site" friction. Digital Gratuity prompt stack was the first resource seeded from an existing LinkedIn post (activity 7449837717149884417).
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-05-05] — TIER 1 — R&D (Hello, World / Safety-First Gate)
 **Change:** Updated Safety-First Gate interactive checklist so all six gate sections can be expanded and previewed by clicking their headers, regardless of completion state. Checkboxes remain sequentially locked (must complete prior gate to answer). Locked gates show a hint explaining why checkboxes are disabled. `toggleGate()` now functional. Removed blanket `pointer-events: none` and `opacity: 0.5` from locked gates.
 **Rationale:** Users should be able to read ahead and understand all gate questions before committing answers. Preview access improves transparency without breaking the sequential integrity of the assessment.
