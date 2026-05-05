@@ -1,8 +1,8 @@
 # Site Map — angieqbailey.com
 
-Last Updated: 2026-05-03
+Last Updated: 2026-05-05
 
-## Index Page Structure (5 Sections)
+## Index Page Structure (5 Sections + Resources)
 
 | Section | Label | Description |
 |---|---|---|
@@ -11,6 +11,7 @@ Last Updated: 2026-05-03
 | Section 03 | Research & Development (R&D) | Hello, World toolkit (3 steps) + Hardwiring Dignity / DRS series |
 | Section 04 | Learning & Development (L&D) | Gateway to ld/infrastructure-of-a-life.html |
 | Section 05 | The Verdict | 5 clickable principles linking to essay pages |
+| (nav link) | Resources | Standalone page at /resources/ — linked in nav between Verdict and Debrief |
 | (no number) | The Debrief | Contact / closing |
 
 ## Live Pages
@@ -53,6 +54,8 @@ Last Updated: 2026-05-03
 | SOP Playbook — Plain Language Guide | Artifact Page | R&D // SOP Playbook Builder | hello-world/sop-playbook-builder/assets/plain-language-guide.html | 2026-05-03 |
 | SOP Playbook — Pro Edition Guide | Artifact Page | R&D // SOP Playbook Builder | hello-world/sop-playbook-builder/assets/pro-guide.html | 2026-05-03 |
 | SOP Playbook — Capture Template (Blank) | Blank Template | R&D // SOP Playbook Builder | hello-world/sop-playbook-builder/assets/templates/capture-template-blank.html | 2026-05-03 |
+| The Receipt Drawer (Resources Hub) | Landing Page | Resources | resources/index.html | 2026-05-05 |
+| Digital Gratuity | Resource Page | Resources // Prompt Stack | resources/digital-gratuity.html | 2026-05-05 |
 
 ## L&D Collections (on infrastructure-of-a-life.html)
 
@@ -67,9 +70,20 @@ Last Updated: 2026-05-03
 |---|---|---|---|
 | (none currently) | | | L&D pieces pending rework; Em-Dash collection pending writing |
 
+## Resources Page Categories
+
+| Category | Cards | Description |
+|---|---|---|
+| Prompts | 1 (Digital Gratuity) | Copyable prompt stacks with anchor IDs for deep-linking |
+| Tools | 3 (Start Here, Safety-First Gate, SOP Playbook Builder) | Links to existing interactive tools |
+| Playbooks | 2 (SOP Plain Language, SOP Pro Edition) | Links to existing guide pages |
+| Templates | 9 (MBR x2, GEO/AEO x6, SOP Capture x1) | Direct links to existing blank template pages |
+
 ## Notes
 
 - Warehouse cards collapse text/metric by default and unfurl on hover
 - Verdict principles are clickable links to standalone essay pages (same-tab navigation)
 - L&D landing page has two collection groups with different visual treatment
 - The old "Dots, Pens & Commonplace Books" hub page still exists but L&D landing page is the primary entry point
+- Resources page uses anchor IDs on every card for deep-linking from LinkedIn posts (e.g., /resources/#digital-gratuity)
+- "Resources" nav link appears between Verdict and Debrief on all pages
