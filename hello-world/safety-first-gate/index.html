@@ -139,9 +139,15 @@
     transition: all 0.3s;
   }
 
-  .gate.locked {
-    opacity: 0.5;
+  .gate.locked .gate-body .check-btn {
+    opacity: 0.35;
     pointer-events: none;
+    cursor: default;
+  }
+
+  .gate.locked .gate-number {
+    background: var(--gate-locked);
+    color: var(--bg-ecru);
   }
 
   .gate.passed { border-left: 4px solid var(--pass-green); }
@@ -205,17 +211,26 @@
   }
 
   .gate-status.pending { color: var(--text-night); background: var(--concrete); }
+  .gate-status.locked { color: var(--gate-locked); background: var(--concrete); }
   .gate-status.pass { color: var(--bg-ecru); background: var(--pass-green); }
   .gate-status.fail { color: var(--bg-ecru); background: var(--fail-red); }
+
+  .gate.locked .gate-body .locked-hint {
+    font-family: var(--font-clue);
+    font-size: 0.8rem;
+    color: var(--gate-locked);
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    background: rgba(149, 165, 166, 0.1);
+    border-left: 3px solid var(--gate-locked);
+  }
 
   .gate-body {
     display: none;
     padding: 0 24px 24px 76px;
   }
 
-  .gate.active .gate-body,
-  .gate.passed .gate-body,
-  .gate.failed .gate-body {
+  .gate.expanded .gate-body {
     display: block;
   }
 
@@ -681,6 +696,7 @@ const GATES = [
 // State
 const state = {};
 GATES.forEach(g => g.items.forEach(item => { state[item.id] = null; }));
+const expandedGates = new Set();
 
 function init() {
   renderProgress();
@@ -728,7 +744,13 @@ function renderGates() {
     if (gateState === 'pass') { statusClass = 'pass'; statusText = 'Pass'; gateClass = 'passed'; }
     else if (gateState === 'fail') { statusClass = 'fail'; statusText = 'Blocked'; gateClass = 'failed'; }
     else if (gateState === 'active') { gateClass = 'active'; statusText = 'Active'; }
-    else { gateClass = 'locked'; }
+    else { gateClass = 'locked'; statusClass = 'locked'; statusText = 'Locked'; }
+
+    // Auto-expand active/passed/failed; also expand if user manually toggled
+    const isExpanded = (gateState !== 'locked') || expandedGates.has(gate.id);
+    if (isExpanded) gateClass += ' expanded';
+
+    const lockedHint = (gateState === 'locked') ? '<div class="locked-hint">Complete the previous gate to unlock these checkboxes.</div>' : '';
 
     return `
       <div class="gate ${gateClass}" id="gate-${gate.id}">
@@ -741,6 +763,7 @@ function renderGates() {
           <span class="gate-status ${statusClass}">${statusText}</span>
         </div>
         <div class="gate-body">
+          ${lockedHint}
           ${gate.items.map(item => renderCheckItem(item)).join('')}
         </div>
       </div>
@@ -777,7 +800,12 @@ function answer(itemId, value) {
 }
 
 function toggleGate(gateId) {
-  // Gates auto-expand based on state, this is a no-op for now
+  if (expandedGates.has(gateId)) {
+    expandedGates.delete(gateId);
+  } else {
+    expandedGates.add(gateId);
+  }
+  renderGates();
 }
 
 function saveMitigation(itemId, text) {
@@ -860,6 +888,7 @@ function updateVerdict() {
 function resetAll() {
   Object.keys(state).forEach(k => state[k] = null);
   window._mitigations = {};
+  expandedGates.clear();
   document.getElementById('projectName').value = '';
   renderProgress();
   renderGates();
