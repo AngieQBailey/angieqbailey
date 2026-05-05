@@ -1,21 +1,6 @@
-## [2026-04-30] — TIER 2 — Site-Wide
-**Change:** Added site-wide disclaimer to footer of all 17 pages: "All case studies describe the author's original work product and methodology. Company names, proprietary data and confidential metrics have been removed. Organizational contexts are described in general terms."
-**Rationale:** C&D compliance — explicitly frames case study content as author's work product
-**Operator:** Angie Bailey + Claude via Cowork
-
-## [2026-04-30] — TIER 1 — Warehouse (Newsletter)
-**Change:** Made "Underperforming → 95%+ Open rate growth from predecessor" outcome box span 2 columns instead of 1
-**Rationale:** Layout adjustment for readability
-**Operator:** Angie Bailey + Claude via Cowork
-
-## [2026-04-30] — TIER 2 — Warehouse (MBR)
-**Change:** Replaced outcome stat numbers "13" and "10+" with "Multiple" in the MBR case study outcome grid
-**Rationale:** C&D compliance — these specific numbers were cited in the letter
-**Operator:** Angie Bailey + Claude via Cowork
-
-## [2026-04-30] — TIER 2 — Warehouse (MBR)
-**Change:** Scrubbed companion .docx (marketing-infrastructure-mbr-companion.docx) — removed $1B+, Looker Studio, 50 hours, Thirteen, full channel list, two-person bottleneck language
-**Rationale:** C&D compliance — downloadable asset contained same identifying content as the HTML page
+## [2026-05-05] — TIER 1 — R&D (Hello, World / Safety-First Gate)
+**Change:** Updated Safety-First Gate interactive checklist so all six gate sections can be expanded and previewed by clicking their headers, regardless of completion state. Checkboxes remain sequentially locked (must complete prior gate to answer). Locked gates show a hint explaining why checkboxes are disabled. `toggleGate()` now functional. Removed blanket `pointer-events: none` and `opacity: 0.5` from locked gates.
+**Rationale:** Users should be able to read ahead and understand all gate questions before committing answers. Preview access improves transparency without breaking the sequential integrity of the assessment.
 **Operator:** Angie Bailey + Claude via Cowork
 
 ## [2026-04-27] — TIER 3 — Start Here (New Page)
@@ -25,7 +10,7 @@
 
 ## [2026-04-26] — TIER 2 — Warehouse
 **Change:** Added Marketing Infrastructure MBR Debt Clearance case study. 1 case study page (dark-variant), 2 branded artifact pages (Cross-Functional MBR Template, Reporting Governance Cadence), 2 blank downloadable templates, 1 companion .docx narrative. MBR Warehouse card added as first card in grid. TBA placeholder card added as last card. Warehouse card limit overridden from 8 to 10. Collapsed card padding tightened with hover transition.
-**Rationale:** New case study showcasing unified reporting infrastructure build across a full omni-channel marketing operation. Demonstrates strategic operations and governance methodology capabilities.
+**Rationale:** New case study showcasing unified reporting infrastructure build across 13 marketing functions and 10+ data platforms for a $1B+ organization. Demonstrates strategic operations and governance methodology capabilities.
 **Operator:** Angie Bailey + Claude via Cowork
 
 ### 2026-04-25 — Site Architecture Overhaul + Verdict Essays + L&D Landing Page
@@ -198,7 +183,7 @@ Running record of what changed, when, and why. Git commits are terse. This docum
 - `posts/web-experience-capacity-build/assets/team-capacity-diagnostic.html` ÃÂ¢ÃÂÃÂ branded artifact page
 - `posts/web-experience-capacity-build/assets/templates/team-capacity-diagnostic-blank.html` ÃÂ¢ÃÂÃÂ blank template
 Converted Warehouse card #3 from placeholder `<div>` to live `<a>`.
-**Why:** New case study covering web experience scrum master and team architecture work for a high-growth industrial technology company. Key framework: Role-Weighted Capacity Diagnostic ÃÂ¢ÃÂÃÂ maps capacity ratios for mixed-discipline teams where upstream roles (POs, designers) outnumber engineering bottlenecks. Artifact credits Nick Sonnenberg (*Come Up for Air*, 2023) for bandwidth calculation methodology and Eliyahu Goldratt for Theory of Constraints. Applied diagnostic (role-weighted mapping) is original.
+**Why:** New case study covering EquipmentShare web experience scrum master and team architecture work. Key framework: Role-Weighted Capacity Diagnostic ÃÂ¢ÃÂÃÂ maps capacity ratios for mixed-discipline teams where upstream roles (POs, designers) outnumber engineering bottlenecks. Artifact credits Nick Sonnenberg (*Come Up for Air*, 2023) for bandwidth calculation methodology and Eliyahu Goldratt for Theory of Constraints. Applied diagnostic (role-weighted mapping) is original.
 
 **Design decisions made during build:**
 - Stat box max-width bumped 500px ÃÂ¢ÃÂÃÂ 750px; padding 1.25rem ÃÂ¢ÃÂÃÂ 1.75rem 1.5rem; min-width 100px ÃÂ¢ÃÂÃÂ 140px (labels "Overproduction Ratio" and "What the Governance Produced" were overflowing)
