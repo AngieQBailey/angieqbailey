@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#121A28;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prompts, templates, playbooks and tools from Angie Bailey. The stuff people actually use, collected in one place.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <meta property="og:title" content="Resources // Angie Bailey">
+    <meta property="og:description" content="Prompts, templates, playbooks and tools. The stuff people actually use, collected in one place.">
+    <meta property="og:type" content="website">
+    <title>Resources // Angie Bailey</title>
+
+    <!-- GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S0MXDDKP4E');</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        /* Base styles (inline fallback for local preview) */
+        :root {
+            --nuit:     #121A28;
+            --cacao:    #2D1B14;
+            --quetzal:  #00685E;
+            --ecru:     #F5F5DC;
+            --rosso:    #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-bright: #00A896;
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important; border-radius: 0 !important;
+        }
+
+        ::selection { background: var(--rosso); color: var(--ecru); }
+        html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+
+        body {
+            background-color: var(--nuit); color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif; font-weight: 400;
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale; overflow-x: hidden;
+        }
+
+        .blueprint-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-fade 2s ease 0.5s both;
+        }
+
+        .spine {
+            position: fixed; left: calc(var(--spine-left) - 40px); top: 0;
+            width: 4px; height: 100%; background-color: var(--cacao); z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .nav-bar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--quetzal-bright); text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex; gap: 2rem; list-style: none; padding-right: 2rem;
+        }
+
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 400; color: var(--ecru-dim); text-decoration: none;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            transition: color 0.2s ease; position: relative;
+        }
+
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--rosso);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--ecru); }
+        .nav-links a:hover::after { width: 100%; }
+
+        main { position: relative; z-index: 10; }
+
+        .section-content {
+            padding-left: var(--spine-left); padding-right: 4rem; max-width: 1200px;
+        }
+
+        h2 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2rem, 5vw, 4rem); font-weight: 900;
+            color: var(--ecru); text-transform: uppercase;
+            line-height: 0.9; letter-spacing: -0.01em; margin-bottom: 2rem;
+        }
+
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost); overflow: visible;
+        }
+
+        .footer-content {
+            display: flex; justify-content: space-between;
+            align-items: center; max-width: 1200px;
+        }
+
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
+            color: var(--ecru-dim); letter-spacing: 0.05em;
+        }
+
+        .footer-portrait-link {
+            position: relative; display: inline-block;
+            text-decoration: none; overflow: visible;
+        }
+
+        .footer-portrait {
+            width: 42px; height: 42px; border-radius: 50% !important;
+            object-fit: cover; object-position: center 15%;
+            opacity: 0.35; transition: opacity 0.6s ease, filter 0.6s ease, transform 0.6s ease;
+            border: 1px solid var(--ecru-ghost); filter: grayscale(60%); transform: scale(1);
+        }
+
+        .footer-portrait-link:hover .footer-portrait {
+            opacity: 1; filter: grayscale(0%); transform: scale(2.8);
+            border-color: var(--quetzal-bright); border-width: 2px;
+        }
+
+        .footer-cta {
+            position: absolute; top: -3.5rem; right: 0;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
+            color: var(--quetzal-bright); letter-spacing: 0.05em; white-space: nowrap;
+            opacity: 0; transform: translateY(4px);
+            transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
+            pointer-events: none;
+        }
+
+        .footer-portrait-link:hover .footer-cta { opacity: 1; transform: translateY(0); }
+
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .section-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+        }
+
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .nav-links a { font-size: 0.75rem; }
+            .blueprint-overlay { background-size: 24px 24px; }
+            .footer-portrait { opacity: 0.5; }
+            .footer-portrait-link:hover .footer-portrait { transform: scale(2.2); }
+        }
+
+        /* Resources page — contrast overrides */
+        :root {
+            --ecru-dim: rgba(245, 245, 220, 0.85);
+        }
+
+        /* Resources page-specific styles */
+
+        .res-header {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 8rem;
+            padding-bottom: 3rem;
+        }
+
+        .res-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--quetzal-bright);
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.4s both;
+        }
+
+        .res-header h1 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2.5rem, 7vw, 6rem);
+            font-weight: 900;
+            line-height: 0.9;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+
+        .res-header h1 .accent-word {
+            color: var(--rosso);
+        }
+
+        .res-lede {
+            border-left: 5px solid var(--cacao);
+            padding-left: 2rem;
+            max-width: 600px;
+            animation: fade-up 0.8s ease 0.8s both;
+        }
+
+        .res-lede p {
+            font-size: 1.25rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+        }
+
+        /* Category sections */
+        .res-category {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .res-category-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .res-category h2 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+            font-weight: 900;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 0.95;
+            margin-bottom: 1.5rem;
+        }
+
+        .res-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2px;
+        }
+
+        .res-card {
+            background: rgba(245, 245, 220, 0.06);
+            padding: 2rem 1.75rem;
+            position: relative;
+            transition: background 0.3s ease;
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+        }
+
+        .res-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--rosso);
+            transition: width 0.4s ease;
+        }
+
+        .res-card:hover {
+            background: rgba(245, 245, 220, 0.10);
+        }
+
+        .res-card:hover::before {
+            width: 100%;
+        }
+
+        .res-card-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.75rem;
+        }
+
+        .res-card-title {
+            font-family: 'Imbue', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+
+        .res-card-desc {
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .res-card-origin {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--ecru-dim);
+            letter-spacing: 0.05em;
+            opacity: 0.7;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        /* Tool cards get quetzal accent */
+        .res-card--tool::before {
+            background: var(--quetzal-bright);
+        }
+
+        .res-card--tool {
+            background: rgba(0, 104, 94, 0.08);
+        }
+
+        .res-card--tool:hover {
+            background: rgba(0, 104, 94, 0.15);
+        }
+
+        .res-card--tool .res-card-tag {
+            color: var(--quetzal-bright);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .res-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body style="background-color: #121A28;">
+
+<div class="blueprint-overlay" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true"></div>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
+    <ul class="nav-links">
+        <li><a href="/#investigation">Investigation</a></li>
+        <li><a href="/#warehouse">Warehouse</a></li>
+        <li><a href="/#rnd">R&D</a></li>
+        <li><a href="/#lnd">L&D</a></li>
+        <li><a href="/#verdict">Verdict</a></li>
+        <li><a href="/resources/" class="nav-active" style="color: var(--ecru);">Resources</a></li>
+        <li><a href="/#debrief">Debrief</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- HEADER -->
+    <section class="res-header section-content">
+        <span class="res-meta">angieqbailey.com // Resources</span>
+        <h1>The<br><span class="accent-word">Receipt</span><br>Drawer</h1>
+        <div class="res-lede">
+            <p>
+                Prompts, templates, playbooks and tools. The things I reference in posts and presentations...
+                collected in one place so nobody has to go looking.
+            </p>
+        </div>
+    </section>
+
+    <!-- PROMPTS -->
+    <section class="res-category section-content" id="prompts">
+        <span class="res-category-label">Prompts</span>
+        <h2>Copy. Paste.<br>Get to Work.</h2>
+
+        <div class="res-grid">
+            <a href="/resources/digital-gratuity.html" class="res-card" id="digital-gratuity">
+                <div class="res-card-tag">Prompt Stack // 2 Turns</div>
+                <div class="res-card-title">Digital<br>Gratuity</div>
+                <div class="res-card-desc">
+                    Voice memo, AI prompt, three clicks. A 6-minute system for writing LinkedIn recommendations that sound like you... not like a corporate greeting card.
+                </div>
+                <div class="res-card-origin">From: LinkedIn post // Built on the RAPPEL framework (Trust Insights)</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- TOOLS -->
+    <section class="res-category section-content" id="tools">
+        <span class="res-category-label">Tools</span>
+        <h2>Interactive.<br>Start Anywhere.</h2>
+
+        <div class="res-grid">
+            <a href="/start-here/" class="res-card res-card--tool" id="start-here">
+                <div class="res-card-tag">Interactive // 10 min</div>
+                <div class="res-card-title">Start<br>Here</div>
+                <div class="res-card-desc">
+                    Ten questions. All multiple-choice. You get an AI-ready personal profile to paste into any LLM. Skip the part where you mass-produce garbage for a year.
+                </div>
+                <div class="res-card-origin">From: Hello, World toolkit // Step 1 of 3</div>
+            </a>
+
+            <a href="/hello-world/safety-first-gate/" class="res-card res-card--tool" id="safety-first-gate">
+                <div class="res-card-tag">Interactive // Checklist</div>
+                <div class="res-card-title">The Safety-First<br>Gate</div>
+                <div class="res-card-desc">
+                    Before you hand anything to AI, make sure you're not handing it something it shouldn't have. The pre-flight check that keeps your data where it belongs.
+                </div>
+                <div class="res-card-origin">From: Hello, World toolkit // Step 2 of 3</div>
+            </a>
+
+            <a href="/hello-world/sop-playbook-builder/" class="res-card res-card--tool" id="sop-playbook-builder">
+                <div class="res-card-tag">Interactive // Builder</div>
+                <div class="res-card-title">SOP Playbook<br>Builder</div>
+                <div class="res-card-desc">
+                    Document the process before you automate it. Two editions... plain language for the team that needs to follow it, pro edition for the one building it.
+                </div>
+                <div class="res-card-origin">From: Hello, World toolkit // Step 3 of 3</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- PLAYBOOKS -->
+    <section class="res-category section-content" id="playbooks">
+        <span class="res-category-label">Playbooks</span>
+        <h2>The Longer<br>Read.</h2>
+
+        <div class="res-grid">
+            <a href="/hello-world/sop-playbook-builder/assets/plain-language-guide.html" class="res-card" id="sop-plain-language">
+                <div class="res-card-tag">Guide // Plain Language</div>
+                <div class="res-card-title">SOP Playbook:<br>Plain Language Edition</div>
+                <div class="res-card-desc">
+                    The version written for the person doing the work. No jargon threshold, no assumed vocabulary. If the team can't follow it, the process doesn't exist.
+                </div>
+                <div class="res-card-origin">From: SOP Playbook Builder</div>
+            </a>
+
+            <a href="/hello-world/sop-playbook-builder/assets/pro-guide.html" class="res-card" id="sop-pro-edition">
+                <div class="res-card-tag">Guide // Pro Edition</div>
+                <div class="res-card-title">SOP Playbook:<br>Pro Edition</div>
+                <div class="res-card-desc">
+                    The version for the person building the system. Heavier on architecture decisions, governance logic and the reasoning behind every structural choice.
+                </div>
+                <div class="res-card-origin">From: SOP Playbook Builder</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- TEMPLATES -->
+    <section class="res-category section-content" id="templates">
+        <span class="res-category-label">Templates</span>
+        <h2>Blank on<br>Purpose.</h2>
+
+        <div class="res-grid">
+            <a href="/posts/marketing-infrastructure-mbr/assets/templates/cross-functional-mbr-template-blank.html" class="res-card" id="mbr-template">
+                <div class="res-card-tag">Template // Reporting</div>
+                <div class="res-card-title">Cross-Functional<br>MBR Template</div>
+                <div class="res-card-desc">
+                    A monthly business review structure that works across 13 marketing functions. Blank, printable and ready to fill in with your own data.
+                </div>
+                <div class="res-card-origin">From: Marketing Infrastructure MBR Debt Clearance</div>
+            </a>
+
+            <a href="/posts/marketing-infrastructure-mbr/assets/templates/reporting-governance-cadence-blank.html" class="res-card" id="reporting-governance">
+                <div class="res-card-tag">Template // Governance</div>
+                <div class="res-card-title">Reporting Governance<br>Cadence</div>
+                <div class="res-card-desc">
+                    The calendar nobody builds until something breaks. Maps who reports what, when and to whom... before the next fire drill.
+                </div>
+                <div class="res-card-origin">From: Marketing Infrastructure MBR Debt Clearance</div>
+            </a>
+
+            <a href="/posts/geo-aeo-transition/assets/templates/content-brief-template-blank.html" class="res-card" id="content-brief">
+                <div class="res-card-tag">Template // Content</div>
+                <div class="res-card-title">Content Brief<br>(AI-Ready)</div>
+                <div class="res-card-desc">
+                    A content brief structured for both human writers and AI optimization. Covers search intent, entity mapping and the AI-citation signals most briefs skip entirely.
+                </div>
+                <div class="res-card-origin">From: The GEO/AEO Transition</div>
+            </a>
+
+            <a href="/posts/geo-aeo-transition/assets/templates/ai-overview-monitoring-guide-blank.html" class="res-card" id="ai-overview-monitoring">
+                <div class="res-card-tag">Template // Monitoring</div>
+                <div class="res-card-title">AI Overview<br>Monitoring Guide</div>
+                <div class="res-card-desc">
+                    Track when and how AI search results reference your content. The monitoring protocol for the visibility shift nobody's measuring yet.
+                </div>
+                <div class="res-card-origin">From: The GEO/AEO Transition</div>
+            </a>
+
+            <a href="/posts/geo-aeo-transition/assets/templates/content-prioritization-framework-blank.html" class="res-card" id="content-prioritization">
+                <div class="res-card-tag">Template // Strategy</div>
+                <div class="res-card-title">Content<br>Prioritization Framework</div>
+                <div class="res-card-desc">
+                    Rank content efforts by impact instead of gut feeling. Maps traffic potential against AI-citation readiness so the highest-leverage pages get built first.
+                </div>
+                <div class="res-card-origin">From: The GEO/AEO Transition</div>
+            </a>
+
+            <a href="/posts/geo-aeo-transition/assets/templates/geo-best-practices-guide-blank.html" class="res-card" id="geo-best-practices">
+                <div class="res-card-tag">Template // Best Practices</div>
+                <div class="res-card-title">GEO Best<br>Practices Guide</div>
+                <div class="res-card-desc">
+                    The playbook for optimizing content so AI engines cite it. Covers entity structure, citation-worthiness signals and the formatting patterns that get surfaced.
+                </div>
+                <div class="res-card-origin">From: The GEO/AEO Transition</div>
+            </a>
+
+            <a href="/posts/geo-aeo-transition/assets/templates/schema-markup-ai-content-guide-blank.html" class="res-card" id="schema-markup">
+                <div class="res-card-tag">Template // Technical</div>
+                <div class="res-card-title">Schema Markup &<br>AI-Optimized Content</div>
+                <div class="res-card-desc">
+                    Structured data implementation for AI search visibility. The technical layer most marketing teams don't know they need until their traffic shifts.
+                </div>
+                <div class="res-card-origin">From: The GEO/AEO Transition</div>
+            </a>
+
+            <a href="/posts/geo-aeo-transition/assets/templates/seo-ai-search-playbook-blank.html" class="res-card" id="seo-ai-playbook">
+                <div class="res-card-tag">Template // Playbook</div>
+                <div class="res-card-title">SEO & AI Search<br>Playbook</div>
+                <div class="res-card-desc">
+                    The bridge between traditional SEO and the AI search landscape. Maps existing optimization workflows to the new signals that determine visibility.
+                </div>
+                <div class="res-card-origin">From: The GEO/AEO Transition</div>
+            </a>
+
+            <a href="/hello-world/sop-playbook-builder/assets/templates/capture-template-blank.html" class="res-card" id="sop-capture">
+                <div class="res-card-tag">Template // Process</div>
+                <div class="res-card-title">SOP Capture<br>Template</div>
+                <div class="res-card-desc">
+                    The blank form for documenting a process before automating it. Captures the what, the who, the triggers and the edge cases in one page.
+                </div>
+                <div class="res-card-origin">From: SOP Playbook Builder</div>
+            </a>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <span>&copy; 2026 Angie Bailey</span>
+        <a href="https://www.linkedin.com/in/angie-bailey/" target="_blank" rel="noopener noreferrer" class="footer-portrait-link">
+            <img src="../headshot.png" alt="Angie Bailey" class="footer-portrait" loading="lazy">
+            <span class="footer-cta">Connect on LinkedIn</span>
+        </a>
+    </div>
+</footer>
+
+<script>
+    /* Smooth scroll for any anchor links */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
