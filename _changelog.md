@@ -1,3 +1,8 @@
+## [2026-05-05] — TIER 1 — Nav Bar (All Pages)
+**Change:** Added Resources nav link to all subpages (verdict essays, L&D hub, case study hubs, 404); modernized old 4-item navs to full 7-item nav. Deleted orphan file changelog2_deploy.md.
+**Rationale:** Consistency — Resources link was only on index.html and resources pages after initial deploy.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-05-05] — TIER 3 — Resources (New Section + New Page)
 **Change:** Created /resources/index.html (The Receipt Drawer) — standalone resources landing page with 4 categories (Prompts, Templates, Playbooks, Tools) and 15 resource cards linking to existing site content. Created /resources/digital-gratuity.html — standalone prompt stack page with 3-step system (Capture, Prompt, Send), 8 capture questions, 2-turn copyable AI prompt, and 6-step LinkedIn send instructions. Added "Resources" to nav bar on index.html between Verdict and Debrief. All pages include GA4 tag, inline base CSS for local preview, and anchor IDs for deep-linking from LinkedIn posts.
 **Rationale:** Needed a single URL to point LinkedIn and presentation audiences to when referencing templates, prompts, or tools. Eliminates the "go find it on my site" friction. Digital Gratuity prompt stack was the first resource seeded from an existing LinkedIn post (activity 7449837717149884417).
