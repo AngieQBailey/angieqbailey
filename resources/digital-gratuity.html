@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#121A28;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Digital Gratuity: A 6-minute system for writing LinkedIn recommendations using voice memos and AI prompts. Voice memo. AI prompt. Three clicks.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <meta property="og:title" content="Digital Gratuity // Resources // Angie Bailey">
+    <meta property="og:description" content="Voice memo. AI prompt. Three clicks. A 6-minute system for writing LinkedIn recommendations that sound like you.">
+    <meta property="og:type" content="article">
+    <title>Digital Gratuity // Resources // Angie Bailey</title>
+
+    <!-- GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S0MXDDKP4E');</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        /* Base styles (inline fallback for local preview) */
+        :root {
+            --nuit:     #121A28;
+            --cacao:    #2D1B14;
+            --quetzal:  #00685E;
+            --ecru:     #F5F5DC;
+            --rosso:    #C41E3A;
+            --ecru-dim: rgba(245, 245, 220, 0.6);
+            --ecru-ghost: rgba(245, 245, 220, 0.08);
+            --quetzal-bright: #00A896;
+            --quetzal-line: rgba(0, 104, 94, 0.1);
+            --spine-left: 22%;
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important; border-radius: 0 !important;
+        }
+
+        ::selection { background: var(--rosso); color: var(--ecru); }
+        html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+
+        body {
+            background-color: var(--nuit); color: var(--ecru);
+            font-family: 'IBM Plex Sans', sans-serif; font-weight: 400;
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale; overflow-x: hidden;
+        }
+
+        .blueprint-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1000;
+            background-image:
+                linear-gradient(to right, var(--quetzal-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--quetzal-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-fade 2s ease 0.5s both;
+        }
+
+        .spine {
+            position: fixed; left: calc(var(--spine-left) - 40px); top: 0;
+            width: 4px; height: 100%; background-color: var(--cacao); z-index: 500;
+            animation: spine-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .nav-bar {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 900;
+            padding: 1.5rem 2rem 1.5rem var(--spine-left);
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, var(--nuit) 60%, transparent);
+        }
+
+        .nav-mark {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--quetzal-bright); text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex; gap: 2rem; list-style: none; padding-right: 2rem;
+        }
+
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem;
+            font-weight: 400; color: var(--ecru-dim); text-decoration: none;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            transition: color 0.2s ease; position: relative;
+        }
+
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--rosso);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--ecru); }
+        .nav-links a:hover::after { width: 100%; }
+
+        main { position: relative; z-index: 10; }
+
+        .section-content {
+            padding-left: var(--spine-left); padding-right: 4rem; max-width: 1200px;
+        }
+
+        h2 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2rem, 5vw, 4rem); font-weight: 900;
+            color: var(--ecru); text-transform: uppercase;
+            line-height: 0.9; letter-spacing: -0.01em; margin-bottom: 2rem;
+        }
+
+        footer {
+            padding: 2rem 2rem 2rem var(--spine-left);
+            border-top: 1px solid var(--ecru-ghost); overflow: visible;
+        }
+
+        .footer-content {
+            display: flex; justify-content: space-between;
+            align-items: center; max-width: 1200px;
+        }
+
+        .footer-content span {
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
+            color: var(--ecru-dim); letter-spacing: 0.05em;
+        }
+
+        .footer-portrait-link {
+            position: relative; display: inline-block;
+            text-decoration: none; overflow: visible;
+        }
+
+        .footer-portrait {
+            width: 42px; height: 42px; border-radius: 50% !important;
+            object-fit: cover; object-position: center 15%;
+            opacity: 0.35; transition: opacity 0.6s ease, filter 0.6s ease, transform 0.6s ease;
+            border: 1px solid var(--ecru-ghost); filter: grayscale(60%); transform: scale(1);
+        }
+
+        .footer-portrait-link:hover .footer-portrait {
+            opacity: 1; filter: grayscale(0%); transform: scale(2.8);
+            border-color: var(--quetzal-bright); border-width: 2px;
+        }
+
+        .footer-cta {
+            position: absolute; top: -3.5rem; right: 0;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
+            color: var(--quetzal-bright); letter-spacing: 0.05em; white-space: nowrap;
+            opacity: 0; transform: translateY(4px);
+            transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
+            pointer-events: none;
+        }
+
+        .footer-portrait-link:hover .footer-cta { opacity: 1; transform: translateY(0); }
+
+        @keyframes spine-draw { from { height: 0; } to { height: 100%; } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes grid-fade { from { opacity: 0; } to { opacity: 1; } }
+
+        @media (max-width: 900px) {
+            :root { --spine-left: 5%; }
+            .spine { left: 12px; width: 3px; }
+            .section-content { padding-left: 2rem; padding-right: 2rem; }
+            .nav-bar { padding-left: 2rem; }
+            .nav-links { gap: 1.25rem; padding-right: 1rem; }
+            footer { padding-left: 2rem; }
+        }
+
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .nav-links a { font-size: 0.75rem; }
+            .blueprint-overlay { background-size: 24px 24px; }
+            .footer-portrait { opacity: 0.5; }
+            .footer-portrait-link:hover .footer-portrait { transform: scale(2.2); }
+        }
+
+        /* Digital Gratuity page — contrast overrides */
+        :root {
+            --ecru-dim: rgba(245, 245, 220, 0.85);
+        }
+
+        /* Digital Gratuity page-specific styles */
+
+        .dg-header {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 8rem;
+            padding-bottom: 3rem;
+        }
+
+        .dg-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--quetzal-bright);
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.4s both;
+        }
+
+        .dg-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.5s both;
+        }
+
+        .dg-header h1 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2.5rem, 7vw, 6rem);
+            font-weight: 900;
+            line-height: 0.9;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+
+        .dg-header h1 .accent-word {
+            color: var(--rosso);
+        }
+
+        .dg-lede {
+            border-left: 5px solid var(--cacao);
+            padding-left: 2rem;
+            max-width: 600px;
+            animation: fade-up 0.8s ease 0.8s both;
+        }
+
+        .dg-lede p {
+            font-size: 1.25rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+        }
+
+        .dg-lede strong {
+            color: var(--ecru);
+            font-weight: 500;
+        }
+
+        /* Steps */
+        .dg-step {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .dg-step-number {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            color: var(--quetzal-bright);
+            opacity: 0.6;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .dg-step-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .dg-step h2 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+            font-weight: 900;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 0.95;
+            margin-bottom: 1.5rem;
+        }
+
+        .dg-step-body p {
+            font-size: 1.15rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--ecru-dim);
+            margin-bottom: 1.5rem;
+            max-width: 650px;
+        }
+
+        .dg-step-body strong {
+            color: var(--ecru);
+            font-weight: 500;
+        }
+
+        /* Question grid */
+        .dg-questions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            margin: 2rem 0;
+            max-width: 700px;
+        }
+
+        .dg-question {
+            background: rgba(0, 104, 94, 0.10);
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: baseline;
+        }
+
+        .dg-question-num {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            flex-shrink: 0;
+            min-width: 1.5rem;
+        }
+
+        .dg-question-text {
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--ecru);
+            line-height: 1.5;
+        }
+
+        /* Device note */
+        .dg-devices {
+            display: flex;
+            gap: 2px;
+            margin: 1.5rem 0;
+            max-width: 700px;
+        }
+
+        .dg-device {
+            background: rgba(0, 104, 94, 0.08);
+            padding: 1rem 1.25rem;
+            flex: 1;
+        }
+
+        .dg-device-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.35rem;
+        }
+
+        .dg-device-app {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.4;
+        }
+
+        /* Prompt blocks */
+        .dg-prompt-block {
+            background: rgba(245, 245, 220, 0.06);
+            border-left: 3px solid var(--rosso);
+            padding: 2rem 2rem;
+            margin: 1.5rem 0;
+            max-width: 700px;
+            position: relative;
+        }
+
+        .dg-prompt-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .dg-prompt-text {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--ecru);
+            line-height: 1.7;
+            white-space: pre-wrap;
+        }
+
+        .dg-prompt-note {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--quetzal-bright);
+            letter-spacing: 0.05em;
+            margin-top: 1rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .dg-copy-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 168, 150, 0.15);
+            border: 1px solid rgba(0, 168, 150, 0.3);
+            color: var(--quetzal-bright);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.45rem 0.85rem;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .dg-copy-btn:hover {
+            background: rgba(0, 168, 150, 0.3);
+            color: var(--ecru);
+        }
+
+        .dg-copy-btn.copied {
+            background: rgba(0, 168, 150, 0.3);
+            color: var(--ecru);
+        }
+
+        /* Interstitial callout between turns */
+        .dg-interstitial {
+            background: rgba(196, 30, 58, 0.08);
+            border-left: 3px solid var(--rosso);
+            padding: 1.25rem 1.75rem;
+            margin: 1.5rem 0;
+            max-width: 700px;
+        }
+
+        .dg-interstitial p {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--rosso);
+            letter-spacing: 0.05em;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Send steps */
+        .dg-send-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            margin: 1.5rem 0;
+            max-width: 700px;
+        }
+
+        .dg-send-step {
+            background: rgba(245, 245, 220, 0.06);
+            padding: 1rem 1.5rem;
+            display: grid;
+            grid-template-columns: 2.5rem 1fr;
+            gap: 1rem;
+            align-items: baseline;
+        }
+
+        .dg-send-num {
+            font-family: 'Imbue', serif;
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--quetzal-bright);
+            opacity: 0.7;
+        }
+
+        .dg-send-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dg-send-action {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--ecru);
+            margin-bottom: 0.2rem;
+        }
+
+        .dg-send-detail {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+        }
+
+        /* Closing */
+        .dg-closing {
+            padding-top: 2.5rem;
+            padding-bottom: 3rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .dg-closing-text {
+            font-family: 'Imbue', serif;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 1.2;
+            max-width: 550px;
+            margin-bottom: 1.5rem;
+        }
+
+        .dg-closing-text .accent-word {
+            color: var(--rosso);
+        }
+
+        .dg-closing p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.7;
+            max-width: 550px;
+        }
+
+        .dg-back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.95rem;
+            color: var(--quetzal-bright);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: color 0.2s ease;
+        }
+
+        .dg-back-link:hover {
+            color: var(--ecru);
+        }
+
+        .dg-source {
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+            margin-top: 2rem;
+        }
+
+        .dg-source p {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--ecru-dim);
+            letter-spacing: 0.03em;
+            line-height: 1.7;
+            opacity: 0.7;
+            max-width: 650px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .dg-questions {
+                grid-template-columns: 1fr;
+            }
+
+            .dg-devices {
+                flex-direction: column;
+            }
+
+            .dg-send-step {
+                grid-template-columns: 2rem 1fr;
+            }
+        }
+    </style>
+</head>
+<body style="background-color: #121A28;">
+
+<div class="blueprint-overlay" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true"></div>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
+    <ul class="nav-links">
+        <li><a href="/#investigation">Investigation</a></li>
+        <li><a href="/#warehouse">Warehouse</a></li>
+        <li><a href="/#rnd">R&D</a></li>
+        <li><a href="/#lnd">L&D</a></li>
+        <li><a href="/#verdict">Verdict</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/#debrief">Debrief</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- HEADER -->
+    <section class="dg-header section-content">
+        <span class="dg-meta">Resources // Prompt Stack</span>
+        <span class="dg-tag">6 minutes. 3 steps.</span>
+        <h1>Digital<br><span class="accent-word">Gratuity</span></h1>
+        <div class="dg-lede">
+            <p>
+                Voice memo. AI prompt. Three clicks on LinkedIn.
+                A system for writing recommendations that sound like you actually
+                know the person... because you do. <strong>Imperfect and sent beats
+                perfect and pending every single time.</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- STEP 01: CAPTURE -->
+    <section class="dg-step section-content" id="capture">
+        <div class="dg-step-number">01</div>
+        <h2>Capture</h2>
+        <div class="dg-step-body">
+            <p>
+                Open Voice Memos (already on your phone). Pick 2-3 questions from the list below.
+                Hit record. Talk for 60 seconds. Hit stop. Copy the transcript.
+            </p>
+            <p>
+                <strong>Your phone transcribes automatically.</strong>
+                Whatever comes out first is probably the truest thing.
+            </p>
+        </div>
+
+        <div class="dg-questions">
+            <div class="dg-question">
+                <span class="dg-question-num">01</span>
+                <span class="dg-question-text">When did they make something hard feel easier?</span>
+            </div>
+            <div class="dg-question">
+                <span class="dg-question-num">02</span>
+                <span class="dg-question-text">What did you brag about them behind their back?</span>
+            </div>
+            <div class="dg-question">
+                <span class="dg-question-num">03</span>
+                <span class="dg-question-text">What did working with them give you that you still use?</span>
+            </div>
+            <div class="dg-question">
+                <span class="dg-question-num">04</span>
+                <span class="dg-question-text">What would their next team get that they don't know to ask for yet?</span>
+            </div>
+            <div class="dg-question">
+                <span class="dg-question-num">05</span>
+                <span class="dg-question-text">When did they surprise you?</span>
+            </div>
+            <div class="dg-question">
+                <span class="dg-question-num">06</span>
+                <span class="dg-question-text">What's the thing they did that nobody asked them to do?</span>
+            </div>
+            <div class="dg-question">
+                <span class="dg-question-num">07</span>
+                <span class="dg-question-text">What did they handle that most people would've avoided?</span>
+            </div>
+            <div class="dg-question">
+                <span class="dg-question-num">08</span>
+                <span class="dg-question-text">What did they make better just by being in the room?</span>
+            </div>
+        </div>
+
+        <div class="dg-devices">
+            <div class="dg-device">
+                <div class="dg-device-label">iPhone / iPad</div>
+                <div class="dg-device-app">Voice Memos app (pre-installed)</div>
+            </div>
+            <div class="dg-device">
+                <div class="dg-device-label">Mac</div>
+                <div class="dg-device-app">Voice Memos in Launchpad or Spotlight</div>
+            </div>
+            <div class="dg-device">
+                <div class="dg-device-label">Android / Windows</div>
+                <div class="dg-device-app">Recorder app (Pixel) or Sound Recorder</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STEP 02: PROMPT -->
+    <section class="dg-step section-content" id="prompt">
+        <div class="dg-step-number">02</div>
+        <h2>Prompt</h2>
+        <div class="dg-step-body">
+            <p>
+                Open Claude, ChatGPT or any LLM. Two turns. The first sets the standard.
+                The second hands it your transcript.
+            </p>
+        </div>
+
+        <div class="dg-prompt-block" id="turn-1">
+            <button class="dg-copy-btn" onclick="copyPrompt(this, 'prompt1')">Copy</button>
+            <span class="dg-prompt-label">Turn 1 — Paste This First</span>
+            <div class="dg-prompt-text" id="prompt1">You are an expert professional communications editor who specializes in authentic workplace writing. You know the difference between genuine professional recognition and LinkedIn bromance.
+
+Before I give you my transcript, tell me: what makes a LinkedIn recommendation actually memorable vs. forgettable? What are the most common mistakes?</div>
+        </div>
+
+        <div class="dg-interstitial">
+            <p>Wait for the response. Read it. Then paste Turn 2 with your transcript.</p>
+        </div>
+
+        <div class="dg-prompt-block" id="turn-2">
+            <button class="dg-copy-btn" onclick="copyPrompt(this, 'prompt2')">Copy</button>
+            <span class="dg-prompt-label">Turn 2 — Paste This With Your Transcript</span>
+            <div class="dg-prompt-text" id="prompt2">Here is my transcript: [paste it]
+
+Write a LinkedIn recommendation using what you just described. Fewer than 150 words. My voice, not corporate vocabulary. No words like "passionate," "dynamic," "innovative" or "synergy." No sentences that could apply to anyone on the planet.
+
+This person matters to me. If a line doesn't sound like something I'd say to their face, cut it.
+
+Specific beats eloquent. Every time.</div>
+            <div class="dg-prompt-note">Built on the RAPPEL framework — Trust Insights (Chris Penn + Katie Robbert)</div>
+        </div>
+    </section>
+
+    <!-- STEP 03: SEND -->
+    <section class="dg-step section-content" id="send">
+        <div class="dg-step-number">03</div>
+        <h2>Send</h2>
+        <div class="dg-step-body">
+            <p>
+                Six clicks total. LinkedIn desktop is easier for this than mobile.
+            </p>
+        </div>
+
+        <div class="dg-send-steps">
+            <div class="dg-send-step">
+                <span class="dg-send-num">1</span>
+                <div class="dg-send-content">
+                    <span class="dg-send-action">Search their name</span>
+                    <span class="dg-send-detail">LinkedIn search bar at top</span>
+                </div>
+            </div>
+            <div class="dg-send-step">
+                <span class="dg-send-num">2</span>
+                <div class="dg-send-content">
+                    <span class="dg-send-action">Click More</span>
+                    <span class="dg-send-detail">Below their name, next to Connect</span>
+                </div>
+            </div>
+            <div class="dg-send-step">
+                <span class="dg-send-num">3</span>
+                <div class="dg-send-content">
+                    <span class="dg-send-action">Select Recommend</span>
+                    <span class="dg-send-detail">In the dropdown menu</span>
+                </div>
+            </div>
+            <div class="dg-send-step">
+                <span class="dg-send-num">4</span>
+                <div class="dg-send-content">
+                    <span class="dg-send-action">Fill relationship fields</span>
+                    <span class="dg-send-detail">Two dropdowns. 10 seconds.</span>
+                </div>
+            </div>
+            <div class="dg-send-step">
+                <span class="dg-send-num">5</span>
+                <div class="dg-send-content">
+                    <span class="dg-send-action">Paste your recommendation</span>
+                    <span class="dg-send-detail">Read it one more time</span>
+                </div>
+            </div>
+            <div class="dg-send-step">
+                <span class="dg-send-num">6</span>
+                <div class="dg-send-content">
+                    <span class="dg-send-action">Hit Send</span>
+                    <span class="dg-send-detail">Done.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="dg-closing section-content">
+        <div class="dg-closing-text">
+            Imperfect and sent beats perfect and <span class="accent-word">pending</span> every. single. time.
+        </div>
+        <p>
+            The gratitude parked in the drafts in your head isn't helping anyone know they mattered this week.
+        </p>
+
+        <a href="/resources/" class="dg-back-link">&larr; Back to Resources</a>
+
+        <div class="dg-source">
+            <p>
+                Built on the RAPPEL framework by Trust Insights (Chris Penn + Katie Robbert).
+                Research cited: Center for Creative Leadership (2012), Rosenberg &amp; McCullough (1981),
+                Gordon Flett Anti-Mattering Scale (2021), Jennifer Breheny Wallace, Mattering (2024).
+            </p>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <span>&copy; 2026 Angie Bailey</span>
+        <a href="https://www.linkedin.com/in/angie-bailey/" target="_blank" rel="noopener noreferrer" class="footer-portrait-link">
+            <img src="../headshot.png" alt="Angie Bailey" class="footer-portrait" loading="lazy">
+            <span class="footer-cta">Connect on LinkedIn</span>
+        </a>
+    </div>
+</footer>
+
+<script>
+function copyPrompt(btn, id) {
+    const text = document.getElementById(id).textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied';
+        btn.classList.add('copied');
+        setTimeout(() => {
+            btn.textContent = 'Copy';
+            btn.classList.remove('copied');
+        }, 2000);
+    });
+}
+</script>
+
+</body>
+</html>
