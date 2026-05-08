@@ -32,7 +32,7 @@ jobs:
               continue
             fi
 
-            sed -i "s|<head[^>]*>|&\\n${GA4_TAG}|I" "$file"
+                    sed -i "s#<head[^>]*>#&\\n${GA4_TAG}#I" "$file"
 
             if grep -q "$GA4_ID" "$file"; then
               echo "INJECTED: $file"
