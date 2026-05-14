@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#121A28;">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Operational Telemetry: Seven markers that replace departmental metrics with shared economic flow. The diagnostic framework for ops leaders who want accountability without the drama.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <meta property="og:title" content="Operational Telemetry // Angie Bailey">
+    <meta property="og:description" content="Seven markers that replace departmental metrics with shared economic flow. System telemetry for ops leaders building accountability that survives contact with reality.">
+    <meta property="og:type" content="article">
+    <title>Operational Telemetry // Angie Bailey</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        /* Page-specific styles for the framework layout */
+        .framework-header {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 8rem;
+            padding-bottom: 4rem;
+        }
+        .framework-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--quetzal-bright);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.4s both;
+        }
+        .framework-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.5s both;
+        }
+        .framework-header h1 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2.5rem, 7vw, 6rem);
+            font-weight: 900;
+            line-height: 0.9;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+        .framework-header h1 .accent-word { color: var(--rosso); }
+        .framework-lede {
+            border-left: 5px solid var(--rosso);
+            padding-left: 2rem;
+            max-width: 600px;
+            animation: fade-up 0.8s ease 0.8s both;
+        }
+        .framework-lede p {
+            font-size: 1.15rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+        }
+        .framework-lede strong { color: var(--ecru); font-weight: 500; }
+
+        .framework-section {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        .body-text p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--ecru-dim);
+            margin-bottom: 1.5rem;
+            max-width: 650px;
+        }
+        .body-text p strong { color: var(--ecru); font-weight: 500; }
+
+        /* Marker cards */
+        .marker-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2px;
+            margin: 2.5rem 0;
+            max-width: 750px;
+        }
+        .marker-card {
+            background: rgba(245, 245, 220, 0.14);
+            padding: 2rem 1.75rem;
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+        .marker-number {
+            font-family: 'Imbue', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--ecru);
+            line-height: 1;
+        }
+        .marker-card:nth-child(4) .marker-number { color: var(--rosso); }
+        .marker-name {
+            font-family: 'Imbue', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 1.15;
+            margin-bottom: 0.5rem;
+        }
+        .marker-desc {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.6;
+        }
+        .marker-question {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--quetzal-bright);
+            margin-top: 0.75rem;
+            line-height: 1.4;
+        }
+
+        /* Shift pattern */
+        .shift-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 0;
+            margin: 2.5rem 0;
+            max-width: 650px;
+            align-items: center;
+        }
+        .shift-from, .shift-to {
+            background: rgba(245, 245, 220, 0.14);
+            padding: 1.5rem;
+        }
+        .shift-arrow {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.2rem;
+            color: var(--rosso);
+            padding: 0 1rem;
+            font-weight: 700;
+        }
+        .shift-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.5rem;
+        }
+        .shift-text {
+            font-family: 'Imbue', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        /* Accountability triad */
+        .triad-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2px;
+            margin: 2.5rem 0;
+            max-width: 750px;
+        }
+        .triad-item {
+            background: rgba(245, 245, 220, 0.14);
+            padding: 2rem 1.5rem;
+        }
+        .triad-number {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.75rem;
+        }
+        .triad-title {
+            font-family: 'Imbue', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+        .triad-desc {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.5;
+        }
+
+        /* Callout */
+        .callout {
+            border-left: 4px solid var(--rosso);
+            padding: 2rem;
+            background: rgba(245, 245, 220, 0.14);
+            margin: 2.5rem 0;
+            max-width: 650px;
+        }
+        .callout p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.7;
+        }
+        .callout strong { color: var(--ecru); font-weight: 500; }
+
+        /* Failure loop reuse */
+        .drama-loop {
+            border-left: 3px solid var(--cacao);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            max-width: 500px;
+        }
+        .drama-loop .loop-step {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--ecru-dim);
+            padding: 0.4rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .drama-loop .loop-arrow { color: var(--rosso); font-weight: 700; }
+
+        /* Download CTA */
+        .download-cta {
+            display: inline-block;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--nuit);
+            background: var(--ecru);
+            text-decoration: none;
+            padding: 0.75rem 2rem;
+            margin-top: 2rem;
+            transition: background 0.2s, color 0.2s;
+        }
+        .download-cta:hover { background: var(--rosso); color: var(--ecru); }
+
+        @media (max-width: 900px) {
+            .triad-grid { grid-template-columns: 1fr; }
+            .shift-grid { grid-template-columns: 1fr; }
+            .shift-arrow {
+                padding: 0.5rem 0;
+                text-align: center;
+            }
+            .marker-card {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body style="background-color: #121A28;">
+
+<div class="blueprint-overlay" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true"></div>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
+    <ul class="nav-links">
+        <li><a href="/#investigation">Investigation</a></li>
+        <li><a href="/#warehouse">Warehouse</a></li>
+        <li><a href="/#rnd">R&amp;D</a></li>
+        <li><a href="/#lnd">L&amp;D</a></li>
+        <li><a href="/#verdict">Verdict</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/#debrief">Debrief</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- HEADER -->
+    <section class="framework-header section-content">
+        <span class="framework-meta">R&amp;D // Diagnostic Framework</span>
+        <span class="framework-tag">Operational Economics</span>
+        <h1>Operational<br><span class="accent-word">Telemetry</span></h1>
+
+        <div class="framework-lede">
+            <p>
+                Most ops teams optimize their own dashboard. Nobody optimizes the business. The fix is shifting from <strong>functional telemetry</strong> to <strong>system telemetry</strong>... seven markers tied to customer movement through the economic system, not departmental activity metrics that make everyone look busy while the business underperforms.
+            </p>
+        </div>
+    </section>
+
+    <!-- THE PROBLEM -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">The Structural Problem</span>
+        <h2>Everyone Optimizes<br>Their Own Dashboard</h2>
+
+        <div class="body-text">
+            <p>
+                Marketing measures leads. Sales measures quota. CS measures tickets. RevOps measures CRM hygiene. Growth measures experiments. BizOps measures forecasts.
+            </p>
+            <p>
+                Every function has its own scoreboard. Every scoreboard tells a story where that function is performing. <strong>And the business still underperforms</strong> because nobody is measuring the connections between them.
+            </p>
+        </div>
+
+        <div class="drama-loop">
+            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Disconnected metrics</div>
+            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Delayed reporting</div>
+            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Unclear attribution</div>
+            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Competing incentives</div>
+            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Leadership rewards local wins over system wins</div>
+            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Repeat</div>
+        </div>
+
+        <div class="body-text">
+            <p>
+                The telemetry that actually de-silos RevOps, Growth Ops, Sales Ops, Marketing Ops and BizOps is almost never departmental metrics. It's <strong>shared economic flow metrics</strong> tied to how customers move through the system.
+            </p>
+        </div>
+    </section>
+
+    <!-- THE SHIFT -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">The Required Shift</span>
+        <h2>Functional Telemetry<br>to System Telemetry</h2>
+
+        <div class="body-text">
+            <p>
+                AI compresses the cost of coordination, analysis, forecasting and execution. A small team can now model revenue scenarios, automate reporting, optimize campaigns, forecast pipeline and build internal tools without massive centralized support organizations. That changes the economics of organizational design.
+            </p>
+            <p>
+                The org chart starts looking less like departments and more like <strong>outcome systems</strong>. The real transition isn't "every team owns a P&amp;L." It's <strong>"every team becomes economically observable."</strong>
+            </p>
+        </div>
+
+        <div class="shift-grid">
+            <div class="shift-from">
+                <div class="shift-label">From</div>
+                <div class="shift-text">Functional<br>Telemetry</div>
+            </div>
+            <div class="shift-arrow">&rarr;</div>
+            <div class="shift-to">
+                <div class="shift-label">To</div>
+                <div class="shift-text">System<br>Telemetry</div>
+            </div>
+        </div>
+
+        <div class="body-text">
+            <p>
+                Once leadership can measure contribution, drag, efficiency, opportunity cost and execution quality at the team level, the question restructures itself: <strong>"If we can measure economic impact here, why wouldn't accountability live here too?"</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- THE SEVEN MARKERS -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">The Framework</span>
+        <h2>Seven Operational<br>Telemetry Markers</h2>
+
+        <div class="body-text">
+            <p>
+                These are the shared economic flow metrics with the highest leverage for collapsing silos. Each one forces multiple functions to align around actual business movement instead of departmental activity.
+            </p>
+        </div>
+
+        <div class="marker-grid">
+            <div class="marker-card">
+                <div class="marker-number">01</div>
+                <div>
+                    <div class="marker-name">Time-to-Value (TTV)</div>
+                    <div class="marker-desc">How long from first touch to meaningful customer outcome. Every team affects it... marketing quality, sales expectations, onboarding, product usability, support, enablement. If TTV is bad, finger-pointing gets exposed fast.</div>
+                    <div class="marker-question">Often more predictive than top-line revenue metrics.</div>
+                </div>
+            </div>
+
+            <div class="marker-card">
+                <div class="marker-number">02</div>
+                <div>
+                    <div class="marker-name">Revenue Velocity</div>
+                    <div class="marker-desc">How fast revenue moves through the system. Not pipeline volume. Track the full chain: lead to qualified to opportunity to closed to activated to expanded. Measure delays, friction, stalls and drop-off points.</div>
+                    <div class="marker-question">Velocity exposes operational drag across silos better than static conversion rates.</div>
+                </div>
+            </div>
+
+            <div class="marker-card">
+                <div class="marker-number">03</div>
+                <div>
+                    <div class="marker-name">CAC Payback by Segment</div>
+                    <div class="marker-desc">Not overall CAC. By customer type, channel, region, product and lifecycle stage. Forces marketing, sales, finance, product and CS to align around actual unit economics instead of vanity metrics.</div>
+                    <div class="marker-question">Segmented payback exposes where you're subsidizing failure.</div>
+                </div>
+            </div>
+
+            <div class="marker-card">
+                <div class="marker-number">04</div>
+                <div>
+                    <div class="marker-name">Expansion Efficiency</div>
+                    <div class="marker-desc">How much additional revenue existing customers generate relative to support cost, success cost, enablement and product investment. Kills the false divide between acquisition, retention and product teams.</div>
+                    <div class="marker-question">Measures long-term system quality, not short-term wins.</div>
+                </div>
+            </div>
+
+            <div class="marker-card">
+                <div class="marker-number">05</div>
+                <div>
+                    <div class="marker-name">Funnel Compression</div>
+                    <div class="marker-desc">How quickly customers move between stages. Not just conversion rate... time spent, friction accumulation, approval bottlenecks and dependency chains. Operational and economic telemetry combined.</div>
+                    <div class="marker-question">AI is exceptionally good at surfacing this.</div>
+                </div>
+            </div>
+
+            <div class="marker-card">
+                <div class="marker-number">06</div>
+                <div>
+                    <div class="marker-name">Forecast Reliability</div>
+                    <div class="marker-desc">Not forecast optimism. Forecast reliability. A forcing function for data quality, operational discipline, pipeline integrity and behavioral honesty.</div>
+                    <div class="marker-question">Strong forecast telemetry quietly fixes enormous organizational dysfunction.</div>
+                </div>
+            </div>
+
+            <div class="marker-card">
+                <div class="marker-number">07</div>
+                <div>
+                    <div class="marker-name">Cost of Delay</div>
+                    <div class="marker-desc">What revenue was lost because onboarding took three extra weeks? What expansion stalled because approvals took too long? One of the most underused metrics in operations.</div>
+                    <div class="marker-question">Reframes operations from support function to economic throughput optimization.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY THESE WORK -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">Why These Work</span>
+        <h2>Shared<br>Causal Chains</h2>
+
+        <div class="body-text">
+            <p>
+                The best telemetry systems show: <strong>action to operational effect to economic effect</strong>.
+            </p>
+        </div>
+
+        <div class="drama-loop">
+            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Lead routing delay</div>
+            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Slower sales response</div>
+            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Lower meeting conversion</div>
+            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Lower win rates</div>
+            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Lower expansion later</div>
+        </div>
+
+        <div class="body-text">
+            <p>
+                Once teams can see connected consequences, silos weaken. Local optimization decreases. Politics gets harder. Excuses shrink. <strong>Because causality becomes visible.</strong>
+            </p>
+        </div>
+
+        <div class="callout">
+            <p>
+                Telemetry alone won't fix a broken incentive structure. If compensation and power structures remain siloed, people will still game the system. A marketing team compensated on MQL volume will manufacture MQLs even if the downstream economics are garbage. <strong>Humans optimize incentives, not mission statements.</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- ACCOUNTABILITY -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">The Accountability Test</span>
+        <h2>Three Requirements<br>for Real Accountability</h2>
+
+        <div class="body-text">
+            <p>
+                P&amp;L ownership sounds like accountability until you examine it. A lot of companies confuse <strong>more metrics</strong> with <strong>more accountability</strong>. They are not the same thing. Real accountability requires all three of these operating simultaneously.
+            </p>
+        </div>
+
+        <div class="triad-grid">
+            <div class="triad-item">
+                <div class="triad-number">01</div>
+                <div class="triad-title">Control</div>
+                <div class="triad-desc">The team must influence the primary drivers of outcomes. No control equals political theater. A growth team that "owns revenue" but doesn't control roadmap, pricing, release cadence or messaging doesn't own a P&amp;L. They own blame concentration.</div>
+            </div>
+            <div class="triad-item">
+                <div class="triad-number">02</div>
+                <div class="triad-title">Clear Economic<br>Signals</div>
+                <div class="triad-desc">Metrics must be trusted and understandable. Otherwise you get endless attribution debates, reporting manipulation and competing dashboards. AI improves this somewhat, but many companies still have terrible operational telemetry.</div>
+            </div>
+            <div class="triad-item">
+                <div class="triad-number">03</div>
+                <div class="triad-title">Consequence<br>Symmetry</div>
+                <div class="triad-desc">Teams must experience both upside from good decisions and downside from poor ones. Many orgs claim P&amp;L accountability but still centralize decision rights, approvals, incentives and strategic direction. That creates learned helplessness fast.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE DIRECTION -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">Where This Leads</span>
+        <h2>Economic Systems<br>Architects</h2>
+
+        <div class="body-text">
+            <p>
+                The highest-accountability organizations in the next decade won't look like traditional departments with annual budgets. They'll look more like <strong>small autonomous systems with economic telemetry</strong>. Closer to product squads with business accountability than corporate silos.
+            </p>
+            <p>
+                The ops leaders who become most valuable won't be CRM admins, report builders or workflow managers. They'll be <strong>economic systems architects</strong>... the people who design how organizations measure, decide and move.
+            </p>
+            <p>
+                That's where the leverage is heading, whether companies admit it yet or not.
+            </p>
+        </div>
+
+        <a href="/resources/operational-telemetry-markers.html" class="download-cta">
+            View the Reference Card &rarr;
+        </a>
+
+        <a href="/" class="back-link" style="display: block; margin-top: 2rem;">Back to the index</a>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <span>&copy; 2026 Angie Bailey</span>
+    </div>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
