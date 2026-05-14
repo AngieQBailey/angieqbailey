@@ -14,7 +14,7 @@ The index.html homepage has **5 numbered sections** plus Resources and Debrief:
 |---|---------|--------|-------------|
 | 01 | Investigation | `#investigation` | Hero + positioning statement |
 | 02 | Warehouse | `#warehouse` | Client case study card grid (8 live + 1 TBA placeholder) |
-| 03 | R&D | `#rnd` | Frameworks under construction (Hello World toolkit, DRS Matrix) |
+| 03 | R&D | `#rnd` | Frameworks under construction (Hello World toolkit, DRS Matrix, Operational Telemetry) |
 | 04 | L&D | `#lnd` | Learning & Development collections |
 | 05 | Verdict | `#verdict` | 5 operating principles with linked essay pages |
 | — | Resources | `/resources/` | External link in nav to Resources landing page |
@@ -66,6 +66,7 @@ Below the client case study grid, a separate subsection with its own visual trea
 |---|------------|--------|-------------|
 | R1 | Hello, World (...of AI chaos) | **LIVE** | `/hello-world/` |
 | R2 | Hardwiring Dignity: Defensive Leadership in the Age of AI | **LIVE** | `/drs-matrix` |
+| R3 | Operational Telemetry | **LIVE** | `/rd/operational-telemetry/` |
 
 ### Hello, World Toolkit
 
@@ -92,6 +93,21 @@ Below the client case study grid, a separate subsection with its own visual trea
 - URL: `angieqbailey.com/drs-matrix`
 - Features: Mini-fable ("The 9:02 AM Meeting"), interactive 2x2 matrix with click-to-expand detail panels, click-outside-to-close, scroll-reveal animation, Print/Save as PDF with dedicated print stylesheet
 - Series card in Warehouse shows "Chunk 1 of 5" — update as chunks ship
+
+### Operational Telemetry Framework
+
+| File | Type | Status | Display Name |
+|------|------|--------|--------------|
+| `rd/operational-telemetry/index.html` | Framework page (dark-variant) | **LIVE** | Operational Telemetry |
+
+**Notes:**
+- Dark-variant R&D page with shared `/styles.css` + inline page-specific styles
+- Sections: structural problem (drama loop), functional-to-system shift grid, 7 marker cards, shared causal chains, accountability triad, economic systems architects conclusion
+- The seven markers: TTV, Revenue Velocity, CAC Payback by Segment, Expansion Efficiency, Funnel Compression, Forecast Reliability, Cost of Delay
+- Accountability model: Control (who owns the lever), Signals (who reads the data), Symmetry (does everyone see the same numbers)
+- Companion reference card at `resources/operational-telemetry-markers.html`
+- Tag on index R&D card: "Operational Economics"
+- Deployed 2026-05-14
 
 ---
 
@@ -146,10 +162,12 @@ Card in L&D section links to individual collection pages as they ship.
 |------|------|--------|--------------|
 | `resources/index.html` | Resources landing page | **LIVE** | Resources |
 | `resources/digital-gratuity.html` | Digital Gratuity page | **LIVE** | Digital Gratuity |
+| `resources/operational-telemetry-markers.html` | Printable reference card (ecru) | **LIVE** | Operational Telemetry Markers |
 
 **Notes:**
 - Resources is linked from the main nav as an external link (`/resources/`), not an anchor scroll
 - Added as part of the 7-item nav update (May 2026)
+- Operational Telemetry Markers: ecru light-variant, 7-marker table, self-assessment scoring, accountability check grid, print button (landscape). Back-link to framework page. Tag on Resources card: "Reference Card // Printable". Deployed 2026-05-14.
 
 ---
 
@@ -323,13 +341,14 @@ Card in L&D section links to individual collection pages as they ship.
 | Category | Count |
 |----------|-------|
 | Root/nav pages | 5 (index, start-here, resources index, resources/digital-gratuity, 404) |
-| R&D pages | 8 (rd landing, drs-matrix, hello-world x3, sop-playbook assets x2, template x1) |
+| R&D pages | 9 (rd landing, drs-matrix, hello-world x3, sop-playbook assets x2, template x1, operational-telemetry) |
+| Resources pages | 3 (index, digital-gratuity, operational-telemetry-markers) |
 | L&D pages | 1 |
 | Verdict essays | 5 |
 | Case study pages | 8 |
 | Branded artifact pages | 33 |
 | Blank templates | 30 |
-| **Total live URLs** | **~90** |
+| **Total live URLs** | **~92** |
 
 ---
 
