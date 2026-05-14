@@ -1,3 +1,12 @@
+## [2026-05-14] — TIER 2 — Operational Telemetry Web Presence (R&D + Resources)
+**Change:** Deployed 4 files for the Operational Telemetry content series:
+1. `rd/operational-telemetry/index.html` — New dark-variant R&D framework page. Sections: structural problem (drama loop), functional-to-system shift grid, 7 telemetry marker cards, shared causal chains, accountability triad (control/signals/symmetry), economic systems architects conclusion with CTA. 24,916 bytes.
+2. `resources/operational-telemetry-markers.html` — New ecru light-variant printable reference card. 7-marker table, self-assessment scoring, accountability check grid, print button (landscape). Back-link to framework page. 16,194 bytes.
+3. `index.html` — Added Operational Telemetry card to R&D section `.lab-grid` (position 3, after DRS). Tag: "Operational Economics". +606 bytes.
+4. `resources/index.html` — Added Operational Telemetry Markers card to Tools category (`#tools`). Tag: "Reference Card // Printable". +647 bytes.
+**Rationale:** Web presence needed to support LinkedIn content series (9 atoms, 6 planned posts). Framework page earns trust in durability of social content. Reference card is the "receipt" — printable takeaway. Post 1 can ship without the framework page; Posts 2+ and all carousels need these pages live.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-05-11] — TIER 1 — Site Registry Full Refresh
 **Change:** Complete rewrite of _site-registry.md. Updated from March 2026 to May 2026. Added: Site Architecture section (5 numbered sections + Resources + Debrief), MBR case study (Warehouse position 1), GEO/AEO case study reformatted into proper table (position 2), Hello World Toolkit (3 pages + 3 artifacts), Verdict essays (5 pages), Start-Here page, Resources section (2 pages), R&D landing, L&D section. Updated Warehouse card order to reflect all 8 live positions. Added URL Summary table (~90 total live URLs).
 **Rationale:** Registry had drifted since March — did not reflect MBR, GEO/AEO, Hello World toolkit, verdict essays, start-here, resources, or R&D landing deployments. Single source of truth for file inventory must stay current.
