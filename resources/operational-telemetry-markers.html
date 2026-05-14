@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Operational Telemetry Markers: Seven shared economic flow metrics for de-siloing ops teams. Diagnostic reference card by Angie Bailey.">
+    <meta name="author" content="Angie Bailey">
+    <title>Operational Telemetry Markers // Reference Card // Angie Bailey</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --nuit: #121A28;
+            --cacao: #2D1B14;
+            --quetzal: #00685E;
+            --ecru: #F5F5DC;
+            --rosso: #C41E3A;
+            --text: #1a1a1a;
+            --text-dim: #555;
+            --border: #d4d0c8;
+            --border-light: #e8e4dc;
+            --hover-bg: rgba(0, 104, 94, 0.04);
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-style: normal !important;
+            border-radius: 0 !important;
+        }
+        ::selection { background: var(--rosso); color: var(--ecru); }
+
+        body {
+            background-color: var(--ecru);
+            color: var(--text);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding: 4rem 3rem;
+            max-width: 1000px;
+        }
+
+        /* Header */
+        .template-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--cacao);
+        }
+        .template-type {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-family: 'Imbue', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            line-height: 0.9;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            color: var(--nuit);
+        }
+        h1 .accent { color: var(--rosso); }
+        .subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--quetzal);
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+        }
+        .instructions {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--text-dim);
+            line-height: 1.7;
+            max-width: 600px;
+        }
+        .instructions strong { color: var(--text); font-weight: 500; }
+
+        /* Print Button */
+        .print-btn {
+            display: inline-block;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--ecru);
+            background: var(--nuit);
+            border: none;
+            padding: 0.75rem 2rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.2s;
+        }
+        .print-btn:hover { background: var(--quetzal); }
+
+        /* Back link */
+        .back-link {
+            display: inline-block;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: var(--quetzal);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-left: 1.5rem;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--rosso); }
+
+        /* Sections */
+        .section { margin-top: 3rem; }
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--quetzal);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        h2 {
+            font-family: 'Imbue', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 0.95;
+            margin-bottom: 1.5rem;
+            color: var(--nuit);
+        }
+
+        /* Marker table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.85rem;
+        }
+        th {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--quetzal);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid var(--cacao);
+        }
+        td {
+            padding: 1.25rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-dim);
+            font-weight: 300;
+            vertical-align: top;
+            line-height: 1.5;
+        }
+        tr:hover td { background: var(--hover-bg); }
+        td:first-child {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--nuit);
+            white-space: nowrap;
+            width: 40px;
+        }
+        td:nth-child(2) {
+            font-weight: 500;
+            color: var(--nuit);
+            white-space: nowrap;
+            width: 160px;
+        }
+        td:nth-child(4) {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--quetzal);
+        }
+
+        /* Diagnostic rows */
+        .diagnostic-section { margin-top: 3rem; }
+        .diagnostic-card {
+            background: rgba(0, 104, 94, 0.06);
+            padding: 1.5rem;
+            margin-bottom: 2px;
+        }
+        .diagnostic-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.5rem;
+        }
+        .diagnostic-title {
+            font-family: 'Imbue', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--nuit);
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+        .field {
+            margin-bottom: 1rem;
+        }
+        .field-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: var(--quetzal);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.25rem;
+        }
+        .field-area {
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 0;
+            min-height: 2.5rem;
+            color: var(--text-dim);
+            font-weight: 300;
+            font-size: 0.85rem;
+        }
+
+        /* Accountability check */
+        .check-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2px;
+            margin: 1.5rem 0;
+        }
+        .check-item {
+            background: rgba(0, 104, 94, 0.06);
+            padding: 1.25rem;
+        }
+        .check-num {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.5rem;
+        }
+        .check-title {
+            font-family: 'Imbue', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--nuit);
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+        .check-question {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            font-weight: 300;
+            line-height: 1.4;
+        }
+
+        /* Attribution */
+        .attribution {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            letter-spacing: 0.05em;
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Print */
+        @page { size: landscape; margin: 0.5in; }
+        @media print {
+            body { background: white; padding: 1rem; max-width: none; }
+            .print-btn, .back-link { display: none; }
+            table { font-size: 0.75rem; }
+            td { padding: 0.75rem 0.5rem; }
+            th { font-size: 0.6rem; }
+            .check-grid { break-inside: avoid; }
+        }
+
+        @media (max-width: 700px) {
+            body { padding: 2rem 1.5rem; }
+            .check-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="template-header">
+    <div class="template-type">Reference Card // Diagnostic Framework</div>
+    <h1>Operational <span class="accent">Telemetry</span><br>Markers</h1>
+    <div class="subtitle">Seven shared economic flow metrics for de-siloing ops teams</div>
+    <div class="instructions">
+        Use this reference card to evaluate which system telemetry markers your organization is tracking versus which it's ignoring. <strong>Each marker forces multiple functions to align</strong> around actual business movement instead of departmental activity. Score your current state, identify the gaps and prioritize which markers to instrument first.
+    </div>
+    <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+    <a href="/rd/operational-telemetry/" class="back-link">View Full Framework &rarr;</a>
+</div>
+
+<div class="section">
+    <div class="section-label">The Seven Markers</div>
+    <h2>System Telemetry<br>Reference</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Marker</th>
+                <th>What It Measures</th>
+                <th>Diagnostic Question</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>01</td>
+                <td>Time-to-Value (TTV)</td>
+                <td>Duration from first touch to meaningful customer outcome. Every function affects it.</td>
+                <td>Can you measure this end-to-end today?</td>
+            </tr>
+            <tr>
+                <td>02</td>
+                <td>Revenue Velocity</td>
+                <td>Speed of revenue movement through the full system. Delays, friction, stalls and drop-offs.</td>
+                <td>Where does revenue stall longest?</td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td>CAC Payback by Segment</td>
+                <td>Customer acquisition cost recovery by type, channel, region, product and lifecycle.</td>
+                <td>Which segments are you subsidizing?</td>
+            </tr>
+            <tr>
+                <td>04</td>
+                <td>Expansion Efficiency</td>
+                <td>Net revenue from existing customers relative to cost of support, success and enablement.</td>
+                <td>Is expansion profitable or just busy?</td>
+            </tr>
+            <tr>
+                <td>05</td>
+                <td>Funnel Compression</td>
+                <td>Stage-to-stage speed. Time, friction, bottlenecks and dependency chains.</td>
+                <td>What's the approval tax on every deal?</td>
+            </tr>
+            <tr>
+                <td>06</td>
+                <td>Forecast Reliability</td>
+                <td>Accuracy and consistency of predictions. Data quality, pipeline integrity, behavioral honesty.</td>
+                <td>How often is the forecast weaponized?</td>
+            </tr>
+            <tr>
+                <td>07</td>
+                <td>Cost of Delay</td>
+                <td>Revenue lost to slow onboarding, stalled expansion, delayed approvals.</td>
+                <td>What did slow cost you last quarter?</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="diagnostic-section">
+    <div class="section-label">Self-Assessment</div>
+    <h2>Score Your<br>Current State</h2>
+
+    <div class="diagnostic-card">
+        <div class="diagnostic-label">For Each Marker</div>
+        <div class="diagnostic-title">Rate 1-5</div>
+        <div class="field">
+            <div class="field-label">1 = Not measured / 2 = Measured by one team / 3 = Shared but not trusted / 4 = Shared and trusted / 5 = Drives decisions</div>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Marker</th>
+                <th>Score (1-5)</th>
+                <th>Who Owns It Today</th>
+                <th>Biggest Gap</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>TTV</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Revenue Velocity</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>CAC Payback</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Expansion Efficiency</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Funnel Compression</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Forecast Reliability</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Cost of Delay</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="section">
+    <div class="section-label">Accountability Check</div>
+    <h2>Before You Call It<br>a P&amp;L</h2>
+
+    <div class="check-grid">
+        <div class="check-item">
+            <div class="check-num">01</div>
+            <div class="check-title">Control</div>
+            <div class="check-question">Does the team influence the primary drivers of outcomes? No control = political theater.</div>
+        </div>
+        <div class="check-item">
+            <div class="check-num">02</div>
+            <div class="check-title">Clear Signals</div>
+            <div class="check-question">Are the metrics trusted and understandable? Or are there competing dashboards?</div>
+        </div>
+        <div class="check-item">
+            <div class="check-num">03</div>
+            <div class="check-title">Consequence Symmetry</div>
+            <div class="check-question">Does the team experience both upside and downside? Or just the blame?</div>
+        </div>
+    </div>
+</div>
+
+<div class="attribution">
+    Diagnostic Framework by Angie Bailey // angieqbailey.com
+</div>
+
+</body>
+</html>
