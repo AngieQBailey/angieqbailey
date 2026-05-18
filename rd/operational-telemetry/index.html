@@ -277,6 +277,30 @@
         }
         .download-cta:hover { background: var(--rosso); color: var(--ecru); }
 
+        /* Working definition block */
+        .working-def {
+            margin-top: 3rem;
+            max-width: 600px;
+            animation: fade-up 0.8s ease 1s both;
+        }
+        .working-def-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.75rem;
+        }
+        .working-def p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+        }
+        .working-def p strong { color: var(--ecru); font-weight: 500; }
+
+
         @media (max-width: 900px) {
             .triad-grid { grid-template-columns: 1fr; }
             .shift-grid { grid-template-columns: 1fr; }
@@ -320,6 +344,11 @@
             <p>
                 Most ops teams optimize their own dashboard. Nobody optimizes the business. The fix is shifting from <strong>functional telemetry</strong> to <strong>system telemetry</strong>... seven markers tied to customer movement through the economic system, not departmental activity metrics that make everyone look busy while the business underperforms.
             </p>
+        </div>
+
+        <div class="working-def">
+            <div class="working-def-label">Working Definition</div>
+            <p><strong>Operational telemetry</strong> is a shared measurement layer where every function reads from the same economic signals. Not departmental scorecards. Not activity metrics. System-level markers tied to how customers actually move through the business, where flow stalls and what that delay costs. The point is structural... <strong>when causality is visible across functions, accountability stops being a political conversation.</strong></p>
         </div>
     </section>
 
