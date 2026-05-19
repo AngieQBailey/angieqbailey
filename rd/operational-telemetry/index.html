@@ -12,11 +12,11 @@
     <meta charset="UTF-8">
     <meta name="color-scheme" content="dark">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Operational Telemetry: Seven markers that replace departmental metrics with shared economic flow. The diagnostic framework for ops leaders who want accountability without the drama.">
+    <meta name="description" content="Should ops teams shift from budget thinking to P&L thinking in the age of AI? It depends on measurement infrastructure. Seven new metrics for evaluating readiness.">
     <meta name="author" content="Angie Bailey">
     <meta name="theme-color" content="#121A28">
     <meta property="og:title" content="Operational Telemetry // Angie Bailey">
-    <meta property="og:description" content="Seven markers that replace departmental metrics with shared economic flow. System telemetry for ops leaders building accountability that survives contact with reality.">
+    <meta property="og:description" content="AI blurs ops boundaries and sharpens economic visibility at the same time. Should that mean P&L thinking for business units? Seven new metrics for evaluating the question.">
     <meta property="og:type" content="article">
     <title>Operational Telemetry // Angie Bailey</title>
 
@@ -293,13 +293,12 @@
             margin-bottom: 0.75rem;
         }
         .working-def p {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             font-weight: 300;
             line-height: 1.7;
             color: var(--ecru-dim);
         }
         .working-def p strong { color: var(--ecru); font-weight: 500; }
-
 
         @media (max-width: 900px) {
             .triad-grid { grid-template-columns: 1fr; }
@@ -338,11 +337,32 @@
     <section class="framework-header section-content">
         <span class="framework-meta">R&amp;D // Diagnostic Framework</span>
         <span class="framework-tag">Operational Economics</span>
-        <h1>Shared Telemetry<br><span class="accent-word">Markers</span></h1>
+        <h1>Operational<br><span class="accent-word">Telemetry</span></h1>
 
         <div class="framework-lede">
             <p>
-                Most ops teams optimize their own dashboard. Nobody optimizes the business. The fix is shifting from <strong>functional telemetry</strong> to <strong>system telemetry</strong>... seven markers tied to customer movement through the economic system, not departmental activity metrics that make everyone look busy while the business underperforms.
+                Should businesses be shifting from budget thinking to P&amp;L thinking for their ops teams and business units in the age of AI?
+            </p>
+            <p>
+                Maybe. Maybe not. It depends on whether the organization can actually measure what it needs to measure to make that work.
+            </p>
+            <p>
+                AI capabilities are changing what's measurable at the team level, and that changes what kinds of accountability structures become possible. But "possible" and "ready" are different things. The answer comes down to measurement infrastructure... whether the right metrics are in place to make P&amp;L thinking productive instead of destructive.
+            </p>
+            <p>
+                The complication is that AI is doing two things to ops at the same time... and they contradict each other.
+            </p>
+            <p>
+                <strong>The blur.</strong> The walls between Rev Ops, Growth Ops, Marketing Ops, Sales Ops and Biz Ops are dissolving. A growth ops person builds the attribution model that used to live in marketing. A Rev Ops analyst runs experiments that used to require a dedicated growth team. One team with the right AI tooling can do work that used to take four separate teams to coordinate. The org chart that carved up these functions was built when it was expensive to share context across departments. That cost structure no longer holds.
+            </p>
+            <p>
+                <strong>The laser.</strong> At the same time... the same AI capabilities that blur those boundaries make each team's economic contribution visible in ways that weren't possible before. Not in theory. In practice. Time to value, revenue velocity, cost of delay and expansion efficiency are now measurable at the team level without a massive centralized analytics operation. A small team with decent instrumentation can see what used to require an entire BI department to surface.
+            </p>
+            <p>
+                The blur pulls teams together. The laser makes each team's impact individually measurable. Both are happening simultaneously. Most organizations are experiencing the blur without realizing the laser is available.
+            </p>
+            <p>
+                There are at least seven new metrics ops teams should be figuring out how to track to prepare for P&amp;L accountability in a post-budget world of new operations thinking.
             </p>
         </div>
 
@@ -352,77 +372,74 @@
         </div>
     </section>
 
-    <!-- THE PROBLEM -->
+    <!-- THE PATTERN -->
     <section class="framework-section section-content reveal">
-        <span class="section-label">The Structural Problem</span>
-        <h2>Everyone Optimizes<br>Their Own Dashboard</h2>
+        <span class="section-label">The Pattern</span>
+        <h2>Everyone Measures<br>Their Own Homework</h2>
 
         <div class="body-text">
             <p>
-                Marketing measures leads. Sales measures quota. CS measures tickets. RevOps measures CRM hygiene. Growth measures experiments. BizOps measures forecasts.
+                Marketing measures leads. Sales measures quota. CS measures tickets. Rev Ops measures CRM hygiene. Growth measures experiments. Biz Ops measures forecasts.
             </p>
             <p>
-                Every function has its own scoreboard. Every scoreboard tells a story where that function is performing. <strong>And the business still underperforms</strong> because nobody is measuring the connections between them.
+                Every function has its own scoreboard. Every scoreboard tells a story where that function is doing fine. <strong>And the business still underperforms</strong> because nobody is measuring the connections between them.
             </p>
-        </div>
-
-        <div class="drama-loop">
-            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Disconnected metrics</div>
-            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Delayed reporting</div>
-            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Unclear attribution</div>
-            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Competing incentives</div>
-            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Leadership rewards local wins over system wins</div>
-            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Repeat</div>
-        </div>
-
-        <div class="body-text">
             <p>
-                The telemetry that actually de-silos RevOps, Growth Ops, Sales Ops, Marketing Ops and BizOps is almost never departmental metrics. It's <strong>shared economic flow metrics</strong> tied to how customers move through the system.
+                A lead comes in hot. Marketing counts it. Sales works it but the product roadmap shifted and the use case doesn't quite fit anymore. The deal closes anyway because the rep is good, but onboarding takes twice as long because expectations were set wrong. CS absorbs the cost. Renewal is shaky twelve months later and nobody can explain why... because every team's dashboard shows green.
+            </p>
+            <p>
+                That's not a failure of people. It's a measurement architecture problem. Every function is measuring its own homework instead of measuring the business.
+            </p>
+            <p>
+                This made sense when each function operated with different tools in different information environments. It stops making sense when AI collapses those environments into one... and that collapse is already underway.
+            </p>
+            <p>
+                The metrics that actually connect ops teams aren't departmental activity numbers. They measure how customers move through the business... not how each department reports on its own activity.
             </p>
         </div>
     </section>
 
-    <!-- THE SHIFT -->
+    <!-- THE CONTRADICTION -->
     <section class="framework-section section-content reveal">
-        <span class="section-label">The Required Shift</span>
-        <h2>Functional Telemetry<br>to System Telemetry</h2>
+        <span class="section-label">The Contradiction</span>
+        <h2>Both Things Are True<br>at the Same Time</h2>
 
         <div class="body-text">
             <p>
-                AI compresses the cost of coordination, analysis, forecasting and execution. A small team can now model revenue scenarios, automate reporting, optimize campaigns, forecast pipeline and build internal tools without massive centralized support organizations. That changes the economics of organizational design.
+                AI reduces the cost of coordination, analysis, forecasting and execution. A small team can now model revenue scenarios, run campaigns, forecast pipeline and build internal tools without the centralized support organizations that used to be required. That changes what's structurally possible.
             </p>
             <p>
-                The org chart starts looking less like departments and more like <strong>outcome systems</strong>. The real transition isn't "every team owns a P&amp;L." It's <strong>"every team becomes economically observable."</strong>
+                But it changes things in two directions at once. Most organizations have only registered one of them.
             </p>
-        </div>
-
-        <div class="shift-grid">
-            <div class="shift-from">
-                <div class="shift-label">From</div>
-                <div class="shift-text">Functional<br>Telemetry</div>
-            </div>
-            <div class="shift-arrow">&rarr;</div>
-            <div class="shift-to">
-                <div class="shift-label">To</div>
-                <div class="shift-text">System<br>Telemetry</div>
-            </div>
-        </div>
-
-        <div class="body-text">
             <p>
-                Once leadership can measure contribution, drag, efficiency, opportunity cost and execution quality at the team level, the question restructures itself: <strong>"If we can measure economic impact here, why wouldn't accountability live here too?"</strong>
+                <strong>The blur:</strong> Functions overlap. A growth ops person does marketing analytics. A Rev Ops analyst builds forecasting models that used to live in Biz Ops. A marketing ops manager runs revenue attribution that previously required a dedicated team. The boundaries between these roles remain real on the org chart and are increasingly fictional in practice. One team can hold capabilities that used to require four.
+            </p>
+            <p>
+                <strong>The laser:</strong> Each team's economic contribution becomes measurable at a resolution that wasn't previously available. Not quarterly-report resolution... operational resolution. How fast does revenue move through this team's part of the system? What does delay cost here? Where is expansion stalling? These used to be questions only a centralized analytics org could answer. Now a small team with the right instrumentation can track them in near real-time.
+            </p>
+            <p>
+                Once each team's cost and contribution become visible... the question changes.
+            </p>
+            <p>
+                It goes from "did you stay within budget?" to <strong>"did your decisions create value?"</strong>
+            </p>
+            <p>
+                Those are fundamentally different questions. Most ops teams are only being asked the first one. And getting blamed when the answer to the second one is no.
+            </p>
+            <p>
+                The answer probably isn't "give everyone a P&amp;L." It's closer to <strong>"make every team economically visible"</strong> and then determine what kind of accountability structure that visibility actually supports. That's a harder question, but it's the more productive one.
             </p>
         </div>
     </section>
 
-    <!-- THE SEVEN MARKERS -->
+    <!-- NEW METRICS -->
     <section class="framework-section section-content reveal">
-        <span class="section-label">The Framework</span>
-        <h2>Seven Operational<br>Telemetry Markers</h2>
+        <span class="section-label">New Metrics</span>
+        <h2>New Metrics<br>of Operations</h2>
 
         <div class="body-text">
             <p>
-                These are the shared economic flow metrics with the highest leverage for collapsing silos. Each one forces multiple functions to align around actual business movement instead of departmental activity.
+                These are the new metrics replacing siloed departmental dashboards in the companies where this shift is underway. Each one is built on operational telemetry... cross-functional measurement that no single department owns. That's what makes them work. When multiple functions have to look at the same number, the competing narratives about performance have to reconcile with a shared reality.
             </p>
         </div>
 
@@ -431,8 +448,8 @@
                 <div class="marker-number">01</div>
                 <div>
                     <div class="marker-name">Time-to-Value (TTV)</div>
-                    <div class="marker-desc">How long from first touch to meaningful customer outcome. Every team affects it... marketing quality, sales expectations, onboarding, product usability, support, enablement. If TTV is bad, finger-pointing gets exposed fast.</div>
-                    <div class="marker-question">Often more predictive than top-line revenue metrics.</div>
+                    <div class="marker-desc">How long from first touch to the moment the customer gets real value. Every team affects this number... marketing quality, sales expectations, onboarding speed, product usability, support responsiveness. When TTV is poor, attribution disputes surface immediately because no single function owns the outcome. That absence of ownership is precisely what makes it worth measuring across functions... the number only improves when teams coordinate.</div>
+                    <div class="marker-question"><em>Start here: Can you measure this end-to-end today?</em></div>
                 </div>
             </div>
 
@@ -440,8 +457,8 @@
                 <div class="marker-number">02</div>
                 <div>
                     <div class="marker-name">Revenue Velocity</div>
-                    <div class="marker-desc">How fast revenue moves through the system. Not pipeline volume. Track the full chain: lead to qualified to opportunity to closed to activated to expanded. Measure delays, friction, stalls and drop-off points.</div>
-                    <div class="marker-question">Velocity exposes operational drag across silos better than static conversion rates.</div>
+                    <div class="marker-desc">How fast revenue moves through the full system. Not pipeline volume... speed. From lead to qualified to opportunity to closed to activated to expanded. Where does it stall? Where does it speed up? Why? Static conversion rates tell you what happened. Velocity tells you how the system is actually performing right now.</div>
+                    <div class="marker-question"><em>Start here: Where does revenue stall longest?</em></div>
                 </div>
             </div>
 
@@ -449,8 +466,8 @@
                 <div class="marker-number">03</div>
                 <div>
                     <div class="marker-name">CAC Payback by Segment</div>
-                    <div class="marker-desc">Not overall CAC. By customer type, channel, region, product and lifecycle stage. Forces marketing, sales, finance, product and CS to align around actual unit economics instead of vanity metrics.</div>
-                    <div class="marker-question">Segmented payback exposes where you're subsidizing failure.</div>
+                    <div class="marker-desc">Not overall customer acquisition cost. Segmented by customer type, channel, region and product. This forces marketing, sales, finance, product and CS to align around actual unit economics instead of aggregate numbers that obscure underperformance. Segmented payback reveals where acquisition cost never recovers. Most companies measure CAC in aggregate specifically because the segmented view is uncomfortable.</div>
+                    <div class="marker-question"><em>Start here: Which segments are you subsidizing?</em></div>
                 </div>
             </div>
 
@@ -458,8 +475,8 @@
                 <div class="marker-number">04</div>
                 <div>
                     <div class="marker-name">Expansion Efficiency</div>
-                    <div class="marker-desc">How much additional revenue existing customers generate relative to support cost, success cost, enablement and product investment. Kills the false divide between acquisition, retention and product teams.</div>
-                    <div class="marker-question">Measures long-term system quality, not short-term wins.</div>
+                    <div class="marker-desc">How much additional revenue existing customers generate relative to the cost of support, enablement and growth investment. This metric exposes the false divide between acquisition teams and retention teams. Both are operating within the same economic system... the org chart just doesn't reflect it.</div>
+                    <div class="marker-question"><em>Start here: Is expansion profitable or just busy?</em></div>
                 </div>
             </div>
 
@@ -467,8 +484,8 @@
                 <div class="marker-number">05</div>
                 <div>
                     <div class="marker-name">Funnel Compression</div>
-                    <div class="marker-desc">How quickly customers move between stages. Not just conversion rate... time spent, friction accumulation, approval bottlenecks and dependency chains. Operational and economic telemetry combined.</div>
-                    <div class="marker-question">AI is exceptionally good at surfacing this.</div>
+                    <div class="marker-desc">How quickly customers move between stages. Not just whether they convert... how long each stage takes, where friction accumulates, where approvals create bottlenecks, where dependency chains slow everything down. AI is particularly effective at surfacing compression data because the underlying information already exists in most systems. The question is rarely about access... it's about whether anyone is asking.</div>
+                    <div class="marker-question"><em>Start here: What's the approval tax on every deal?</em></div>
                 </div>
             </div>
 
@@ -476,8 +493,8 @@
                 <div class="marker-number">06</div>
                 <div>
                     <div class="marker-name">Forecast Reliability</div>
-                    <div class="marker-desc">Not forecast optimism. Forecast reliability. A forcing function for data quality, operational discipline, pipeline integrity and behavioral honesty.</div>
-                    <div class="marker-question">Strong forecast telemetry quietly fixes enormous organizational dysfunction.</div>
+                    <div class="marker-desc">Not forecast optimism. Forecast accuracy and consistency over time. This is a forcing function for data quality, pipeline integrity and operational discipline. When forecast reliability is high, a surprising amount of organizational dysfunction quietly resolves itself... because the inputs have to be real for the output to hold.</div>
+                    <div class="marker-question"><em>Start here: How often does the forecast get used as a weapon instead of a tool?</em></div>
                 </div>
             </div>
 
@@ -485,53 +502,62 @@
                 <div class="marker-number">07</div>
                 <div>
                     <div class="marker-name">Cost of Delay</div>
-                    <div class="marker-desc">What revenue was lost because onboarding took three extra weeks? What expansion stalled because approvals took too long? One of the most underused metrics in operations.</div>
-                    <div class="marker-question">Reframes operations from support function to economic throughput optimization.</div>
+                    <div class="marker-desc">What revenue didn't happen because something took too long. Onboarding that dragged three extra weeks. Expansion that stalled because internal approvals got stuck. Product changes that waited for a quarterly roadmap cycle instead of shipping when they were ready. This is one of the most underused measurements in operations and one of the most revealing.</div>
+                    <div class="marker-question"><em>Start here: What did slow cost you last quarter?</em></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- WHY THESE WORK -->
+    <!-- THE TRACKING FOUNDATION -->
     <section class="framework-section section-content reveal">
-        <span class="section-label">Why These Work</span>
-        <h2>Shared<br>Causal Chains</h2>
+        <span class="section-label">How These Metrics Connect</span>
+        <h2>The Tracking<br>Foundation</h2>
 
         <div class="body-text">
             <p>
-                The best telemetry systems show: <strong>action to operational effect to economic effect</strong>.
+                These metrics become most actionable when tracked as a chain: <strong>an action leads to an operational effect leads to an economic effect.</strong>
+            </p>
+            <p>
+                A common example:
             </p>
         </div>
 
         <div class="drama-loop">
-            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Lead routing delay</div>
-            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Slower sales response</div>
-            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Lower meeting conversion</div>
-            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Lower win rates</div>
-            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Lower expansion later</div>
+            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Lead routing gets delayed by two days</div>
+            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Sales response slows</div>
+            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Meeting conversion drops</div>
+            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Win rates go down</div>
+            <div class="loop-step"><span class="loop-arrow">&rarr;</span> Expansion revenue decreases a year later</div>
         </div>
 
         <div class="body-text">
             <p>
-                Once teams can see connected consequences, silos weaken. Local optimization decreases. Politics gets harder. Excuses shrink. <strong>Because causality becomes visible.</strong>
+                Every link in that chain lives in a different department's dashboard. No single team sees the full picture. But the full picture is where the actual economics live.
+            </p>
+            <p>
+                Once teams can see connected consequences instead of isolated metrics, local optimization becomes obviously expensive. The excuse layer thins out. Not because of a mandate from leadership... <strong>because causality becomes visible and harder to argue against.</strong>
             </p>
         </div>
 
         <div class="callout">
             <p>
-                Telemetry alone won't fix a broken incentive structure. If compensation and power structures remain siloed, people will still game the system. A marketing team compensated on MQL volume will manufacture MQLs even if the downstream economics are garbage. <strong>Humans optimize incentives, not mission statements.</strong>
+                One caveat worth noting: better metrics alone won't fix a broken incentive structure. If compensation and power remain siloed, people will optimize accordingly. A marketing team compensated on lead volume will manufacture leads even when the downstream economics don't recover. <strong>People follow incentives, not mission statements.</strong> New metrics have to come with structural change or they become a more sophisticated way to assign blame.
             </p>
         </div>
     </section>
 
-    <!-- ACCOUNTABILITY -->
+    <!-- THE PREREQUISITE -->
     <section class="framework-section section-content reveal">
-        <span class="section-label">The Accountability Test</span>
-        <h2>Three Requirements<br>for Real Accountability</h2>
+        <span class="section-label">The Prerequisite</span>
+        <h2>Before You Call<br>Anything a P&amp;L</h2>
 
         <div class="body-text">
             <p>
-                P&amp;L ownership sounds like accountability until you examine it. A lot of companies confuse <strong>more metrics</strong> with <strong>more accountability</strong>. They are not the same thing. Real accountability requires all three of these operating simultaneously.
+                P&amp;L ownership at the team level is gaining traction in operations conversations. It sounds like accountability. Sometimes it is. Sometimes it's blame concentration... responsibility landing on the team closest to the dashboard, not the team that actually controlled the outcome.
+            </p>
+            <p>
+                Before P&amp;L thinking works at the team level, three things have to be true at the same time. It doesn't hold up when any one of them is missing.
             </p>
         </div>
 
@@ -539,40 +565,46 @@
             <div class="triad-item">
                 <div class="triad-number">01</div>
                 <div class="triad-title">Control</div>
-                <div class="triad-desc">The team must influence the primary drivers of outcomes. No control equals political theater. A growth team that "owns revenue" but doesn't control roadmap, pricing, release cadence or messaging doesn't own a P&amp;L. They own blame concentration.</div>
+                <div class="triad-desc">The team has to actually influence the primary drivers of their outcomes. A growth team that "owns revenue" but doesn't control the product roadmap, pricing, release schedule or messaging... that team doesn't own a P&amp;L. They own the slide where the miss gets explained.</div>
             </div>
             <div class="triad-item">
                 <div class="triad-number">02</div>
-                <div class="triad-title">Clear Economic<br>Signals</div>
-                <div class="triad-desc">Metrics must be trusted and understandable. Otherwise you get endless attribution debates, reporting manipulation and competing dashboards. AI improves this somewhat, but many companies still have terrible operational telemetry.</div>
+                <div class="triad-title">Clear<br>Signals</div>
+                <div class="triad-desc">The metrics have to be trusted and understood by everyone reading them. Five dashboards showing five different numbers isn't signal... it's ammunition for attribution debates. AI improves data unification, but the trust problem is organizational as much as technical.</div>
             </div>
             <div class="triad-item">
                 <div class="triad-number">03</div>
                 <div class="triad-title">Consequence<br>Symmetry</div>
-                <div class="triad-desc">Teams must experience both upside from good decisions and downside from poor ones. Many orgs claim P&amp;L accountability but still centralize decision rights, approvals, incentives and strategic direction. That creates learned helplessness fast.</div>
+                <div class="triad-desc">The team has to experience both the upside when decisions work and the downside when they don't. Many organizations claim P&amp;L accountability but still centralize decision rights, approval chains, incentive structures and strategic direction. That produces learned helplessness quickly. Accountability without agency isn't accountability.</div>
             </div>
         </div>
-    </section>
-
-    <!-- THE DIRECTION -->
-    <section class="framework-section section-content reveal">
-        <span class="section-label">Where This Leads</span>
-        <h2>Economic Systems<br>Architects</h2>
 
         <div class="body-text">
             <p>
-                The highest-accountability organizations in the next decade won't look like traditional departments with annual budgets. They'll look more like <strong>small autonomous systems with economic telemetry</strong>. Closer to product squads with business accountability than corporate silos.
+                All three. Simultaneously. The seven metrics above can tell you whether you're ready. Most orgs have zero of three and wonder why "ownership" isn't producing results.
+            </p>
+        </div>
+    </section>
+
+    <!-- WHERE THIS LEADS -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">Where This Leads</span>
+        <h2>What Changes<br>With Telemetry</h2>
+
+        <div class="body-text">
+            <p>
+                The highest-performing ops organizations in five years probably won't resemble traditional departments with annual budgets. The emerging pattern looks more like small teams with shared economic visibility... closer to product squads with business accountability than corporate silos with activity dashboards.
             </p>
             <p>
-                The ops leaders who become most valuable won't be CRM admins, report builders or workflow managers. They'll be <strong>economic systems architects</strong>... the people who design how organizations measure, decide and move.
+                Once these metrics are in place, the ops role changes. The most valuable ops leaders won't be the ones managing CRMs, building reports or administrating workflows. They'll be the ones who understand how action connects to operational effect connects to economic effect... and who can design the measurement systems that make those connections visible across the organization.
             </p>
             <p>
-                That's where the leverage is heading, whether companies admit it yet or not.
+                That role is starting to get called an <strong>economic systems architect</strong>. The title may evolve. The function is already emerging in the companies that have the measurement infrastructure to support it.
             </p>
         </div>
 
         <a href="/resources/operational-telemetry-markers.html" class="download-cta">
-            View the Reference Card &rarr;
+            View the Metrics Reference Card &rarr;
         </a>
 
         <a href="/" class="back-link" style="display: block; margin-top: 2rem;">Back to the index</a>

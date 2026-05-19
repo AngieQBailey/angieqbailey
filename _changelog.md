@@ -1,3 +1,10 @@
+## [2026-05-19] — TIER 2 — R&D (Operational Telemetry)
+**Change:** Full copy rewrite of rd/operational-telemetry/index.html to align with LinkedIn content series framing. Updated meta descriptions. Updated homepage R&D card (index.html Section 03) and Resources page card (resources/index.html) to match new framing.
+**Rationale:** LinkedIn Ops Telemetry series reframed around "Should ops teams shift from budget thinking to P&L thinking?" The R&D page needed to match before Post 1 publishes. Register shifted from academic framework delivery to research-with-a-pulse. "Markers" reframed as "metrics." From/to shift-grid visual and drama-loop arrow list removed. Blur/laser paradox introduced as opening complication. All seven metrics kept, descriptions rewritten in plain observation voice. Accountability triad reframed as prerequisite test.
+**Operator:** Angie Bailey + Claude via Cowork
+
+---
+
 ## [2026-05-14] — TIER 2 — Operational Telemetry Web Presence (R&D + Resources)
 **Change:** Deployed 4 files for the Operational Telemetry content series:
 1. `rd/operational-telemetry/index.html` — New dark-variant R&D framework page. Sections: structural problem (drama loop), functional-to-system shift grid, 7 telemetry marker cards, shared causal chains, accountability triad (control/signals/symmetry), economic systems architects conclusion with CTA. 24,916 bytes.
