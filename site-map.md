@@ -1,6 +1,6 @@
 # Site Map — angieqbailey.com
 
-Last Updated: 2026-05-19
+Last Updated: 2026-05-20
 
 ## Index Page Structure (5 Sections + Resources + Debrief)
 
@@ -140,7 +140,6 @@ All multi-item nav pages use the 7-item nav: Investigation, Warehouse, R&D, L&D,
 | Crisis Response Team Architecture (Blank) | Template | posts/crisis-communications-architecture/assets/templates/crisis-response-team-architecture-blank.html |
 | Crisis Severity Framework (Blank) | Template | posts/crisis-communications-architecture/assets/templates/crisis-severity-framework-blank.html |
 | Disaster Response Decision Framework (Blank) | Template | posts/crisis-communications-architecture/assets/templates/disaster-response-decision-framework-blank.html |
-| Warehouse Card | Standalone | posts/crisis-communications-architecture/warehouse-card.html |
 
 ## R&D Pages (Section 03)
 
@@ -202,34 +201,38 @@ Max capacity per project rules: 7.
 | Homepage | Index | index.html |
 | 404 | Error Page | 404.html |
 
-## Legacy / Redundant Files (still in repo)
-
-These files exist under `Portfolio Work/` and predate the consolidation into `posts/`. The homepage links to the `posts/` versions. Both paths resolve on GitHub Pages.
-
-| Legacy Path | Canonical Path |
-|---|---|
-| Portfolio Work/Marketing Infrastructure MBR/marketing-infrastructure-mbr.html | posts/marketing-infrastructure-mbr/marketing-infrastructure-mbr.html |
-| Portfolio Work/GEO AEO Transition/geo-aeo-transition.html | posts/geo-aeo-transition/geo-aeo-transition.html |
-| Portfolio Work/Dots Pens and Commonplace Books/dots-pens-and-commonplace-books.html | (no posts/ equivalent — L&D hub page replaced this) |
-
-Recommendation: Delete `Portfolio Work/` directory after confirming no external links depend on those paths.
-
 ## URL Count Summary
 
 | Category | Count |
 |---|---|
 | Case study hub pages | 8 |
 | Artifact pages | 33 |
-| Template pages | 30 |
-| Warehouse card pages | 3 |
+| Template pages | 27 |
 | R&D pages | 10 |
 | L&D pages | 1 |
 | Verdict essays | 5 |
 | Resources pages | 3 |
 | Other (index, 404) | 2 |
-| **Total (canonical)** | **95** |
-| Legacy (Portfolio Work/) | 3 |
-| **Total in repo** | **98** |
+| **Total HTML** | **89** |
+
+Note: Portfolio Work/ directory and 3 orphaned warehouse-card.html pages were deleted 2026-05-19.
+
+## Infrastructure Files (non-HTML)
+
+| File | Purpose |
+|---|---|
+| robots.txt | Allow all crawlers, points to sitemap.xml |
+| sitemap.xml | 84 canonical URLs with priority tiers |
+| styles.css | Shared stylesheet (minified) |
+| apple-touch-icon.png | 180×180 iOS home screen icon |
+| favicon.ico | Browser tab icon |
+| favicon.png | 192×192 PNG icon |
+| favicon-32.png | 32×32 PNG icon |
+| og-image.png | 1200×630 Open Graph share image |
+| headshot.png | Footer headshot |
+| CNAME | Custom domain config |
+| _changelog.md | Deployment changelog |
+| .github/workflows/ga4-inject.yml | Auto-injects GA4 tag on push |
 
 ## Notes
 
@@ -241,3 +244,7 @@ Recommendation: Delete `Portfolio Work/` directory after confirming no external 
 - GA4 tag (G-S0MXDDKP4E) required on every page — GitHub Action auto-injects on push if missing
 - No target="_blank" on internal links (avoids white flash on dark-variant pages)
 - Brutalist design constraints are intentional — do not "improve" the design
+- All subpages have og:image, canonical URL, Twitter Card, and favicon meta tags (deployed 2026-05-19)
+- Case studies and verdict essays have JSON-LD Article structured data (deployed 2026-05-19)
+- robots.txt and sitemap.xml deployed 2026-05-19
+- styles.css is minified (deployed 2026-05-19)
