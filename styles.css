@@ -463,33 +463,6 @@
     }
 
     /* L&D Section */
-    .ld-divider {
-        margin-top: 3rem;
-        padding-top: 2rem;
-        border-top: 1px solid rgba(45, 27, 20, 0.4);
-    }
-
-    .ld-divider .ld-label {
-        font-family: 'IBM Plex Mono', monospace;
-        font-size: 0.85rem;
-        font-weight: 700;
-        color: var(--ecru-dim);
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        margin-bottom: 0.5rem;
-        display: block;
-    }
-
-    .ld-divider .ld-title {
-        font-family: 'Imbue', serif;
-        font-size: clamp(1.4rem, 3vw, 2rem);
-        font-weight: 900;
-        color: var(--ecru);
-        text-transform: uppercase;
-        line-height: 0.95;
-        letter-spacing: -0.01em;
-    }
-
     .ld-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -587,12 +560,6 @@
         opacity: 1;
         transform: translateX(0);
     }
-
-    a.principle-link:hover .principle-arrow {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
     .principle:first-child {
         border-top: 1px solid var(--ecru-ghost);
     }
