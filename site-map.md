@@ -1,6 +1,6 @@
 # Site Map — angieqbailey.com
 
-Last Updated: 2026-05-21
+Last Updated: 2026-05-21 (Section 01 Hardware of Being Human added)
 
 ## Index Page Structure (5 Sections + Resources + Debrief)
 
@@ -156,6 +156,7 @@ All multi-item nav pages use the 7-item nav: Investigation, Warehouse, R&D, L&D,
 | DRS Matrix (redirect) | Redirect | drs-matrix/index.html → rd/dignity/ |
 | The Dignity-Required System | Framework Hub (dark variant) | rd/dignity/index.html |
 | The 9:02 AM Meeting | Mini-Fable (ecru variant) | rd/dignity/902-meeting.html |
+| The Hardware of Being Human | Section 01 Findings Report (dark variant) | rd/dignity/hardware-of-being-human.html |
 | Tactical Dignity via Meaningful Choice | Section 03 Findings Report (dark variant) | rd/dignity/tactical-dignity.html |
 | Growth Collapse Math | Section 04 Findings Report (dark variant) | rd/dignity/growth-collapse.html |
 | Operational Telemetry | Framework Page (dark variant) | rd/operational-telemetry/index.html |
