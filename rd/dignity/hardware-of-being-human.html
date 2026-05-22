@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#121A28;">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The person who didn't adopt the tool isn't dragging the rollout. They're carrying a cognitive bill the rollout never accounted for. Section 01 of the Dignity-Required System: a diagnostic for cognitive bandwidth limits in technology adoption.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <link rel="canonical" href="https://angieqbailey.com/rd/dignity/hardware-of-being-human">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="The Hardware of Being Human // The Dignity-Required System">
+    <meta property="og:description" content="Stop counting laggards. Start counting bandwidth. A findings report on why adoption fails when the architecture ignores cognitive capacity.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://angieqbailey.com/rd/dignity/hardware-of-being-human">
+    <meta property="og:image" content="https://angieqbailey.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Hardware of Being Human // The Dignity-Required System">
+    <meta name="twitter:description" content="Stop counting laggards. Start counting bandwidth. A findings report on why adoption fails when the architecture ignores cognitive capacity.">
+    <meta name="twitter:image" content="https://angieqbailey.com/og-image.png">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "The Hardware of Being Human",
+      "description": "Section 01 of the Dignity-Required System. A diagnostic for cognitive bandwidth limits in technology adoption.",
+      "author": { "@type": "Person", "name": "Angie Bailey", "url": "https://angieqbailey.com" },
+      "publisher": { "@type": "Person", "name": "Angie Bailey" },
+      "url": "https://angieqbailey.com/rd/dignity/hardware-of-being-human",
+      "image": "https://angieqbailey.com/og-image.png",
+      "isPartOf": {
+        "@type": "CreativeWork",
+        "name": "The Dignity-Required System",
+        "url": "https://angieqbailey.com/rd/dignity/"
+      }
+    }
+    </script>
+
+    <title>The Hardware of Being Human // The Dignity-Required System // Angie Bailey</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        /* Framework header */
+        .framework-header {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 8rem;
+            padding-bottom: 4rem;
+        }
+        .framework-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--quetzal-bright);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.4s both;
+        }
+        .framework-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.5s both;
+        }
+        .framework-header h1 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2rem, 5.5vw, 4.5rem);
+            font-weight: 900;
+            line-height: 0.95;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+            max-width: 850px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+        .framework-header h1 .accent-word { color: var(--rosso); }
+        .framework-lede {
+            border-left: 5px solid var(--rosso);
+            padding-left: 2rem;
+            max-width: 620px;
+            animation: fade-up 0.8s ease 0.8s both;
+        }
+        .framework-lede p {
+            font-size: 1.15rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+            margin-bottom: 1.25rem;
+        }
+        .framework-lede strong { color: var(--ecru); font-weight: 500; }
+
+        /* Working definition block */
+        .working-def {
+            margin-top: 3rem;
+            max-width: 620px;
+            animation: fade-up 0.8s ease 1s both;
+        }
+        .working-def-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.75rem;
+        }
+        .working-def p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+        }
+        .working-def p strong { color: var(--ecru); font-weight: 500; }
+
+        /* Section structure */
+        .framework-section {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .framework-section h2 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 900;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 1.75rem;
+            max-width: 700px;
+        }
+
+        .body-text p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--ecru-dim);
+            margin-bottom: 1.5rem;
+            max-width: 650px;
+        }
+        .body-text p strong { color: var(--ecru); font-weight: 500; }
+        .body-text a { color: var(--quetzal-bright); text-decoration: underline; text-decoration-color: rgba(0, 196, 180, 0.3); text-underline-offset: 3px; transition: color 0.2s; }
+        .body-text a:hover { color: var(--ecru); }
+
+        .verdict-line {
+            font-family: 'Imbue', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--ecru);
+            line-height: 1.3;
+            max-width: 620px;
+            margin: 2rem 0;
+        }
+
+        /* Glossary expandables */
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2px;
+            margin: 2.5rem 0;
+            max-width: 750px;
+        }
+        details.glossary-card {
+            background: rgba(245, 245, 220, 0.14);
+            padding: 0;
+        }
+        details.glossary-card summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 1.5rem 1.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            transition: background 0.2s;
+        }
+        details.glossary-card summary::-webkit-details-marker { display: none; }
+        details.glossary-card summary:hover {
+            background: rgba(245, 245, 220, 0.06);
+        }
+        .glossary-term {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            line-height: 1.2;
+        }
+        .glossary-toggle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--rosso);
+            line-height: 1;
+            flex-shrink: 0;
+            transition: transform 0.25s ease;
+        }
+        details.glossary-card[open] .glossary-toggle {
+            transform: rotate(45deg);
+        }
+        .glossary-body {
+            padding: 0 1.75rem 1.75rem;
+            border-top: 1px solid var(--ecru-ghost);
+            padding-top: 1.5rem;
+        }
+        .glossary-body p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+            margin-bottom: 1rem;
+        }
+        .glossary-body p:last-child { margin-bottom: 0; }
+        .glossary-body a { color: var(--quetzal-bright); text-decoration: underline; text-decoration-color: rgba(0, 196, 180, 0.3); text-underline-offset: 3px; transition: color 0.2s; }
+        .glossary-body a:hover { color: var(--ecru); }
+        .glossary-question {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--quetzal-bright);
+            line-height: 1.5;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .glossary-question strong {
+            color: var(--ecru);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* Callout for the close */
+        .callout {
+            border-left: 4px solid var(--rosso);
+            padding: 2rem;
+            background: rgba(245, 245, 220, 0.14);
+            margin: 2rem 0;
+            max-width: 680px;
+        }
+        .callout p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .callout p:last-child { margin-bottom: 0; }
+        .callout strong { color: var(--ecru); font-weight: 500; }
+
+        /* Back link */
+        .back-link-row {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .back-link {
+            display: inline-block;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+            padding: 0.75rem 0;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--rosso); }
+
+        @media (max-width: 900px) {
+            .framework-header { padding-top: 6rem; }
+            .framework-lede { padding-left: 1.25rem; }
+            details.glossary-card summary { padding: 1.25rem; }
+            .glossary-body { padding: 1.25rem; padding-top: 1.25rem; }
+        }
+    </style>
+</head>
+<body style="background-color: #121A28;">
+
+<div class="blueprint-overlay" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true"></div>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
+    <ul class="nav-links">
+        <li><a href="/#investigation">Investigation</a></li>
+        <li><a href="/#warehouse">Warehouse</a></li>
+        <li><a href="/#rnd">R&amp;D</a></li>
+        <li><a href="/#lnd">L&amp;D</a></li>
+        <li><a href="/#verdict">Verdict</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/#debrief">Debrief</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- HEADER / FRICTION FRONT -->
+    <section class="framework-header section-content">
+        <span class="framework-meta">Dignity-Required System // Section 01</span>
+        <span class="framework-tag">Hardware of Being Human</span>
+        <h1>Stop Counting<br>Laggards.<br><span class="accent-word">Start Counting<br>Bandwidth.</span></h1>
+
+        <div class="framework-lede">
+            <p>
+                The person who didn't adopt the tool isn't dragging the rollout. They're carrying a cognitive bill the rollout never accounted for. The "laggard" label is a misdiagnosis that protects the architecture and blames the host.
+            </p>
+            <p>
+                Bandwidth isn't infinite. The brain has a budget. Most adoption plans treat that budget like it doesn't exist, then file the receipt under "change resistance" when the worker can't pay.
+            </p>
+        </div>
+
+        <div class="working-def">
+            <div class="working-def-label">Working Definition</div>
+            <p><strong>Throughput</strong> here means the rate at which work can flow through a system. Every system has a ceiling, set by the slowest part. In a workflow that includes a human, the human is usually that slowest part. Not because the person is slow. The brain has a hard ceiling. The workflow rarely admits it.</p>
+        </div>
+    </section>
+
+    <!-- THE FINDINGS -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">The Findings</span>
+        <h2>The Brain Has a Budget.<br>The Rollout Ignored It.</h2>
+
+        <div class="body-text">
+            <p>
+                Cognitive overload in technical organizations costs roughly $322 billion a year in lost productivity. That's the finding from a <a href="https://itrevolution.com/articles/team-cognitive-load-the-hidden-crisis-in-modern-tech-organizations/">2024 IT Revolution piece</a> by an organizational psychologist and a team topology expert, scoped specifically to technical organizations and presented at the Enterprise Technology Leadership Summit. The cause isn't lazy employees. It's a misunderstanding of what a team's cognitive capacity actually is.
+            </p>
+        </div>
+
+        <p class="verdict-line">Performance degrades. The dashboards don't.</p>
+
+        <div class="body-text">
+            <p>
+                Every interrupted task carries a recovery cost. The original <a href="https://ics.uci.edu/~gmark/CHI2005.pdf">2005 UC Irvine study</a> from Mark, Gonzalez and Harris measured it at 23 minutes 15 seconds to fully return to the work that was paused. Subsequent <a href="https://hbr.org/2022/08/how-much-time-and-energy-do-we-waste-toggling-between-applications">HBR research</a> found knowledge workers toggle between apps roughly 1,200 times a day, costing close to 9% of their annual work time in pure reorientation.
+            </p>
+            <p>
+                Up to 40% of someone's productive time can be consumed by chronic task-switching, according to research summarized by the <a href="https://www.apa.org/topics/research/multitasking">American Psychological Association</a>. And in tasks that require precise sequencing, interruptions as short as 4.4 seconds, about the time to glance at a notification, tripled error rates in a <a href="https://interruptions.net/literature/Altmann-JExpPsycholGen14.pdf">2014 study from Altmann, Trafton and Hambrick</a>.
+            </p>
+            <p>
+                <a href="https://www.microsoft.com/en-us/worklab/work-trend-index">Microsoft's 2024 Work Trend Index</a> put a number on what the pressure feels like to the people inside it. 68% of workers reported struggling to keep up with the pace and volume of work. <strong>46% said they were burned out.</strong>
+            </p>
+            <p>
+                None of this is about willpower. It's the host running past capacity while the architecture acts like the ceiling isn't there.
+            </p>
+        </div>
+    </section>
+
+    <!-- WHY EXISTING APPROACHES FAIL -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">Why Existing Approaches Fail</span>
+        <h2>The Word "Laggard"<br>Is the Misdiagnosis.</h2>
+
+        <div class="body-text">
+            <p>
+                The standard rollout playbook treats slow adoption as a personality issue. Some people are early adopters. Some people are laggards. The change management deck includes the curve and the framing is sealed. From there, the conversation is about how to nudge, motivate or sequence the laggard into compliance.
+            </p>
+            <p>
+                The research disagrees with the premise. A <a href="https://www.academia.edu/15073112/Laggards_in_disguise_Resistance_to_adopt_and_the_leapfrogging_effect">2007 paper from Goldenberg and Oreg</a> titled "Laggards in Disguise" found laggards of one product generation often become the innovators of the next. <strong>The label wasn't fixed to the person.</strong> It was tied to whether the previous tool delivered or didn't.
+            </p>
+            <p>
+                A <a href="https://www.asaecenter.org/resources/articles/an_plus/2017/september/rethinking-the-change-adoption-curve">2017 ASAE piece by Wes Cronkite</a> argued the change adoption curve itself rewards the wrong people. Most rollouts pour their attention into convincing the resistant minority. The piece's conclusion was that it pays to invest in stakeholders who are already listening, not the ones who aren't.
+            </p>
+            <p>
+                Recent work goes further. A <a href="https://www.tandfonline.com/doi/full/10.1080/0960085X.2025.2603343">2025 European Journal of Information Systems study</a> found acceptance and resistance aren't fixed states at all. Users move between them over time, with cognitive and emotional dynamics shaping the transitions. The same person can be an enthusiastic adopter of one tool and a hard refuser of the next, depending on what else they're already holding when the new tool arrives.
+            </p>
+            <p>
+                The implication is straightforward. "Laggard" isn't a person. <strong>It's a moment.</strong> And the moment is shaped by capacity.
+            </p>
+        </div>
+    </section>
+
+    <!-- THE DIAGNOSTIC VOCABULARY -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">The Diagnostic Vocabulary</span>
+        <h2>Three Named<br>Concepts.</h2>
+
+        <div class="body-text">
+            <p>
+                The Dignity-Required System names three concepts for this friction front. Each one shifts the conversation from interrogating the person to examining what's already on the plate. Each expands inline below. The four archetypes (Operator, Detective, Fixer, Maverick) sit on the <a href="/rd/dignity/">hub page's interactive matrix</a> as situational states, not personality types.
+            </p>
+        </div>
+
+        <div class="glossary-grid">
+
+            <details class="glossary-card">
+                <summary>
+                    <span class="glossary-term">&#9656; Mental Rent</span>
+                    <span class="glossary-toggle">+</span>
+                </summary>
+                <div class="glossary-body">
+                    <p>
+                        Every job comes with a cognitive bill before any new tool lands. The existing decisions, the open Slack threads, the people waiting on a reply, the part of the workflow that's broken but tolerated. That's the rent the brain is already paying. The new tool adds itself to the statement. The rollout deck almost never accounts for what was already due.
+                    </p>
+                    <div class="glossary-question">
+                        <strong>Diagnostic Question</strong>
+                        What's already on this team's plate before the rollout arrives, and what happens to that bill if the new tool launches Tuesday?
+                    </div>
+                </div>
+            </details>
+
+            <details class="glossary-card">
+                <summary>
+                    <span class="glossary-term">&#9656; Context-Switching Tax</span>
+                    <span class="glossary-toggle">+</span>
+                </summary>
+                <div class="glossary-body">
+                    <p>
+                        Every interruption costs time on the way out and time on the way back. The 23-minute recovery number from the UC Irvine research is the average for a full task. The shorter ones aren't free either. Even 4.4-second breaks have been shown to triple sequence errors in cognitive work that requires precise step ordering. The tax is paid in attention, accuracy and the slow erosion of the focused work the role was actually hired to do.
+                    </p>
+                    <div class="glossary-question">
+                        <strong>Diagnostic Question</strong>
+                        How many times per hour is this person being pulled out of their primary task. If the number's higher than six, the role's been redesigned without anyone noticing.
+                    </div>
+                </div>
+            </details>
+
+            <details class="glossary-card">
+                <summary>
+                    <span class="glossary-term">&#9656; Cognitive Redlining</span>
+                    <span class="glossary-toggle">+</span>
+                </summary>
+                <div class="glossary-body">
+                    <p>
+                        A car redlined past its safe RPM tells you immediately. The engine screams. The gauge flashes. A human brain past its safe range doesn't have those signals. Performance degrades quietly. Errors creep in. Decisions get slower or shallower. The person keeps working because the architecture demands it and the body doesn't issue warnings the architecture respects.
+                    </p>
+                    <div class="glossary-question">
+                        <strong>Diagnostic Question</strong>
+                        What would the visible signal look like if this team were already past redline. Now check whether the current dashboards would catch it. Most don't.
+                    </div>
+                </div>
+            </details>
+
+        </div>
+    </section>
+
+    <!-- WHAT THIS MEANS AT ROLLOUT -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">What This Means at Rollout</span>
+        <h2>Tool Selection<br>Comes Second.</h2>
+
+        <div class="body-text">
+            <p>
+                The starting point for an adoption-ready rollout isn't picking the tool. <strong>It's auditing the bandwidth.</strong>
+            </p>
+            <p>
+                Before a deployment lands, three questions need an honest answer. What's this team already carrying. What weight will this tool add or remove. What architectural changes have to happen first so the team can absorb the new tool without running past redline.
+            </p>
+            <p>
+                The four archetypes on the hub page (Operator, Detective, Fixer, Maverick) are situational states. The same person can move between quadrants depending on cognitive surplus and identity source. A rollout that treats those quadrants as fixed personality traits misses the diagnostic point entirely. The point is that the same worker, under different pressure, behaves like a different archetype.
+            </p>
+            <p>
+                The research closes the loop on the mechanism. A <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10859089/">2024 study in <em>Psychology Research and Behavior Management</em></a> found technostress, the cognitive overload from rapid technology change, directly suppresses AI adoption intention. A <a href="https://www.mdpi.com/2071-1050/18/4/2076">2026 <em>Sustainability</em> paper</a> went further. Cognitive strain disrupts the move from positive attitudes to actual behavior. Even when the person wants to adopt, overload stops the wanting from becoming the doing.
+            </p>
+            <p>
+                Self-Determination Theory describes the same finding from the motivational side. The <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12887546/">Hagger and Starr 2026 meta-analysis</a> synthesized 192 studies and confirmed the pattern. When people feel enough control over their work, enough mastery in it and enough connection to the team doing it with them, they engage harder and burn out less. Strip any of the three and the result flips. A rollout that doesn't account for what the team's already holding tends to strip at least one of the three by default (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9088153/">Gagn&eacute; et al., <em>Nature Reviews Psychology</em>, 2022</a>).
+            </p>
+            <p>
+                Cognitive Load Theory is the underlying mechanism. The <a href="https://www.mdpi.com/2227-7102/15/4/458">2025 Ouwehand, Lespiau, Tricot and Paas review</a> in <em>Education Sciences</em> traces decades of work on the three kinds of mental work the brain juggles at once. The work the task itself actually requires. The friction the workflow piles on top of it. And the slower build of real expertise. Most adoption failures sit in the middle column, the friction layered on top, which is the easiest one to reduce and the last one the rollout deck thinks about.
+            </p>
+        </div>
+    </section>
+
+    <!-- THE DIAGNOSTIC CLOSE -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">The Close</span>
+        <h2>Not a Workforce Problem.<br>A Capacity Math Problem.</h2>
+
+        <div class="callout">
+            <p>
+                Every adoption failure is a math problem before it becomes a people problem. The math is what the worker can absorb versus what the system asks for. When the ask runs higher than the absorb, the worker does what any overloaded system does. They drop tasks, defer decisions and route around the pressure. <strong>The label "laggard" describes the symptom. The system created the diagnosis.</strong>
+            </p>
+            <p>
+                If a rollout's adoption plan doesn't include a cognitive load audit, it's a tool deployment, not an adoption plan. And in a Dignity-Required System, deploying a tool past someone's redline isn't innovation. It's an injury the dashboards won't catch.
+            </p>
+        </div>
+
+        <div class="back-link-row">
+            <a href="/rd/dignity/" class="back-link">&larr; Back to the Dignity-Required System</a>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <span>&copy; 2026 Angie Bailey</span>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
