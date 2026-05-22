@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#121A28;">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Automate the task someone's proud of and you've taken away the work that made them visible. Section 03 of the Dignity-Required System: a diagnostic for identity erasure in AI rollouts.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <link rel="canonical" href="https://angieqbailey.com/rd/dignity/tactical-dignity">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Tactical Dignity // The Dignity-Required System">
+    <meta property="og:description" content="Automate the task someone's proud of and you've taken away the work that made them visible. Every tool rollout has to know the difference.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://angieqbailey.com/rd/dignity/tactical-dignity">
+    <meta property="og:image" content="https://angieqbailey.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tactical Dignity // The Dignity-Required System">
+    <meta name="twitter:description" content="Automate the task someone's proud of and you've taken away the work that made them visible. Every tool rollout has to know the difference.">
+    <meta name="twitter:image" content="https://angieqbailey.com/og-image.png">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Tactical Dignity via Meaningful Choice",
+      "description": "Section 03 of the Dignity-Required System. A diagnostic for identity erasure in AI rollouts.",
+      "author": { "@type": "Person", "name": "Angie Bailey", "url": "https://angieqbailey.com" },
+      "publisher": { "@type": "Person", "name": "Angie Bailey" },
+      "url": "https://angieqbailey.com/rd/dignity/tactical-dignity",
+      "image": "https://angieqbailey.com/og-image.png",
+      "isPartOf": {
+        "@type": "CreativeWork",
+        "name": "The Dignity-Required System",
+        "url": "https://angieqbailey.com/rd/dignity/"
+      }
+    }
+    </script>
+
+    <title>Tactical Dignity // The Dignity-Required System // Angie Bailey</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        /* Framework header */
+        .framework-header {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 8rem;
+            padding-bottom: 4rem;
+        }
+        .framework-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--quetzal-bright);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.4s both;
+        }
+        .framework-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.5s both;
+        }
+        .framework-header h1 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2rem, 5.5vw, 4.5rem);
+            font-weight: 900;
+            line-height: 0.95;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+            max-width: 850px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+        .framework-header h1 .accent-word { color: var(--rosso); }
+        .framework-lede {
+            border-left: 5px solid var(--rosso);
+            padding-left: 2rem;
+            max-width: 620px;
+            animation: fade-up 0.8s ease 0.8s both;
+        }
+        .framework-lede p {
+            font-size: 1.15rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+            margin-bottom: 1.25rem;
+        }
+        .framework-lede strong { color: var(--ecru); font-weight: 500; }
+
+        /* Working definition block */
+        .working-def {
+            margin-top: 3rem;
+            max-width: 620px;
+            animation: fade-up 0.8s ease 1s both;
+        }
+        .working-def-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.75rem;
+        }
+        .working-def p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+        }
+        .working-def p strong { color: var(--ecru); font-weight: 500; }
+
+        /* Section structure */
+        .framework-section {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .framework-section h2 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 900;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 1.75rem;
+            max-width: 700px;
+        }
+
+        .body-text p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--ecru-dim);
+            margin-bottom: 1.5rem;
+            max-width: 650px;
+        }
+        .body-text p strong { color: var(--ecru); font-weight: 500; }
+        .body-text a { color: var(--quetzal-bright); text-decoration: underline; text-decoration-color: rgba(0, 196, 180, 0.3); text-underline-offset: 3px; transition: color 0.2s; }
+        .body-text a:hover { color: var(--ecru); }
+
+        .verdict-line {
+            font-family: 'Imbue', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--ecru);
+            line-height: 1.3;
+            max-width: 620px;
+            margin: 2rem 0;
+        }
+
+        /* Glossary expandables */
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2px;
+            margin: 2.5rem 0;
+            max-width: 750px;
+        }
+        details.glossary-card {
+            background: rgba(245, 245, 220, 0.14);
+            padding: 0;
+        }
+        details.glossary-card summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 1.5rem 1.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            transition: background 0.2s;
+        }
+        details.glossary-card summary::-webkit-details-marker { display: none; }
+        details.glossary-card summary:hover {
+            background: rgba(245, 245, 220, 0.06);
+        }
+        .glossary-term {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            line-height: 1.2;
+        }
+        .glossary-toggle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--rosso);
+            line-height: 1;
+            flex-shrink: 0;
+            transition: transform 0.25s ease;
+        }
+        details.glossary-card[open] .glossary-toggle {
+            transform: rotate(45deg);
+        }
+        .glossary-body {
+            padding: 0 1.75rem 1.75rem;
+            border-top: 1px solid var(--ecru-ghost);
+            padding-top: 1.5rem;
+        }
+        .glossary-body p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+            margin-bottom: 1rem;
+        }
+        .glossary-body p:last-child { margin-bottom: 0; }
+        .glossary-question {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--quetzal-bright);
+            line-height: 1.5;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .glossary-question strong {
+            color: var(--ecru);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* Callout for the close */
+        .callout {
+            border-left: 4px solid var(--rosso);
+            padding: 2rem;
+            background: rgba(245, 245, 220, 0.14);
+            margin: 2rem 0;
+            max-width: 680px;
+        }
+        .callout p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .callout p:last-child { margin-bottom: 0; }
+        .callout strong { color: var(--ecru); font-weight: 500; }
+
+        /* Back link */
+        .back-link-row {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .back-link {
+            display: inline-block;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+            padding: 0.75rem 0;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--rosso); }
+
+        @media (max-width: 900px) {
+            .framework-header { padding-top: 6rem; }
+            .framework-lede { padding-left: 1.25rem; }
+            details.glossary-card summary { padding: 1.25rem; }
+            .glossary-body { padding: 1.25rem; padding-top: 1.25rem; }
+        }
+    </style>
+</head>
+<body style="background-color: #121A28;">
+
+<div class="blueprint-overlay" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true"></div>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
+    <ul class="nav-links">
+        <li><a href="/#investigation">Investigation</a></li>
+        <li><a href="/#warehouse">Warehouse</a></li>
+        <li><a href="/#rnd">R&amp;D</a></li>
+        <li><a href="/#lnd">L&amp;D</a></li>
+        <li><a href="/#verdict">Verdict</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/#debrief">Debrief</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- HEADER / FRICTION FRONT -->
+    <section class="framework-header section-content">
+        <span class="framework-meta">Dignity-Required System // Section 03</span>
+        <span class="framework-tag">Tactical Dignity</span>
+        <h1>Automate What<br>They Hate.<br><span class="accent-word">Protect What<br>They're Proud Of.</span></h1>
+
+        <div class="framework-lede">
+            <p>
+                Automate the task someone's proud of and you've taken away the work that made them visible. Every tool rollout has to know the difference.
+            </p>
+            <p>
+                The recurring mistake in an AI deployment isn't technical. It's the moment the system removes the task that made someone feel like an expert and replaces it with a workflow that doesn't need them.
+            </p>
+        </div>
+
+        <div class="working-def">
+            <div class="working-def-label">Working Definition</div>
+            <p><strong>Architecture</strong> here means how the work is structured. The decisions, the workflows, the governance steps and the reporting lines that shape how the job gets done. Not buildings. Not code. The system of choices that says who does what, who decides what, and who carries the consequences when something breaks.</p>
+        </div>
+    </section>
+
+    <!-- THE FINDINGS -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">The Findings</span>
+        <h2>The Senior Contributor<br>Stops Contributing</h2>
+
+        <div class="body-text">
+            <p>
+                The story repeats across industries. A senior contributor is the recognized authority on a specific output. Their name gets called when the work matters. They built that authority through years of pattern recognition the rest of the team doesn't have. Then the tool ships. It performs that exact task in seconds. The next demo features it as a productivity win.
+            </p>
+        </div>
+
+        <p class="verdict-line">The senior contributor stops contributing.</p>
+
+        <div class="body-text">
+            <p>
+                It doesn't look like resistance. It looks quieter than that. The Slack messages get shorter. The reviews get skipped. The institutional knowledge stops walking down the hall to anyone who needs it. The person's still in the seat. <strong>The expertise is leaking out of the building.</strong>
+            </p>
+            <p>
+                A 2025 study of IT professionals named the pattern directly. Workers reported erosion of professional identity. They described feeling "personally invalidated and obsolete" after AI tools assumed their core tasks (<a href="https://link.springer.com/article/10.1007/s00146-024-02170-0">AI &amp; Society, 2024</a>). The <a href="https://kahoot.com/press/2024/10/02/workplace-culture-report-2024/">2024 Kahoot Workplace Culture Report</a> found 46% of employees fear their skills will be outdated within five years. 29% expect it within two. The <a href="https://www.imf.org/en/blogs/articles/2024/01/14/ai-will-transform-the-global-economy-lets-make-sure-it-benefits-humanity">IMF estimates</a> 40% of global employment faces AI exposure. <a href="https://www.gartner.com/en/newsroom/press-releases/2024-10-29-gartner-survey-shows-85-percent-of-learning-and-development-leaders-agree-there-will-be-a-surge-in-skills-development-needs-due-to-ai-and-digital-trends-in-next-3-years">Gartner (2025)</a> reports 85% of L&amp;D leaders expect a dramatic increase in skill development needs.
+            </p>
+            <p>
+                These numbers describe a workforce reading the room and preparing for a future where their identity at work is no longer recognizable.
+            </p>
+            <p>
+                This is about the people. It's also about the architecture that injures them. The architecture is the only part that can change without firing the workforce.
+            </p>
+        </div>
+    </section>
+
+    <!-- WHY EXISTING APPROACHES FAIL -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">Why Existing Approaches Fail</span>
+        <h2>The System<br>Tells the Truth</h2>
+
+        <div class="body-text">
+            <p>
+                Standard rollout playbooks treat identity threat as a communications problem. Send the announcement earlier. Run an empathy session. Tell people the tool will help them, not replace them. Add a Slack channel for questions.
+            </p>
+            <p>
+                None of that addresses the architecture. The threat isn't that the worker didn't understand the rollout. The threat is that the worker understood it exactly. They watched the tool perform the task that earned them their reputation. <strong>The communications layer can't reverse that signal.</strong>
+            </p>
+            <p>
+                Change management training assumes the employee needs to be persuaded. The employee was already persuaded. They saw the demo. They understood the tool. What they need isn't persuasion. They need to know which parts of their work the organization considers worth protecting and which parts it considers expendable... and if they get to be part of the conversation.
+            </p>
+            <p>
+                Calling the tool a helper without redesigning the work around that promise makes the damage worse. If leadership says the tool just supports the work but the new workflow removes the expert from the decision, the language is a tell. The worker hears the words. They watch the system. The system tells the truth.
+            </p>
+            <p>
+                Upskilling programs run into the same wall. You can't reskill someone out of a hit to their work identity with a Coursera certificate. The identity question isn't what someone can do next. It's whether the thing they did that mattered... still matters.
+            </p>
+        </div>
+    </section>
+
+    <!-- THE DIAGNOSTIC VOCABULARY -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">The Diagnostic Vocabulary</span>
+        <h2>Four Named<br>Concepts</h2>
+
+        <div class="body-text">
+            <p>
+                The Dignity-Required System names four concepts for this friction front. Each one shifts the conversation from managing the person to examining the architecture. Each one expands inline below. Each one appears in the standalone glossary when that page ships.
+            </p>
+        </div>
+
+        <div class="glossary-grid">
+
+            <details class="glossary-card">
+                <summary>
+                    <span class="glossary-term">&#9656; Identity Anchor</span>
+                    <span class="glossary-toggle">+</span>
+                </summary>
+                <div class="glossary-body">
+                    <p>
+                        The part of a person's work that makes them feel like an expert. It's rarely the whole job. It's usually a specific output, a specific judgment call, or a specific kind of pattern recognition that took years to build. The identity anchor isn't always the most time-consuming task. It's the task that, if removed, makes the person feel invisible at work.
+                    </p>
+                    <div class="glossary-question">
+                        <strong>Diagnostic Question</strong>
+                        If this tool removed every task in this person's job, which one would they fight to keep doing manually. That's the identity anchor.
+                    </div>
+                </div>
+            </details>
+
+            <details class="glossary-card">
+                <summary>
+                    <span class="glossary-term">&#9656; Mastery vs Drudgery Distinction</span>
+                    <span class="glossary-toggle">+</span>
+                </summary>
+                <div class="glossary-body">
+                    <p>
+                        Not every task in a role carries equal weight. Drudgery is the labor a person would happily delete. Mastery is the labor that defines their professional self. Automate the drudgery and the team gains capacity. Automate the mastery and the team loses identity. The distinction isn't subjective. The worker knows it. The rollout team often doesn't ask.
+                    </p>
+                    <p>
+                        The standard playbook treats automation as a uniform good. The mastery vs drudgery distinction treats it as a tool that has to be aimed.
+                    </p>
+                </div>
+            </details>
+
+            <details class="glossary-card">
+                <summary>
+                    <span class="glossary-term">&#9656; Dignity Circuit Breaker</span>
+                    <span class="glossary-toggle">+</span>
+                </summary>
+                <div class="glossary-body">
+                    <p>
+                        The architectural safeguard that prevents a tool from removing meaningful choice in the face of responsibility. A dignity circuit breaker can take many forms. A human governance step that isn't rubber-stamped. A workflow path that preserves the expert decision. A reporting line that requires the senior contributor to weigh in on the cases that match their pattern recognition.
+                    </p>
+                    <p>
+                        The circuit breaker is the difference between calling the tool a helper and actually building it that way.
+                    </p>
+                </div>
+            </details>
+
+            <details class="glossary-card">
+                <summary>
+                    <span class="glossary-term">&#9656; Defensive Knowledge Hoarding</span>
+                    <span class="glossary-toggle">+</span>
+                </summary>
+                <div class="glossary-body">
+                    <p>
+                        What the research calls defensive behavior under identity threat. What it looks like in practice: the senior contributor stops documenting their judgment, stops mentoring the next layer, stops surfacing the edge cases they catch. It isn't selfishness. It's a rational protection of the last remaining surface area where the worker can still demonstrate expertise.
+                    </p>
+                    <p>
+                        Defensive knowledge hoarding is what shows up when the identity anchor has been shaken and no one's responded to it.
+                    </p>
+                </div>
+            </details>
+
+        </div>
+    </section>
+
+    <!-- WHAT THIS MEANS AT THE ROLLOUT LEVEL -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">What This Means at Rollout</span>
+        <h2>Identity Mapping<br>Comes First</h2>
+
+        <div class="body-text">
+            <p>
+                Tool selection is the wrong starting point. The starting point is identity mapping.
+            </p>
+            <p>
+                Before a deployment touches a team, three questions need an honest answer. What's the identity anchor for each role this tool will touch. What part of that anchor does the tool consume and what part does it leave intact. Where's the dignity circuit breaker that preserves the worker's authority over the task they're still being held accountable for.
+            </p>
+            <p>
+                Self-Determination Theory describes the psychological foundation underneath this. Autonomy, competence and relatedness are the three needs that predict whether a person engages with a system or withdraws from it (<a href="https://selfdeterminationtheory.org/">Deci and Ryan</a>, foundational; <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9088153/">Gagn&eacute; et al., Nature Reviews Psychology, 2022</a>).
+            </p>
+            <p>
+                Research on what happens when those needs get denied is direct. The system decreases satisfaction of all three. The worker stops engaging.
+            </p>
+            <p>
+                The numbers stay green for a quarter. The institutional knowledge starts to drain. By the time the drain is visible in the metrics, the recovery cost is significantly higher than the cost of the original rollout.
+            </p>
+        </div>
+    </section>
+
+    <!-- THE DIAGNOSTIC CLOSE -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">The Close</span>
+        <h2>Governor<br>or Legal Shield</h2>
+
+        <div class="callout">
+            <p>
+                Every tool deployment touches at least one identity anchor. The question isn't whether the rollout will cause identity friction. <strong>It's whether the architecture preserves a path for the worker to remain a governor of the work, not a legal shield for the tool.</strong>
+            </p>
+            <p>
+                If that path doesn't exist, the deployment is producing compliance, not adoption. And compliance, in a Dignity-Required System, is the diagnostic signal that the architecture has already failed.
+            </p>
+        </div>
+
+        <div class="back-link-row">
+            <a href="/rd/dignity/" class="back-link">&larr; Back to the Dignity-Required System</a>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <span>&copy; 2026 Angie Bailey</span>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
