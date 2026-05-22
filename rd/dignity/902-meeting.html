@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The 9:02 AM Meeting: A mini-business fable about four people in the same technology rollout meeting who hear four completely different things.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#F5F5DC">
+    <meta property="og:title" content="The 9:02 AM Meeting // Angie Bailey">
+    <meta property="og:description" content="Same rollout. Same training. Same message. Four completely different realities. A conversion scene from the Dignity-Required System.">
+    <meta property="og:type" content="article">
+    <title>The 9:02 AM Meeting // Angie Bailey</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ecru: #F5F5DC;
+            --nuit: #121A28;
+            --rosso: #C1272D;
+            --cacao: #3B2D25;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            background: var(--ecru);
+            color: var(--nuit);
+            line-height: 1.7;
+            padding: 0;
+        }
+
+        /* Nav */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            background: rgba(245, 245, 220, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(59, 45, 37, 0.1);
+        }
+        .nav-mark {
+            font-family: 'Imbue', serif;
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--nuit);
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--cacao);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+        .nav-links a:hover { opacity: 1; }
+
+        /* Fable content */
+        .fable-container {
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+        .fable-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+        }
+        .fable-container h1 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2.2rem, 6vw, 4rem);
+            font-weight: 900;
+            line-height: 0.95;
+            color: var(--nuit);
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+        }
+        .fable-container p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+            color: var(--nuit);
+        }
+        .fable-container hr {
+            border: none;
+            border-top: 1px solid rgba(59, 45, 37, 0.2);
+            margin: 2.5rem 0;
+        }
+        .fable-container h3 {
+            font-family: 'Imbue', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--nuit);
+            margin-bottom: 1.5rem;
+        }
+        .rosso-line { color: var(--rosso); font-weight: 500; }
+
+        /* Back link */
+        .back-link {
+            display: inline-block;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--ecru);
+            background: var(--nuit);
+            text-decoration: none;
+            padding: 0.75rem 2rem;
+            margin-top: 2.5rem;
+            transition: background 0.2s, color 0.2s;
+        }
+        .back-link:hover { background: var(--rosso); }
+
+        /* Footer */
+        .site-footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--cacao);
+            opacity: 0.6;
+        }
+
+        @media (max-width: 500px) {
+            .nav-mark { display: none; }
+            .nav-bar { justify-content: flex-end; }
+            .nav-links a { font-size: 0.7rem; }
+            .fable-container { padding: 6rem 1.25rem 3rem; }
+        }
+
+        @media print {
+            @page { size: portrait; margin: 1cm; }
+            .nav-bar, .back-link { display: none !important; }
+            .fable-container { padding: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="/" class="nav-mark">AB</a>
+    <ul class="nav-links">
+        <li><a href="/#investigation">Investigation</a></li>
+        <li><a href="/#warehouse">Warehouse</a></li>
+        <li><a href="/#rnd">R&amp;D</a></li>
+        <li><a href="/#lnd">L&amp;D</a></li>
+        <li><a href="/#verdict">Verdict</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/#debrief">Debrief</a></li>
+    </ul>
+</nav>
+
+<article class="fable-container">
+    <div class="fable-meta">DRS Framework / Conversion Scene</div>
+    <h1>The 9:02 AM Meeting</h1>
+
+    <p>The invite said 9:00.</p>
+
+    <p>The meeting started at 9:02 because Doug was losing a quiet fight with his microphone. He had been COO for eighteen months. Smart. Calm. Good in front of a board. The kind of leader who could make a messy situation sound organized in a slide deck.</p>
+
+    <p>Today he was rolling out the new tool. He believed in it. He'd vetted it. He'd seen the demo and felt relieved... finally, something that could take real work off real plates.</p>
+
+    <p>He opened with the vision. "This is going to free people up to do the work that actually matters."</p>
+
+    <p>He meant it.</p>
+
+    <hr>
+
+    <p>Denise had been in operations for twenty-two years. She knew the system better than anyone in the company... including the people who designed it. She'd built a process override six years ago that nobody documented because it lived in her head and a spreadsheet only she understood.</p>
+
+    <p>When the new tool appeared on her screen during the demo, she didn't feel excitement. She felt her stomach drop. The override wasn't in the data model. The new system didn't know it existed. Nobody had asked her.</p>
+
+    <p>She didn't say anything. She took notes. She smiled at the right moments.</p>
+
+    <p>Inside, she was calculating: how long until they find out what this tool can't do?</p>
+
+    <hr>
+
+    <p>Jeremy joined the company eight months ago. He was fast, technically sharp and already frustrated with the legacy tools. He'd suggested improvements twice. The first time he was told "that's a Phase 2 idea." The second time he wasn't told anything at all.</p>
+
+    <p>He looked at the new tool and saw the flaw within 90 seconds. The data validation layer was missing a step that would create cascading errors in edge cases. Not catastrophic. Just wrong often enough to erode trust.</p>
+
+    <p>He didn't flag it. He'd learned. He opened a blank doc and started sketching a workaround he'd build on his own time.</p>
+
+    <hr>
+
+    <p>Frank was halfway through his third coffee. He'd been up since 5:15 with the baby. His inbox had 200+ unread messages. His performance review was next week. His manager had told him twice that his "velocity" needed to improve.</p>
+
+    <p>He didn't care what the tool did. He cared whether it would create more steps. More logins. More training hours he'd have to find between client calls.</p>
+
+    <p>He heard Doug say "streamline" and "efficiency" and felt nothing. He'd heard those words before. They usually meant: same output, more steps, less time, more accountability.</p>
+
+    <p>He nodded. He would do the training. He would complete the onboarding. He would not use the tool unless someone checked.</p>
+
+    <hr>
+
+    <p>Tessa was already thinking three steps ahead. She ran a small team. She liked speed. She didn't get emotionally attached to process... she got attached to results.</p>
+
+    <p>The tool looked fast. She was already mapping her team's workflow onto it. She could see where it would eliminate two handoffs and one approval layer.</p>
+
+    <p>Faster. Cleaner. No waiting.</p>
+
+    <p>She didn't know why the current process existed. She didn't ask.</p>
+
+    <hr>
+
+    <p>Doug clicked to the final slide.</p>
+
+    <p>"Ultimately, this is about helping everyone do their best work."</p>
+
+    <p>He meant it. He opened the floor for questions. Silence.</p>
+
+    <p>Then someone unmuted. "So does this replace anything?"</p>
+
+    <p>Doug paused. "We'll get into specifics in Phase 2."</p>
+
+    <p>A few people nodded. A few people stopped listening entirely.</p>
+
+    <p>The meeting ended on time.</p>
+
+    <hr>
+
+    <h3>Thirty days later</h3>
+
+    <p>Denise still used her spreadsheet. She went to the training. Took notes. Asked one question that didn't get answered.</p>
+
+    <p>The new system didn't know about the override. So she kept both. One official. One real.</p>
+
+    <p>Jeremy stopped logging into the tool after week two. He'd found a flaw in how it handled edge cases. He quietly built a workaround. Leadership saw his name on the successful adoption report.</p>
+
+    <p>Frank completed the onboarding. He used the tool exactly as shown in training. Nothing more. His workload didn't go down.</p>
+
+    <p>He now spent an extra half hour a week checking outputs he didn't trust. No one tracked it.</p>
+
+    <p>Tessa rebuilt her team's workflow in three days. It worked. Leadership loved it.</p>
+
+    <p>What no one noticed was what disappeared.</p>
+
+    <p>A check. A step. A piece of logic that had been catching something important for years. Denise's override. The one nobody documented. The one nobody asked about.</p>
+
+    <p>That would surface later. Not in Tessa's metrics.</p>
+
+    <p>Doug presented an update to the board. "Adoption is strong. Teams are engaging. Early indicators are positive."</p>
+
+    <p>He wasn't wrong.</p>
+
+    <p>From where he sat, the system was working.</p>
+
+    <hr>
+
+    <p>Same rollout.</p>
+
+    <p>Same training.</p>
+
+    <p>Same message.</p>
+
+    <p>Four completely different realities.</p>
+
+    <p>These aren't personality types. They're states.</p>
+
+    <p>They change with pressure. With time. With what's at stake.</p>
+
+    <p>The same person can sit in that meeting on two different weeks and hear two completely different things.</p>
+
+    <p>Which one are you right now?</p>
+
+    <p>And more importantly... did anyone design for that?</p>
+
+    <p class="rosso-line" style="margin-top: 2.5rem;">Explore the model.</p>
+    <a href="/rd/dignity/" class="back-link">Back to the Framework</a>
+</article>
+
+<footer class="site-footer">
+    <span>&copy; 2026 Angie Bailey</span>
+</footer>
+
+</body>
+</html>
