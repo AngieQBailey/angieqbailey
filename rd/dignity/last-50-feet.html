@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#121A28;">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Most digital transformations don't fail because employees resisted. They fail because the plan didn't fit the place where the work actually happens. Section 02 of the Dignity-Required System: a diagnostic for physical-digital friction at the last 50 feet.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <link rel="canonical" href="https://angieqbailey.com/rd/dignity/last-50-feet">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="The Last 50 Feet Failure // The Dignity-Required System">
+    <meta property="og:description" content="The conference room said yes. The loading dock said no. A findings report on why digital plans die at the physical floor.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://angieqbailey.com/rd/dignity/last-50-feet">
+    <meta property="og:image" content="https://angieqbailey.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Last 50 Feet Failure // The Dignity-Required System">
+    <meta name="twitter:description" content="The conference room said yes. The loading dock said no. A findings report on why digital plans die at the physical floor.">
+    <meta name="twitter:image" content="https://angieqbailey.com/og-image.png">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "The Last 50 Feet Failure",
+      "description": "Section 02 of the Dignity-Required System. A diagnostic for physical-digital friction at the last 50 feet of a rollout.",
+      "author": { "@type": "Person", "name": "Angie Bailey", "url": "https://angieqbailey.com" },
+      "publisher": { "@type": "Person", "name": "Angie Bailey" },
+      "url": "https://angieqbailey.com/rd/dignity/last-50-feet",
+      "image": "https://angieqbailey.com/og-image.png",
+      "isPartOf": {
+        "@type": "CreativeWork",
+        "name": "The Dignity-Required System",
+        "url": "https://angieqbailey.com/rd/dignity/"
+      }
+    }
+    </script>
+
+    <title>The Last 50 Feet Failure // The Dignity-Required System // Angie Bailey</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        /* Framework header */
+        .framework-header {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 8rem;
+            padding-bottom: 4rem;
+        }
+        .framework-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--quetzal-bright);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.4s both;
+        }
+        .framework-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.5s both;
+        }
+        .framework-header h1 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2rem, 5.5vw, 4.5rem);
+            font-weight: 900;
+            line-height: 0.95;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+            max-width: 850px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+        .framework-header h1 .accent-word { color: var(--rosso); }
+        .framework-lede {
+            border-left: 5px solid var(--rosso);
+            padding-left: 2rem;
+            max-width: 620px;
+            animation: fade-up 0.8s ease 0.8s both;
+        }
+        .framework-lede p {
+            font-size: 1.15rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+            margin-bottom: 1.25rem;
+        }
+        .framework-lede strong { color: var(--ecru); font-weight: 500; }
+
+        /* Working definition block */
+        .working-def {
+            margin-top: 3rem;
+            max-width: 620px;
+            animation: fade-up 0.8s ease 1s both;
+        }
+        .working-def-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.75rem;
+        }
+        .working-def p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+        }
+        .working-def p strong { color: var(--ecru); font-weight: 500; }
+
+        /* Section structure */
+        .framework-section {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .framework-section h2 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 900;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 1.75rem;
+            max-width: 700px;
+        }
+
+        .body-text p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--ecru-dim);
+            margin-bottom: 1.5rem;
+            max-width: 650px;
+        }
+        .body-text p strong { color: var(--ecru); font-weight: 500; }
+        .body-text a {
+            color: #00C4B4;
+            text-decoration: underline;
+            text-decoration-color: rgba(0, 196, 180, 0.7);
+            text-underline-offset: 3px;
+            transition: color 0.2s, text-decoration-color 0.2s;
+        }
+        .body-text a:hover {
+            color: var(--ecru);
+            text-decoration-color: var(--ecru);
+        }
+
+        .verdict-line {
+            font-family: 'Imbue', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--ecru);
+            line-height: 1.3;
+            max-width: 620px;
+            margin: 2rem 0;
+        }
+
+        /* Glossary expandables */
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2px;
+            margin: 2.5rem 0;
+            max-width: 750px;
+        }
+        details.glossary-card {
+            background: rgba(245, 245, 220, 0.14);
+            padding: 0;
+        }
+        details.glossary-card summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 1.5rem 1.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            transition: background 0.2s;
+        }
+        details.glossary-card summary::-webkit-details-marker { display: none; }
+        details.glossary-card summary:hover {
+            background: rgba(245, 245, 220, 0.06);
+        }
+        .glossary-term {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            line-height: 1.2;
+        }
+        .glossary-toggle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--rosso);
+            line-height: 1;
+            flex-shrink: 0;
+            transition: transform 0.25s ease;
+        }
+        details.glossary-card[open] .glossary-toggle {
+            transform: rotate(45deg);
+        }
+        .glossary-body {
+            padding: 0 1.75rem 1.75rem;
+            border-top: 1px solid var(--ecru-ghost);
+            padding-top: 1.5rem;
+        }
+        .glossary-body p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+            margin-bottom: 1rem;
+        }
+        .glossary-body p:last-child { margin-bottom: 0; }
+        .glossary-body a {
+            color: #00C4B4;
+            text-decoration: underline;
+            text-decoration-color: rgba(0, 196, 180, 0.7);
+            text-underline-offset: 3px;
+            transition: color 0.2s, text-decoration-color 0.2s;
+        }
+        .glossary-body a:hover {
+            color: var(--ecru);
+            text-decoration-color: var(--ecru);
+        }
+        .glossary-question {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--quetzal-bright);
+            line-height: 1.5;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .glossary-question strong {
+            color: var(--ecru);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* Callout for the close */
+        .callout {
+            border-left: 4px solid var(--rosso);
+            padding: 2rem;
+            background: rgba(245, 245, 220, 0.14);
+            margin: 2rem 0;
+            max-width: 680px;
+        }
+        .callout p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .callout p:last-child { margin-bottom: 0; }
+        .callout strong { color: var(--ecru); font-weight: 500; }
+
+        /* Back link */
+        .back-link-row {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .back-link {
+            display: inline-block;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+            padding: 0.75rem 0;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--rosso); }
+
+        @media (max-width: 900px) {
+            .framework-header { padding-top: 6rem; }
+            .framework-lede { padding-left: 1.25rem; }
+            details.glossary-card summary { padding: 1.25rem; }
+            .glossary-body { padding: 1.25rem; padding-top: 1.25rem; }
+        }
+    </style>
+</head>
+<body style="background-color: #121A28;">
+
+<div class="blueprint-overlay" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true"></div>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
+    <ul class="nav-links">
+        <li><a href="/#investigation">Investigation</a></li>
+        <li><a href="/#warehouse">Warehouse</a></li>
+        <li><a href="/#rnd">R&amp;D</a></li>
+        <li><a href="/#lnd">L&amp;D</a></li>
+        <li><a href="/#verdict">Verdict</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/#debrief">Debrief</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- HEADER / FRICTION FRONT -->
+    <section class="framework-header section-content">
+        <span class="framework-meta">Dignity-Required System // Section 02</span>
+        <span class="framework-tag">The Last 50 Feet Failure</span>
+        <h1>The Conference Room<br>Said Yes.<br><span class="accent-word">The Loading Dock<br>Said No.</span></h1>
+
+        <div class="framework-lede">
+            <p>
+                Most digital transformations don't fail because employees resisted. They fail because the plan didn't fit the place where the work actually happens. The Wi-Fi doesn't reach the back of the warehouse. The system assumes a printer that isn't there. The "quick scan" the planner described in one sentence takes the worker through 22 steps.
+            </p>
+            <p>
+                The last 50 feet is the distance between the digital plan and the physical floor. It's where the rollout actually has to land. It's also where most rollouts quietly die, while the dashboard still says green.
+            </p>
+        </div>
+
+        <div class="working-def">
+            <div class="working-def-label">Working Definition</div>
+            <p><strong>The last 50 feet</strong> is the final stretch between a digital system and the human who has to use it. The loading dock. The cold-storage aisle. The operating room. The customer-facing counter. The plan ends at the system boundary. The work continues for another 50 feet, and that's where the failure lives.</p>
+        </div>
+    </section>
+
+    <!-- THE FINDINGS -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">The Findings</span>
+        <h2>The Plan Doesn't Fail.<br>The Plan Was Never Going to Reach.</h2>
+
+        <div class="body-text">
+            <p>
+                A label printing company in Little Chute, Wisconsin tried to run a modern warehouse on standard Wi-Fi. The forklifts kept moving into dead zones. The handheld scanners dropped mid-shift. Staff walked half the floor to reconnect. The metal racking and the ceiling height defeated every fix Wi-Fi could offer. The deployment didn't work until Heartland Label Printers swapped in a <a href="https://www.hbs.net/blog/private-cellular-network-in-manufacturing-and-warehouse-environments">private cellular network from Ericsson and HBS</a>. That's not a culture story. That's physics defeating a digital plan that never walked the floor.
+            </p>
+            <p>
+                The pattern isn't anecdotal. A <a href="https://www.worldscientific.com/doi/10.1142/S0219877023500530">2023 peer-reviewed study in the International Journal of Innovation and Technology Management</a> looked at why warehouse and logistics companies struggle to adopt advanced operations technology. The biggest single barrier wasn't training. Wasn't culture. Wasn't change management. <strong>It was the physical infrastructure itself.</strong> The buildings. The connectivity. The equipment. The digital layer was ready. The physical layer wasn't.
+            </p>
+        </div>
+
+        <p class="verdict-line">The blueprint passed the design review. The floor never agreed to it.</p>
+
+        <div class="body-text">
+            <p>
+                The macro numbers carry the same finding. <a href="https://www.bcg.com/publications/2020/increasing-odds-of-success-in-digital-transformation">BCG's 2020 study of 825 senior executives and 70 of its own digital transformation projects</a> found that 70% of digital transformations fall short of their objectives. <a href="https://www.bain.com/about/media-center/press-releases/2024/88-of-business-transformations-fail-to-achieve-their-original-ambitions-those-that-succeed-avoid-overloading-top-talent/">Bain's 2024 research on more than 400 executives</a> put the broader business-transformation failure rate at 88%. <a href="https://www.teksystems.com/en/insights/newsroom/2024/state-of-dx-report">TEKsystems' 2024 State of Digital Transformation Report</a> found 32% of leaders cite complexity of current environments and siloed mindsets as a top obstacle to modernization.
+            </p>
+            <p>
+                The <a href="https://www.zebra.com/content/dam/zebra_new_ia/en-us/solutions-verticals/vertical-solutions/warehouse-management/vision-study/2024/warehouse-vision-study-en-us.pdf">Zebra Technologies Warehousing Vision Study</a> surveyed more than 1,400 IT and operations decision-makers across manufacturing, logistics, retail and distribution. 61% named IT and technology utilization as their top operational challenge. <strong>77% agreed they need to modernize but admitted they're slow to implement new devices and technology.</strong> The gap between intent and capability is the section thesis in a single statistic.
+            </p>
+            <p>
+                The pattern doesn't stop at warehouses. A <a href="https://www.sciencedirect.com/science/article/abs/pii/S0169023X22000817">systematic mapping of 72 peer-reviewed ERP failure studies</a> found enterprise systems repeatedly break at the same seam, the place where the software has to integrate with the shop floor. Healthcare carries the same shape. A <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12206486/">2024 scoping review in PMC</a> on EHR usability found the dominant failure mode is mismatch between the workflow the EHR assumes and the workflow clinicians actually live. The digital system didn't account for the body in the room.
+            </p>
+        </div>
+    </section>
+
+    <!-- WHY EXISTING APPROACHES FAIL -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">Why Existing Approaches Fail</span>
+        <h2>The Map Isn't the Mud.<br>The Plan Doesn't Know.</h2>
+
+        <div class="body-text">
+            <p>
+                The standard transformation playbook treats deployment failure as a people problem. Training gaps. Change resistance. Insufficient buy-in. The fixes are predictable. More training. A communications plan. A champion network. <strong>Each fix solves a problem that wasn't the cause.</strong>
+            </p>
+            <p>
+                What the playbook misses is the gap between map and mud. The map is the slide that describes the future state. The mud is what the worker stands in when the rollout lands. The two were drawn in different rooms by people who never compared notes. Resilience engineering has a published name for this gap. Erik Hollnagel calls it <a href="https://patientsafety.pa.gov/ADVISORIES/pages/201706_80.aspx">Work-as-Imagined versus Work-as-Done</a>. The gap is always present in complex systems, and it grows wider as the system gets more complex. The bigger the digital plan, the wider the gap it papers over.
+            </p>
+            <p>
+                The map has its own trap. The dashboard says green. The metric is moving. But the metric was easy to measure, and the work that's stuck is hard to measure, so the dashboard doesn't show what's actually breaking. That's the map trap. A green light over a broken floor.
+            </p>
+        </div>
+
+        <p class="verdict-line">Change management often trains the worker to absorb a system designed for the wrong reality.</p>
+
+        <div class="body-text">
+            <p>
+                The planning research backs this up. The foundational study on the planning fallacy, <a href="https://web.mit.edu/curhan/www/docs/Articles/biases/67_J_Personality_and_Social_Psychology_366,_1994.pdf">Buehler, Griffin and Ross in 1994</a>, found people finish tasks roughly 64% later than they predicted they would. Only 30% met their own deadline. The misjudgment doesn't shrink with experience. It gets worse as the project gets more complex.
+            </p>
+            <p>
+                This is what's happening every time a transformation deck says "just digitize the intake." The leader saying the sentence sees one task. The worker doing the work sees 22 steps, three handoffs, two systems that don't talk to each other and a manual workaround that's been holding the process together for four years.
+            </p>
+        </div>
+    </section>
+
+    <!-- THE DIAGNOSTIC VOCABULARY -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">The Diagnostic Vocabulary</span>
+        <h2>Three Named<br>Concepts.</h2>
+
+        <div class="body-text">
+            <p>
+                The Dignity-Required System names three concepts for this friction front. Each one shifts the conversation from blaming the worker to inspecting the gap between what was planned and what was possible. Each expands inline below.
+            </p>
+        </div>
+
+        <div class="glossary-grid">
+
+            <details class="glossary-card">
+                <summary>
+                    <span class="glossary-term">&#9656; The Last 50 Feet</span>
+                    <span class="glossary-toggle">+</span>
+                </summary>
+                <div class="glossary-body">
+                    <p>
+                        The final stretch between a digital system and the human who has to use it. The plan ends at the data structure or the workflow diagram. The work continues for another 50 feet into the loading dock, the surgical suite, the customer-facing counter, the manufacturing line. That last 50 feet is where every assumption the plan made gets tested by the floor. It's where the Wi-Fi has to actually reach, the scanner has to actually scan, the form factor has to actually fit the hand wearing the glove. The plan's job ends at the system boundary. The failure starts at the next inch.
+                    </p>
+                    <div class="glossary-question">
+                        <strong>Diagnostic Question</strong>
+                        Has anyone responsible for the rollout actually walked the last 50 feet of the workflow this tool is supposed to live in. If not, the deployment is a hypothesis, not a plan.
+                    </div>
+                </div>
+            </details>
+
+            <details class="glossary-card">
+                <summary>
+                    <span class="glossary-term">&#9656; Semantic Compression</span>
+                    <span class="glossary-toggle">+</span>
+                </summary>
+                <div class="glossary-body">
+                    <p>
+                        The cognitive shortcut where the brain labels a multi-step physical process as a single action. "Just scan it in." "Just push it to the system." "Just digitize the intake." The label compresses 22 steps into one verb, then hides the sub-steps, the handoffs, the workarounds and the failure points. Compression is useful for thinking at scale. It's catastrophic for planning at the floor level. The work the verb actually requires didn't disappear when the verb got shorter. It just stopped being visible to the people deciding the budget.
+                    </p>
+                    <p>
+                        The published mechanism is the unpacking effect. <a href="https://www.semanticscholar.org/paper/If-you-don't-want-to-be-late%2C-enumerate%3A-Unpacking-Kruger-Evans/67aa82059dafc832f93ad73057fc061ba1487823">Kruger and Evans, 2004</a>: when people are forced to enumerate the parts of a task before estimating it, the planning fallacy shrinks by more than half. The bias isn't in the work. It's in the verb.
+                    </p>
+                    <div class="glossary-question">
+                        <strong>Diagnostic Question</strong>
+                        What's the shortest sentence anyone's used to describe what this rollout will require the team to do. Now ask the team to list every step the sentence actually covers. If the count is more than seven, the verb is hiding the work.
+                    </div>
+                </div>
+            </details>
+
+            <details class="glossary-card">
+                <summary>
+                    <span class="glossary-term">&#9656; The Rock in the Door</span>
+                    <span class="glossary-toggle">+</span>
+                </summary>
+                <div class="glossary-body">
+                    <p>
+                        The informal workaround that holds the broken system together. Someone props a fire door open with a rock so they can move between the warehouse and the office without re-badging. The rock isn't in any procedure. It's not on any diagram. Nobody maintains it. But the workflow has come to depend on it. When the system gets digitized, the rock gets removed without anyone realizing it was load-bearing, and the workflow collapses in a way the rollout deck has no language for.
+                    </p>
+                    <p>
+                        Every long-running operation has rocks in doors. The shared spreadsheet that does the work the official system can't. The Post-it on the monitor that translates the system's labels into the team's actual vocabulary. The unofficial Slack channel where the work actually gets coordinated. These are workarounds, not failures. They're evidence the formal system was incomplete, and the workforce filled the gap quietly so the work could continue.
+                    </p>
+                    <div class="glossary-question">
+                        <strong>Diagnostic Question</strong>
+                        What workarounds are currently keeping this process running, and what happens to them when the new system goes live. If nobody on the team can answer, the discovery phase isn't done.
+                    </div>
+                </div>
+            </details>
+
+        </div>
+    </section>
+
+    <!-- WHAT THIS MEANS AT ROLLOUT -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">What This Means at Rollout</span>
+        <h2>Walk the Floor<br>Before the Slide.</h2>
+
+        <div class="body-text">
+            <p>
+                The starting point for a deployment-ready rollout isn't the system architecture (the way the new tool is structured and connected). <strong>It's the existing physical and operational reality the architecture is going to land on.</strong>
+            </p>
+            <p>
+                Three questions need an honest answer before any tool selection happens. What does the work actually look like when described in steps, not verbs. Where are the rocks in the doors, and which ones are load-bearing. What physical or infrastructural conditions does the new system silently assume, and are any of those assumptions wrong on the floor where it'll run.
+            </p>
+            <p>
+                The research is direct about what doesn't work. Planning that stays at the one-sentence level produces estimates 64% short of reality and rollouts that miss the failure points buried inside the short version. Planning that forces the team to list every sub-step cuts the gap by more than half. The discipline isn't complicated. It's just rarely done.
+            </p>
+            <p>
+                A <a href="https://onlinelibrary.wiley.com/doi/10.1002/sdr.1790">2024 paper in <em>System Dynamics Review</em></a> made the academic version of the case. Bridging an abstract model to the situated, concrete actions a worker takes requires deliberate translation work. The translation doesn't happen on its own. The blueprint doesn't walk itself onto the floor. Somebody has to do the walking.
+            </p>
+            <p>
+                The workarounds matter at this stage too. <a href="https://www.auvik.com/franklyit/blog/shadow-it-stats/">Gartner research compiled by Auvik</a> finds roughly 41% of employees already acquire, modify or build technology their IT department doesn't know about. The figure is projected to reach 75% by 2027. Shadow IT isn't a security problem first. It's a signal. People build the workarounds because the formal systems didn't reach the last 50 feet. Removing those workarounds without replacing what they were doing is how rollouts collapse the floor while the dashboard still shows green.
+            </p>
+        </div>
+    </section>
+
+    <!-- THE DIAGNOSTIC CLOSE -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">The Close</span>
+        <h2>The Plan Wasn't Wrong.<br>The Floor Was Never Asked.</h2>
+
+        <div class="callout">
+            <p>
+                The pattern repeats across industries because the planning pattern repeats. A leader describes the work in one sentence. The plan inherits the sentence. The deck approves the plan. The rollout lands. And the work that one sentence was hiding meets a digital tool that was never built for it. <strong>The short version made the work invisible. It didn't make the work smaller.</strong>
+            </p>
+            <p>
+                A Dignity-Required System treats the last 50 feet as something to plan around, not something to discover after the rollout. <strong>If the floor wasn't in the room when the plan was approved, the rollout is a forecast, not a deployment.</strong> The people the system is about to land on already know which assumptions are wrong. The only question is whether the planning process is built to hear them before the system goes live, or to find out the expensive way after.
+            </p>
+        </div>
+
+        <div class="back-link-row">
+            <a href="/rd/dignity/" class="back-link">&larr; Back to the Dignity-Required System</a>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <span>&copy; 2026 Angie Bailey</span>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
