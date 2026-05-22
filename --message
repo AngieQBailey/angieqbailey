@@ -1,552 +1,362 @@
-<!DOCTYPE html>
-<html lang="en" style="background-color:#121A28;">
-<head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-S0MXDDKP4E');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="color-scheme" content="dark">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Automate the task someone's proud of and you've taken away the work that made them visible. Section 03 of the Dignity-Required System: a diagnostic for identity erasure in AI rollouts.">
-    <meta name="author" content="Angie Bailey">
-    <meta name="theme-color" content="#121A28">
-    <link rel="canonical" href="https://angieqbailey.com/rd/dignity/tactical-dignity">
+## [2026-05-21] — TIER 1 — R&D (Section 03 — Tactical Dignity)
+**Change:** Added research hyperlinks to all six inline citations on `rd/dignity/tactical-dignity.html`. Linked sources: AI & Society 2024 (Springer), 2024 Kahoot Workplace Culture Report, IMF global employment blog, Gartner 2025 press release, Deci and Ryan (selfdeterminationtheory.org), Gagné et al. 2022 (PMC open access). Added `.body-text a` link styles (quetzal bright, underline, hover to ecru). All links verified accessible without login credentials. No `target="_blank"`.
+**Rationale:** Research citations existed as plain text — no way for readers to verify or follow up on the claims. Links now point to publicly accessible pages (press releases, open-access mirrors, journal abstracts).
+**Operator:** Angie Bailey + Claude via Cowork
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Tactical Dignity // The Dignity-Required System">
-    <meta property="og:description" content="Automate the task someone's proud of and you've taken away the work that made them visible. Every tool rollout has to know the difference.">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://angieqbailey.com/rd/dignity/tactical-dignity">
-    <meta property="og:image" content="https://angieqbailey.com/og-image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+## [2026-05-21] — TIER 3 — R&D (Dignity-Required System / Section 04)
+**Change:** Deployed Section 04 of the Dignity-Required System: `rd/dignity/growth-collapse.html` — a findings report on performative compliance, middle-manager shock-absorber dynamics and the architecture of unsurvivable refusal. Dark variant. Built against the 7-beat structure established by Section 03 (friction front, the findings, why existing approaches fail, six-concept diagnostic vocabulary, what this means at rollout, the close) with six expandable inline glossary terms using native `<details>` elements. New terms defined here: hufflepuff mask, survivable refusal, human shock absorber, growth collapse, efficiency squeeze, trust vs compliance. Research citations hyperlinked inline: Ipsos 2022, Detert and Edmondson 2011, Edmondson's Fearless Organization, Gallup 2024 disruptive change, Capterra 2023 middle manager burnout, McKinsey 2023 middle manager transformation admin load, Frontiers in Psychology 2025 on AI awareness and knowledge hoarding, GP Strategies and HRZone on performative AI adoption, Mauno et al. 2023 work intensification review. Shared DRS CSS components (verdict-line, glossary-grid, glossary-card, back-link-row) consumed from styles.css rather than redefined inline. Hub page `rd/dignity/index.html` updated: Section 04 card activated (removed `coming` class and status label). Site-map updated: new R&D row added, R&D pages count 11 → 12, Total HTML 90 → 91.
+**Rationale:** Second child report under the DRS hub. The first three friction fronts (Hardware of Being Human, Last 50 Feet, Tactical Dignity) describe what fails. This section names how the failure stays invisible: refusal isn't safe, the dashboard fills with masks, the middle manager wears the load, the architecture mistakes compliance for adoption. Voice calibrated per the May 2026 refinements: no hyperbole, contractions mandatory, no first person, lowercase concept names in body, "architecture" defined on first use, the architecture-vs-people dichotomy refused.
+**Operator:** Angie Bailey + Claude via Cowork
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tactical Dignity // The Dignity-Required System">
-    <meta name="twitter:description" content="Automate the task someone's proud of and you've taken away the work that made them visible. Every tool rollout has to know the difference.">
-    <meta name="twitter:image" content="https://angieqbailey.com/og-image.png">
+## [2026-05-21] — TIER 3 — R&D (Dignity-Required System / Section 03)
+**Change:** Deployed Section 03 of the Dignity-Required System: `rd/dignity/tactical-dignity.html` — a findings report on identity erasure in AI rollouts. Dark variant. Five-beat structure: friction front, the findings, why existing approaches fail, four-concept diagnostic vocabulary (identity anchor, mastery vs drudgery distinction, dignity circuit breaker, defensive knowledge hoarding), what this means at rollout, diagnostic close. Four expandable inline glossary terms using native `<details>` elements. Research citations: AI & Society 2024, Kahoot 2024, IMF, Gartner 2025, Deci and Ryan (SDT foundational), Gagné et al. Nature Reviews Psychology 2022. Working definition of "architecture" placed in the header to preempt the cognitive lift. Hub page `rd/dignity/index.html` updated: Section 03 card activated (removed `coming` class and status label) and card description softened from "committed professional erasure" to "taken away the work that made them visible" to match the report's calibrated voice. Site-map updated.
+**Rationale:** First child report under the Dignity-Required System hub. Establishes the section-report template that the remaining four sections (Hardware of Being Human, Last 50 Feet, Growth Collapse, Trust/Power/Signal Loss) will inherit. Voice calibrated through a V1→V4 review pass to strip hyperbole, drop first-person framing, lowercase non-proprietary concept names, define ambiguous load-bearing terms upfront, and refuse the architecture-vs-people dichotomy that lets systems off the hook.
+**Operator:** Angie Bailey + Claude via Cowork
 
-    <!-- JSON-LD -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Tactical Dignity via Meaningful Choice",
-      "description": "Section 03 of the Dignity-Required System. A diagnostic for identity erasure in AI rollouts.",
-      "author": { "@type": "Person", "name": "Angie Bailey", "url": "https://angieqbailey.com" },
-      "publisher": { "@type": "Person", "name": "Angie Bailey" },
-      "url": "https://angieqbailey.com/rd/dignity/tactical-dignity",
-      "image": "https://angieqbailey.com/og-image.png",
-      "isPartOf": {
-        "@type": "CreativeWork",
-        "name": "The Dignity-Required System",
-        "url": "https://angieqbailey.com/rd/dignity/"
-      }
-    }
-    </script>
+## [2026-05-19] — TIER 1 — SEO and meta tag infrastructure across all pages
+**Change:** Created robots.txt (allow all, sitemap reference) and sitemap.xml (84 canonical URLs with priority tiers). Added og:image, canonical URL, Twitter Card, and favicon meta tags to 82 subpages that were missing them (only homepage and DRS Matrix had complete tags previously). Added JSON-LD Article structured data to 13 pages (8 case studies + 5 verdict essays). All pages now show proper preview cards when shared on LinkedIn/Slack and are correctly indexed by search engines.
+**Rationale:** Site had no sitemap or robots.txt, subpages showed blank previews when shared (no og:image), no canonical tags meant UTM-tagged LinkedIn links could fragment search authority, and no structured data meant Google treated case studies as generic pages instead of portfolio content.
+**Operator:** Angie Bailey + Claude via Cowork
 
-    <title>Tactical Dignity // The Dignity-Required System // Angie Bailey</title>
+## [2026-05-19] — TIER 1 — Repo cleanup (legacy files, orphans, dead CSS)
+**Change:** Deleted 6 files: 3 legacy duplicates under `Portfolio Work/` (MBR, GEO/AEO, Dots/Pens hub — all superseded by `posts/` or L&D hub equivalents), 3 orphaned `warehouse-card.html` pages (geo-aeo, crisis-comms, post-acquisition — not linked from any live page). Removed ~800 chars of dead CSS from `styles.css`: `.ld-divider`/`.ld-label`/`.ld-title` rules (replaced by standard `section-label` pattern) and `.principle-arrow` hover rule (no HTML element uses this class). Full `site-map.md` rewrite: all 95 canonical URLs documented with correct paths, Warehouse count corrected to 8, all 8 case study inventories added, Resources categories recounted, L&D status updated to "Coming."
+**Rationale:** Maintenance audit found stale documentation, duplicate files, orphaned pages, and dead CSS accumulated across deployments. Cleaned to prevent confusion in future sessions.
+**Operator:** Angie Bailey + Claude via Cowork
 
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="192x192" href="/favicon.png">
+## [2026-05-19] — TIER 2 — Nav standardization across all case study, R&D, and artifact pages
+**Change:** Fixed nav menus on 21 HTML files across posts/, hello-world/, and drs-matrix/ directories. 11 main pages updated to correct 7-item nav (Investigation, Warehouse, R&D, L&D, Verdict, Resources, Debrief). 10 artifact leaf pages updated to correct single "Main Site" link pattern with back-link to parent case study. Issues found: some pages had 4-item navs with obsolete "Signal" link, some missing Resources, some with "The Debrief" instead of "Debrief", DRS Matrix had no standard nav, older artifact pages had non-standard nav structures.
+**Rationale:** Nav menus had drifted across deployments. Case study pages linked from homepage had inconsistent, outdated navigation. Standardized to match L&D and index page patterns.
+**Operator:** Angie Bailey + Claude via Cowork
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+## [2026-05-19] — TIER 1/2 — Multi-page fixes (R&D, L&D, Resources, Homepage)
+**Change:** R&D page: tag changed to "P&L Readiness" / meta to "R&D // Measurement Infrastructure". CSS fixes: working-def font 0.95→1.1rem, marker-name 1.15→1.4rem, triad-title 1.2→1.5rem, framework-lede paragraph spacing added, red on marker 04 removed, orphaned shift-grid CSS cleaned. Copy: "five years"→"2 years", CTA→"View the New Metrics Reference Card", back link→"Back to R&D". Reference card page: title/heading/subtitle/meta updated to "Metrics" framing, back link→"View Full R&D Page". Homepage: R&D card tag→"P&L Readiness", Em-Dash Unpacking card added to L&D section. L&D page: "Reworking"→"Coming" on Supply Closet cards, back link→"Back to business".
+**Rationale:** QA pass after v3 copy deployment. Tag/H1 redundancy fixed. Font sizes were too small for readability. Em-Dash series needed homepage representation. L&D labels were inaccurate.
+**Operator:** Angie Bailey + Claude via Cowork
 
-    <link rel="stylesheet" href="/styles.css">
+## [2026-05-19] — TIER 2 — R&D (Operational Telemetry)
+**Change:** Full copy rewrite of rd/operational-telemetry/index.html to align with LinkedIn content series framing. Updated meta descriptions. Updated homepage R&D card (index.html Section 03) and Resources page card (resources/index.html) to match new framing.
+**Rationale:** LinkedIn Ops Telemetry series reframed around "Should ops teams shift from budget thinking to P&L thinking?" The R&D page needed to match before Post 1 publishes. Register shifted from academic framework delivery to research-with-a-pulse. "Markers" reframed as "metrics." From/to shift-grid visual and drama-loop arrow list removed. Blur/laser paradox introduced as opening complication. All seven metrics kept, descriptions rewritten in plain observation voice. Accountability triad reframed as prerequisite test.
+**Operator:** Angie Bailey + Claude via Cowork
 
-    <style>
-        /* Framework header */
-        .framework-header {
-            min-height: 70vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-top: 8rem;
-            padding-bottom: 4rem;
-        }
-        .framework-meta {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--quetzal-bright);
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            display: block;
-            animation: fade-up 0.8s ease 0.4s both;
-        }
-        .framework-tag {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--rosso);
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            margin-bottom: 1.5rem;
-            display: block;
-            animation: fade-up 0.8s ease 0.5s both;
-        }
-        .framework-header h1 {
-            font-family: 'Imbue', serif;
-            font-size: clamp(2rem, 5.5vw, 4.5rem);
-            font-weight: 900;
-            line-height: 0.95;
-            color: var(--ecru);
-            text-transform: uppercase;
-            letter-spacing: -0.02em;
-            margin-bottom: 2.5rem;
-            max-width: 850px;
-            animation: fade-up 0.8s ease 0.6s both;
-        }
-        .framework-header h1 .accent-word { color: var(--rosso); }
-        .framework-lede {
-            border-left: 5px solid var(--rosso);
-            padding-left: 2rem;
-            max-width: 620px;
-            animation: fade-up 0.8s ease 0.8s both;
-        }
-        .framework-lede p {
-            font-size: 1.15rem;
-            font-weight: 300;
-            line-height: 1.7;
-            color: var(--ecru-dim);
-            margin-bottom: 1.25rem;
-        }
-        .framework-lede strong { color: var(--ecru); font-weight: 500; }
+---
 
-        /* Working definition block */
-        .working-def {
-            margin-top: 3rem;
-            max-width: 620px;
-            animation: fade-up 0.8s ease 1s both;
-        }
-        .working-def-label {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--quetzal-bright);
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            margin-bottom: 0.75rem;
-        }
-        .working-def p {
-            font-size: 1.05rem;
-            font-weight: 300;
-            line-height: 1.7;
-            color: var(--ecru-dim);
-        }
-        .working-def p strong { color: var(--ecru); font-weight: 500; }
+## [2026-05-14] — TIER 2 — Operational Telemetry Web Presence (R&D + Resources)
+**Change:** Deployed 4 files for the Operational Telemetry content series:
+1. `rd/operational-telemetry/index.html` — New dark-variant R&D framework page. Sections: structural problem (drama loop), functional-to-system shift grid, 7 telemetry marker cards, shared causal chains, accountability triad (control/signals/symmetry), economic systems architects conclusion with CTA. 24,916 bytes.
+2. `resources/operational-telemetry-markers.html` — New ecru light-variant printable reference card. 7-marker table, self-assessment scoring, accountability check grid, print button (landscape). Back-link to framework page. 16,194 bytes.
+3. `index.html` — Added Operational Telemetry card to R&D section `.lab-grid` (position 3, after DRS). Tag: "Operational Economics". +606 bytes.
+4. `resources/index.html` — Added Operational Telemetry Markers card to Tools category (`#tools`). Tag: "Reference Card // Printable". +647 bytes.
+**Rationale:** Web presence needed to support LinkedIn content series (9 atoms, 6 planned posts). Framework page earns trust in durability of social content. Reference card is the "receipt" — printable takeaway. Post 1 can ship without the framework page; Posts 2+ and all carousels need these pages live.
+**Operator:** Angie Bailey + Claude via Cowork
 
-        /* Section structure */
-        .framework-section {
-            padding-top: 3rem;
-            padding-bottom: 3rem;
-            border-top: 1px solid var(--ecru-ghost);
-        }
-        .section-label {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--quetzal-bright);
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            margin-bottom: 1rem;
-            display: block;
-        }
-        .framework-section h2 {
-            font-family: 'Imbue', serif;
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            font-weight: 900;
-            color: var(--ecru);
-            text-transform: uppercase;
-            line-height: 1;
-            margin-bottom: 1.75rem;
-            max-width: 700px;
-        }
+## [2026-05-11] — TIER 1 — Site Registry Full Refresh
+**Change:** Complete rewrite of _site-registry.md. Updated from March 2026 to May 2026. Added: Site Architecture section (5 numbered sections + Resources + Debrief), MBR case study (Warehouse position 1), GEO/AEO case study reformatted into proper table (position 2), Hello World Toolkit (3 pages + 3 artifacts), Verdict essays (5 pages), Start-Here page, Resources section (2 pages), R&D landing, L&D section. Updated Warehouse card order to reflect all 8 live positions. Added URL Summary table (~90 total live URLs).
+**Rationale:** Registry had drifted since March — did not reflect MBR, GEO/AEO, Hello World toolkit, verdict essays, start-here, resources, or R&D landing deployments. Single source of truth for file inventory must stay current.
+**Operator:** Angie Bailey + Claude via Cowork
 
-        .body-text p {
-            font-size: 1.05rem;
-            font-weight: 300;
-            line-height: 1.8;
-            color: var(--ecru-dim);
-            margin-bottom: 1.5rem;
-            max-width: 650px;
-        }
-        .body-text p strong { color: var(--ecru); font-weight: 500; }
-        .body-text a { color: var(--quetzal-bright); text-decoration: underline; text-decoration-color: rgba(0, 196, 180, 0.3); text-underline-offset: 3px; transition: color 0.2s; }
-        .body-text a:hover { color: var(--ecru); }
+## [2026-05-11] — TIER 3 — Performance Analytics Infrastructure
+**Change:** Created Google Drive folder structure for marketing analytics under 2_AREAS/Work/Performance Analytics/ (PARA methodology). Subfolders: Weekly Reports, Page Performance, Reference. Updated weekly-ga4-traffic-check scheduled task to save Google Docs to Weekly Reports folder with expanded metrics (per-page performance data). Moved legacy GA4 reference docs to Reference subfolder. Archived EquipmentShare-era analytics PDFs to 4_ARCHIVES.
+**Rationale:** Scheduled weekly reports were saving to ephemeral session outputs and getting lost. Needed persistent, organized storage following PARA methodology for recurring analytics work.
+**Operator:** Angie Bailey + Claude via Cowork
 
-        .verdict-line {
-            font-family: 'Imbue', serif;
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--ecru);
-            line-height: 1.3;
-            max-width: 620px;
-            margin: 2rem 0;
-        }
+## [2026-05-05] â TIER 1 â Nav Bar (All Pages)
+**Change:** Added Resources nav link to all subpages (verdict essays, L&D hub, case study hubs, 404); modernized old 4-item navs to full 7-item nav. Deleted orphan file changelog2_deploy.md.
+**Rationale:** Consistency â Resources link was only on index.html and resources pages after initial deploy.
+**Operator:** Angie Bailey + Claude via Cowork
 
-        /* Glossary expandables */
-        .glossary-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2px;
-            margin: 2.5rem 0;
-            max-width: 750px;
-        }
-        details.glossary-card {
-            background: rgba(245, 245, 220, 0.14);
-            padding: 0;
-        }
-        details.glossary-card summary {
-            list-style: none;
-            cursor: pointer;
-            padding: 1.5rem 1.75rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1.5rem;
-            transition: background 0.2s;
-        }
-        details.glossary-card summary::-webkit-details-marker { display: none; }
-        details.glossary-card summary:hover {
-            background: rgba(245, 245, 220, 0.06);
-        }
-        .glossary-term {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--ecru);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            line-height: 1.2;
-        }
-        .glossary-toggle {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 1.4rem;
-            font-weight: 400;
-            color: var(--rosso);
-            line-height: 1;
-            flex-shrink: 0;
-            transition: transform 0.25s ease;
-        }
-        details.glossary-card[open] .glossary-toggle {
-            transform: rotate(45deg);
-        }
-        .glossary-body {
-            padding: 0 1.75rem 1.75rem;
-            border-top: 1px solid var(--ecru-ghost);
-            padding-top: 1.5rem;
-        }
-        .glossary-body p {
-            font-size: 0.95rem;
-            font-weight: 300;
-            line-height: 1.7;
-            color: var(--ecru-dim);
-            margin-bottom: 1rem;
-        }
-        .glossary-body p:last-child { margin-bottom: 0; }
-        .glossary-question {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--quetzal-bright);
-            line-height: 1.5;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--ecru-ghost);
-        }
-        .glossary-question strong {
-            color: var(--ecru);
-            font-weight: 700;
-            display: block;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.1em;
-        }
+## [2026-05-05] â TIER 3 â Resources (New Section + New Page)
+**Change:** Created /resources/index.html (The Receipt Drawer) â standalone resources landing page with 4 categories (Prompts, Templates, Playbooks, Tools) and 15 resource cards linking to existing site content. Created /resources/digital-gratuity.html â standalone prompt stack page with 3-step system (Capture, Prompt, Send), 8 capture questions, 2-turn copyable AI prompt, and 6-step LinkedIn send instructions. Added "Resources" to nav bar on index.html between Verdict and Debrief. All pages include GA4 tag, inline base CSS for local preview, and anchor IDs for deep-linking from LinkedIn posts.
+**Rationale:** Needed a single URL to point LinkedIn and presentation audiences to when referencing templates, prompts, or tools. Eliminates the "go find it on my site" friction. Digital Gratuity prompt stack was the first resource seeded from an existing LinkedIn post (activity 7449837717149884417).
+**Operator:** Angie Bailey + Claude via Cowork
 
-        /* Callout for the close */
-        .callout {
-            border-left: 4px solid var(--rosso);
-            padding: 2rem;
-            background: rgba(245, 245, 220, 0.14);
-            margin: 2rem 0;
-            max-width: 680px;
-        }
-        .callout p {
-            font-size: 1.1rem;
-            font-weight: 300;
-            color: var(--ecru-dim);
-            line-height: 1.7;
-            margin-bottom: 1rem;
-        }
-        .callout p:last-child { margin-bottom: 0; }
-        .callout strong { color: var(--ecru); font-weight: 500; }
+## [2026-05-05] â TIER 1 â R&D (Hello, World / Safety-First Gate)
+**Change:** Updated Safety-First Gate interactive checklist so all six gate sections can be expanded and previewed by clicking their headers, regardless of completion state. Checkboxes remain sequentially locked (must complete prior gate to answer). Locked gates show a hint explaining why checkboxes are disabled. `toggleGate()` now functional. Removed blanket `pointer-events: none` and `opacity: 0.5` from locked gates.
+**Rationale:** Users should be able to read ahead and understand all gate questions before committing answers. Preview access improves transparency without breaking the sequential integrity of the assessment.
+**Operator:** Angie Bailey + Claude via Cowork
 
-        /* Back link */
-        .back-link-row {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--ecru-ghost);
-        }
-        .back-link {
-            display: inline-block;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--quetzal-bright);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            text-decoration: none;
-            padding: 0.75rem 0;
-            transition: color 0.2s;
-        }
-        .back-link:hover { color: var(--rosso); }
+## [2026-04-27] â TIER 3 â Start Here (New Page)
+**Change:** Deployed /start-here/index.html â interactive AI context builder. Single self-contained file (62 KB). Four-card questionnaire that generates a personal AI profile users can paste into any AI tool. GA4 tag injected. All dependencies CDN or inline.
+**Rationale:** Lead-gen and value-delivery tool for LinkedIn Content Engine. Gives visitors an immediate, useful artifact while introducing Angie's methodology.
+**Operator:** Angie Bailey + Claude via Cowork
 
-        @media (max-width: 900px) {
-            .framework-header { padding-top: 6rem; }
-            .framework-lede { padding-left: 1.25rem; }
-            details.glossary-card summary { padding: 1.25rem; }
-            .glossary-body { padding: 1.25rem; padding-top: 1.25rem; }
-        }
-    </style>
-</head>
-<body style="background-color: #121A28;">
+## [2026-04-26] â TIER 2 â Warehouse
+**Change:** Added Marketing Infrastructure MBR Debt Clearance case study. 1 case study page (dark-variant), 2 branded artifact pages (Cross-Functional MBR Template, Reporting Governance Cadence), 2 blank downloadable templates, 1 companion .docx narrative. MBR Warehouse card added as first card in grid. TBA placeholder card added as last card. Warehouse card limit overridden from 8 to 10. Collapsed card padding tightened with hover transition.
+**Rationale:** New case study showcasing unified reporting infrastructure build across 13 marketing functions and 10+ data platforms for a $1B+ organization. Demonstrates strategic operations and governance methodology capabilities.
+**Operator:** Angie Bailey + Claude via Cowork
 
-<div class="blueprint-overlay" aria-hidden="true"></div>
-<div class="spine" aria-hidden="true"></div>
+### 2026-04-25 â Site Architecture Overhaul + Verdict Essays + L&D Landing Page
+- Restructured: index.html now has 5 numbered sections (Investigation, Warehouse, R&D, L&D, Verdict) + unnumbered Debrief
+- Added: `ld/infrastructure-of-a-life.html` (L&D landing page with two collections)
+- Added: `verdict/add-value-not-noise.html` (Verdict essay, Principle 01)
+- Added: `verdict/vocabulary-is-the-barrier.html` (Verdict essay, Principle 02)
+- Added: `verdict/reality-before-theory.html` (Verdict essay, Principle 03)
+- Added: `verdict/structure-is-how-you-protect-people.html` (Verdict essay, Principle 04)
+- Added: `verdict/the-implementation-failed-not-the-people.html` (Verdict essay, Principle 05)
+- Changed: R&D and L&D broken out of Warehouse into own sections (03, 04)
+- Changed: Verdict principles now clickable links to essay pages
+- Changed: Warehouse cards collapse text/metric by default, unfurl on hover
+- L&D Collections: "Dots, Good Pens & a Commonplace Book: A Supply Closet Romance" (4 reworking) + "Em-Dash Unpacking: Thief by Mass Visual Weaponization" (4 coming)
 
-<nav class="nav-bar" role="navigation" aria-label="Primary">
-    <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
-    <ul class="nav-links">
-        <li><a href="/#investigation">Investigation</a></li>
-        <li><a href="/#warehouse">Warehouse</a></li>
-        <li><a href="/#rnd">R&amp;D</a></li>
-        <li><a href="/#lnd">L&amp;D</a></li>
-        <li><a href="/#verdict">Verdict</a></li>
-        <li><a href="/resources/">Resources</a></li>
-        <li><a href="/#debrief">Debrief</a></li>
-    </ul>
-</nav>
+### 2026-04-24 â The GEO/AEO Transition
+- Added: `posts/geo-aeo-transition/geo-aeo-transition.html` (case study page)
+- Added: `posts/geo-aeo-transition/assets/ai-overview-monitoring-guide.html` (artifact page)
+- Added: `posts/geo-aeo-transition/assets/content-prioritization-framework.html` (artifact page)
+- Added: `posts/geo-aeo-transition/assets/geo-best-practices-guide.html` (artifact page)
+- Added: `posts/geo-aeo-transition/assets/schema-markup-ai-content-guide.html` (artifact page)
+- Added: `posts/geo-aeo-transition/assets/seo-ai-search-playbook.html` (artifact page)
+- Added: `posts/geo-aeo-transition/assets/content-brief-template.html` (artifact page)
+- Added: `posts/geo-aeo-transition/assets/templates/*-blank.html` (6 blank templates)
+- Added: Warehouse card to `index.html` (position 2, top row)
+- Moved: AI Implementation/Workforce AI Adoption card to position 1, top row
+- Category: Process Architecture // AI Search Readiness
+- Artifacts: 6 branded pages, 6 blank templates
 
-<main>
-    <!-- HEADER / FRICTION FRONT -->
-    <section class="framework-header section-content">
-        <span class="framework-meta">Dignity-Required System // Section 03</span>
-        <span class="framework-tag">Tactical Dignity</span>
-        <h1>Automate What<br>They Hate.<br><span class="accent-word">Protect What<br>They're Proud Of.</span></h1>
+# AQB Site Changelog
+**Repo:** `AngieQBailey/angieqbailey`
 
-        <div class="framework-lede">
-            <p>
-                Automate the task someone's proud of and you've taken away the work that made them visible. Every tool rollout has to know the difference.
-            </p>
-            <p>
-                The recurring mistake in an AI deployment isn't technical. It's the moment the system removes the task that made someone feel like an expert and replaces it with a workflow that doesn't need them.
-            </p>
-        </div>
+Running record of what changed, when, and why. Git commits are terse. This document captures the reasoning. Add an entry any time content is added, updated, or removed. Most recent entries at top.
 
-        <div class="working-def">
-            <div class="working-def-label">Working Definition</div>
-            <p><strong>Architecture</strong> here means how the work is structured. The decisions, the workflows, the governance steps and the reporting lines that shape how the job gets done. Not buildings. Not code. The system of choices that says who does what, who decides what, and who carries the consequences when something breaks.</p>
-        </div>
-    </section>
+---
 
-    <!-- THE FINDINGS -->
-    <section class="framework-section section-content reveal">
-        <span class="section-label">The Findings</span>
-        <h2>The Senior Contributor<br>Stops Contributing</h2>
+## March 2026
 
-        <div class="body-text">
-            <p>
-                The story repeats across industries. A senior contributor is the recognized authority on a specific output. Their name gets called when the work matters. They built that authority through years of pattern recognition the rest of the team doesn't have. Then the tool ships. It performs that exact task in seconds. The next demo features it as a productivity win.
-            </p>
-        </div>
+### Crisis Communications Architecture + Enterprise Newsletter Architecture deployed
+**Commit:** Series of commits via GitHub API, March 29-30 2026
+**What:** Two new case studies deployed: Crisis Communications Architecture (main page, warehouse card, blank holding statements template) and Enterprise Newsletter Architecture (main page with yellow flag CSS fix). Yellow flag color corrected from `var(--quetzal)` to `#D4A017` on Enterprise Newsletter page.
 
-        <p class="verdict-line">The senior contributor stops contributing.</p>
+**Files added:**
+- `posts/crisis-communications-architecture/crisis-communications-architecture.html` - Main case study page
+- `posts/crisis-communications-architecture/warehouse-card.html` - Warehouse card
+- `posts/crisis-communications-architecture/assets/templates/crisis-holding-statements-blank.html` - Blank template (15 holding statement types)
+- `posts/enterprise-newsletter-architecture/enterprise-newsletter-architecture.html` - Main case study page
 
-        <div class="body-text">
-            <p>
-                It doesn't look like resistance. It looks quieter than that. The Slack messages get shorter. The reviews get skipped. The institutional knowledge stops walking down the hall to anyone who needs it. The person's still in the seat. <strong>The expertise is leaking out of the building.</strong>
-            </p>
-            <p>
-                A 2025 study of IT professionals named the pattern directly. Workers reported erosion of professional identity. They described feeling "personally invalidated and obsolete" after AI tools assumed their core tasks (<a href="https://link.springer.com/article/10.1007/s00146-024-02170-0">AI &amp; Society, 2024</a>). The <a href="https://kahoot.com/press/2024/10/02/workplace-culture-report-2024/">2024 Kahoot Workplace Culture Report</a> found 46% of employees fear their skills will be outdated within five years. 29% expect it within two. The <a href="https://www.imf.org/en/blogs/articles/2024/01/14/ai-will-transform-the-global-economy-lets-make-sure-it-benefits-humanity">IMF estimates</a> 40% of global employment faces AI exposure. <a href="https://www.gartner.com/en/newsroom/press-releases/2024-10-29-gartner-survey-shows-85-percent-of-learning-and-development-leaders-agree-there-will-be-a-surge-in-skills-development-needs-due-to-ai-and-digital-trends-in-next-3-years">Gartner (2025)</a> reports 85% of L&amp;D leaders expect a dramatic increase in skill development needs.
-            </p>
-            <p>
-                These numbers describe a workforce reading the room and preparing for a future where their identity at work is no longer recognizable.
-            </p>
-            <p>
-                This is about the people. It's also about the architecture that injures them. The architecture is the only part that can change without firing the workforce.
-            </p>
-        </div>
-    </section>
+**Bug fix:**
+- Yellow constraint flags on Enterprise Newsletter page were rendering green. `.constraint-flag.yellow` CSS rule was using `var(--quetzal)` for color and border. Fixed to hardcoded `#D4A017` (warm gold). The Analytical Palette has no yellow, so this is the one UI color that does not map to a CSS variable.
 
-    <!-- WHY EXISTING APPROACHES FAIL -->
-    <section class="framework-section section-content reveal">
-        <span class="section-label">Why Existing Approaches Fail</span>
-        <h2>The System<br>Tells the Truth</h2>
+**Why:** These case studies extend the portfolio into communications architecture and crisis infrastructure. The crisis comms page includes a four-tier severity escalation system, three-tier response teams, 15 holding statements, deskless workforce channel protocols, and disaster response decision framework. The newsletter page documents a channel audit, business case ($12,506/employee), CEO pitch, HRIS subscriber infrastructure, and editorial governance system that drove open rates from 9% to 95%+.
 
-        <div class="body-text">
-            <p>
-                Standard rollout playbooks treat identity threat as a communications problem. Send the announcement earlier. Run an empathy session. Tell people the tool will help them, not replace them. Add a Slack channel for questions.
-            </p>
-            <p>
-                None of that addresses the architecture. The threat isn't that the worker didn't understand the rollout. The threat is that the worker understood it exactly. They watched the tool perform the task that earned them their reputation. <strong>The communications layer can't reverse that signal.</strong>
-            </p>
-            <p>
-                Change management training assumes the employee needs to be persuaded. The employee was already persuaded. They saw the demo. They understood the tool. What they need isn't persuasion. They need to know which parts of their work the organization considers worth protecting and which parts it considers expendable... and if they get to be part of the conversation.
-            </p>
-            <p>
-                Calling the tool a helper without redesigning the work around that promise makes the damage worse. If leadership says the tool just supports the work but the new workflow removes the expert from the decision, the language is a tell. The worker hears the words. They watch the system. The system tells the truth.
-            </p>
-            <p>
-                Upskilling programs run into the same wall. You can't reskill someone out of a hit to their work identity with a Coursera certificate. The identity question isn't what someone can do next. It's whether the thing they did that mattered... still matters.
-            </p>
-        </div>
-    </section>
 
-    <!-- THE DIAGNOSTIC VOCABULARY -->
-    <section class="framework-section section-content reveal">
-        <span class="section-label">The Diagnostic Vocabulary</span>
-        <h2>Four Named<br>Concepts</h2>
+### Post-Acquisition Integration Launch Ã¢ÂÂ full case study deployed
+**Commit:** Series of commits via GitHub API, March 29Ã¢ÂÂ30 2026
+**What:** Full case study deployed: main page, 4 branded artifact pages, 3 blank templates, and warehouse card. Warehouse card on index.html converted from placeholder to live link with forensic copy and Scope // Output metrics.
 
-        <div class="body-text">
-            <p>
-                The Dignity-Required System names four concepts for this friction front. Each one shifts the conversation from managing the person to examining the architecture. Each one expands inline below. Each one appears in the standalone glossary when that page ships.
-            </p>
-        </div>
+**Files added:**
+- `posts/post-acquisition-integration-launch/post-acquisition-integration-launch.html` Ã¢ÂÂ Main case study page
+- `posts/post-acquisition-integration-launch/warehouse-card.html` Ã¢ÂÂ Warehouse card
+- `posts/post-acquisition-integration-launch/assets/vendor-governance-model.html` Ã¢ÂÂ Branded artifact
+- `posts/post-acquisition-integration-launch/assets/product-taxonomy-architecture.html` Ã¢ÂÂ Branded artifact
+- `posts/post-acquisition-integration-launch/assets/cross-functional-workback.html` Ã¢ÂÂ Branded artifact
+- `posts/post-acquisition-integration-launch/assets/templates/system-integration-sequence-blank.html` Ã¢ÂÂ Blank template
+- `posts/post-acquisition-integration-launch/assets/templates/vendor-governance-model-blank.html` Ã¢ÂÂ Blank template
+- `posts/post-acquisition-integration-launch/assets/templates/product-taxonomy-architecture-blank.html` Ã¢ÂÂ Blank template
 
-        <div class="glossary-grid">
+**Files modified:**
+- `index.html` Ã¢ÂÂ Post-Acquisition warehouse card converted from `<div>` placeholder to live `<a>` with forensic copy, Scope // Output metrics, "Ops Management" tag
 
-            <details class="glossary-card">
-                <summary>
-                    <span class="glossary-term">&#9656; Identity Anchor</span>
-                    <span class="glossary-toggle">+</span>
-                </summary>
-                <div class="glossary-body">
-                    <p>
-                        The part of a person's work that makes them feel like an expert. It's rarely the whole job. It's usually a specific output, a specific judgment call, or a specific kind of pattern recognition that took years to build. The identity anchor isn't always the most time-consuming task. It's the task that, if removed, makes the person feel invisible at work.
-                    </p>
-                    <div class="glossary-question">
-                        <strong>Diagnostic Question</strong>
-                        If this tool removed every task in this person's job, which one would they fight to keep doing manually. That's the identity anchor.
-                    </div>
-                </div>
-            </details>
+**Why:** Fifth client case study. Post-acquisition integration operations covering vendor governance, product taxonomy architecture, system integration sequencing and cross-functional workback for a multi-brand merger.
 
-            <details class="glossary-card">
-                <summary>
-                    <span class="glossary-term">&#9656; Mastery vs Drudgery Distinction</span>
-                    <span class="glossary-toggle">+</span>
-                </summary>
-                <div class="glossary-body">
-                    <p>
-                        Not every task in a role carries equal weight. Drudgery is the labor a person would happily delete. Mastery is the labor that defines their professional self. Automate the drudgery and the team gains capacity. Automate the mastery and the team loses identity. The distinction isn't subjective. The worker knows it. The rollout team often doesn't ask.
-                    </p>
-                    <p>
-                        The standard playbook treats automation as a uniform good. The mastery vs drudgery distinction treats it as a tool that has to be aimed.
-                    </p>
-                </div>
-            </details>
+### Post-Acquisition Integration Launch Ã¢ÂÂ post-deployment refinements
+**Commit:** Series of commits via GitHub API, March 30 2026
+**What:** Multiple UX and cross-linking improvements across the case study and site-wide.
 
-            <details class="glossary-card">
-                <summary>
-                    <span class="glossary-term">&#9656; Dignity Circuit Breaker</span>
-                    <span class="glossary-toggle">+</span>
-                </summary>
-                <div class="glossary-body">
-                    <p>
-                        The architectural safeguard that prevents a tool from removing meaningful choice in the face of responsibility. A dignity circuit breaker can take many forms. A human governance step that isn't rubber-stamped. A workflow path that preserves the expert decision. A reporting line that requires the senior contributor to weigh in on the cases that match their pattern recognition.
-                    </p>
-                    <p>
-                        The circuit breaker is the difference between calling the tool a helper and actually building it that way.
-                    </p>
-                </div>
-            </details>
+**Changes:**
+- System Integration Sequence Map: "Break" button CTA changed to "What breaks?" for clearer intent. Button restyled Ã¢ÂÂ larger font (0.7rem to 0.85rem), ecru text on rosso-tinted background with visible border. Vertical text orientation removed (was `writing-mode: vertical-rl`).
+- Cross-Functional Workback: Related Work section added linking to Summit's Dependency Friction Map and Pressure Points Register
+- Vendor Governance Model: Related Work section added linking to Summit's Expectations SLA Stress Test
+- White flash fix: `style="background-color: #121A28"` (dark pages) or `#F5F5DC` (ecru pages) added to `<html>` tag on all 50 HTML files site-wide. Eliminates white frame between page transitions.
+- Same-tab navigation: `target="_blank"` removed from all internal links across index.html, 6 case study pages, and 15 artifact pages. Only external links (LinkedIn) retain new-tab behavior.
 
-            <details class="glossary-card">
-                <summary>
-                    <span class="glossary-term">&#9656; Defensive Knowledge Hoarding</span>
-                    <span class="glossary-toggle">+</span>
-                </summary>
-                <div class="glossary-body">
-                    <p>
-                        What the research calls defensive behavior under identity threat. What it looks like in practice: the senior contributor stops documenting their judgment, stops mentoring the next layer, stops surfacing the edge cases they catch. It isn't selfishness. It's a rational protection of the last remaining surface area where the worker can still demonstrate expertise.
-                    </p>
-                    <p>
-                        Defensive knowledge hoarding is what shows up when the identity anchor has been shaken and no one's responded to it.
-                    </p>
-                </div>
-            </details>
+**Files modified:**
+- All 50 HTML files (inline bg on `<html>` tag)
+- `index.html` (warehouse card `target="_blank"` removal)
+- 6 case study main pages (`target="_blank"` removal from artifact links)
+- 15 artifact pages (`target="_blank"` removal from cross-links)
+- `posts/post-acquisition-integration-launch/assets/system-integration-sequence.html` (CTA and button styling)
+- `posts/post-acquisition-integration-launch/assets/cross-functional-workback.html` (Related Work section)
+- `posts/post-acquisition-integration-launch/assets/vendor-governance-model.html` (Related Work section)
 
-        </div>
-    </section>
+**Why:** Polish pass. The interactive sequence map's "Break" label was ambiguous and hard to read. Cross-links between case studies reinforce that the diagnostic methodology is a system, not one-off work. White flash and new-tab behavior were degrading the dark-theme experience.
 
-    <!-- WHAT THIS MEANS AT THE ROLLOUT LEVEL -->
-    <section class="framework-section section-content reveal">
-        <span class="section-label">What This Means at Rollout</span>
-        <h2>Identity Mapping<br>Comes First</h2>
+### Case study page titles aligned with Warehouse card names
+**Commit:** Series of commits via GitHub API, March 28 2026
+**What:** Updated the Enterprise Newsletter case study page (title tag, h1, OG meta tags) from "Enterprise Newsletter Architecture" to "Enterprise Newsletter Launch." Updated the Web Experience case study page from "Web Experience Capacity Build" to "Web Experience Capacity Expansion." Folder paths and filenames unchanged to preserve existing URLs. Site registry updated with full enumerated file inventory for Crisis Communications (replaced generic "6 additional assets" with specific filenames). Handoff doc updated to reflect titles are now aligned.
 
-        <div class="body-text">
-            <p>
-                Tool selection is the wrong starting point. The starting point is identity mapping.
-            </p>
-            <p>
-                Before a deployment touches a team, three questions need an honest answer. What's the identity anchor for each role this tool will touch. What part of that anchor does the tool consume and what part does it leave intact. Where's the dignity circuit breaker that preserves the worker's authority over the task they're still being held accountable for.
-            </p>
-            <p>
-                Self-Determination Theory describes the psychological foundation underneath this. Autonomy, competence and relatedness are the three needs that predict whether a person engages with a system or withdraws from it (<a href="https://selfdeterminationtheory.org/">Deci and Ryan</a>, foundational; <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9088153/">Gagn&eacute; et al., Nature Reviews Psychology, 2022</a>).
-            </p>
-            <p>
-                Research on what happens when those needs get denied is direct. The system decreases satisfaction of all three. The worker stops engaging.
-            </p>
-            <p>
-                The numbers stay green for a quarter. The institutional knowledge starts to drain. By the time the drain is visible in the metrics, the recovery cost is significantly higher than the cost of the original rollout.
-            </p>
-        </div>
-    </section>
+**Files modified:**
+- `posts/enterprise-newsletter-architecture/enterprise-newsletter-architecture.html` Ã¢ÂÂ Title, h1 accent word, OG tags
+- `posts/web-experience-capacity-build/web-experience-capacity-build.html` Ã¢ÂÂ Title, h1 accent word, OG tags
+- `_site-registry.md` Ã¢ÂÂ Full Crisis Comms file inventory, Newsletter section title
+- `AQB Website Ã¢ÂÂ Session Handoff.md` Ã¢ÂÂ Updated card/title alignment rules
 
-    <!-- THE DIAGNOSTIC CLOSE -->
-    <section class="framework-section section-content reveal">
-        <span class="section-label">The Close</span>
-        <h2>Governor<br>or Legal Shield</h2>
+**Why:** Warehouse card titles and case study page h1s were out of sync after the earlier rename. Brought everything into alignment so users land on a page whose title matches what they clicked.
 
-        <div class="callout">
-            <p>
-                Every tool deployment touches at least one identity anchor. The question isn't whether the rollout will cause identity friction. <strong>It's whether the architecture preserves a path for the worker to remain a governor of the work, not a legal shield for the tool.</strong>
-            </p>
-            <p>
-                If that path doesn't exist, the deployment is producing compliance, not adoption. And compliance, in a Dignity-Required System, is the diagnostic signal that the architecture has already failed.
-            </p>
-        </div>
+### Enterprise Newsletter Launch + Crisis Communications Architecture deployed
+**Commit:** Series of commits via GitHub API, March 28 2026
+**What:** Two full case studies deployed to the site. Enterprise Newsletter Launch includes the main case study page plus 6 artifact subpages (interactive-channel-audit, in-house-style-guide, channel-mix-matrix, ic-strategic-value-architecture, internal-comms-channel-audit) and 3 blank templates. Crisis Communications Architecture includes the main case study page plus 4 artifact subpages (crisis-holding-statements, interactive-crisis-assessment, crisis-response-team-architecture) and 6 additional assets. Warehouse cards added to index.html for both.
 
-        <div class="back-link-row">
-            <a href="/rd/dignity/" class="back-link">&larr; Back to the Dignity-Required System</a>
-        </div>
-    </section>
-</main>
+**Files added:**
+- `posts/enterprise-newsletter-architecture/enterprise-newsletter-architecture.html`
+- `posts/enterprise-newsletter-architecture/assets/*.html` (6 artifact pages)
+- `posts/enterprise-newsletter-architecture/assets/templates/*.html` (3 blank templates)
+- `posts/crisis-communications-architecture/crisis-communications-architecture.html`
+- `posts/crisis-communications-architecture/assets/*.html` (4 artifact pages + 6 additional assets)
 
-<footer class="site-footer">
-    <span>&copy; 2026 Angie Bailey</span>
-</footer>
+**Files modified:**
+- `index.html` ÃÂ¢ÃÂÃÂ Two new Warehouse cards added
 
-<script>
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+**Why:** Expanding the portfolio with two new case studies demonstrating internal communications and crisis response architecture work.
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
+### Warehouse card reorder + naming updates + nesting fix
+**Commit:** Series of commits via GitHub API, March 28 2026
+**What:** Moved Enterprise Newsletter and Crisis Communications cards out of the R&D section into the main Warehouse grid. Retitled "Enterprise Newsletter Architecture" to "Enterprise Newsletter Launch." Retitled "Web Experience Capacity Build" to "Web Experience Capacity Expansion" across index.html. Fixed a missing `</div>` on the Workforce AI Adoption card that was causing the comms cards to nest inside it (overlap/stacking bug). Reordered cards: Multi-Team Roadmap Summit, E-Commerce P&L Build, Web Experience Capacity Expansion, Post-Acquisition Integration, Enterprise Newsletter Launch, Crisis Communications Architecture, Workforce AI Adoption (last, since it is not yet built out).
 
-</body>
-</html>
+**Files modified:**
+- `index.html` ÃÂ¢ÃÂÃÂ Card moves, renames, reorder, nesting fix
+
+**Why:** The two comms case studies are complete work, not R&D. Workforce AI moved to last position since its case study page does not exist yet. The nesting bug was caused by the Workforce AI `<div class="evidence-card">` missing its closing `</div>`, which caused subsequent `<a>` cards to render inside it.
+
+### DRS Matrix page deployed + R&D section added to Warehouse
+**Commits:** `18f9e90` through `7e5a536` (series of commits, March 22 2026)
+**What:** New page at `drs-matrix/index.html` combining "The 9:02 AM Meeting" mini-fable with the interactive DRS 2ÃÂÃÂÃÂÃÂ2 matrix widget. Added "R&D // Frameworks Under Construction" subsection to Warehouse on index.html with a Quetzal-tinted card linking to the new page (opens in new tab). Headshot in footer now links to LinkedIn with hover CTA.
+
+**Files added:**
+- `drs-matrix/index.html` ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Full page: fable narrative + interactive widget + print stylesheet
+
+**Files modified:**
+- `index.html` ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Added R&D subsection CSS (lab-divider, lab-grid, lab-card, series-status), DRS card, headshot wrapped in LinkedIn link with hover CTA, footer overflow fixes
+
+**Key design decisions:**
+- R&D section uses Quetzal-tinted card backgrounds (`rgba(0,104,94,0.12)`) and Quetzal-bright accent line on hover to visually distinguish from client case study cards (which use ecru-ghost backgrounds and rosso accent lines)
+- R&D label matches `section-label` pattern (0.85rem, weight 700, letter-spacing 0.2em, Quetzal bright)
+- Lab title at `clamp(1.4rem, 3vw, 2rem)` weight 900 ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ sits between section h2 and card titles in the hierarchy
+- DRS page is light/ecru variant (not dark Durable Births) ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ appropriate for thought leadership content vs. client case studies
+- Matrix widget: solid Quetzal quadrant backgrounds, Parisian Night on click, 2px borders on axis labels, click-outside-to-close
+- "See where you sit" CTA button at top of page (jump to widget), "Print / Save as PDF" button under "Explore the model" label at bottom of fable
+- Print stylesheet: portrait orientation, 1cm margins, hides fable/nav/footer, scales widget typography to fit one page, forces color printing
+- Plausible analytics script in `<head>` (requires account setup to activate)
+- Headshot: click goes to `linkedin.com/in/angie-bailey/`, hover scales to 2.8x with "Connect on LinkedIn" CTA text above image
+- "Cognitive State (Bandwidth)" axis label sits above Surplus/Deficit (mirrors Identity Source placement on y-axis)
+
+**LinkedIn strategy note:** The DRS page is the conversion destination for a LinkedIn test post (Chunk 2). URL should be shared in the first pinned comment with UTM parameters (`?utm_source=linkedin&utm_medium=social&utm_campaign=drs-chunk2`), NOT in the post body, to preserve embedding quality and on-platform engagement signals. See Trust Insights Q1 2026 LinkedIn Algorithm Guide analysis in the session handoff.
+
+---
+
+### Warehouse grid reorder + Summit card title fix
+**Commit:** `831e0ed` / `7053125`
+**What:** Restored Post-Acquisition Integration placeholder card (had been accidentally replaced). Reordered Warehouse grid to: Summit ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ P&L Build ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Web Experience Capacity Build ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Post-Acquisition Integration ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Workforce AI Adoption. Renamed Summit card title from "E-Commerce Strategic Summit Cross-Functional Alignment" to "Multi-Team Roadmap Summit."
+**Why:** Previous edit replaced the wrong card when adding Web Experience. Summit card title was too long and jammed ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ two lines of text in a card label is not the pattern. Card title is a fast read; case study page h1 is the full forensic record. They are allowed to differ.
+
+---
+
+### Web Experience Capacity Build ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ full case study launched
+**Commit:** `c385711`
+**What:** Added three new files:
+- `posts/web-experience-capacity-build/web-experience-capacity-build.html` ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ main case study page
+- `posts/web-experience-capacity-build/assets/team-capacity-diagnostic.html` ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ branded artifact page
+- `posts/web-experience-capacity-build/assets/templates/team-capacity-diagnostic-blank.html` ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ blank template
+Converted Warehouse card #3 from placeholder `<div>` to live `<a>`.
+**Why:** New case study covering EquipmentShare web experience scrum master and team architecture work. Key framework: Role-Weighted Capacity Diagnostic ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ maps capacity ratios for mixed-discipline teams where upstream roles (POs, designers) outnumber engineering bottlenecks. Artifact credits Nick Sonnenberg (*Come Up for Air*, 2023) for bandwidth calculation methodology and Eliyahu Goldratt for Theory of Constraints. Applied diagnostic (role-weighted mapping) is original.
+
+**Design decisions made during build:**
+- Stat box max-width bumped 500px ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ 750px; padding 1.25rem ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ 1.75rem 1.5rem; min-width 100px ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ 140px (labels "Overproduction Ratio" and "What the Governance Produced" were overflowing)
+- Artifact page "View Blank Template ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ" (not "Download") confirmed as standard
+- Blank template "Print / Save as PDF" button (not download)
+- 20 instances of sub-0.85rem mono text corrected across all three files in a dedicated fix pass
+- Director departure reframed: not "survived chaos" but "system was built well enough that leadership was planning to hand it off" ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ more accurate and consistent with the "survives the exit" brand thesis
+- Company never named in copy; senior engineer referred to by role only
+
+---
+
+### SEO round 2: Organization schema, content alignment, freshness dates
+**Commit:** `1c41b61`
+**What:** Added Organization schema to JSON-LD, aligned content signals, added freshness dates.
+**Why:** Follow-up to initial SEO implementation. Structural improvements from an AIView audit ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ visible text and voice left untouched per brand rules. (A prior audit had recommended keyword-stuffed titles and generic descriptions; those were rejected.)
+
+---
+
+### Headshot easter egg improvements
+**Commit:** `3c185c4` / `6ca14c6` / multiple
+**What:** Angie's portrait added to footer as hover reveal. 36px circle, grayscale filter, opacity:0 default, reveals on footer hover. Mobile: opacity:0.6 always (no hover on touch).
+**Why:** Low-key human signal. Not prominently displayed ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ intentional restraint.
+
+---
+
+### OG social sharing image
+**Commit:** `2aed6f1` / `96a7f08` / `2068abb` / `cc09567`
+**What:** Created og-image.png (1200ÃÂÃÂÃÂÃÂ630). Iterated: started basic, rebuilt with blueprint-grid aesthetic, rosso accent, IBM Plex Mono. Added og:image:width and og:image:height tags.
+**Why:** LinkedIn requires explicit image dimensions for reliable detection. `og:image:width` and `og:image:height` are mandatory ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ do not remove. LinkedIn post inspector was used to force re-scrape after deploy.
+
+---
+
+### Page title simplification
+**Commit:** `b202962`
+**What:** `<title>`, `og:title`, `twitter:title` all set to just "Angie Bailey." `jobTitle` in JSON-LD set to "Operations Strategist."
+**Why:** Angie rejected "Operations Architecture and AI Implementation" (too narrow) and "Transformation Architect" (identity-first, cognitive load). Decision: let the work speak. Visible title is name only. Job title is crawler-only.
+
+---
+
+### Signal ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Debrief rename
+**Commit:** `413963d`
+**What:** Section 04 on index.html renamed from "The Signal" to "The Debrief." Section id changed from `#signal` to `#debrief`. All nav links and back-links across case study pages and artifact pages updated.
+**Why:** "Signal" read as AI jargon. "Debrief" won from five alternatives in a live session. All cross-links updated simultaneously ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ do not re-introduce `#signal`.
+
+---
+
+### Template button standardization
+**Commit:** `413963d` (same commit as Signal ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Debrief)
+**What:** All artifact pages updated to use "View Blank Template ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ" (not "Download"). `download` attribute removed from all template links.
+**Why:** `download` attribute on HTML files caused browsers to download raw HTML source instead of rendering the page. The correct pattern is `target="_blank"` with no `download` attribute. Blank templates themselves use "Print / Save as PDF" (`onclick="window.print()"`).
+
+---
+
+### Yellow flag color fix
+**Commit:** `234b57e`
+**What:** Yellow constraint flags across all artifact pages corrected to `#D4A843`.
+**Why:** Yellow flags were rendering as quetzal-bright (green) ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the wrong color. Green flags were rendering as ecru-dim (beige) ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ also wrong. Both fixed. Yellow is hardcoded `#D4A843` because it was added after the original CSS variable set and never got a variable.
+
+---
+
+### E-Commerce P&L Build ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ case study launched
+**Commit:** `b5c0669`
+**What:** Added case study page and artifact pages for E-Commerce P&L Build.
+**Why:** Second case study. Decision infrastructure framing. Covers building the first e-commerce P&L for a company that tracked revenue but not profitability by channel.
+
+---
+
+### Dossier ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Brief rename
+**Commit:** `06278b7`
+**What:** All user-facing display text changed from "Dossier" to "Project Brief" or "Brief." File names preserved (renaming would break existing URLs).
+**Why:** Angie didn't want the word "dossier" in any visible copy. File paths still say `dossier` ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ this is intentional to preserve URLs. Do not rename the files.
+
+---
+
+### Cross-links between artifacts
+**Commit:** `06278b7` (same commit as Dossier ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Brief)
+**What:** Related Work sections added to bottom of artifact pages where methodology overlaps (P&L and Summit case studies).
+**Why:** Users landing on one artifact may have arrived from the other case study's ecosystem. Cross-links increase discovery without requiring a nav overhaul.
+
+---
+
+### Summit artifact back-link fix
+**Commit:** (part of early summit iteration commits)
+**What:** Summit artifact back-links corrected from `/cases/e-commerce-summit.html` to `../e-commerce-summit.html`.
+**Why:** Path was wrong ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ linked to a non-existent `/cases/` directory. Relative paths are required.
+
+---
+
+### Multi-Team Roadmap Summit ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ case study launched
+**Commit:** Early commits (`07a6c6a`, `3c215c4`, `624c100`)
+**What:** First case study added. Five artifact pages, five blank templates.
+**Why:** Summit case study was the first production build of the Durable Births design system.
+
+---
+
+## Format for New Entries
+
+Copy this block and fill in:
+
+```
+### {Short title of change}
+**Commit:** `{hash}` (or "no commit ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ edit in progress")
+**What:** One paragraph description of what was changed, what files were touched.
+**Why:** The reasoning. What decision was made and why. If overriding a previous decision, note what changed.
+```
