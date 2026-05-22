@@ -1,6 +1,6 @@
 # Site Map — angieqbailey.com
 
-Last Updated: 2026-05-22 (Hub restructure: matrix extracted to diagnostic-model.html, Sponge Leadership + model CTA added)
+Last Updated: 2026-05-22 (Sponge Leadership Section XX deployed at rd/dignity/empathy-redlining.html; Section 4 anchor id added for cross-section linking)
 
 ## Index Page Structure (5 Sections + Resources + Debrief)
 
@@ -162,6 +162,7 @@ All multi-item nav pages use the 7-item nav: Investigation, Warehouse, R&D, L&D,
 | Tactical Dignity via Meaningful Choice | Section 03 Findings Report (dark variant) | rd/dignity/tactical-dignity.html |
 | Growth Collapse Math | Section 04 Findings Report (dark variant) | rd/dignity/growth-collapse.html |
 | Trust, Power and Signal Loss | Section 05 Findings Report (dark variant) | rd/dignity/signal-loss.html |
+| Sponge Leadership | Section XX Findings Report — unnumbered, depth report on absorption cost (dark variant) | rd/dignity/empathy-redlining.html |
 | Operational Telemetry | Framework Page (dark variant) | rd/operational-telemetry/index.html |
 
 ## L&D Pages (Section 04)
@@ -216,12 +217,12 @@ Max capacity per project rules: 7.
 | Case study hub pages | 8 |
 | Artifact pages | 33 |
 | Template pages | 27 |
-| R&D pages | 14 |
+| R&D pages | 15 |
 | L&D pages | 1 |
 | Verdict essays | 5 |
 | Resources pages | 3 |
 | Other (index, 404) | 2 |
-| **Total HTML** | **93** |
+| **Total HTML** | **94** |
 
 Note: Portfolio Work/ directory and 3 orphaned warehouse-card.html pages were deleted 2026-05-19.
 
