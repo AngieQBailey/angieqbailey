@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#121A28;">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Four states of adoption reality. People aren't fixed in a segment — they shift under pressure. An interactive diagnostic model from the Dignity-Required System.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <link rel="canonical" href="https://angieqbailey.com/rd/dignity/diagnostic-model">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Operational Reality Assessment // The Dignity-Required System">
+    <meta property="og:description" content="Four states of adoption reality. People aren't fixed in a segment — they shift under pressure. An interactive diagnostic model.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://angieqbailey.com/rd/dignity/diagnostic-model">
+    <meta property="og:image" content="https://angieqbailey.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Operational Reality Assessment // The Dignity-Required System">
+    <meta name="twitter:description" content="Four states of adoption reality. People aren't fixed in a segment — they shift under pressure. An interactive diagnostic model.">
+    <meta name="twitter:image" content="https://angieqbailey.com/og-image.png">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Operational Reality Assessment: Four States of Adoption Reality",
+      "description": "An interactive diagnostic model from the Dignity-Required System. People aren't fixed in a segment — they shift under pressure. Click a quadrant to see the integration path and transition triggers.",
+      "author": { "@type": "Person", "name": "Angie Bailey", "url": "https://angieqbailey.com" },
+      "publisher": { "@type": "Person", "name": "Angie Bailey" },
+      "url": "https://angieqbailey.com/rd/dignity/diagnostic-model",
+      "image": "https://angieqbailey.com/og-image.png",
+      "isPartOf": {
+        "@type": "CreativeWork",
+        "name": "The Dignity-Required System",
+        "url": "https://angieqbailey.com/rd/dignity/"
+      }
+    }
+    </script>
+
+    <title>Operational Reality Assessment // The Dignity-Required System // Angie Bailey</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        .page-header {
+            min-height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 8rem;
+            padding-bottom: 3rem;
+        }
+        .page-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--quetzal-bright);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            display: block;
+        }
+        .page-header h1 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 0.95;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+            max-width: 700px;
+        }
+        .page-lede {
+            max-width: 620px;
+        }
+        .page-lede p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+            margin-bottom: 1.25rem;
+        }
+
+        .model-section {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+
+        /* Widget header */
+        .widget-header {
+            margin-bottom: 2.5rem;
+        }
+        .widget-header .tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+        }
+        .widget-header h2 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 900;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+        .widget-header .subtitle {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        /* Matrix grid */
+        .matrix-container {
+            position: relative;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        .axis-y {
+            position: absolute;
+            left: -2.5rem;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--ecru-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            white-space: nowrap;
+        }
+        .y-labels {
+            position: absolute;
+            left: -1rem;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--ecru-dim);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+        }
+        .axis-x {
+            text-align: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--ecru-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-top: 1rem;
+        }
+        .axis-label-row {
+            display: flex;
+            justify-content: space-around;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--ecru-dim);
+            margin-bottom: 0.5rem;
+        }
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            margin-left: 1.5rem;
+        }
+        .quadrant {
+            background: rgba(245, 245, 220, 0.06);
+            padding: 1.75rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            position: relative;
+        }
+        .quadrant:hover { background: rgba(245, 245, 220, 0.1); }
+        .quadrant.active { background: rgba(245, 245, 220, 0.14); }
+        .segment-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        .segment-name {
+            font-family: 'Imbue', serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--ecru);
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+        .segment-formation {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+        }
+        .segment-path {
+            font-size: 0.8rem;
+            color: var(--ecru-dim);
+            line-height: 1.4;
+        }
+        .segment-path strong { color: var(--rosso); }
+        .click-hint {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.2rem;
+            color: var(--ecru-dim);
+            opacity: 0.4;
+        }
+        .detail-panel {
+            display: none;
+            margin-top: 1.25rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .detail-panel.open { display: block; }
+        .detail-section { margin-bottom: 1rem; }
+        .detail-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.4rem;
+        }
+        .detail-text {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.6;
+        }
+        .trigger-tag {
+            display: inline-block;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            background: rgba(245, 245, 220, 0.08);
+            color: var(--ecru-dim);
+            padding: 0.3rem 0.6rem;
+            margin: 0.25rem 0.25rem 0 0;
+        }
+        .state-note {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--ecru-dim);
+            text-align: center;
+            margin-top: 1.5rem;
+            opacity: 0.7;
+        }
+        .widget-thesis {
+            margin-top: 2.5rem;
+            max-width: 650px;
+        }
+        .widget-thesis p {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.7;
+        }
+        .widget-thesis .rosso { color: var(--rosso); font-weight: 500; }
+
+        /* Back link */
+        .back-link-row {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .back-link-row a {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--quetzal-bright);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        .back-link-row a:hover { color: var(--ecru); }
+
+        @media (max-width: 900px) {
+            .matrix-grid { margin-left: 0; }
+            .axis-y, .y-labels { display: none; }
+        }
+    </style>
+</head>
+<body style="background-color: #121A28;">
+
+<div class="blueprint-overlay" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true"></div>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
+    <ul class="nav-links">
+        <li><a href="/#investigation">Investigation</a></li>
+        <li><a href="/#warehouse">Warehouse</a></li>
+        <li><a href="/#rnd">R&amp;D</a></li>
+        <li><a href="/#lnd">L&amp;D</a></li>
+        <li><a href="/#verdict">Verdict</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/#debrief">Debrief</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- HEADER -->
+    <section class="page-header section-content">
+        <span class="page-meta">R&amp;D // The Dignity-Required System</span>
+        <h1>Operational Reality Assessment</h1>
+        <div class="page-lede">
+            <p>People aren't fixed in a segment. They shift under pressure. A person can be an Operator on Monday and a Fixer by Friday... not because they changed, but because the conditions did.</p>
+            <p>This model maps two axes... cognitive state (how much bandwidth someone actually has) and identity source (what part of the work makes them <em>them</em>). The intersection determines how they'll respond to any system you put in front of them.</p>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE MATRIX -->
+    <section class="model-section section-content" id="drs-model">
+        <div class="widget-header">
+            <div class="tag">DRS Framework / 2x2 Model</div>
+            <h2>Four States of Adoption Reality</h2>
+            <div class="subtitle">Click a quadrant to see the integration path, transition triggers and cynicism risk.</div>
+        </div>
+
+        <div class="matrix-container">
+            <div class="axis-y">Identity Source</div>
+
+            <div class="y-labels">
+                <span>Mastery (Craft)</span>
+                <span>Output (Result)</span>
+            </div>
+
+            <div class="axis-x">Cognitive State (Bandwidth)</div>
+            <div class="axis-label-row">
+                <span>Surplus</span>
+                <span>Deficit</span>
+            </div>
+
+            <div class="matrix-grid">
+                <!-- Top Left: Operator -->
+                <div class="quadrant" onclick="toggleDetail(this, 'operator')" id="q-operator">
+                    <div class="segment-tag">Surplus + Mastery</div>
+                    <div class="segment-name">The Operator</div>
+                    <div class="segment-formation">They have the energy to learn and they care deeply about the craft. They want a powerful tool, not a simple one.</div>
+                    <div class="segment-path"><strong>Path / Expansion</strong> : Unlock complexity. If it's too easy, they'll reject it as a toy.</div>
+                    <div class="click-hint">+</div>
+                    <div class="detail-panel" id="detail-operator">
+                        <div class="detail-section">
+                            <div class="detail-label">You'll recognize them as</div>
+                            <div class="detail-text">The person who already built a better version of your spreadsheet before you asked. The one who reads the documentation for fun. The architect who wants to know why the system made that recommendation... not just what it recommended.</div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Transition triggers</div>
+                            <div>
+                                <span class="trigger-tag">Exhaustion Slide &rarr; Detective</span>
+                                <span class="trigger-tag">Incentive Pivot &rarr; Maverick</span>
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Cynicism risk</div>
+                            <div class="detail-text">Black Box Authority. If they can't see the logic behind the tool's recommendations, their sign-off becomes varnish on a guess. Years of mastery reduced to a rubber stamp.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Right: Detective -->
+                <div class="quadrant" onclick="toggleDetail(this, 'detective')" id="q-detective">
+                    <div class="segment-tag">Deficit + Mastery</div>
+                    <div class="segment-name">The Detective</div>
+                    <div class="segment-formation">Overwhelmed, but they refuse to let quality slip. Often the Old Guard. Protective of the part of the job that makes them... them.</div>
+                    <div class="segment-path"><strong>Path / Continuity</strong> : Build a bridge. Prove the new respects the old.</div>
+                    <div class="click-hint">+</div>
+                    <div class="detail-panel" id="detail-detective">
+                        <div class="detail-section">
+                            <div class="detail-label">You'll recognize them as</div>
+                            <div class="detail-text">The person who's been here 15 years and knows where every body is buried. The one who keeps a shadow spreadsheet because the official system can't be trusted. The auditor who catches the error everyone else missed... and resents that nobody noticed.</div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Transition triggers</div>
+                            <div>
+                                <span class="trigger-tag">Efficiency Dividend &rarr; Operator</span>
+                                <span class="trigger-tag">Incentive Pivot &rarr; Fixer</span>
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Cynicism risk</div>
+                            <div class="detail-text">Liability Node Trap. The system produces a 99% complete output. They verify it. If they catch the error, the system is "efficient." If they miss it, they're "negligent." They're not a governor... they're a legal shield.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Left: Maverick -->
+                <div class="quadrant" onclick="toggleDetail(this, 'maverick')" id="q-maverick">
+                    <div class="segment-tag">Surplus + Output</div>
+                    <div class="segment-name">The Maverick</div>
+                    <div class="segment-formation">Energy to burn. They want massive results and aren't wedded to "the way we've always done it."</div>
+                    <div class="segment-path"><strong>Path / Modularity</strong> : Give them a kit of parts. Let them invent the workflow.</div>
+                    <div class="click-hint">+</div>
+                    <div class="detail-panel" id="detail-maverick">
+                        <div class="detail-section">
+                            <div class="detail-label">You'll recognize them as</div>
+                            <div class="detail-text">The VP who had the AI tool before IT approved it. The sales rep who built their own CRM in Notion because the official one was too slow. The founder who sees every system as a sandbox.</div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Transition triggers</div>
+                            <div>
+                                <span class="trigger-tag">Exhaustion Slide &rarr; Fixer</span>
+                                <span class="trigger-tag">Audit Shock &rarr; Operator</span>
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Cynicism risk</div>
+                            <div class="detail-text">Efficiency Squeeze. They save four hours through innovation. The organization immediately fills those hours with grunt work. Being efficient is punished with more work. The path of least resistance becomes a treadmill.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Right: Fixer -->
+                <div class="quadrant" onclick="toggleDetail(this, 'fixer')" id="q-fixer">
+                    <div class="segment-tag">Deficit + Output</div>
+                    <div class="segment-name">The Fixer</div>
+                    <div class="segment-formation">Overwhelmed. Zero patience for features. They just want the job done and the desk cleared.</div>
+                    <div class="segment-path"><strong>Path / Subtraction</strong> : Remove three steps for every one you add. Be invisible.</div>
+                    <div class="click-hint">+</div>
+                    <div class="detail-panel" id="detail-fixer">
+                        <div class="detail-section">
+                            <div class="detail-label">You'll recognize them as</div>
+                            <div class="detail-text">The person with 100+ unread Slack messages who just needs the report to go out. The admin who processes 200 tickets a day and has zero capacity for "innovation." The parent-caregiver-employee who just needs one thing to be easy today.</div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Transition triggers</div>
+                            <div>
+                                <span class="trigger-tag">Efficiency Dividend &rarr; Maverick</span>
+                                <span class="trigger-tag">Audit Shock &rarr; Detective</span>
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Cynicism risk</div>
+                            <div class="detail-text">Performative Agency Paradox. The system asks "How would you like to work today?" but the KPIs stay fixed. If they choose the automated path and get penalized for "low engagement," the choice was an illusion. Dignity as theater.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="state-note">These are states of reality, not types of people. A person can be an Operator on Monday and a Fixer by next Friday.</div>
+        </div>
+
+        <div class="widget-thesis">
+            <p>Traditional management tries to move everyone into the Operator bucket. This framework recognizes that forcing a segment change should be flagged as a problem. A modern system meets the human where they currently sit. <span class="rosso">If someone is a Fixer on Tuesday, you don't lecture them on learning something new. You give them the relief they need to survive the day.</span></p>
+        </div>
+    </section>
+
+    <!-- BACK LINK -->
+    <div class="section-content back-link-row">
+        <a href="/rd/dignity/">&larr; Back to The Dignity-Required System</a>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <span>&copy; 2026 Angie Bailey</span>
+</footer>
+
+<script>
+  let currentOpen = null;
+
+  function closeAll() {
+    document.querySelectorAll('.detail-panel').forEach(p => p.classList.remove('open'));
+    document.querySelectorAll('.quadrant').forEach(q => q.classList.remove('active'));
+    currentOpen = null;
+  }
+
+  function toggleDetail(quadrant, id) {
+    const panel = document.getElementById('detail-' + id);
+    const allQuadrants = document.querySelectorAll('.quadrant');
+    const allPanels = document.querySelectorAll('.detail-panel');
+
+    if (currentOpen === id) {
+      closeAll();
+      return;
+    }
+
+    allPanels.forEach(p => p.classList.remove('open'));
+    allQuadrants.forEach(q => q.classList.remove('active'));
+
+    panel.classList.add('open');
+    quadrant.classList.add('active');
+    currentOpen = id;
+  }
+
+  document.addEventListener('click', function(e) {
+    if (currentOpen && !e.target.closest('.matrix-grid')) {
+      closeAll();
+    }
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.model-section').forEach(function(el) {
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
