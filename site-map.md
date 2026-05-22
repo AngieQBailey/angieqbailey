@@ -1,6 +1,6 @@
 # Site Map — angieqbailey.com
 
-Last Updated: 2026-05-21 (Section 01 Hardware of Being Human added)
+Last Updated: 2026-05-22 (Hub restructure: matrix extracted to diagnostic-model.html, Sponge Leadership + model CTA added)
 
 ## Index Page Structure (5 Sections + Resources + Debrief)
 
@@ -155,6 +155,7 @@ All multi-item nav pages use the 7-item nav: Investigation, Warehouse, R&D, L&D,
 | Start Here | Interactive Tool | start-here/index.html |
 | DRS Matrix (redirect) | Redirect | drs-matrix/index.html → rd/dignity/ |
 | The Dignity-Required System | Framework Hub (dark variant) | rd/dignity/index.html |
+| Operational Reality Assessment | Diagnostic Model (dark variant) | rd/dignity/diagnostic-model.html |
 | The 9:02 AM Meeting | Mini-Fable (ecru variant) | rd/dignity/902-meeting.html |
 | The Hardware of Being Human | Section 01 Findings Report (dark variant) | rd/dignity/hardware-of-being-human.html |
 | The Last 50 Feet Failure | Section 02 Findings Report (dark variant) | rd/dignity/last-50-feet.html |
@@ -215,12 +216,12 @@ Max capacity per project rules: 7.
 | Case study hub pages | 8 |
 | Artifact pages | 33 |
 | Template pages | 27 |
-| R&D pages | 13 |
+| R&D pages | 14 |
 | L&D pages | 1 |
 | Verdict essays | 5 |
 | Resources pages | 3 |
 | Other (index, 404) | 2 |
-| **Total HTML** | **92** |
+| **Total HTML** | **93** |
 
 Note: Portfolio Work/ directory and 3 orphaned warehouse-card.html pages were deleted 2026-05-19.
 
