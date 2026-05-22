@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#121A28;">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sponge Leadership: a depth report on the human cost of absorption work. Clinical settings figured out what it costs and built protections around it. Operational settings haven't.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <link rel="canonical" href="https://angieqbailey.com/rd/dignity/empathy-redlining">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sponge Leadership // The Dignity-Required System">
+    <meta property="og:description" content="A person whose job is to soak up other people's feelings so the work keeps moving. Clinical settings figured out what that costs. Operational settings haven't.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://angieqbailey.com/rd/dignity/empathy-redlining">
+    <meta property="og:image" content="https://angieqbailey.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sponge Leadership // The Dignity-Required System">
+    <meta name="twitter:description" content="A person whose job is to soak up other people's feelings so the work keeps moving. Clinical settings figured out what that costs. Operational settings haven't.">
+    <meta name="twitter:image" content="https://angieqbailey.com/og-image.png">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Sponge Leadership: What the Absorption Role Costs",
+      "description": "A depth report on the structural cost of emotional absorption work. The clinical literature spent thirty years naming the mechanism and building protections around it. Operational settings built neither.",
+      "author": { "@type": "Person", "name": "Angie Bailey", "url": "https://angieqbailey.com" },
+      "publisher": { "@type": "Person", "name": "Angie Bailey" },
+      "url": "https://angieqbailey.com/rd/dignity/empathy-redlining",
+      "image": "https://angieqbailey.com/og-image.png",
+      "isPartOf": {
+        "@type": "CreativeWork",
+        "name": "The Dignity-Required System",
+        "url": "https://angieqbailey.com/rd/dignity/"
+      }
+    }
+    </script>
+
+    <title>Sponge Leadership // The Dignity-Required System // Angie Bailey</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        /* Framework header */
+        .framework-header {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 8rem;
+            padding-bottom: 4rem;
+        }
+        .framework-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--quetzal-bright);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.4s both;
+        }
+        .framework-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.5s both;
+        }
+        .framework-header h1 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2rem, 5.5vw, 4.5rem);
+            font-weight: 900;
+            line-height: 0.95;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+            max-width: 850px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+        .framework-header h1 .accent-word { color: var(--rosso); }
+        .framework-lede {
+            border-left: 5px solid var(--rosso);
+            padding-left: 2rem;
+            max-width: 620px;
+            animation: fade-up 0.8s ease 0.8s both;
+        }
+        .framework-lede p {
+            font-size: 1.15rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+            margin-bottom: 1.25rem;
+        }
+        .framework-lede strong { color: var(--ecru); font-weight: 500; }
+
+        /* Working definition block */
+        .working-def {
+            margin-top: 3rem;
+            max-width: 620px;
+            animation: fade-up 0.8s ease 1s both;
+        }
+        .working-def-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.75rem;
+        }
+        .working-def p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+        }
+        .working-def p strong { color: var(--ecru); font-weight: 500; }
+
+        /* Section structure */
+        .framework-section {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .framework-section h2 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 900;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 1.75rem;
+            max-width: 700px;
+        }
+        .framework-section h2 .accent-word { color: var(--rosso); }
+
+        /* H2 link variant (used for Beat 5 → Verdict #4) */
+        .h2-link {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.25s ease, color 0.25s ease;
+        }
+        .h2-link:hover { border-bottom-color: var(--rosso); }
+        .h2-link:hover .accent-word { color: var(--ecru); }
+
+        .body-text p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--ecru-dim);
+            margin-bottom: 1.5rem;
+            max-width: 650px;
+        }
+        .body-text p strong { color: var(--ecru); font-weight: 500; }
+
+        /* Section 4 backlink line */
+        .body-text p.section-link {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--ecru-dim);
+            border-left: 3px solid var(--quetzal-bright);
+            padding-left: 1rem;
+            margin-left: 0;
+        }
+
+        /* Citation links inline in body and glossary */
+        .body-text a,
+        .glossary-body a {
+            color: #00C4B4;
+            text-decoration: underline;
+            text-decoration-color: rgba(0, 196, 180, 0.7);
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+            transition: color 0.2s, text-decoration-color 0.2s;
+        }
+        .body-text a:hover,
+        .glossary-body a:hover {
+            color: var(--ecru);
+            text-decoration-color: var(--ecru);
+        }
+
+        /* Callout for the close */
+        .callout {
+            border-left: 4px solid var(--rosso);
+            padding: 2rem;
+            background: rgba(245, 245, 220, 0.14);
+            margin: 2rem 0;
+            max-width: 680px;
+        }
+        .callout p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .callout p:last-child { margin-bottom: 0; }
+        .callout strong { color: var(--ecru); font-weight: 500; }
+
+        /* Back link */
+        .back-link {
+            display: inline-block;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+            padding: 0.75rem 0;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--rosso); }
+
+        @media (max-width: 900px) {
+            .framework-header { padding-top: 6rem; }
+            .framework-lede { padding-left: 1.25rem; }
+        }
+    </style>
+</head>
+<body style="background-color: #121A28;">
+
+<div class="blueprint-overlay" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true"></div>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
+    <ul class="nav-links">
+        <li><a href="/#investigation">Investigation</a></li>
+        <li><a href="/#warehouse">Warehouse</a></li>
+        <li><a href="/#rnd">R&amp;D</a></li>
+        <li><a href="/#lnd">L&amp;D</a></li>
+        <li><a href="/#verdict">Verdict</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/#debrief">Debrief</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- HEADER / FRICTION FRONT -->
+    <section class="framework-header section-content">
+        <span class="framework-meta">Dignity-Required System // Sponge Leadership</span>
+        <span class="framework-tag">Sponge Leadership</span>
+        <h1>Absorbs the Room.<br><span class="accent-word">Drains Nowhere.</span></h1>
+
+        <div class="framework-lede">
+            <p>
+                She wasn't being dramatic. She was absorbing. Her team's reorg anxiety. Her boss's deadline pressure. The customer's frustration about the outage. Every signal came through her because the org had no other sensor. Nobody asked whether the sensor had a maintenance schedule.
+            </p>
+            <p>
+                That's sponge leadership. A person whose job is to soak up other people's feelings so the work keeps moving. Clinical settings figured out what that costs. Operational settings haven't.
+            </p>
+        </div>
+
+        <div class="working-def">
+            <div class="working-def-label">Working Definition // Sponge Leadership</div>
+            <p>A <strong>role, not a personality.</strong> The person an organization deploys to absorb emotional signal from teams, customers, executives and stakeholders. The sponge gets squeezed every day. The sponge never sees the sun. The depletion isn't a character flaw. It's a maintenance gap built into the design.</p>
+        </div>
+    </section>
+
+    <!-- THE FINDINGS -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">The Findings</span>
+        <h2>Drained Manager,<br><span class="accent-word">Drained Team.</span></h2>
+
+        <div class="body-text">
+            <p>
+                When the manager emotionally runs dry, the team's capability dries up too.
+            </p>
+            <p>
+                A 2024 study tracked 62 managers leading change across 74 teams in a Canadian government org. As emotional exhaustion climbed, active leadership behaviors dropped. Laissez-faire patterns showed up where engagement used to be. Team psychological safety dropped. Readiness to change dropped behind that (<a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2024.1298104/full">Bonnaire, Boudrias &amp; Vandenberghe, 2024</a>). The cascade isn't subtle. The manager runs dry first. The team's capability runs dry behind her.
+            </p>
+            <p class="section-link">
+                <a href="/rd/dignity/growth-collapse.html#human-shock-absorber">Section 4 named the role. This section diagnoses what the role costs.</a>
+            </p>
+            <p>
+                The pattern has a clinical pedigree. Figley called it compassion fatigue in 1995, the kind of depletion that comes from absorbing other people's distress, not from a heavy to-do list (<a href="https://www.emdr.org.il/wp-content/uploads/2021/08/Figley1995CompassionFatiguebook.pdf">Figley, 1995</a>). McCann and Pearlman called it vicarious trauma five years earlier, the way repeated exposure to other people's pain reshapes how the helper sees the world (<a href="http://apsaclibrary.org/publications/1990%20Number%204/10515.pdf">McCann &amp; Pearlman, 1990</a>). Both frameworks were built for therapists and trauma workers. The clinical world spent thirty years naming this and building protections around it. Operational settings built neither.
+            </p>
+        </div>
+
+        <p class="verdict-line">She IS the cost. What she carries downward is the bill the team pays.</p>
+
+        <div class="body-text">
+            <p>
+                The operational research uses different vocabulary for the same dynamic. Hochschild named emotional labor in 1983, the work of managing what you feel so you can perform what the job requires you to show (<a href="https://www.ucpress.edu/books/the-managed-heart/paper">Hochschild, 1983</a>). Iszatt-White's edited volume later extended the framework to leadership specifically. Leading IS emotional labor, performed as the daily core of the work, not as a personality bonus the org gets for free (<a href="https://www.researchgate.net/publication/247765378">Iszatt-White, 2013</a>). A 2025 study of frontline workers across 85 hotels in Turkey traced the cost end to end. Performing feelings the worker didn't have predicted burnout. Burnout predicted alienation from the work itself (<a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1668413/full">&Uuml;ng&uuml;ren, Tekin &amp; Avsall&#305;, 2025</a>). The setting changes. The mechanism doesn't.
+            </p>
+            <p>
+                Crossover theory explains why this travels. Emotional states move between people sharing the same room, the same Zoom, the same Slack (<a href="https://journals.sagepub.com/doi/10.1177/0018726701546002">Westman, 2001</a>; <a href="https://ro.ecu.edu.au/cgi/viewcontent.cgi?article=6581&amp;context=ecuworks2022-2026">Hartmann et al., 2025</a>). The team's anxiety doesn't stay theirs. It crosses the line. The manager catches it because that's what proximity to other humans does.
+            </p>
+        </div>
+
+        <p class="verdict-line">Maslach's burnout scale catches the symptom. It misses where the depletion came from.</p>
+
+        <div class="body-text">
+            <p>
+                The Maslach tradition since 1981 studies chronic workplace stress as a single syndrome (<a href="https://onlinelibrary.wiley.com/doi/10.1002/job.4030020205">Maslach &amp; Jackson, 1981</a>). It's accurate as far as it goes. But the manager who's drained because the workload is huge and the manager who's drained because she's the team's only emotional sensor score the same on the inventory. Same number, different problem. Operational settings mostly run the workload diagnostic and miss the absorption one.
+            </p>
+            <p>
+                The pattern IS about the people. <strong>It's also about an architecture (the way the system is built ... the workflows, governance steps and reporting lines that shape how the work gets done) that uses people as absorption infrastructure without naming the role, funding it or wringing it out.</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- WHY EXISTING APPROACHES FAIL -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">Why Existing Approaches Fail</span>
+        <h2>Self-Care Doesn't Fix<br><span class="accent-word">Structural Absorption.</span></h2>
+
+        <div class="body-text">
+            <p>
+                The standard response to manager burnout has a familiar shape. Resilience training. EAP referrals. Boundary workshops. Mindfulness app subscriptions. Quarterly wellness emails. The HR budget for these has grown every year. The exhaustion data hasn't moved.
+            </p>
+            <p>
+                None of them find the dynamic underneath.
+            </p>
+            <p>
+                Resilience training individualizes a structural problem. The premise is the manager needs more capacity. The reality is what she's carrying is too much for any capacity. Adding more sponge isn't the answer. Naming what she's actually carrying is.
+            </p>
+            <p>
+                EAPs activate after the damage has already happened. They wait for the manager to escalate herself for help. Sponge leadership produces managers who don't escalate. They translate, hold and absorb until something else gives. The help shows up too late and depends on the absorber identifying as needing help, which the role demands she not do.
+            </p>
+            <p>
+                Boundary advice misreads the problem. Boundaries protect against intrusion. The absorption isn't intrusion. It's the job. The team meeting where four people unload their anxiety isn't a boundary violation, it's the role working as designed.
+            </p>
+            <p>
+                Self-care narratives put the accountability on the person doing the absorbing. The implicit message is that the depletion is a personal hygiene issue. Drink water. Sleep more. Take vacation. The structural cost continues. The structural cause stays untouched.
+            </p>
+        </div>
+
+        <p class="verdict-line">The manager who can't recover on the weekend isn't a self-care failure. She's a sponge nobody's left out in the sun.</p>
+
+        <div class="body-text">
+            <p>
+                There's a sharper trap. Team-building investments often increase the conduit, not protect against it. Bakker, van Emmerik and Westman's longitudinal study of 310 employees in 100 teams found that crossover of emotional exhaustion only showed up in teams with <strong>high</strong> cohesion and social support (<a href="https://www.isonderhouden.nl/doc/pdf/arnoldbakker/articles/articles_arnold_bakker_257.pdf">Bakker, van Emmerik &amp; Westman, 2011</a>). Solitary workers didn't catch each other's exhaustion. Close teams did. Connection is the channel the absorption travels through, not a defense against it. Team-building that thickens the connection without adding circuit breakers makes the dynamic more efficient, not less costly.
+            </p>
+            <p>
+                Business publishing has reached the diagnosis too. HBR ran two pieces in 2022 naming compassion fatigue as a manager-level problem and the performance-compassion bind as the structural trap (<a href="https://hbr.org/2022/03/compassion-fatigue-is-real-and-it-may-be-weighing-you-down">Waytz, 2022</a>; <a href="https://hbr.org/2022/04/managers-are-trapped-in-a-performance-compassion-dilemma">Carnevale, 2022</a>). The label has reached the trade press. The structural response hasn't reached the operating model.
+            </p>
+            <p>
+                What clinical settings figured out and operational settings haven't: the absorption work doesn't reduce by being more capable, more resilient or more compassionate. It reduces by structural protection or it doesn't reduce at all.
+            </p>
+        </div>
+    </section>
+
+    <!-- THE DIAGNOSTIC VOCABULARY -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">The Diagnostic Vocabulary</span>
+        <h2>Three Names<br><span class="accent-word">for the Pattern.</span></h2>
+
+        <div class="body-text">
+            <p>
+                The dignity-required system names three concepts for sponge leadership. Each one moves the conversation from managing the depleted person to examining the architecture that depleted her. Each one expands inline below.
+            </p>
+        </div>
+
+        <div class="glossary-grid">
+
+            <details class="glossary-card">
+                <summary>
+                    <span class="glossary-term">&#9656; Empathy Redlining</span>
+                    <span class="glossary-toggle">+</span>
+                </summary>
+                <div class="glossary-body">
+                    <p>
+                        The point where emotional absorption capacity hits its biological limit. Past redlining, the sensor stops sensing accurately. The manager who used to read the room reads it wrong. The IC who used to translate executive ambiguity loses the nuance. The depletion isn't laziness or disengagement. It's the same dynamic the clinical literature calls compassion fatigue, happening in operational settings that don't measure it because they haven't built the protections that would force them to.
+                    </p>
+                    <div class="glossary-question">
+                        <strong>Diagnostic Question</strong>
+                        When was the last time the absorber accurately picked up what her team wasn't saying out loud. If &ldquo;can't remember&rdquo; applies, redlining isn't theoretical here.
+                    </div>
+                </div>
+            </details>
+
+            <details class="glossary-card">
+                <summary>
+                    <span class="glossary-term">&#9656; The Human Sensor</span>
+                    <span class="glossary-toggle">+</span>
+                </summary>
+                <div class="glossary-body">
+                    <p>
+                        A person whose job requires absorbing emotional signal from others as a core part of the work. Team anxiety, organizational stress, customer frustration, executive pressure ... the sensor takes the input from multiple directions and processes it on behalf of the organization. Not the same as &ldquo;an empathetic person.&rdquo; Empathy is a personality trait. Sensor work is a role demand. The distinction matters because the personality framing makes the sensor responsible for managing her own depletion. The structural framing makes the architecture responsible for protecting it.
+                    </p>
+                    <div class="glossary-question">
+                        <strong>Diagnostic Question</strong>
+                        Which person on this team, if she stopped absorbing for a week, would surface the most unmanaged emotional weight. That's the sensor. The architecture has been depending on her, unprotected.
+                    </div>
+                </div>
+            </details>
+
+            <details class="glossary-card">
+                <summary>
+                    <span class="glossary-term">&#9656; Circuit Breaker (Emotional)</span>
+                    <span class="glossary-toggle">+</span>
+                </summary>
+                <div class="glossary-body">
+                    <p>
+                        A structural protection clinical settings mandate for anyone whose role requires sustained emotional absorption. Supervision sessions. Caseload limits. Rotation between high-stakes and recovery work. Documented debriefing protocols. The evidence on whether these reduce compassion fatigue specifically is mixed and depends on quality of implementation. What's consistent is that their absence produces measurably worse outcomes than their partial presence. Operational settings have no equivalents. Manager 1:1s aren't supervision. EAPs aren't debriefing. Wellness emails aren't rotation. The absence isn't a gap to fill with cultural tools. The absence is the finding.
+                    </p>
+                    <div class="glossary-question">
+                        <strong>Diagnostic Question</strong>
+                        What protection does this organization mandate for anyone whose role requires sustained emotional absorption. If the answer is &ldquo;soft suggestion&rdquo; or &ldquo;self-care benefit,&rdquo; there isn't a circuit breaker. There's a wellness landing page.
+                    </div>
+                </div>
+            </details>
+
+        </div>
+    </section>
+
+    <!-- WHAT THIS MEANS AT ROLLOUT -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">What This Means at Rollout</span>
+        <h2><a href="/verdict/structure-is-how-you-protect-people.html" class="h2-link">Circuit Breakers Are Structural,<br><span class="accent-word">Not Cultural.</span></a></h2>
+
+        <div class="body-text">
+            <p>
+                The instinct after diagnosing sponge leadership is to add support resources. Wellness benefits. Manager networking groups. Quarterly workshops. Those are cultural moves. They don't change the weight she's carrying. Structural circuit breakers do.
+            </p>
+            <p>
+                Clinical settings spent thirty years working out what protection has to do. Caseload limits. Supervision. Rotation between high-absorption and recovery work. Debriefing after critical events. The peer-reviewed evidence on whether these reduce compassion fatigue specifically is mixed and depends on how well they're implemented. What's consistent is that the absence of any structural protection produces measurably worse outcomes than partial protection. Operational settings have no equivalents at all.
+            </p>
+            <p>
+                Translated to operational settings, a handful of specific moves count.
+            </p>
+            <p>
+                <strong>A documented cap on the number of high-absorption interactions a manager carries in a week.</strong> Not a wellness recommendation. A staffing constraint. If she's running thirty 1:1s plus skip-levels plus stakeholder updates inside five days, the architecture is treating her absorption capacity as infinite. It isn't.
+            </p>
+            <p>
+                <strong>Rotation between absorption-heavy and recovery work.</strong> The team lead who absorbed through a difficult reorg gets explicit lower-stakes work afterward, with calendar protection and ownership relief. Not a sabbatical. A schedule.
+            </p>
+            <p>
+                <strong>Debriefing that doesn't depend on the absorber asking.</strong> After major incidents, hard delivery moments or organizational shocks, the debrief is something the architecture executes, not a favor she has to request.
+            </p>
+            <p>
+                <strong>Naming the sensor role in the job description.</strong> If the role requires emotional labor as a core function, the job posting says so. The performance review measures it. The compensation reflects it. Hidden labor stays unprotected. Named labor enters the negotiation.
+            </p>
+            <p>
+                None of these are revolutionary. All of them require admitting that the absorption work is real work, not a personality benefit the organization gets for free.
+            </p>
+        </div>
+
+        <p class="verdict-line">Clinical settings spent thirty years building these protocols. Operational settings still haven't started.</p>
+    </section>
+
+    <!-- THE DIAGNOSTIC CLOSE -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">The Close</span>
+        <h2>Recognition,<br><span class="accent-word">or Replacement.</span></h2>
+
+        <div class="callout">
+            <p>
+                Every organization runs on emotional absorption infrastructure. The managers absorbing team anxiety. The ICs translating executive pressure into something a team can hold. The leaders performing emotional labor as the daily core of the work. None of it shows up in the org chart. All of it is structural work the architecture depends on.
+            </p>
+            <p>
+                <strong>The architecture has two options. Recognize the absorption work and protect it structurally. Or keep replacing the people-sensors when they burn out.</strong>
+            </p>
+            <p>
+                The replacement cost is the cost the spreadsheet sees. Recruitment, ramp time, lost institutional knowledge, the new sensor learning what the old one already absorbed. The unmeasured cost is the signal lost between sensors ... the gap where the new manager doesn't yet know what the team is silently carrying, and the team doesn't yet trust her enough to say.
+            </p>
+            <p>
+                The sponge keeps absorbing until something gives. What gives is the sensor. What gets lost is the signal.
+            </p>
+        </div>
+
+        <div class="back-link-row">
+            <a href="/rd/dignity/" class="back-link">&larr; Back to the Dignity-Required System</a>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <span>&copy; 2026 Angie Bailey</span>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
