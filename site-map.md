@@ -157,6 +157,7 @@ All multi-item nav pages use the 7-item nav: Investigation, Warehouse, R&D, L&D,
 | The Dignity-Required System | Framework Hub (dark variant) | rd/dignity/index.html |
 | The 9:02 AM Meeting | Mini-Fable (ecru variant) | rd/dignity/902-meeting.html |
 | Tactical Dignity via Meaningful Choice | Section 03 Findings Report (dark variant) | rd/dignity/tactical-dignity.html |
+| Growth Collapse Math | Section 04 Findings Report (dark variant) | rd/dignity/growth-collapse.html |
 | Operational Telemetry | Framework Page (dark variant) | rd/operational-telemetry/index.html |
 
 ## L&D Pages (Section 04)
@@ -211,12 +212,12 @@ Max capacity per project rules: 7.
 | Case study hub pages | 8 |
 | Artifact pages | 33 |
 | Template pages | 27 |
-| R&D pages | 11 |
+| R&D pages | 12 |
 | L&D pages | 1 |
 | Verdict essays | 5 |
 | Resources pages | 3 |
 | Other (index, 404) | 2 |
-| **Total HTML** | **90** |
+| **Total HTML** | **91** |
 
 Note: Portfolio Work/ directory and 3 orphaned warehouse-card.html pages were deleted 2026-05-19.
 
