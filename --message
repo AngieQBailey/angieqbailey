@@ -1,362 +1,535 @@
-## [2026-05-21] — TIER 1 — R&D (Section 03 — Tactical Dignity)
-**Change:** Added research hyperlinks to all six inline citations on `rd/dignity/tactical-dignity.html`. Linked sources: AI & Society 2024 (Springer), 2024 Kahoot Workplace Culture Report, IMF global employment blog, Gartner 2025 press release, Deci and Ryan (selfdeterminationtheory.org), Gagné et al. 2022 (PMC open access). Added `.body-text a` link styles (quetzal bright, underline, hover to ecru). All links verified accessible without login credentials. No `target="_blank"`.
-**Rationale:** Research citations existed as plain text — no way for readers to verify or follow up on the claims. Links now point to publicly accessible pages (press releases, open-access mirrors, journal abstracts).
-**Operator:** Angie Bailey + Claude via Cowork
-
-## [2026-05-21] — TIER 3 — R&D (Dignity-Required System / Section 04)
-**Change:** Deployed Section 04 of the Dignity-Required System: `rd/dignity/growth-collapse.html` — a findings report on performative compliance, middle-manager shock-absorber dynamics and the architecture of unsurvivable refusal. Dark variant. Built against the 7-beat structure established by Section 03 (friction front, the findings, why existing approaches fail, six-concept diagnostic vocabulary, what this means at rollout, the close) with six expandable inline glossary terms using native `<details>` elements. New terms defined here: hufflepuff mask, survivable refusal, human shock absorber, growth collapse, efficiency squeeze, trust vs compliance. Research citations hyperlinked inline: Ipsos 2022, Detert and Edmondson 2011, Edmondson's Fearless Organization, Gallup 2024 disruptive change, Capterra 2023 middle manager burnout, McKinsey 2023 middle manager transformation admin load, Frontiers in Psychology 2025 on AI awareness and knowledge hoarding, GP Strategies and HRZone on performative AI adoption, Mauno et al. 2023 work intensification review. Shared DRS CSS components (verdict-line, glossary-grid, glossary-card, back-link-row) consumed from styles.css rather than redefined inline. Hub page `rd/dignity/index.html` updated: Section 04 card activated (removed `coming` class and status label). Site-map updated: new R&D row added, R&D pages count 11 → 12, Total HTML 90 → 91.
-**Rationale:** Second child report under the DRS hub. The first three friction fronts (Hardware of Being Human, Last 50 Feet, Tactical Dignity) describe what fails. This section names how the failure stays invisible: refusal isn't safe, the dashboard fills with masks, the middle manager wears the load, the architecture mistakes compliance for adoption. Voice calibrated per the May 2026 refinements: no hyperbole, contractions mandatory, no first person, lowercase concept names in body, "architecture" defined on first use, the architecture-vs-people dichotomy refused.
-**Operator:** Angie Bailey + Claude via Cowork
-
-## [2026-05-21] — TIER 3 — R&D (Dignity-Required System / Section 03)
-**Change:** Deployed Section 03 of the Dignity-Required System: `rd/dignity/tactical-dignity.html` — a findings report on identity erasure in AI rollouts. Dark variant. Five-beat structure: friction front, the findings, why existing approaches fail, four-concept diagnostic vocabulary (identity anchor, mastery vs drudgery distinction, dignity circuit breaker, defensive knowledge hoarding), what this means at rollout, diagnostic close. Four expandable inline glossary terms using native `<details>` elements. Research citations: AI & Society 2024, Kahoot 2024, IMF, Gartner 2025, Deci and Ryan (SDT foundational), Gagné et al. Nature Reviews Psychology 2022. Working definition of "architecture" placed in the header to preempt the cognitive lift. Hub page `rd/dignity/index.html` updated: Section 03 card activated (removed `coming` class and status label) and card description softened from "committed professional erasure" to "taken away the work that made them visible" to match the report's calibrated voice. Site-map updated.
-**Rationale:** First child report under the Dignity-Required System hub. Establishes the section-report template that the remaining four sections (Hardware of Being Human, Last 50 Feet, Growth Collapse, Trust/Power/Signal Loss) will inherit. Voice calibrated through a V1→V4 review pass to strip hyperbole, drop first-person framing, lowercase non-proprietary concept names, define ambiguous load-bearing terms upfront, and refuse the architecture-vs-people dichotomy that lets systems off the hook.
-**Operator:** Angie Bailey + Claude via Cowork
-
-## [2026-05-19] — TIER 1 — SEO and meta tag infrastructure across all pages
-**Change:** Created robots.txt (allow all, sitemap reference) and sitemap.xml (84 canonical URLs with priority tiers). Added og:image, canonical URL, Twitter Card, and favicon meta tags to 82 subpages that were missing them (only homepage and DRS Matrix had complete tags previously). Added JSON-LD Article structured data to 13 pages (8 case studies + 5 verdict essays). All pages now show proper preview cards when shared on LinkedIn/Slack and are correctly indexed by search engines.
-**Rationale:** Site had no sitemap or robots.txt, subpages showed blank previews when shared (no og:image), no canonical tags meant UTM-tagged LinkedIn links could fragment search authority, and no structured data meant Google treated case studies as generic pages instead of portfolio content.
-**Operator:** Angie Bailey + Claude via Cowork
-
-## [2026-05-19] — TIER 1 — Repo cleanup (legacy files, orphans, dead CSS)
-**Change:** Deleted 6 files: 3 legacy duplicates under `Portfolio Work/` (MBR, GEO/AEO, Dots/Pens hub — all superseded by `posts/` or L&D hub equivalents), 3 orphaned `warehouse-card.html` pages (geo-aeo, crisis-comms, post-acquisition — not linked from any live page). Removed ~800 chars of dead CSS from `styles.css`: `.ld-divider`/`.ld-label`/`.ld-title` rules (replaced by standard `section-label` pattern) and `.principle-arrow` hover rule (no HTML element uses this class). Full `site-map.md` rewrite: all 95 canonical URLs documented with correct paths, Warehouse count corrected to 8, all 8 case study inventories added, Resources categories recounted, L&D status updated to "Coming."
-**Rationale:** Maintenance audit found stale documentation, duplicate files, orphaned pages, and dead CSS accumulated across deployments. Cleaned to prevent confusion in future sessions.
-**Operator:** Angie Bailey + Claude via Cowork
-
-## [2026-05-19] — TIER 2 — Nav standardization across all case study, R&D, and artifact pages
-**Change:** Fixed nav menus on 21 HTML files across posts/, hello-world/, and drs-matrix/ directories. 11 main pages updated to correct 7-item nav (Investigation, Warehouse, R&D, L&D, Verdict, Resources, Debrief). 10 artifact leaf pages updated to correct single "Main Site" link pattern with back-link to parent case study. Issues found: some pages had 4-item navs with obsolete "Signal" link, some missing Resources, some with "The Debrief" instead of "Debrief", DRS Matrix had no standard nav, older artifact pages had non-standard nav structures.
-**Rationale:** Nav menus had drifted across deployments. Case study pages linked from homepage had inconsistent, outdated navigation. Standardized to match L&D and index page patterns.
-**Operator:** Angie Bailey + Claude via Cowork
-
-## [2026-05-19] — TIER 1/2 — Multi-page fixes (R&D, L&D, Resources, Homepage)
-**Change:** R&D page: tag changed to "P&L Readiness" / meta to "R&D // Measurement Infrastructure". CSS fixes: working-def font 0.95→1.1rem, marker-name 1.15→1.4rem, triad-title 1.2→1.5rem, framework-lede paragraph spacing added, red on marker 04 removed, orphaned shift-grid CSS cleaned. Copy: "five years"→"2 years", CTA→"View the New Metrics Reference Card", back link→"Back to R&D". Reference card page: title/heading/subtitle/meta updated to "Metrics" framing, back link→"View Full R&D Page". Homepage: R&D card tag→"P&L Readiness", Em-Dash Unpacking card added to L&D section. L&D page: "Reworking"→"Coming" on Supply Closet cards, back link→"Back to business".
-**Rationale:** QA pass after v3 copy deployment. Tag/H1 redundancy fixed. Font sizes were too small for readability. Em-Dash series needed homepage representation. L&D labels were inaccurate.
-**Operator:** Angie Bailey + Claude via Cowork
-
-## [2026-05-19] — TIER 2 — R&D (Operational Telemetry)
-**Change:** Full copy rewrite of rd/operational-telemetry/index.html to align with LinkedIn content series framing. Updated meta descriptions. Updated homepage R&D card (index.html Section 03) and Resources page card (resources/index.html) to match new framing.
-**Rationale:** LinkedIn Ops Telemetry series reframed around "Should ops teams shift from budget thinking to P&L thinking?" The R&D page needed to match before Post 1 publishes. Register shifted from academic framework delivery to research-with-a-pulse. "Markers" reframed as "metrics." From/to shift-grid visual and drama-loop arrow list removed. Blur/laser paradox introduced as opening complication. All seven metrics kept, descriptions rewritten in plain observation voice. Accountability triad reframed as prerequisite test.
-**Operator:** Angie Bailey + Claude via Cowork
-
----
-
-## [2026-05-14] — TIER 2 — Operational Telemetry Web Presence (R&D + Resources)
-**Change:** Deployed 4 files for the Operational Telemetry content series:
-1. `rd/operational-telemetry/index.html` — New dark-variant R&D framework page. Sections: structural problem (drama loop), functional-to-system shift grid, 7 telemetry marker cards, shared causal chains, accountability triad (control/signals/symmetry), economic systems architects conclusion with CTA. 24,916 bytes.
-2. `resources/operational-telemetry-markers.html` — New ecru light-variant printable reference card. 7-marker table, self-assessment scoring, accountability check grid, print button (landscape). Back-link to framework page. 16,194 bytes.
-3. `index.html` — Added Operational Telemetry card to R&D section `.lab-grid` (position 3, after DRS). Tag: "Operational Economics". +606 bytes.
-4. `resources/index.html` — Added Operational Telemetry Markers card to Tools category (`#tools`). Tag: "Reference Card // Printable". +647 bytes.
-**Rationale:** Web presence needed to support LinkedIn content series (9 atoms, 6 planned posts). Framework page earns trust in durability of social content. Reference card is the "receipt" — printable takeaway. Post 1 can ship without the framework page; Posts 2+ and all carousels need these pages live.
-**Operator:** Angie Bailey + Claude via Cowork
-
-## [2026-05-11] — TIER 1 — Site Registry Full Refresh
-**Change:** Complete rewrite of _site-registry.md. Updated from March 2026 to May 2026. Added: Site Architecture section (5 numbered sections + Resources + Debrief), MBR case study (Warehouse position 1), GEO/AEO case study reformatted into proper table (position 2), Hello World Toolkit (3 pages + 3 artifacts), Verdict essays (5 pages), Start-Here page, Resources section (2 pages), R&D landing, L&D section. Updated Warehouse card order to reflect all 8 live positions. Added URL Summary table (~90 total live URLs).
-**Rationale:** Registry had drifted since March — did not reflect MBR, GEO/AEO, Hello World toolkit, verdict essays, start-here, resources, or R&D landing deployments. Single source of truth for file inventory must stay current.
-**Operator:** Angie Bailey + Claude via Cowork
-
-## [2026-05-11] — TIER 3 — Performance Analytics Infrastructure
-**Change:** Created Google Drive folder structure for marketing analytics under 2_AREAS/Work/Performance Analytics/ (PARA methodology). Subfolders: Weekly Reports, Page Performance, Reference. Updated weekly-ga4-traffic-check scheduled task to save Google Docs to Weekly Reports folder with expanded metrics (per-page performance data). Moved legacy GA4 reference docs to Reference subfolder. Archived EquipmentShare-era analytics PDFs to 4_ARCHIVES.
-**Rationale:** Scheduled weekly reports were saving to ephemeral session outputs and getting lost. Needed persistent, organized storage following PARA methodology for recurring analytics work.
-**Operator:** Angie Bailey + Claude via Cowork
-
-## [2026-05-05] â TIER 1 â Nav Bar (All Pages)
-**Change:** Added Resources nav link to all subpages (verdict essays, L&D hub, case study hubs, 404); modernized old 4-item navs to full 7-item nav. Deleted orphan file changelog2_deploy.md.
-**Rationale:** Consistency â Resources link was only on index.html and resources pages after initial deploy.
-**Operator:** Angie Bailey + Claude via Cowork
-
-## [2026-05-05] â TIER 3 â Resources (New Section + New Page)
-**Change:** Created /resources/index.html (The Receipt Drawer) â standalone resources landing page with 4 categories (Prompts, Templates, Playbooks, Tools) and 15 resource cards linking to existing site content. Created /resources/digital-gratuity.html â standalone prompt stack page with 3-step system (Capture, Prompt, Send), 8 capture questions, 2-turn copyable AI prompt, and 6-step LinkedIn send instructions. Added "Resources" to nav bar on index.html between Verdict and Debrief. All pages include GA4 tag, inline base CSS for local preview, and anchor IDs for deep-linking from LinkedIn posts.
-**Rationale:** Needed a single URL to point LinkedIn and presentation audiences to when referencing templates, prompts, or tools. Eliminates the "go find it on my site" friction. Digital Gratuity prompt stack was the first resource seeded from an existing LinkedIn post (activity 7449837717149884417).
-**Operator:** Angie Bailey + Claude via Cowork
-
-## [2026-05-05] â TIER 1 â R&D (Hello, World / Safety-First Gate)
-**Change:** Updated Safety-First Gate interactive checklist so all six gate sections can be expanded and previewed by clicking their headers, regardless of completion state. Checkboxes remain sequentially locked (must complete prior gate to answer). Locked gates show a hint explaining why checkboxes are disabled. `toggleGate()` now functional. Removed blanket `pointer-events: none` and `opacity: 0.5` from locked gates.
-**Rationale:** Users should be able to read ahead and understand all gate questions before committing answers. Preview access improves transparency without breaking the sequential integrity of the assessment.
-**Operator:** Angie Bailey + Claude via Cowork
-
-## [2026-04-27] â TIER 3 â Start Here (New Page)
-**Change:** Deployed /start-here/index.html â interactive AI context builder. Single self-contained file (62 KB). Four-card questionnaire that generates a personal AI profile users can paste into any AI tool. GA4 tag injected. All dependencies CDN or inline.
-**Rationale:** Lead-gen and value-delivery tool for LinkedIn Content Engine. Gives visitors an immediate, useful artifact while introducing Angie's methodology.
-**Operator:** Angie Bailey + Claude via Cowork
-
-## [2026-04-26] â TIER 2 â Warehouse
-**Change:** Added Marketing Infrastructure MBR Debt Clearance case study. 1 case study page (dark-variant), 2 branded artifact pages (Cross-Functional MBR Template, Reporting Governance Cadence), 2 blank downloadable templates, 1 companion .docx narrative. MBR Warehouse card added as first card in grid. TBA placeholder card added as last card. Warehouse card limit overridden from 8 to 10. Collapsed card padding tightened with hover transition.
-**Rationale:** New case study showcasing unified reporting infrastructure build across 13 marketing functions and 10+ data platforms for a $1B+ organization. Demonstrates strategic operations and governance methodology capabilities.
-**Operator:** Angie Bailey + Claude via Cowork
-
-### 2026-04-25 â Site Architecture Overhaul + Verdict Essays + L&D Landing Page
-- Restructured: index.html now has 5 numbered sections (Investigation, Warehouse, R&D, L&D, Verdict) + unnumbered Debrief
-- Added: `ld/infrastructure-of-a-life.html` (L&D landing page with two collections)
-- Added: `verdict/add-value-not-noise.html` (Verdict essay, Principle 01)
-- Added: `verdict/vocabulary-is-the-barrier.html` (Verdict essay, Principle 02)
-- Added: `verdict/reality-before-theory.html` (Verdict essay, Principle 03)
-- Added: `verdict/structure-is-how-you-protect-people.html` (Verdict essay, Principle 04)
-- Added: `verdict/the-implementation-failed-not-the-people.html` (Verdict essay, Principle 05)
-- Changed: R&D and L&D broken out of Warehouse into own sections (03, 04)
-- Changed: Verdict principles now clickable links to essay pages
-- Changed: Warehouse cards collapse text/metric by default, unfurl on hover
-- L&D Collections: "Dots, Good Pens & a Commonplace Book: A Supply Closet Romance" (4 reworking) + "Em-Dash Unpacking: Thief by Mass Visual Weaponization" (4 coming)
-
-### 2026-04-24 â The GEO/AEO Transition
-- Added: `posts/geo-aeo-transition/geo-aeo-transition.html` (case study page)
-- Added: `posts/geo-aeo-transition/assets/ai-overview-monitoring-guide.html` (artifact page)
-- Added: `posts/geo-aeo-transition/assets/content-prioritization-framework.html` (artifact page)
-- Added: `posts/geo-aeo-transition/assets/geo-best-practices-guide.html` (artifact page)
-- Added: `posts/geo-aeo-transition/assets/schema-markup-ai-content-guide.html` (artifact page)
-- Added: `posts/geo-aeo-transition/assets/seo-ai-search-playbook.html` (artifact page)
-- Added: `posts/geo-aeo-transition/assets/content-brief-template.html` (artifact page)
-- Added: `posts/geo-aeo-transition/assets/templates/*-blank.html` (6 blank templates)
-- Added: Warehouse card to `index.html` (position 2, top row)
-- Moved: AI Implementation/Workforce AI Adoption card to position 1, top row
-- Category: Process Architecture // AI Search Readiness
-- Artifacts: 6 branded pages, 6 blank templates
-
-# AQB Site Changelog
-**Repo:** `AngieQBailey/angieqbailey`
-
-Running record of what changed, when, and why. Git commits are terse. This document captures the reasoning. Add an entry any time content is added, updated, or removed. Most recent entries at top.
-
----
-
-## March 2026
-
-### Crisis Communications Architecture + Enterprise Newsletter Architecture deployed
-**Commit:** Series of commits via GitHub API, March 29-30 2026
-**What:** Two new case studies deployed: Crisis Communications Architecture (main page, warehouse card, blank holding statements template) and Enterprise Newsletter Architecture (main page with yellow flag CSS fix). Yellow flag color corrected from `var(--quetzal)` to `#D4A017` on Enterprise Newsletter page.
-
-**Files added:**
-- `posts/crisis-communications-architecture/crisis-communications-architecture.html` - Main case study page
-- `posts/crisis-communications-architecture/warehouse-card.html` - Warehouse card
-- `posts/crisis-communications-architecture/assets/templates/crisis-holding-statements-blank.html` - Blank template (15 holding statement types)
-- `posts/enterprise-newsletter-architecture/enterprise-newsletter-architecture.html` - Main case study page
-
-**Bug fix:**
-- Yellow constraint flags on Enterprise Newsletter page were rendering green. `.constraint-flag.yellow` CSS rule was using `var(--quetzal)` for color and border. Fixed to hardcoded `#D4A017` (warm gold). The Analytical Palette has no yellow, so this is the one UI color that does not map to a CSS variable.
-
-**Why:** These case studies extend the portfolio into communications architecture and crisis infrastructure. The crisis comms page includes a four-tier severity escalation system, three-tier response teams, 15 holding statements, deskless workforce channel protocols, and disaster response decision framework. The newsletter page documents a channel audit, business case ($12,506/employee), CEO pitch, HRIS subscriber infrastructure, and editorial governance system that drove open rates from 9% to 95%+.
-
-
-### Post-Acquisition Integration Launch Ã¢ÂÂ full case study deployed
-**Commit:** Series of commits via GitHub API, March 29Ã¢ÂÂ30 2026
-**What:** Full case study deployed: main page, 4 branded artifact pages, 3 blank templates, and warehouse card. Warehouse card on index.html converted from placeholder to live link with forensic copy and Scope // Output metrics.
-
-**Files added:**
-- `posts/post-acquisition-integration-launch/post-acquisition-integration-launch.html` Ã¢ÂÂ Main case study page
-- `posts/post-acquisition-integration-launch/warehouse-card.html` Ã¢ÂÂ Warehouse card
-- `posts/post-acquisition-integration-launch/assets/vendor-governance-model.html` Ã¢ÂÂ Branded artifact
-- `posts/post-acquisition-integration-launch/assets/product-taxonomy-architecture.html` Ã¢ÂÂ Branded artifact
-- `posts/post-acquisition-integration-launch/assets/cross-functional-workback.html` Ã¢ÂÂ Branded artifact
-- `posts/post-acquisition-integration-launch/assets/templates/system-integration-sequence-blank.html` Ã¢ÂÂ Blank template
-- `posts/post-acquisition-integration-launch/assets/templates/vendor-governance-model-blank.html` Ã¢ÂÂ Blank template
-- `posts/post-acquisition-integration-launch/assets/templates/product-taxonomy-architecture-blank.html` Ã¢ÂÂ Blank template
-
-**Files modified:**
-- `index.html` Ã¢ÂÂ Post-Acquisition warehouse card converted from `<div>` placeholder to live `<a>` with forensic copy, Scope // Output metrics, "Ops Management" tag
-
-**Why:** Fifth client case study. Post-acquisition integration operations covering vendor governance, product taxonomy architecture, system integration sequencing and cross-functional workback for a multi-brand merger.
-
-### Post-Acquisition Integration Launch Ã¢ÂÂ post-deployment refinements
-**Commit:** Series of commits via GitHub API, March 30 2026
-**What:** Multiple UX and cross-linking improvements across the case study and site-wide.
-
-**Changes:**
-- System Integration Sequence Map: "Break" button CTA changed to "What breaks?" for clearer intent. Button restyled Ã¢ÂÂ larger font (0.7rem to 0.85rem), ecru text on rosso-tinted background with visible border. Vertical text orientation removed (was `writing-mode: vertical-rl`).
-- Cross-Functional Workback: Related Work section added linking to Summit's Dependency Friction Map and Pressure Points Register
-- Vendor Governance Model: Related Work section added linking to Summit's Expectations SLA Stress Test
-- White flash fix: `style="background-color: #121A28"` (dark pages) or `#F5F5DC` (ecru pages) added to `<html>` tag on all 50 HTML files site-wide. Eliminates white frame between page transitions.
-- Same-tab navigation: `target="_blank"` removed from all internal links across index.html, 6 case study pages, and 15 artifact pages. Only external links (LinkedIn) retain new-tab behavior.
-
-**Files modified:**
-- All 50 HTML files (inline bg on `<html>` tag)
-- `index.html` (warehouse card `target="_blank"` removal)
-- 6 case study main pages (`target="_blank"` removal from artifact links)
-- 15 artifact pages (`target="_blank"` removal from cross-links)
-- `posts/post-acquisition-integration-launch/assets/system-integration-sequence.html` (CTA and button styling)
-- `posts/post-acquisition-integration-launch/assets/cross-functional-workback.html` (Related Work section)
-- `posts/post-acquisition-integration-launch/assets/vendor-governance-model.html` (Related Work section)
-
-**Why:** Polish pass. The interactive sequence map's "Break" label was ambiguous and hard to read. Cross-links between case studies reinforce that the diagnostic methodology is a system, not one-off work. White flash and new-tab behavior were degrading the dark-theme experience.
-
-### Case study page titles aligned with Warehouse card names
-**Commit:** Series of commits via GitHub API, March 28 2026
-**What:** Updated the Enterprise Newsletter case study page (title tag, h1, OG meta tags) from "Enterprise Newsletter Architecture" to "Enterprise Newsletter Launch." Updated the Web Experience case study page from "Web Experience Capacity Build" to "Web Experience Capacity Expansion." Folder paths and filenames unchanged to preserve existing URLs. Site registry updated with full enumerated file inventory for Crisis Communications (replaced generic "6 additional assets" with specific filenames). Handoff doc updated to reflect titles are now aligned.
-
-**Files modified:**
-- `posts/enterprise-newsletter-architecture/enterprise-newsletter-architecture.html` Ã¢ÂÂ Title, h1 accent word, OG tags
-- `posts/web-experience-capacity-build/web-experience-capacity-build.html` Ã¢ÂÂ Title, h1 accent word, OG tags
-- `_site-registry.md` Ã¢ÂÂ Full Crisis Comms file inventory, Newsletter section title
-- `AQB Website Ã¢ÂÂ Session Handoff.md` Ã¢ÂÂ Updated card/title alignment rules
-
-**Why:** Warehouse card titles and case study page h1s were out of sync after the earlier rename. Brought everything into alignment so users land on a page whose title matches what they clicked.
-
-### Enterprise Newsletter Launch + Crisis Communications Architecture deployed
-**Commit:** Series of commits via GitHub API, March 28 2026
-**What:** Two full case studies deployed to the site. Enterprise Newsletter Launch includes the main case study page plus 6 artifact subpages (interactive-channel-audit, in-house-style-guide, channel-mix-matrix, ic-strategic-value-architecture, internal-comms-channel-audit) and 3 blank templates. Crisis Communications Architecture includes the main case study page plus 4 artifact subpages (crisis-holding-statements, interactive-crisis-assessment, crisis-response-team-architecture) and 6 additional assets. Warehouse cards added to index.html for both.
-
-**Files added:**
-- `posts/enterprise-newsletter-architecture/enterprise-newsletter-architecture.html`
-- `posts/enterprise-newsletter-architecture/assets/*.html` (6 artifact pages)
-- `posts/enterprise-newsletter-architecture/assets/templates/*.html` (3 blank templates)
-- `posts/crisis-communications-architecture/crisis-communications-architecture.html`
-- `posts/crisis-communications-architecture/assets/*.html` (4 artifact pages + 6 additional assets)
-
-**Files modified:**
-- `index.html` ÃÂ¢ÃÂÃÂ Two new Warehouse cards added
-
-**Why:** Expanding the portfolio with two new case studies demonstrating internal communications and crisis response architecture work.
-
-### Warehouse card reorder + naming updates + nesting fix
-**Commit:** Series of commits via GitHub API, March 28 2026
-**What:** Moved Enterprise Newsletter and Crisis Communications cards out of the R&D section into the main Warehouse grid. Retitled "Enterprise Newsletter Architecture" to "Enterprise Newsletter Launch." Retitled "Web Experience Capacity Build" to "Web Experience Capacity Expansion" across index.html. Fixed a missing `</div>` on the Workforce AI Adoption card that was causing the comms cards to nest inside it (overlap/stacking bug). Reordered cards: Multi-Team Roadmap Summit, E-Commerce P&L Build, Web Experience Capacity Expansion, Post-Acquisition Integration, Enterprise Newsletter Launch, Crisis Communications Architecture, Workforce AI Adoption (last, since it is not yet built out).
-
-**Files modified:**
-- `index.html` ÃÂ¢ÃÂÃÂ Card moves, renames, reorder, nesting fix
-
-**Why:** The two comms case studies are complete work, not R&D. Workforce AI moved to last position since its case study page does not exist yet. The nesting bug was caused by the Workforce AI `<div class="evidence-card">` missing its closing `</div>`, which caused subsequent `<a>` cards to render inside it.
-
-### DRS Matrix page deployed + R&D section added to Warehouse
-**Commits:** `18f9e90` through `7e5a536` (series of commits, March 22 2026)
-**What:** New page at `drs-matrix/index.html` combining "The 9:02 AM Meeting" mini-fable with the interactive DRS 2ÃÂÃÂÃÂÃÂ2 matrix widget. Added "R&D // Frameworks Under Construction" subsection to Warehouse on index.html with a Quetzal-tinted card linking to the new page (opens in new tab). Headshot in footer now links to LinkedIn with hover CTA.
-
-**Files added:**
-- `drs-matrix/index.html` ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Full page: fable narrative + interactive widget + print stylesheet
-
-**Files modified:**
-- `index.html` ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Added R&D subsection CSS (lab-divider, lab-grid, lab-card, series-status), DRS card, headshot wrapped in LinkedIn link with hover CTA, footer overflow fixes
-
-**Key design decisions:**
-- R&D section uses Quetzal-tinted card backgrounds (`rgba(0,104,94,0.12)`) and Quetzal-bright accent line on hover to visually distinguish from client case study cards (which use ecru-ghost backgrounds and rosso accent lines)
-- R&D label matches `section-label` pattern (0.85rem, weight 700, letter-spacing 0.2em, Quetzal bright)
-- Lab title at `clamp(1.4rem, 3vw, 2rem)` weight 900 ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ sits between section h2 and card titles in the hierarchy
-- DRS page is light/ecru variant (not dark Durable Births) ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ appropriate for thought leadership content vs. client case studies
-- Matrix widget: solid Quetzal quadrant backgrounds, Parisian Night on click, 2px borders on axis labels, click-outside-to-close
-- "See where you sit" CTA button at top of page (jump to widget), "Print / Save as PDF" button under "Explore the model" label at bottom of fable
-- Print stylesheet: portrait orientation, 1cm margins, hides fable/nav/footer, scales widget typography to fit one page, forces color printing
-- Plausible analytics script in `<head>` (requires account setup to activate)
-- Headshot: click goes to `linkedin.com/in/angie-bailey/`, hover scales to 2.8x with "Connect on LinkedIn" CTA text above image
-- "Cognitive State (Bandwidth)" axis label sits above Surplus/Deficit (mirrors Identity Source placement on y-axis)
-
-**LinkedIn strategy note:** The DRS page is the conversion destination for a LinkedIn test post (Chunk 2). URL should be shared in the first pinned comment with UTM parameters (`?utm_source=linkedin&utm_medium=social&utm_campaign=drs-chunk2`), NOT in the post body, to preserve embedding quality and on-platform engagement signals. See Trust Insights Q1 2026 LinkedIn Algorithm Guide analysis in the session handoff.
-
----
-
-### Warehouse grid reorder + Summit card title fix
-**Commit:** `831e0ed` / `7053125`
-**What:** Restored Post-Acquisition Integration placeholder card (had been accidentally replaced). Reordered Warehouse grid to: Summit ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ P&L Build ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Web Experience Capacity Build ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Post-Acquisition Integration ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Workforce AI Adoption. Renamed Summit card title from "E-Commerce Strategic Summit Cross-Functional Alignment" to "Multi-Team Roadmap Summit."
-**Why:** Previous edit replaced the wrong card when adding Web Experience. Summit card title was too long and jammed ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ two lines of text in a card label is not the pattern. Card title is a fast read; case study page h1 is the full forensic record. They are allowed to differ.
-
----
-
-### Web Experience Capacity Build ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ full case study launched
-**Commit:** `c385711`
-**What:** Added three new files:
-- `posts/web-experience-capacity-build/web-experience-capacity-build.html` ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ main case study page
-- `posts/web-experience-capacity-build/assets/team-capacity-diagnostic.html` ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ branded artifact page
-- `posts/web-experience-capacity-build/assets/templates/team-capacity-diagnostic-blank.html` ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ blank template
-Converted Warehouse card #3 from placeholder `<div>` to live `<a>`.
-**Why:** New case study covering EquipmentShare web experience scrum master and team architecture work. Key framework: Role-Weighted Capacity Diagnostic ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ maps capacity ratios for mixed-discipline teams where upstream roles (POs, designers) outnumber engineering bottlenecks. Artifact credits Nick Sonnenberg (*Come Up for Air*, 2023) for bandwidth calculation methodology and Eliyahu Goldratt for Theory of Constraints. Applied diagnostic (role-weighted mapping) is original.
-
-**Design decisions made during build:**
-- Stat box max-width bumped 500px ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ 750px; padding 1.25rem ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ 1.75rem 1.5rem; min-width 100px ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ 140px (labels "Overproduction Ratio" and "What the Governance Produced" were overflowing)
-- Artifact page "View Blank Template ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ" (not "Download") confirmed as standard
-- Blank template "Print / Save as PDF" button (not download)
-- 20 instances of sub-0.85rem mono text corrected across all three files in a dedicated fix pass
-- Director departure reframed: not "survived chaos" but "system was built well enough that leadership was planning to hand it off" ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ more accurate and consistent with the "survives the exit" brand thesis
-- Company never named in copy; senior engineer referred to by role only
-
----
-
-### SEO round 2: Organization schema, content alignment, freshness dates
-**Commit:** `1c41b61`
-**What:** Added Organization schema to JSON-LD, aligned content signals, added freshness dates.
-**Why:** Follow-up to initial SEO implementation. Structural improvements from an AIView audit ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ visible text and voice left untouched per brand rules. (A prior audit had recommended keyword-stuffed titles and generic descriptions; those were rejected.)
-
----
-
-### Headshot easter egg improvements
-**Commit:** `3c185c4` / `6ca14c6` / multiple
-**What:** Angie's portrait added to footer as hover reveal. 36px circle, grayscale filter, opacity:0 default, reveals on footer hover. Mobile: opacity:0.6 always (no hover on touch).
-**Why:** Low-key human signal. Not prominently displayed ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ intentional restraint.
-
----
-
-### OG social sharing image
-**Commit:** `2aed6f1` / `96a7f08` / `2068abb` / `cc09567`
-**What:** Created og-image.png (1200ÃÂÃÂÃÂÃÂ630). Iterated: started basic, rebuilt with blueprint-grid aesthetic, rosso accent, IBM Plex Mono. Added og:image:width and og:image:height tags.
-**Why:** LinkedIn requires explicit image dimensions for reliable detection. `og:image:width` and `og:image:height` are mandatory ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ do not remove. LinkedIn post inspector was used to force re-scrape after deploy.
-
----
-
-### Page title simplification
-**Commit:** `b202962`
-**What:** `<title>`, `og:title`, `twitter:title` all set to just "Angie Bailey." `jobTitle` in JSON-LD set to "Operations Strategist."
-**Why:** Angie rejected "Operations Architecture and AI Implementation" (too narrow) and "Transformation Architect" (identity-first, cognitive load). Decision: let the work speak. Visible title is name only. Job title is crawler-only.
-
----
-
-### Signal ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Debrief rename
-**Commit:** `413963d`
-**What:** Section 04 on index.html renamed from "The Signal" to "The Debrief." Section id changed from `#signal` to `#debrief`. All nav links and back-links across case study pages and artifact pages updated.
-**Why:** "Signal" read as AI jargon. "Debrief" won from five alternatives in a live session. All cross-links updated simultaneously ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ do not re-introduce `#signal`.
-
----
-
-### Template button standardization
-**Commit:** `413963d` (same commit as Signal ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Debrief)
-**What:** All artifact pages updated to use "View Blank Template ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ" (not "Download"). `download` attribute removed from all template links.
-**Why:** `download` attribute on HTML files caused browsers to download raw HTML source instead of rendering the page. The correct pattern is `target="_blank"` with no `download` attribute. Blank templates themselves use "Print / Save as PDF" (`onclick="window.print()"`).
-
----
-
-### Yellow flag color fix
-**Commit:** `234b57e`
-**What:** Yellow constraint flags across all artifact pages corrected to `#D4A843`.
-**Why:** Yellow flags were rendering as quetzal-bright (green) ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the wrong color. Green flags were rendering as ecru-dim (beige) ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ also wrong. Both fixed. Yellow is hardcoded `#D4A843` because it was added after the original CSS variable set and never got a variable.
-
----
-
-### E-Commerce P&L Build ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ case study launched
-**Commit:** `b5c0669`
-**What:** Added case study page and artifact pages for E-Commerce P&L Build.
-**Why:** Second case study. Decision infrastructure framing. Covers building the first e-commerce P&L for a company that tracked revenue but not profitability by channel.
-
----
-
-### Dossier ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Brief rename
-**Commit:** `06278b7`
-**What:** All user-facing display text changed from "Dossier" to "Project Brief" or "Brief." File names preserved (renaming would break existing URLs).
-**Why:** Angie didn't want the word "dossier" in any visible copy. File paths still say `dossier` ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ this is intentional to preserve URLs. Do not rename the files.
-
----
-
-### Cross-links between artifacts
-**Commit:** `06278b7` (same commit as Dossier ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Brief)
-**What:** Related Work sections added to bottom of artifact pages where methodology overlaps (P&L and Summit case studies).
-**Why:** Users landing on one artifact may have arrived from the other case study's ecosystem. Cross-links increase discovery without requiring a nav overhaul.
-
----
-
-### Summit artifact back-link fix
-**Commit:** (part of early summit iteration commits)
-**What:** Summit artifact back-links corrected from `/cases/e-commerce-summit.html` to `../e-commerce-summit.html`.
-**Why:** Path was wrong ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ linked to a non-existent `/cases/` directory. Relative paths are required.
-
----
-
-### Multi-Team Roadmap Summit ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ case study launched
-**Commit:** Early commits (`07a6c6a`, `3c215c4`, `624c100`)
-**What:** First case study added. Five artifact pages, five blank templates.
-**Why:** Summit case study was the first production build of the Durable Births design system.
-
----
-
-## Format for New Entries
-
-Copy this block and fill in:
-
-```
-### {Short title of change}
-**Commit:** `{hash}` (or "no commit ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ edit in progress")
-**What:** One paragraph description of what was changed, what files were touched.
-**Why:** The reasoning. What decision was made and why. If overriding a previous decision, note what changed.
-```
+<!DOCTYPE html>
+<html lang="en" style="background-color:#121A28;">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="If 'no' isn't safe to say, 'yes' is theater. Section 04 of the Dignity-Required System: a diagnostic for the compliance that masks itself as adoption.">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <link rel="canonical" href="https://angieqbailey.com/rd/dignity/growth-collapse">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Growth Collapse Math // The Dignity-Required System">
+    <meta property="og:description" content="If 'no' isn't safe to say, 'yes' is theater. The compliance that fills the dashboard isn't adoption. It's the architecture failing in plain sight.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://angieqbailey.com/rd/dignity/growth-collapse">
+    <meta property="og:image" content="https://angieqbailey.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Growth Collapse Math // The Dignity-Required System">
+    <meta name="twitter:description" content="If 'no' isn't safe to say, 'yes' is theater. The compliance that fills the dashboard isn't adoption. It's the architecture failing in plain sight.">
+    <meta name="twitter:image" content="https://angieqbailey.com/og-image.png">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Growth Collapse Math: Cynicism vs. Respect",
+      "description": "Section 04 of the Dignity-Required System. A diagnostic for the compliance that masks itself as adoption, the middle manager carrying the load, and the architecture that makes refusal unsurvivable.",
+      "author": { "@type": "Person", "name": "Angie Bailey", "url": "https://angieqbailey.com" },
+      "publisher": { "@type": "Person", "name": "Angie Bailey" },
+      "url": "https://angieqbailey.com/rd/dignity/growth-collapse",
+      "image": "https://angieqbailey.com/og-image.png",
+      "isPartOf": {
+        "@type": "CreativeWork",
+        "name": "The Dignity-Required System",
+        "url": "https://angieqbailey.com/rd/dignity/"
+      }
+    }
+    </script>
+
+    <title>Growth Collapse Math // The Dignity-Required System // Angie Bailey</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        /* Framework header */
+        .framework-header {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 8rem;
+            padding-bottom: 4rem;
+        }
+        .framework-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--quetzal-bright);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.4s both;
+        }
+        .framework-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--rosso);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+            display: block;
+            animation: fade-up 0.8s ease 0.5s both;
+        }
+        .framework-header h1 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(2rem, 5.5vw, 4.5rem);
+            font-weight: 900;
+            line-height: 0.95;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+            max-width: 850px;
+            animation: fade-up 0.8s ease 0.6s both;
+        }
+        .framework-header h1 .accent-word { color: var(--rosso); }
+        .framework-lede {
+            border-left: 5px solid var(--rosso);
+            padding-left: 2rem;
+            max-width: 620px;
+            animation: fade-up 0.8s ease 0.8s both;
+        }
+        .framework-lede p {
+            font-size: 1.15rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+            margin-bottom: 1.25rem;
+        }
+        .framework-lede strong { color: var(--ecru); font-weight: 500; }
+
+        /* Working definition block */
+        .working-def {
+            margin-top: 3rem;
+            max-width: 620px;
+            animation: fade-up 0.8s ease 1s both;
+        }
+        .working-def-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.75rem;
+        }
+        .working-def p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+        }
+        .working-def p strong { color: var(--ecru); font-weight: 500; }
+
+        /* Section structure */
+        .framework-section {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            border-top: 1px solid var(--ecru-ghost);
+        }
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .framework-section h2 {
+            font-family: 'Imbue', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 900;
+            color: var(--ecru);
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 1.75rem;
+            max-width: 700px;
+        }
+
+        .body-text p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--ecru-dim);
+            margin-bottom: 1.5rem;
+            max-width: 650px;
+        }
+        .body-text p strong { color: var(--ecru); font-weight: 500; }
+
+        /* Citation links inline in body and glossary */
+        .body-text a,
+        .glossary-body a {
+            color: var(--quetzal-bright);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+            transition: color 0.2s;
+        }
+        .body-text a:hover,
+        .glossary-body a:hover {
+            color: var(--rosso);
+        }
+
+        /* Callout for the close */
+        .callout {
+            border-left: 4px solid var(--rosso);
+            padding: 2rem;
+            background: rgba(245, 245, 220, 0.14);
+            margin: 2rem 0;
+            max-width: 680px;
+        }
+        .callout p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--ecru-dim);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .callout p:last-child { margin-bottom: 0; }
+        .callout strong { color: var(--ecru); font-weight: 500; }
+
+        /* Back link */
+        .back-link {
+            display: inline-block;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--quetzal-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+            padding: 0.75rem 0;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--rosso); }
+
+        @media (max-width: 900px) {
+            .framework-header { padding-top: 6rem; }
+            .framework-lede { padding-left: 1.25rem; }
+        }
+    </style>
+</head>
+<body style="background-color: #121A28;">
+
+<div class="blueprint-overlay" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true"></div>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
+    <ul class="nav-links">
+        <li><a href="/#investigation">Investigation</a></li>
+        <li><a href="/#warehouse">Warehouse</a></li>
+        <li><a href="/#rnd">R&amp;D</a></li>
+        <li><a href="/#lnd">L&amp;D</a></li>
+        <li><a href="/#verdict">Verdict</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/#debrief">Debrief</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- HEADER / FRICTION FRONT -->
+    <section class="framework-header section-content">
+        <span class="framework-meta">Dignity-Required System // Section 04</span>
+        <span class="framework-tag">Growth Collapse Math</span>
+        <h1>If &ldquo;No&rdquo; Isn&rsquo;t Safe,<br><span class="accent-word">Yes Is Theater.</span></h1>
+
+        <div class="framework-lede">
+            <p>
+                A middle manager sits through the rollout meeting. She says the right things. Commits to the right milestone. Her dashboard shows engagement. She hasn't opened the app since. That isn't resistance. That's a rational response to a system that doesn't make refusal safe.
+            </p>
+            <p>
+                When &ldquo;no&rdquo; carries career penalty, &ldquo;yes&rdquo; stops meaning yes. The signal gets dishonest. The dashboard fills with compliance the architecture mistakes for adoption.
+            </p>
+        </div>
+
+        <div class="working-def">
+            <div class="working-def-label">Working Definition</div>
+            <p><strong>Architecture</strong> here means how the work is structured. The decisions, the workflows, the governance steps and the reporting lines that shape how the job gets done. Not buildings. Not code. The system of choices that says who can speak up, who gets translated, and who absorbs the impact when the signal between layers gets cut.</p>
+        </div>
+    </section>
+
+    <!-- THE FINDINGS -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">The Findings</span>
+        <h2>The Mask Looks Like<br>Buy-In on Dashboards.</h2>
+
+        <div class="body-text">
+            <p>
+                The story repeats across rollouts. A new tool ships. The dashboards turn green inside two weeks. Adoption metrics hit target. The leadership update calls it a successful deployment. Inside the team, usage is shallow, sometimes performative, sometimes nonexistent.
+            </p>
+            <p>
+                The research describes what's happening underneath.
+            </p>
+            <p>
+                Fewer than half of American workers feel safe sharing their opinions at work for fear of negative consequences (<a href="https://www.niagarainstitute.com/blog/psychological-safety-at-work">Ipsos, 2022</a>). Detert and Edmondson, working with a high-tech company sample larger than 40,000 employees, found about half did not agree it was &ldquo;safe to speak up&rdquo; at work (<a href="https://www.hbs.edu/faculty/Pages/item.aspx?num=38244">Detert &amp; Edmondson, 2011</a>). Milliken and colleagues found 85% of interview subjects had felt unable to raise an important concern with their bosses on at least one occasion they considered important (<a href="https://onlinelibrary.wiley.com/doi/10.1111/1467-6486.00387">Milliken, Morrison &amp; Hewlin, 2003</a>). Decades of psychological safety research from <a href="https://www.hbs.edu/faculty/Pages/item.aspx?num=54851">Edmondson</a> document the cost. Costly errors don't come from people who didn't know what to do. They come from people who knew and chose not to say.
+            </p>
+        </div>
+
+        <p class="verdict-line">Compliance isn't adoption. Compliance is what gets measured when the system has stopped asking.</p>
+
+        <div class="body-text">
+            <p>
+                The middle manager carries this with both hands. Gallup's 2024 study of disruptive change found leaders and managers are 56% more likely than individual contributors to experience extensive disruption (<a href="https://www.gallup.com/workplace/645152/disruptive-change-hitting-leaders-managers-hardest.aspx">Gallup, 2024</a>). The Capterra 2023 study reported 71% of middle managers feel overwhelmed, stressed or burned out &ldquo;sometimes&rdquo; or &ldquo;always&rdquo; (<a href="https://www.capterra.com/resources/middle-manager-burnout-strategies/">Capterra, 2023</a>). That figure rises to 76% at large enterprises. <a href="https://www.gallup.com/file/workplace/659528/state-of-the-global-workplace-2025-download.pdf">Gallup's 2025 State of the Global Workplace</a> put middle manager burnout at 45%, higher than any other group. Only 21% report thriving.
+            </p>
+            <p>
+                <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/stop-wasting-your-most-precious-resource-middle-managers">McKinsey</a> found middle managers spend approximately 35% of their time on administrative tasks during transformation periods (McKinsey, 2023). The translation work, which means converting strategy into language a team can execute while converting frontline reality into language that survives the leadership update, gets pushed into the margins.
+            </p>
+            <p>
+                A 2025 <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1627999/full">Frontiers in Psychology study</a> found AI awareness, defined as employees' perception that the technology may replace them or undermine their occupational value, drives knowledge hoarding. Industry reporting in 2026 catches the same pattern at the rollout layer. <a href="https://www.gpstrategies.com/blog/why-1-in-6-workers-fake-ai-adoption-and-how-brave-fixes-it/">GP Strategies</a> documented that roughly 1 in 6 workers pretend to use AI. <a href="https://hrzone.com/when-ai-adoption-becomes-performance-theatre-stop-measuring-the-wrong-thing/">HRZone</a> called it &ldquo;AI adoption performance theatre.&rdquo; Some managers, under pressure to hit AI usage targets, were encouraging &ldquo;meaningless chatbot interactions&rdquo; so the metrics would clear.
+            </p>
+        </div>
+
+        <p class="verdict-line">The signal isn't broken. The signal is being suppressed by the people sending it.</p>
+
+        <div class="body-text">
+            <p>
+                This is about the people. <strong>It's also about the architecture that uses them as the bearing surface.</strong> The pattern injures the manager who's wearing the mask, the worker who's pretending the tool helps, and the executive who's reading a dashboard that lost truth two layers ago. The architecture is the only variable that can change without firing anyone.
+            </p>
+        </div>
+    </section>
+
+    <!-- WHY EXISTING APPROACHES FAIL -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">Why Existing Approaches Fail</span>
+        <h2>Engagement Surveys<br>Don't Find Silence.</h2>
+
+        <div class="body-text">
+            <p>
+                The standard playbook for adoption shortfall is well rehearsed. Run an engagement survey. Launch a champion program. Host a town hall. Roll out manager training. Add a listening session.
+            </p>
+            <p>
+                None of those find the people who've already gone quiet.
+            </p>
+            <p>
+                Engagement surveys depend on respondents who feel safe enough to answer honestly. The workers who don't feel safe are the exact ones the survey can't see. Their scores look fine, because the survey form requires the same vulnerability they're protecting against.
+            </p>
+            <p>
+                Champion programs select for the already-bought-in. The skeptics, who carry the most useful diagnostic information about the rollout, get screened out of the feedback loop by definition.
+            </p>
+            <p>
+                Town halls require speaking up in front of senior leaders. That's the riskiest form of voice there is. The town hall surfaces the people who were already going to speak. It leaves the silent majority exactly where they were.
+            </p>
+            <p>
+                Manager training assumes the middle manager is the obstacle. The research says the opposite. <strong>The middle manager is the structural shock absorber for the rollout.</strong> Training them harder doesn't fix the architecture that overloads them. It just adds another item to the 35%.
+            </p>
+            <p>
+                Listening sessions assume the listener is trustworthy. That trust has to exist before the listening session, not because of it. A listening session run by the architecture that produced the silence is the architecture asking the silenced people to volunteer themselves for visibility.
+            </p>
+        </div>
+
+        <p class="verdict-line">The standard playbook makes the silent worker more visible. That isn't safer. That's the opposite.</p>
+
+        <div class="body-text">
+            <p>
+                The thing that fixes the signal isn't another communications channel. It's an architecture that makes refusal survivable.
+            </p>
+        </div>
+    </section>
+
+    <!-- THE DIAGNOSTIC VOCABULARY -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">The Diagnostic Vocabulary</span>
+        <h2>Six Names<br>for the Pattern.</h2>
+
+        <div class="body-text">
+            <p>
+                The Dignity-Required System names six concepts for this friction front. Each one shifts the conversation from managing the silent worker to examining the architecture that produced the silence. Each one expands inline below.
+            </p>
+        </div>
+
+        <div class="glossary-grid">
+
+            <details class="glossary-card">
+                <summary>
+                    <span class="glossary-term">&#9656; Hufflepuff Mask</span>
+                    <span class="glossary-toggle">+</span>
+                </summary>
+                <div class="glossary-body">
+                    <p>
+                        The face a worker wears when refusal would cost them position, project allocation or political capital. The mask says the right things in the meeting. The behavior tells a different story. The mask isn't dishonesty. It's a survival adaptation to a system that punishes the honest &ldquo;no.&rdquo; Dashboard adoption metrics often measure the mask, not the underlying behavior.
+                    </p>
+                    <div class="glossary-question">
+                        <strong>Diagnostic Question</strong>
+                        If everyone on this rollout said exactly what they thought in the next meeting, who would lose the most. If the answer isn't &ldquo;no one,&rdquo; the mask is already in the room.
+                    </div>
+                </div>
+            </details>
+
+            <details class="glossary-card">
+                <summary>
+                    <span class="glossary-term">&#9656; Survivable Refusal</span>
+                    <span class="glossary-toggle">+</span>
+                </summary>
+                <div class="glossary-body">
+                    <p>
+                        The organizational requirement that &ldquo;no&rdquo; be safe to say. A system has survivable refusal when an employee can decline a tool, flag a workflow as broken or escalate a concern without their career absorbing the impact. Without survivable refusal, every &ldquo;yes&rdquo; the architecture collects is suspect. <a href="https://www.hbs.edu/faculty/Pages/item.aspx?num=54851">Edmondson's psychological safety research</a> documents the pattern across decades. The cost of suppressed voice shows up as undetected errors, delayed escalations and adoption metrics that don't predict behavior.
+                    </p>
+                    <div class="glossary-question">
+                        <strong>Diagnostic Question</strong>
+                        When was the last time someone said &ldquo;this won't work&rdquo; and the conversation continued without their reputation taking damage. If the answer is &ldquo;can't remember,&rdquo; refusal isn't survivable here.
+                    </div>
+                </div>
+            </details>
+
+            <details class="glossary-card">
+                <summary>
+                    <span class="glossary-term">&#9656; Human Shock Absorber</span>
+                    <span class="glossary-toggle">+</span>
+                </summary>
+                <div class="glossary-body">
+                    <p>
+                        The structural role the middle manager plays during organizational change. Strategy lives at the top. Execution lives at the bottom. The middle layer translates between them while absorbing the anxiety that travels in both directions. The 45% burnout rate <a href="https://www.gallup.com/workplace/645152/disruptive-change-hitting-leaders-managers-hardest.aspx">Gallup</a> reports isn't a personality finding. It's a measurement of how much load is parked on a layer the architecture didn't design to carry it. Treating the manager as the problem is the misdiagnosis.
+                    </p>
+                    <div class="glossary-question">
+                        <strong>Diagnostic Question</strong>
+                        What part of this rollout assumes the middle manager will translate the message, hold the team together and absorb the friction without additional support. That's the load the architecture is placing on the absorber.
+                    </div>
+                </div>
+            </details>
+
+            <details class="glossary-card">
+                <summary>
+                    <span class="glossary-term">&#9656; Growth Collapse</span>
+                    <span class="glossary-toggle">+</span>
+                </summary>
+                <div class="glossary-body">
+                    <p>
+                        The pattern that happens when cognitive surplus generated by automation upstream gets converted into more labor for the same workers downstream. The leadership celebration of an efficiency gain becomes the team's experience of added scope. The collapse isn't a failure of the technology. It's a feature of an architecture that treats reclaimed capacity as available headcount the system can spend without asking.
+                    </p>
+                    <div class="glossary-question">
+                        <strong>Diagnostic Question</strong>
+                        When this tool saves a team four hours a week, who decides what fills the four hours. If the answer is &ldquo;the same system that's already overloading them,&rdquo; the collapse is built in.
+                    </div>
+                </div>
+            </details>
+
+            <details class="glossary-card">
+                <summary>
+                    <span class="glossary-term">&#9656; Efficiency Squeeze</span>
+                    <span class="glossary-toggle">+</span>
+                </summary>
+                <div class="glossary-body">
+                    <p>
+                        The downstream consequence of growth collapse experienced at the individual level. Being efficient gets punished with more work. Inefficiency was a buffer the worker had quietly built into the day to manage cognitive load. The tool removes the buffer and the work expands to consume the recovered time. The <a href="https://www.tandfonline.com/doi/full/10.1080/02678373.2022.2080778">work intensification research from Mauno and colleagues (2023)</a> documents the health cost across two decades. Faster work pace, more multitasking and less recovery time map to emotional exhaustion that maps to health harm.
+                    </p>
+                    <div class="glossary-question">
+                        <strong>Diagnostic Question</strong>
+                        Did the worker get to keep any of the time the tool gave back. If the answer is &ldquo;no,&rdquo; the squeeze is operating as designed.
+                    </div>
+                </div>
+            </details>
+
+            <details class="glossary-card">
+                <summary>
+                    <span class="glossary-term">&#9656; Trust vs Compliance</span>
+                    <span class="glossary-toggle">+</span>
+                </summary>
+                <div class="glossary-body">
+                    <p>
+                        The diagnostic distinction at the center of the report. Compliance is what people do. Trust is whether they'd still do it without surveillance. A rollout dashboard that shows high compliance and a usage log that shows shallow engagement is the architecture's own data flagging the gap. Trust is harder to measure. Compliance is easier. Measuring the easier thing and calling it the harder thing is how the architecture stays confused.
+                    </p>
+                    <div class="glossary-question">
+                        <strong>Diagnostic Question</strong>
+                        If the dashboard turned off tomorrow, would the behavior change. If the answer is &ldquo;yes,&rdquo; the dashboard isn't reading adoption. It's reading the mask.
+                    </div>
+                </div>
+            </details>
+
+        </div>
+    </section>
+
+    <!-- WHAT THIS MEANS AT THE ROLLOUT LEVEL -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">What This Means at Rollout</span>
+        <h2>Build for Honest &ldquo;No&rdquo;<br>Before Measuring Yes.</h2>
+
+        <div class="body-text">
+            <p>
+                Adoption metrics don't measure adoption when refusal isn't safe. They measure mask compliance. The first prerequisite is architectural, not cultural. <strong>The system has to make &ldquo;no&rdquo; a survivable behavior before it can ask &ldquo;yes&rdquo; to mean anything.</strong>
+            </p>
+            <p>
+                That looks like specific changes to how the rollout is structured. A named escalation path that an individual contributor can use without going through their manager. A documented response when a champion says &ldquo;this isn't working in my domain&rdquo; that doesn't penalize their performance review. A leadership commitment that &ldquo;no&rdquo; from a frontline worker stops the rollout for diagnosis, not the worker for retraining.
+            </p>
+            <p>
+                It also looks like protecting the shock absorber. The middle manager's calendar isn't infinitely expandable. If the rollout assumes the manager will translate the strategy, hold the team's anxiety, deliver the training and absorb the friction, the rollout is depending on capacity that doesn't exist. Either the architecture funds the load explicitly with reduced operating responsibilities, dedicated time and clear authority, or the rollout is running on borrowed bandwidth that will default.
+            </p>
+            <p>
+                The third structural move is closing the growth collapse loop. When automation creates capacity, the architecture decides what fills it. If that decision happens by default, the surplus disappears into more work. If it happens deliberately, the surplus can fund the bandwidth a future change will require. The deliberate move is rarer than the default. The deliberate move is also the only one that doesn't burn the team.
+            </p>
+            <p>
+                Measuring trust signals matters more than measuring compliance metrics. Trust signals include voluntary discretionary use, unprompted suggestions for improvement, candid feedback at the manager-skip level, and the willingness of skeptics to engage with the rollout team. None of these show up in a usage dashboard. All of them show up in qualitative observation by someone the workers trust. That trust takes longer to build than a quarter. The architecture should plan accordingly.
+            </p>
+        </div>
+
+        <p class="verdict-line">Compliance metrics are the dashboard's optimism. Trust signals are the dashboard's honesty.</p>
+    </section>
+
+    <!-- THE DIAGNOSTIC CLOSE -->
+    <section class="framework-section section-content reveal">
+        <span class="section-label">The Close</span>
+        <h2>Performance,<br>or Trust.</h2>
+
+        <div class="callout">
+            <p>
+                Every rollout produces one of two outcomes. Performance of adoption, measured in compliance metrics the dashboard reports as a win. Or actual adoption, measured in trust signals the workers volunteer because the architecture earned them.
+            </p>
+            <p>
+                <strong>The architecture decides which one it gets by deciding whether &ldquo;no&rdquo; is safe to say.</strong>
+            </p>
+            <p>
+                If refusal carries career penalty, the dashboard fills with masks. If refusal carries diagnostic value, the dashboard tells the truth. There isn't a communications layer that closes the gap between those two systems. The architecture itself is the variable.
+            </p>
+        </div>
+
+        <div class="back-link-row">
+            <a href="/rd/dignity/" class="back-link">&larr; Back to the Dignity-Required System</a>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <span>&copy; 2026 Angie Bailey</span>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
