@@ -181,8 +181,20 @@
             max-width: 650px;
         }
         .body-text p strong { color: var(--ecru); font-weight: 500; }
-        .body-text a { color: var(--quetzal-bright); text-decoration: underline; text-decoration-color: rgba(0, 196, 180, 0.3); text-underline-offset: 3px; transition: color 0.2s; }
-        .body-text a:hover { color: var(--ecru); }
+        .body-text a,
+        .glossary-body a {
+            color: #00C4B4;
+            text-decoration: underline;
+            text-decoration-color: rgba(0, 196, 180, 0.7);
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+            transition: color 0.2s, text-decoration-color 0.2s;
+        }
+        .body-text a:hover,
+        .glossary-body a:hover {
+            color: var(--ecru);
+            text-decoration-color: var(--ecru);
+        }
 
         .verdict-line {
             font-family: 'Imbue', serif;
@@ -254,8 +266,7 @@
             margin-bottom: 1rem;
         }
         .glossary-body p:last-child { margin-bottom: 0; }
-        .glossary-body a { color: var(--quetzal-bright); text-decoration: underline; text-decoration-color: rgba(0, 196, 180, 0.3); text-underline-offset: 3px; transition: color 0.2s; }
-        .glossary-body a:hover { color: var(--ecru); }
+        /* glossary-body a rules consolidated above with .body-text a */
         .glossary-question {
             font-family: 'IBM Plex Mono', monospace;
             font-size: 0.85rem;
