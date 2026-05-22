@@ -1,6 +1,6 @@
 # Site Map — angieqbailey.com
 
-Last Updated: 2026-05-20
+Last Updated: 2026-05-21
 
 ## Index Page Structure (5 Sections + Resources + Debrief)
 
@@ -8,7 +8,7 @@ Last Updated: 2026-05-20
 |---|---|---|---|
 | 01 | Investigation | The Investigation | About / professional identity |
 | 02 | Warehouse | The Warehouse | 8 case study cards (collapsible on hover) |
-| 03 | R&D | Research & Development | 3 cards: Hello World toolkit, DRS Matrix, Operational Telemetry |
+| 03 | R&D | Research & Development | 3 cards: Hello World toolkit, The Dignity-Required System, Operational Telemetry |
 | 04 | L&D | Learning & Development | 2 cards: A Supply Closet Romance, Em-Dash Unpacking. Both link to ld/infrastructure-of-a-life.html |
 | 05 | Verdict | The Verdict | 5 clickable principles linking to essay pages |
 | — | Resources | The Receipt Drawer | Standalone page at /resources/ — linked in nav between Verdict and Debrief |
@@ -153,7 +153,10 @@ All multi-item nav pages use the 7-item nav: Investigation, Warehouse, R&D, L&D,
 | SOP Playbook — Pro Edition Guide | Artifact | hello-world/sop-playbook-builder/assets/pro-guide.html |
 | SOP Playbook — Capture Template (Blank) | Template | hello-world/sop-playbook-builder/assets/templates/capture-template-blank.html |
 | Start Here | Interactive Tool | start-here/index.html |
-| DRS Matrix | Framework Page | drs-matrix/index.html |
+| DRS Matrix (redirect) | Redirect | drs-matrix/index.html → rd/dignity/ |
+| The Dignity-Required System | Framework Hub (dark variant) | rd/dignity/index.html |
+| The 9:02 AM Meeting | Mini-Fable (ecru variant) | rd/dignity/902-meeting.html |
+| Tactical Dignity via Meaningful Choice | Section 03 Findings Report (dark variant) | rd/dignity/tactical-dignity.html |
 | Operational Telemetry | Framework Page (dark variant) | rd/operational-telemetry/index.html |
 
 ## L&D Pages (Section 04)
@@ -208,12 +211,12 @@ Max capacity per project rules: 7.
 | Case study hub pages | 8 |
 | Artifact pages | 33 |
 | Template pages | 27 |
-| R&D pages | 10 |
+| R&D pages | 11 |
 | L&D pages | 1 |
 | Verdict essays | 5 |
 | Resources pages | 3 |
 | Other (index, 404) | 2 |
-| **Total HTML** | **89** |
+| **Total HTML** | **90** |
 
 Note: Portfolio Work/ directory and 3 orphaned warehouse-card.html pages were deleted 2026-05-19.
 
