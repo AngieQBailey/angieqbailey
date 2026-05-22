@@ -160,6 +160,7 @@ All multi-item nav pages use the 7-item nav: Investigation, Warehouse, R&D, L&D,
 | The Last 50 Feet Failure | Section 02 Findings Report (dark variant) | rd/dignity/last-50-feet.html |
 | Tactical Dignity via Meaningful Choice | Section 03 Findings Report (dark variant) | rd/dignity/tactical-dignity.html |
 | Growth Collapse Math | Section 04 Findings Report (dark variant) | rd/dignity/growth-collapse.html |
+| Trust, Power and Signal Loss | Section 05 Findings Report (dark variant) | rd/dignity/signal-loss.html |
 | Operational Telemetry | Framework Page (dark variant) | rd/operational-telemetry/index.html |
 
 ## L&D Pages (Section 04)
