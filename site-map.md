@@ -217,12 +217,12 @@ Max capacity per project rules: 7.
 | Case study hub pages | 8 |
 | Artifact pages | 33 |
 | Template pages | 27 |
-| R&D pages | 15 |
+| R&D pages | 19 |
 | L&D pages | 1 |
 | Verdict essays | 5 |
 | Resources pages | 3 |
 | Other (index, 404) | 2 |
-| **Total HTML** | **94** |
+| **Total HTML** | **98** |
 
 Note: Portfolio Work/ directory and 3 orphaned warehouse-card.html pages were deleted 2026-05-19.
 
@@ -231,7 +231,7 @@ Note: Portfolio Work/ directory and 3 orphaned warehouse-card.html pages were de
 | File | Purpose |
 |---|---|
 | robots.txt | Allow all crawlers, points to sitemap.xml |
-| sitemap.xml | 84 canonical URLs with priority tiers |
+| sitemap.xml | Canonical URLs with priority tiers (last regenerated 2026-05-19; may be missing pages deployed after that date) |
 | styles.css | Shared stylesheet (minified) |
 | apple-touch-icon.png | 180×180 iOS home screen icon |
 | favicon.ico | Browser tab icon |
