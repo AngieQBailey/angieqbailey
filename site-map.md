@@ -231,7 +231,7 @@ Note: Portfolio Work/ directory and 3 orphaned warehouse-card.html pages were de
 | File | Purpose |
 |---|---|
 | robots.txt | Allow all crawlers, points to sitemap.xml |
-| sitemap.xml | Canonical URLs with priority tiers (last regenerated 2026-05-19; may be missing pages deployed after that date) |
+| sitemap.xml | 93 canonical URLs with priority tiers (regenerated 2026-05-27) |
 | styles.css | Shared stylesheet (minified) |
 | apple-touch-icon.png | 180×180 iOS home screen icon |
 | favicon.ico | Browser tab icon |
