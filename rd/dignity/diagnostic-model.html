@@ -18,7 +18,7 @@
     <link rel="canonical" href="https://angieqbailey.com/rd/dignity/diagnostic-model">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Operational Reality Assessment // The Dignity-Required System">
+    <meta property="og:title" content="Four States of Adoption Reality // The Dignity-Required System">
     <meta property="og:description" content="Four states of adoption reality. People aren't fixed in a segment — they shift under pressure. An interactive diagnostic model.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://angieqbailey.com/rd/dignity/diagnostic-model">
@@ -28,7 +28,7 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Operational Reality Assessment // The Dignity-Required System">
+    <meta name="twitter:title" content="Four States of Adoption Reality // The Dignity-Required System">
     <meta name="twitter:description" content="Four states of adoption reality. People aren't fixed in a segment — they shift under pressure. An interactive diagnostic model.">
     <meta name="twitter:image" content="https://angieqbailey.com/og-image.png">
 
@@ -37,7 +37,7 @@
     {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "Operational Reality Assessment: Four States of Adoption Reality",
+      "headline": "Four States of Adoption Reality",
       "description": "An interactive diagnostic model from the Dignity-Required System. People aren't fixed in a segment — they shift under pressure. Click a quadrant to see the integration path and transition triggers.",
       "author": { "@type": "Person", "name": "Angie Bailey", "url": "https://angieqbailey.com" },
       "publisher": { "@type": "Person", "name": "Angie Bailey" },
@@ -51,7 +51,7 @@
     }
     </script>
 
-    <title>Operational Reality Assessment // The Dignity-Required System // Angie Bailey</title>
+    <title>Four States of Adoption Reality // The Dignity-Required System // Angie Bailey</title>
 
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -111,7 +111,7 @@
 
         /* Widget header */
         .widget-header {
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
         }
         .widget-header .tag {
             font-family: 'IBM Plex Mono', monospace;
@@ -132,149 +132,215 @@
             margin-bottom: 1rem;
         }
         .widget-header .subtitle {
-            font-size: 0.95rem;
-            font-weight: 300;
-            color: var(--ecru-dim);
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--ecru);
             line-height: 1.6;
             max-width: 600px;
         }
 
-        /* Matrix grid */
+        /* Matrix grid — full-glory restoration, dark variant */
         .matrix-container {
             position: relative;
-            max-width: 750px;
+            max-width: 760px;
             margin: 0 auto;
+            padding: 3.5rem 0 1rem 4rem;
         }
         .axis-y {
             position: absolute;
-            left: -2.5rem;
-            top: 50%;
-            transform: translateY(-50%) rotate(-90deg);
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--ecru-dim);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            white-space: nowrap;
-        }
-        .y-labels {
-            position: absolute;
             left: -1rem;
-            top: 0;
-            bottom: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--ecru-dim);
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            transform: rotate(180deg);
+            top: 50%;
+            transform: rotate(-90deg) translateX(-50%);
+            transform-origin: left center;
+            font-family: 'Imbue', serif;
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
         }
         .axis-x {
             text-align: center;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--ecru-dim);
+            font-family: 'Imbue', serif;
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--ecru);
             text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-top: 1rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.45rem;
         }
         .axis-label-row {
-            display: flex;
-            justify-content: space-around;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3px;
+            padding: 0;
+        }
+        .axis-label-row span {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--ecru-dim);
-            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-align: center;
+            padding: 0.45rem 0;
+            border: 2px solid var(--ecru);
+            border-bottom: none;
+            background: transparent;
+        }
+        .y-labels {
+            position: absolute;
+            left: 1.5rem;
+            top: 3.5rem;
+            bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            align-items: stretch;
+            width: 2.5rem;
+        }
+        .y-labels span {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            white-space: nowrap;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--ecru);
+            border-right: none;
+            background: transparent;
+            padding: 0.2rem;
         }
         .matrix-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2px;
-            margin-left: 1.5rem;
-        }
-        .quadrant {
-            background: rgba(245, 245, 220, 0.06);
-            padding: 1.75rem;
-            cursor: pointer;
-            transition: background 0.3s;
+            grid-template-rows: 1fr 1fr;
+            gap: 3px;
+            background: var(--ecru);
+            border: 3px solid var(--ecru);
             position: relative;
         }
-        .quadrant:hover { background: rgba(245, 245, 220, 0.1); }
-        .quadrant.active { background: rgba(245, 245, 220, 0.14); }
+        /* Rosso crosshair at center intersection */
+        .matrix-grid::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: var(--rosso);
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+        .quadrant {
+            background: var(--quetzal);
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .quadrant:hover { background: #007A6E; }
+        .quadrant.active {
+            background: var(--quetzal);
+            box-shadow: inset 0 0 0 3px var(--rosso);
+        }
         .segment-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--ecru);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.4rem;
+        }
+        .segment-name {
+            font-family: 'Imbue', serif;
+            font-size: clamp(1.45rem, 3.2vw, 2rem);
+            font-weight: 900;
+            color: var(--nuit);
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 0.6rem;
+            border-left: 3px solid var(--rosso);
+            padding-left: 0.6rem;
+        }
+        .segment-formation {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--ecru);
+            line-height: 1.45;
+            margin-bottom: 0.5rem;
+        }
+        .segment-path {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--ecru);
+            line-height: 1.4;
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(245, 245, 220, 0.25);
+        }
+        .segment-path strong { color: var(--ecru); }
+        .click-hint {
+            position: absolute;
+            bottom: 0.6rem;
+            right: 0.8rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--ecru);
+            opacity: 0.4;
+        }
+        .quadrant.active .click-hint { display: none; }
+        .detail-panel {
+            max-height: 0;
+            min-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            background: var(--nuit);
+            margin-top: 0.75rem;
+            border-left: 3px solid var(--rosso);
+        }
+        .detail-panel.open {
+            max-height: 900px;
+            padding: 1.25rem 1.5rem;
+            opacity: 1;
+            overflow-y: auto;
+        }
+        .detail-section { margin-bottom: 1rem; }
+        .detail-label {
             font-family: 'IBM Plex Mono', monospace;
             font-size: 0.7rem;
             font-weight: 700;
             color: var(--quetzal-bright);
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
-        }
-        .segment-name {
-            font-family: 'Imbue', serif;
-            font-size: 1.6rem;
-            font-weight: 900;
-            color: var(--ecru);
-            text-transform: uppercase;
-            margin-bottom: 0.75rem;
-        }
-        .segment-formation {
-            font-size: 0.85rem;
-            font-weight: 300;
-            color: var(--ecru-dim);
-            line-height: 1.5;
-            margin-bottom: 0.75rem;
-        }
-        .segment-path {
-            font-size: 0.8rem;
-            color: var(--ecru-dim);
-            line-height: 1.4;
-        }
-        .segment-path strong { color: var(--rosso); }
-        .click-hint {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 1.2rem;
-            color: var(--ecru-dim);
-            opacity: 0.4;
-        }
-        .detail-panel {
-            display: none;
-            margin-top: 1.25rem;
-            padding-top: 1.25rem;
-            border-top: 1px solid var(--ecru-ghost);
-        }
-        .detail-panel.open { display: block; }
-        .detail-section { margin-bottom: 1rem; }
-        .detail-label {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: var(--rosso);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.35rem;
+            padding-left: 0.5rem;
+            border-left: 2px solid var(--rosso);
         }
         .detail-text {
             font-size: 0.85rem;
             font-weight: 300;
             color: var(--ecru-dim);
-            line-height: 1.6;
+            line-height: 1.55;
         }
         .trigger-tag {
             display: inline-block;
             font-family: 'IBM Plex Mono', monospace;
             font-size: 0.7rem;
-            background: rgba(245, 245, 220, 0.08);
-            color: var(--ecru-dim);
-            padding: 0.3rem 0.6rem;
+            color: var(--quetzal-bright);
+            border: 1px solid rgba(0, 168, 150, 0.35);
+            padding: 0.25rem 0.6rem;
             margin: 0.25rem 0.25rem 0 0;
         }
         .state-note {
@@ -283,10 +349,11 @@
             color: var(--ecru-dim);
             text-align: center;
             margin-top: 1.5rem;
+            padding: 0 2.5rem;
             opacity: 0.7;
         }
         .widget-thesis {
-            margin-top: 2.5rem;
+            margin-top: 1.5rem;
             max-width: 650px;
         }
         .widget-thesis p {
@@ -314,9 +381,16 @@
         }
         .back-link-row a:hover { color: var(--ecru); }
 
-        @media (max-width: 900px) {
-            .matrix-grid { margin-left: 0; }
-            .axis-y, .y-labels { display: none; }
+        @media (max-width: 600px) {
+            .matrix-container { padding: 2.75rem 0 1rem 2.75rem; }
+            .y-labels { left: 0.4rem; width: 1.9rem; }
+            .y-labels span { font-size: 0.7rem; }
+            .axis-y { left: -1.5rem; font-size: 0.95rem; }
+            .axis-x { font-size: 0.95rem; }
+            .axis-label-row span { font-size: 0.7rem; }
+            .quadrant { padding: 1rem; }
+            .segment-formation { font-size: 0.8rem; }
+            .detail-panel.open { padding: 1rem; }
         }
     </style>
 </head>
@@ -342,7 +416,7 @@
     <!-- HEADER -->
     <section class="page-header section-content">
         <span class="page-meta">R&amp;D // The Dignity-Required System</span>
-        <h1>Operational Reality Assessment</h1>
+        <h1>Four States of Adoption Reality</h1>
         <div class="page-lede">
             <p>People aren't fixed in a segment. They shift under pressure. A person can be an Operator on Monday and a Fixer by Friday... not because they changed, but because the conditions did.</p>
             <p>This model maps two axes... cognitive state (how much bandwidth someone actually has) and identity source (what part of the work makes them <em>them</em>). The intersection determines how they'll respond to any system you put in front of them.</p>
@@ -352,8 +426,7 @@
     <!-- INTERACTIVE MATRIX -->
     <section class="model-section section-content" id="drs-model">
         <div class="widget-header">
-            <div class="tag">DRS Framework / 2x2 Model</div>
-            <h2>Four States of Adoption Reality</h2>
+            <h2>DRS Framework / 2x2 Model</h2>
             <div class="subtitle">Click a quadrant to see the integration path, transition triggers and cynicism risk.</div>
         </div>
 
@@ -481,7 +554,8 @@
         </div>
 
         <div class="widget-thesis">
-            <p>Traditional management tries to move everyone into the Operator bucket. This framework recognizes that forcing a segment change should be flagged as a problem. A modern system meets the human where they currently sit. <span class="rosso">If someone is a Fixer on Tuesday, you don't lecture them on learning something new. You give them the relief they need to survive the day.</span></p>
+            <p>Traditional management tries to move everyone into the Operator bucket. This framework recognizes that forcing a segment change should be flagged as a problem. A modern system meets the human where they currently sit.</p>
+            <p class="rosso" style="margin-top: 1rem;">If someone is a Fixer on Tuesday, you don't lecture them on learning something new. You give them the relief they need to survive the day.</p>
         </div>
     </section>
 
