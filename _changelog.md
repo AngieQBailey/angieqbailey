@@ -1,3 +1,8 @@
+## [2026-06-17] - [TIER 1] - R&D (DRS / diagnostic-model.html)
+**Change:** Rewrote the "You'll recognize them as" recognizer text in the Maverick (Surplus + Output) and Operator (Surplus + Mastery) quadrants of the Four States of Adoption Reality 2x2. Removed IT/developer framing (VP with the AI tool, CRM in Notion, reads documentation for fun, architect) and replaced with non-technical operations language. Topic stays AI-specific; reader is no longer coded as having a technical job.
+**Rationale:** This page is the click-through destination from LinkedIn posts written for a non-technical HR, operations, marketing, comms and L&D audience. The technical framing lost that reader on arrival.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-17] — TIER 1 — R&D (Dignity-Required System / Four States of Adoption Reality)
 **Change:** Mobile fix on `rd/dignity/diagnostic-model.html`. The 2x2 columns were rendering unequal on narrow screens (right column pinched) because the collapsed detail panels still fed their content width into the grid track sizing. Added `min-width: 0` to `.quadrant` so the two `1fr` columns split evenly regardless of hidden content, plus `overflow-wrap: break-word` so long strings wrap instead of widening a column. No content, color or layout-structure changes.
 **Rationale:** Equal quadrants at every breakpoint. The left axis labels were a red herring (absolutely positioned, outside the grid); the real cause was grid items defaulting to a content-based minimum width.
