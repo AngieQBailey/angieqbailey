@@ -155,7 +155,7 @@ All multi-item nav pages use the 7-item nav: Investigation, Warehouse, R&D, L&D,
 | Start Here | Interactive Tool | start-here/index.html |
 | DRS Matrix (redirect) | Redirect | drs-matrix/index.html → rd/dignity/ |
 | The Dignity-Required System | Framework Hub (dark variant) | rd/dignity/index.html |
-| Operational Reality Assessment | Diagnostic Model (dark variant) | rd/dignity/diagnostic-model.html |
+| Four States of Adoption Reality | Diagnostic Model (dark variant) | rd/dignity/diagnostic-model.html |
 | The 9:02 AM Meeting | Mini-Fable (ecru variant) | rd/dignity/902-meeting.html |
 | The Hardware of Being Human | Section 01 Findings Report (dark variant) | rd/dignity/hardware-of-being-human.html |
 | The Last 50 Feet Failure | Section 02 Findings Report (dark variant) | rd/dignity/last-50-feet.html |
