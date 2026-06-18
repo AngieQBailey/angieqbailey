@@ -85,7 +85,7 @@
         <div class="instructions">
             Use this template to design a governance cadence for your team's recurring reporting cycle. <strong>Fill in the timing, ownership, distribution channel and follow-up protocol.</strong> Adapt the structure to your team size and reporting frequency. Print or save as PDF when complete.
         </div>
-        <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+        <button class="print-btn" onclick="if(window.gtag){gtag('event','template_download',{template_path:location.pathname});} window.print();">Print / Save as PDF</button>
     </div>
 
     <div class="section">
