@@ -374,7 +374,7 @@
         <h1>SOP Playbook<br><span class="accent">Capture</span> Template</h1>
         <div class="subtitle">Turn what you know into instructions someone else can follow. Four passes. Plain language.</div>
         <div class="instructions">Complete this template using the SOP Playbook Builder guide. Run all four passes for each step. An SOP with zero gap tags is almost certainly glossing over the hard parts.</div>
-        <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+        <button class="print-btn" onclick="if(window.gtag){gtag('event','template_download',{template_path:location.pathname});} window.print();">Print / Save as PDF</button>
 
         <!-- PROCESS INFO -->
         <div class="section">
