@@ -1,3 +1,8 @@
+## [2026-06-17] — TIER 2 — Warehouse (Web Experience Capacity / Metric)
+**Change:** Genericized one outcome label in `posts/web-experience-capacity-build/web-experience-capacity-build.html`: "Rental Requests Completed Online" became "Requests Completed Online." No other content, layout or structural changes.
+**Rationale:** "Rental Requests" referenced the prior employer's equipment-rental business. The generic label preserves the metric's meaning (online self-service completion) without the industry fingerprint.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-17] — TIER 2 — Warehouse (Homepage Cards Genericization)
 **Change:** Genericized two Warehouse cards on `index.html` to match the already-scrubbed case studies. Crisis card: "A $1B+ industrial technology company had zero crisis communication infrastructure" became "A large-scale company had zero crisis communication infrastructure." Newsletter card: "80% of employees worked in the field" became "More than three-quarters of employees worked in the field." The MBR card's "$1B+ organization" was left as-is (generic scale indicator, no employer fingerprint). No structural, layout or CSS changes.
 **Rationale:** The homepage cards still carried the "$1B+ industrial technology company" descriptor and the precise "80%" figure after the underlying case studies were genericized. This aligns the cards with the deployed case-study copy.
