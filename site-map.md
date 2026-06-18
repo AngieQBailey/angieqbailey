@@ -165,6 +165,14 @@ All multi-item nav pages use the 7-item nav: Investigation, Warehouse, R&D, L&D,
 | Sponge Leadership | Section XX Findings Report — unnumbered, depth report on absorption cost (dark variant) | rd/dignity/empathy-redlining.html |
 | Operational Telemetry | Framework Page (dark variant) | rd/operational-telemetry/index.html |
 
+## Short Links (/go/) — infrastructure, not a section
+
+Self-hosted redirector. Source of truth is `_links.json`; run `scripts/build_links.py` to regenerate stubs. Each stub is `noindex`, excluded from sitemap.xml, fires a GA4 `short_link_click` event, then redirects. Add a link by editing `_links.json` and rerunning the generator.
+
+| Short link | Type | Destination |
+|---|---|---|
+| go/drs-maverick | Short link (redirect) | rd/dignity/diagnostic-model.html?utm_campaign=drs-maverick |
+
 ## L&D Pages (Section 04)
 
 | Page | Type | Path |
