@@ -6,6 +6,8 @@ This is the as-built record, the break-fix guide, and the new-site setup playboo
 
 Secrets are NOT in this file. The GitHub deploy token lives in Claude memory only. This doc is safe to keep in the repo.
 
+**Keep this current:** any change to GA4, Search Console, Bing, the on-site event tracking, custom dimensions / key events, or the /go/ short-link system must update this file in the same task. If the stack changes and this file doesn't, this file is wrong.
+
 ---
 
 ## 1. As-built inventory (what currently exists)
