@@ -915,6 +915,7 @@ function resetAll() {
 }
 
 function printResults() {
+  if(window.gtag){gtag('event','template_download',{template_path:location.pathname});}
   window.print();
 }
 
