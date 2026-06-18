@@ -408,7 +408,7 @@
     <p class="instructions">
         Use this diagnostic to map your team's structural capacity. Start by listing each role, then calculate effective FTE accounting for overhead like mentoring, admin and context-switching. The <strong>upstream-to-bottleneck ratio</strong> will surface whether your team has a governance problem or a staffing problem. Fill in each section. Print or save as PDF when complete.
     </p>
-    <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+    <button class="print-btn" onclick="if(window.gtag){gtag('event','template_download',{template_path:location.pathname});} window.print();">Print / Save as PDF</button>
 </div>
 
 <!-- SECTION 1: TEAM COMPOSITION -->
