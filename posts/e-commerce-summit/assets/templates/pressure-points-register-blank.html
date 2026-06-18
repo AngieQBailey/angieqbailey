@@ -89,7 +89,7 @@
         <strong>which functions it affects</strong>, and
         <strong>why it matters</strong>. Flag severity as Red (blocker) or Yellow (high-risk friction).
     </p>
-    <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+    <button class="print-btn" onclick="if(window.gtag){gtag('event','template_download',{template_path:location.pathname});} window.print();">Print / Save as PDF</button>
 </div>
 
 <div class="section">
