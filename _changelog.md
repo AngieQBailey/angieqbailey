@@ -1,3 +1,8 @@
+## [2026-06-18] — TIER 1 — Site-wide (template & artifact Print buttons)
+**Change:** Instrumented every "Print / Save as PDF" button across all template and artifact pages (31 pages: every post family plus hello-world and resources) to fire a GA4 custom event `template_download` with a `template_path` parameter (the page path), then print. Guarded with `if(window.gtag)` so a missing tag can never block printing. Inline-onclick buttons got the call inside the onclick; the interactive pages (interactive-channel-audit, safety-first-gate) got it inside their print handler.
+**Rationale:** GA4's built-in file_download tracking can't see these because the templates are HTML pages saved via window.print(), not file links. The custom event gives a high-intent download signal, counted in GA4 and folded into the weekly report (new section A6). A Print/Save click is intent, not a confirmed save.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-18] — TIER 1 — R&D (DRS / diagnostic-model.html)
 **Change:** Made the page-meta back-link obviously clickable. Changed `.page-meta a` from quetzal-bright/no-underline (which matched the surrounding meta text) to ecru with a persistent quetzal-bright underline; hover inverts the two. The link now stands apart from the "R&D //" prefix.
 **Rationale:** The prior styling was indistinguishable from plain text, so the link read as static.
