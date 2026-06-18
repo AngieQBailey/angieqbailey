@@ -1,3 +1,8 @@
+## [2026-06-18] — TIER 1 — Short links (/go/ drs-detective)
+**Change:** Minted `/go/drs-detective` → `https://angieqbailey.com/rd/dignity/?utm_source=linkedin&utm_medium=organic_social&utm_campaign=drs-detective`. Added the slug to `_links.json` and regenerated stubs via `scripts/build_links.py`. Updated docs/analytics-runbook.md with the current live-slug snapshot.
+**Rationale:** Clean tracked LinkedIn link for the drs-detective post, driving to the DRS hub. Second link in the /go/ system; links are minted per post, not batch-created.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-18] — TIER 1 — Docs (runbook maintenance rule)
 **Change:** Added a "keep this current" rule to docs/analytics-runbook.md: any GA4 / Search Console / Bing / event-tracking / custom-dimension / key-event / /go/ change must update the runbook in the same task. Mirrored in Claude memory and the project config.
 **Rationale:** "Is the repo current?" only checks commit state and won't catch a runbook that's drifted from the live external tools. A write-time rule prevents drift instead of relying on a check.
