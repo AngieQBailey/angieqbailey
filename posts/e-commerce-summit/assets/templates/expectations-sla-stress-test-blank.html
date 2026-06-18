@@ -84,7 +84,7 @@
         <strong>what "good" means to the provider</strong>, and <strong>what
         others actually expect</strong>. The gap is the diagnostic finding.
     </p>
-    <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+    <button class="print-btn" onclick="if(window.gtag){gtag('event','template_download',{template_path:location.pathname});} window.print();">Print / Save as PDF</button>
 </div>
 
 <div class="section">
