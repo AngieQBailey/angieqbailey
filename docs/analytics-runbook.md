@@ -38,7 +38,7 @@ Secrets are NOT in this file. The GitHub deploy token lives in Claude memory onl
 
 **On-site tracking code**
 - `template_download`: inline on each Print/Save button — `onclick="if(window.gtag){gtag('event','template_download',{template_path:location.pathname});} window.print();"` (interactive pages fire it inside their print handler).
-- `short_link_click`: emitted by the `/go/` stub template generated from `_links.json` via `scripts/build_links.py` (param `slug`, beacon transport). Live slugs as of 2026-06-18: `drs-maverick` and `drs-detective` (both → /rd/dignity/diagnostic-model.html, separated by utm_campaign + slug). `_links.json` is the authoritative registry; this list is a convenience snapshot.
+- `short_link_click`: emitted by the `/go/` stub template generated from `_links.json` via `scripts/build_links.py` (param `slug`, beacon transport). Live slugs as of 2026-06-18: `drs-maverick`, `drs-detective`, `drs-operator` (all → /rd/dignity/diagnostic-model.html, separated by utm_campaign + slug). `_links.json` is the authoritative registry; this list is a convenience snapshot.
 - `contact_click`: inline on the Debrief mailto link in `index.html` (param `method:'email'`).
 
 ---
