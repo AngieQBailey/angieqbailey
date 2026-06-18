@@ -1,3 +1,8 @@
+## [2026-06-18] — TIER 1 — Docs (runbook maintenance rule)
+**Change:** Added a "keep this current" rule to docs/analytics-runbook.md: any GA4 / Search Console / Bing / event-tracking / custom-dimension / key-event / /go/ change must update the runbook in the same task. Mirrored in Claude memory and the project config.
+**Rationale:** "Is the repo current?" only checks commit state and won't catch a runbook that's drifted from the live external tools. A write-time rule prevents drift instead of relying on a check.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-18] — TIER 2 — Docs (analytics infrastructure runbook)
 **Change:** Added `docs/analytics-runbook.md` — as-built record of the GA4 / Search Console / Bing stack, a break-fix playbook for each piece, and a step-by-step for standing the whole stack up on a new site. No secrets (deploy token stays in Claude memory).
 **Rationale:** Removes single-operator dependency. Anyone can fix or recreate the analytics/search setup, including for additional URLs beyond the personal site.
