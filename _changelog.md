@@ -1,4 +1,9 @@
 ## [2026-06-18] — TIER 1 — R&D (DRS / diagnostic-model.html)
+**Change:** Made the page-meta back-link obviously clickable. Changed `.page-meta a` from quetzal-bright/no-underline (which matched the surrounding meta text) to ecru with a persistent quetzal-bright underline; hover inverts the two. The link now stands apart from the "R&D //" prefix.
+**Rationale:** The prior styling was indistinguishable from plain text, so the link read as static.
+**Operator:** Angie Bailey + Claude via Cowork
+
+## [2026-06-18] — TIER 1 — R&D (DRS / diagnostic-model.html)
 **Change:** Made the "The Dignity-Required System" text in the page-meta header a same-tab link to /rd/dignity/. Added a `.page-meta a` rule mirroring the existing `.back-link-row a` style (quetzal-bright, no underline, ecru on hover). No other content or layout change.
 **Rationale:** Gives readers a top-of-page route back to the DRS hub, matching the existing bottom back-link.
 **Operator:** Angie Bailey + Claude via Cowork
