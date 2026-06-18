@@ -1,3 +1,8 @@
+## [2026-06-18] — TIER 1 — Short links (/go/ drs-detective repoint)
+**Change:** Repointed `/go/drs-detective` from `/rd/dignity/` to `/rd/dignity/diagnostic-model.html` (UTMs unchanged). Updated `_links.json`, regenerated the stub via `scripts/build_links.py`, refreshed the runbook live-slug snapshot.
+**Rationale:** The post's first comment promises "the whole pattern" (the diagnostic model). Aligns Detective's destination with Maverick's; GA4 still separates them by utm_campaign and the short_link_click slug.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-18] — TIER 1 — Short links (/go/ drs-detective)
 **Change:** Minted `/go/drs-detective` → `https://angieqbailey.com/rd/dignity/?utm_source=linkedin&utm_medium=organic_social&utm_campaign=drs-detective`. Added the slug to `_links.json` and regenerated stubs via `scripts/build_links.py`. Updated docs/analytics-runbook.md with the current live-slug snapshot.
 **Rationale:** Clean tracked LinkedIn link for the drs-detective post, driving to the DRS hub. Second link in the /go/ system; links are minted per post, not batch-created.
