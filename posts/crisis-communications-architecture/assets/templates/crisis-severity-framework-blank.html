@@ -210,7 +210,7 @@
     <link rel="apple-touch-icon" sizes="192x192" href="/favicon.png">
     </head>
 <body>
-    <button class="print-button" onclick="window.print()">Print - Save as PDF</button>
+    <button class="print-button" onclick="if(window.gtag){gtag('event','template_download',{template_path:location.pathname});} window.print();">Print - Save as PDF</button>
 
     <div class="template-type">Blank Template // Framework</div>
     <h1>Crisis <span class="accent">Escalation</span> Framework</h1>
