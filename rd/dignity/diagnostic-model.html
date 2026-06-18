@@ -81,6 +81,12 @@
             margin-bottom: 2rem;
             display: block;
         }
+        .page-meta a {
+            color: var(--quetzal-bright);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .page-meta a:hover { color: var(--ecru); }
         .page-header h1 {
             font-family: 'Imbue', serif;
             font-size: clamp(2rem, 5vw, 4rem);
@@ -417,7 +423,7 @@
 <main>
     <!-- HEADER -->
     <section class="page-header section-content">
-        <span class="page-meta">R&amp;D // The Dignity-Required System</span>
+        <span class="page-meta">R&amp;D // <a href="/rd/dignity/">The Dignity-Required System</a></span>
         <h1>Four States of Adoption Reality</h1>
         <div class="page-lede">
             <p>People aren't fixed in a segment. They shift under pressure. A person can be an Operator on Monday and a Fixer by Friday... not because they changed, but because the conditions did.</p>
