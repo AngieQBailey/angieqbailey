@@ -278,7 +278,7 @@
 
   <div class="controls">
     <div></div>
-    <button class="print-button" onclick="window.print()">Print / Save as PDF</button>
+    <button class="print-button" onclick="if(window.gtag){gtag('event','template_download',{template_path:location.pathname});} window.print();">Print / Save as PDF</button>
   </div>
 
   <table>
