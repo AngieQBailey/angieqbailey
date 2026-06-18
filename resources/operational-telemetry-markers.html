@@ -328,7 +328,7 @@
     <div class="instructions">
         Use this reference card to evaluate which operational telemetry metrics your organization is tracking versus which it's ignoring. <strong>Each metric forces multiple functions to align</strong> around actual business movement instead of departmental activity. Score your current state, identify the gaps and prioritize which metrics to instrument first.
     </div>
-    <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+    <button class="print-btn" onclick="if(window.gtag){gtag('event','template_download',{template_path:location.pathname});} window.print();">Print / Save as PDF</button>
     <a href="/rd/operational-telemetry/" class="back-link">View Full R&amp;D Page &rarr;</a>
 </div>
 
