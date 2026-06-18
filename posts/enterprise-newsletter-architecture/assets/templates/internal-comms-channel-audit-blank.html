@@ -303,7 +303,7 @@
     <h1>Internal Comms<br>Channel <span class="accent">Audit</span></h1>
     <p class="subtitle">Map every channel against every audience. Find the gaps before they find you.</p>
     <p class="instructions">Score each communication channel by audience segment using the <strong>0-3 importance scale</strong> below. List all active and planned channels, rate their current importance to each segment, note frequency and any operational gaps. The goal is a single-page diagnostic that exposes which audiences are underserved and which channels are carrying dead weight.</p>
-    <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+    <button class="print-btn" onclick="if(window.gtag){gtag('event','template_download',{template_path:location.pathname});} window.print();">Print / Save as PDF</button>
   </div>
 
   <div class="scoring-key">
