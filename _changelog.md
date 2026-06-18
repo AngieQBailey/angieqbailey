@@ -1,3 +1,8 @@
+## [2026-06-18] — TIER 2 — Docs (analytics infrastructure runbook)
+**Change:** Added `docs/analytics-runbook.md` — as-built record of the GA4 / Search Console / Bing stack, a break-fix playbook for each piece, and a step-by-step for standing the whole stack up on a new site. No secrets (deploy token stays in Claude memory).
+**Rationale:** Removes single-operator dependency. Anyone can fix or recreate the analytics/search setup, including for additional URLs beyond the personal site.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-18] — TIER 1 — Debrief (contact link tracking)
 **Change:** Added a GA4 `contact_click` event (method: email) to the Debrief mailto link on index.html, so clicks on angie@angieqbailey.com register as a tracked action. Guarded with if(window.gtag) so a missing tag can never break the link.
 **Rationale:** Email contact is the site's real conversion. This makes "someone tried to reach me" measurable, to be marked a key event in GA4 once it surfaces.
