@@ -1106,6 +1106,7 @@
         // Print
         document.getElementById('printBtn').addEventListener('click', (e) => {
             e.preventDefault();
+            if(window.gtag){gtag('event','template_download',{template_path:location.pathname});}
             window.print();
         });
 
