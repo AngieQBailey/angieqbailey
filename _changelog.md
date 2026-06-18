@@ -1,3 +1,8 @@
+## [2026-06-17] — TIER 2 — Warehouse (Enterprise Newsletter / Style Guide Rewrite)
+**Change:** Rewrote the body copy and examples of `posts/enterprise-newsletter-architecture/assets/in-house-style-guide.html` so the expression is original rather than a verbatim lift of the prior employer's style guide. Section titles, purposes, logic and the rule set are unchanged; the prose in every section is reworded and every example is swapped: Voice & Tone, Style Standards, Capitalization (example name now "Operations Director Bobbi Baldwin"), Punctuation, Numbers, the No-Fly List intro and all 7 entries, the 8 Approval Process step labels, and the closing line. No structural, layout or CSS changes.
+**Rationale:** The underlying rules are standard editorial conventions and not protectable, but verbatim wording and examples are. Rewriting the expression removes the copyright exposure while preserving the demonstrated capability.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-17] — TIER 2 — Warehouse (Enterprise Newsletter / Style Guide Title)
 **Change:** Renamed the "The Voldemort List" section in `posts/enterprise-newsletter-architecture/assets/in-house-style-guide.html` to "The No-Fly List". Also renamed the underlying CSS classes `voldemort-list` to `banned-list` and `voldemort-item` to `banned-item` (style definitions and all entry divs), so no "Voldemort" reference remains anywhere in the source. List contents unchanged. No layout or structural changes.
 **Rationale:** "Voldemort" is borrowed IP (Warner Bros / J.K. Rowling) and out of place on a commercial site being scrubbed for legal exposure. "The No-Fly List" preserves the forbidden-words meaning without borrowing anyone's IP.
