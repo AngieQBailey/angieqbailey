@@ -270,3 +270,4 @@ Note: Portfolio Work/ directory and 3 orphaned warehouse-card.html pages were de
 - Case studies and verdict essays have JSON-LD Article structured data (deployed 2026-05-19)
 - robots.txt and sitemap.xml deployed 2026-05-19
 - styles.css is minified (deployed 2026-05-19)
+- L&D leaf articles build from `_templates/ld-article-template.html`; doctrine in `_templates/LD-ARTICLE-CONVENTIONS.md` (added 2026-06-24)
