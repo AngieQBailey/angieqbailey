@@ -189,7 +189,7 @@ Self-hosted redirector. Source of truth is `_links.json`; run `scripts/build_lin
 | Collection | Subtitle | Cards | Status |
 |---|---|---|---|
 | Dots, Pens & Commonplace Books | A Supply Closet Romance | 4 (Dotted Notebook, Good Pen, New Wite-Out, Commonplace Book) | Coming |
-| Em-Dash Unpacking | Thief by Mass Visual Weaponization | 4 (Assassination of the Em-Dash [LIVE: ld/em-dash-unpacking/assassination-of-the-em-dash.html], Semiotic Thief Charges Don't Stick, Case of Hitler vs. The Ancient Greeks, Stars & Bars: Straight Out of 1861 Manassas) | 1 of 4 live; 2-4 Coming |
+| Em-Dash Unpacking | Thief by Mass Visual Weaponization | 4 (Assassination of the Em-Dash [LIVE: ld/em-dash-unpacking/assassination-of-the-em-dash.html], Semiotic Thief Charges Don't Stick [LIVE: ld/em-dash-unpacking/semiotic-thief-charges-dont-stick.html], Case of Hitler vs. The Ancient Greeks, Stars & Bars: Straight Out of 1861 Manassas) | 2 of 4 live; 3-4 Coming |
 
 Note: The homepage L&D section has two cards, each deep-linking to its collection anchor on the hub page (#supply-closet-romance, #em-dash-unpacking). The hub now presents two distinct collection sections.
 
