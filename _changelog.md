@@ -1,3 +1,8 @@
+## [2026-06-23] — TIER 1 — SEO infra (sitemap.xml)
+**Change:** Added rd/dignity/rock-audit.html (priority 0.7) and rd/dignity/rock-audit-worksheet.html (0.6) to sitemap.xml and bumped last-50-feet lastmod to 2026-06-23. The /go/drs-rock and /rock stubs stay excluded (noindex redirects).
+**Rationale:** New indexable pages need to be in the sitemap so Search Console and Bing discover them on the next crawl. Worksheet included per the existing precedent that template/leaf tool pages are listed.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-23] — TIER 2 — R&D / DRS (Last 50 Feet)
 **Change:** Added a Rock Audit launch CTA to the close of rd/dignity/last-50-feet.html (links to rock-audit.html), so the field tool launches from the essay it operationalizes. Clarified the close headline from "The Floor Was Never Asked" to "The People on the Floor Were Never Asked" so "the floor" reads as the people, not a place.
 **Rationale:** Last 50 Feet is the strongest contextual entry point for the Rock Audit; readers finishing that essay should be handed the tool there. Headline clarity for the non-technical default audience.
