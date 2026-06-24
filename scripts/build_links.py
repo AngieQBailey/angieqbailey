@@ -71,6 +71,7 @@ def main():
     for entry in links:
         slug = entry.get("slug", "").strip()
         dest = entry.get("destination", "").strip()
+        rel = entry.get("path", "").strip()
         if not SLUG_RE.match(slug):
             errors.append(f"invalid slug (must be lowercase kebab-case): {slug!r}")
             continue
@@ -80,9 +81,12 @@ def main():
         if slug in seen:
             errors.append(f"duplicate slug: {slug!r}")
             continue
+        if rel and not re.match(r"^[a-z0-9]+(?:-[a-z0-9]+)*(?:/[a-z0-9]+(?:-[a-z0-9]+)*)*$", rel):
+            errors.append(f"{slug}: invalid path override: {rel!r}")
+            continue
         seen[slug] = dest
 
-        target = out_root / slug / "index.html"
+        target = (ROOT / rel / "index.html") if rel else (out_root / slug / "index.html")
         # Flag a slug that already points somewhere different.
         if target.exists():
             current = target.read_text()
