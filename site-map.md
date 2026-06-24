@@ -245,7 +245,7 @@ Note: Portfolio Work/ directory and 3 orphaned warehouse-card.html pages were de
 |---|---|
 | robots.txt | Allow all crawlers, points to sitemap.xml |
 | sitemap.xml | 93 canonical URLs with priority tiers (regenerated 2026-05-27) |
-| styles.css | Shared stylesheet (minified) |
+| styles.css | Shared stylesheet (formatted, not minified) |
 | apple-touch-icon.png | 180×180 iOS home screen icon |
 | favicon.ico | Browser tab icon |
 | favicon.png | 192×192 PNG icon |
@@ -269,5 +269,6 @@ Note: Portfolio Work/ directory and 3 orphaned warehouse-card.html pages were de
 - All subpages have og:image, canonical URL, Twitter Card, and favicon meta tags (deployed 2026-05-19)
 - Case studies and verdict essays have JSON-LD Article structured data (deployed 2026-05-19)
 - robots.txt and sitemap.xml deployed 2026-05-19
-- styles.css is minified (deployed 2026-05-19)
+- styles.css is formatted (readable, not minified); the 2026-05-19 "minified" note was stale
+- Inline content links are unified site-wide via styles.css (quetzal-bright, `.essay-body/.body-text/.glossary-body/.scale-note/.doc-lede/.framework-lede/.working-def/.section-body/.ld-lede a`); L&D `.hook-line` and `.scale-note` are global too (consolidated from per-page blocks 2026-06-24)
 - L&D leaf articles build from `_templates/ld-article-template.html`; doctrine in `_templates/LD-ARTICLE-CONVENTIONS.md` (added 2026-06-24)
