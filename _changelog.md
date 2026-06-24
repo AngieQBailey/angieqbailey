@@ -1,3 +1,8 @@
+## [2026-06-23] — TIER 1 — R&D / DRS (Rock Audit nav)
+**Change:** Replaced the landing's hand-styled inline nav with the exact site .nav-bar (fixed full-width, IBM Plex Mono links in ecru-dim at 0.85rem, quetzal mark, rosso hover underline, spine-left offset + responsive rules). Added a 7rem hero top offset to clear the fixed nav.
+**Rationale:** The header menu on rock-audit.html was not uniform with the other DRS pages because it was built inline instead of mirroring /styles.css .nav-bar. Inlined the exact nav rules (no full stylesheet import, to avoid class collisions with the page's bespoke layout).
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-23] — TIER 1 — R&D / DRS (Rock Audit typography)
 **Change:** Aligned rock-audit.html and rock-audit-worksheet.html typography to the site system: Imbue display headings now weight 900 (were 700) at responsive clamp() sizes (were fixed px), and the landing's body prose is the site's light Plex Sans 300. Loaded the matching Imbue 900 + Plex Sans 300 weights.
 **Rationale:** The two pages were self-contained and had drifted from /styles.css typography (heading weight, heading size scale, body weight), so they read as a different font and incongruent header sizes next to the other DRS pages.
