@@ -16,7 +16,7 @@
 <meta name="description" content="A ten-minute field tool for finding the quiet workarounds holding a process together, before a change deletes one by accident. Three questions, one step at a time.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700&family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#121A28;--ecru:#F5F5DC;--body:rgba(245,245,220,.84);--teal:#00A896;--teal-d:#00685E;--red:#C41E3A;}
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -33,25 +33,25 @@ a{color:var(--teal);}
 
 .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);}
 .rule-line{width:180px;height:3px;background:var(--teal-d);margin:18px 0 26px;}
-h1{font-family:'Imbue',serif;font-weight:700;font-size:84px;line-height:.96;margin-bottom:24px;}
-.lead{font-size:21px;color:var(--ecru);max-width:680px;margin-bottom:14px;}
-.lead2{font-size:18px;color:var(--body);max-width:680px;}
+h1{font-family:'Imbue',serif;font-weight:900;font-size:clamp(2.6rem,6vw,4.5rem);line-height:.95;letter-spacing:-0.02em;margin-bottom:24px;}
+.lead{font-size:21px;font-weight:300;line-height:1.6;color:var(--ecru);max-width:680px;margin-bottom:14px;}
+.lead2{font-size:18px;font-weight:300;line-height:1.65;color:var(--body);max-width:680px;}
 
 section{padding:54px 0;border-top:1px solid rgba(245,245,220,.12);}
 .hero{padding:40px 0 54px;border:none;}
-h2{font-family:'Imbue',serif;font-weight:700;font-size:42px;line-height:1.02;margin:6px 0 20px;}
+h2{font-family:'Imbue',serif;font-weight:900;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1;letter-spacing:-0.01em;margin:6px 0 20px;}
 .kicker{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);}
-p.body{font-size:17px;color:var(--body);max-width:680px;margin-bottom:16px;}
+p.body{font-size:17px;font-weight:300;line-height:1.7;color:var(--body);max-width:680px;margin-bottom:16px;}
 p.body b{color:var(--ecru);}
 
 .q{border-left:3px solid var(--teal-d);padding:4px 0 4px 22px;margin-bottom:26px;}
 .q .name{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:2px;color:var(--teal);}
-.q h3{font-family:'Imbue',serif;font-weight:700;font-size:31px;line-height:1.05;margin:2px 0 8px;}
-.q p{font-size:16.5px;color:var(--body);max-width:640px;}
+.q h3{font-family:'Imbue',serif;font-weight:700;font-size:clamp(1.3rem,2.8vw,1.7rem);line-height:1.1;margin:2px 0 8px;}
+.q p{font-size:16.5px;font-weight:300;line-height:1.6;color:var(--body);max-width:640px;}
 
 .src{border-left:3px solid rgba(245,245,220,.18);padding:2px 0 2px 22px;margin-bottom:22px;}
 .src h4{font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:17.5px;margin-bottom:3px;}
-.src p{font-size:15.5px;color:var(--body);max-width:660px;margin-bottom:5px;}
+.src p{font-size:15.5px;font-weight:300;line-height:1.6;color:var(--body);max-width:660px;margin-bottom:5px;}
 .src .cite{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--teal);}
 .src .cite a{text-decoration:none;border-bottom:1px solid rgba(0,168,150,.4);}
 
@@ -61,7 +61,7 @@ p.body b{color:var(--ecru);}
 .tags .t span{font-size:14.5px;color:var(--body);}
 
 .cta{background:#0c1320;border:1px solid var(--teal-d);padding:40px 36px;margin-top:8px;text-align:center;}
-.cta h2{font-size:36px;margin-bottom:10px;}
+.cta h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:10px;}
 .cta p{font-size:16px;color:var(--body);max-width:540px;margin:0 auto 24px;}
 .btn{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:1px;text-transform:uppercase;background:var(--teal);color:#0c1320;font-weight:600;padding:15px 30px;text-decoration:none;}
 .btn.ghost{background:transparent;color:var(--teal);border:1px solid var(--teal-d);margin-left:10px;}
