@@ -1,3 +1,13 @@
+## [2026-06-23] — TIER 1 — R&D / DRS (Rock Audit Imbue weight)
+**Change:** Dropped Imbue display headings on rock-audit.html and rock-audit-worksheet.html from weight 900 to 700, matching the SOP Playbook Builder content-heading weight. (SOP reserves 900 for its single top hero only.)
+**Rationale:** 900 read too heavy across the Rock Audit pages; 700 matches the lighter Imbue treatment Angie pointed to on the SOP Playbook Builder page.
+**Operator:** Angie Bailey + Claude via Cowork
+
+## [2026-06-23] — TIER 2 — L&D (index cards)
+**Change:** Removed the "Enter L&D" card-action label from both L&D cards (A Supply Closet Romance, Em-Dash Unpacking) on index.html. Cards remain fully clickable.
+**Rationale:** Redundant CTA text; the cards are already links and the section header names L&D.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-23] — TIER 2 — Resources (Receipt Drawer)
 **Change:** Added a Rock Audit card to the Tools category of /resources/ (links to rd/dignity/rock-audit.html), matching the Operational Telemetry printable pattern. Updated site-map.md Resources count (Tools 4 to 5, total 16 to 17).
 **Rationale:** The Rock Audit is a printable field tool and belongs in the Receipt Drawer next to the other R&D printables. One card to the landing (the front door to the worksheet), not a duplicate Templates entry.
