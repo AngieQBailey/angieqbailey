@@ -1,3 +1,8 @@
+## [2026-06-24] — TIER 1 — R&D / DRS (Tactical Dignity)
+**Change:** Reworded the Findings paragraph opener from "It doesn't look like resistance." to "What follows doesn't look like resistance." after the duplicate verdict-line was cut.
+**Rationale:** With the verdict-line removed, the bare "It" sat right after a sentence whose "it" meant the tool, creating a dangling antecedent. "What follows" anchors to the heading.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-24] — TIER 2 — R&D / DRS (Tactical Dignity)
 **Change:** Removed the duplicate verdict-line "The senior contributor stops contributing." from the Findings section of tactical-dignity.html. The H2 heading already states the same words one paragraph above, so the line read as a stutter rather than a callback.
 **Rationale:** Heading and verdict-line were verbatim twins separated by a single setup paragraph. Kept the heading, cut the echo.
