@@ -1,3 +1,8 @@
+## [2026-06-23] — TIER 2 — Resources (Receipt Drawer)
+**Change:** Added a Rock Audit card to the Tools category of /resources/ (links to rd/dignity/rock-audit.html), matching the Operational Telemetry printable pattern. Updated site-map.md Resources count (Tools 4 to 5, total 16 to 17).
+**Rationale:** The Rock Audit is a printable field tool and belongs in the Receipt Drawer next to the other R&D printables. One card to the landing (the front door to the worksheet), not a duplicate Templates entry.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-23] — TIER 1 — R&D / DRS (Rock Audit nav)
 **Change:** Replaced the landing's hand-styled inline nav with the exact site .nav-bar (fixed full-width, IBM Plex Mono links in ecru-dim at 0.85rem, quetzal mark, rosso hover underline, spine-left offset + responsive rules). Added a 7rem hero top offset to clear the fixed nav.
 **Rationale:** The header menu on rock-audit.html was not uniform with the other DRS pages because it was built inline instead of mirroring /styles.css .nav-bar. Inlined the exact nav rules (no full stylesheet import, to avoid class collisions with the page's bespoke layout).
