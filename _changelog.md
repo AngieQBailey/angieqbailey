@@ -1,3 +1,8 @@
+## [2026-06-24] — TIER 2 — R&D / DRS (Tactical Dignity)
+**Change:** Removed the duplicate verdict-line "The senior contributor stops contributing." from the Findings section of tactical-dignity.html. The H2 heading already states the same words one paragraph above, so the line read as a stutter rather than a callback.
+**Rationale:** Heading and verdict-line were verbatim twins separated by a single setup paragraph. Kept the heading, cut the echo.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-24] — TIER 1 — SEO infra (short links)
 **Change:** Minted evergreen root vanity `/last-50-feet` (→ /rd/dignity/last-50-feet.html, no campaign UTM) via the `path` override in _links.json + build_links.py. noindex stub, excluded from sitemap. Updated docs/analytics-runbook.md (live-slug snapshot, now two evergreen vanities) and site-map.md.
 **Rationale:** A clean reusable pointer to the Last 50 Feet essay, since /go/drs-rock now sends Find the Rocks post traffic to the Rock Audit landing. Evergreen so essay traffic is not charged to a post campaign.
