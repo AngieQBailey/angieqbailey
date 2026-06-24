@@ -1,8 +1,15 @@
 # AQB Design System Reference
-**Last updated:** March 2026
+**Last updated:** 2026-06-24
 **System name:** Durable Births (Brutalist Industrial-Editorial)
 
-This is the single source of truth for CSS variables, typography, spacing, components, and design rules. If something in this doc conflicts with a skill file, this doc reflects the most recent resolved decision. Update it when decisions change.
+This is the portable, human-readable record of the design system, part of the durable repo layer. It survives tool changes and outlives any skill.
+
+Authority order, most to least operative:
+1. `styles.css` `:root {}` is the runtime truth: what the site actually renders.
+2. This doc is the written spec of those values and patterns, kept in the repo so the system is rebuildable from plain text alone.
+3. The Claude skills (`angie-bailey-brand`, `aqb-case-study`) carry derived copies for generating on-brand content. If a skill ever disagrees with this doc or `styles.css`, the repo wins and the skill is re-synced, never the reverse.
+
+Update this doc and `styles.css` together when a design decision changes, then re-sync the skills.
 
 ---
 
