@@ -37,6 +37,14 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="192x192" href="/favicon.png">
+    <style>
+      .ld-collections{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem 3rem;align-items:start;margin-top:1rem;}
+      .ld-collection{min-width:0;}
+      .ld-collection h2{font-size:clamp(1.6rem,3vw,2.4rem);}
+      .ld-collection .section-body p{max-width:none;}
+      .ld-collection .piece-grid{grid-template-columns:1fr;margin-top:1.25rem;}
+      @media (max-width:900px){.ld-collections{grid-template-columns:1fr;gap:3rem;}}
+    </style>
     </head>
 <body style="background-color: #121A28;">
 
@@ -74,8 +82,10 @@
         </div>
     </section>
 
-    <!-- SUPPLY CLOSET ROMANCE -->
-    <section class="ld-section section-content reveal" id="supply-closet-romance">
+    <!-- L&D COLLECTIONS (two columns) -->
+    <section class="ld-section section-content reveal">
+        <div class="ld-collections">
+            <div class="ld-collection" id="supply-closet-romance">
         <span class="section-label">A Supply Closet Romance</span>
         <h2>Dots, Pens &<br>Commonplace Books</h2>
 
@@ -111,10 +121,8 @@
             </div>
         </div>
 
-    </section>
-
-    <!-- EM-DASH UNPACKING -->
-    <section class="ld-section section-content reveal" id="em-dash-unpacking">
+            </div>
+            <div class="ld-collection" id="em-dash-unpacking">
         <span class="section-label">Em-Dash Unpacking</span>
         <h2>Thief by Mass<br>Visual Weaponization</h2>
 
@@ -150,6 +158,8 @@
             </div>
         </div>
 
+            </div>
+        </div>
         <a href="/" class="back-link">Back to business</a>
     </section>
 </main>
