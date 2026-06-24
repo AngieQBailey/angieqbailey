@@ -1,3 +1,8 @@
+## [2026-06-24] — TIER 2 — L&D (Article 01 emphasis gap-fill)
+**Change:** Pulled the two missing section emphasis lines in Article 01 so every section carries one (was four, now six). The Hit gets "The em-dash became the tell. The scarlet letter." and the Charge gets "Accidental theft is still theft.", each lifted clean out of its paragraph with the surrounding sentences kept as body. Rosso still on the opening line only.
+**Rationale:** Matches the one-pull-per-section rhythm applied to Article 02. Hit and Charge were the only two sections without a pull.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-24] — TIER 2 — L&D (Article 02 emphasis pass + card cleanup)
 **Change:** Added three emphasis pulls to Article 02 so each section carries one (was two, now five): intro "The ellipsis is the symbol that got away.", Origin "The rhetorical ellipsis was a power play disguised as restraint.", Migration "The ellipsis is the punctuation of subtext." Existing Survival and Irony pulls kept. All ecru (no rosso). Separately, dropped the "Read" status label from the two live L&D cards on infrastructure-of-a-life.html; the whole card stays a clickable anchor with the hover bar as the affordance. "Coming" labels stay on the six placeholder cards.
 **Rationale:** Angie flagged that the restraint pass under-pulled. One worthy line per section, the single best beat, not every line. The "Read" label was redundant with the fully clickable card.
