@@ -1,3 +1,8 @@
+## [2026-06-24] — TIER 1 — SEO infra (short links)
+**Change:** Minted evergreen root vanity `/last-50-feet` (→ /rd/dignity/last-50-feet.html, no campaign UTM) via the `path` override in _links.json + build_links.py. noindex stub, excluded from sitemap. Updated docs/analytics-runbook.md (live-slug snapshot, now two evergreen vanities) and site-map.md.
+**Rationale:** A clean reusable pointer to the Last 50 Feet essay, since /go/drs-rock now sends Find the Rocks post traffic to the Rock Audit landing. Evergreen so essay traffic is not charged to a post campaign.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-23] — TIER 1 — R&D / DRS (Rock Audit body type)
 **Change:** Aligned rock-audit.html body prose to the DRS .body-text spec: color to ecru-dim (60%, was 84% via --body), line-height to 1.8 on body / 1.7 on lede (were 1.6 to 1.7), and font-size to rem (1.05rem body, 1.15rem lede, was px). Base body line-height 1.55 to 1.6.
 **Rationale:** The body read more solid and slightly cramped than the other DRS pages, which use a softer ecru-dim at airier 1.8 line-height. Now uniform with last-50-feet et al.
