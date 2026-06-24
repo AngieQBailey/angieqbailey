@@ -1,3 +1,8 @@
+## [2026-06-23] — TIER 1 — R&D / DRS (Rock Audit typography)
+**Change:** Aligned rock-audit.html and rock-audit-worksheet.html typography to the site system: Imbue display headings now weight 900 (were 700) at responsive clamp() sizes (were fixed px), and the landing's body prose is the site's light Plex Sans 300. Loaded the matching Imbue 900 + Plex Sans 300 weights.
+**Rationale:** The two pages were self-contained and had drifted from /styles.css typography (heading weight, heading size scale, body weight), so they read as a different font and incongruent header sizes next to the other DRS pages.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-23] — TIER 1 — SEO infra (sitemap.xml)
 **Change:** Added rd/dignity/rock-audit.html (priority 0.7) and rd/dignity/rock-audit-worksheet.html (0.6) to sitemap.xml and bumped last-50-feet lastmod to 2026-06-23. The /go/drs-rock and /rock stubs stay excluded (noindex redirects).
 **Rationale:** New indexable pages need to be in the sitemap so Search Console and Bing discover them on the next crawl. Worksheet included per the existing precedent that template/leaf tool pages are listed.
