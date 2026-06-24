@@ -1,3 +1,8 @@
+## [2026-06-24] — TIER 1 — L&D (Em-Dash Unpacking, Article 01 line-wrap fix)
+**Change:** Added text-wrap: balance to the .essay-body p.hook-line rule so the four emphasis lines stop orphaning a single word on the last line. Root cause was width-only wrapping against the 640px max-width with no break control, which dropped lone words like "infrastructure." onto their own line. Balance evens the line lengths and, for the origin line, lands the break at the sentence boundary ("It wasn't elegant. It wasn't literary." / "It was infrastructure.").
+**Rationale:** Per Angie's note on odd wrapping. Balance is the responsive fix (no hard-coded breaks to maintain across viewports). For any line that needs a guaranteed break point regardless of screen width, a manual br is the deterministic option, same as the h1/h2 headings already use.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-24] — TIER 1 — L&D (Em-Dash Unpacking, Article 01 emphasis-line system)
 **Change:** Unified all four section pull lines under one .hook-line treatment and dialed the size back from clamp(1.9rem, 5vw, 3rem) to clamp(1.5rem, 3vw, 1.9rem) with line-height 1.2. Converted the two remaining .verdict-line pulls (origin "It was infrastructure," adoption "Then GPT-4 showed up") to .hook-line so all four match in size and weight. Rosso stays on the opening line only ("That's not overuse. That's a hit job."); the other three are ecru.
 **Rationale:** Per Angie. The 3rem hook read as way too big. The section-ending lines deserved more weight than the 1.35rem .verdict-line gave them, so they all share one moderate size now. Rosso is reserved for the single signature line so the red stays a punctuation mark, not the page's baseline.
