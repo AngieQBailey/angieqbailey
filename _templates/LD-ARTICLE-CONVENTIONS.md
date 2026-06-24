@@ -9,11 +9,11 @@ Converged across the four Em-Dash Unpacking articles, 2026-06-24. Start from
 - Dark-variant: `html`, `body`, and `theme-color` all `#121A28`; `color-scheme: dark`.
 - GA4 tag `G-S0MXDDKP4E` on every page. Never remove or duplicate.
 - 7-item nav: Investigation, Warehouse, R&D, L&D, Verdict, Resources, Debrief.
-- Page-scoped `<style>` block carries `.essay-body p.hook-line`, the inline-link
-  color, and `.scale-note`. The hook-line selector must be `.essay-body p.hook-line`
-  (specificity 0,2,1) so it beats the global `.essay-body p` rule. Plain `.hook-line`
-  silently loses and renders small and dim. (Planned: move this block into global
-  `styles.css` and delete it from each page.)
+- The emphasis pull (`.essay-body p.hook-line` + `.is-rosso`), the inline-link color,
+  and `.scale-note` live in global `styles.css` (consolidated 2026-06-24). No
+  page-scoped `<style>` block needed; just use the classes. The hook-line selector is
+  `.essay-body p.hook-line` (specificity 0,2,1) so it beats the global `.essay-body p`
+  rule; plain `.hook-line` would render small and dim.
 
 ## Voice and typography
 
