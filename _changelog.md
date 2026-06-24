@@ -1,3 +1,8 @@
+## [2026-06-24] — TIER 3 — L&D (Em-Dash Unpacking, Article 01)
+**Change:** Built and deployed the first Em-Dash Unpacking article, ld/em-dash-unpacking/assassination-of-the-em-dash.html (The Assassination of the Em-Dash), on the dark-variant doc/essay shell: 7-item nav, GA4 tag, five doc-sections with section-label + h2 + essay-body, verdict-line pull quotes, a four-term collapsible glossary and same-tab source links (no target=_blank). Wired its card on ld/infrastructure-of-a-life.html from a Coming placeholder div to a live anchor (.piece-card with .piece-status.live, "Read" arrow). Cards 2 through 4 stay Coming. Added the page to sitemap.xml and updated the Em-Dash Unpacking row in site-map.md.
+**Rationale:** Article 1 of 4 is fact-checked and build-ready, so it ships solo while the other three finish their voice pass. The three in-body sibling cross-links (swastika, Confederate flag, Article 2) render as plain text, not hrefs, until those pages exist, which avoids live 404s. Pulled all four touched files live from GitHub before editing to protect yesterday's two-column restructure.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-24] — TIER 1 — R&D / DRS (Tactical Dignity)
 **Change:** Reworded the Findings paragraph opener from "It doesn't look like resistance." to "What follows doesn't look like resistance." after the duplicate verdict-line was cut.
 **Rationale:** With the verdict-line removed, the bare "It" sat right after a sentence whose "it" meant the tool, creating a dangling antecedent. "What follows" anchors to the heading.
