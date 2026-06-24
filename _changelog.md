@@ -1,3 +1,8 @@
+## [2026-06-23] — TIER 3 — L&D (two-column layout)
+**Change:** Laid the two L&D collections side by side as columns on ld/infrastructure-of-a-life.html. Wrapped both in a .ld-collections two-column grid (page-scoped inline CSS), cards stack vertically within each column, capped column h2 size, and the grid collapses to one column at 900px. Anchors (#supply-closet-romance, #em-dash-unpacking) preserved on the column divs.
+**Rationale:** Presents the two collections at a glance instead of one long scroll. Per Angie's direction.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-23] — TIER 3 — L&D (Infrastructure of A Life restructure)
 **Change:** Split ld/infrastructure-of-a-life.html from one mixed "The Collection" block into two distinct collection sections with anchor IDs (#supply-closet-romance, #em-dash-unpacking), each with its own header and intro. Wrote descriptions for the four Em-Dash Unpacking cards (were empty). Dropped the conflating "no business in the same section" intro. Deep-linked the two homepage L&D cards to their matching collection anchors. Updated site-map.md.
 **Rationale:** The page hosts two intentional collections now, not one jumbled pile. Each stands on its own and the index cards land readers on the exact collection they clicked. Piece cards stay Coming placeholders until the article pages are built.
