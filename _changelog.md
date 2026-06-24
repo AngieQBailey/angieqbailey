@@ -1,3 +1,8 @@
+## [2026-06-24] — TIER 2 — L&D (Article 02 dedupe + hook precision)
+**Change:** Two fixes to Article 02. (1) Origin-story duplication: the Irony section had re-told Article 01's broadcast-habit anecdote almost verbatim. Compressed it to "Never really have. The why is the whole subject of the first piece, so the short version will do here: it was a broadcast habit, not a prediction." and moved the cross-link onto "the first piece," de-linking the later "em-dash got assassinated" so the section carries one Article 01 link, not two. Article 01's Verdict now owns the full story. (2) Hook precision: the dek claimed "Three dots have survived 2,300 years," but the body argues the three-dot mark is practically modern and only the rhetorical idea is ancient. Reframed to "The idea is 2,300 years old. The mark is much younger." and synced the meta and og descriptions to match.
+**Rationale:** Per Angie's feedback. The cross-links push readers between the two pieces, so the repeated anecdote was visible. The hook no longer hands the mark a 2,300-year lifespan the body spends a section taking back.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-24] — TIER 2 — L&D (Article 01 emphasis gap-fill)
 **Change:** Pulled the two missing section emphasis lines in Article 01 so every section carries one (was four, now six). The Hit gets "The em-dash became the tell. The scarlet letter." and the Charge gets "Accidental theft is still theft.", each lifted clean out of its paragraph with the surrounding sentences kept as body. Rosso still on the opening line only.
 **Rationale:** Matches the one-pull-per-section rhythm applied to Article 02. Hit and Charge were the only two sections without a pull.
