@@ -1,6 +1,6 @@
 # Site Map — angieqbailey.com
 
-Last Updated: 2026-05-22 (Sponge Leadership Section XX deployed at rd/dignity/empathy-redlining.html; Section 4 anchor id added for cross-section linking)
+Last Updated: 2026-06-23 (Rock Audit field tool added to DRS: rd/dignity/rock-audit.html + rock-audit-worksheet.html; minted /go/drs-rock and evergreen /rock)
 
 ## Index Page Structure (5 Sections + Resources + Debrief)
 
@@ -163,6 +163,8 @@ All multi-item nav pages use the 7-item nav: Investigation, Warehouse, R&D, L&D,
 | Growth Collapse Math | Section 04 Findings Report (dark variant) | rd/dignity/growth-collapse.html |
 | Trust, Power and Signal Loss | Section 05 Findings Report (dark variant) | rd/dignity/signal-loss.html |
 | Sponge Leadership | Section XX Findings Report — unnumbered, depth report on absorption cost (dark variant) | rd/dignity/empathy-redlining.html |
+| The Rock Audit (Find the Rocks) | Field Tool landing (dark variant) | rd/dignity/rock-audit.html |
+| The Rock Audit Worksheet | Printable field tool (leaf, light) | rd/dignity/rock-audit-worksheet.html |
 | Operational Telemetry | Framework Page (dark variant) | rd/operational-telemetry/index.html |
 
 ## Short Links (/go/) — infrastructure, not a section
@@ -172,6 +174,8 @@ Self-hosted redirector. Source of truth is `_links.json`; run `scripts/build_lin
 | Short link | Type | Destination |
 |---|---|---|
 | go/drs-maverick | Short link (redirect) | rd/dignity/diagnostic-model.html?utm_campaign=drs-maverick |
+| go/drs-rock | Short link (redirect) | rd/dignity/rock-audit.html?utm_campaign=drs-rock |
+| rock | Evergreen vanity (redirect, root path) | rd/dignity/rock-audit.html (no campaign UTM) |
 
 ## L&D Pages (Section 04)
 
@@ -225,7 +229,7 @@ Max capacity per project rules: 7.
 | Case study hub pages | 8 |
 | Artifact pages | 33 |
 | Template pages | 27 |
-| R&D pages | 19 |
+| R&D pages | 21 |
 | L&D pages | 1 |
 | Verdict essays | 5 |
 | Resources pages | 3 |
