@@ -1,3 +1,8 @@
+## [2026-06-23] — TIER 3 — R&D / DRS (Rock Audit field tool)
+**Change:** Added the Rock Audit field tool to the DRS series: landing (rd/dignity/rock-audit.html) and printable worksheet (rd/dignity/rock-audit-worksheet.html). Landing carries the 7-item nav, GA4 tag and dark-page html background; worksheet has a leaf nav, GA4 tag and a Print/Save button wired to the `template_download` event. Minted `/go/drs-rock` (→ rock-audit.html, utm_campaign=drs-rock) and an evergreen root vanity `/rock` (→ rock-audit.html, no UTM) via a new optional `path` override in scripts/build_links.py + _links.json. Surfaced the tool as a field-tool CTA on the DRS index. Updated site-map.md and docs/analytics-runbook.md.
+**Rationale:** Companion to the "Find the Rocks" LinkedIn post (DRS Last 50 Feet territory). The post's first comment points at /go/drs-rock, which had to resolve before publish. Evergreen /rock keeps tool/worksheet traffic off the post campaign.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-18] — TIER 1 — Short links (/go/ drs-operator)
 **Change:** Minted `/go/drs-operator` → `/rd/dignity/diagnostic-model.html?utm_source=linkedin&utm_medium=organic_social&utm_campaign=drs-operator`. Added to `_links.json`, regenerated stubs via `scripts/build_links.py`, refreshed the runbook live-slug snapshot.
 **Rationale:** Fourth post in the DRS series (third /go/ link), pointed at the diagnostic model like Maverick and Detective. GA4 separates the three by utm_campaign and the short_link_click slug.
