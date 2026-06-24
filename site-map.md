@@ -190,7 +190,7 @@ Self-hosted redirector. Source of truth is `_links.json`; run `scripts/build_lin
 | Dots, Pens & Commonplace Books | A Supply Closet Romance | 4 (Dotted Notebook, Good Pen, New Wite-Out, Commonplace Book) | Coming |
 | Em-Dash Unpacking | Thief by Mass Visual Weaponization | 4 (Assassination of the Em-Dash, Semiotic Thief Charges Don't Stick, Case of Hitler vs. The Ancient Greeks, Stars & Bars: Straight Out of 1861 Manassas) | Coming |
 
-Note: The homepage L&D section has two cards linking to the same hub page — one for each collection.
+Note: The homepage L&D section has two cards, each deep-linking to its collection anchor on the hub page (#supply-closet-romance, #em-dash-unpacking). The hub now presents two distinct collection sections.
 
 ## Verdict Essays (Section 05)
 
