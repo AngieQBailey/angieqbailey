@@ -1,3 +1,8 @@
+## [2026-06-23] — TIER 3 — L&D (Infrastructure of A Life restructure)
+**Change:** Split ld/infrastructure-of-a-life.html from one mixed "The Collection" block into two distinct collection sections with anchor IDs (#supply-closet-romance, #em-dash-unpacking), each with its own header and intro. Wrote descriptions for the four Em-Dash Unpacking cards (were empty). Dropped the conflating "no business in the same section" intro. Deep-linked the two homepage L&D cards to their matching collection anchors. Updated site-map.md.
+**Rationale:** The page hosts two intentional collections now, not one jumbled pile. Each stands on its own and the index cards land readers on the exact collection they clicked. Piece cards stay Coming placeholders until the article pages are built.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-23] — TIER 1 — R&D / DRS (Rock Audit Imbue weight)
 **Change:** Dropped Imbue display headings on rock-audit.html and rock-audit-worksheet.html from weight 900 to 700, matching the SOP Playbook Builder content-heading weight. (SOP reserves 900 for its single top hero only.)
 **Rationale:** 900 read too heavy across the Rock Audit pages; 700 matches the lighter Imbue treatment Angie pointed to on the SOP Playbook Builder page.
