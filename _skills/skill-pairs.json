@@ -1,0 +1,28 @@
+{
+  "_comment": "Declares every skill-bundled file that is derived from a repo canonical source. The repo is upstream; skills are downstream copies. scripts/check_skill_drift.py reads this file and fails CI when a copy diverges from its source. To add a pair: copy the canonical into _skills/<skill>/..., add an entry here, and (for conceptual) record the canonical sha256.",
+  "version": 1,
+  "pairs": [
+    {
+      "skill": "aqb-ld-article",
+      "type": "exact",
+      "bundled": "_skills/aqb-ld-article/assets/ld-article-template.html",
+      "canonical": "_templates/ld-article-template.html",
+      "note": "Byte-identical by contract. Edit the canonical, then re-sync the bundled copy and repackage the skill."
+    },
+    {
+      "skill": "aqb-ld-article",
+      "type": "exact",
+      "bundled": "_skills/aqb-ld-article/references/conventions.md",
+      "canonical": "_templates/LD-ARTICLE-CONVENTIONS.md",
+      "note": "Byte-identical by contract."
+    },
+    {
+      "skill": "aqb-case-study",
+      "type": "conceptual",
+      "bundled": "_skills/aqb-case-study/references/design-system.md",
+      "canonical": "_design-system.md",
+      "canonical_sha256": "0050cf081548181663d1bb2cff1a82d9eb0866d174e7e85ab1869f7750344219",
+      "note": "Not byte-identical by design: the skill copy is the richer/longer build reference. The check records the canonical's hash and flags when the canonical changes, so a human reconciles instead of an automated overwrite. After reconciling (or deciding no change is needed), update canonical_sha256 to the new hash to acknowledge."
+    }
+  ]
+}

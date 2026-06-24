@@ -58,6 +58,31 @@ node deploy.js <local-file> <repo-path> "<commit message>"
 
 It fetches the current file's SHA first (conflict-safe), then pushes the local content. Always pull the latest content of any file you will edit before editing it, since the repo can hold manual GitHub-side edits the local copy lacks. The deploy token (PAT) lives in Claude memory and the session env, never in the repo, and is rotated on expiry. The older Chrome-JS chunking approach in the case-study skill is superseded by `deploy.js`.
 
+## Skill Sync (no-drift)
+
+Some skills bundle copies of repo files (the `aqb-ld-article` template and
+conventions, the `aqb-case-study` design reference). The repo is upstream; those
+copies are derived. Version-controlled copies live under `_skills/`, declared in
+`_skills/skill-pairs.json`, and a drift check keeps them honest.
+
+Workflow when you edit a canonical source (e.g. `_templates/ld-article-template.html`
+or `_design-system.md`):
+
+1. Mirror the change into the matching file under `_skills/`. For a conceptual
+   pair, reconcile by judgment, then run
+   `python3 scripts/check_skill_drift.py --update-hashes` to acknowledge.
+2. Verify: `python3 scripts/check_skill_drift.py` (expect "in sync").
+3. Rebuild the `.skill` from the `_skills/` source, save to
+   `Updated Skills (Versioned)/`, install with "Save Skill".
+
+CI runs the same check on push (`.github/workflows/skill-drift.yml`) and fails on
+drift. It is report-only and read-only: it never commits, and it does not gate the
+GitHub Pages deploy, so a drift failure flags the skill without taking the site
+down. Limit: CI verifies the canonical repo file against the committed `_skills/`
+copy. It cannot reach the installed skill cache or the `.skill` zips on disk, so
+building the package and installing it stays a human step. Full detail in
+`_skills/README.md`.
+
 ## Numeric Language Rule
 
 Use "more than" / "fewer than" / "less than" for numeric comparisons. Never use "under" or "over" for numeric references. "Under" and "over" are spatial only.

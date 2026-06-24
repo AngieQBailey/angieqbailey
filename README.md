@@ -21,6 +21,7 @@ The git repo is the durable backbone. Everything foundational has its record her
 | Change history | `_changelog.md` |
 | Short-link source + generator | `_links.json`, `scripts/build_links.py` |
 | Deploy tool | `deploy.js` |
+| Skill sources + no-drift check | `_skills/` (version-controlled copies + `skill-pairs.json`), `scripts/check_skill_drift.py`, `.github/workflows/skill-drift.yml` |
 
 ### Derived layer (Claude skills, re-synced from the repo)
 
@@ -29,6 +30,8 @@ The git repo is the durable backbone. Everything foundational has its record her
 - `aqb-ld-article` — L&D leaf articles (bundles the template + conventions above).
 
 If a skill ever disagrees with the repo, the repo wins and the skill gets re-synced. Skill packages are versioned in `Updated Skills (Versioned)/` and tracked by the `skill-version-manifest`.
+
+This relationship is enforced, not trusted. Skills that bundle repo files keep version-controlled copies under `_skills/`, declared in `_skills/skill-pairs.json`. `scripts/check_skill_drift.py` byte-compares each exact copy against its repo source and flags conceptual sources that have changed; a standalone GitHub Action (`.github/workflows/skill-drift.yml`) runs it on every push and fails when a copy has drifted. That check is report-only and independent of the Pages deploy, so a drift failure never blocks the site. See `_skills/README.md` for the sync workflow and its limits.
 
 ## Deployment
 
