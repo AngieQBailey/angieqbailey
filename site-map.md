@@ -206,12 +206,12 @@ Max capacity per project rules: 7.
 
 ## Resources Page (/resources/)
 
-4 categories, 16 cards total. Every card has an anchor ID for deep-linking from LinkedIn posts (e.g., /resources/#digital-gratuity).
+4 categories, 17 cards total. Every card has an anchor ID for deep-linking from LinkedIn posts (e.g., /resources/#digital-gratuity).
 
 | Category | H2 | Cards | Links To |
 |---|---|---|---|
 | Prompts | Copy. Paste. Get to Work. | 1: Digital Gratuity | /resources/digital-gratuity.html |
-| Tools | Interactive. Start Anywhere. | 4: Start Here, Safety-First Gate, SOP Playbook Builder, Operational Telemetry Metrics | /start-here/, /hello-world/safety-first-gate/, /hello-world/sop-playbook-builder/, /resources/operational-telemetry-markers.html |
+| Tools | Interactive. Start Anywhere. | 5: Start Here, Safety-First Gate, SOP Playbook Builder, Operational Telemetry Metrics, The Rock Audit | /start-here/, /hello-world/safety-first-gate/, /hello-world/sop-playbook-builder/, /resources/operational-telemetry-markers.html, /rd/dignity/rock-audit.html |
 | Playbooks | The Longer Read. | 2: SOP Plain Language, SOP Pro Edition | hello-world/sop-playbook-builder/assets/ guides |
 | Templates | Blank on Purpose. | 9: MBR x2, GEO/AEO x6, SOP Capture x1 | Direct links to blank template pages |
 
