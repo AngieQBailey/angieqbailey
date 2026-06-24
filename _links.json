@@ -1,5 +1,5 @@
 {
-  "_comment": "Slug registry for angieqbailey.com short links. Edit this file, then run scripts/build_links.py to regenerate the /go/ stubs. Slugs must be lowercase, kebab-case, and unique.",
+  "_comment": "Slug registry for angieqbailey.com short links. Edit this file, then run scripts/build_links.py to regenerate the /go/ stubs. Slugs must be lowercase, kebab-case, and unique. Optional 'path' field places a stub at /<path>/ instead of /go/<slug>/ (evergreen vanity).",
   "base": "https://angieqbailey.com",
   "prefix": "go",
   "ga4_id": "G-S0MXDDKP4E",
@@ -7,20 +7,33 @@
     {
       "slug": "drs-maverick",
       "destination": "https://angieqbailey.com/rd/dignity/diagnostic-model.html?utm_source=linkedin&utm_medium=organic_social&utm_campaign=drs-maverick",
-      "title": "DRS Diagnostic Model — LinkedIn (drs-maverick)",
+      "title": "DRS Diagnostic Model \u2014 LinkedIn (drs-maverick)",
       "created": "2026-06-18"
     },
     {
       "slug": "drs-detective",
       "destination": "https://angieqbailey.com/rd/dignity/diagnostic-model.html?utm_source=linkedin&utm_medium=organic_social&utm_campaign=drs-detective",
-      "title": "DRS Diagnostic Model — LinkedIn (drs-detective)",
+      "title": "DRS Diagnostic Model \u2014 LinkedIn (drs-detective)",
       "created": "2026-06-18"
     },
     {
       "slug": "drs-operator",
       "destination": "https://angieqbailey.com/rd/dignity/diagnostic-model.html?utm_source=linkedin&utm_medium=organic_social&utm_campaign=drs-operator",
-      "title": "DRS Diagnostic Model — LinkedIn (drs-operator)",
+      "title": "DRS Diagnostic Model \u2014 LinkedIn (drs-operator)",
       "created": "2026-06-18"
+    },
+    {
+      "slug": "drs-rock",
+      "destination": "https://angieqbailey.com/rd/dignity/rock-audit.html?utm_source=linkedin&utm_medium=organic_social&utm_campaign=drs-rock",
+      "title": "Rock Audit landing \u2014 LinkedIn (drs-rock)",
+      "created": "2026-06-23"
+    },
+    {
+      "slug": "rock",
+      "path": "rock",
+      "destination": "https://angieqbailey.com/rd/dignity/rock-audit.html",
+      "title": "Rock Audit \u2014 evergreen vanity (/rock)",
+      "created": "2026-06-23"
     }
   ]
 }
