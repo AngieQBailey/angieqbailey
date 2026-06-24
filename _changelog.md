@@ -1,3 +1,8 @@
+## [2026-06-23] — TIER 1 — R&D / DRS (Rock Audit heading treatment)
+**Change:** Harmonized rock-audit.html headings with the DRS family while keeping Imbue at 700: page title and section heads now UPPERCASE, eyebrow/kicker mono labels bold (700), and the SHOW/STALL/SWAP question titles kept title-case but recolored to brand teal for dimension (the interactive layer, distinct from the uppercase ecru heads).
+**Rationale:** Rock Audit read different from last-50-feet because its headings were title-case and its labels regular weight. Uppercase + bold labels close the gap without the 900 weight Angie rejected.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-23] — TIER 3 — L&D (two-column layout)
 **Change:** Laid the two L&D collections side by side as columns on ld/infrastructure-of-a-life.html. Wrapped both in a .ld-collections two-column grid (page-scoped inline CSS), cards stack vertically within each column, capped column h2 size, and the grid collapses to one column at 900px. Anchors (#supply-closet-romance, #em-dash-unpacking) preserved on the column divs.
 **Rationale:** Presents the two collections at a glance instead of one long scroll. Per Angie's direction.
