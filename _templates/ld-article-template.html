@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  L&D ARTICLE TEMPLATE  (Infrastructure of A Life leaf pages)
+  ============================================================
+  Proven across the four Em-Dash Unpacking articles (2026-06-24).
+  Copy this file to ld/<collection-slug>/<article-slug>.html and
+  fill the [[PLACEHOLDERS]]. Read _templates/LD-ARTICLE-CONVENTIONS.md
+  before building.
+
+  HARD RULES (see conventions doc for the full list):
+  - Dark-variant shell: html + body + theme-color all #121A28.
+  - GA4 tag G-S0MXDDKP4E present (already below). Do not remove.
+  - 7-item nav. Single "Back to L&D" at the bottom (no collection back-link).
+  - No em-dash characters anywhere in body. Ellipses as &hellip;.
+  - No Oxford commas. Curly quotes via &rsquo; &ldquo; &rdquo;.
+  - One emphasis pull per section, ecru by default. Reserve rosso
+    (.is-rosso) for at most ONE signature line per collection, and
+    NOT on heavy-subject articles.
+  - Sibling cross-links: render as PLAIN TEXT until the sibling page
+    ships, then wire live in a pass (both directions).
+  - .scale-note block: include ONLY for heavy-subject articles.
+  - Live landing card = <a class="piece-card"> with NO status label.
+  ============================================================
+-->
+<html lang="en" style="background-color:#121A28;">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0MXDDKP4E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S0MXDDKP4E');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="[[META DESCRIPTION ~150 chars, no em-dash]]">
+    <meta name="author" content="Angie Bailey">
+    <meta name="theme-color" content="#121A28">
+    <meta property="og:title" content="[[TITLE]] // Angie Bailey">
+    <meta property="og:description" content="[[OG DESCRIPTION]]">
+    <meta property="og:type" content="article">
+    <title>[[TITLE]] // L&amp;D // Angie Bailey</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,400;10..100,700;10..100,900&family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/styles.css">
+
+    <!--
+      Page-scoped styles. NOTE: when these move into global styles.css
+      (planned), delete this block. The .hook-line selector MUST be
+      .essay-body p.hook-line (specificity 0,2,1) so it beats the global
+      .essay-body p rule (0,1,1). Plain .hook-line will silently lose.
+    -->
+    <style>
+        .essay-body p.hook-line {
+            font-family: 'Imbue', serif;
+            font-size: clamp(1.5rem, 3vw, 1.9rem);
+            font-weight: 700;
+            color: var(--ecru);
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+            max-width: 640px;
+            margin: 1.75rem 0 0;
+            text-wrap: balance;
+        }
+        .essay-body p.hook-line.is-rosso { color: var(--rosso); }
+
+        .essay-body a,
+        .glossary-body a,
+        .scale-note a {
+            color: var(--quetzal-bright);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+            transition: color 0.2s ease;
+        }
+        .essay-body a:hover,
+        .glossary-body a:hover,
+        .scale-note a:hover { color: var(--ecru); }
+
+        /* .scale-note: include only for heavy-subject articles */
+        .scale-note {
+            border-left: 3px solid var(--rosso);
+            padding-left: 1.5rem;
+            margin: 2rem 0 0;
+            max-width: 640px;
+        }
+        .scale-note p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--ecru-dim);
+            margin: 0;
+        }
+        .scale-note strong { color: var(--ecru); font-weight: 500; }
+    </style>
+</head>
+<body style="background-color:#121A28;">
+
+<div class="blueprint-overlay" aria-hidden="true"></div>
+<div class="spine" aria-hidden="true"></div>
+
+<nav class="nav-bar" role="navigation" aria-label="Primary">
+    <a href="/" class="nav-mark" style="text-decoration: none;">AB</a>
+    <ul class="nav-links">
+        <li><a href="/#investigation">Investigation</a></li>
+        <li><a href="/#warehouse">Warehouse</a></li>
+        <li><a href="/#rnd">R&amp;D</a></li>
+        <li><a href="/#lnd">L&amp;D</a></li>
+        <li><a href="/#verdict">Verdict</a></li>
+        <li><a href="/resources/">Resources</a></li>
+        <li><a href="/#debrief">Debrief</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- HEADER. accent-word = rosso. Keep the trailing period. -->
+    <section class="doc-header doc-content">
+        <span class="section-label">L&amp;D // [[COLLECTION LABEL]] // [[NN]]</span>
+        <h1>[[TITLE CAPS LINE 1]]<br>[[TITLE CAPS LINE 2]] <span class="accent-word">[[ACCENT WORD.]]</span></h1>
+        <div class="doc-lede"></div>
+    </section>
+
+    <!-- INTRO / DEK. The dek's punch line is the one place rosso may go
+         (.is-rosso), and only if this is the collection's single signature
+         AND the subject is not heavy. Otherwise plain .hook-line (ecru). -->
+    <section class="doc-section doc-content reveal">
+        <div class="essay-body">
+            <p>[[Dek body. State the claim. Chop the punch onto its own hook-line below.]]</p>
+            <p class="hook-line">[[The dek punch. Short. The best beat, not the longest sentence.]]</p>
+        </div>
+        <!-- SCALE NOTE: heavy-subject articles only. Delete otherwise. -->
+        <div class="scale-note">
+            <p><strong>One note first.</strong> <a href="/ld/infrastructure-of-a-life.html#[[COLLECTION-ANCHOR]]">This is one of [[N]] pieces</a> about [[collection thesis in one clause]]. [[Acknowledge the stakes gap plainly.]]</p>
+        </div>
+    </section>
+
+    <!-- BODY SECTION (repeat per section). One hook-line pull per section.
+         Put a date range in the label if useful: "The Hit // 2023-2025". -->
+    <section class="doc-section doc-content reveal">
+        <span class="section-label">[[SECTION LABEL]]</span>
+        <h2>[[H2 LINE 1]]<br>[[H2 LINE 2]]</h2>
+        <div class="essay-body">
+            <p>[[Body paragraph. Inline source links live, same-tab, no target=_blank.]]</p>
+            <p>[[More body. Sibling cross-links stay PLAIN TEXT until the sibling ships.]]</p>
+            <p class="hook-line">[[The one pull for this section. Ecru.]]</p>
+            <p>[[Optional coda after the pull.]]</p>
+        </div>
+    </section>
+
+    <!-- GLOSSARY. Heading first, "Glossary" label below it, then the grid. -->
+    <section class="doc-section doc-content reveal">
+        <h2>If a Term<br>Snags You</h2>
+        <span class="section-label" style="display:block; margin-top:1.5rem;">Glossary</span>
+        <div class="glossary-grid">
+            <details class="glossary-card">
+                <summary>
+                    <span class="glossary-term">[[Term]]</span>
+                    <span class="glossary-toggle">+</span>
+                </summary>
+                <div class="glossary-body">
+                    <p>[[Plain-language definition. Not academic.]]</p>
+                </div>
+            </details>
+            <!-- repeat details.glossary-card per term -->
+        </div>
+
+        <div class="back-link-row">
+            <a href="/ld/infrastructure-of-a-life.html" class="back-link">Back to L&amp;D</a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <span>&copy; 2026 Angie Bailey</span>
+    </div>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
