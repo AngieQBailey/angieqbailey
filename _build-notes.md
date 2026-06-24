@@ -2,6 +2,8 @@
 
 Reference for deployment patterns, troubleshooting and conventions discovered through production builds.
 
+This is part of the durable repo layer: the portable record of how pages get built and deployed. The `aqb-case-study` skill and the `feedback_skill_overrides` memory mirror these conventions for operational use, but the repo is upstream. If a skill disagrees, reconcile to this doc and `styles.css`, then re-sync the skill.
+
 ## Dark-Variant Page Setup
 
 Every dark-variant page (case study pages, branded artifact pages) requires three layers of background protection to prevent white flash on load:
@@ -48,36 +50,13 @@ Each case study includes a companion .docx narrative document. These are rich pr
 
 ## Deployment via GitHub API
 
-The Cowork VM sandbox CAN reach api.github.com via Node.js `https` module. Use the Node.js upload script pattern:
+The Cowork VM sandbox can reach api.github.com via the Node.js `https` module, so deploys run from the sandbox. The canonical tool is `deploy.js` in the repo root:
 
-```javascript
-// Install docx if needed: cd /tmp/docx-build && npm init -y && npm install docx
-const https = require('https');
-const fs = require('fs');
-const path = require('path');
-
-const PAT = '{current_pat}';  // Refresh from Angie each session
-const REPO = 'AngieQBailey/angieqbailey';
-const BASE = '/sessions/{session}/mnt/Website & Case Studies/Portfolio Work/{Case Name}';
-
-// Upload function handles both new files and updates (checks SHA automatically)
-async function uploadFile(localPath, remotePath) {
-  const content = fs.readFileSync(path.join(BASE, localPath));
-  const b64 = content.toString('base64');
-  let sha = null;
-  // Check for existing file
-  try {
-    const check = await apiCall('GET', `/repos/${REPO}/contents/${remotePath}`);
-    if (check.status === 200 && check.data.sha) sha = check.data.sha;
-  } catch(e) {}
-  const body = { message: `Update ${remotePath}`, content: b64 };
-  if (sha) body.sha = sha;
-  const result = await apiCall('PUT', `/repos/${REPO}/contents/${remotePath}`, body);
-  return { ok: result.status === 200 || result.status === 201 };
-}
+```
+node deploy.js <local-file> <repo-path> "<commit message>"
 ```
 
-This replaces the Chrome JS chunking approach documented in the skill. Node.js is faster and more reliable.
+It fetches the current file's SHA first (conflict-safe), then pushes the local content. Always pull the latest content of any file you will edit before editing it, since the repo can hold manual GitHub-side edits the local copy lacks. The deploy token (PAT) lives in Claude memory and the session env, never in the repo, and is rotated on expiry. The older Chrome-JS chunking approach in the case-study skill is superseded by `deploy.js`.
 
 ## Numeric Language Rule
 
