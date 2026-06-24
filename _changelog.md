@@ -1,3 +1,8 @@
+## [2026-06-23] — TIER 1 — R&D / DRS (Rock Audit body type)
+**Change:** Aligned rock-audit.html body prose to the DRS .body-text spec: color to ecru-dim (60%, was 84% via --body), line-height to 1.8 on body / 1.7 on lede (were 1.6 to 1.7), and font-size to rem (1.05rem body, 1.15rem lede, was px). Base body line-height 1.55 to 1.6.
+**Rationale:** The body read more solid and slightly cramped than the other DRS pages, which use a softer ecru-dim at airier 1.8 line-height. Now uniform with last-50-feet et al.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-23] — TIER 1 — R&D / DRS (Rock Audit heading treatment)
 **Change:** Harmonized rock-audit.html headings with the DRS family while keeping Imbue at 700: page title and section heads now UPPERCASE, eyebrow/kicker mono labels bold (700), and the SHOW/STALL/SWAP question titles kept title-case but recolored to brand teal for dimension (the interactive layer, distinct from the uppercase ecru heads).
 **Rationale:** Rock Audit read different from last-50-feet because its headings were title-case and its labels regular weight. Uppercase + bold labels close the gap without the 900 weight Angie rejected.
