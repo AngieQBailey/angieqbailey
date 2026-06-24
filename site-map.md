@@ -176,6 +176,7 @@ Self-hosted redirector. Source of truth is `_links.json`; run `scripts/build_lin
 | go/drs-maverick | Short link (redirect) | rd/dignity/diagnostic-model.html?utm_campaign=drs-maverick |
 | go/drs-rock | Short link (redirect) | rd/dignity/rock-audit.html?utm_campaign=drs-rock |
 | rock | Evergreen vanity (redirect, root path) | rd/dignity/rock-audit.html (no campaign UTM) |
+| last-50-feet | Evergreen vanity (redirect, root path) | rd/dignity/last-50-feet.html (no campaign UTM) |
 
 ## L&D Pages (Section 04)
 
