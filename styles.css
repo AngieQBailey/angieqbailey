@@ -1163,3 +1163,65 @@ details.glossary-card[open] .glossary-toggle {
     details.glossary-card summary { padding: 1.25rem; }
     .glossary-body { padding: 1.25rem; padding-top: 1.25rem; }
 }
+
+/* ═══════════════════════════════════════════════════
+   INLINE LINKS + L&D ARTICLE COMPONENTS
+   Consolidated from per-page <style> blocks 2026-06-24.
+   ═══════════════════════════════════════════════════ */
+
+/* Inline content links, unified site-wide. Was default purple on DRS
+   (.body-text) and Verdict (.essay-body); teal only on L&D via page CSS. */
+.essay-body a,
+.body-text a,
+.glossary-body a,
+.scale-note a,
+.doc-lede a,
+.framework-lede a,
+.working-def a,
+.section-body a,
+.ld-lede a {
+    color: var(--quetzal-bright);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+.essay-body a:hover,
+.body-text a:hover,
+.glossary-body a:hover,
+.scale-note a:hover,
+.doc-lede a:hover,
+.framework-lede a:hover,
+.working-def a:hover,
+.section-body a:hover,
+.ld-lede a:hover { color: var(--ecru); }
+
+/* L&D emphasis pull. Selector must out-specify .essay-body p (0,1,1). */
+.essay-body p.hook-line {
+    font-family: 'Imbue', serif;
+    font-size: clamp(1.5rem, 3vw, 1.9rem);
+    font-weight: 700;
+    color: var(--ecru);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    max-width: 640px;
+    margin: 1.75rem 0 0;
+    text-wrap: balance;
+}
+.essay-body p.hook-line.is-rosso { color: var(--rosso); }
+
+/* L&D scale-caveat note (heavy-subject articles only). */
+.scale-note {
+    border-left: 3px solid var(--rosso);
+    padding-left: 1.5rem;
+    margin: 2rem 0 0;
+    max-width: 640px;
+}
+.scale-note p {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--ecru-dim);
+    margin: 0;
+}
+.scale-note strong { color: var(--ecru); font-weight: 500; }
