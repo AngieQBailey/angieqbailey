@@ -51,54 +51,10 @@
     <link rel="stylesheet" href="/styles.css">
 
     <!--
-      Page-scoped styles. NOTE: when these move into global styles.css
-      (planned), delete this block. The .hook-line selector MUST be
-      .essay-body p.hook-line (specificity 0,2,1) so it beats the global
-      .essay-body p rule (0,1,1). Plain .hook-line will silently lose.
+      No page-scoped CSS needed. As of 2026-06-24 the emphasis pull
+      (.essay-body p.hook-line + .is-rosso), the inline-link color, and
+      .scale-note live in global styles.css. Just use the classes below.
     -->
-    <style>
-        .essay-body p.hook-line {
-            font-family: 'Imbue', serif;
-            font-size: clamp(1.5rem, 3vw, 1.9rem);
-            font-weight: 700;
-            color: var(--ecru);
-            line-height: 1.2;
-            letter-spacing: -0.01em;
-            max-width: 640px;
-            margin: 1.75rem 0 0;
-            text-wrap: balance;
-        }
-        .essay-body p.hook-line.is-rosso { color: var(--rosso); }
-
-        .essay-body a,
-        .glossary-body a,
-        .scale-note a {
-            color: var(--quetzal-bright);
-            text-decoration: underline;
-            text-decoration-thickness: 1px;
-            text-underline-offset: 3px;
-            transition: color 0.2s ease;
-        }
-        .essay-body a:hover,
-        .glossary-body a:hover,
-        .scale-note a:hover { color: var(--ecru); }
-
-        /* .scale-note: include only for heavy-subject articles */
-        .scale-note {
-            border-left: 3px solid var(--rosso);
-            padding-left: 1.5rem;
-            margin: 2rem 0 0;
-            max-width: 640px;
-        }
-        .scale-note p {
-            font-size: 0.95rem;
-            font-weight: 300;
-            line-height: 1.7;
-            color: var(--ecru-dim);
-            margin: 0;
-        }
-        .scale-note strong { color: var(--ecru); font-weight: 500; }
-    </style>
 </head>
 <body style="background-color:#121A28;">
 
