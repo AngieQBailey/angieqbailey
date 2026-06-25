@@ -1,0 +1,36 @@
+name: Skill Drift Check
+
+# Fails when a skill-bundled copy diverges from its canonical repo source.
+# This is a standalone REPORT-ONLY check. It has read-only permissions, never
+# commits or pushes, and is independent of GitHub Pages publishing: if it fails,
+# the site still deploys. It only flags that a skill needs re-syncing.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_skills/**'
+      - '_templates/**'
+      - '_design-system.md'
+      - 'scripts/check_skill_drift.py'
+  pull_request:
+    paths:
+      - '_skills/**'
+      - '_templates/**'
+      - '_design-system.md'
+      - 'scripts/check_skill_drift.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-skill-drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Check skill copies against repo sources
+        run: python3 scripts/check_skill_drift.py
