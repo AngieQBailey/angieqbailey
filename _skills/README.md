@@ -35,6 +35,14 @@ same way when they start bundling repo files.
   paraphrased). The check records the canonical's sha256 and flags when the
   canonical changes, so a human reconciles. It never rewrites the copy.
 
+  The one conceptual pair today (aqb-case-study `design-system.md` vs repo
+  `_design-system.md`) is settled detect-only by decision: the repo file is the
+  portable token spec and the skill file is the full case-study build manual.
+  They share tokens, not purpose, so they are kept distinct. The repo spec
+  (ultimately `styles.css` `:root`) is canonical for the tokens. Do not merge or
+  overwrite either doc; when the repo spec's tokens change, re-check the build
+  manual by hand, then run `--update-hashes`.
+
 ## How to keep things in sync
 
 When you edit a canonical repo source (e.g. `_templates/ld-article-template.html`

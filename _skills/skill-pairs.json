@@ -22,7 +22,7 @@
       "bundled": "_skills/aqb-case-study/references/design-system.md",
       "canonical": "_design-system.md",
       "canonical_sha256": "0050cf081548181663d1bb2cff1a82d9eb0866d174e7e85ab1869f7750344219",
-      "note": "Not byte-identical by design: the skill copy is the richer/longer build reference. The check records the canonical's hash and flags when the canonical changes, so a human reconciles instead of an automated overwrite. After reconciling (or deciding no change is needed), update canonical_sha256 to the new hash to acknowledge."
+      "note": "Different document types, not a stale copy. The repo _design-system.md is the portable token spec (232 lines); this skill file is the full case-study build manual with complete HTML/CSS (809 lines). They share the design tokens, not the purpose. Decision 2026-06-25: keep them distinct, detect-only. The repo spec (ultimately styles.css :root) is canonical for the tokens; do not merge or overwrite either doc. The check flags when the repo spec changes so the build manual's token values can be re-checked by hand, then run --update-hashes to acknowledge."
     }
   ]
 }
