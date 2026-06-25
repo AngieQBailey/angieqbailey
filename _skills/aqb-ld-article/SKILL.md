@@ -2,8 +2,8 @@
 name: aqb-ld-article
 description: "Build L&D leaf articles (Infrastructure of A Life essays) for angieqbailey.com. Use whenever Angie wants to create or edit a personal essay-style L&D article in a collection like Em-Dash Unpacking or A Supply Closet Romance, turn a researched long-form draft into a deployed dark-variant page, wire an article into the L&D hub, or cross-link a collection. Trigger on 'L&D article,' 'Infrastructure of a Life,' 'em-dash unpacking,' 'supply closet romance,' 'love letter piece,' 'leaf article,' 'essay page,' or any request to turn an L&D markdown draft into a web-ready page. This is the personal-essay shell, distinct from aqb-case-study (forensic case studies). Depends on angie-bailey-brand (voice, palette, banned words) and aqb-case-study (deploy mechanics, changelog, GitHub upload). Read those first if unfamiliar."
 metadata:
-  version: "1.1"
-  last_updated: "2026-06-24"
+  version: "1.2"
+  last_updated: "2026-06-25"
 ---
 
 # AQB L&D Article Builder
