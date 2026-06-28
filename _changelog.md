@@ -1,3 +1,8 @@
+## [2026-06-27] — TIER 1 — Verdict + L&D (H1-to-text spacing fix)
+**Change:** Collapsed the excess whitespace between the H1 and the first paragraph on all Verdict essay pages (Section 05) and all L&D Infrastructure of a Life articles. Added two scoped rules in styles.css keyed off `.doc-header:has(.doc-lede:empty)`: `min-height:auto` + `padding-bottom:0` on the header and `margin-bottom:0` on the H1. Measured gap dropped from roughly 160px to roughly 50px. No HTML changed; one stylesheet edit covers every current and future lede-less page.
+**Rationale:** These essay pages reuse the artifact header shell, which reserves a 50vh vertically centered hero plus padding for a lede paragraph. The essay pages carry an empty `.doc-lede`, so that reserved space rendered as dead air below the headline. Scoping the fix to empty-lede headers leaves the filled-lede artifact and case-study pages (GEO/AEO, MBR, Dots & Pens, Hello World guides) untouched.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-27] — TIER 2 — L&D (Dotted Notebook copy edit)
 **Change:** Reduced first-person density in the opening paragraph of section 2 ("Why I Think in Dots") on ld/supply-closet-romance/dotted-notebook.html. The paragraph led with five "I" hits and two back-to-back "I" sentence openers; reworked to a single "I" while keeping the cadence and the maps/sprawl imagery, borrowing the second-person voice from the section above it ("three things you weren't looking for"). No other section touched.
 **Rationale:** Angie flagged the opening read as too I-heavy. The dek and section 1 were already clean; the spike was isolated to one paragraph.
