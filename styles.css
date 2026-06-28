@@ -1216,9 +1216,12 @@ details.glossary-card[open] .glossary-toggle {
     line-height: 1.2;
     letter-spacing: -0.01em;
     max-width: 640px;
-    margin: 1.75rem 0 0;
+    margin: 1.75rem 0;
     text-wrap: balance;
 }
+/* When a pull ends a section, let the section padding handle the gap below
+   instead of stacking a second margin on top of it. */
+.essay-body p.hook-line:last-child { margin-bottom: 0; }
 .essay-body p.hook-line.is-rosso { color: var(--rosso); }
 
 /* L&D scale-caveat note (heavy-subject articles only). */
