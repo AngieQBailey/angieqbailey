@@ -922,6 +922,17 @@
         height: 0; margin-bottom: 0;
     }
 
+    /* Verdict + L&D essay pages reuse the artifact header shell but carry no
+       lede. Without a lede to fill it, the 50vh centered header and its
+       reserved padding leave a large void below the H1. Collapse that space
+       only when the lede is empty; filled-lede artifact pages keep the hero. */
+    .doc-header:has(.doc-lede:empty) {
+        min-height: auto; padding-bottom: 0;
+    }
+    .doc-header:has(.doc-lede:empty) h1 {
+        margin-bottom: 0;
+    }
+
     .doc-section {
         padding-top: 2.5rem; padding-bottom: 2.5rem;
     }
