@@ -1,6 +1,6 @@
 # Site Map — angieqbailey.com
 
-Last Updated: 2026-06-23 (Rock Audit field tool added to DRS: rd/dignity/rock-audit.html + rock-audit-worksheet.html; minted /go/drs-rock and evergreen /rock)
+Last Updated: 2026-06-29 (Sectors of Stagnation added to DRS: rd/dignity/sectors-of-stagnation.html, macro companion to Last 50 Feet; minted /go/drs-sectors; reverse link added on last-50-feet.html)
 
 ## Index Page Structure (5 Sections + Resources + Debrief)
 
@@ -157,6 +157,7 @@ All multi-item nav pages use the 7-item nav: Investigation, Warehouse, R&D, L&D,
 | The 9:02 AM Meeting | Mini-Fable (ecru variant) | rd/dignity/902-meeting.html |
 | The Hardware of Being Human | Section 01 Findings Report (dark variant) | rd/dignity/hardware-of-being-human.html |
 | The Last 50 Feet Failure | Section 02 Findings Report (dark variant) | rd/dignity/last-50-feet.html |
+| Sectors of Stagnation | Macro companion to Last 50 Feet — innovation decay teardown across industries (dark variant) | rd/dignity/sectors-of-stagnation.html |
 | Tactical Dignity via Meaningful Choice | Section 03 Findings Report (dark variant) | rd/dignity/tactical-dignity.html |
 | Growth Collapse Math | Section 04 Findings Report (dark variant) | rd/dignity/growth-collapse.html |
 | Trust, Power and Signal Loss | Section 05 Findings Report (dark variant) | rd/dignity/signal-loss.html |
@@ -173,6 +174,7 @@ Self-hosted redirector. Source of truth is `_links.json`; run `scripts/build_lin
 |---|---|---|
 | go/drs-maverick | Short link (redirect) | rd/dignity/diagnostic-model.html?utm_campaign=drs-maverick |
 | go/drs-rock | Short link (redirect) | rd/dignity/rock-audit.html?utm_campaign=drs-rock |
+| go/drs-sectors | Short link (redirect) | rd/dignity/sectors-of-stagnation.html?utm_campaign=drs-sectors |
 | rock | Evergreen vanity (redirect, root path) | rd/dignity/rock-audit.html (no campaign UTM) |
 | last-50-feet | Evergreen vanity (redirect, root path) | rd/dignity/last-50-feet.html (no campaign UTM) |
 
