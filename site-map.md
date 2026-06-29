@@ -42,7 +42,6 @@ All multi-item nav pages use the 7-item nav: Investigation, Warehouse, R&D, L&D,
 | Marketing Infrastructure MBR Debt Clearance | Case Study Hub | posts/marketing-infrastructure-mbr/marketing-infrastructure-mbr.html |
 | Cross-Functional MBR Template | Artifact | posts/marketing-infrastructure-mbr/assets/cross-functional-mbr-template.html |
 | Reporting Governance Cadence | Artifact | posts/marketing-infrastructure-mbr/assets/reporting-governance-cadence.html |
-| Cross-Functional MBR Template (Blank) | Template | posts/marketing-infrastructure-mbr/assets/templates/cross-functional-mbr-template-blank.html |
 | Reporting Governance Cadence (Blank) | Template | posts/marketing-infrastructure-mbr/assets/templates/reporting-governance-cadence-blank.html |
 
 ### 2. The GEO/AEO Transition
@@ -88,7 +87,6 @@ All multi-item nav pages use the 7-item nav: Investigation, Warehouse, R&D, L&D,
 | P&L Cutoff Definition | Artifact | posts/ecommerce-pl/assets/pl-cutoff-definition.html |
 | P&L Project Dossier | Artifact | posts/ecommerce-pl/assets/pl-project-dossier.html |
 | P&L Cutoff Definition (Blank) | Template | posts/ecommerce-pl/assets/templates/pl-cutoff-definition-blank.html |
-| P&L Project Dossier (Blank) | Template | posts/ecommerce-pl/assets/templates/pl-project-dossier-blank.html |
 
 ### 5. Web Experience Capacity Expansion
 
