@@ -1,6 +1,6 @@
 # Analytics & Search Infrastructure Runbook
 
-**Site:** angieqbailey.com **Last updated:** 2026-06-24 **Owner:** Angie Bailey
+**Site:** angieqbailey.com **Last updated:** 2026-06-29 **Owner:** Angie Bailey
 
 This is the as-built record, the break-fix guide, and the new-site setup playbook for the analytics and search stack (GA4, Google Search Console, Bing Webmaster Tools, the weekly report, and the on-site tracking code). If something breaks, or you need to set the same stack up for a different site, everything is here. No prior context required.
 
@@ -38,7 +38,7 @@ Secrets are NOT in this file. The GitHub deploy token lives in Claude memory onl
 
 **On-site tracking code**
 - `template_download`: inline on each Print/Save button — `onclick="if(window.gtag){gtag('event','template_download',{template_path:location.pathname});} window.print();"` (interactive pages fire it inside their print handler).
-- `short_link_click`: emitted by the `/go/` stub template generated from `_links.json` via `scripts/build_links.py` (param `slug`, beacon transport). Live slugs as of 2026-06-27: `drs-maverick`, `drs-detective`, `drs-operator` (→ /rd/dignity/diagnostic-model.html) and `drs-rock` (→ /rd/dignity/rock-audit.html), separated by utm_campaign + slug. The A Supply Closet Romance L&D collection adds `scr-dotted-notebook`, `scr-good-pen`, `scr-wite-out`, `scr-commonplace` (→ the four ld/supply-closet-romance/ articles), same utm_campaign-per-post convention. Plus two evergreen root vanities `/rock` (→ /rd/dignity/rock-audit.html) and `/last-50-feet` (→ /rd/dignity/last-50-feet.html), no campaign UTM, produced by the optional `path` override in `_links.json` (places a stub at /<path>/ instead of /go/<slug>/). `_links.json` is the authoritative registry; this list is a convenience snapshot.
+- `short_link_click`: emitted by the `/go/` stub template generated from `_links.json` via `scripts/build_links.py` (param `slug`, beacon transport). Live slugs as of 2026-06-29: `drs-maverick`, `drs-detective`, `drs-operator` (→ /rd/dignity/diagnostic-model.html), `drs-rock` (→ /rd/dignity/rock-audit.html) and `drs-sectors` (→ /rd/dignity/sectors-of-stagnation.html), separated by utm_campaign + slug. The A Supply Closet Romance L&D collection adds `scr-dotted-notebook`, `scr-good-pen`, `scr-wite-out`, `scr-commonplace` (→ the four ld/supply-closet-romance/ articles), same utm_campaign-per-post convention. Plus two evergreen root vanities `/rock` (→ /rd/dignity/rock-audit.html) and `/last-50-feet` (→ /rd/dignity/last-50-feet.html), no campaign UTM, produced by the optional `path` override in `_links.json` (places a stub at /<path>/ instead of /go/<slug>/). `_links.json` is the authoritative registry; this list is a convenience snapshot.
 - `contact_click`: inline on the Debrief mailto link in `index.html` (param `method:'email'`).
 
 ---
