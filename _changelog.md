@@ -1,3 +1,8 @@
+## [2026-06-29] — TIER 2 — Warehouse (newsletter open-rate metric genericization)
+**Change:** Genericized the prior-employer internal open-rate figures on index.html and enterprise-newsletter-architecture.html. "9% open rate" to "single-digit open rate"; "From 9% to 95%+ sustained" to "From single digits to a high open rate, sustained"; card output "95%+ open rate" to "a high, sustained open rate". Outcome stat tiles: "88%" to "Strong", "95%+" to "Sustained" (label "Sustained open rate at maturity" to "High open rate at maturity"), "Underperforming to 95%+" to "Underperforming to sustained"; closing prose "to 95%+ sustained" to "to a high open rate, sustained". Left in place (different metrics, not the open-rate journey): "100% workforce reached" (design goal), "Company-Wide Call attendance 20-40%", and the "64%/82%" internal-survey figures. No structural, layout, CSS or GA4 changes.
+**Rationale:** Specific internal open-rate figures are confidential-metric-class data; removing them keeps the case consistent with the footer disclaimer while preserving the relative improvement story.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-29] — TIER 1 — Warehouse (newsletter phrasing fix)
 **Change:** Fixed a doubled "across" introduced by the scale-genericization pass on enterprise-newsletter-architecture.html ("across many locations across multiple states" to "across many locations in multiple states").
 **Rationale:** Grammar polish on the prior edit.
