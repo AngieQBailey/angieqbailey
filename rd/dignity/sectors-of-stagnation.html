@@ -203,6 +203,46 @@
             margin: 2rem 0;
         }
 
+        /* Sector lead-in list */
+        .sector-list {
+            list-style: none;
+            margin: 0 0 2.25rem;
+            padding: 0;
+            max-width: 650px;
+        }
+        .sector-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1.25rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid var(--ecru-ghost);
+        }
+        .sector-list li:last-child { border-bottom: none; }
+        .sl-name {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--ecru);
+        }
+        .sl-mark {
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--rosso);
+            margin-right: 0.65rem;
+        }
+        .sector-list.is-ahead .sl-mark { color: var(--quetzal-bright); }
+        .sl-stat {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--ecru-dim);
+            text-align: right;
+            flex-shrink: 0;
+        }
+        @media (max-width: 600px) {
+            .sector-list li { flex-direction: column; gap: 0.2rem; }
+            .sl-stat { text-align: left; }
+        }
+
         /* Callout for the close */
         .callout {
             border-left: 4px solid var(--rosso);
@@ -323,6 +363,13 @@
         <span class="section-label">The Teardown, Part One</span>
         <h2>When You Can Sell It<br>Without Moving It.</h2>
 
+        <ul class="sector-list is-ahead">
+            <li><span class="sl-name"><span class="sl-mark">&#9656;</span>Computing</span><span class="sl-stat">2,308 &rarr; 58.2B transistors</span></li>
+            <li><span class="sl-name"><span class="sl-mark">&#9656;</span>Storage</span><span class="sl-stat">256GB once cost $20B</span></li>
+            <li><span class="sl-name"><span class="sl-mark">&#9656;</span>Bandwidth</span><span class="sl-stat">up about 50% a year</span></li>
+            <li><span class="sl-name"><span class="sl-mark">&#9656;</span>Genome</span><span class="sl-stat">$100M to about $1,000</span></li>
+        </ul>
+
         <div class="body-text">
             <p>
                 Look at the sectors that ran away from everyone else. They have one thing in common. What they sell is information, and information has no body.
@@ -345,6 +392,16 @@
     <section class="framework-section section-content reveal">
         <span class="section-label">The Teardown, Part Two</span>
         <h2>When the Work Is a Body<br>in a Building.</h2>
+
+        <ul class="sector-list">
+            <li><span class="sl-name"><span class="sl-mark">&#9656;</span>Construction</span><span class="sl-stat">output per worker down ~40%</span></li>
+            <li><span class="sl-name"><span class="sl-mark">&#9656;</span>Education</span><span class="sl-stat">spending nearly tripled, scores flat</span></li>
+            <li><span class="sl-name"><span class="sl-mark">&#9656;</span>Payments</span><span class="sl-stat">still a full banking day</span></li>
+            <li><span class="sl-name"><span class="sl-mark">&#9656;</span>Air travel</span><span class="sl-stat">about 7 hours since 1958</span></li>
+            <li><span class="sl-name"><span class="sl-mark">&#9656;</span>Transit</span><span class="sl-stat">$4.45B for 1.8 miles</span></li>
+            <li><span class="sl-name"><span class="sl-mark">&#9656;</span>Healthcare</span><span class="sl-stat">about a third on paperwork</span></li>
+            <li><span class="sl-name"><span class="sl-mark">&#9656;</span>Mining</span><span class="sl-stat">about 29 years to open</span></li>
+        </ul>
 
         <div class="body-text">
             <p>
