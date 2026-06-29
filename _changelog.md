@@ -1,3 +1,8 @@
+## [2026-06-29] — TIER 2 — R&D / Dignity-Required System (Sectors of Stagnation scannable lists)
+**Change:** Added a bulleted sector lead-in to both teardown sections on `rd/dignity/sectors-of-stagnation.html`. Section 02 (compounded) gets a four-item list (Computing, Storage, Bandwidth, Genome) with quetzal markers; Section 03 (flatlined) gets a seven-item list (Construction, Education, Payments, Air travel, Transit, Healthcare, Mining) with rosso markers. Each row is sector name plus a short stat tag, no dash separators (flex name-left / stat-right, so no em-dashes). New `.sector-list` / `.sl-name` / `.sl-mark` / `.sl-stat` CSS in the page style block, with a mobile stack at 600px. Cited prose unchanged below each list; stat tags are paraphrases of the already-cited figures, no new claims.
+**Rationale:** Make the cross-industry comparison scannable at a glance for a non-technical ops/HR reader. Angie chose the per-section bulleted lead-in over a single two-column scoreboard after a side-by-side mockup.
+**Operator:** Angie Bailey + Claude via Cowork
+
 ## [2026-06-29] — TIER 1 — R&D / Dignity-Required System (Sectors of Stagnation cross-link polish)
 **Change:** Switched the two unshipped sibling cross-links on `rd/dignity/sectors-of-stagnation.html` ("the magic middle," "nothing bleeds") from placeholder `#TODO-` anchors to plain text, matching the L&D house convention that renders cross-links as plain text until the sibling ships. Anchor wording stays in the prose, so wiring each is a one-line change when the destination pages exist. No other changes.
 **Rationale:** Placeholder anchors were live but inert (a click jumped to page top). Plain text avoids the dead-link UX until the magic-middle and nothing-bleeds pages are built.
